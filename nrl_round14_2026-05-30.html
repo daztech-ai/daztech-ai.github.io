@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NRL R14 — Full Card | Daztech</title>
+<title>NRL R14 — Full Engine Card | Daztech</title>
 <style>
   :root {
     --bg: #0a0a0f; --card: #111118; --border: #1e1e2a;
@@ -17,7 +17,6 @@
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     background: var(--bg); color: var(--text);
     max-width: 520px; margin: 0 auto; padding: 16px;
-    -webkit-text-size-adjust: 100%;
   }
   .header { text-align: center; margin-bottom: 16px; }
   .header h1 { font-size: 1.2em; color: #fff; }
@@ -92,13 +91,14 @@
     padding: 5px 0; font-size: 0.72em; border-bottom: 1px solid rgba(255,255,255,0.03);
   }
   .sgm-leg:last-child { border-bottom: none; }
-  .leg-type { color: var(--muted); font-size: 0.65em; min-width: 55px; }
+  .leg-type { color: var(--muted); font-size: 0.65em; min-width: 72px; }
   .leg-desc { flex: 1; color: var(--text); }
   .leg-prob { color: var(--muted); font-size: 0.68em; }
 
   .divider { border: none; border-top: 1px solid var(--border); margin: 24px 0; }
-
+  .h2h-sgm { border-color: rgba(123,159,255,0.2); }
   .footer { margin-top: 20px; padding-top: 12px; border-top: 1px solid var(--border); text-align: center; font-size: 0.62em; color: #444; }
+  .meta-strip { text-align: center; font-size: 0.6em; color: var(--muted); margin-bottom: 4px; }
 </style>
 </head>
 <body>
@@ -106,245 +106,657 @@
 <a href="index.html" class="back-link">← Back to Hub</a>
 
 <div class="header">
-  <h1>🏉 NRL Round 14 — Full Card</h1>
-  <div class="sub">Daztech AI Engine · Team ratings + margin model + try scorer + SGM · +19.4% backtested</div>
+  <h1>🏉 NRL Round 14 — Full Engine Card</h1>
+  <div class="sub">Daztech AI Engine · Team ratings + margin + try scorer + SGM · 6 games</div>
+  <div class="sub" style="margin-top:4px">Generated Sat 30 May 2026 16:57 AEST · league_code='NRL' pipeline</div>
 </div>
 
-<!-- ═══════════ GAME 1: Warriors @ Knights ═══════════ -->
+<!-- ═══════════ GAME 1: Eels @ Knights ═══════════ -->
+<div class="meta-strip">GAME 1 of 6</div>
 <div class="match-card">
   <div class="team">
-    <div class="team-badge">⚔️</div>
-    <div class="team-name">Warriors</div>
-    <div class="team-record">Off 129 · Def 72</div>
+    <div class="team-badge">⚡</div>
+    <div class="team-name">Eels</div>
   </div>
   <div class="vs-badge">@</div>
   <div class="team">
     <div class="team-badge">🔰</div>
     <div class="team-name">Knights</div>
-    <div class="team-record">Off 121 · Def 108</div>
   </div>
 </div>
 <div class="info-strip">Sat 3:00pm · McDonald Jones Stadium</div>
-<div class="prediction-line pred-strong">Warriors by 10.0 — 80.8% confidence</div>
-
-<div class="section-title">📊 Try Scorers</div>
-<div class="try-row"><span class="try-name">A. Khan-Pereira</span><span class="try-pos">Wing · NZW</span><span class="try-stat">8T / 7G</span><span class="try-prob prob-hot">45%</span><span class="try-badge">★</span></div>
-<div class="try-row"><span class="try-name">D. Watene-Zelezniak</span><span class="try-pos">Wing · NZW</span><span class="try-stat">14T / 11G</span><span class="try-prob prob-hot">45%</span><span class="try-badge">★</span></div>
-<div class="try-row"><span class="try-name">D. Young</span><span class="try-pos">Wing · NK</span><span class="try-stat">14T / 11G</span><span class="try-prob prob-hot">45%</span></div>
-<div class="try-row"><span class="try-name">G. Marzhew</span><span class="try-pos">Wing · NK</span><span class="try-stat">14T / 10G</span><span class="try-prob prob-hot">45%</span></div>
-<div class="try-row"><span class="try-name">C. Nicoll-Klokstad</span><span class="try-pos">Fullback · NZW</span><span class="try-stat">3T / 5G</span><span class="try-prob prob-hot">45%</span></div>
-
-<div class="section-title">🎯 Best SGM</div>
-<div class="sgm-card">
+<div class="prediction-line pred-blowout">Knights by 18.1 — 93.0% confidence · BLOWOUT</div>
+<div class="section-title">📊 Knights Try Scorers</div>
+<div class="try-row">
+  <span class="try-name">D.Young</span>
+  <span class="try-pos">Wing · NK</span>
+  <span class="try-prob prob-hot">45%</span>
+</div>
+<div class="try-row">
+  <span class="try-name">G.Marzhew</span>
+  <span class="try-pos">Wing · NK</span>
+  <span class="try-prob prob-hot">45%</span>
+</div>
+<div class="try-row">
+  <span class="try-name">F.Sharpe</span>
+  <span class="try-pos">Five-Eighth · NK</span>
+  <span class="try-prob prob-warm">36%</span>
+</div>
+<div class="section-title">📊 Eels Try Scorers</div>
+<div class="try-row">
+  <span class="try-name">J.Addo-Carr</span>
+  <span class="try-pos">Wing · PE</span>
+  <span class="try-prob prob-hot">45%</span>
+</div>
+<div class="try-row">
+  <span class="try-name">I.Iongi</span>
+  <span class="try-pos">Fullback · PE</span>
+  <span class="try-prob prob-hot">43%</span>
+</div>
+<div class="try-row">
+  <span class="try-name">B.Simonsson</span>
+  <span class="try-pos">Wing · PE</span>
+  <span class="try-prob prob-hot">42%</span>
+</div>
+<div class="section-title">🎯 Best SGMs</div>
+<div class="sgm-card h2h-sgm">
   <div class="sgm-top">
-    <div class="sgm-name">Warriors + Try Double</div>
+    <div class="sgm-name">Knights ML + Young AT</div>
     <div class="conviction conv-strong">STRONG</div>
   </div>
-  <div class="sgm-odds">Est. odds: $4.20 · Combo prob: 16.6%</div>
+  <div class="sgm-odds">Est. odds: $2.39 · Combo prob: 41.9%</div>
   <div class="sgm-legs">
-    <div class="sgm-leg"><span class="leg-type">H2H</span><span class="leg-desc">Warriors to win</span><span class="leg-prob">80.8%</span></div>
-    <div class="sgm-leg"><span class="leg-type">Anytime Try</span><span class="leg-desc">D. Watene-Zelezniak</span><span class="leg-prob">45%</span></div>
-    <div class="sgm-leg"><span class="leg-type">Anytime Try</span><span class="leg-desc">A. Khan-Pereira</span><span class="leg-prob">45%</span></div>
+    <div class="sgm-leg">
+      <span class="leg-type">H2H</span>
+      <span class="leg-desc">Knights to win</span>
+      <span class="leg-prob">93.0%</span>
+    </div>
+    <div class="sgm-leg">
+      <span class="leg-type">Anytime Try</span>
+      <span class="leg-desc">D.Young Anytime Try</span>
+      <span class="leg-prob">45.0%</span>
+    </div>
   </div>
 </div>
-
+<div class="sgm-card">
+  <div class="sgm-top">
+    <div class="sgm-name">Young + Addo-Carr AT</div>
+    <div class="conviction conv-spec">SPEC</div>
+  </div>
+  <div class="sgm-odds">Est. odds: $6.02 · Combo prob: 16.6%</div>
+  <div class="sgm-legs">
+    <div class="sgm-leg">
+      <span class="leg-type">Anytime Try Scorer</span>
+      <span class="leg-desc">D.Young (NK) Anytime Try</span>
+      <span class="leg-prob">45.0%</span>
+    </div>
+    <div class="sgm-leg">
+      <span class="leg-type">Anytime Try Scorer</span>
+      <span class="leg-desc">J.Addo-Carr (PE) Anytime Try</span>
+      <span class="leg-prob">45.0%</span>
+    </div>
+  </div>
+</div>
+<div class="sgm-card">
+  <div class="sgm-top">
+    <div class="sgm-name">Marzhew + Addo-Carr AT</div>
+    <div class="conviction conv-spec">SPEC</div>
+  </div>
+  <div class="sgm-odds">Est. odds: $6.02 · Combo prob: 16.6%</div>
+  <div class="sgm-legs">
+    <div class="sgm-leg">
+      <span class="leg-type">Anytime Try Scorer</span>
+      <span class="leg-desc">G.Marzhew (NK) Anytime Try</span>
+      <span class="leg-prob">45.0%</span>
+    </div>
+    <div class="sgm-leg">
+      <span class="leg-type">Anytime Try Scorer</span>
+      <span class="leg-desc">J.Addo-Carr (PE) Anytime Try</span>
+      <span class="leg-prob">45.0%</span>
+    </div>
+  </div>
+</div>
 <hr class="divider">
 
 <!-- ═══════════ GAME 2: Bulldogs @ Tigers ═══════════ -->
+<div class="meta-strip">GAME 2 of 6</div>
 <div class="match-card">
   <div class="team">
     <div class="team-badge">🐕</div>
     <div class="team-name">Bulldogs</div>
-    <div class="team-record">Off 72 · Def 108</div>
   </div>
   <div class="vs-badge">@</div>
   <div class="team">
     <div class="team-badge">🐯</div>
-    <div class="team-name">Wests Tigers</div>
-    <div class="team-record">Off 103 · Def 112</div>
+    <div class="team-name">Tigers</div>
   </div>
 </div>
 <div class="info-strip">Sat 5:30pm · CommBank Stadium</div>
-<div class="prediction-line pred-strong">Tigers by 9.2 — 78.8% confidence</div>
-
-<div class="section-title">📊 Try Scorers</div>
-<div class="try-row"><span class="try-name">J. Bula</span><span class="try-pos">Fullback · WT</span><span class="try-stat">5T / 7G</span><span class="try-prob prob-hot">45%</span></div>
-<div class="try-row"><span class="try-name">J. Kiraz</span><span class="try-pos">Wing · CBB</span><span class="try-stat">5T / 7G</span><span class="try-prob prob-hot">45%</span></div>
-<div class="try-row"><span class="try-name">F. Tavana</span><span class="try-pos">Wing · WT</span><span class="try-stat">2T / 3G</span><span class="try-prob prob-hot">45%</span></div>
-<div class="try-row"><span class="try-name">L. Laulili'i</span><span class="try-pos">Wing · WT</span><span class="try-stat">6T / 9G</span><span class="try-prob prob-hot">45%</span></div>
-<div class="try-row"><span class="try-name">S. Turuva</span><span class="try-pos">Wing · WT</span><span class="try-stat">4T / 10G</span><span class="try-prob prob-hot">45%</span></div>
-
-<div class="section-title">🎯 Best SGM</div>
-<div class="sgm-card">
+<div class="prediction-line pred-strong">Tigers by 9.2 — 78.8% confidence · STRONG</div>
+<div class="section-title">📊 Tigers Try Scorers</div>
+<div class="try-row">
+  <span class="try-name">F.Tavana</span>
+  <span class="try-pos">Wing · WT</span>
+  <span class="try-prob prob-hot">45%</span>
+</div>
+<div class="try-row">
+  <span class="try-name">J.Bula</span>
+  <span class="try-pos">Fullback · WT</span>
+  <span class="try-prob prob-hot">45%</span>
+</div>
+<div class="try-row">
+  <span class="try-name">L.Laulili'i</span>
+  <span class="try-pos">Wing · WT</span>
+  <span class="try-prob prob-hot">45%</span>
+</div>
+<div class="section-title">📊 Bulldogs Try Scorers</div>
+<div class="try-row">
+  <span class="try-name">J.Kiraz</span>
+  <span class="try-pos">Wing · CBB</span>
+  <span class="try-prob prob-hot">45%</span>
+</div>
+<div class="try-row">
+  <span class="try-name">L.Galvin</span>
+  <span class="try-pos">Halfback · CBB</span>
+  <span class="try-prob prob-cool">18%</span>
+</div>
+<div class="try-row">
+  <span class="try-name">M.Burton</span>
+  <span class="try-pos">Five-Eighth · CBB</span>
+  <span class="try-prob prob-cool">17%</span>
+</div>
+<div class="section-title">🎯 Best SGMs</div>
+<div class="sgm-card h2h-sgm">
   <div class="sgm-top">
-    <div class="sgm-name">Tigers + Bula Try</div>
+    <div class="sgm-name">Tigers ML + Tavana AT</div>
     <div class="conviction conv-moderate">MODERATE</div>
   </div>
-  <div class="sgm-odds">Est. odds: $2.80 · Combo prob: 35.5%</div>
+  <div class="sgm-odds">Est. odds: $2.82 · Combo prob: 35.5%</div>
   <div class="sgm-legs">
-    <div class="sgm-leg"><span class="leg-type">H2H</span><span class="leg-desc">Tigers to win</span><span class="leg-prob">78.8%</span></div>
-    <div class="sgm-leg"><span class="leg-type">Anytime Try</span><span class="leg-desc">J. Bula</span><span class="leg-prob">45%</span></div>
+    <div class="sgm-leg">
+      <span class="leg-type">H2H</span>
+      <span class="leg-desc">Tigers to win</span>
+      <span class="leg-prob">78.8%</span>
+    </div>
+    <div class="sgm-leg">
+      <span class="leg-type">Anytime Try</span>
+      <span class="leg-desc">F.Tavana Anytime Try</span>
+      <span class="leg-prob">45.0%</span>
+    </div>
   </div>
 </div>
-
+<div class="sgm-card">
+  <div class="sgm-top">
+    <div class="sgm-name">Tavana + Kiraz AT</div>
+    <div class="conviction conv-spec">SPEC</div>
+  </div>
+  <div class="sgm-odds">Est. odds: $6.02 · Combo prob: 16.6%</div>
+  <div class="sgm-legs">
+    <div class="sgm-leg">
+      <span class="leg-type">Anytime Try Scorer</span>
+      <span class="leg-desc">F.Tavana (WT) Anytime Try</span>
+      <span class="leg-prob">45.0%</span>
+    </div>
+    <div class="sgm-leg">
+      <span class="leg-type">Anytime Try Scorer</span>
+      <span class="leg-desc">J.Kiraz (CBB) Anytime Try</span>
+      <span class="leg-prob">45.0%</span>
+    </div>
+  </div>
+</div>
+<div class="sgm-card">
+  <div class="sgm-top">
+    <div class="sgm-name">Bula + Kiraz AT</div>
+    <div class="conviction conv-spec">SPEC</div>
+  </div>
+  <div class="sgm-odds">Est. odds: $6.02 · Combo prob: 16.6%</div>
+  <div class="sgm-legs">
+    <div class="sgm-leg">
+      <span class="leg-type">Anytime Try Scorer</span>
+      <span class="leg-desc">J.Bula (WT) Anytime Try</span>
+      <span class="leg-prob">45.0%</span>
+    </div>
+    <div class="sgm-leg">
+      <span class="leg-type">Anytime Try Scorer</span>
+      <span class="leg-desc">J.Kiraz (CBB) Anytime Try</span>
+      <span class="leg-prob">45.0%</span>
+    </div>
+  </div>
+</div>
 <hr class="divider">
 
 <!-- ═══════════ GAME 3: Roosters @ Storm ═══════════ -->
+<div class="meta-strip">GAME 3 of 6</div>
 <div class="match-card">
   <div class="team">
     <div class="team-badge">🐓</div>
     <div class="team-name">Roosters</div>
-    <div class="team-record">Off 121 · Def 93</div>
   </div>
   <div class="vs-badge">@</div>
   <div class="team">
     <div class="team-badge">⚡</div>
     <div class="team-name">Storm</div>
-    <div class="team-record">Off 101 · Def 111</div>
   </div>
 </div>
 <div class="info-strip">Sat 7:35pm · AAMI Park</div>
-<div class="prediction-line pred-close">Roosters by 6.6 — 71.8% confidence</div>
-
-<div class="section-title">📊 Try Scorers</div>
-<div class="try-row"><span class="try-name">J. Tedesco</span><span class="try-pos">Fullback · SR</span><span class="try-stat">6T / 10G</span><span class="try-prob prob-hot">45%</span></div>
-<div class="try-row"><span class="try-name">D. Tupou</span><span class="try-pos">Wing · SR</span><span class="try-stat">8T / 10G</span><span class="try-prob prob-hot">45%</span></div>
-<div class="try-row"><span class="try-name">W. Warbrick</span><span class="try-pos">Wing · MS</span><span class="try-stat">9T / 12G</span><span class="try-prob prob-hot">45%</span></div>
-<div class="try-row"><span class="try-name">S. Fa'alogo</span><span class="try-pos">Fullback · MS</span><span class="try-stat">12T / 12G</span><span class="try-prob prob-hot">45%</span></div>
-<div class="try-row"><span class="try-name">M. Nawaqanitawase</span><span class="try-pos">Wing · SR</span><span class="try-stat">7T / 8G</span><span class="try-prob prob-hot">45%</span></div>
-
-<div class="section-title">🎯 Best SGM</div>
-<div class="sgm-card">
+<div class="prediction-line pred-close">Roosters by 6.6 — 71.8% confidence · CLOSE</div>
+<div class="section-title">📊 Storm Try Scorers</div>
+<div class="try-row">
+  <span class="try-name">M.Leo</span>
+  <span class="try-pos">Centre · MS</span>
+  <span class="try-prob prob-hot">45%</span>
+</div>
+<div class="try-row">
+  <span class="try-name">S.Fa'alogo</span>
+  <span class="try-pos">Fullback · MS</span>
+  <span class="try-prob prob-hot">45%</span>
+</div>
+<div class="try-row">
+  <span class="try-name">W.Warbrick</span>
+  <span class="try-pos">Wing · MS</span>
+  <span class="try-prob prob-hot">45%</span>
+</div>
+<div class="section-title">📊 Roosters Try Scorers</div>
+<div class="try-row">
+  <span class="try-name">D.Tupou</span>
+  <span class="try-pos">Wing · SR</span>
+  <span class="try-prob prob-hot">45%</span>
+</div>
+<div class="try-row">
+  <span class="try-name">H.Savala</span>
+  <span class="try-pos">Centre · SR</span>
+  <span class="try-prob prob-hot">45%</span>
+</div>
+<div class="try-row">
+  <span class="try-name">J.Tedesco</span>
+  <span class="try-pos">Fullback · SR</span>
+  <span class="try-prob prob-hot">45%</span>
+</div>
+<div class="section-title">🎯 Best SGMs</div>
+<div class="sgm-card h2h-sgm">
   <div class="sgm-top">
-    <div class="sgm-name">Roosters + Tedesco Try</div>
-    <div class="conviction conv-moderate">MODERATE</div>
+    <div class="sgm-name">Roosters ML + Tupou AT</div>
+    <div class="conviction conv-spec">SPEC</div>
   </div>
-  <div class="sgm-odds">Est. odds: $2.50 · Combo prob: 32.3%</div>
+  <div class="sgm-odds">Est. odds: $3.09 · Combo prob: 32.3%</div>
   <div class="sgm-legs">
-    <div class="sgm-leg"><span class="leg-type">WIN</span><span class="leg-desc">Roosters to win</span><span class="leg-prob">71.8%</span></div>
-    <div class="sgm-leg"><span class="leg-type">Anytime Try</span><span class="leg-desc">J. Tedesco</span><span class="leg-prob">45%</span></div>
+    <div class="sgm-leg">
+      <span class="leg-type">H2H</span>
+      <span class="leg-desc">Roosters to win</span>
+      <span class="leg-prob">71.8%</span>
+    </div>
+    <div class="sgm-leg">
+      <span class="leg-type">Anytime Try</span>
+      <span class="leg-desc">D.Tupou Anytime Try</span>
+      <span class="leg-prob">45.0%</span>
+    </div>
   </div>
 </div>
-
+<div class="sgm-card">
+  <div class="sgm-top">
+    <div class="sgm-name">Leo + Tupou AT</div>
+    <div class="conviction conv-spec">SPEC</div>
+  </div>
+  <div class="sgm-odds">Est. odds: $6.02 · Combo prob: 16.6%</div>
+  <div class="sgm-legs">
+    <div class="sgm-leg">
+      <span class="leg-type">Anytime Try Scorer</span>
+      <span class="leg-desc">M.Leo (MS) Anytime Try</span>
+      <span class="leg-prob">45.0%</span>
+    </div>
+    <div class="sgm-leg">
+      <span class="leg-type">Anytime Try Scorer</span>
+      <span class="leg-desc">D.Tupou (SR) Anytime Try</span>
+      <span class="leg-prob">45.0%</span>
+    </div>
+  </div>
+</div>
+<div class="sgm-card">
+  <div class="sgm-top">
+    <div class="sgm-name">Leo + Savala AT</div>
+    <div class="conviction conv-spec">SPEC</div>
+  </div>
+  <div class="sgm-odds">Est. odds: $6.02 · Combo prob: 16.6%</div>
+  <div class="sgm-legs">
+    <div class="sgm-leg">
+      <span class="leg-type">Anytime Try Scorer</span>
+      <span class="leg-desc">M.Leo (MS) Anytime Try</span>
+      <span class="leg-prob">45.0%</span>
+    </div>
+    <div class="sgm-leg">
+      <span class="leg-type">Anytime Try Scorer</span>
+      <span class="leg-desc">H.Savala (SR) Anytime Try</span>
+      <span class="leg-prob">45.0%</span>
+    </div>
+  </div>
+</div>
 <hr class="divider">
 
 <!-- ═══════════ GAME 4: Dragons @ Broncos ═══════════ -->
+<div class="meta-strip">GAME 4 of 6</div>
 <div class="match-card">
   <div class="team">
     <div class="team-badge">🐉</div>
     <div class="team-name">Dragons</div>
-    <div class="team-record">Off 51 · Def 140</div>
   </div>
   <div class="vs-badge">@</div>
   <div class="team">
     <div class="team-badge">🐴</div>
     <div class="team-name">Broncos</div>
-    <div class="team-record">Off 83 · Def 98</div>
   </div>
 </div>
 <div class="info-strip">Sun 2:00pm · Suncorp Stadium</div>
-<div class="prediction-line pred-blowout">Broncos by 19.8 — 94.4% confidence</div>
-
-<div class="section-title">📊 Try Scorers</div>
-<div class="try-row"><span class="try-name">R. Walsh</span><span class="try-pos">Fullback · BB</span><span class="try-stat">5T / 8G</span><span class="try-prob prob-hot">45%</span><span class="try-badge">★</span></div>
-<div class="try-row"><span class="try-name">K. Staggs</span><span class="try-pos">Centre · BB</span><span class="try-stat">6T / 9G</span><span class="try-prob prob-warm">42%</span></div>
-<div class="try-row"><span class="try-name">S. Tu</span><span class="try-pos">Wing · SGID</span><span class="try-stat">5T / 9G</span><span class="try-prob prob-cool">34%</span></div>
-<div class="try-row"><span class="try-name">J. Karapani</span><span class="try-pos">Wing · BB</span><span class="try-stat">3T / 10G</span><span class="try-prob prob-cool">31%</span></div>
-<div class="try-row"><span class="try-name">J. Arthars</span><span class="try-pos">Fullback · BB</span><span class="try-stat">2T / 6G</span><span class="try-prob prob-cool">29%</span></div>
-
-<div class="section-title">🎯 Best SGM</div>
-<div class="sgm-card">
+<div class="prediction-line pred-blowout">Broncos by 19.8 — 94.4% confidence · BLOWOUT</div>
+<div class="section-title">📊 Broncos Try Scorers</div>
+<div class="try-row">
+  <span class="try-name">R.Walsh</span>
+  <span class="try-pos">Fullback · BB</span>
+  <span class="try-prob prob-hot">45%</span>
+</div>
+<div class="try-row">
+  <span class="try-name">K.Staggs</span>
+  <span class="try-pos">Centre · BB</span>
+  <span class="try-prob prob-hot">42%</span>
+</div>
+<div class="try-row">
+  <span class="try-name">J.Karapani</span>
+  <span class="try-pos">Wing · BB</span>
+  <span class="try-prob prob-warm">31%</span>
+</div>
+<div class="section-title">📊 Dragons Try Scorers</div>
+<div class="try-row">
+  <span class="try-name">S.Tu</span>
+  <span class="try-pos">Wing · SGID</span>
+  <span class="try-prob prob-warm">34%</span>
+</div>
+<div class="try-row">
+  <span class="try-name">C.Tuipulotu</span>
+  <span class="try-pos">Wing · SGID</span>
+  <span class="try-prob prob-cool">22%</span>
+</div>
+<div class="try-row">
+  <span class="try-name">T.Sloan</span>
+  <span class="try-pos">Fullback · SGID</span>
+  <span class="try-prob prob-cool">16%</span>
+</div>
+<div class="section-title">🎯 Best SGMs</div>
+<div class="sgm-card h2h-sgm">
   <div class="sgm-top">
-    <div class="sgm-name">Broncos -12.5 + Walsh Try</div>
+    <div class="sgm-name">Broncos ML + Walsh AT</div>
     <div class="conviction conv-strong">STRONG</div>
   </div>
-  <div class="sgm-odds">Est. odds: $2.40 · Combo prob: 42.5%</div>
+  <div class="sgm-odds">Est. odds: $2.35 · Combo prob: 42.5%</div>
   <div class="sgm-legs">
-    <div class="sgm-leg"><span class="leg-type">LINE</span><span class="leg-desc">Broncos -12.5</span><span class="leg-prob">94.4%</span></div>
-    <div class="sgm-leg"><span class="leg-type">Anytime Try</span><span class="leg-desc">R. Walsh</span><span class="leg-prob">45%</span></div>
+    <div class="sgm-leg">
+      <span class="leg-type">H2H</span>
+      <span class="leg-desc">Broncos to win</span>
+      <span class="leg-prob">94.4%</span>
+    </div>
+    <div class="sgm-leg">
+      <span class="leg-type">Anytime Try</span>
+      <span class="leg-desc">R.Walsh Anytime Try</span>
+      <span class="leg-prob">45.0%</span>
+    </div>
   </div>
 </div>
-
+<div class="sgm-card">
+  <div class="sgm-top">
+    <div class="sgm-name">Walsh + Staggs AT</div>
+    <div class="conviction conv-spec">SPEC</div>
+  </div>
+  <div class="sgm-odds">Est. odds: $7.59 · Combo prob: 13.2%</div>
+  <div class="sgm-legs">
+    <div class="sgm-leg">
+      <span class="leg-type">Anytime Try Scorer</span>
+      <span class="leg-desc">R.Walsh (BB) Anytime Try</span>
+      <span class="leg-prob">45.0%</span>
+    </div>
+    <div class="sgm-leg">
+      <span class="leg-type">Anytime Try Scorer</span>
+      <span class="leg-desc">K.Staggs (BB) Anytime Try</span>
+      <span class="leg-prob">42.0%</span>
+    </div>
+  </div>
+</div>
+<div class="sgm-card">
+  <div class="sgm-top">
+    <div class="sgm-name">Walsh + Tu AT</div>
+    <div class="conviction conv-spec">SPEC</div>
+  </div>
+  <div class="sgm-odds">Est. odds: $7.92 · Combo prob: 12.6%</div>
+  <div class="sgm-legs">
+    <div class="sgm-leg">
+      <span class="leg-type">Anytime Try Scorer</span>
+      <span class="leg-desc">R.Walsh (BB) Anytime Try</span>
+      <span class="leg-prob">45.0%</span>
+    </div>
+    <div class="sgm-leg">
+      <span class="leg-type">Anytime Try Scorer</span>
+      <span class="leg-desc">S.Tu (SGID) Anytime Try</span>
+      <span class="leg-prob">34.2%</span>
+    </div>
+  </div>
+</div>
 <hr class="divider">
 
 <!-- ═══════════ GAME 5: Cowboys @ Raiders ═══════════ -->
+<div class="meta-strip">GAME 5 of 6</div>
 <div class="match-card">
   <div class="team">
     <div class="team-badge">🤠</div>
     <div class="team-name">Cowboys</div>
-    <div class="team-record">Off 111 · Def 99</div>
   </div>
   <div class="vs-badge">@</div>
   <div class="team">
-    <div class="team-badge">🟢</div>
+    <div class="team-badge">⚔️</div>
     <div class="team-name">Raiders</div>
-    <div class="team-record">Off 81 · Def 112</div>
   </div>
 </div>
 <div class="info-strip">Sun 4:00pm · GIO Stadium</div>
-<div class="prediction-line pred-strong">Cowboys by 8.1 — 76.2% confidence</div>
-
-<div class="section-title">📊 Try Scorers</div>
-<div class="try-row"><span class="try-name">S. Drinkwater</span><span class="try-pos">Fullback · NQC</span><span class="try-stat">7T / 12G</span><span class="try-prob prob-hot">45%</span><span class="try-badge">★</span></div>
-<div class="try-row"><span class="try-name">M. Taulagi</span><span class="try-pos">Wing · NQC</span><span class="try-stat">9T / 7G</span><span class="try-prob prob-hot">45%</span><span class="try-badge">★</span></div>
-<div class="try-row"><span class="try-name">K. Weekes</span><span class="try-pos">Fullback · CR</span><span class="try-stat">7T / 11G</span><span class="try-prob prob-hot">45%</span></div>
-<div class="try-row"><span class="try-name">S. Tamale</span><span class="try-pos">Wing · CR</span><span class="try-stat">6T / 10G</span><span class="try-prob prob-hot">45%</span></div>
-<div class="try-row"><span class="try-name">J. Purdue</span><span class="try-pos">Centre · NQC</span><span class="try-stat">6T / 12G</span><span class="try-prob prob-warm">42%</span></div>
-
-<div class="section-title">🎯 Best SGM</div>
-<div class="sgm-card">
+<div class="prediction-line pred-strong">Cowboys by 8.1 — 76.2% confidence · STRONG</div>
+<div class="section-title">📊 Raiders Try Scorers</div>
+<div class="try-row">
+  <span class="try-name">K.Weekes</span>
+  <span class="try-pos">Fullback · CR</span>
+  <span class="try-prob prob-hot">45%</span>
+</div>
+<div class="try-row">
+  <span class="try-name">S.Tamale</span>
+  <span class="try-pos">Wing · CR</span>
+  <span class="try-prob prob-hot">45%</span>
+</div>
+<div class="try-row">
+  <span class="try-name">X.Savage</span>
+  <span class="try-pos">Wing · CR</span>
+  <span class="try-prob prob-hot">45%</span>
+</div>
+<div class="section-title">📊 Cowboys Try Scorers</div>
+<div class="try-row">
+  <span class="try-name">B.Burns</span>
+  <span class="try-pos">Wing · NQC</span>
+  <span class="try-prob prob-hot">45%</span>
+</div>
+<div class="try-row">
+  <span class="try-name">M.Taulagi</span>
+  <span class="try-pos">Wing · NQC</span>
+  <span class="try-prob prob-hot">45%</span>
+</div>
+<div class="try-row">
+  <span class="try-name">S.Drinkwater</span>
+  <span class="try-pos">Fullback · NQC</span>
+  <span class="try-prob prob-hot">45%</span>
+</div>
+<div class="section-title">🎯 Best SGMs</div>
+<div class="sgm-card h2h-sgm">
   <div class="sgm-top">
-    <div class="sgm-name">Cowboys + Drinkwater Try</div>
+    <div class="sgm-name">Cowboys ML + Burns AT</div>
     <div class="conviction conv-moderate">MODERATE</div>
   </div>
-  <div class="sgm-odds">Est. odds: $2.60 · Combo prob: 34.3%</div>
+  <div class="sgm-odds">Est. odds: $2.92 · Combo prob: 34.3%</div>
   <div class="sgm-legs">
-    <div class="sgm-leg"><span class="leg-type">H2H</span><span class="leg-desc">Cowboys to win</span><span class="leg-prob">76.2%</span></div>
-    <div class="sgm-leg"><span class="leg-type">Anytime Try</span><span class="leg-desc">S. Drinkwater</span><span class="leg-prob">45%</span></div>
+    <div class="sgm-leg">
+      <span class="leg-type">H2H</span>
+      <span class="leg-desc">Cowboys to win</span>
+      <span class="leg-prob">76.2%</span>
+    </div>
+    <div class="sgm-leg">
+      <span class="leg-type">Anytime Try</span>
+      <span class="leg-desc">B.Burns Anytime Try</span>
+      <span class="leg-prob">45.0%</span>
+    </div>
   </div>
 </div>
-
+<div class="sgm-card">
+  <div class="sgm-top">
+    <div class="sgm-name">Weekes + Burns AT</div>
+    <div class="conviction conv-spec">SPEC</div>
+  </div>
+  <div class="sgm-odds">Est. odds: $6.02 · Combo prob: 16.6%</div>
+  <div class="sgm-legs">
+    <div class="sgm-leg">
+      <span class="leg-type">Anytime Try Scorer</span>
+      <span class="leg-desc">K.Weekes (CR) Anytime Try</span>
+      <span class="leg-prob">45.0%</span>
+    </div>
+    <div class="sgm-leg">
+      <span class="leg-type">Anytime Try Scorer</span>
+      <span class="leg-desc">B.Burns (NQC) Anytime Try</span>
+      <span class="leg-prob">45.0%</span>
+    </div>
+  </div>
+</div>
+<div class="sgm-card">
+  <div class="sgm-top">
+    <div class="sgm-name">Weekes + Taulagi AT</div>
+    <div class="conviction conv-spec">SPEC</div>
+  </div>
+  <div class="sgm-odds">Est. odds: $6.02 · Combo prob: 16.6%</div>
+  <div class="sgm-legs">
+    <div class="sgm-leg">
+      <span class="leg-type">Anytime Try Scorer</span>
+      <span class="leg-desc">K.Weekes (CR) Anytime Try</span>
+      <span class="leg-prob">45.0%</span>
+    </div>
+    <div class="sgm-leg">
+      <span class="leg-type">Anytime Try Scorer</span>
+      <span class="leg-desc">M.Taulagi (NQC) Anytime Try</span>
+      <span class="leg-prob">45.0%</span>
+    </div>
+  </div>
+</div>
 <hr class="divider">
 
-<!-- ═══════════ GAME 6: Eels @ Panthers ═══════════ -->
+<!-- ═══════════ GAME 6: Warriors @ Panthers ═══════════ -->
+<div class="meta-strip">GAME 6 of 6</div>
 <div class="match-card">
   <div class="team">
-    <div class="team-badge">🟡</div>
-    <div class="team-name">Eels</div>
-    <div class="team-record">Off 91 · Def 136</div>
+    <div class="team-badge">🛡️</div>
+    <div class="team-name">Warriors</div>
   </div>
   <div class="vs-badge">@</div>
   <div class="team">
     <div class="team-badge">🐾</div>
     <div class="team-name">Panthers</div>
-    <div class="team-record">Off 127 · Def 55</div>
   </div>
 </div>
 <div class="info-strip">Sun 6:30pm · BlueBet Stadium</div>
-<div class="prediction-line pred-blowout">Panthers by 32.2 — 99.0% confidence</div>
-
-<div class="section-title">📊 Try Scorers</div>
-<div class="try-row"><span class="try-name">B. To'o</span><span class="try-pos">Wing · PP</span><span class="try-stat">7T / 11G</span><span class="try-prob prob-hot">45%</span><span class="try-badge">★</span></div>
-<div class="try-row"><span class="try-name">D. Edwards</span><span class="try-pos">Fullback · PP</span><span class="try-stat">9T / 11G</span><span class="try-prob prob-hot">45%</span><span class="try-badge">★</span></div>
-<div class="try-row"><span class="try-name">T. Jenkins</span><span class="try-pos">Wing · PP</span><span class="try-stat">18T / 11G</span><span class="try-prob prob-hot">45%</span><span class="try-badge">★</span></div>
-<div class="try-row"><span class="try-name">J. Addo-Carr</span><span class="try-pos">Wing · PE</span><span class="try-stat">6T / 10G</span><span class="try-prob prob-hot">45%</span></div>
-<div class="try-row"><span class="try-name">I. Iongi</span><span class="try-pos">Fullback · PE</span><span class="try-stat">2T / 4G</span><span class="try-prob prob-warm">43%</span></div>
-
-<div class="section-title">🎯 Best SGM</div>
+<div class="prediction-line pred-strong">Panthers by 7.9 — 75.5% confidence · STRONG</div>
+<div class="section-title">📊 Panthers Try Scorers</div>
+<div class="try-row">
+  <span class="try-name">B.To'o</span>
+  <span class="try-pos">Wing · PP</span>
+  <span class="try-prob prob-hot">45%</span>
+</div>
+<div class="try-row">
+  <span class="try-name">D.Edwards</span>
+  <span class="try-pos">Fullback · PP</span>
+  <span class="try-prob prob-hot">45%</span>
+</div>
+<div class="try-row">
+  <span class="try-name">T.Jenkins</span>
+  <span class="try-pos">Wing · PP</span>
+  <span class="try-prob prob-hot">45%</span>
+</div>
+<div class="section-title">📊 Warriors Try Scorers</div>
+<div class="try-row">
+  <span class="try-name">A.Khan-Pereira</span>
+  <span class="try-pos">Wing · NZW</span>
+  <span class="try-prob prob-hot">45%</span>
+</div>
+<div class="try-row">
+  <span class="try-name">C.Nicoll-Klokstad</span>
+  <span class="try-pos">Fullback · NZW</span>
+  <span class="try-prob prob-hot">45%</span>
+</div>
+<div class="try-row">
+  <span class="try-name">D.Watene-Zelezniak</span>
+  <span class="try-pos">Wing · NZW</span>
+  <span class="try-prob prob-hot">45%</span>
+</div>
+<div class="section-title">🎯 Best SGMs</div>
+<div class="sgm-card h2h-sgm">
+  <div class="sgm-top">
+    <div class="sgm-name">Panthers ML + To'o AT</div>
+    <div class="conviction conv-moderate">MODERATE</div>
+  </div>
+  <div class="sgm-odds">Est. odds: $2.94 · Combo prob: 34.0%</div>
+  <div class="sgm-legs">
+    <div class="sgm-leg">
+      <span class="leg-type">H2H</span>
+      <span class="leg-desc">Panthers to win</span>
+      <span class="leg-prob">75.5%</span>
+    </div>
+    <div class="sgm-leg">
+      <span class="leg-type">Anytime Try</span>
+      <span class="leg-desc">B.To'o Anytime Try</span>
+      <span class="leg-prob">45.0%</span>
+    </div>
+  </div>
+</div>
 <div class="sgm-card">
   <div class="sgm-top">
-    <div class="sgm-name">Panthers -16.5 + To'o Try + Edwards Try</div>
-    <div class="conviction conv-strong">STRONG</div>
+    <div class="sgm-name">To'o + Khan-Pereira AT</div>
+    <div class="conviction conv-spec">SPEC</div>
   </div>
-  <div class="sgm-odds">Est. odds: $3.20 · Combo prob: 20.0%</div>
+  <div class="sgm-odds">Est. odds: $6.02 · Combo prob: 16.6%</div>
   <div class="sgm-legs">
-    <div class="sgm-leg"><span class="leg-type">LINE</span><span class="leg-desc">Panthers -16.5</span><span class="leg-prob">99.0%</span></div>
-    <div class="sgm-leg"><span class="leg-type">Anytime Try</span><span class="leg-desc">B. To'o</span><span class="leg-prob">45%</span></div>
-    <div class="sgm-leg"><span class="leg-type">Anytime Try</span><span class="leg-desc">D. Edwards</span><span class="leg-prob">45%</span></div>
+    <div class="sgm-leg">
+      <span class="leg-type">Anytime Try Scorer</span>
+      <span class="leg-desc">B.To'o (PP) Anytime Try</span>
+      <span class="leg-prob">45.0%</span>
+    </div>
+    <div class="sgm-leg">
+      <span class="leg-type">Anytime Try Scorer</span>
+      <span class="leg-desc">A.Khan-Pereira (NZW) Anytime Try</span>
+      <span class="leg-prob">45.0%</span>
+    </div>
+  </div>
+</div>
+<div class="sgm-card">
+  <div class="sgm-top">
+    <div class="sgm-name">To'o + Nicoll-Klokstad AT</div>
+    <div class="conviction conv-spec">SPEC</div>
+  </div>
+  <div class="sgm-odds">Est. odds: $6.02 · Combo prob: 16.6%</div>
+  <div class="sgm-legs">
+    <div class="sgm-leg">
+      <span class="leg-type">Anytime Try Scorer</span>
+      <span class="leg-desc">B.To'o (PP) Anytime Try</span>
+      <span class="leg-prob">45.0%</span>
+    </div>
+    <div class="sgm-leg">
+      <span class="leg-type">Anytime Try Scorer</span>
+      <span class="leg-desc">C.Nicoll-Klokstad (NZW) Anytime Try</span>
+      <span class="leg-prob">45.0%</span>
+    </div>
   </div>
 </div>
 
-<div class="footer">Daztech AI Betting Engine · Team ratings from 93 completed NRL games · For entertainment only · Gamble responsibly</div>
+<div class="footer">
+  <p>Daztech AI Betting Engine · league_code='NRL' pipeline · For entertainment only</p>
+  <p style="margin-top:4px">Model: Team ratings from 93 NRL games · Margin predictor · Poisson try scorer · SGM builder</p>
+  <p style="margin-top:4px">Check late mail + team lists before wagering · Gamble responsibly</p>
+</div>
 
 </body>
 </html>
