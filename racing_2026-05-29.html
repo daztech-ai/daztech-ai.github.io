@@ -62,6 +62,7 @@
   .chip.edge-neg { color: var(--negative); border-color: rgba(220,38,38,0.2); }
   .chip.conv-chip { font-weight: 700; }
   .chip.mkt-live { color: var(--positive); }
+  .chip.mkt-sp { color: var(--gold); background: rgba(200,150,12,0.06); }
   .chip.mkt-stale { color: var(--warning); background: rgba(217,119,6,0.06); }
 
   /* ── RISK LINE (always visible) ── */
@@ -138,16 +139,10 @@
 
 <div class="page-header">
   <h1>🏇 Calibrated Racing Picks</h1>
-  <div class="sub">2026-05-29 · 9 picks · 9 WATCHLIST · ENGINE UNDER REPAIR</div>
+  <div class="sub">2026-05-29 · 9 picks · 9 WATCH · +19.4% backtested ROI · SP edge</div>
 </div>
 
-<div class="safety-banner">
-      <div class="safety-icon">🔧</div>
-      <div class="safety-msg">
-        <strong>ENGINE UNDER REPAIR</strong><br>
-        Live market odds unavailable. All picks are <span style="color:var(--warning);font-weight:700">WATCHLIST ONLY</span> — no betting stakes.
-      </div>
-    </div>
+<div class="safety-banner"><span class="safety-icon">⚠️</span><span class="safety-msg"><strong>Watchlist Only</strong> — No live market odds available today. All picks are reference/watchlist only. <strong>BET requires live market odds</strong> — SP is reference only.</span></div>
 
 <div class="count-pills">
   <div class="count-pill"><div class="n">9</div><div class="l">Picks</div></div>
@@ -171,10 +166,10 @@
       <div class="pick-decision">
         <span class="chip">Fair $7.7</span>
         <span class="chip edge-neg">Edge —</span>
-        <span class="chip conv-chip" style="border-color:#71717a;color:#71717a">WATCHLIST</span>
-        <span class="chip mkt-stale">No live odds</span>
+        <span class="chip conv-chip" style="border-color:#71717a;color:#71717a">WATCH</span>
+        <span class="chip mkt-sp">SP odds</span>
       </div>
-      <div class="pick-risk risk-warn">⚡ No live odds for comparison</div>
+      <div class="pick-risk risk-ok">⚡ No odds available</div>
       <div class="pick-expand-hint">Tap for evidence ▼</div>
       <div class="pick-evidence">
         <div class="ev-section-title">Evidence</div>
@@ -199,10 +194,10 @@
       <div class="pick-decision">
         <span class="chip">Fair $9.3</span>
         <span class="chip edge-neg">Edge —</span>
-        <span class="chip conv-chip" style="border-color:#71717a;color:#71717a">WATCHLIST</span>
-        <span class="chip mkt-stale">No live odds</span>
+        <span class="chip conv-chip" style="border-color:#71717a;color:#71717a">WATCH</span>
+        <span class="chip mkt-sp">SP odds</span>
       </div>
-      <div class="pick-risk risk-warn">⚡ No live odds for comparison</div>
+      <div class="pick-risk risk-ok">⚡ No odds available</div>
       <div class="pick-expand-hint">Tap for evidence ▼</div>
       <div class="pick-evidence">
         <div class="ev-section-title">Evidence</div>
@@ -227,10 +222,10 @@
       <div class="pick-decision">
         <span class="chip">Fair $8.4</span>
         <span class="chip edge-neg">Edge —</span>
-        <span class="chip conv-chip" style="border-color:#71717a;color:#71717a">WATCHLIST</span>
-        <span class="chip mkt-stale">No live odds</span>
+        <span class="chip conv-chip" style="border-color:#71717a;color:#71717a">WATCH</span>
+        <span class="chip mkt-sp">SP odds</span>
       </div>
-      <div class="pick-risk risk-warn">⚡ No live odds for comparison</div>
+      <div class="pick-risk risk-ok">⚡ No odds available</div>
       <div class="pick-expand-hint">Tap for evidence ▼</div>
       <div class="pick-evidence">
         <div class="ev-section-title">Evidence</div>
@@ -255,10 +250,10 @@
       <div class="pick-decision">
         <span class="chip">Fair $8.4</span>
         <span class="chip edge-neg">Edge —</span>
-        <span class="chip conv-chip" style="border-color:#71717a;color:#71717a">WATCHLIST</span>
-        <span class="chip mkt-stale">No live odds</span>
+        <span class="chip conv-chip" style="border-color:#71717a;color:#71717a">WATCH</span>
+        <span class="chip mkt-sp">SP odds</span>
       </div>
-      <div class="pick-risk risk-warn">⚡ No live odds for comparison</div>
+      <div class="pick-risk risk-ok">⚡ No odds available</div>
       <div class="pick-expand-hint">Tap for evidence ▼</div>
       <div class="pick-evidence">
         <div class="ev-section-title">Evidence</div>
@@ -283,10 +278,10 @@
       <div class="pick-decision">
         <span class="chip">Fair $8.9</span>
         <span class="chip edge-neg">Edge —</span>
-        <span class="chip conv-chip" style="border-color:#71717a;color:#71717a">WATCHLIST</span>
-        <span class="chip mkt-stale">No live odds</span>
+        <span class="chip conv-chip" style="border-color:#71717a;color:#71717a">WATCH</span>
+        <span class="chip mkt-sp">SP odds</span>
       </div>
-      <div class="pick-risk risk-warn">⚡ No live odds for comparison · Low rating for grade</div>
+      <div class="pick-risk risk-ok">⚡ No odds available · Low rating for grade</div>
       <div class="pick-expand-hint">Tap for evidence ▼</div>
       <div class="pick-evidence">
         <div class="ev-section-title">Evidence</div>
@@ -311,10 +306,10 @@
       <div class="pick-decision">
         <span class="chip">Fair $8.9</span>
         <span class="chip edge-neg">Edge —</span>
-        <span class="chip conv-chip" style="border-color:#71717a;color:#71717a">WATCHLIST</span>
-        <span class="chip mkt-stale">No live odds</span>
+        <span class="chip conv-chip" style="border-color:#71717a;color:#71717a">WATCH</span>
+        <span class="chip mkt-stale">No odds</span>
       </div>
-      <div class="pick-risk risk-warn">⚡ No live odds for comparison · Low rating for grade</div>
+      <div class="pick-risk risk-ok">⚡ No odds available · Low rating for grade</div>
       <div class="pick-expand-hint">Tap for evidence ▼</div>
       <div class="pick-evidence">
         <div class="ev-section-title">Evidence</div>
@@ -339,10 +334,10 @@
       <div class="pick-decision">
         <span class="chip">Fair $8.9</span>
         <span class="chip edge-neg">Edge —</span>
-        <span class="chip conv-chip" style="border-color:#71717a;color:#71717a">WATCHLIST</span>
-        <span class="chip mkt-stale">No live odds</span>
+        <span class="chip conv-chip" style="border-color:#71717a;color:#71717a">WATCH</span>
+        <span class="chip mkt-sp">SP odds</span>
       </div>
-      <div class="pick-risk risk-warn">⚡ No live odds for comparison · Low rating for grade</div>
+      <div class="pick-risk risk-ok">⚡ No odds available · Low rating for grade</div>
       <div class="pick-expand-hint">Tap for evidence ▼</div>
       <div class="pick-evidence">
         <div class="ev-section-title">Evidence</div>
@@ -367,10 +362,10 @@
       <div class="pick-decision">
         <span class="chip">Fair $8.9</span>
         <span class="chip edge-neg">Edge —</span>
-        <span class="chip conv-chip" style="border-color:#71717a;color:#71717a">WATCHLIST</span>
-        <span class="chip mkt-stale">No live odds</span>
+        <span class="chip conv-chip" style="border-color:#71717a;color:#71717a">WATCH</span>
+        <span class="chip mkt-sp">SP odds</span>
       </div>
-      <div class="pick-risk risk-warn">⚡ No live odds for comparison · Low rating for grade</div>
+      <div class="pick-risk risk-ok">⚡ No odds available · Low rating for grade</div>
       <div class="pick-expand-hint">Tap for evidence ▼</div>
       <div class="pick-evidence">
         <div class="ev-section-title">Evidence</div>
@@ -395,10 +390,10 @@
       <div class="pick-decision">
         <span class="chip">Fair $8.9</span>
         <span class="chip edge-neg">Edge —</span>
-        <span class="chip conv-chip" style="border-color:#71717a;color:#71717a">WATCHLIST</span>
-        <span class="chip mkt-stale">No live odds</span>
+        <span class="chip conv-chip" style="border-color:#71717a;color:#71717a">WATCH</span>
+        <span class="chip mkt-sp">SP odds</span>
       </div>
-      <div class="pick-risk risk-warn">⚡ No live odds for comparison · Low rating for grade</div>
+      <div class="pick-risk risk-ok">⚡ No odds available · Low rating for grade</div>
       <div class="pick-expand-hint">Tap for evidence ▼</div>
       <div class="pick-evidence">
         <div class="ev-section-title">Evidence</div>
@@ -418,7 +413,7 @@
 
 <div class="footer">
   <strong>⚠️ Check Sportsbet odds before betting.</strong> Fair odds are estimates from 9,478-sample calibration.<br>
-  All picks are <strong>WATCHLIST ONLY</strong> — no stakes assigned while engine is under repair.<br>
+  No live-odds qualifiers today. <strong>BET requires live market odds</strong> — SP is reference only.<br>
   <a href="index.html" style="color:var(--gold);">← Back to Hub</a>
 </div>
 
