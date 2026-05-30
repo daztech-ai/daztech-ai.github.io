@@ -1,0 +1,45 @@
+{
+  "starting": 1000.0,
+  "current": 1067.5,
+  "total_bets": 19,
+  "total_winners": 3,
+  "total_staked_alltime": 91.76,
+  "total_returned_alltime": 159.26,
+  "roi_pct": 73.6,
+  "history": [
+    {
+      "date": "2026-05-27",
+      "type": "test",
+      "staked": 55.0,
+      "returned": 112.5,
+      "profit": 57.5,
+      "winners": 1,
+      "total_bets": 2,
+      "roi_pct": 104.5,
+      "note": "Test bets"
+    },
+    {
+      "date": "2026-05-28",
+      "type": "racing",
+      "staked": 28.76,
+      "returned": 28.76,
+      "profit": 0.0,
+      "winners": 0,
+      "total_bets": 9,
+      "roi_pct": 0.0,
+      "note": "Gatton & Gosford ABANDONED (Heavy rain). All stakes refunded. Moe: no bets."
+    },
+    {
+      "date": "2026-05-29",
+      "type": "racing",
+      "staked": 8.0,
+      "returned": 18.0,
+      "profit": 10.0,
+      "winners": 2,
+      "total_bets": 8,
+      "roi_pct": 125.0,
+      "note": "Cannon Park & Bendigo. 2/8 winners."
+    }
+  ],
+  "last_updated": "2026-05-29"
+}

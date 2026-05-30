@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Results — Daztech Betting Engine</title>
+<style>
+  :root { --bg: #0a0a0f; --surface: #12121a; --gold: #c8960c; --text: #e0e0e0; --muted: #777; --border: rgba(255,255,255,0.06); --green: #00ff88; --red: #ff4d4d; --warning: #d97706; --info: #3b82f6; --radius: 10px; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); max-width: 520px; margin: 0 auto; padding: 16px; line-height: 1.45; -webkit-text-size-adjust: 100%; }
+  .back-link { display: inline-block; margin-bottom: 12px; color: var(--gold); text-decoration: none; font-size: 0.75em; font-weight: 600; }
+  .page-header { text-align: center; margin-bottom: 16px; }
+  .page-header h1 { font-size: 1.2em; color: var(--text); font-weight: 700; }
+  .page-header .sub { font-size: 0.68em; color: var(--muted); margin-top: 2px; }
+
+  /* ── PERFORMANCE SUMMARY ── */
+  .perf-bar {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;
+    margin-bottom: 18px;
+  }
+  .perf-item {
+    text-align: center; padding: 12px 8px; background: var(--surface);
+    border: 1px solid var(--border); border-radius: var(--radius);
+  }
+  .perf-item .n { font-size: 1.3em; font-weight: 800; color: var(--text); }
+  .perf-item .l { font-size: 0.6em; color: var(--muted); text-transform: uppercase; }
+  .perf-item.won .n { color: var(--green); }
+  .perf-item.lost .n { color: var(--red); }
+  .perf-item.neutral .n { color: var(--gold); }
+
+  /* ── SECTIONS ── */
+  .section { margin-bottom: 18px; }
+  .section-title {
+    font-size: 0.65em; text-transform: uppercase; letter-spacing: 1.3px;
+    color: var(--muted); font-weight: 600; margin-bottom: 6px;
+    padding-bottom: 4px; border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 6px;
+  }
+  .live-dot {
+    width: 6px; height: 6px; background: var(--green);
+    border-radius: 50%; animation: pulse 2s infinite;
+  }
+  @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.25; } }
+
+  .result-card {
+    background: var(--surface); border-radius: var(--radius);
+    padding: 12px 16px; margin-bottom: 5px; border: 1px solid var(--border);
+  }
+  .result-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
+  .result-name { font-size: 0.9em; font-weight: 600; color: var(--text); }
+  .result-badge {
+    font-size: 0.65em; padding: 2px 8px; border-radius: 4px; font-weight: 700;
+    white-space: nowrap; flex-shrink: 0;
+  }
+  .badge-settled { background: rgba(0,255,136,0.1); color: var(--green); }
+  .badge-won { background: rgba(0,255,136,0.12); color: var(--green); }
+  .badge-lost { background: rgba(255,77,77,0.12); color: var(--red); }
+  .badge-void { background: rgba(119,119,119,0.12); color: var(--muted); }
+  .badge-pending { background: rgba(200,150,12,0.1); color: var(--gold); }
+  .badge-open { background: rgba(59,130,246,0.1); color: var(--info); }
+  .badge-clv { background: rgba(0,255,136,0.08); color: var(--green); }
+
+  .result-meta { font-size: 0.7em; color: var(--muted); margin-top: 2px; }
+  .result-detail { font-size: 0.75em; color: var(--text); margin-top: 4px; font-weight: 600; }
+
+  .sport-box {
+    border-radius: var(--radius); padding: 14px 16px; margin-bottom: 5px;
+  }
+  .box-nba { background: rgba(255,123,123,0.04); border: 1px solid rgba(255,123,123,0.12); }
+  .box-nrl { background: rgba(123,159,255,0.04); border: 1px solid rgba(123,159,255,0.12); }
+
+  .meeting-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.03);
+  }
+  .meeting-row:last-child { border-bottom: none; }
+  .meeting-venue { font-weight: 600; color: var(--text); font-size: 0.82em; }
+  .meeting-status { font-size: 0.65em; padding: 2px 7px; border-radius: 3px; font-weight: 600; }
+  .status-done { background: rgba(119,119,119,0.12); color: var(--muted); }
+  .status-live { background: rgba(0,255,136,0.1); color: var(--green); }
+  .status-pending { background: rgba(200,150,12,0.08); color: var(--gold); }
+
+  .pulse-bar {
+    display: flex; gap: 1rem; padding: 14px 16px;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); margin: 20px 0; justify-content: center;
+  }
+  .pulse-item { text-align: center; }
+  .pulse-item .num { font-size: 1em; font-weight: 800; color: var(--gold); }
+  .pulse-item .label { font-size: 0.55em; color: var(--muted); text-transform: uppercase; }
+  .footer {
+    margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--border);
+    text-align: center; font-size: 0.62em; color: var(--muted); opacity: 0.7;
+  }
+
+  /* ── DATE NAVIGATION ── */
+  .date-nav {
+    display: flex; gap: 6px; margin: 20px 0 14px;
+    overflow-x: auto; -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .date-nav::-webkit-scrollbar { display: none; }
+  .date-nav-link {
+    font-size: 0.65em; font-weight: 600; padding: 5px 12px;
+    border-radius: 16px; border: 1px solid var(--border);
+    color: var(--muted); text-decoration: none;
+    white-space: nowrap; transition: all 0.15s;
+    background: var(--surface);
+  }
+  .date-nav-link.active {
+    background: var(--gold); color: #fff; border-color: var(--gold);
+  }
+
+  /* ── PAST RESULTS ── */
+  .past-result-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 5px 0; font-size: 0.72em; color: var(--text);
+  }
+  .past-meetings { margin-top: 4px; }
+  .past-meeting-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 3px 0; font-size: 0.68em;
+  }
+  .meeting-venue-sm { color: var(--muted); }
+  .past-winners {
+    font-size: 0.62em; color: var(--green); padding: 1px 0 4px 8px;
+  }
+  .status-partial { background: rgba(200,150,12,0.08); color: var(--gold); font-size: 0.6em; padding: 1px 5px; border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<a href="index.html" class="back-link">← Back to Hub</a>
+
+<div class="page-header">
+  <h1>📊 Results</h1>
+  <div class="sub">Auto-generated · 11:03 AM AEST</div>
+</div>
+
+<!-- PERFORMANCE SUMMARY -->
+<div class="perf-bar">
+  <div class="perf-item neutral">
+    <div class="n">0</div>
+    <div class="l">Settled</div>
+  </div>
+  <div class="perf-item won">
+    <div class="n">0</div>
+    <div class="l">Winners Found</div>
+  </div>
+  <div class="perf-item neutral">
+    <div class="n">Pending</div>
+    <div class="l">P/L</div>
+  </div>
+</div>
+
+<!-- TODAY -->
+<div class="section">
+  <div class="section-title"><span class="live-dot"></span> Saturday 30 May — Today's Action</div>
+
+  <!-- NBA -->
+  <div class="sport-box box-nba">
+    
+    <div class="result-header">
+      <span class="result-name">🏀 OKC Thunder @ San Antonio Spurs — Game 6</span>
+      <span class="result-badge badge-pending">PENDING</span>
+    </div>
+    <div class="result-meta">Western Conference Finals · OKC leads 3–2 · SA -3.5</div>
+  </div>
+
+  <!-- NRL -->
+  <div class="sport-box box-nrl" style="margin-top:5px;">
+    
+    <div class="result-meta" style="color:var(--muted);">No NRL results yet — games Thu–Sun</div>
+  </div>
+
+  <!-- Racing -->
+  <div class="result-card" style="margin-top:5px;">
+    <div class="result-header">
+      <span class="result-name">🏇 Racing — 19 Meetings</span>
+      <span class="result-badge badge-open">LIVE</span>
+    </div>
+    <div style="margin-top:8px;">
+      <div class="meeting-row">
+        <span class="meeting-venue">🏟 Belmont</span>
+        <span class="meeting-status status-pending">9 pending</span>
+      </div>
+      <div class="meeting-row">
+        <span class="meeting-venue">🏟 Bowraville</span>
+        <span class="meeting-status status-pending">5 pending</span>
+      </div>
+      <div class="meeting-row">
+        <span class="meeting-venue">🏟 Canberra Acton</span>
+        <span class="meeting-status status-pending">5 pending</span>
+      </div>
+      <div class="meeting-row">
+        <span class="meeting-venue">🏟 Carnarvon</span>
+        <span class="meeting-status status-pending">6 pending</span>
+      </div>
+      <div class="meeting-row">
+        <span class="meeting-venue">🏟 Caulfield</span>
+        <span class="meeting-status status-pending">9 pending</span>
+      </div>
+      <div class="meeting-row">
+        <span class="meeting-venue">🏟 Eagle Farm</span>
+        <span class="meeting-status status-pending">9 pending</span>
+      </div>
+      <div class="meeting-row">
+        <span class="meeting-venue">🏟 Hawker</span>
+        <span class="meeting-status status-pending">5 pending</span>
+      </div>
+      <div class="meeting-row">
+        <span class="meeting-venue">🏟 Illawarra Grange</span>
+        <span class="meeting-status status-pending">8 pending</span>
+      </div>
+      <div class="meeting-row">
+        <span class="meeting-venue">🏟 Ipswich</span>
+        <span class="meeting-status status-pending">8 pending</span>
+      </div>
+      <div class="meeting-row">
+        <span class="meeting-venue">🏟 Julia Creek</span>
+        <span class="meeting-status status-pending">5 pending</span>
+      </div>
+      <div class="meeting-row">
+        <span class="meeting-venue">🏟 Ladbrokes Pioneer Park</span>
+        <span class="meeting-status status-pending">7 pending</span>
+      </div>
+      <div class="meeting-row">
+        <span class="meeting-venue">🏟 Morphettville</span>
+        <span class="meeting-status status-pending">9 pending</span>
+      </div>
+      <div class="meeting-row">
+        <span class="meeting-venue">🏟 Picklebet Park Werribee</span>
+        <span class="meeting-status status-pending">7 pending</span>
+      </div>
+      <div class="meeting-row">
+        <span class="meeting-venue">🏟 Quirindi</span>
+        <span class="meeting-status status-pending">6 pending</span>
+      </div>
+      <div class="meeting-row">
+        <span class="meeting-venue">🏟 Rosehill Gardens</span>
+        <span class="meeting-status status-pending">10 pending</span>
+      </div>
+      <div class="meeting-row">
+        <span class="meeting-venue">🏟 Sportsbet Bowen</span>
+        <span class="meeting-status status-pending">5 pending</span>
+      </div>
+      <div class="meeting-row">
+        <span class="meeting-venue">🏟 Tambo</span>
+        <span class="meeting-status status-pending">5 pending</span>
+      </div>
+      <div class="meeting-row">
+        <span class="meeting-venue">🏟 Toowoomba</span>
+        <span class="meeting-status status-pending">7 pending</span>
+      </div>
+      <div class="meeting-row">
+        <span class="meeting-venue">🏟 Wondai</span>
+        <span class="meeting-status status-pending">5 pending</span>
+      </div></div>
+  </div>
+</div>
+
+<div class="pulse-bar">
+  <div class="pulse-item"><div class="num">19</div><div class="label">Meetings</div></div>
+  <div class="pulse-item"><div class="num">0</div><div class="label">With Results</div></div>
+  <div class="pulse-item"><div class="num">Auto</div><div class="label">Next Update</div></div>
+  <div class="pulse-item"><div class="num">Cron</div><div class="label">Refresh</div></div>
+</div>
+
+<!-- DATE NAVIGATION -->
+<div class="date-nav">
+  <a href="results.html" class="date-nav-link active">Today</a>
+  <a href="results.html?date=2026-05-29" class="date-nav-link">Fri 29/05</a><a href="results.html?date=2026-05-28" class="date-nav-link">Thu 28/05</a><a href="results.html?date=2026-05-27" class="date-nav-link">Wed 27/05</a><a href="results.html?date=2026-05-26" class="date-nav-link">Tue 26/05</a><a href="results.html?date=2026-05-25" class="date-nav-link">Mon 25/05</a>
+</div>
+
+<!-- PAST RESULTS -->
+
+    <div class="section">
+      <div class="section-title">Friday 29 May — 56 races · 31 winners</div>
+      <div class="past-result-row"><span>🏀 Manly-Warringah Sea Eagles 22–28 Cronulla-Sutherland Sharks</span><span class="result-badge badge-settled">SETTLED</span></div>
+      <div class="past-result-row"><span>🏉 Manly-Warringah Sea Eagles 22–28 Cronulla-Sutherland Sharks</span><span class="result-badge badge-settled">SETTLED</span></div>
+      <div class="past-meetings">
+        <div class="past-meeting-row"><span class="meeting-venue-sm">🏟 Bendigo</span><span class="meeting-status status-done">8/8</span></div><div class="past-winners">✅ VARADERO, QUEEN OF CORDOBA, JAWSOME ROB +5 more</div><div class="past-meeting-row"><span class="meeting-venue-sm">🏟 Casino</span><span class="meeting-status status-partial">0/9</span></div><div class="past-meeting-row"><span class="meeting-venue-sm">🏟 Goulburn</span><span class="meeting-status status-partial">0/8</span></div><div class="past-meeting-row"><span class="meeting-venue-sm">🏟 Ladbrokes Cannon Park</span><span class="meeting-status status-partial">7/8</span></div><div class="past-winners">✅ WORTHY GEM, GOLDEN GLAZE, SWATOW +4 more</div><div class="past-meeting-row"><span class="meeting-venue-sm">🏟 Southside Pakenham</span><span class="meeting-status status-done">8/8</span></div><div class="past-winners">✅ FEHMARN, FONTEIN JEWEL, LOFT VEGA +5 more</div><div class="past-meeting-row"><span class="meeting-venue-sm">🏟 Sunshine Coast</span><span class="meeting-status status-partial">0/7</span></div><div class="past-meeting-row"><span class="meeting-venue-sm">🏟 Sunshine Coast Poly Track</span><span class="meeting-status status-done">8/8</span></div><div class="past-winners">✅ RHETORIC, MOMOKA, DEMARCAY +5 more</div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-title">Thursday 28 May — 25 races · 0 winners</div>
+      
+      
+      <div class="past-meetings">
+        <div class="past-meeting-row"><span class="meeting-venue-sm">🏟 Gatton</span><span class="meeting-status status-partial">0/9</span></div><div class="past-meeting-row"><span class="meeting-venue-sm">🏟 Gosford</span><span class="meeting-status status-partial">0/8</span></div><div class="past-meeting-row"><span class="meeting-venue-sm">🏟 Moe</span><span class="meeting-status status-partial">0/8</span></div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-title">Wednesday 27 May — 45 races · 0 winners</div>
+      
+      
+      <div class="past-meetings">
+        <div class="past-meeting-row"><span class="meeting-venue-sm">🏟 Belmont</span><span class="meeting-status status-partial">0/7</span></div><div class="past-meeting-row"><span class="meeting-venue-sm">🏟 Canterbury Park</span><span class="meeting-status status-partial">0/6</span></div><div class="past-meeting-row"><span class="meeting-venue-sm">🏟 Caulfield Heath</span><span class="meeting-status status-partial">0/8</span></div><div class="past-meeting-row"><span class="meeting-venue-sm">🏟 Doomben</span><span class="meeting-status status-partial">0/8</span></div><div class="past-meeting-row"><span class="meeting-venue-sm">🏟 Happy Valley</span><span class="meeting-status status-partial">0/1</span></div><div class="past-meeting-row"><span class="meeting-venue-sm">🏟 Port Macquarie</span><span class="meeting-status status-partial">0/2</span></div><div class="past-meeting-row"><span class="meeting-venue-sm">🏟 Sportsbet Gawler</span><span class="meeting-status status-partial">0/7</span></div><div class="past-meeting-row"><span class="meeting-venue-sm">🏟 Tamworth</span><span class="meeting-status status-partial">0/6</span></div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-title">Tuesday 26 May — 18 races · 0 winners</div>
+      
+      
+      <div class="past-meetings">
+        <div class="past-meeting-row"><span class="meeting-venue-sm">🏟 Albury</span><span class="meeting-status status-partial">0/2</span></div><div class="past-meeting-row"><span class="meeting-venue-sm">🏟 Wellington</span><span class="meeting-status status-partial">0/8</span></div><div class="past-meeting-row"><span class="meeting-venue-sm">🏟 bet365 Hamilton</span><span class="meeting-status status-partial">0/8</span></div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-title">Monday 25 May — 36 races · 0 winners</div>
+      
+      
+      <div class="past-meetings">
+        <div class="past-meeting-row"><span class="meeting-venue-sm">🏟 Mornington</span><span class="meeting-status status-partial">0/7</span></div><div class="past-meeting-row"><span class="meeting-venue-sm">🏟 Taree</span><span class="meeting-status status-partial">0/8</span></div><div class="past-meeting-row"><span class="meeting-venue-sm">🏟 Townsville</span><span class="meeting-status status-partial">0/7</span></div><div class="past-meeting-row"><span class="meeting-venue-sm">🏟 Warwick Farm</span><span class="meeting-status status-partial">0/14</span></div>
+      </div>
+    </div>
+
+<div class="footer">Daztech AI Betting Engine · Auto-generated 2026-05-30 11:03 · Gamble responsibly</div>
+
+<script src="theme-sync.js"></script>
+</body>
+</html>

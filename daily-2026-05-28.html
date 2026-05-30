@@ -1,0 +1,231 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Daztech Racing — Thu 28 May 2026</title>
+<style>
+:root{--bg:#0a0a0f;--s:#12121a;--g:#ffd700;--t:#e0e0e0;--m:#888;--b:rgba(255,255,255,0.06)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--t);max-width:720px;margin:0 auto;padding:14px;line-height:1.4}
+.pulse{position:sticky;top:0;z-index:100;display:flex;gap:1rem;padding:8px 12px;background:rgba(10,10,20,.95);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,215,0,.12);border-radius:0 0 8px 8px;justify-content:center;margin-bottom:14px}
+.pulse-item{text-align:center}.pulse-item .num{font-size:1.1em;font-weight:800;color:var(--g)}.pulse-item .label{font-size:.6em;color:var(--m);text-transform:uppercase}
+.header{text-align:center;padding:8px 0 12px}.header h1{font-size:1.3em;color:#fff}.header .sub{font-size:.78em;color:var(--m)}
+.warning{background:rgba(255,152,0,.06);border-left:3px solid #ff9800;padding:8px 12px;margin-bottom:14px;font-size:.75em;color:#bbb;border-radius:0 6px 6px 0}
+.meeting{border:1px solid var(--b);border-radius:8px;overflow:hidden;background:var(--s);margin-bottom:14px}
+.meeting-header{padding:10px 14px;border-bottom:1px solid var(--b);display:flex;justify-content:space-between;align-items:center}
+.meeting-header.primary{background:linear-gradient(135deg,rgba(255,140,0,.06),transparent);border-left:4px solid #ff8c00}
+.meeting-header h3{font-size:.9em;color:#fff}.meeting-header .stake{font-size:.78em;color:var(--g);font-weight:600}
+.pick{padding:10px 14px;border-bottom:1px solid var(--b)}.pick:last-child{border-bottom:none}
+.pick-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4px}
+.pick-left{flex:1}.pick-horse{font-size:1em;font-weight:700;color:#fff}
+.pick-race{font-size:.72em;color:var(--m)}.pick-right{text-align:right;min-width:110px}
+.rating-badge{display:inline-block;padding:2px 8px;background:linear-gradient(135deg,#ffd700,#ffab00);color:#0a0a0f;font-weight:800;font-size:.82em;border-radius:10px}
+.pick-stats{display:flex;gap:12px;flex-wrap:wrap;font-size:.78em;margin-bottom:4px}
+.pick-stat{color:var(--m)}.pick-stat b{color:#ddd}
+.conviction{margin-top:4px}.conviction-label{font-size:.64em;text-transform:uppercase;color:#555;margin-bottom:2px;letter-spacing:.5px}
+.signals{display:flex;gap:4px;flex-wrap:wrap}.signal{font-size:.66em;padding:2px 6px;border-radius:4px;font-weight:600}
+.signal-on{background:rgba(0,255,136,.1);color:#00ff88}
+.signal-warn{background:rgba(255,152,0,.08);color:#ff9800}
+.signal-off{background:rgba(255,255,255,.03);color:#555}
+.dots{display:inline-flex;gap:2px;margin:0 4px}.dot{width:5px;height:5px;border-radius:50%}
+.dot-on{background:#00ff88}.dot-off{background:#333}
+.form-line{font-family:'SF Mono',Consolas,monospace;letter-spacing:.5px}
+.stake-chip{padding:2px 8px;border:1.5px solid rgba(255,215,0,.25);border-radius:12px;background:rgba(255,215,0,.05);font-weight:700;font-size:.78em;color:var(--g)}
+.stake-chip.strong{border-color:rgba(255,215,0,.5);background:rgba(255,215,0,.1)}
+.fair-odds{font-size:.7em;color:#666}.fair-odds b{color:#999}
+.verdict{font-size:.75em;font-weight:700;margin-left:6px}
+.status-done{font-size:.65em;color:#555}.status-live{font-size:.65em;color:#00ff88}
+.no-bets{padding:20px;text-align:center;color:#555;font-size:.85em}
+.footer{margin-top:20px;padding-top:12px;border-top:1px solid var(--b);text-align:center;font-size:.65em;color:#444}
+</style></head><body>
+<div class="pulse"><div class="pulse-item"><div class="num">3</div><div class="label">Meetings</div></div><div class="pulse-item"><div class="num">10</div><div class="label">Bets</div></div><div class="pulse-item"><div class="num">$473</div><div class="label">Staked</div></div><div class="pulse-item"><div class="num">$1K</div><div class="label">Bankroll</div></div></div>
+<div class="header"><h1>🏇 Daztech Daily Card</h1><div class="sub">Thursday 28 May 2026 · Quarter Kelly · Auto-conviction engine</div></div>
+<div class="warning">⚠️ 2/9 engine factors active. Fair odds shown as reference — compare to your bookie. Conviction auto-generated from form + barrier + jockey.</div>
+<div class="meeting"><div class="meeting-header primary"><div><h3>Gatton</h3><span style="font-size:.7em;color:var(--m)">8 bets · 18 watches</span></div><div class="stake">Total: $26</div></div>
+<div class="pick">
+  <div class="pick-top">
+    <div class="pick-left">
+      <span class="pick-horse">WHATJEUDOIN’</span>
+      <div class="pick-race">R9 · ALEX LEAPAI JR VS JULIUS LONG - SAT 30 MAY - GATTON SHI ·  </div>
+    </div>
+    <div class="pick-right">
+      <span class="rating-badge">54.8</span>
+      <div style="margin-top:3px"><span class="stake-chip ">$6.56</span></div>
+    </div>
+  </div>
+  <div class="pick-stats">
+    <span class="pick-stat">Win: <b>36.1%</b></span>
+    <div class="fair-odds">Fair: <b>$2.8</b> | Market: $7.5</div>
+    <span class="pick-stat">Edge: <span style="color:#00ff88;font-weight:700">+22.7%</span></span>
+  </div>
+  <div class="conviction">
+    <div class="conviction-label">Conviction <span class="dots"><span class="dot dot-on"></span><span class="dot dot-on"></span><span class="dot dot-on"></span><span class="dot dot-on"></span><span class="dot dot-off"></span></span> 4/5 <span class="verdict" style="color:#00ff88">BET</span></div>
+    <div class="signals"><span class="signal signal-on">✅ Consistent — placed 2/5 (2212610555)</span><span class="signal signal-on">✅ Barrier 2</span><span class="signal signal-off">❌ Distance unknown</span><span class="signal signal-on">✅ 2 wins from last 8 — knows how to win</span><span class="signal signal-on">✅ Damien Boche — apprentice claim</span></div>
+  </div>
+</div>
+<div class="pick">
+  <div class="pick-top">
+    <div class="pick-left">
+      <span class="pick-horse">DARLING TAKE CARE</span>
+      <div class="pick-race">R6 · SAVE THE DATE - 2026 CHARITY GOLF DAY (EPILEPSY QLD) FR ·  </div>
+    </div>
+    <div class="pick-right">
+      <span class="rating-badge">51.5</span>
+      <div style="margin-top:3px"><span class="stake-chip ">$3.19</span></div>
+    </div>
+  </div>
+  <div class="pick-stats">
+    <span class="pick-stat">Win: <b>24.4%</b></span>
+    <div class="fair-odds">Fair: <b>$4.1</b> | Market: $7.5</div>
+    <span class="pick-stat">Edge: <span style="color:#ffd700;font-weight:700">+11.1%</span></span>
+  </div>
+  <div class="conviction">
+    <div class="conviction-label">Conviction <span class="dots"><span class="dot dot-on"></span><span class="dot dot-on"></span><span class="dot dot-on"></span><span class="dot dot-off"></span><span class="dot dot-off"></span></span> 3/5 <span class="verdict" style="color:#ffd700">WATCH</span></div>
+    <div class="signals"><span class="signal signal-on">✅ Placed last start (3213644863)</span><span class="signal signal-warn">⚠️ Barrier 9</span><span class="signal signal-off">❌ Distance unknown</span><span class="signal signal-on">✅ Won 1 of last 8</span><span class="signal signal-on">✅ Dylan Turner — apprentice claim</span></div>
+  </div>
+</div>
+<div class="pick">
+  <div class="pick-top">
+    <div class="pick-left">
+      <span class="pick-horse">ACES UP</span>
+      <div class="pick-race">R8 · SAVE DATE 2026 LADBROKES GATTON CUP SAT 27/6 TICKETS ON ·  </div>
+    </div>
+    <div class="pick-right">
+      <span class="rating-badge">52.6</span>
+      <div style="margin-top:3px"><span class="stake-chip ">$3.41</span></div>
+    </div>
+  </div>
+  <div class="pick-stats">
+    <span class="pick-stat">Win: <b>20.3%</b></span>
+    <div class="fair-odds">Fair: <b>$4.9</b> | Market: $13.0</div>
+    <span class="pick-stat">Edge: <span style="color:#ffd700;font-weight:700">+12.6%</span></span>
+  </div>
+  <div class="conviction">
+    <div class="conviction-label">Conviction <span class="dots"><span class="dot dot-on"></span><span class="dot dot-on"></span><span class="dot dot-on"></span><span class="dot dot-on"></span><span class="dot dot-off"></span></span> 4/5 <span class="verdict" style="color:#00ff88">BET</span></div>
+    <div class="signals"><span class="signal signal-on">✅ Hot — 3 placings from last 5 (32114x2351)</span><span class="signal signal-on">✅ Barrier 3</span><span class="signal signal-off">❌ Distance unknown</span><span class="signal signal-on">✅ 3 wins from last 8 — knows how to win</span><span class="signal signal-on">✅ Ms Emma Simsir(a3/53kg) — apprentice claim</span></div>
+  </div>
+</div>
+<div class="pick">
+  <div class="pick-top">
+    <div class="pick-left">
+      <span class="pick-horse">SILK SONIC</span>
+      <div class="pick-race">R2 · LADBROKES HOSTED POTS BENCHMARK 68 Handicap (860 METRES ·  </div>
+    </div>
+    <div class="pick-right">
+      <span class="rating-badge">54.1</span>
+      <div style="margin-top:3px"><span class="stake-chip ">$2.36</span></div>
+    </div>
+  </div>
+  <div class="pick-stats">
+    <span class="pick-stat">Win: <b>17.0%</b></span>
+    <div class="fair-odds">Fair: <b>$5.9</b> | Market: $12.0</div>
+    <span class="pick-stat">Edge: <span style="color:#ff9800;font-weight:700">+8.7%</span></span>
+  </div>
+  <div class="conviction">
+    <div class="conviction-label">Conviction <span class="dots"><span class="dot dot-on"></span><span class="dot dot-on"></span><span class="dot dot-on"></span><span class="dot dot-on"></span><span class="dot dot-off"></span></span> 4/5 <span class="verdict" style="color:#00ff88">BET</span></div>
+    <div class="signals"><span class="signal signal-on">✅ Consistent — placed 2/5 (221711x995)</span><span class="signal signal-on">✅ Barrier 5</span><span class="signal signal-off">❌ Distance unknown</span><span class="signal signal-on">✅ 3 wins from last 8 — knows how to win</span><span class="signal signal-on">✅ Ashley Butler — top country rider</span></div>
+  </div>
+</div>
+<div class="pick">
+  <div class="pick-top">
+    <div class="pick-left">
+      <span class="pick-horse">ROCKY BLONDE</span>
+      <div class="pick-race">R4 · LADBROKES BIG BETS COPY NOW RATINGS BAND 0 - 55 Handica ·  </div>
+    </div>
+    <div class="pick-right">
+      <span class="rating-badge">45.6</span>
+      <div style="margin-top:3px"><span class="stake-chip ">$2.34</span></div>
+    </div>
+  </div>
+  <div class="pick-stats">
+    <span class="pick-stat">Win: <b>16.3%</b></span>
+    <div class="fair-odds">Fair: <b>$6.1</b> | Market: $13.0</div>
+    <span class="pick-stat">Edge: <span style="color:#ff9800;font-weight:700">+8.6%</span></span>
+  </div>
+  <div class="conviction">
+    <div class="conviction-label">Conviction <span class="dots"><span class="dot dot-on"></span><span class="dot dot-on"></span><span class="dot dot-on"></span><span class="dot dot-on"></span><span class="dot dot-off"></span></span> 4/5 <span class="verdict" style="color:#00ff88">BET</span></div>
+    <div class="signals"><span class="signal signal-on">✅ Hot — 5 placings from last 5 (1645102x32)</span><span class="signal signal-on">✅ Barrier 5</span><span class="signal signal-off">❌ Distance unknown</span><span class="signal signal-on">✅ Won 1 of last 8</span><span class="signal signal-on">✅ Ms Emma Simsir(a3/53kg) — apprentice claim</span></div>
+  </div>
+</div>
+<div class="pick">
+  <div class="pick-top">
+    <div class="pick-left">
+      <span class="pick-horse">MOFEED</span>
+      <div class="pick-race">R5 · DOMESTIC & FAMILY VIOLENCE PREVENTION MONTH - MAY 2026  ·  </div>
+    </div>
+    <div class="pick-right">
+      <span class="rating-badge">48.2</span>
+      <div style="margin-top:3px"><span class="stake-chip ">$2.27</span></div>
+    </div>
+  </div>
+  <div class="pick-stats">
+    <span class="pick-stat">Win: <b>15.1%</b></span>
+    <div class="fair-odds">Fair: <b>$6.6</b> | Market: $15.0</div>
+    <span class="pick-stat">Edge: <span style="color:#ff9800;font-weight:700">+8.5%</span></span>
+  </div>
+  <div class="conviction">
+    <div class="conviction-label">Conviction <span class="dots"><span class="dot dot-on"></span><span class="dot dot-on"></span><span class="dot dot-on"></span><span class="dot dot-on"></span><span class="dot dot-off"></span></span> 4/5 <span class="verdict" style="color:#00ff88">BET</span></div>
+    <div class="signals"><span class="signal signal-on">✅ Consistent — placed 2/5 (34221x5364)</span><span class="signal signal-on">✅ Barrier 1</span><span class="signal signal-off">❌ Distance unknown</span><span class="signal signal-on">✅ Won 1 of last 8</span><span class="signal signal-on">✅ Archie McColm(a3/52kg) — apprentice claim</span></div>
+  </div>
+</div>
+<div class="pick">
+  <div class="pick-top">
+    <div class="pick-left">
+      <span class="pick-horse">BEST COFFEE</span>
+      <div class="pick-race">R8 · SAVE DATE 2026 LADBROKES GATTON CUP SAT 27/6 TICKETS ON ·  </div>
+    </div>
+    <div class="pick-right">
+      <span class="rating-badge">49.3</span>
+      <div style="margin-top:3px"><span class="stake-chip ">$2.79</span></div>
+    </div>
+  </div>
+  <div class="pick-stats">
+    <span class="pick-stat">Win: <b>14.6%</b></span>
+    <div class="fair-odds">Fair: <b>$6.9</b> | Market: $26.0</div>
+    <span class="pick-stat">Edge: <span style="color:#ffd700;font-weight:700">+10.7%</span></span>
+  </div>
+  <div class="conviction">
+    <div class="conviction-label">Conviction <span class="dots"><span class="dot dot-on"></span><span class="dot dot-on"></span><span class="dot dot-off"></span><span class="dot dot-off"></span><span class="dot dot-off"></span></span> 2/5 <span class="verdict" style="color:#ff5252">SKIP</span> <span style="color:#ff5252;font-size:.7em">SKIP</span></div>
+    <div class="signals"><span class="signal signal-off">❌ No placings in last 5 (163x147558)</span><span class="signal signal-warn">⚠️ Barrier 10</span><span class="signal signal-off">❌ Distance unknown</span><span class="signal signal-on">✅ Won 1 of last 8</span><span class="signal signal-on">✅ Ryan Wiggins — top country rider</span></div>
+  </div>
+</div>
+<div class="pick">
+  <div class="pick-top">
+    <div class="pick-left">
+      <span class="pick-horse">DONEGAL BAY</span>
+      <div class="pick-race">R7 · SAVE DATE 2026 LADBROKES GATTON CUP CALCUTTA FRIDAY 26/ ·  </div>
+    </div>
+    <div class="pick-right">
+      <span class="rating-badge">40.9</span>
+      <div style="margin-top:3px"><span class="stake-chip ">$3.23</span></div>
+    </div>
+  </div>
+  <div class="pick-stats">
+    <span class="pick-stat">Win: <b>14.0%</b></span>
+    <div class="fair-odds">Fair: <b>$7.2</b> | Market: $81.0</div>
+    <span class="pick-stat">Edge: <span style="color:#ffd700;font-weight:700">+12.7%</span></span>
+  </div>
+  <div class="conviction">
+    <div class="conviction-label">Conviction <span class="dots"><span class="dot dot-on"></span><span class="dot dot-on"></span><span class="dot dot-off"></span><span class="dot dot-off"></span><span class="dot dot-off"></span></span> 2/5 <span class="verdict" style="color:#ff5252">SKIP</span> <span style="color:#ff5252;font-size:.7em">SKIP</span></div>
+    <div class="signals"><span class="signal signal-off">❌ No placings in last 5 (31x457x666)</span><span class="signal signal-warn">⚠️ Barrier 13</span><span class="signal signal-off">❌ Distance unknown</span><span class="signal signal-on">✅ Won 1 of last 8</span><span class="signal signal-on">✅ Jaden Lloyd — top country rider</span></div>
+  </div>
+</div></div><div class="meeting"><div class="meeting-header"><div><h3>Gosford</h3><span style="font-size:.7em;color:var(--m)">1 bets · 20 watches</span></div><div class="stake">Total: $3</div></div>
+<div class="pick">
+  <div class="pick-top">
+    <div class="pick-left">
+      <span class="pick-horse">HARLEX</span>
+      <div class="pick-race">R8 · CHRISTMAS IN JULY @ GRC SAT 18 JULY 2026 CONDITIONAL BE ·  </div>
+    </div>
+    <div class="pick-right">
+      <span class="rating-badge">47.7</span>
+      <div style="margin-top:3px"><span class="stake-chip ">$2.61</span></div>
+    </div>
+  </div>
+  <div class="pick-stats">
+    <span class="pick-stat">Win: <b>11.9%</b></span>
+    <div class="fair-odds">Fair: <b>$8.4</b> | Market: $61.0</div>
+    <span class="pick-stat">Edge: <span style="color:#ffd700;font-weight:700">+10.3%</span></span>
+  </div>
+  <div class="conviction">
+    <div class="conviction-label">Conviction <span class="dots"><span class="dot dot-on"></span><span class="dot dot-on"></span><span class="dot dot-on"></span><span class="dot dot-on"></span><span class="dot dot-off"></span></span> 4/5 <span class="verdict" style="color:#00ff88">BET</span></div>
+    <div class="signals"><span class="signal signal-on">✅ Hot — 3 placings from last 5 (22x5x19933)</span><span class="signal signal-on">✅ Barrier 8</span><span class="signal signal-off">❌ Distance unknown</span><span class="signal signal-on">✅ Won 1 of last 8</span><span class="signal signal-on">✅ Ms Rachel King — apprentice claim</span></div>
+  </div>
+</div></div><div class="meeting"><div class="meeting-header"><div><h3>Moe</h3></div><div class="stake">0 bets</div></div><div class="no-bets">No bets — all ratings below threshold</div></div><div class="footer">Daztech AI Betting Engine · Thu 28 May 2026 · For entertainment only · Gamble responsibly<br><a href="https://daztech-betting.surge.sh" style="color:#555">← Hub</a></div><script src="theme-sync.js"></script>
+</body></html>

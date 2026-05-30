@@ -1,0 +1,67 @@
+[
+  {
+    "timestamp": "2026-05-28T22:00:00+10:00",
+    "code": "nba",
+    "selection_details": "Wemby Bounce-Back Stack \u2014 25+ PTS + 10+ REB + 2+ BLK (SGM)",
+    "model_rating": "STRONG",
+    "edge_pct": null,
+    "recommended_stake": 1.0,
+    "odds": "3.50-4.50",
+    "sportsbet_market": "Same Game Multi",
+    "status": "won",
+    "result_payout": 4.0,
+    "notes": "Spurs 118-91. Wemby dominated elimination game. All 3 legs cashed."
+  },
+  {
+    "timestamp": "2026-05-28T22:00:00+10:00",
+    "code": "nba",
+    "selection_details": "Caruso Torches Them Again \u2014 15+ PTS + 2+ 3PM + OKC 106.5+ PTS (SGM)",
+    "model_rating": "STRONG",
+    "edge_pct": null,
+    "recommended_stake": 1.0,
+    "odds": "4.00-5.50",
+    "sportsbet_market": "Same Game Multi",
+    "status": "lost",
+    "result_payout": 0.0,
+    "notes": "OKC only scored 91 pts \u2014 missed the team total leg. Spurs defensive masterclass."
+  },
+  {
+    "timestamp": "2026-05-28T22:00:00+10:00",
+    "code": "nba",
+    "selection_details": "SGA Playmaker \u2014 8+ AST + Under 30.5 PTS + McCain 12+ PTS (SGM)",
+    "model_rating": "MODERATE",
+    "edge_pct": null,
+    "recommended_stake": 0.5,
+    "odds": "3.50-4.00",
+    "sportsbet_market": "Same Game Multi",
+    "status": "won",
+    "result_payout": 3.75,
+    "notes": "SGA limited in blowout. McCain hit. Solid moderate play cashed."
+  },
+  {
+    "timestamp": "2026-05-28T22:00:00+10:00",
+    "code": "nba",
+    "selection_details": "Spurs Force Game 7 \u2014 Spurs -3.5 + Under 219.5 + Wemby Double-Double (SGM)",
+    "model_rating": "MODERATE",
+    "edge_pct": null,
+    "recommended_stake": 1.0,
+    "odds": "4.50-6.00",
+    "sportsbet_market": "Same Game Multi",
+    "status": "won",
+    "result_payout": 5.25,
+    "notes": "Spurs won by 27 (118-91), total 209, Wemby double-double. All 3 legs smashed."
+  },
+  {
+    "timestamp": "2026-05-28T22:00:00+10:00",
+    "code": "nba",
+    "selection_details": "Castle Continues Rise \u2014 15+ PTS + 2+ 3PM + Fox 6+ AST (SGM)",
+    "model_rating": "MODERATE",
+    "edge_pct": null,
+    "recommended_stake": 0.5,
+    "odds": "3.00-4.00",
+    "sportsbet_market": "Same Game Multi",
+    "status": "lost",
+    "result_payout": 0.0,
+    "notes": "One of the 2 misses. Castle or Fox leg didn't cash in the blowout."
+  }
+]

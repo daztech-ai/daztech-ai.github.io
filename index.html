@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daztech Betting Engine</title>
+<style>
+  :root { --bg: #0a0a0f; --surface: #12121a; --gold: #ffd700; --text: #e0e0e0; --muted: #777; --border: rgba(255,255,255,0.06); }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); max-width: 680px; margin: 0 auto; padding: 16px; line-height: 1.4; }
+  .pulse { display: flex; gap: 1rem; padding: 10px 14px; background: rgba(10,10,20,0.95); border: 1px solid rgba(255,215,0,0.1); border-radius: 8px; margin-bottom: 16px; justify-content: center; }
+  .pulse a { text-decoration: none; color: inherit; display: block; }
+  .pulse-item { text-align: center; } .pulse-item .num { font-size: 1.1em; font-weight: 800; color: var(--gold); } .pulse-item .label { font-size: 0.6em; color: var(--muted); text-transform: uppercase; }
+  .pulse a:hover .label { color: var(--gold); }
+  .logo { text-align: center; margin-bottom: 16px; } .logo h1 { font-size: 1.5em; color: #fff; } .logo .tagline { color: #666; font-size: 0.75em; }
+  .section { margin-bottom: 20px; }
+  .section-title { font-size: 0.68em; text-transform: uppercase; letter-spacing: 1.5px; color: #555; margin-bottom: 6px; padding-bottom: 3px; border-bottom: 1px solid var(--border); }
+  .card { background: var(--surface); border-radius: 8px; padding: 12px 16px; margin-bottom: 5px; border: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; text-decoration: none; color: inherit; }
+  .card:hover { border-color: rgba(255,215,0,0.2); }
+  .card-left { flex: 1; } .card-title { font-size: 0.95em; font-weight: 600; color: #fff; } .card-meta { font-size: 0.72em; color: var(--muted); margin-top: 1px; }
+  .card-badge { font-size: 0.65em; padding: 3px 8px; border-radius: 4px; font-weight: 700; white-space: nowrap; }
+  .badge-live { background: rgba(0,255,136,0.12); color: #00ff88; }
+  .badge-strong { background: rgba(0,255,136,0.15); color: #00ff88; }
+  .badge-racing { background: rgba(123,255,123,0.1); color: #7bff7b; }
+  .badge-nrl { background: rgba(123,159,255,0.1); color: #7b9fff; }
+  .badge-nba { background: rgba(255,123,123,0.1); color: #ff7b7b; }
+  .badge-ucl { background: rgba(255,215,0,0.1); color: #ffd700; }
+  .badge-hk { background: rgba(255,100,100,0.1); color: #ff6b6b; }
+  .badge-results { background: rgba(255,215,0,0.12); color: #ffd700; }
+  .badge-finals { background: rgba(245,132,38,0.15); color: #F58426; }
+  .badge-tennis { background: rgba(200,255,100,0.1); color: #c8ff64; }
+  .badge-dogs { background: rgba(255,180,50,0.1); color: #ffb432; }
+  .badge-harness { background: rgba(150,200,255,0.1); color: #96c8ff; }
+  .live-dot { display: inline-block; width: 6px; height: 6px; background: #00ff88; border-radius: 50%; margin-right: 5px; animation: pulse 1.5s infinite; }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+  .footer { margin-top: 20px; padding-top: 12px; border-top: 1px solid var(--border); text-align: center; font-size: 0.65em; color: #444; }
+</style>
+</head>
+<body>
+
+<div class="logo">
+  <h1>🏇 Daztech Betting Engine</h1>
+  <div class="tagline">Calibrated picks · SGM analysis · +19.4% backtested ROI</div>
+</div>
+
+<!-- TODAY -->
+<div class="section">
+  <div class="section-title"><span class="live-dot"></span> Saturday 30 May — Today's Action</div>
+
+  <a href="nba-game7.html" class="card">
+    <div class="card-left"><div class="card-title">🏀 NBA Game 7 — Spurs @ Thunder</div><div class="card-meta">Series 3-3 · OKC -4.5 · 5 SGMs · JDub injury watch · Updated Sat AM</div></div>
+    <span class="card-badge badge-nba">NBA</span>
+  </a>
+
+  <a href="racing_2026-05-30.html" class="card">
+    <div class="card-left"><div class="card-title">📊 Saturday Engine Card</div><div class="card-meta">19 meetings · Metro focus · Calibrated</div></div>
+    <span class="card-badge badge-racing">RACING</span>
+  </a>
+
+  <a href="ucl_final_2026-05-30.html" class="card">
+    <div class="card-left"><div class="card-title">⚽ UCL Final Preview</div><div class="card-meta">Match analysis & predictions</div></div>
+    <span class="card-badge badge-ucl">UCL</span>
+  </a>
+</div>
+
+<!-- SATURDAY NRL -->
+<div class="section">
+  <div class="section-title">🏉 NRL — Round 14 · This Weekend</div>
+
+  <div class="card">
+    <div class="card-left"><div class="card-title">Sat 3:00pm — Eels @ Knights</div><div class="card-meta">McDonald Jones Stadium · Newcastle -4.5</div></div>
+    <span class="card-badge badge-nrl">NRL</span>
+  </div>
+
+  <div class="card">
+    <div class="card-left"><div class="card-title">Sat 5:30pm — Bulldogs @ Wests Tigers</div><div class="card-meta">CommBank Stadium · Bulldogs -8.5</div></div>
+    <span class="card-badge badge-nrl">NRL</span>
+  </div>
+
+  <div class="card">
+    <div class="card-left"><div class="card-title">Sat 7:35pm — Roosters @ Storm</div><div class="card-meta">AAMI Park · Storm -6.5 · Game of the Round</div></div>
+    <span class="card-badge badge-nrl">NRL</span>
+  </div>
+
+  <div class="card">
+    <div class="card-left"><div class="card-title">Sun 2:00pm — Dragons @ Broncos</div><div class="card-meta">Suncorp Stadium · Broncos -10.5</div></div>
+    <span class="card-badge badge-nrl">NRL</span>
+  </div>
+
+  <div class="card">
+    <div class="card-left"><div class="card-title">Sun 4:00pm — Cowboys @ Raiders</div><div class="card-meta">GIO Stadium · Raiders -2.5</div></div>
+    <span class="card-badge badge-nrl">NRL</span>
+  </div>
+
+  <div class="card">
+    <div class="card-left"><div class="card-title">Sun 6:30pm — Warriors @ Panthers</div><div class="card-meta">BlueBet Stadium · Panthers -12.5</div></div>
+    <span class="card-badge badge-nrl">NRL</span>
+  </div>
+</div>
+
+<!-- RECENT NRL -->
+<div class="section">
+  <div class="section-title">📋 Recent NRL</div>
+
+  <a href="nrl_round13_2026-05-28.html" class="card">
+    <div class="card-left"><div class="card-title">✅ Fri — Sharks 28 d. Sea Eagles 22</div><div class="card-meta">Hynes OUT · Manly missing Turbo+Koula+Olakau'atu · Sharks $1.80 hit</div></div>
+    <span class="card-badge badge-strong">SETTLED</span>
+  </a>
+</div>
+
+<!-- NBA FINALS -->
+<div class="section">
+  <div class="section-title">🏆 NBA Finals — Coming Soon</div>
+  <a href="nba-finals-preview.html" class="card">
+    <div class="card-left"><div class="card-title">🏀 Knicks vs West Champion</div><div class="card-meta">Knicks 12–0 · Await OKC/Spurs winner · Early betting angles</div></div>
+    <span class="card-badge badge-finals">FINALS</span>
+  </a>
+</div>
+
+<!-- PAST -->
+<div class="section">
+  <div class="section-title">📋 Recent</div>
+
+  <a href="nba-game6.html" class="card">
+    <div class="card-left"><div class="card-title">📼 NBA Game 6 — Spurs 118-91</div><div class="card-meta">Film study · 22-0 Q3 run · OKC 10/40 3PT · 3 of 5 SGMs hit</div></div>
+    <span class="card-badge badge-nba">NBA</span>
+  </a>
+
+  <a href="daily-2026-05-28.html" class="card">
+    <div class="card-left"><div class="card-title">Thu 28 May — Daily Card</div><div class="card-meta">Gatton · Gosford · Moe</div></div>
+    <span class="card-badge badge-racing">RACING</span>
+  </a>
+
+  <a href="nrl_round14_2026-05-30.html" class="card">
+    <div class="card-left"><div class="card-title">🏉 NRL Round 14 — Full Engine Analysis</div><div class="card-meta">6 games · Margin predictions · Try scorers · SGM picks</div></div>
+    <span class="card-badge badge-nrl">NRL</span>
+  </a>
+</div>
+
+<div class="section">
+  <div class="section-title">🇭🇰 Hong Kong</div>
+  <a href="racing_happy-valley.html" class="card">
+    <div class="card-left"><div class="card-title">Happy Valley</div><div class="card-meta">Wednesday night · Updated Wed 3pm</div></div>
+    <span class="card-badge badge-hk">HK</span>
+  </a>
+</div>
+
+<!-- GREYHOUNDS -->
+<div class="section">
+  <div class="section-title">🐕 Greyhounds — Daily Meetings</div>
+  <a href="https://www.thedogs.com.au/racing/" class="card">
+    <div class="card-left"><div class="card-title">NSW + Interstate</div><div class="card-meta">Temora · Gunnedah · Richmond · Taree · Sale · Bendigo · Meadows · Cannington + more</div></div>
+    <span class="card-badge badge-dogs">DOGS</span>
+  </a>
+</div>
+
+<!-- HARNESS -->
+<div class="section">
+  <div class="section-title">🐴 Harness Racing — Daily Meetings</div>
+  <a href="https://www.harness.org.au/racing/" class="card">
+    <div class="card-left"><div class="card-title">Nationwide Trots</div><div class="card-meta">Horsham · Penrith · Globe Derby · Pinjarra · Redcliffe · Melton · Menangle + more</div></div>
+    <span class="card-badge badge-harness">HARNESS</span>
+  </a>
+</div>
+
+<div class="pulse">
+  <a href="index.html"><div class="pulse-item"><div class="num">🟢</div><div class="label">Engine Live</div></div></a>
+  <a href="racing_2026-05-30.html"><div class="pulse-item"><div class="num">9AM</div><div class="label">Daily Card</div></div></a>
+  <a href="results.html"><div class="pulse-item"><div class="num">7PM</div><div class="label">Results</div></div></a>
+  <a href="results.html"><div class="pulse-item"><div class="num">+19.4%</div><div class="label">Backtest ROI</div></div></a>
+</div>
+
+<div class="footer">Daztech AI Betting Engine · For entertainment only · Gamble responsibly</div>
+
+</body>
+</html>

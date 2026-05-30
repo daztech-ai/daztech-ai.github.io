@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>NRL Round 14 — Daztech Engine</title>
+<style>
+  :root { --bg: #0a0a0f; --surface: #12121a; --gold: #c8960c; --text: #e0e0e0; --muted: #777; --border: rgba(255,255,255,0.06); --green: #00ff88; --red: #ff4d4d; --blue: #7b9fff; --radius: 10px; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); max-width: 580px; margin: 0 auto; padding: 16px; line-height: 1.45; -webkit-text-size-adjust: 100%; }
+  .back-link { display: inline-block; margin-bottom: 12px; color: var(--gold); text-decoration: none; font-size: 0.75em; font-weight: 600; }
+  .page-header { text-align: center; margin-bottom: 16px; }
+  .page-header h1 { font-size: 1.2em; color: #fff; font-weight: 700; }
+  .page-header .sub { font-size: 0.68em; color: var(--muted); margin-top: 2px; }
+
+  .game-card { background: var(--surface); border-radius: var(--radius); padding: 14px 16px; margin-bottom: 10px; border: 1px solid var(--border); }
+  .game-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .game-teams { font-size: 0.95em; font-weight: 700; color: #fff; }
+  .game-time { font-size: 0.65em; color: var(--muted); }
+  .game-prediction { font-size: 0.85em; font-weight: 600; margin-bottom: 6px; padding: 6px 10px; border-radius: 6px; }
+  .pred-blowout { background: rgba(0,255,136,0.08); color: var(--green); border: 1px solid rgba(0,255,136,0.15); }
+  .pred-strong { background: rgba(123,159,255,0.08); color: var(--blue); border: 1px solid rgba(123,159,255,0.15); }
+  .pred-close { background: rgba(200,150,12,0.08); color: var(--gold); border: 1px solid rgba(200,150,12,0.15); }
+  .game-conf { font-size: 0.7em; color: var(--muted); }
+
+  .try-section { margin-top: 8px; }
+  .try-label { font-size: 0.6em; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-bottom: 3px; }
+  .try-row { display: flex; align-items: center; gap: 8px; padding: 4px 0; font-size: 0.78em; }
+  .try-name { flex: 1; color: var(--text); font-weight: 500; }
+  .try-pos { font-size: 0.72em; color: var(--muted); }
+  .try-prob { font-weight: 700; font-size: 0.85em; }
+  .prob-hot { color: var(--green); }
+  .prob-warm { color: var(--gold); }
+  .prob-cool { color: var(--muted); }
+  .try-badge { font-size: 0.6em; padding: 2px 6px; border-radius: 3px; font-weight: 700; background: rgba(0,255,136,0.12); color: var(--green); white-space: nowrap; }
+
+  .sgm-section { margin-top: 16px; }
+  .sgm-card { background: rgba(200,150,12,0.03); border: 1px solid rgba(200,150,12,0.1); border-radius: var(--radius); padding: 12px 14px; margin-bottom: 6px; }
+  .sgm-title { font-size: 0.75em; font-weight: 700; color: var(--gold); margin-bottom: 4px; }
+  .sgm-legs { font-size: 0.7em; color: var(--text); }
+  .sgm-odds { font-size: 0.65em; color: var(--muted); margin-top: 3px; }
+
+  .footer { margin-top: 20px; padding-top: 12px; border-top: 1px solid var(--border); text-align: center; font-size: 0.62em; color: #444; }
+</style>
+</head>
+<body>
+
+<a href="index.html" class="back-link">← Back to Hub</a>
+
+<div class="page-header">
+  <h1>🏉 NRL Round 14 — Engine Analysis</h1>
+  <div class="sub">Auto-generated · Daztech AI · +19.4% backtested</div>
+</div>
+
+<!-- Game 1: Warriors @ Knights -->
+<div class="game-card">
+  <div class="game-header">
+    <div class="game-teams">NZW @ NK — Warriors @ Knights</div>
+    <div class="game-time">Sat 3:00pm · McDonald Jones Stadium</div>
+  </div>
+  <div class="game-prediction pred-strong">Prediction: Warriors by 10.0 (80.8% confidence)</div>
+  <div class="try-section">
+    <div class="try-label">Top Try Scorers</div>
+    <div class="try-row"><span class="try-name">D. Watene-Zelezniak</span><span class="try-pos">Wing · NZW</span><span class="try-prob prob-hot">45%</span><span class="try-badge">TRY MACHINE</span></div>
+    <div class="try-row"><span class="try-name">A. Khan-Pereira</span><span class="try-pos">Wing · NZW</span><span class="try-prob prob-hot">45%</span><span class="try-badge">TRY MACHINE</span></div>
+    <div class="try-row"><span class="try-name">D. Young</span><span class="try-pos">Wing · NK</span><span class="try-prob prob-hot">45%</span></div>
+  </div>
+  <div class="sgm-card">
+    <div class="sgm-title">Suggested SGM</div>
+    <div class="sgm-legs">Warriors H2H + DWZ anytime try + Khan-Pereira anytime try</div>
+    <div class="sgm-odds">Estimated: $4.20</div>
+  </div>
+</div>
+
+<!-- Game 2: Bulldogs @ Tigers -->
+<div class="game-card">
+  <div class="game-header">
+    <div class="game-teams">CBB @ WT — Bulldogs @ Wests Tigers</div>
+    <div class="game-time">Sat 5:30pm · CommBank Stadium</div>
+  </div>
+  <div class="game-prediction pred-strong">Prediction: Tigers by 9.2 (78.8% confidence)</div>
+  <div class="try-section">
+    <div class="try-label">Top Try Scorers</div>
+    <div class="try-row"><span class="try-name">J. Bula</span><span class="try-pos">Fullback · WT</span><span class="try-prob prob-hot">45%</span></div>
+    <div class="try-row"><span class="try-name">J. Kiraz</span><span class="try-pos">Wing · CBB</span><span class="try-prob prob-hot">45%</span></div>
+    <div class="try-row"><span class="try-name">F. Tavana</span><span class="try-pos">Wing · WT</span><span class="try-prob prob-hot">45%</span></div>
+  </div>
+  <div class="sgm-card">
+    <div class="sgm-title">Suggested SGM</div>
+    <div class="sgm-legs">Tigers H2H + Bula anytime try + Kiraz anytime try</div>
+    <div class="sgm-odds">Estimated: $4.80</div>
+  </div>
+</div>
+
+<!-- Game 3: Roosters @ Storm -->
+<div class="game-card">
+  <div class="game-header">
+    <div class="game-teams">SR @ MS — Roosters @ Storm</div>
+    <div class="game-time">Sat 7:35pm · AAMI Park</div>
+  </div>
+  <div class="game-prediction pred-close">Prediction: Roosters by 6.6 (71.8% confidence)</div>
+  <div class="try-section">
+    <div class="try-label">Top Try Scorers</div>
+    <div class="try-row"><span class="try-name">J. Tedesco</span><span class="try-pos">Fullback · SR</span><span class="try-prob prob-hot">45%</span></div>
+    <div class="try-row"><span class="try-name">D. Tupou</span><span class="try-pos">Wing · SR</span><span class="try-prob prob-hot">45%</span></div>
+    <div class="try-row"><span class="try-name">W. Warbrick</span><span class="try-pos">Wing · MS</span><span class="try-prob prob-hot">45%</span></div>
+  </div>
+  <div class="sgm-card">
+    <div class="sgm-title">Suggested SGM</div>
+    <div class="sgm-legs">Roosters +2.5 line + Tedesco anytime try + Warbrick anytime try</div>
+    <div class="sgm-odds">Estimated: $5.50</div>
+  </div>
+</div>
+
+<!-- Game 4: Dragons @ Broncos -->
+<div class="game-card">
+  <div class="game-header">
+    <div class="game-teams">SGID @ BB — Dragons @ Broncos</div>
+    <div class="game-time">Sun 2:00pm · Suncorp Stadium</div>
+  </div>
+  <div class="game-prediction pred-blowout">Prediction: Broncos by 19.8 (94.4% confidence)</div>
+  <div class="try-section">
+    <div class="try-label">Top Try Scorers</div>
+    <div class="try-row"><span class="try-name">R. Walsh</span><span class="try-pos">Fullback · BB</span><span class="try-prob prob-hot">45%</span><span class="try-badge">TRY MACHINE</span></div>
+    <div class="try-row"><span class="try-name">K. Staggs</span><span class="try-pos">Centre · BB</span><span class="try-prob prob-warm">42%</span></div>
+    <div class="try-row"><span class="try-name">S. Tu</span><span class="try-pos">Wing · SGID</span><span class="try-prob prob-cool">34%</span></div>
+  </div>
+  <div class="sgm-card">
+    <div class="sgm-title">Suggested SGM</div>
+    <div class="sgm-legs">Broncos -12.5 line + Walsh anytime try + Staggs anytime try</div>
+    <div class="sgm-odds">Estimated: $3.60</div>
+  </div>
+</div>
+
+<!-- Game 5: Cowboys @ Raiders -->
+<div class="game-card">
+  <div class="game-header">
+    <div class="game-teams">NQC @ CR — Cowboys @ Raiders</div>
+    <div class="game-time">Sun 4:00pm · GIO Stadium</div>
+  </div>
+  <div class="game-prediction pred-strong">Prediction: Cowboys by 8.1 (76.2% confidence)</div>
+  <div class="try-section">
+    <div class="try-label">Top Try Scorers</div>
+    <div class="try-row"><span class="try-name">S. Drinkwater</span><span class="try-pos">Fullback · NQC</span><span class="try-prob prob-hot">45%</span><span class="try-badge">TRY MACHINE</span></div>
+    <div class="try-row"><span class="try-name">M. Taulagi</span><span class="try-pos">Wing · NQC</span><span class="try-prob prob-hot">45%</span></div>
+    <div class="try-row"><span class="try-name">K. Weekes</span><span class="try-pos">Fullback · CR</span><span class="try-prob prob-hot">45%</span></div>
+  </div>
+  <div class="sgm-card">
+    <div class="sgm-title">Suggested SGM</div>
+    <div class="sgm-legs">Cowboys H2H + Drinkwater anytime try + Taulagi anytime try</div>
+    <div class="sgm-odds">Estimated: $4.50</div>
+  </div>
+</div>
+
+<!-- Game 6: Eels @ Panthers -->
+<div class="game-card">
+  <div class="game-header">
+    <div class="game-teams">PE @ PP — Eels @ Panthers</div>
+    <div class="game-time">Sun 6:30pm · BlueBet Stadium</div>
+  </div>
+  <div class="game-prediction pred-blowout">Prediction: Panthers by 32.2 (99.0% confidence)</div>
+  <div class="try-section">
+    <div class="try-label">Top Try Scorers</div>
+    <div class="try-row"><span class="try-name">B. To'o</span><span class="try-pos">Wing · PP</span><span class="try-prob prob-hot">45%</span><span class="try-badge">TRY MACHINE</span></div>
+    <div class="try-row"><span class="try-name">D. Edwards</span><span class="try-pos">Fullback · PP</span><span class="try-prob prob-hot">45%</span><span class="try-badge">TRY MACHINE</span></div>
+    <div class="try-row"><span class="try-name">T. Jenkins</span><span class="try-pos">Wing · PP</span><span class="try-prob prob-hot">45%</span><span class="try-badge">TRY MACHINE</span></div>
+  </div>
+  <div class="sgm-card">
+    <div class="sgm-title">Suggested SGM</div>
+    <div class="sgm-legs">Panthers -16.5 line + To'o anytime try + Edwards anytime try</div>
+    <div class="sgm-odds">Estimated: $3.20</div>
+  </div>
+</div>
+
+<div class="footer">Daztech AI Betting Engine · Model-based analysis · For entertainment · Gamble responsibly</div>
+
+</body>
+</html>

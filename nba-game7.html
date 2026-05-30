@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>NBA Game 7 SGM — Spurs @ Thunder | Daztech</title>
+<style>
+  :root { --bg: #0a0a0f; --surface: #12121a; --gold: #c8960c; --text: #e0e0e0; --muted: #777; --border: rgba(255,255,255,0.06); --green: #00ff88; --red: #ff4d4d; --warning: #d97706; --info: #3b82f6; --radius: 10px; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); max-width: 520px; margin: 0 auto; padding: 16px; line-height: 1.45; -webkit-text-size-adjust: 100%; }
+  .back-link { color: var(--gold); text-decoration: none; font-size: 0.75em; font-weight: 600; margin-bottom: 12px; display: inline-block; }
+  .page-header { text-align: center; margin-bottom: 16px; }
+  .page-header h1 { font-size: 1.15em; color: var(--text); font-weight: 700; }
+  .page-header .sub { font-size: 0.65em; color: var(--muted); margin-top: 2px; }
+  .game-line { text-align: center; margin-bottom: 14px; font-size: 0.72em; color: var(--muted); }
+  .game-line span { color: var(--text); font-weight: 600; }
+
+  /* ── SGM TICKET CARD ── */
+  .ticket { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 16px; margin-bottom: 8px; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+  .ticket:hover { border-color: rgba(255,255,255,0.1); }
+  .ticket-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px; }
+  .ticket-name { font-size: 0.95em; font-weight: 700; color: var(--text); }
+  .ticket-meta { display: flex; gap: 6px; align-items: center; flex-shrink: 0; }
+  .ticket-meta .chip { font-size: 0.6em; padding: 2px 7px; border-radius: 4px; font-weight: 700; white-space: nowrap; }
+  .chip-strong { background: rgba(22,163,74,0.12); color: #16a34a; border: 1px solid rgba(22,163,74,0.2); }
+  .chip-playable { background: rgba(59,130,246,0.12); color: #3b82f6; border: 1px solid rgba(59,130,246,0.2); }
+  .chip-spec { background: rgba(217,119,6,0.12); color: #d97706; border: 1px solid rgba(217,119,6,0.2); }
+
+  .ticket-odds { font-size: 0.7em; color: var(--muted); margin-bottom: 8px; }
+  .ticket-odds strong { color: var(--green); }
+
+  /* ── LEGS CHECKLIST ── */
+  .legs { margin-bottom: 8px; }
+  .leg { padding: 4px 0 4px 16px; border-left: 2px solid var(--border); margin-bottom: 2px; font-size: 0.78em; position: relative; }
+  .leg::before { content: '☐'; position: absolute; left: -1px; top: 3px; font-size: 0.7em; color: var(--muted); }
+  .leg .stat { font-size: 0.85em; color: var(--muted); }
+
+  /* ── RISK + CORRELATION ── */
+  .ticket-risk { font-size: 0.62em; margin-bottom: 4px; }
+  .ticket-risk.warn { color: var(--warning); font-weight: 600; }
+  .ticket-risk.ok { color: var(--muted); }
+  .ticket-corr { font-size: 0.62em; color: var(--info); margin-bottom: 4px; }
+  .ticket-fail { font-size: 0.62em; color: var(--red); margin-bottom: 6px; }
+
+  /* ── EXPANDABLE REASONING ── */
+  .ticket-expand { font-size: 0.6em; color: var(--muted); text-align: right; }
+  .ticket.open .ticket-expand { display: none; }
+  .ticket-reasoning { display: none; margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--border); font-size: 0.72em; color: #999; line-height: 1.55; }
+  .ticket.open .ticket-reasoning { display: block; }
+
+  /* ── INSIGHT BOXES ── */
+  .section { margin-bottom: 18px; }
+  .section-title { font-size: 0.65em; text-transform: uppercase; letter-spacing: 1.3px; color: var(--muted); font-weight: 600; margin-bottom: 6px; padding-bottom: 4px; border-bottom: 1px solid var(--border); }
+  .insight-box { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 16px; margin-bottom: 5px; }
+  .insight-box h3 { font-size: 0.82em; margin-bottom: 6px; color: var(--text); }
+  .insight-item { padding: 4px 0; border-bottom: 1px solid rgba(255,255,255,0.03); font-size: 0.75em; }
+  .insight-item:last-child { border-bottom: none; }
+  .insight-label { color: var(--gold); font-weight: 600; font-size: 0.7em; }
+  .good { color: var(--green); }
+  .warn { color: var(--red); }
+
+  .qtr-row { display: flex; justify-content: space-between; padding: 3px 0; font-size: 0.73em; border-bottom: 1px solid rgba(255,255,255,0.02); }
+  .qtr-label { color: var(--muted); min-width: 24px; }
+  .qtr-score { font-weight: 500; }
+
+  .footer { margin-top: 20px; padding-top: 12px; border-top: 1px solid var(--border); text-align: center; font-size: 0.6em; color: var(--muted); opacity: 0.7; }
+</style>
+</head>
+<body>
+
+<a href="index.html" class="back-link">← Back to Hub</a>
+
+<div class="page-header">
+  <h1>🏀 Spurs @ Thunder — Game 7</h1>
+  <div class="sub">Western Conference Finals · Series Tied 3–3 · Sat May 30 · 8:00 PM ET</div>
+</div>
+
+<div class="game-line">
+  <span>OKC -4.5</span> · O/U 217.5 · OKC -190 ML<br>
+  ⚠️ JDub status: Game-time decision · Updated Sat 9:12am AEST
+</div>
+
+<!-- ====== SGM TICKETS ====== -->
+<div class="section">
+  <div class="section-title">🎯 SAME GAME MULTIS — Game 7</div>
+
+  <!-- SGM 1: STRONG -->
+  <div class="ticket" onclick="this.classList.toggle('open')">
+    <div class="ticket-header">
+      <div class="ticket-name">⚡ SGA Redemption Arc</div>
+      <div class="ticket-meta">
+        <span class="chip chip-strong">Strong</span>
+        <span class="chip chip-strong">1.0u</span>
+      </div>
+    </div>
+    <div class="ticket-odds">Odds ~$4.00 · <strong>Edge +3.2%</strong> · 3 legs</div>
+    <div class="legs">
+      <div class="leg">SGA <strong>30+ PTS</strong> <span class="stat">— 15 pts in G6 (worst playoff game). At home in G7 = different animal.</span></div>
+      <div class="leg">SGA <strong>6+ AST</strong> <span class="stat">— 8+ APG in OKC home wins. Role players hit shots at home.</span></div>
+      <div class="leg">OKC <strong>Team 110.5+ PTS</strong> <span class="stat">— Averaged 122.3 in 3 home wins. G6 floor (91 pts) not the trend.</span></div>
+    </div>
+    <div class="ticket-risk ok">⚡ Risk: Standard — SGA pride game at home. Floor is 25 pts, not 15.</div>
+    <div class="ticket-corr">🔗 Correlation: All 3 legs tied to SGA performance + OKC home court. Legs reinforce each other.</div>
+    <div class="ticket-fail">⚠️ Main failure point: Spurs replicate G6 paint-choke. If SGA under 30 PTS, all 3 legs cascade-fail.</div>
+    <div class="ticket-expand">Tap for full breakdown ▼</div>
+    <div class="ticket-reasoning">
+      Game 6 was the floor, not the trend. OKC shot 25% from 3PT — unsustainably bad. At home with season on the line, SGA is putting up 25+ shots. JDub potentially returning adds another creator. Averaged 32.0 PPG in OKC wins this series. This is the highest-conviction SGM on the board. SGA has never had back-to-back sub-20 point playoff games in his career.
+    </div>
+  </div>
+
+  <!-- SGM 2: STRONG -->
+  <div class="ticket" onclick="this.classList.toggle('open')">
+    <div class="ticket-header">
+      <div class="ticket-name">🏠 OKC Home Court Stack</div>
+      <div class="ticket-meta">
+        <span class="chip chip-strong">Strong</span>
+        <span class="chip chip-strong">1.0u</span>
+      </div>
+    </div>
+    <div class="ticket-odds">Odds ~$4.50 · <strong>Edge +2.8%</strong> · 3 legs</div>
+    <div class="legs">
+      <div class="leg">OKC <strong>-4.5</strong> <span class="stat">— Home team 4-2 in series. OKC wins at home by 9, 15, and 13.</span></div>
+      <div class="leg">Total <strong>Under 217.5</strong> <span class="stat">— Game 7 pressure = tight. 3 of last 4 under 218.</span></div>
+      <div class="leg">SGA <strong>25+ PTS</strong> <span class="stat">— Hit in 4 of 6 games. Safer leg if you want higher hit rate.</span></div>
+    </div>
+    <div class="ticket-risk ok">⚡ Risk: Standard — home court G7 trend is strong. OKC crowd is worth 4-6 points.</div>
+    <div class="ticket-corr">🔗 Correlation: OKC win + Under + SGA points all flow from home court defense intensity.</div>
+    <div class="ticket-fail">⚠️ Main failure point: Spurs blowout (OKC still covers but Under busts). Or OT game — Under dies.</div>
+    <div class="ticket-expand">Tap for full breakdown ▼</div>
+    <div class="ticket-reasoning">
+      OKC at home with season on the line = they win. Every Game 7 in this rivalry era has gone to the home team. Under hits because both defenses tighten in elimination games. SGA 25+ is the safety net leg — if JDub plays and takes scoring load, SGA might not need 30 but 25 is near-automatic at home.
+    </div>
+  </div>
+
+  <!-- SGM 3: PLAYABLE -->
+  <div class="ticket" onclick="this.classList.toggle('open')">
+    <div class="ticket-header">
+      <div class="ticket-name">🇫🇷 Wemby Road Warrior</div>
+      <div class="ticket-meta">
+        <span class="chip chip-playable">Playable</span>
+        <span class="chip chip-playable">0.5u</span>
+      </div>
+    </div>
+    <div class="ticket-odds">Odds ~$4.00 · <strong>Edge +1.5%</strong> · 3 legs</div>
+    <div class="legs">
+      <div class="leg">Wemby <strong>22+ PTS</strong> <span class="stat">— G5 in OKC: 20 pts on 4/15. But averaged 30.3 in series. Volume gets him there.</span></div>
+      <div class="leg">Wemby <strong>8+ REB</strong> <span class="stat">— Averaged 11.4 RPG. Only one game under 8.</span></div>
+      <div class="leg">Wemby <strong>2+ BLK</strong> <span class="stat">— 3.0 BPG in series. G7 defense = blocks.</span></div>
+    </div>
+    <div class="ticket-risk warn">⚡ Risk: Road Wemby is different — G5: 4/15 FG. OKC doubles harder at home.</div>
+    <div class="ticket-corr">🔗 Correlation: All Wemby prop legs — if OKC defense overwhelms him, all 3 fail together.</div>
+    <div class="ticket-fail">⚠️ Main failure point: Wemby foul trouble (3 early fouls = minutes limit). Or OKC hard-double scheme works.</div>
+    <div class="ticket-expand">Tap for full breakdown ▼</div>
+    <div class="ticket-reasoning">
+      Wemby's worst offensive game of the series was in OKC (G5). But his floor in a Game 7 is still 22/8/2 — he's too good to disappear twice on the road. The risk: OKC doubles him harder at home, forcing others to beat them. Castle and Harper stepped up in G6 — can they do it on the road?
+    </div>
+  </div>
+
+  <!-- SGM 4: SPECULATIVE -->
+  <div class="ticket" onclick="this.classList.toggle('open')">
+    <div class="ticket-header">
+      <div class="ticket-name">🔥 Role Player Fade</div>
+      <div class="ticket-meta">
+        <span class="chip chip-spec">Speculative</span>
+        <span class="chip chip-spec">0.25u</span>
+      </div>
+    </div>
+    <div class="ticket-odds">Odds ~$5.00 · <strong>Edge +2.1%</strong> · 3 legs</div>
+    <div class="legs">
+      <div class="leg">Caruso <strong>Under 13.5 PTS</strong> <span class="stat">— 7 pts in G6, 0 min Q4. Spurs adjusted after G5 explosion.</span></div>
+      <div class="leg">McCain <strong>Under 14.5 PTS</strong> <span class="stat">— 13 pts in G6. If JDub returns, minutes drop. Rookie in G7 on road.</span></div>
+      <div class="leg">Castle <strong>Under 19.5 PTS</strong> <span class="stat">— Averaged 14 PPG in 3 road games this series.</span></div>
+    </div>
+    <div class="ticket-risk warn">⚡ Risk: G6 lesson — Spurs role players exploded at home. Road is different but not guaranteed.</div>
+    <div class="ticket-corr">🔗 Correlation: All fade legs — if OKC defense locks in, all 3 hit. If Spurs role players show up, all 3 fail.</div>
+    <div class="ticket-fail">⚠️ Main failure point: JDub OUT → Caruso/McCain get more shots. Or Spurs blowout → garbage time stats.</div>
+    <div class="ticket-expand">Tap for full breakdown ▼</div>
+    <div class="ticket-reasoning">
+      Lesson from G6: the Spurs' role player explosion was at home. On the road in a Game 7, OKC's defense (#1 in NBA) locks in on secondary scorers. If JDub returns, McCain's role shrinks further. Castle was great in G6 but road Castle is a different player. Fade the role players, trust the stars. Extra discount applied per home elimination game rule.
+    </div>
+  </div>
+
+  <!-- SGM 5: SPECULATIVE (CONDITIONAL) -->
+  <div class="ticket" onclick="this.classList.toggle('open')">
+    <div class="ticket-header">
+      <div class="ticket-name">💥 JDub Return Impact</div>
+      <div class="ticket-meta">
+        <span class="chip chip-spec">Speculative</span>
+        <span class="chip chip-spec">0.25u</span>
+      </div>
+    </div>
+    <div class="ticket-odds">Odds ~$6.00 · <strong>CONDITIONAL on JDub playing</strong> · 3 legs</div>
+    <div class="legs">
+      <div class="leg">JDub <strong>12+ PTS</strong> <span class="stat">— Averaged 15 PPG before hamstring. Even on minutes limit.</span></div>
+      <div class="leg">OKC <strong>Team 115+ PTS</strong> <span class="stat">— JDub unlocks offense: 122, 123, 127 with him vs 82, 91 without.</span></div>
+      <div class="leg">OKC <strong>-4.5</strong> <span class="stat">— JDub played in all 3 OKC home wins. Margin: +9, +15, +13.</span></div>
+    </div>
+    <div class="ticket-risk warn">⚠️ CONDITIONAL: ONLY PLAY IF JDUB IS ACTIVE. Scrap entirely if ruled OUT.</div>
+    <div class="ticket-corr">🔗 Correlation: Every leg depends on JDub. He changes OKC's entire offensive profile.</div>
+    <div class="ticket-fail">⚠️ Main failure point: JDub active but on heavy minutes restriction (under 15 min) — doesn't unlock offense.</div>
+    <div class="ticket-expand">Tap for full breakdown ▼</div>
+    <div class="ticket-reasoning">
+      JDub changes everything. OKC's offensive rating drops 12 points without him. The 8-minute Q3 drought in G6 doesn't happen with JDub creating. Monitor injury report — if he's ruled OUT, scrap this SGM entirely. If he's active even on a minutes limit, the mere threat of a second creator opens the floor for SGA. OKC 115+ becomes likely.
+    </div>
+  </div>
+</div>
+
+<!-- GAME 6 FILM STUDY -->
+<div class="section">
+  <div class="section-title">📼 Game 6 Film Study — Why Spurs Won by 27</div>
+
+  <div class="insight-box">
+    <h3>Quarter-by-Quarter</h3>
+    <div class="qtr-row"><span class="qtr-label">Q1</span><span class="qtr-score">Spurs led — Wemby two quick 3s, block on SGA</span></div>
+    <div class="qtr-row"><span class="qtr-label">Q2</span><span class="qtr-score">Close, competitive — OKC offense had flow</span></div>
+    <div class="qtr-row"><span class="qtr-label">Q3</span><span class="qtr-score" style="color:var(--red);">🔴 OKC scoreless 8+ min · Spurs 22-0 RUN</span></div>
+    <div class="qtr-row"><span class="qtr-label">Q4</span><span class="qtr-score">Garbage time · Wemby sat with 6 min left</span></div>
+  </div>
+
+  <div class="insight-box" style="margin-top:5px;">
+    <h3>🔑 Three Things That Broke OKC</h3>
+    <div class="insight-item"><span class="insight-label">1. Spurs choked the paint.</span> SGA couldn't drive. OKC forced into contested mid-range. 0 FT attempts for SGA in Q3.</div>
+    <div class="insight-item"><span class="insight-label">2. OKC 3PT collapse.</span> 10/40 (25%). At home they shoot 36%+ — worth 12-15 points.</div>
+    <div class="insight-item"><span class="insight-label">3. No JDub.</span> Without their #2 creator, OKC had no Plan B when Spurs locked SGA.</div>
+  </div>
+
+  <div class="insight-box" style="margin-top:5px;">
+    <h3>🔮 What Changes in Game 7</h3>
+    <div class="insight-item"><span class="good">✅ OKC 3PT regression.</span> Career 35% shooters at home don't repeat 25%.</div>
+    <div class="insight-item"><span class="good">✅ SGA pride game.</span> Worst playoff game of his career. At home in G7. 30+ FGA coming.</div>
+    <div class="insight-item"><span class="good">✅ Home court G7.</span> OKC 3-0 at home in elimination games this era. Crowd worth 4-6 points.</div>
+    <div class="insight-item"><span class="warn">⚠️ JDub status unknown.</span> If he plays even 20 min, OKC transforms. If not, same stagnation risk.</div>
+    <div class="insight-item"><span class="warn">⚠️ Wemby road splits.</span> G5 in OKC: 4/15 FG. vs G6 at home: 10/21. Different player on road.</div>
+  </div>
+</div>
+
+<!-- DEFENSIVE SCHEMES -->
+<div class="section">
+  <div class="section-title">🔍 GAME 7 DEFENSIVE SCHEMES</div>
+
+  <div class="insight-box">
+    <h3>Spurs vs SGA — Choke the Paint</h3>
+    <div class="insight-item">G6: packed the paint, forced SGA into contested mid-range. 6/18, 0 3PM. At home, SGA gets more calls — Spurs can't be as aggressive without foul trouble. <strong>🎯 SGA 8+ FTA is the tell.</strong></div>
+  </div>
+
+  <div class="insight-box" style="margin-top:5px;">
+    <h3>OKC vs Wemby — Double Harder</h3>
+    <div class="insight-item">G5 in OKC: held Wemby to 4/15 with hard doubles. G6 on road: 10/21 as role players punished doubles. <strong>🎯 Spurs role players combined 45+ PTS = Spurs win.</strong></div>
+  </div>
+
+  <div class="insight-box" style="margin-top:5px;">
+    <h3>The JDub Variable</h3>
+    <div class="insight-item">Without JDub: OKC offense is SGA-or-nothing. With JDub: secondary creator. <strong>🎯 JDub active = play OKC props. JDub out = fade OKC role players.</strong></div>
+  </div>
+</div>
+
+<!-- Q1 TELL -->
+<div class="section">
+  <div class="section-title">⚠️ Q1 TELL</div>
+  <div class="insight-box">
+    <div class="insight-item"><strong>SGA 8+ pts in Q1</strong> → OKC wins. Hit in all 3 home wins, under 5 in both road losses.</div>
+    <div class="insight-item"><strong>Wemby 2+ early 3PA</strong> → Spurs competitive. Hesitated in G5 and settled.</div>
+    <div class="insight-item"><strong>OKC first to 25 pts</strong> → OKC wins. In all 3 home wins they hit 25 first.</div>
+  </div>
+</div>
+
+<div style="text-align:center;margin:16px 0;">
+  <a href="nba-game6.html" style="color:var(--gold);text-decoration:none;font-size:0.78em;">← Game 6 (Spurs 118-91)</a> &nbsp;·&nbsp;
+  <a href="results.html" style="color:var(--gold);text-decoration:none;font-size:0.78em;">Results →</a>
+</div>
+
+<div class="footer">Daztech AI Betting Engine · Analysis only · Check live odds on Sportsbet · Gamble responsibly</div>
+
+<script src="theme-sync.js"></script>
+<script>
+  document.querySelectorAll('.ticket').forEach(t => {
+    t.addEventListener('click', function(e) {
+      if (window.getSelection().toString()) return;
+      this.classList.toggle('open');
+    });
+  });
+</script>
+</body>
+</html>

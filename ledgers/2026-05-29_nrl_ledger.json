@@ -1,0 +1,28 @@
+[
+  {
+    "timestamp": "2026-05-29T18:11:51.808552",
+    "code": "nrl",
+    "selection_details": "Sharks H2H vs Sea Eagles",
+    "model_rating": "STRONG",
+    "edge_pct": 10.0,
+    "recommended_stake": 1.0,
+    "odds": 1.8,
+    "sportsbet_market": "Head to Head",
+    "status": "pending",
+    "result_payout": null,
+    "notes": "Manly missing Turbo+Koula+Olakau'atu. Sharks at home off bye. Stats Insider 60% win prob."
+  },
+  {
+    "timestamp": "2026-05-29T18:11:51.808557",
+    "code": "nrl",
+    "selection_details": "Sharks H2H + Under 45.5 + Mulitalo AT (SGM)",
+    "model_rating": "STRONG",
+    "edge_pct": null,
+    "recommended_stake": 0.5,
+    "odds": "3.25-4.00",
+    "sportsbet_market": "Same Game Multi",
+    "status": "pending",
+    "result_payout": null,
+    "notes": "SGM: Sharks win + Under 45.5 + Mulitalo anytime try scorer."
+  }
+]

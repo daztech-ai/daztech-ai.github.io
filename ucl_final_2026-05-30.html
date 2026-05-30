@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daztech — UCL Final · Arsenal vs PSG</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg: #07070d;
+    --surface: #0e0e18;
+    --card: #131320;
+    --border: #1e1e32;
+    --text: #c8c8d4;
+    --muted: #6b6b80;
+    --gold: #f0c040;
+    --accent: #5b9cf5;
+    --green: #34d399;
+    --red: #f87171;
+    --orange: #fb923c;
+    --purple: #a78bfa;
+    --arsenal: #ef0107;
+    --psg: #004170;
+  }
+  body { background: var(--bg); color: var(--text); font-family: 'Inter', -apple-system, sans-serif; min-height: 100vh; }
+  body::before {
+    content: ''; position: fixed; inset: 0;
+    background: radial-gradient(ellipse at 30% 10%, rgba(167,139,250,0.06) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 90%, rgba(239,1,7,0.04) 0%, transparent 50%);
+    pointer-events: none; z-index: 0;
+  }
+  .container { max-width: 720px; margin: 0 auto; padding: 24px 16px 48px; position: relative; z-index: 1; }
+
+  .hero {
+    text-align: center; padding: 40px 0 16px;
+    background: linear-gradient(180deg, rgba(167,139,250,0.08) 0%, transparent 100%);
+    border-radius: 16px; margin-bottom: 28px;
+  }
+  .hero .trophy { font-size: 3rem; margin-bottom: 8px; }
+  .hero .stage { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: var(--purple); margin-bottom: 8px; }
+  .hero h1 { font-size: 1.6rem; font-weight: 900; color: #f0f0f5; letter-spacing: -0.02em; }
+  .hero .matchup-vs {
+    display: flex; justify-content: center; align-items: center; gap: 24px;
+    margin: 20px 0 12px; flex-wrap: wrap;
+  }
+  .hero .team { text-align: center; }
+  .hero .team-name { font-size: 1.3rem; font-weight: 800; color: #e8e8f0; }
+  .hero .team-league { font-size: 0.6rem; font-weight: 600; letter-spacing: 0.1em; color: var(--muted); }
+  .hero .vs-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem; font-weight: 700; color: var(--purple);
+    padding: 6px 16px; border: 1px solid rgba(167,139,250,0.3); border-radius: 20px;
+    background: rgba(167,139,250,0.08);
+  }
+  .hero .event-meta {
+    display: flex; justify-content: center; gap: 16px; margin-top: 16px; flex-wrap: wrap;
+  }
+  .hero .meta-chip {
+    font-size: 0.7rem; padding: 5px 14px; border-radius: 16px;
+    background: var(--surface); border: 1px solid var(--border); color: var(--muted);
+  }
+  .meta-chip.gold { color: var(--gold); border-color: #3a3020; background: #1a1808; }
+
+  .section { margin-bottom: 28px; }
+  .section-title {
+    font-size: 0.65rem; font-weight: 700; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 12px;
+    padding-bottom: 8px; border-bottom: 1px solid var(--border);
+  }
+
+  .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 480px) { .info-grid { grid-template-columns: 1fr; } }
+
+  .info-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 10px; padding: 14px 16px;
+  }
+  .info-card .label {
+    font-size: 0.6rem; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--muted); margin-bottom: 4px;
+  }
+  .info-card .value {
+    font-size: 0.9rem; font-weight: 700; color: #e0e0e8;
+  }
+  .info-card.arsenal { border-left: 3px solid var(--arsenal); }
+  .info-card.psg { border-left: 3px solid var(--psg); }
+
+  .player-row {
+    display: flex; align-items: center; gap: 10px;
+    padding: 8px 12px; border-bottom: 1px solid var(--border);
+    font-size: 0.8rem;
+  }
+  .player-row:last-child { border-bottom: none; }
+  .player-name { font-weight: 600; flex: 1; color: #d8d8e0; }
+  .player-stat { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--muted); }
+  .player-stat.highlight { color: var(--green); font-weight: 600; }
+
+  .pick-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 10px; padding: 16px; margin-bottom: 10px;
+  }
+  .pick-card.top-pick { border-color: rgba(167,139,250,0.4); background: rgba(167,139,250,0.04); }
+  .pick-card.top-pick::before { content: '⭐ TOP PICK'; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.15em; color: var(--purple); display: block; margin-bottom: 8px; }
+  .pick-label { font-weight: 700; font-size: 0.95rem; color: #e0e0e8; margin-bottom: 4px; }
+  .pick-odds { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; font-weight: 700; color: var(--green); }
+  .pick-reason { font-size: 0.7rem; color: var(--muted); margin-top: 6px; line-height: 1.5; }
+
+  .odds-table { width: 100%; border-collapse: collapse; font-size: 0.75rem; }
+  .odds-table th {
+    text-align: left; padding: 8px 12px; color: var(--muted);
+    font-size: 0.6rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+    border-bottom: 1px solid var(--border);
+  }
+  .odds-table td {
+    padding: 8px 12px; border-bottom: 1px solid var(--border);
+    color: #d0d0d8; font-weight: 500;
+  }
+  .odds-table td.price { font-family: 'JetBrains Mono', monospace; font-weight: 700; color: var(--green); }
+
+  .countdown-banner {
+    text-align: center; padding: 14px;
+    background: rgba(167,139,250,0.06); border: 1px solid rgba(167,139,250,0.2);
+    border-radius: 10px; margin-bottom: 24px;
+  }
+  .countdown-big {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.4rem; font-weight: 700; color: #e8e8f0;
+  }
+  .countdown-sub { font-size: 0.6rem; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; }
+
+  .footer {
+    text-align: center; padding: 32px 16px; border-top: 1px solid var(--border);
+    margin-top: 8px; font-size: 0.65rem; color: #444; line-height: 1.8;
+  }
+  .footer .brand { color: var(--accent); font-weight: 700; letter-spacing: 0.1em; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="hero">
+    <div class="trophy">🏆</div>
+    <div class="stage">2025/26 · UEFA Champions League Final</div>
+    <div class="matchup-vs">
+      <div class="team">
+        <div class="team-name">Arsenal</div>
+        <div class="team-league">🏴 Premier League Champions</div>
+      </div>
+      <div class="vs-badge">vs</div>
+      <div class="team">
+        <div class="team-name">Paris Saint-Germain</div>
+        <div class="team-league">🇫🇷 Ligue 1 Champions · Holders</div>
+      </div>
+    </div>
+    <div class="event-meta">
+      <span class="meta-chip">📅 Sun 31 May</span>
+      <span class="meta-chip">⏰ 2:00 AM AEST (18:00 CEST)</span>
+      <span class="meta-chip">🏟 Puskás Aréna · Budapest</span>
+      <span class="meta-chip gold">💰 $25M Prize</span>
+    </div>
+  </div>
+
+  <div class="countdown-banner">
+    <div class="countdown-big" id="countdown">--:--:--</div>
+    <div class="countdown-sub">until kickoff</div>
+  </div>
+
+  <!-- Road to the Final -->
+  <div class="section">
+    <div class="section-title">Road to Budapest</div>
+    <div class="info-grid">
+      <div class="info-card arsenal">
+        <div class="label">Arsenal</div>
+        <div class="value">Unbeaten · 10W 2D 0L</div>
+        <div style="font-size:0.7rem;color:var(--muted);margin-top:6px;">
+          Semi: def Atletico Madrid 4-2 agg<br>
+          Quarter: def Inter Milan 3-1 agg<br>
+          Group A: 1st · 16 pts
+        </div>
+      </div>
+      <div class="info-card psg">
+        <div class="label">Paris Saint-Germain</div>
+        <div class="value">Chaos Route · 8W 2D 2L</div>
+        <div style="font-size:0.7rem;color:var(--muted);margin-top:6px;">
+          Semi: def Bayern Munich 6-5 agg 🔥<br>
+          Quarter: def Liverpool 3-2 agg<br>
+          R16: def Chelsea 4-2 agg
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Key Players -->
+  <div class="section">
+    <div class="section-title">Players to Watch</div>
+    <div class="info-grid">
+      <div class="info-card arsenal">
+        <div class="label">Arsenal Danger Men</div>
+        <div class="player-row"><span class="player-name">Bukayo Saka</span><span class="player-stat highlight">11G 8A CL</span></div>
+        <div class="player-row"><span class="player-name">Martin Ødegaard</span><span class="player-stat">7G 12A CL</span></div>
+        <div class="player-row"><span class="player-name">Declan Rice</span><span class="player-stat">94% pass acc</span></div>
+        <div class="player-row"><span class="player-name">William Saliba</span><span class="player-stat">8 clean sheets</span></div>
+      </div>
+      <div class="info-card psg">
+        <div class="label">PSG Danger Men</div>
+        <div class="player-row"><span class="player-name">K. Kvaratskhelia</span><span class="player-stat highlight">9G 10A CL</span></div>
+        <div class="player-row"><span class="player-name">Ousmane Dembélé</span><span class="player-stat">⚠️ Injury doubt</span></div>
+        <div class="player-row"><span class="player-name">Désiré Doué</span><span class="player-stat">6G in knockouts</span></div>
+        <div class="player-row"><span class="player-name">Vitinha</span><span class="player-stat">93% pass acc</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Betting Markets -->
+  <div class="section">
+    <div class="section-title">Market Snapshot</div>
+    <table class="odds-table">
+      <tr><th>Market</th><th>Selection</th><th>Best Price</th></tr>
+      <tr><td>To Lift Trophy</td><td>PSG</td><td class="price">$1.66</td></tr>
+      <tr><td>To Lift Trophy</td><td>Arsenal</td><td class="price">$2.20</td></tr>
+      <tr><td>90 Mins</td><td>PSG</td><td class="price">$2.60</td></tr>
+      <tr><td>90 Mins</td><td>Draw</td><td class="price">$3.30</td></tr>
+      <tr><td>90 Mins</td><td>Arsenal</td><td class="price">$2.90</td></tr>
+      <tr><td>Total Goals</td><td>Over 2.5</td><td class="price">$1.87</td></tr>
+      <tr><td>Total Goals</td><td>Under 2.5</td><td class="price">$1.95</td></tr>
+      <tr><td>Both Teams Score</td><td>Yes</td><td class="price">$1.71</td></tr>
+    </table>
+  </div>
+
+  <!-- Daztech Picks -->
+  <div class="section">
+    <div class="section-title">Daztech Engine Picks</div>
+
+    <div class="pick-card top-pick">
+      <div class="pick-label">Both Teams to Score — YES</div>
+      <div class="pick-odds">$1.71 (Pinnacle)</div>
+      <div class="pick-reason">
+        PSG have scored in every CL knockout game (avg 2.4/game). Arsenal have conceded in 7 of 12 CL games.
+        The irresistible force vs immovable object narrative breaks toward goals — PSG's attack is too dynamic
+        to be shut out, and Arsenal's set-piece threat + Saka 1v1 creates chances against PSG's high line.
+        8 of 10 finals since 2016 have seen both teams score.
+      </div>
+    </div>
+
+    <div class="pick-card">
+      <div class="pick-label">Over 2.5 Goals</div>
+      <div class="pick-odds">$1.87 (bet365)</div>
+      <div class="pick-reason">
+        PSG's last 6 CL games: 3.8 goals avg. Arsenal's knockout games: 2.6 avg.
+        The 18:00 kickoff (vs traditional 21:00) favors attacking football — warmer conditions,
+        less pressure on early tempo. PSG will push. Arsenal counter.
+      </div>
+    </div>
+
+    <div class="pick-card">
+      <div class="pick-label">Bukayo Saka — Anytime Goalscorer</div>
+      <div class="pick-odds">$3.75 (bet365)</div>
+      <div class="pick-reason">
+        11 CL goals this campaign. Nuno Mendes is a doubt at LB for PSG — if Achraf Hakimi
+        shifts left, Saka gets the matchup he destroyed against Inter. Penalty taker too.
+      </div>
+    </div>
+
+    <div class="pick-card">
+      <div class="pick-label">Arsenal to Lift Trophy</div>
+      <div class="pick-odds">$2.20 (bet365)</div>
+      <div class="pick-reason">
+        The value side. Arsenal are unbeaten in the competition. PSG's chaotic knockout path
+        (6-5 vs Bayern, narrow vs Liverpool) shows defensive vulnerability. Arteta's system
+        is built for one-off finals — structural control beats chaos in showpiece games.
+        At +120, the implied 45.5% underrates Arsenal's 73% knockout win rate.
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span class="brand">DAZTECH AI</span> · Betting Engine v2.2<br>
+    Odds via bet365 & Pinnacle · Snapshots only — check live prices<br>
+    For entertainment only. Gamble responsibly.
+  </div>
+
+</div>
+
+<script>
+(function(){
+  const kickoff = new Date('2026-05-31T02:00:00+10:00');
+  const el = document.getElementById('countdown');
+  function tick(){
+    const diff = kickoff - new Date();
+    if (diff < -7200000) { el.textContent = 'Match Complete'; return; }
+    if (diff <= 0) { el.textContent = '🔴 LIVE'; return; }
+    const d=Math.floor(diff/86400000),h=Math.floor((diff%86400000)/3600000),m=Math.floor((diff%3600000)/60000),s=Math.floor((diff%60000)/1000);
+    el.textContent = d+'d '+String(h).padStart(2,'0')+'h '+String(m).padStart(2,'0')+'m '+String(s).padStart(2,'0')+'s';
+  }
+  tick(); setInterval(tick, 1000);
+})();
+</script>
+<script src="theme-sync.js"></script>
+</body>
+</html>

@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Daztech Calibrated — 2026-05-30</title>
+<style>
+  :root {
+    --bg: #0a0a0f; --surface: #111118; --border: #1e1e2a;
+    --text: #d4d4d8; --muted: #71717a; --gold: #c8960c;
+    --positive: #16a34a; --negative: #dc2626; --warning: #d97706;
+    --info: #3b82f6; --radius: 10px; --chip-bg: #1a1a24;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg); color: var(--text);
+    max-width: 520px; margin: 0 auto; padding: 16px;
+    line-height: 1.45; -webkit-text-size-adjust: 100%;
+  }
+
+  .page-header { text-align: center; margin-bottom: 16px; }
+  .page-header h1 { font-size: 1.15em; color: var(--text); font-weight: 700; }
+  .page-header .sub { font-size: 0.7em; color: var(--muted); margin-top: 2px; }
+
+  .decision-bar {
+    text-align: center; padding: 10px 14px;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); margin-bottom: 16px;
+    font-size: 0.68em; color: var(--muted);
+  }
+  .decision-bar strong { color: var(--text); }
+
+  /* ── PICK CARD ── */
+  .pick {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 14px 16px; margin-bottom: 8px;
+    cursor: pointer; user-select: none; -webkit-tap-highlight-color: transparent;
+    transition: border-color 0.15s;
+  }
+  .pick:hover { border-color: rgba(255,255,255,0.12); }
+
+  .pick-header { margin-bottom: 8px; }
+  .pick-horse {
+    font-size: 1em; font-weight: 700; color: var(--text);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .pick-race { font-size: 0.68em; color: var(--muted); margin-top: 1px; }
+
+  /* ── DECISION CHIPS (always visible) ── */
+  .pick-decision {
+    display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 6px;
+    align-items: center;
+  }
+  .chip {
+    font-size: 0.65em; font-weight: 600; padding: 2px 7px;
+    border-radius: 4px; background: var(--chip-bg);
+    border: 1px solid var(--border); color: var(--text);
+    white-space: nowrap; line-height: 1.5;
+  }
+  .chip.edge-pos { color: var(--positive); border-color: rgba(22,163,74,0.2); background: rgba(22,163,74,0.05); }
+  .chip.edge-neg { color: var(--negative); border-color: rgba(220,38,38,0.2); }
+  .chip.conv-chip { font-weight: 700; }
+  .chip.mkt-live { color: var(--positive); }
+  .chip.mkt-sp { color: var(--gold); background: rgba(200,150,12,0.06); }
+  .chip.mkt-stale { color: var(--warning); background: rgba(217,119,6,0.06); }
+
+  /* ── RISK LINE (always visible) ── */
+  .pick-risk {
+    font-size: 0.62em; padding: 2px 0; margin-bottom: 6px;
+  }
+  .pick-risk.risk-ok { color: var(--muted); }
+  .pick-risk.risk-warn { color: var(--warning); font-weight: 600; }
+
+  /* ── EXPAND HINT ── */
+  .pick-expand-hint {
+    font-size: 0.6em; color: var(--muted); text-align: right;
+  }
+  .pick.open .pick-expand-hint { display: none; }
+
+  /* ── EVIDENCE (hidden until tap) ── */
+  .pick-evidence { display: none; margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border); }
+  .pick.open .pick-evidence { display: block; }
+
+  .ev-section-title {
+    font-size: 0.6em; text-transform: uppercase; letter-spacing: 1.2px;
+    color: var(--muted); margin-bottom: 8px; font-weight: 600;
+  }
+  .ev-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4px 12px;
+    margin-bottom: 8px;
+  }
+  .ev-item {
+    display: flex; justify-content: space-between; padding: 3px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.03); font-size: 0.7em;
+  }
+  .ev-label { color: var(--muted); }
+  .ev-val { color: var(--text); font-weight: 500; }
+  .form-str { font-family: monospace; letter-spacing: 2px; color: var(--gold) !important; }
+
+  .ev-why {
+    font-size: 0.68em; color: var(--muted); padding-top: 4px;
+    display: flex; gap: 6px;
+  }
+  .ev-why .ev-label { flex-shrink: 0; }
+  .ev-why span:last-child { color: var(--text); }
+
+  /* ── COUNT PILLS ── */
+  .count-pills {
+    display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;
+    margin-bottom: 16px; font-size: 0.7em;
+  }
+  .count-pill {
+    text-align: center; padding: 4px 10px;
+  }
+  .count-pill .n { font-size: 1.3em; font-weight: 800; color: var(--text); }
+  .count-pill .l { font-size: 0.75em; color: var(--muted); }
+
+  .footer {
+    text-align: center; font-size: 0.6em; color: var(--muted);
+    margin-top: 20px; padding-top: 12px; border-top: 1px solid var(--border);
+    line-height: 1.7;
+  }
+  .footer strong { color: var(--text); }
+
+  /* ── SAFETY BANNER (repair mode) ── */
+  .safety-banner {
+    display: flex; align-items: center; gap: 12px;
+    background: rgba(217,119,6,0.08); border: 1px solid rgba(217,119,6,0.25);
+    border-radius: var(--radius); padding: 12px 14px; margin-bottom: 16px;
+    font-size: 0.68em; line-height: 1.5;
+  }
+  .safety-icon { font-size: 1.4em; flex-shrink: 0; }
+  .safety-msg strong { color: var(--warning); }
+  .safety-msg { color: var(--muted); }
+ </style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>🏇 Calibrated Racing Picks</h1>
+  <div class="sub">2026-05-30 · 7 picks · 7 WATCH · +19.4% backtested ROI</div>
+</div>
+
+
+
+<div class="count-pills">
+  <div class="count-pill"><div class="n">7</div><div class="l">Picks</div></div>
+  <div class="count-pill"><div class="n">0</div><div class="l">Strong</div></div>
+  <div class="count-pill"><div class="n">0</div><div class="l">Playable</div></div>
+  <div class="count-pill"><div class="n">7</div><div class="l">Spec</div></div>
+  <div class="count-pill"><div class="n">7</div><div class="l">Watchlist</div></div>
+</div>
+
+<div class="decision-bar">
+  <strong>Filter:</strong> Top-rated · Rating≥45 · Field≥6 · No Heavy · Recent form &nbsp;|&nbsp;
+  <strong>Backtest:</strong> 96 bets · 15.6% WR · +19.4% ROI (May 20–27)
+</div>
+
+
+    <div class="pick" onclick="this.classList.toggle('open')">
+      <div class="pick-header">
+        <div class="pick-horse">SHE’SANAIS</div>
+        <div class="pick-race">R1 · Sportsbet Bowen ·  · Good 4 · 7 runners</div>
+      </div>
+      <div class="pick-decision">
+        <span class="chip">Fair $8.4</span>
+        <span class="chip edge-neg">Edge —</span>
+        <span class="chip conv-chip" style="border-color:#71717a;color:#71717a">WATCH</span>
+        <span class="chip mkt-stale">No odds</span>
+      </div>
+      <div class="pick-risk risk-ok">⚡ No odds available</div>
+      <div class="pick-expand-hint">Tap for evidence ▼</div>
+      <div class="pick-evidence">
+        <div class="ev-section-title">Evidence</div>
+        <div class="ev-grid">
+          <div class="ev-item"><span class="ev-label">Win prob</span><span class="ev-val">11.9%</span></div>
+          <div class="ev-item"><span class="ev-label">Rating</span><span class="ev-val">53</span></div>
+          <div class="ev-item"><span class="ev-label">Barrier</span><span class="ev-val">2</span></div>
+          <div class="ev-item"><span class="ev-label">Weight</span><span class="ev-val">57.5</span></div>
+          <div class="ev-item"><span class="ev-label">Jockey</span><span class="ev-val">Aidan Holt</span></div>
+          <div class="ev-item"><span class="ev-label">Trainer</span><span class="ev-val">Lachie Manzelmann</span></div>
+          <div class="ev-item"><span class="ev-label">Form</span><span class="ev-val form-str">436766x0</span></div>
+          <div class="ev-item"><span class="ev-label">Grade</span><span class="ev-val">Maiden</span></div>
+        </div>
+        <div class="ev-why"><span class="ev-label">Why</span><span>Solid rating (53) · in-form</span></div>
+      </div>
+    </div>
+    <div class="pick" onclick="this.classList.toggle('open')">
+      <div class="pick-header">
+        <div class="pick-horse">JANEY BOPPER</div>
+        <div class="pick-race">R3 · Picklebet Park Werribee ·  · Soft 6 · 13 runners</div>
+      </div>
+      <div class="pick-decision">
+        <span class="chip">Fair $9.3</span>
+        <span class="chip edge-neg">Edge —</span>
+        <span class="chip conv-chip" style="border-color:#71717a;color:#71717a">WATCH</span>
+        <span class="chip mkt-stale">No odds</span>
+      </div>
+      <div class="pick-risk risk-ok">⚡ No odds available · Low rating for grade</div>
+      <div class="pick-expand-hint">Tap for evidence ▼</div>
+      <div class="pick-evidence">
+        <div class="ev-section-title">Evidence</div>
+        <div class="ev-grid">
+          <div class="ev-item"><span class="ev-label">Win prob</span><span class="ev-val">10.8%</span></div>
+          <div class="ev-item"><span class="ev-label">Rating</span><span class="ev-val">49</span></div>
+          <div class="ev-item"><span class="ev-label">Barrier</span><span class="ev-val">7</span></div>
+          <div class="ev-item"><span class="ev-label">Weight</span><span class="ev-val">57.5</span></div>
+          <div class="ev-item"><span class="ev-label">Jockey</span><span class="ev-val">Neil Farley</span></div>
+          <div class="ev-item"><span class="ev-label">Trainer</span><span class="ev-val">Andrew Bobbin</span></div>
+          <div class="ev-item"><span class="ev-label">Form</span><span class="ev-val form-str">8630x580</span></div>
+          <div class="ev-item"><span class="ev-label">Grade</span><span class="ev-val">Maiden</span></div>
+        </div>
+        <div class="ev-why"><span class="ev-label">Why</span><span>Top-rated in weak field (49) · competitive field of 13 · in-form</span></div>
+      </div>
+    </div>
+    <div class="pick" onclick="this.classList.toggle('open')">
+      <div class="pick-header">
+        <div class="pick-horse">ASTERN FIGHT</div>
+        <div class="pick-race">R1 · Picklebet Park Werribee ·  · Soft 6 · 12 runners</div>
+      </div>
+      <div class="pick-decision">
+        <span class="chip">Fair $8.9</span>
+        <span class="chip edge-neg">Edge —</span>
+        <span class="chip conv-chip" style="border-color:#71717a;color:#71717a">WATCH</span>
+        <span class="chip mkt-stale">No odds</span>
+      </div>
+      <div class="pick-risk risk-ok">⚡ No odds available · Low rating for grade</div>
+      <div class="pick-expand-hint">Tap for evidence ▼</div>
+      <div class="pick-evidence">
+        <div class="ev-section-title">Evidence</div>
+        <div class="ev-grid">
+          <div class="ev-item"><span class="ev-label">Win prob</span><span class="ev-val">11.2%</span></div>
+          <div class="ev-item"><span class="ev-label">Rating</span><span class="ev-val">49</span></div>
+          <div class="ev-item"><span class="ev-label">Barrier</span><span class="ev-val">3</span></div>
+          <div class="ev-item"><span class="ev-label">Weight</span><span class="ev-val">59.5</span></div>
+          <div class="ev-item"><span class="ev-label">Jockey</span><span class="ev-val">Neil Farley</span></div>
+          <div class="ev-item"><span class="ev-label">Trainer</span><span class="ev-val">Tom Dabernig</span></div>
+          <div class="ev-item"><span class="ev-label">Form</span><span class="ev-val form-str">3</span></div>
+          <div class="ev-item"><span class="ev-label">Grade</span><span class="ev-val">Maiden</span></div>
+        </div>
+        <div class="ev-why"><span class="ev-label">Why</span><span>Top-rated in weak field (49) · competitive field of 12 · in-form</span></div>
+      </div>
+    </div>
+    <div class="pick" onclick="this.classList.toggle('open')">
+      <div class="pick-header">
+        <div class="pick-horse">TEQUILA DANCER</div>
+        <div class="pick-race">R4 · Julia Creek ·  · N/A · 12 runners</div>
+      </div>
+      <div class="pick-decision">
+        <span class="chip">Fair $8.9</span>
+        <span class="chip edge-neg">Edge —</span>
+        <span class="chip conv-chip" style="border-color:#71717a;color:#71717a">WATCH</span>
+        <span class="chip mkt-stale">No odds</span>
+      </div>
+      <div class="pick-risk risk-ok">⚡ No odds available · Low rating for grade</div>
+      <div class="pick-expand-hint">Tap for evidence ▼</div>
+      <div class="pick-evidence">
+        <div class="ev-section-title">Evidence</div>
+        <div class="ev-grid">
+          <div class="ev-item"><span class="ev-label">Win prob</span><span class="ev-val">11.2%</span></div>
+          <div class="ev-item"><span class="ev-label">Rating</span><span class="ev-val">48</span></div>
+          <div class="ev-item"><span class="ev-label">Barrier</span><span class="ev-val">4</span></div>
+          <div class="ev-item"><span class="ev-label">Weight</span><span class="ev-val">61</span></div>
+          <div class="ev-item"><span class="ev-label">Jockey</span><span class="ev-val">David Sparks</span></div>
+          <div class="ev-item"><span class="ev-label">Trainer</span><span class="ev-val">Shryn Royes</span></div>
+          <div class="ev-item"><span class="ev-label">Form</span><span class="ev-val form-str">230x4339</span></div>
+          <div class="ev-item"><span class="ev-label">Grade</span><span class="ev-val">BENCHMARK 50</span></div>
+        </div>
+        <div class="ev-why"><span class="ev-label">Why</span><span>Top-rated in weak field (48) · competitive field of 12 · in-form</span></div>
+      </div>
+    </div>
+    <div class="pick" onclick="this.classList.toggle('open')">
+      <div class="pick-header">
+        <div class="pick-horse">SHEZ LETHAL</div>
+        <div class="pick-race">R2 · Julia Creek ·  · N/A · 9 runners</div>
+      </div>
+      <div class="pick-decision">
+        <span class="chip">Fair $8.9</span>
+        <span class="chip edge-neg">Edge —</span>
+        <span class="chip conv-chip" style="border-color:#71717a;color:#71717a">WATCH</span>
+        <span class="chip mkt-stale">No odds</span>
+      </div>
+      <div class="pick-risk risk-ok">⚡ No odds available · Low rating for grade</div>
+      <div class="pick-expand-hint">Tap for evidence ▼</div>
+      <div class="pick-evidence">
+        <div class="ev-section-title">Evidence</div>
+        <div class="ev-grid">
+          <div class="ev-item"><span class="ev-label">Win prob</span><span class="ev-val">11.2%</span></div>
+          <div class="ev-item"><span class="ev-label">Rating</span><span class="ev-val">47</span></div>
+          <div class="ev-item"><span class="ev-label">Barrier</span><span class="ev-val">6</span></div>
+          <div class="ev-item"><span class="ev-label">Weight</span><span class="ev-val">56</span></div>
+          <div class="ev-item"><span class="ev-label">Jockey</span><span class="ev-val">Ms Maddie Mankelow(a1.5/52kg)</span></div>
+          <div class="ev-item"><span class="ev-label">Trainer</span><span class="ev-val">Toni Schofield</span></div>
+          <div class="ev-item"><span class="ev-label">Form</span><span class="ev-val form-str">761548x4</span></div>
+          <div class="ev-item"><span class="ev-label">Grade</span><span class="ev-val">BENCHMARK 60</span></div>
+        </div>
+        <div class="ev-why"><span class="ev-label">Why</span><span>Top-rated in weak field (47) · in-form</span></div>
+      </div>
+    </div>
+    <div class="pick" onclick="this.classList.toggle('open')">
+      <div class="pick-header">
+        <div class="pick-horse">BEG ME</div>
+        <div class="pick-race">R5 · Tambo ·  · Good · 12 runners</div>
+      </div>
+      <div class="pick-decision">
+        <span class="chip">Fair $8.9</span>
+        <span class="chip edge-neg">Edge —</span>
+        <span class="chip conv-chip" style="border-color:#71717a;color:#71717a">WATCH</span>
+        <span class="chip mkt-stale">No odds</span>
+      </div>
+      <div class="pick-risk risk-ok">⚡ No odds available · Low rating for grade</div>
+      <div class="pick-expand-hint">Tap for evidence ▼</div>
+      <div class="pick-evidence">
+        <div class="ev-section-title">Evidence</div>
+        <div class="ev-grid">
+          <div class="ev-item"><span class="ev-label">Win prob</span><span class="ev-val">11.2%</span></div>
+          <div class="ev-item"><span class="ev-label">Rating</span><span class="ev-val">47</span></div>
+          <div class="ev-item"><span class="ev-label">Barrier</span><span class="ev-val">13</span></div>
+          <div class="ev-item"><span class="ev-label">Weight</span><span class="ev-val">62</span></div>
+          <div class="ev-item"><span class="ev-label">Jockey</span><span class="ev-val">Ms Amie Meissner(a2/53.5kg)</span></div>
+          <div class="ev-item"><span class="ev-label">Trainer</span><span class="ev-val">Glenda Bell</span></div>
+          <div class="ev-item"><span class="ev-label">Form</span><span class="ev-val form-str">38355061</span></div>
+          <div class="ev-item"><span class="ev-label">Grade</span><span class="ev-val">BENCHMARK 58</span></div>
+        </div>
+        <div class="ev-why"><span class="ev-label">Why</span><span>Top-rated in weak field (47) · competitive field of 12 · in-form</span></div>
+      </div>
+    </div>
+    <div class="pick" onclick="this.classList.toggle('open')">
+      <div class="pick-header">
+        <div class="pick-horse">WHATTA WHITT</div>
+        <div class="pick-race">R2 · Sportsbet Bowen ·  · Good 4 · 7 runners</div>
+      </div>
+      <div class="pick-decision">
+        <span class="chip">Fair $8.9</span>
+        <span class="chip edge-neg">Edge —</span>
+        <span class="chip conv-chip" style="border-color:#71717a;color:#71717a">WATCH</span>
+        <span class="chip mkt-stale">No odds</span>
+      </div>
+      <div class="pick-risk risk-ok">⚡ No odds available · Low rating for grade</div>
+      <div class="pick-expand-hint">Tap for evidence ▼</div>
+      <div class="pick-evidence">
+        <div class="ev-section-title">Evidence</div>
+        <div class="ev-grid">
+          <div class="ev-item"><span class="ev-label">Win prob</span><span class="ev-val">11.2%</span></div>
+          <div class="ev-item"><span class="ev-label">Rating</span><span class="ev-val">47</span></div>
+          <div class="ev-item"><span class="ev-label">Barrier</span><span class="ev-val">7</span></div>
+          <div class="ev-item"><span class="ev-label">Weight</span><span class="ev-val">57.5</span></div>
+          <div class="ev-item"><span class="ev-label">Jockey</span><span class="ev-val">Adam Sewell</span></div>
+          <div class="ev-item"><span class="ev-label">Trainer</span><span class="ev-val">Lachie Manzelmann</span></div>
+          <div class="ev-item"><span class="ev-label">Form</span><span class="ev-val form-str">13727938</span></div>
+          <div class="ev-item"><span class="ev-label">Grade</span><span class="ev-val">BENCHMARK 55</span></div>
+        </div>
+        <div class="ev-why"><span class="ev-label">Why</span><span>Top-rated in weak field (47) · in-form</span></div>
+      </div>
+    </div>
+
+<div class="footer">
+  <strong>⚠️ Check Sportsbet odds before betting.</strong> Fair odds are estimates from 9,478-sample calibration.<br>
+  Edge vs SP — bets require 8%+ margin. <strong>Check live odds before wagering.</strong><br>
+  <a href="index.html" style="color:var(--gold);">← Back to Hub</a>
+</div>
+
+<script src="theme-sync.js"></script>
+<script>
+  document.querySelectorAll('.pick').forEach(p => {
+    p.addEventListener('click', function(e) {
+      // Don't toggle if user is trying to select text
+      if (window.getSelection().toString()) return;
+      this.classList.toggle('open');
+    });
+  });
+</script>
+</body>
+</html>
