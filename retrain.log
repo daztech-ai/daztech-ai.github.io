@@ -1,0 +1,454 @@
+2026-05-31 20:52:12,377 [INFO] ============================================================
+2026-05-31 20:52:12,377 [INFO] Daztech Retrain Pipeline — 2026-05-31T10:52:12.377191+00:00
+2026-05-31 20:52:12,377 [INFO] Force mode: False, Dry run: True
+2026-05-31 20:52:12,377 [INFO] ============================================================
+2026-05-31 20:52:12,377 [INFO] 
+────────────────────────────────────────
+[RACING] Starting retrain...
+────────────────────────────────────────
+2026-05-31 20:52:12,407 [INFO] Racing: 1268 races with results found
+2026-05-31 20:52:35,319 [INFO] Racing features: 14215 rows, 20 features, win_rate=0.086
+2026-05-31 20:52:35,325 [INFO] [racing] Train: 9950 rows, Test: 4265 rows
+2026-05-31 20:52:35,325 [INFO] [racing] Train win rate: 0.086, Test win rate: 0.084
+2026-05-31 20:52:39,379 [INFO] [racing] Best params: {'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 500}
+2026-05-31 20:52:39,588 [INFO] [racing] Brier raw=0.0747, calibrated=0.0756
+2026-05-31 20:52:39,588 [INFO] [racing] AUC raw=0.658, calibrated=0.657
+2026-05-31 20:52:39,588 [INFO] [racing] DRY RUN — skipping model save
+2026-05-31 20:52:39,589 [INFO] 
+============================================================
+2026-05-31 20:52:39,589 [INFO] Retrain pipeline complete — 2026-05-31T10:52:39.589313+00:00
+2026-05-31 20:52:39,589 [INFO]   [racing]: dry_run
+2026-05-31 20:52:39,589 [INFO] ============================================================
+2026-05-31 20:52:46,488 [INFO] ============================================================
+2026-05-31 20:52:46,488 [INFO] Daztech Retrain Pipeline — 2026-05-31T10:52:46.488637+00:00
+2026-05-31 20:52:46,488 [INFO] Force mode: False, Dry run: True
+2026-05-31 20:52:46,488 [INFO] ============================================================
+2026-05-31 20:52:46,489 [INFO] 
+────────────────────────────────────────
+[NRL] Starting retrain...
+────────────────────────────────────────
+2026-05-31 20:52:46,490 [INFO] NRL: 97 completed games
+2026-05-31 20:52:46,498 [INFO] NRL features: 93 rows, 13 features, win_rate=0.527
+2026-05-31 20:52:46,498 [INFO] [nrl] Train: 65 rows, Test: 28 rows
+2026-05-31 20:52:46,498 [INFO] [nrl] Train win rate: 0.508, Test win rate: 0.571
+2026-05-31 20:52:49,240 [INFO] [nrl] Best params: {'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 100}
+2026-05-31 20:52:49,408 [INFO] [nrl] Brier raw=0.2944, calibrated=0.4845
+2026-05-31 20:52:49,408 [INFO] [nrl] AUC raw=0.284, calibrated=0.289
+2026-05-31 20:52:49,409 [INFO] [nrl] DRY RUN — skipping model save
+2026-05-31 20:52:49,409 [INFO] 
+============================================================
+2026-05-31 20:52:49,410 [INFO] Retrain pipeline complete — 2026-05-31T10:52:49.410142+00:00
+2026-05-31 20:52:49,410 [INFO]   [nrl]: dry_run
+2026-05-31 20:52:49,410 [INFO] ============================================================
+2026-05-31 20:53:00,451 [INFO] ============================================================
+2026-05-31 20:53:00,451 [INFO] Daztech Retrain Pipeline — 2026-05-31T10:53:00.451634+00:00
+2026-05-31 20:53:00,451 [INFO] Force mode: False, Dry run: True
+2026-05-31 20:53:00,451 [INFO] ============================================================
+2026-05-31 20:53:00,452 [INFO] 
+────────────────────────────────────────
+[NBA] Starting retrain...
+────────────────────────────────────────
+2026-05-31 20:53:00,453 [WARNING] NBA: only 0 completed games — need 30+, skipping
+2026-05-31 20:53:00,453 [WARNING] [nba] Skipped — insufficient data or feature builder returned None
+2026-05-31 20:53:00,453 [INFO] 
+============================================================
+2026-05-31 20:53:00,453 [INFO] Retrain pipeline complete — 2026-05-31T10:53:00.453520+00:00
+2026-05-31 20:53:00,453 [INFO]   [nba]: skipped
+2026-05-31 20:53:00,453 [INFO] ============================================================
+2026-05-31 20:53:06,364 [INFO] ============================================================
+2026-05-31 20:53:06,364 [INFO] Daztech Retrain Pipeline — 2026-05-31T10:53:06.364831+00:00
+2026-05-31 20:53:06,365 [INFO] Force mode: False, Dry run: True
+2026-05-31 20:53:06,365 [INFO] ============================================================
+2026-05-31 20:53:06,365 [INFO] 
+────────────────────────────────────────
+[RACING] Starting retrain...
+────────────────────────────────────────
+2026-05-31 20:53:06,395 [INFO] Racing: 1268 races with results found
+2026-05-31 20:53:29,563 [INFO] Racing features: 14215 rows, 20 features, win_rate=0.086
+2026-05-31 20:53:29,569 [INFO] [racing] Train: 9950 rows, Test: 4265 rows
+2026-05-31 20:53:29,569 [INFO] [racing] Train win rate: 0.086, Test win rate: 0.084
+2026-05-31 20:53:33,962 [INFO] [racing] Best params: {'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 500}
+2026-05-31 20:53:34,177 [INFO] [racing] Brier raw=0.0747, calibrated=0.0756
+2026-05-31 20:53:34,177 [INFO] [racing] AUC raw=0.658, calibrated=0.657
+2026-05-31 20:53:34,178 [INFO] [racing] DRY RUN — skipping model save
+2026-05-31 20:53:34,178 [INFO] 
+────────────────────────────────────────
+[NRL] Starting retrain...
+────────────────────────────────────────
+2026-05-31 20:53:34,179 [INFO] NRL: 97 completed games
+2026-05-31 20:53:34,187 [INFO] NRL features: 93 rows, 13 features, win_rate=0.527
+2026-05-31 20:53:34,194 [INFO] [nrl] Train: 65 rows, Test: 28 rows
+2026-05-31 20:53:34,194 [INFO] [nrl] Train win rate: 0.508, Test win rate: 0.571
+2026-05-31 20:53:34,615 [INFO] [nrl] Best params: {'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 100}
+2026-05-31 20:53:34,642 [INFO] [nrl] Brier raw=0.2944, calibrated=0.4845
+2026-05-31 20:53:34,642 [INFO] [nrl] AUC raw=0.284, calibrated=0.289
+2026-05-31 20:53:34,642 [INFO] [nrl] DRY RUN — skipping model save
+2026-05-31 20:53:34,642 [INFO] 
+────────────────────────────────────────
+[NBA] Starting retrain...
+────────────────────────────────────────
+2026-05-31 20:53:34,642 [WARNING] NBA: only 0 completed games — need 30+, skipping
+2026-05-31 20:53:34,642 [WARNING] [nba] Skipped — insufficient data or feature builder returned None
+2026-05-31 20:53:34,643 [INFO] 
+============================================================
+2026-05-31 20:53:34,643 [INFO] Retrain pipeline complete — 2026-05-31T10:53:34.643556+00:00
+2026-05-31 20:53:34,643 [INFO]   [racing]: dry_run
+2026-05-31 20:53:34,643 [INFO]   [nrl]: dry_run
+2026-05-31 20:53:34,643 [INFO]   [nba]: skipped
+2026-05-31 20:53:34,643 [INFO] ============================================================
+2026-05-31 20:53:48,782 [INFO] ============================================================
+2026-05-31 20:53:48,782 [INFO] Daztech Retrain Pipeline — 2026-05-31T10:53:48.782663+00:00
+2026-05-31 20:53:48,782 [INFO] Force mode: True, Dry run: False
+2026-05-31 20:53:48,782 [INFO] ============================================================
+2026-05-31 20:53:48,783 [INFO] 
+────────────────────────────────────────
+[RACING] Starting retrain...
+────────────────────────────────────────
+2026-05-31 20:53:48,813 [INFO] Racing: 1268 races with results found
+2026-05-31 20:54:11,696 [INFO] Racing features: 14215 rows, 20 features, win_rate=0.086
+2026-05-31 20:54:11,701 [INFO] [racing] Train: 9950 rows, Test: 4265 rows
+2026-05-31 20:54:11,702 [INFO] [racing] Train win rate: 0.086, Test win rate: 0.084
+2026-05-31 20:54:16,047 [INFO] [racing] Best params: {'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 500}
+2026-05-31 20:54:16,273 [INFO] [racing] Brier raw=0.0747, calibrated=0.0756
+2026-05-31 20:54:16,273 [INFO] [racing] AUC raw=0.658, calibrated=0.657
+2026-05-31 20:54:16,274 [INFO] [racing] PROMOTING: new Brier 0.0756 (first model)
+2026-05-31 20:54:16,282 [INFO] [racing] Model saved to /home/daz/daztech-betting-engine/models/racing_xgb_v_20260531_205416.json
+2026-05-31 20:54:16,282 [INFO] [racing] Status: promoted
+2026-05-31 20:54:16,282 [INFO] 
+────────────────────────────────────────
+[NRL] Starting retrain...
+────────────────────────────────────────
+2026-05-31 20:54:16,283 [INFO] NRL: 97 completed games
+2026-05-31 20:54:16,290 [INFO] NRL features: 93 rows, 13 features, win_rate=0.527
+2026-05-31 20:54:16,296 [INFO] [nrl] Train: 65 rows, Test: 28 rows
+2026-05-31 20:54:16,297 [INFO] [nrl] Train win rate: 0.508, Test win rate: 0.571
+2026-05-31 20:54:16,673 [INFO] [nrl] Best params: {'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 100}
+2026-05-31 20:54:16,700 [INFO] [nrl] Brier raw=0.2944, calibrated=0.4845
+2026-05-31 20:54:16,700 [INFO] [nrl] AUC raw=0.284, calibrated=0.289
+2026-05-31 20:54:16,701 [INFO] [nrl] PROMOTING: new Brier 0.4845 (first model)
+2026-05-31 20:54:16,702 [INFO] [nrl] Model saved to /home/daz/daztech-betting-engine/models/nrl_xgb_v_20260531_205416.json
+2026-05-31 20:54:16,702 [INFO] [nrl] Status: promoted
+2026-05-31 20:54:16,703 [INFO] 
+────────────────────────────────────────
+[NBA] Starting retrain...
+────────────────────────────────────────
+2026-05-31 20:54:16,703 [WARNING] NBA: only 0 completed games — need 30+, skipping
+2026-05-31 20:54:16,703 [WARNING] [nba] Skipped — insufficient data or feature builder returned None
+2026-05-31 20:54:16,704 [INFO] Metrics saved to /home/daz/daztech-betting-engine/output/model-metrics.json
+2026-05-31 20:54:16,704 [INFO] 
+============================================================
+2026-05-31 20:54:16,704 [INFO] Retrain pipeline complete — 2026-05-31T10:54:16.704820+00:00
+2026-05-31 20:54:16,704 [INFO]   [racing]: promoted
+2026-05-31 20:54:16,704 [INFO]   [nrl]: promoted
+2026-05-31 20:54:16,704 [INFO]   [nba]: skipped
+2026-05-31 20:54:16,704 [INFO] ============================================================
+2026-05-31 20:54:59,112 [INFO] ============================================================
+2026-05-31 20:54:59,112 [INFO] Daztech Retrain Pipeline — 2026-05-31T10:54:59.112176+00:00
+2026-05-31 20:54:59,112 [INFO] Force mode: True, Dry run: False
+2026-05-31 20:54:59,112 [INFO] ============================================================
+2026-05-31 20:54:59,112 [INFO] 
+────────────────────────────────────────
+[RACING] Starting retrain...
+────────────────────────────────────────
+2026-05-31 20:54:59,144 [INFO] Racing: 1268 races with results found
+2026-05-31 20:55:21,604 [INFO] Racing features: 14215 rows, 20 features, win_rate=0.086
+2026-05-31 20:55:21,610 [INFO] [racing] Train: 9950 rows, Test: 4265 rows
+2026-05-31 20:55:21,610 [INFO] [racing] Train win rate: 0.086, Test win rate: 0.084
+2026-05-31 20:55:26,109 [INFO] [racing] Best params: {'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 500}
+2026-05-31 20:55:26,340 [INFO] [racing] Brier raw=0.0747, calibrated=0.0756
+2026-05-31 20:55:26,340 [INFO] [racing] AUC raw=0.658, calibrated=0.657
+2026-05-31 20:55:26,340 [INFO] [racing] PROMOTING: new Brier 0.0756 < old Brier 0.0756
+2026-05-31 20:55:26,347 [INFO] [racing] Model saved to /home/daz/daztech-betting-engine/models/racing_xgb_v_20260531_205526.json
+2026-05-31 20:55:26,347 [INFO] [racing] Status: promoted
+2026-05-31 20:55:26,349 [INFO] Metrics saved to /home/daz/daztech-betting-engine/output/model-metrics.json
+2026-05-31 20:55:26,349 [INFO] 
+============================================================
+2026-05-31 20:55:26,349 [INFO] Retrain pipeline complete — 2026-05-31T10:55:26.349530+00:00
+2026-05-31 20:55:26,349 [INFO]   [racing]: promoted
+2026-05-31 20:55:26,349 [INFO] ============================================================
+2026-05-31 20:56:16,598 [INFO] ============================================================
+2026-05-31 20:56:16,598 [INFO] Daztech Retrain Pipeline — 2026-05-31T10:56:16.598179+00:00
+2026-05-31 20:56:16,598 [INFO] Force mode: False, Dry run: False
+2026-05-31 20:56:16,598 [INFO] ============================================================
+2026-05-31 20:56:16,598 [INFO] 
+────────────────────────────────────────
+[NRL] Starting retrain...
+────────────────────────────────────────
+2026-05-31 20:56:16,600 [INFO] NRL: 97 completed games
+2026-05-31 20:56:16,607 [INFO] NRL features: 93 rows, 13 features, win_rate=0.527
+2026-05-31 20:56:16,607 [INFO] [nrl] Train: 65 rows, Test: 28 rows
+2026-05-31 20:56:16,607 [INFO] [nrl] Train win rate: 0.508, Test win rate: 0.571
+2026-05-31 20:56:18,945 [INFO] [nrl] Best params: {'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 100}
+2026-05-31 20:56:18,979 [INFO] [nrl] Brier raw=0.2944, calibrated=0.4845
+2026-05-31 20:56:18,979 [INFO] [nrl] AUC raw=0.284, calibrated=0.289
+2026-05-31 20:56:18,980 [WARNING] [nrl] AUC 0.289 < 0.5 — model worse than random, skipping
+2026-05-31 20:56:18,981 [INFO] Metrics saved to /home/daz/daztech-betting-engine/output/model-metrics.json
+2026-05-31 20:56:18,981 [INFO] 
+============================================================
+2026-05-31 20:56:18,981 [INFO] Retrain pipeline complete — 2026-05-31T10:56:18.981191+00:00
+2026-05-31 20:56:18,981 [INFO]   [nrl]: rejected
+2026-05-31 20:56:18,981 [INFO] ============================================================
+2026-05-31 21:00:17,176 [INFO] ============================================================
+2026-05-31 21:00:17,176 [INFO] Daztech Retrain Pipeline — 2026-05-31T11:00:17.176185+00:00
+2026-05-31 21:00:17,176 [INFO] Force mode: True, Dry run: True
+2026-05-31 21:00:17,176 [INFO] ============================================================
+2026-05-31 21:00:17,176 [INFO] 
+────────────────────────────────────────
+[RACING] Starting retrain...
+────────────────────────────────────────
+2026-05-31 21:00:17,208 [INFO] Racing: 1268 races with results found
+2026-05-31 21:00:40,180 [INFO] Racing features: 14215 rows, 20 features, win_rate=0.086
+2026-05-31 21:00:40,187 [INFO] [racing] Train: 9950 rows, Test: 4265 rows
+2026-05-31 21:00:40,187 [INFO] [racing] Train win rate: 0.086, Test win rate: 0.084
+2026-05-31 21:00:44,737 [INFO] [racing] Best params: {'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 500}
+2026-05-31 21:00:44,957 [INFO] [racing] Brier raw=0.0747, calibrated=0.0756
+2026-05-31 21:00:44,957 [INFO] [racing] AUC raw=0.658, calibrated=0.657
+2026-05-31 21:00:44,958 [INFO] [racing] DRY RUN — skipping model save
+2026-05-31 21:00:44,958 [INFO] 
+============================================================
+2026-05-31 21:00:44,958 [INFO] Retrain pipeline complete — 2026-05-31T11:00:44.958786+00:00
+2026-05-31 21:00:44,958 [INFO]   [racing]: dry_run
+2026-05-31 21:00:44,958 [INFO] ============================================================
+2026-05-31 21:07:20,416 [INFO] ============================================================
+2026-05-31 21:07:20,416 [INFO] Daztech Retrain Pipeline — 2026-05-31T11:07:20.416220+00:00
+2026-05-31 21:07:20,416 [INFO] Force mode: True, Dry run: True
+2026-05-31 21:07:20,416 [INFO] ============================================================
+2026-05-31 21:07:20,416 [INFO] 
+────────────────────────────────────────
+[RACING] Starting retrain...
+────────────────────────────────────────
+2026-05-31 21:07:20,446 [INFO] Racing: 1268 races with results found
+2026-05-31 21:07:43,618 [INFO] Racing features: 14215 rows, 20 features, win_rate=0.086
+2026-05-31 21:07:43,623 [INFO] [racing] Train: 9950 rows, Test: 4265 rows
+2026-05-31 21:07:43,624 [INFO] [racing] Train win rate: 0.086, Test win rate: 0.084
+2026-05-31 21:07:50,700 [INFO] [racing] Best params: {'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 500}
+2026-05-31 21:14:52,475 [INFO] ============================================================
+2026-05-31 21:14:52,475 [INFO] Daztech Retrain Pipeline — 2026-05-31T11:14:52.475122+00:00
+2026-05-31 21:14:52,475 [INFO] Force mode: True, Dry run: True
+2026-05-31 21:14:52,475 [INFO] ============================================================
+2026-05-31 21:14:52,475 [INFO] 
+────────────────────────────────────────
+[RACING] Starting retrain...
+────────────────────────────────────────
+2026-05-31 21:14:52,505 [INFO] Racing: 1268 races with results found
+2026-05-31 21:15:16,278 [INFO] Racing features: 14215 rows, 20 features, win_rate=0.086
+2026-05-31 21:15:16,285 [INFO] [racing] Train: 9950 rows, Test: 4265 rows
+2026-05-31 21:15:16,286 [INFO] [racing] Train win rate: 0.086, Test win rate: 0.084
+2026-05-31 22:29:27,470 [INFO] ============================================================
+2026-05-31 22:29:27,471 [INFO] Daztech Retrain Pipeline — 2026-05-31T12:29:27.470177+00:00
+2026-05-31 22:29:27,471 [INFO] Force mode: True, Dry run: True
+2026-05-31 22:29:27,471 [INFO] ============================================================
+2026-05-31 22:29:27,472 [INFO] 
+────────────────────────────────────────
+[RACING] Starting retrain...
+────────────────────────────────────────
+2026-05-31 22:29:27,534 [INFO] Racing: 1268 races with results found
+2026-05-31 22:29:50,429 [INFO] Racing features: 14215 rows, 20 features, win_rate=0.086
+2026-05-31 22:29:50,435 [INFO] [racing] Train: 9950 rows, Test: 4265 rows
+2026-05-31 22:29:50,435 [INFO] [racing] Train win rate: 0.086, Test win rate: 0.084
+2026-05-31 22:29:54,923 [INFO] [racing] Best params: {'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 500}
+2026-05-31 22:29:55,188 [INFO] [racing] Brier raw=0.0747, calibrated=0.0756
+2026-05-31 22:29:55,188 [INFO] [racing] AUC raw=0.658, calibrated=0.657
+2026-05-31 22:29:55,188 [INFO] [racing] DRY RUN — skipping model save
+2026-05-31 22:29:55,188 [INFO] 
+────────────────────────────────────────
+[NRL] Starting retrain...
+────────────────────────────────────────
+2026-05-31 22:29:55,190 [INFO] NRL: 97 completed games
+2026-05-31 22:29:55,208 [INFO] NRL features: 93 rows, 13 features, win_rate=0.527
+2026-05-31 22:29:55,212 [INFO] [nrl] Train: 65 rows, Test: 28 rows
+2026-05-31 22:29:55,212 [INFO] [nrl] Train win rate: 0.508, Test win rate: 0.571
+2026-05-31 22:29:55,680 [INFO] [nrl] Best params: {'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 100}
+2026-05-31 22:29:55,715 [INFO] [nrl] Brier raw=0.2944, calibrated=0.4845
+2026-05-31 22:29:55,715 [INFO] [nrl] AUC raw=0.284, calibrated=0.289
+2026-05-31 22:29:55,715 [INFO] [nrl] DRY RUN — skipping model save
+2026-05-31 22:29:55,716 [INFO] 
+────────────────────────────────────────
+[NBA] Starting retrain...
+────────────────────────────────────────
+2026-05-31 22:29:55,716 [WARNING] NBA: only 0 completed games — need 30+, skipping
+2026-05-31 22:29:55,716 [WARNING] [nba] Skipped — insufficient data or feature builder returned None
+2026-05-31 22:29:55,717 [INFO] 
+============================================================
+2026-05-31 22:29:55,717 [INFO] Retrain pipeline complete — 2026-05-31T12:29:55.717236+00:00
+2026-05-31 22:29:55,717 [INFO]   [racing]: dry_run
+2026-05-31 22:29:55,717 [INFO]   [nrl]: dry_run
+2026-05-31 22:29:55,717 [INFO]   [nba]: skipped
+2026-05-31 22:29:55,717 [INFO] ============================================================
+2026-05-31 22:44:45,683 [INFO] ============================================================
+2026-05-31 22:44:45,684 [INFO] Daztech Retrain Pipeline — 2026-05-31T12:44:45.683915+00:00
+2026-05-31 22:44:45,684 [INFO] Force mode: False, Dry run: True
+2026-05-31 22:44:45,685 [INFO] ============================================================
+2026-05-31 22:44:45,685 [INFO] 
+────────────────────────────────────────
+[RACING] Starting retrain...
+────────────────────────────────────────
+2026-05-31 22:44:45,748 [INFO] Racing: 1268 races with results found
+2026-05-31 22:45:08,693 [INFO] Racing features: 14215 rows, 20 features, win_rate=0.086
+2026-05-31 22:45:08,698 [INFO] [racing] Train: 9950 rows, Test: 4265 rows
+2026-05-31 22:45:08,698 [INFO] [racing] Train win rate: 0.086, Test win rate: 0.084
+2026-05-31 22:45:12,611 [INFO] [racing] Best params: {'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 500}
+2026-05-31 22:45:12,819 [INFO] [racing] Brier raw=0.0747, calibrated=0.0756
+2026-05-31 22:45:12,819 [INFO] [racing] AUC raw=0.658, calibrated=0.657
+2026-05-31 22:45:12,819 [INFO] [racing] DRY RUN — skipping model save
+2026-05-31 22:45:12,820 [INFO] 
+============================================================
+2026-05-31 22:45:12,820 [INFO] Retrain pipeline complete — 2026-05-31T12:45:12.820114+00:00
+2026-05-31 22:45:12,820 [INFO]   [racing]: dry_run
+2026-05-31 22:45:12,820 [INFO] ============================================================
+2026-06-01 00:36:17,803 [INFO] ============================================================
+2026-06-01 00:36:17,804 [INFO] Daztech Retrain Pipeline — 2026-05-31T14:36:17.803130+00:00
+2026-06-01 00:36:17,804 [INFO] Force mode: True, Dry run: True
+2026-06-01 00:36:17,804 [INFO] ============================================================
+2026-06-01 00:36:17,805 [INFO] 
+────────────────────────────────────────
+[RACING] Starting retrain...
+────────────────────────────────────────
+2026-06-01 00:36:17,866 [INFO] Racing: 1268 races with results found
+2026-06-01 00:36:40,952 [INFO] Racing features: 14215 rows, 20 features, win_rate=0.086
+2026-06-01 00:36:40,958 [INFO] [racing] Train: 9950 rows, Test: 4265 rows
+2026-06-01 00:36:40,958 [INFO] [racing] Train win rate: 0.086, Test win rate: 0.084
+2026-06-01 00:53:41,644 [INFO] ============================================================
+2026-06-01 00:53:41,644 [INFO] Daztech Retrain Pipeline — 2026-05-31T14:53:41.644091+00:00
+2026-06-01 00:53:41,644 [INFO] Force mode: True, Dry run: True
+2026-06-01 00:53:41,644 [INFO] ============================================================
+2026-06-01 00:53:41,645 [INFO] 
+────────────────────────────────────────
+[RACING] Starting retrain...
+────────────────────────────────────────
+2026-06-01 00:53:41,707 [INFO] Racing: 1268 races with results found
+2026-06-01 00:54:04,662 [INFO] Racing features: 14215 rows, 20 features, win_rate=0.086
+2026-06-01 00:54:04,667 [INFO] [racing] Train: 9950 rows, Test: 4265 rows
+2026-06-01 00:54:04,667 [INFO] [racing] Train win rate: 0.086, Test win rate: 0.084
+2026-06-01 00:54:08,659 [INFO] [racing] Best params: {'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 500}
+2026-06-01 00:54:08,871 [INFO] [racing] Brier raw=0.0747, calibrated=0.0756
+2026-06-01 00:54:08,871 [INFO] [racing] AUC raw=0.658, calibrated=0.657
+2026-06-01 00:54:08,871 [INFO] [racing] DRY RUN — skipping model save
+2026-06-01 00:54:08,871 [INFO] 
+────────────────────────────────────────
+[NRL] Starting retrain...
+────────────────────────────────────────
+2026-06-01 00:54:08,873 [INFO] NRL: 97 completed games
+2026-06-01 00:54:08,887 [INFO] NRL features: 93 rows, 13 features, win_rate=0.527
+2026-06-01 00:54:08,893 [INFO] [nrl] Train: 65 rows, Test: 28 rows
+2026-06-01 00:54:08,893 [INFO] [nrl] Train win rate: 0.508, Test win rate: 0.571
+2026-06-01 00:54:09,274 [INFO] [nrl] Best params: {'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 100}
+2026-06-01 00:54:09,300 [INFO] [nrl] Brier raw=0.2944, calibrated=0.4845
+2026-06-01 00:54:09,300 [INFO] [nrl] AUC raw=0.284, calibrated=0.289
+2026-06-01 00:54:09,301 [INFO] [nrl] DRY RUN — skipping model save
+2026-06-01 00:54:09,301 [INFO] 
+────────────────────────────────────────
+[NBA] Starting retrain...
+────────────────────────────────────────
+2026-06-01 00:54:09,301 [WARNING] NBA: only 0 completed games — need 30+, skipping
+2026-06-01 00:54:09,301 [WARNING] [nba] Skipped — insufficient data or feature builder returned None
+2026-06-01 00:54:09,303 [INFO] 
+============================================================
+2026-06-01 00:54:09,303 [INFO] Retrain pipeline complete — 2026-05-31T14:54:09.303145+00:00
+2026-06-01 00:54:09,303 [INFO]   [racing]: dry_run
+2026-06-01 00:54:09,303 [INFO]   [nrl]: dry_run
+2026-06-01 00:54:09,303 [INFO]   [nba]: skipped
+2026-06-01 00:54:09,303 [INFO] ============================================================
+2026-06-01 01:10:57,648 [INFO] ============================================================
+2026-06-01 01:10:57,648 [INFO] Daztech Retrain Pipeline — 2026-05-31T15:10:57.648191+00:00
+2026-06-01 01:10:57,648 [INFO] Force mode: False, Dry run: True
+2026-06-01 01:10:57,648 [INFO] ============================================================
+2026-06-01 01:10:57,649 [INFO] 
+────────────────────────────────────────
+[NRL] Starting retrain...
+────────────────────────────────────────
+2026-06-01 01:10:57,655 [INFO] NRL: 97 completed games
+2026-06-01 01:10:57,674 [INFO] NRL features: 93 rows, 13 features, win_rate=0.527
+2026-06-01 01:10:57,675 [INFO] [nrl] Train: 65 rows, Test: 28 rows
+2026-06-01 01:10:57,675 [INFO] [nrl] Train win rate: 0.508, Test win rate: 0.571
+2026-06-01 01:10:59,733 [INFO] [nrl] Best params: {'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 100}
+2026-06-01 01:10:59,765 [INFO] [nrl] Brier raw=0.2944, calibrated=0.4845
+2026-06-01 01:10:59,765 [INFO] [nrl] AUC raw=0.284, calibrated=0.289
+2026-06-01 01:10:59,765 [INFO] [nrl] DRY RUN — skipping model save
+2026-06-01 01:10:59,765 [INFO] 
+============================================================
+2026-06-01 01:10:59,765 [INFO] Retrain pipeline complete — 2026-05-31T15:10:59.765957+00:00
+2026-06-01 01:10:59,766 [INFO]   [nrl]: dry_run
+2026-06-01 01:10:59,766 [INFO] ============================================================
+2026-06-01 02:49:49,085 [INFO] ============================================================
+2026-06-01 02:49:49,086 [INFO] Daztech Retrain Pipeline — 2026-05-31T16:49:49.085444+00:00
+2026-06-01 02:49:49,086 [INFO] Force mode: True, Dry run: True
+2026-06-01 02:49:49,086 [INFO] ============================================================
+2026-06-01 02:49:49,087 [INFO] 
+────────────────────────────────────────
+[RACING] Starting retrain...
+────────────────────────────────────────
+2026-06-01 02:49:49,146 [INFO] Racing: 1268 races with results found
+2026-06-01 02:50:12,182 [INFO] Racing features: 14215 rows, 20 features, win_rate=0.086
+2026-06-01 02:50:12,188 [INFO] [racing] Train: 9950 rows, Test: 4265 rows
+2026-06-01 02:50:12,189 [INFO] [racing] Train win rate: 0.086, Test win rate: 0.084
+2026-06-01 02:50:16,848 [INFO] [racing] Best params: {'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 500}
+2026-06-01 02:50:17,122 [INFO] [racing] Brier raw=0.0747, calibrated=0.0756
+2026-06-01 02:50:17,122 [INFO] [racing] AUC raw=0.658, calibrated=0.657
+2026-06-01 02:50:17,123 [INFO] [racing] DRY RUN — skipping model save
+2026-06-01 02:50:17,123 [INFO] 
+────────────────────────────────────────
+[NRL] Starting retrain...
+────────────────────────────────────────
+2026-06-01 02:50:17,125 [INFO] NRL: 97 completed games
+2026-06-01 02:50:17,144 [INFO] NRL features: 93 rows, 13 features, win_rate=0.527
+2026-06-01 02:50:17,150 [INFO] [nrl] Train: 65 rows, Test: 28 rows
+2026-06-01 02:50:17,150 [INFO] [nrl] Train win rate: 0.508, Test win rate: 0.571
+2026-06-01 02:50:17,543 [INFO] [nrl] Best params: {'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 100}
+2026-06-01 02:50:17,570 [INFO] [nrl] Brier raw=0.2944, calibrated=0.4845
+2026-06-01 02:50:17,570 [INFO] [nrl] AUC raw=0.284, calibrated=0.289
+2026-06-01 02:50:17,571 [INFO] [nrl] DRY RUN — skipping model save
+2026-06-01 02:50:17,571 [INFO] 
+────────────────────────────────────────
+[NBA] Starting retrain...
+────────────────────────────────────────
+2026-06-01 02:50:17,571 [WARNING] NBA: only 0 completed games — need 30+, skipping
+2026-06-01 02:50:17,571 [WARNING] [nba] Skipped — insufficient data or feature builder returned None
+2026-06-01 02:50:17,572 [INFO] 
+============================================================
+2026-06-01 02:50:17,572 [INFO] Retrain pipeline complete — 2026-05-31T16:50:17.572152+00:00
+2026-06-01 02:50:17,572 [INFO]   [racing]: dry_run
+2026-06-01 02:50:17,572 [INFO]   [nrl]: dry_run
+2026-06-01 02:50:17,572 [INFO]   [nba]: skipped
+2026-06-01 02:50:17,572 [INFO] ============================================================
+2026-06-01 03:24:42,244 [INFO] ============================================================
+2026-06-01 03:24:42,246 [INFO] Daztech Retrain Pipeline — 2026-05-31T17:24:42.244952+00:00
+2026-06-01 03:24:42,246 [INFO] Force mode: True, Dry run: True
+2026-06-01 03:24:42,246 [INFO] ============================================================
+2026-06-01 03:24:42,247 [INFO] 
+────────────────────────────────────────
+[RACING] Starting retrain...
+────────────────────────────────────────
+2026-06-01 03:24:42,306 [INFO] Racing: 1268 races with results found
+2026-06-01 03:25:05,382 [INFO] Racing features: 14215 rows, 20 features, win_rate=0.086
+2026-06-01 03:25:05,388 [INFO] [racing] Train: 9950 rows, Test: 4265 rows
+2026-06-01 03:25:05,388 [INFO] [racing] Train win rate: 0.086, Test win rate: 0.084
+2026-06-01 03:25:09,335 [INFO] [racing] Best params: {'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 500}
+2026-06-01 03:25:09,562 [INFO] [racing] Brier raw=0.0747, calibrated=0.0756
+2026-06-01 03:25:09,562 [INFO] [racing] AUC raw=0.658, calibrated=0.657
+2026-06-01 03:25:09,563 [INFO] [racing] DRY RUN — skipping model save
+2026-06-01 03:25:09,563 [INFO] 
+────────────────────────────────────────
+[NRL] Starting retrain...
+────────────────────────────────────────
+2026-06-01 03:25:09,565 [INFO] NRL: 97 completed games
+2026-06-01 03:25:09,579 [INFO] NRL features: 93 rows, 13 features, win_rate=0.527
+2026-06-01 03:25:09,584 [INFO] [nrl] Train: 65 rows, Test: 28 rows
+2026-06-01 03:25:09,584 [INFO] [nrl] Train win rate: 0.508, Test win rate: 0.571
+2026-06-01 03:25:09,980 [INFO] [nrl] Best params: {'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 100}
+2026-06-01 03:25:10,007 [INFO] [nrl] Brier raw=0.2944, calibrated=0.4845
+2026-06-01 03:25:10,007 [INFO] [nrl] AUC raw=0.284, calibrated=0.289
+2026-06-01 03:25:10,008 [INFO] [nrl] DRY RUN — skipping model save
+2026-06-01 03:25:10,008 [INFO] 
+────────────────────────────────────────
+[NBA] Starting retrain...
+────────────────────────────────────────
+2026-06-01 03:25:10,008 [WARNING] NBA: only 0 completed games — need 30+, skipping
+2026-06-01 03:25:10,008 [WARNING] [nba] Skipped — insufficient data or feature builder returned None
+2026-06-01 03:25:10,009 [INFO] 
+============================================================
+2026-06-01 03:25:10,009 [INFO] Retrain pipeline complete — 2026-05-31T17:25:10.009222+00:00
+2026-06-01 03:25:10,009 [INFO]   [racing]: dry_run
+2026-06-01 03:25:10,009 [INFO]   [nrl]: dry_run
+2026-06-01 03:25:10,009 [INFO]   [nba]: skipped
+2026-06-01 03:25:10,009 [INFO] ============================================================

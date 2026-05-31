@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Daztech AI — Public Track Record</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<style>
+:root {
+  --bg: #0a0a0f;
+  --surface: #111118;
+  --border: #1e1e2a;
+  --text: #d4d4d8;
+  --muted: #71717a;
+  --gold: #c8960c;
+  --positive: #16a34a;
+  --negative: #dc2626;
+  --warning: #d97706;
+  --info: #3b82f6;
+  --radius: 10px;
+  --chip-bg: #1a1a24;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  background: var(--bg); color: var(--text);
+  max-width: 860px; margin: 0 auto; padding: 20px 16px;
+  line-height: 1.45; -webkit-text-size-adjust: 100%;
+}
+
+/* ── HEADER ── */
+.header {
+  text-align: center; margin-bottom: 24px;
+  padding-bottom: 16px; border-bottom: 1px solid var(--border);
+}
+.header h1 {
+  font-size: 1.4em; font-weight: 800; color: var(--text);
+  letter-spacing: -0.02em;
+}
+.header h1 span { color: var(--gold); }
+.header .subtitle {
+  font-size: 0.72em; color: var(--muted); margin-top: 4px;
+}
+.refresh-bar {
+  display: flex; align-items: center; justify-content: center;
+  gap: 8px; margin-top: 10px; font-size: 0.65em; color: var(--muted);
+}
+.refresh-bar button {
+  background: var(--surface); border: 1px solid var(--border);
+  color: var(--text); padding: 4px 14px; border-radius: 4px;
+  cursor: pointer; font-size: 0.95em; font-family: inherit;
+  transition: border-color 0.15s;
+}
+.refresh-bar button:hover { border-color: var(--gold); }
+
+/* ── HERO STATS ── */
+.hero-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 10px; margin-bottom: 24px;
+}
+.hero-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 14px 16px;
+  text-align: center;
+}
+.hero-card .label {
+  font-size: 0.62em; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 4px;
+}
+.hero-card .value {
+  font-size: 1.6em; font-weight: 800; color: var(--text);
+  line-height: 1.2;
+}
+.hero-card .value.positive { color: var(--positive); }
+.hero-card .value.negative { color: var(--negative); }
+.hero-card .value.gold { color: var(--gold); }
+
+/* ── FILTER BAR ── */
+.filter-bar {
+  display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;
+  align-items: center;
+}
+.filter-bar select, .filter-bar input {
+  background: var(--surface); border: 1px solid var(--border);
+  color: var(--text); padding: 6px 10px; border-radius: 5px;
+  font-size: 0.72em; font-family: inherit;
+}
+.filter-bar select { cursor: pointer; }
+.filter-bar input[type="date"] {
+  color-scheme: dark;
+}
+.filter-bar .filter-label {
+  font-size: 0.62em; color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.filter-bar .clear-btn {
+  background: none; border: 1px solid var(--border);
+  color: var(--muted); padding: 6px 12px; border-radius: 5px;
+  cursor: pointer; font-size: 0.68em; font-family: inherit;
+}
+.filter-bar .clear-btn:hover { color: var(--text); border-color: var(--text); }
+
+/* ── CHARTS ── */
+.charts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: 16px; margin-bottom: 24px;
+}
+.chart-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 16px;
+}
+.chart-card h3 {
+  font-size: 0.75em; font-weight: 700; color: var(--text);
+  margin-bottom: 12px; letter-spacing: 0.03em;
+}
+.chart-card canvas { width: 100% !important; max-height: 260px; }
+
+/* ── TABLE ── */
+.table-wrap {
+  overflow-x: auto; margin-bottom: 24px;
+}
+table {
+  width: 100%; border-collapse: collapse;
+  font-size: 0.72em; min-width: 700px;
+}
+thead th {
+  background: var(--surface); color: var(--muted);
+  text-transform: uppercase; letter-spacing: 0.06em;
+  font-size: 0.92em; padding: 10px 10px;
+  border-bottom: 2px solid var(--border);
+  text-align: left; white-space: nowrap;
+  position: sticky; top: 0; z-index: 1;
+}
+thead th.sortable {
+  cursor: pointer; user-select: none;
+}
+thead th.sortable:hover { color: var(--text); }
+tbody td {
+  padding: 9px 10px; border-bottom: 1px solid rgba(255,255,255,0.04);
+  white-space: nowrap;
+}
+tbody tr { transition: background 0.1s; }
+tbody tr:hover { background: rgba(255,255,255,0.02); }
+td.status-won { color: var(--positive); font-weight: 700; }
+td.status-lost { color: var(--negative); font-weight: 700; }
+td.status-pending { color: var(--warning); font-weight: 700; }
+td.profit-pos { color: var(--positive); }
+td.profit-neg { color: var(--negative); }
+td.edge-pos { color: var(--positive); }
+td.edge-neg { color: var(--negative); }
+td.code-cell {
+  font-size: 0.65em; font-weight: 700; text-transform: uppercase;
+  padding: 2px 6px; border-radius: 3px;
+  background: var(--chip-bg); display: inline-block; margin-top: 2px;
+}
+
+/* ── EMPTY / LOADING STATE ── */
+.empty-state {
+  text-align: center; padding: 60px 20px; color: var(--muted);
+}
+.empty-state .icon { font-size: 3em; margin-bottom: 12px; }
+.empty-state h3 { font-size: 1.1em; color: var(--text); margin-bottom: 6px; }
+.empty-state p { font-size: 0.75em; }
+.loading-spinner {
+  display: inline-block; width: 20px; height: 20px;
+  border: 2px solid var(--border);
+  border-top-color: var(--gold);
+  border-radius: 50%; animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── FOOTER ── */
+.footer {
+  text-align: center; font-size: 0.6em; color: var(--muted);
+  padding: 20px 0; border-top: 1px solid var(--border);
+  margin-top: 10px;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 600px) {
+  body { padding: 12px 10px; }
+  .hero-grid { grid-template-columns: repeat(2, 1fr); gap: 6px; }
+  .hero-card { padding: 10px 12px; }
+  .hero-card .value { font-size: 1.3em; }
+  .charts-grid { grid-template-columns: 1fr; }
+  .header h1 { font-size: 1.15em; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Daztech <span>AI</span> — Public Track Record</h1>
+  <div class="subtitle">Paper trading ledger • Every pick, every edge, every result</div>
+  <div class="refresh-bar">
+    <span id="refresh-timer">Next refresh: 60s</span>
+    <button onclick="loadAllData()" id="refresh-btn">Refresh Now</button>
+  </div>
+</div>
+
+<div id="hero-section"></div>
+
+<div class="filter-bar" id="filter-bar">
+  <span class="filter-label">Sport:</span>
+  <select id="filter-sport"><option value="all">All Sports</option></select>
+  <span class="filter-label">Status:</span>
+  <select id="filter-status">
+    <option value="all">All</option>
+    <option value="won">Won</option>
+    <option value="lost">Lost</option>
+    <option value="pending">Pending</option>
+  </select>
+  <span class="filter-label">From:</span>
+  <input type="date" id="filter-from">
+  <span class="filter-label">To:</span>
+  <input type="date" id="filter-to">
+  <button class="clear-btn" onclick="clearFilters()">Clear</button>
+</div>
+
+<div id="main-content">
+  <div class="empty-state">
+    <div class="loading-spinner"></div>
+    <h3>Loading track record…</h3>
+    <p>Fetching paper trading data</p>
+  </div>
+</div>
+
+<div class="footer">
+  Daztech AI — Paper Trading Results. All picks placed with simulated stakes. Past performance does not guarantee future results.
+</div>
+
+<script>
+// ── GLOBALS ──
+let allPicks = [];
+let charts = {};
+let refreshInterval;
+
+// ── NORMALIZE PICK ──
+function normalizePick(p, sourceFile) {
+  const code = (p.code || '').replace(/_paper$/, '').replace('_', ' ');
+  const sport = code.includes('nrl') ? 'NRL'
+    : code.includes('racing') ? 'Racing'
+    : code.includes('football') ? 'Football'
+    : code.includes('nba') ? 'NBA'
+    : code.toUpperCase();
+
+  // Derive settle status
+  const settled = p.settlement_status || p.status || 'unknown';
+  const isSettled = settled === 'settled' || p.status === 'won' || p.status === 'lost';
+
+  // Profit calculation
+  const stake = p.recommended_stake || 0;
+  const payout = p.result_payout || 0;
+  const profit = p.profit !== undefined ? p.profit : (payout - stake);
+
+  return {
+    timestamp: p.timestamp || '',
+    date: (p.timestamp || '').slice(0, 10),
+    code: code,
+    sport: sport,
+    selection: p.selection_details || 'Unknown',
+    edge: p.edge_pct !== undefined ? p.edge_pct : null,
+    odds: p.odds || null,
+    stake: stake,
+    status: (p.status || 'pending').toLowerCase(),
+    result: payout,
+    profit: profit,
+    roi: stake > 0 ? (profit / stake * 100) : 0,
+    margin: p.margin || null,
+    league: p.league || null,
+    market: p.sportsbet_market || null,
+    settled: isSettled,
+    source: sourceFile,
+    raw: p,
+  };
+}
+
+// ── DERIVE SPORT TAG FROM CODE ──
+function sportFromCode(code) {
+  if (!code) return 'Unknown';
+  const c = code.replace(/_paper$/, '').replace('_', ' ');
+  if (c.includes('nrl')) return 'NRL';
+  if (c.includes('racing') || c.includes('horse')) return 'Racing';
+  if (c.includes('football') || c.includes('epl') || c.includes('ucl')) return 'Football';
+  if (c.includes('nba')) return 'NBA';
+  return c.toUpperCase();
+}
+
+// ── LOAD ALL DATA ──
+async function loadAllData() {
+  const container = document.getElementById('main-content');
+  container.innerHTML = `<div class="empty-state"><div class="loading-spinner"></div><h3>Loading…</h3></div>`;
+
+  try {
+    // Fetch manifest
+    const manifestResp = await fetch('ledger_manifest.json');
+    if (!manifestResp.ok) throw new Error('Manifest not found');
+    const manifest = await manifestResp.json();
+
+    // Fetch all ledger files
+    const allRaw = [];
+    for (const filename of manifest) {
+      try {
+        const resp = await fetch(filename);
+        if (resp.ok) {
+          const data = await resp.json();
+          const picks = Array.isArray(data) ? data : [data];
+          for (const p of picks) {
+            allRaw.push(normalizePick(p, filename));
+          }
+        }
+      } catch (e) {
+        console.warn(`Failed to load ${filename}:`, e.message);
+      }
+    }
+
+    allPicks = allRaw.sort((a, b) => b.timestamp.localeCompare(a.timestamp));
+    populateSportFilter();
+    renderAll();
+    startRefreshTimer();
+  } catch (err) {
+    console.error('Load error:', err);
+    container.innerHTML = `<div class="empty-state">
+      <div class="icon">📭</div>
+      <h3>No settled picks — paper trading data incoming</h3>
+      <p>Ledger manifest not found or empty. Run build_ledger_manifest.py to generate the data index.</p>
+    </div>`;
+  }
+}
+
+// ── FILTER ──
+function getFilteredPicks() {
+  const sport = document.getElementById('filter-sport').value;
+  const status = document.getElementById('filter-status').value;
+  const from = document.getElementById('filter-from').value;
+  const to = document.getElementById('filter-to').value;
+
+  return allPicks.filter(p => {
+    if (sport !== 'all' && p.sport !== sport) return false;
+    if (status !== 'all' && p.status !== status) return false;
+    if (from && p.date < from) return false;
+    if (to && p.date > to) return false;
+    return true;
+  });
+}
+
+function populateSportFilter() {
+  const sports = [...new Set(allPicks.map(p => p.sport))].sort();
+  const sel = document.getElementById('filter-sport');
+  sel.innerHTML = '<option value="all">All Sports</option>';
+  for (const s of sports) {
+    sel.innerHTML += `<option value="${s}">${s}</option>`;
+  }
+}
+
+function clearFilters() {
+  document.getElementById('filter-sport').value = 'all';
+  document.getElementById('filter-status').value = 'all';
+  document.getElementById('filter-from').value = '';
+  document.getElementById('filter-to').value = '';
+  renderAll();
+}
+
+// ── RENDER ──
+function renderAll() {
+  const picks = getFilteredPicks();
+  renderHero(picks);
+  renderCharts(picks);
+  renderTable(picks);
+}
+
+// ── HERO ──
+function renderHero(picks) {
+  const settled = picks.filter(p => p.settled);
+  const won = settled.filter(p => p.status === 'won');
+  const lost = settled.filter(p => p.status === 'lost');
+  const total = settled.length;
+  const winRate = total > 0 ? (won.length / total * 100) : 0;
+  const totalProfit = settled.reduce((s, p) => s + p.profit, 0);
+  const totalStake = settled.reduce((s, p) => s + p.stake, 0);
+  const roi = totalStake > 0 ? (totalProfit / totalStake * 100) : 0;
+
+  // Current streak
+  let streak = 0; let streakType = '';
+  for (const p of picks) {
+    if (!p.settled) continue;
+    const isWin = p.status === 'won';
+    if (streakType === '') { streakType = isWin ? 'W' : 'L'; streak++; }
+    else if ((isWin && streakType === 'W') || (!isWin && streakType === 'L')) streak++;
+    else break;
+  }
+  const streakLabel = streak > 0 ? `${streakType.repeat(streak)} (${streak})` : '—';
+
+  document.getElementById('hero-section').innerHTML = `
+    <div class="hero-grid">
+      <div class="hero-card">
+        <div class="label">Total Picks</div>
+        <div class="value">${total}</div>
+      </div>
+      <div class="hero-card">
+        <div class="label">Win Rate</div>
+        <div class="value ${winRate >= 50 ? 'positive' : 'negative'}">${winRate.toFixed(1)}%</div>
+      </div>
+      <div class="hero-card">
+        <div class="label">Total P/L</div>
+        <div class="value ${totalProfit >= 0 ? 'positive' : 'negative'}">$${totalProfit.toFixed(0)}</div>
+      </div>
+      <div class="hero-card">
+        <div class="label">ROI</div>
+        <div class="value ${roi >= 0 ? 'positive' : 'negative'}">${roi >= 0 ? '+' : ''}${roi.toFixed(1)}%</div>
+      </div>
+      <div class="hero-card">
+        <div class="label">Current Streak</div>
+        <div class="value ${streakType === 'W' ? 'positive' : 'negative'}">${streakLabel}</div>
+      </div>
+    </div>`;
+}
+
+// ── CHARTS ──
+function destroyCharts() {
+  Object.values(charts).forEach(c => c.destroy());
+  charts = {};
+}
+
+function renderCharts(picks) {
+  destroyCharts();
+
+  const settled = picks.filter(p => p.settled);
+  if (settled.length === 0) return;
+
+  const chartsHTML = `
+    <div class="charts-grid">
+      <div class="chart-card"><h3>Edge Distribution</h3><canvas id="chart-edge"></canvas></div>
+      <div class="chart-card"><h3>Running P/L</h3><canvas id="chart-pl"></canvas></div>
+      <div class="chart-card"><h3>Win Rate by Sport</h3><canvas id="chart-sport"></canvas></div>
+    </div>`;
+
+  // Insert charts before table
+  const existing = document.getElementById('charts-section');
+  if (existing) existing.remove();
+  const div = document.createElement('div');
+  div.id = 'charts-section';
+  div.innerHTML = chartsHTML;
+  const filterBar = document.getElementById('filter-bar');
+  filterBar.parentNode.insertBefore(div, filterBar.nextSibling);
+
+  // Edge distribution
+  const edges = settled.filter(p => p.edge !== null);
+  if (edges.length > 0) {
+    const bins = { '< -20': 0, '-20 to -10': 0, '-10 to 0': 0, '0 to 5': 0, '5 to 10': 0, '10 to 20': 0, '> 20': 0 };
+    edges.forEach(p => {
+      const e = p.edge;
+      if (e < -20) bins['< -20']++;
+      else if (e < -10) bins['-20 to -10']++;
+      else if (e < 0) bins['-10 to 0']++;
+      else if (e < 5) bins['0 to 5']++;
+      else if (e < 10) bins['5 to 10']++;
+      else if (e < 20) bins['10 to 20']++;
+      else bins['> 20']++;
+    });
+    const ctx = document.getElementById('chart-edge');
+    if (ctx) {
+      charts.edge = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: Object.keys(bins),
+          datasets: [{
+            label: 'Picks',
+            data: Object.values(bins),
+            backgroundColor: Object.keys(bins).map(k =>
+              k.startsWith('<') || k.includes('to 0') ? 'rgba(220,38,38,0.5)' :
+              k.includes('0 to 5') || k.includes('5 to 10') ? 'rgba(200,150,12,0.5)' :
+              'rgba(22,163,74,0.5)'
+            ),
+            borderColor: Object.keys(bins).map(k =>
+              k.startsWith('<') || k.includes('to 0') ? 'rgba(220,38,38,0.8)' :
+              k.includes('0 to 5') || k.includes('5 to 10') ? 'rgba(200,150,12,0.8)' :
+              'rgba(22,163,74,0.8)'
+            ),
+            borderWidth: 1,
+            borderRadius: 4,
+          }]
+        },
+        options: {
+          responsive: true, maintainAspectRatio: true,
+          plugins: { legend: { display: false } },
+          scales: {
+            x: { ticks: { color: '#71717a', font: { size: 10 } }, grid: { color: 'rgba(255,255,255,0.03)' } },
+            y: { ticks: { color: '#71717a', font: { size: 10 } }, grid: { color: 'rgba(255,255,255,0.03)' }, beginAtZero: true }
+          }
+        }
+      });
+    }
+  }
+
+  // Running P/L
+  const chronological = [...settled].sort((a, b) => a.timestamp.localeCompare(b.timestamp));
+  if (chronological.length > 0) {
+    let running = 0;
+    const labels = [];
+    const data = [];
+    chronological.forEach(p => {
+      running += p.profit;
+      labels.push(p.date);
+      data.push(running);
+    });
+    const ctx2 = document.getElementById('chart-pl');
+    if (ctx2) {
+      charts.pl = new Chart(ctx2, {
+        type: 'line',
+        data: {
+          labels,
+          datasets: [{
+            label: 'Cumulative P/L',
+            data,
+            borderColor: '#c8960c',
+            backgroundColor: 'rgba(200,150,12,0.08)',
+            fill: true,
+            tension: 0.3,
+            pointRadius: data.length > 50 ? 0 : 2,
+            pointBackgroundColor: '#c8960c',
+            borderWidth: 2,
+          }]
+        },
+        options: {
+          responsive: true, maintainAspectRatio: true,
+          plugins: { legend: { display: false } },
+          scales: {
+            x: { ticks: { color: '#71717a', font: { size: 9 }, maxTicksLimit: 10 }, grid: { color: 'rgba(255,255,255,0.03)' } },
+            y: { ticks: { color: '#71717a', font: { size: 10 }, callback: v => '$' + v }, grid: { color: 'rgba(255,255,255,0.03)' } }
+          }
+        }
+      });
+    }
+  }
+
+  // Win rate by sport
+  const sportStats = {};
+  settled.forEach(p => {
+    const s = p.sport;
+    if (!sportStats[s]) sportStats[s] = { won: 0, total: 0 };
+    sportStats[s].total++;
+    if (p.status === 'won') sportStats[s].won++;
+  });
+  const sportLabels = Object.keys(sportStats).sort();
+  const sportWinRates = sportLabels.map(s => sportStats[s].total > 0 ? (sportStats[s].won / sportStats[s].total * 100) : 0);
+  const sportTotals = sportLabels.map(s => sportStats[s].total);
+
+  const ctx3 = document.getElementById('chart-sport');
+  if (ctx3 && sportLabels.length > 0) {
+    charts.sport = new Chart(ctx3, {
+      type: 'bar',
+      data: {
+        labels: sportLabels,
+        datasets: [{
+          label: 'Win Rate %',
+          data: sportWinRates,
+          backgroundColor: sportWinRates.map(r => r >= 50 ? 'rgba(22,163,74,0.5)' : 'rgba(220,38,38,0.5)'),
+          borderColor: sportWinRates.map(r => r >= 50 ? 'rgba(22,163,74,0.8)' : 'rgba(220,38,38,0.8)'),
+          borderWidth: 1,
+          borderRadius: 4,
+        }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: true,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: ctx => `${ctx.raw.toFixed(1)}% win rate (${sportTotals[ctx.dataIndex]} picks)`
+            }
+          }
+        },
+        scales: {
+          x: { ticks: { color: '#71717a', font: { size: 10 } }, grid: { color: 'rgba(255,255,255,0.03)' } },
+          y: { ticks: { color: '#71717a', font: { size: 10 }, callback: v => v + '%', max: 100 }, grid: { color: 'rgba(255,255,255,0.03)' }, beginAtZero: true }
+        }
+      }
+    });
+  }
+}
+
+// ── TABLE ──
+function renderTable(picks) {
+  let existing = document.getElementById('table-section');
+  if (existing) existing.remove();
+
+  if (picks.length === 0) {
+    const container = document.getElementById('main-content');
+    container.innerHTML = `<div class="empty-state">
+      <div class="icon">🔍</div>
+      <h3>No picks match filters</h3>
+      <p>Try adjusting your filters or check back later.</p>
+    </div>`;
+    return;
+  }
+
+  const container = document.getElementById('main-content');
+  let html = `<div id="table-section"><div class="table-wrap"><table>
+    <thead><tr>
+      <th class="sortable" onclick="sortTable('date')">Date ▾</th>
+      <th>Sport</th>
+      <th>Selection</th>
+      <th class="sortable" onclick="sortTable('edge')">Edge%</th>
+      <th>Odds</th>
+      <th>Stake</th>
+      <th class="sortable" onclick="sortTable('status')">Result</th>
+      <th class="sortable" onclick="sortTable('profit')">P/L</th>
+    </tr></thead><tbody>`;
+
+  picks.forEach(p => {
+    const edgeClass = p.edge !== null ? (p.edge > 0 ? 'edge-pos' : 'edge-neg') : '';
+    const edgeStr = p.edge !== null ? `${p.edge > 0 ? '+' : ''}${p.edge.toFixed(1)}%` : '—';
+    const statusClass = `status-${p.status}`;
+    const statusLabel = p.status === 'won' ? 'WON' : p.status === 'lost' ? 'LOST' : p.status.toUpperCase();
+    const profitClass = p.profit > 0 ? 'profit-pos' : p.profit < 0 ? 'profit-neg' : '';
+    const profitStr = p.profit !== 0 ? `${p.profit > 0 ? '+' : ''}$${p.profit.toFixed(0)}` : '$0';
+    const oddsStr = p.odds ? p.odds.toFixed(2) : '—';
+
+    html += `<tr>
+      <td>${p.date}</td>
+      <td><span class="code-cell">${p.sport}</span></td>
+      <td style="max-width:240px; overflow:hidden; text-overflow:ellipsis;" title="${p.selection}">${p.selection}</td>
+      <td class="${edgeClass}">${edgeStr}</td>
+      <td>${oddsStr}</td>
+      <td>$${p.stake.toFixed(0)}</td>
+      <td class="${statusClass}">${statusLabel}</td>
+      <td class="${profitClass}">${profitStr}</td>
+    </tr>`;
+  });
+
+  html += '</tbody></table></div></div>';
+  container.innerHTML = html;
+}
+
+// ── SORT ──
+let sortCol = 'date'; let sortAsc = false;
+function sortTable(col) {
+  if (sortCol === col) sortAsc = !sortAsc;
+  else { sortCol = col; sortAsc = col === 'date' ? false : true; }
+  const picks = getFilteredPicks();
+  const mult = sortAsc ? 1 : -1;
+  picks.sort((a, b) => {
+    if (col === 'date') return mult * a.timestamp.localeCompare(b.timestamp);
+    if (col === 'profit') return mult * (a.profit - b.profit);
+    if (col === 'edge') return mult * ((a.edge || -999) - (b.edge || -999));
+    if (col === 'status') return mult * a.status.localeCompare(b.status);
+    return 0;
+  });
+  renderTable(picks);
+}
+
+// ── REFRESH TIMER ──
+function startRefreshTimer() {
+  if (refreshInterval) clearInterval(refreshInterval);
+  let secs = 60;
+  const el = document.getElementById('refresh-timer');
+  const update = () => { el.textContent = `Next refresh: ${secs}s`; };
+  update();
+  refreshInterval = setInterval(() => {
+    secs--;
+    if (secs <= 0) { secs = 60; loadAllData(); }
+    else update();
+  }, 1000);
+}
+
+// ── FILTER EVENT LISTENERS ──
+document.getElementById('filter-sport').addEventListener('change', renderAll);
+document.getElementById('filter-status').addEventListener('change', renderAll);
+document.getElementById('filter-from').addEventListener('change', renderAll);
+document.getElementById('filter-to').addEventListener('change', renderAll);
+
+// ── BOOT ──
+loadAllData();
+</script>
+</body>
+</html>

@@ -52,3 +52,22 @@ roi = (total_returned - total_staked) / total_staked * 100
 
 ## Active Ledgers
 - 2026-05-29: 2 NRL + 8 Racing = 10 selections
+
+## Track Record Dashboard
+
+`track-record.html` — Public-facing results dashboard showing every pick, edge%, result, and running ROI.
+
+### Build pipeline
+```bash
+# Regenerate manifest + merged data (run after adding/modifying any ledger JSONs)
+python3 build_ledger_manifest.py
+```
+
+The dashboard reads `ledger_manifest.json` to discover all `.json` ledger files, then ingests them client-side.
+Auto-refreshes every 60s to pick up new settlements in existing files.
+
+For local testing:
+```bash
+cd output/ledgers && python3 -m http.server 8765
+# Open http://localhost:8765/track-record.html
+```

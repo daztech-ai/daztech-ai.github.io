@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daztech NBA Props — test</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, &#39;Segoe UI&#39;, system-ui, sans-serif;
+    background: #0a0a0f; color: #e0e0e0; max-width: 900px;
+    margin: 0 auto; padding: 20px; line-height: 1.5;
+  }
+  h1 { font-size: 1.6em; margin-bottom: 4px; color: #fff; }
+  h2 { font-size: 1.0em; color: #aaa; margin-bottom: 20px; font-weight: 400; }
+  .header { text-align: center; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid #222; }
+  
+  table {
+    width: 100%; border-collapse: collapse; margin-bottom: 24px;
+    font-size: 0.92em;
+  }
+  th {
+    text-align: left; padding: 8px 10px; border-bottom: 2px solid #333;
+    color: #888; font-weight: 600; font-size: 0.85em;
+    text-transform: uppercase; letter-spacing: 0.5px;
+  }
+  td {
+    padding: 10px; border-bottom: 1px solid #1a1a2a; vertical-align: top;
+  }
+  tr:hover td { background: rgba(255,255,255,0.02); }
+  
+  .player-name { font-weight: 700; color: #fff; font-size: 1.05em; }
+  .player-opp { font-size: 0.8em; color: #666; }
+  .prop-tag {
+    display: inline-block; padding: 1px 8px; border-radius: 4px;
+    font-size: 0.75em; font-weight: 700; margin-right: 4px;
+  }
+  .prop-pts { background: #1a2a1a; color: #ff9800; }
+  .prop-reb { background: #1a1a2a; color: #2196f3; }
+  .prop-ast { background: #2a1a1a; color: #4caf50; }
+  
+  .line-value { font-weight: 700; color: #ccc; font-size: 1.05em; }
+  .edge-positive { color: #4caf50; font-weight: 700; }
+  .edge-negative { color: #f44336; }
+  .edge-strong { 
+    color: #ffd700; font-weight: 800;
+    text-shadow: 0 0 8px rgba(255,215,0,0.3);
+  }
+  
+  .odds-cell { font-size: 0.9em; }
+  .bookmaker { font-size: 0.75em; color: #666; }
+  
+  .conviction-stars { color: #ffd700; font-size: 0.85em; }
+  
+  .edge-badge {
+    display: inline-block; padding: 2px 10px; border-radius: 4px;
+    font-weight: 800; font-size: 0.85em; margin-left: 6px;
+  }
+  .edge-badge-hot { background: rgba(76,175,80,0.15); color: #4caf50; border: 1px solid rgba(76,175,80,0.3); }
+  .edge-badge-warm { background: rgba(255,193,7,0.12); color: #ffc107; border: 1px solid rgba(255,193,7,0.25); }
+  .edge-badge-mild { background: rgba(255,152,0,0.1); color: #ff9800; border: 1px solid rgba(255,152,0,0.2); }
+  
+  .summary-bar {
+    background: #111; border-radius: 8px; padding: 12px 18px; margin-bottom: 20px;
+    border: 1px solid #222; display: flex; justify-content: space-between; flex-wrap: wrap;
+    gap: 12px;
+  }
+  .summary-stat { font-size: 0.9em; }
+  .summary-stat strong { color: #fff; }
+  
+  .footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #222;
+    text-align: center; font-size: 0.75em; color: #555; }
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>🏀 Daztech NBA Player Props</h1>
+  <h2>test — Top Edge Props (≥5.0% edge)</h2>
+</div>
+
+<div class="summary-bar">
+  <div class="summary-stat"><strong>3</strong> props tracked</div>
+  <div class="summary-stat"><strong>3</strong> picks with edge</div>
+  <div class="summary-stat">Avg Edge: <strong style="color:var(--green, #4caf50)">8.9+%</strong></div>
+  <div class="summary-stat">Edge Threshold: <strong>5.0%</strong></div>
+</div>
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Player</th>
+      <th>Prop</th>
+      <th>Line</th>
+      <th>Over %</th>
+      <th>Edge</th>
+      <th>True Odds</th>
+      <th>Book</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+    <tr>
+      <td>
+        <div class="player-name">Shai Gilgeous-Alexander</div>
+        <div class="player-opp">vs Boston Celtics</div>
+      </td>
+      <td>
+        <span class="prop-tag prop-pts">PTS</span>
+      </td>
+      <td>
+        <span class="line-value">O 32.5</span>
+      </td>
+      <td>56.8%</td>
+      <td>
+        <span class="edge-strong">
+          +12.3%
+        </span>
+        
+        <span class="edge-badge edge-badge-hot">🔥 VALUE</span>
+        
+      </td>
+      <td class="odds-cell">$1.76</td>
+      <td>
+        <div>$1.91</div>
+        <div class="bookmaker">Bet365</div>
+      </td>
+    </tr>
+  
+    <tr>
+      <td>
+        <div class="player-name">Victor Wembanyama</div>
+        <div class="player-opp">vs Milwaukee Bucks</div>
+      </td>
+      <td>
+        <span class="prop-tag prop-reb">REB</span>
+      </td>
+      <td>
+        <span class="line-value">O 12.5</span>
+      </td>
+      <td>54.2%</td>
+      <td>
+        <span class="edge-strong">
+          +8.7%
+        </span>
+        
+        <span class="edge-badge edge-badge-hot">VALUE</span>
+        
+      </td>
+      <td class="odds-cell">$1.85</td>
+      <td>
+        <div>$1.87</div>
+        <div class="bookmaker">PointsBet</div>
+      </td>
+    </tr>
+  
+    <tr>
+      <td>
+        <div class="player-name">Tyrese Haliburton</div>
+        <div class="player-opp">vs LA Lakers</div>
+      </td>
+      <td>
+        <span class="prop-tag prop-ast">AST</span>
+      </td>
+      <td>
+        <span class="line-value">O 9.5</span>
+      </td>
+      <td>52.1%</td>
+      <td>
+        <span class="edge-positive">
+          +5.8%
+        </span>
+        
+        <span class="edge-badge edge-badge-warm">EDGE</span>
+        
+      </td>
+      <td class="odds-cell">$1.92</td>
+      <td>
+        <div>$1.91</div>
+        <div class="bookmaker">Sportsbet</div>
+      </td>
+    </tr>
+  
+  </tbody>
+</table>
+
+
+<div class="footer">
+  <div style="margin-bottom:8px">
+    <strong>Avg Edge:</strong> 
+    <span style="color:var(--green, #4caf50)">
+      +8.9%
+    </span>
+    across 3 picks
+  </div>
+  Daztech AI Betting Engine · 2026-05-31 21:07 UTC<br>
+  For entertainment only. Gamble responsibly.
+</div>
+</body>
+</html>
