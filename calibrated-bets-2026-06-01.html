@@ -30,17 +30,21 @@
   .pick {
     background: var(--surface); border: 1px solid var(--border);
     border-radius: var(--radius); padding: 12px 14px; margin-bottom: 8px;
+    cursor: pointer;
   }
   .pick-header { margin-bottom: 6px; }
   .pick-name { font-size: 1em; font-weight: 700; color: var(--text); }
-  .pick-race { font-size: 0.68em; color: var(--muted); margin-top: 1px; }
+  .pick-rating {
+    font-size: 0.65em; color: var(--gold); margin-left: 8px;
+  }
   .pick-code {
     display: inline-block; font-size: 0.6em; padding: 1px 6px;
     border-radius: 3px; margin-left: 6px; vertical-align: middle;
   }
   .code-thoroughbred { background: #1a2a1a; color: #4ade80; }
   .code-harness { background: #1a1a2a; color: #60a5fa; }
-  .pick-chips { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 4px; }
+  .pick-race { font-size: 0.68em; color: var(--muted); margin-top: 1px; }
+  .pick-chips { display: flex; flex-wrap: wrap; gap: 5px; margin: 6px 0; }
   .chip {
     font-size: 0.65em; font-weight: 600; padding: 2px 7px;
     border-radius: 4px; background: var(--chip-bg);
@@ -49,16 +53,26 @@
   }
   .chip-bet { border-color: var(--positive); color: var(--positive); }
   .chip-stake { border-color: var(--gold); color: var(--gold); }
+  .chip-conviction-STRONG { border-color: var(--positive); color: var(--positive); }
+  .chip-conviction-MODERATE { border-color: var(--warning); color: var(--warning); }
   .pick-footer { font-size: 0.6em; color: var(--muted); }
+  .jarvis-note {
+    font-size: 0.58em; color: var(--info); margin-top: 4px;
+    font-style: italic;
+  }
+  .footer {
+    text-align: center; font-size: 0.6em; color: var(--muted);
+    margin-top: 20px; padding-top: 12px; border-top: 1px solid var(--border);
+  }
 </style>
 </head>
 <body>
 <div class="page-header">
   <h1>🎯 Daztech Top 10</h1>
-  <div class="sub">2026-06-01 · $10.0/bet · $100.0 total exposure</div>
+  <div class="sub">2026-06-01 · $10.0/bet · $100.0 total exposure · Engine-backed</div>
 </div>
 <div class="bankroll-bar">
-  Bankroll: <strong>$1,067.50</strong> · 10 picks today · Survival: 10 days at 0% WR
+  Bankroll: <strong>$1,067.50</strong> · 10 picks · Survival: 10 days at 0% WR
 </div>
 <div class="pick">
   <div class="pick-header">
@@ -67,179 +81,243 @@
   </div>
   <div class="pick-race">
     R2 · Globe Derby Park · 1800M · 6 runners
+    
   </div>
   <div class="pick-chips">
     <span class="chip chip-bet">$10 PLACE</span>
     <span class="chip chip-stake">Odds: $1.22</span>
     <span class="chip">Form: 21</span>
+    <span class="chip chip-conviction-MODERATE">MODERATE</span>
+    
   </div>
   <div class="pick-footer">
     T: Peter Bain · D: Wayne Hill
     
+    
+    · Source: db_heuristic
   </div>
+  
 </div>
 <div class="pick">
   <div class="pick-header">
-    <span class="pick-name">#2 MAJESTIC TUSSLE</span>
+    <span class="pick-name">#2 HALFMOONBAY</span>
+    <span class="pick-code code-harness">🏇 HR</span>
+  </div>
+  <div class="pick-race">
+    R3 · Pinjarra · 2185M · 12 runners
+    
+  </div>
+  <div class="pick-chips">
+    <span class="chip chip-bet">$10 PLACE</span>
+    <span class="chip chip-stake">Odds: $2.90</span>
+    <span class="chip">Form: 17211</span>
+    <span class="chip chip-conviction-MODERATE">MODERATE</span>
+    
+  </div>
+  <div class="pick-footer">
+    T: Russell Eddy · D: Ryan Warwick
+    
+    
+    · Source: db_heuristic
+  </div>
+  
+</div>
+<div class="pick">
+  <div class="pick-header">
+    <span class="pick-name">#3 MAJESTIC TUSSLE</span>
     <span class="pick-code code-harness">🏇 HR</span>
   </div>
   <div class="pick-race">
     R7 · Globe Derby Park · 2230M · 11 runners
+    
   </div>
   <div class="pick-chips">
     <span class="chip chip-bet">$10 PLACE</span>
     <span class="chip chip-stake">Odds: $2.80</span>
     <span class="chip">Form: 711</span>
+    <span class="chip chip-conviction-MODERATE">MODERATE</span>
+    
   </div>
   <div class="pick-footer">
     T: Peter Bain · D: Matt Maguire
     
+    
+    · Source: db_heuristic
   </div>
+  
 </div>
 <div class="pick">
   <div class="pick-header">
-    <span class="pick-name">#3 HEAVENLY BLISS</span>
+    <span class="pick-name">#4 DEE JAYS MISS</span>
+    <span class="pick-code code-harness">🏇 HR</span>
+  </div>
+  <div class="pick-race">
+    R8 · Globe Derby Park · 1800M · 11 runners
+    
+  </div>
+  <div class="pick-chips">
+    <span class="chip chip-bet">$10 PLACE</span>
+    <span class="chip chip-stake">Odds: $4.00</span>
+    <span class="chip">Form: 22s51</span>
+    <span class="chip chip-conviction-MODERATE">MODERATE</span>
+    
+  </div>
+  <div class="pick-footer">
+    T: Max Beasley · D: Angela Chapman
+    
+    
+    · Source: db_heuristic
+  </div>
+  
+</div>
+<div class="pick">
+  <div class="pick-header">
+    <span class="pick-name">#5 HEAVENLY BLISS</span>
     <span class="pick-code code-harness">🏇 HR</span>
   </div>
   <div class="pick-race">
     R4 · Pinjarra · 1177M · 10 runners
+    
   </div>
   <div class="pick-chips">
     <span class="chip chip-bet">$10 PLACE</span>
     <span class="chip chip-stake">Odds: $2.90</span>
     <span class="chip">Form: 81615</span>
+    <span class="chip chip-conviction-MODERATE">MODERATE</span>
+    
   </div>
   <div class="pick-footer">
     T: Hayden Reeves · D: Kylah Madden (C,5)
     
+    
+    · Source: db_heuristic
   </div>
+  
 </div>
 <div class="pick">
   <div class="pick-header">
-    <span class="pick-name">#4 LORD PUBLISHER NZ</span>
+    <span class="pick-name">#6 SPORTSFLIGHT</span>
+    <span class="pick-code code-harness">🏇 HR</span>
+  </div>
+  <div class="pick-race">
+    R4 · Globe Derby Park · 1800M · 8 runners
+    
+  </div>
+  <div class="pick-chips">
+    <span class="chip chip-bet">$10 PLACE</span>
+    <span class="chip chip-stake">Odds: $2.20</span>
+    <span class="chip">Form: 16452</span>
+    <span class="chip chip-conviction-MODERATE">MODERATE</span>
+    
+  </div>
+  <div class="pick-footer">
+    T: Mick Darling · D: Wayne Hill
+    
+    
+    · Source: db_heuristic
+  </div>
+  
+</div>
+<div class="pick">
+  <div class="pick-header">
+    <span class="pick-name">#7 JANSEN</span>
+    <span class="pick-code code-harness">🏇 HR</span>
+  </div>
+  <div class="pick-race">
+    R7 · Stawell · 1785M · 11 runners
+    
+  </div>
+  <div class="pick-chips">
+    <span class="chip chip-bet">$10 PLACE</span>
+    <span class="chip chip-stake">Odds: $2.20</span>
+    <span class="chip">Form: 24423</span>
+    <span class="chip chip-conviction-MODERATE">MODERATE</span>
+    
+  </div>
+  <div class="pick-footer">
+    T: Ken Taylor · D: Sean O&#x27;Sullivan
+    
+    
+    · Source: db_heuristic
+  </div>
+  
+</div>
+<div class="pick">
+  <div class="pick-header">
+    <span class="pick-name">#8 BOOKENDS</span><span class="pick-rating">56</span>
+    <span class="pick-code code-thoroughbred">🏇 TB</span>
+  </div>
+  <div class="pick-race">
+    R4 · Northam ·  · 10 runners
+    · Going: Soft 5
+  </div>
+  <div class="pick-chips">
+    <span class="chip chip-bet">$10 PLACE</span>
+    <span class="chip chip-stake">Odds: N/A</span>
+    <span class="chip">Form: 3</span>
+    <span class="chip chip-conviction-SPECULATIVE">SPECULATIVE</span>
+    
+  </div>
+  <div class="pick-footer">
+    T: Grant &amp; Alana Williams · D: William Pike
+    · Barrier: 1
+    · Weight: 56
+    · Source: engine
+  </div>
+  
+</div>
+<div class="pick">
+  <div class="pick-header">
+    <span class="pick-name">#9 STRONG THE STRIKER</span>
+    <span class="pick-code code-harness">🏇 HR</span>
+  </div>
+  <div class="pick-race">
+    R2 · Pinjarra · 2185M · 10 runners
+    
+  </div>
+  <div class="pick-chips">
+    <span class="chip chip-bet">$10 PLACE</span>
+    <span class="chip chip-stake">Odds: $2.15</span>
+    <span class="chip">Form: 7233s</span>
+    <span class="chip chip-conviction-MODERATE">MODERATE</span>
+    
+  </div>
+  <div class="pick-footer">
+    T: Ryan Bell · D: Kyle Symington
+    
+    
+    · Source: db_heuristic
+  </div>
+  
+</div>
+<div class="pick">
+  <div class="pick-header">
+    <span class="pick-name">#10 EASTBRO CHRISSY</span>
     <span class="pick-code code-harness">🏇 HR</span>
   </div>
   <div class="pick-race">
     R7 · Pinjarra · 2185M · 12 runners
+    
   </div>
   <div class="pick-chips">
     <span class="chip chip-bet">$10 PLACE</span>
-    <span class="chip chip-stake">Odds: $4.20</span>
-    <span class="chip">Form: 36022</span>
-  </div>
-  <div class="pick-footer">
-    T: Robert Abercromby · D: Chris Voak
+    <span class="chip chip-stake">Odds: $2.80</span>
+    <span class="chip">Form: 9218s</span>
+    <span class="chip chip-conviction-MODERATE">MODERATE</span>
     
   </div>
-</div>
-<div class="pick">
-  <div class="pick-header">
-    <span class="pick-name">#5 BROWN EYED KATE</span>
-    <span class="pick-code code-harness">🏇 HR</span>
-  </div>
-  <div class="pick-race">
-    R4 · Stawell · 2600M · 10 runners
-  </div>
-  <div class="pick-chips">
-    <span class="chip chip-bet">$10 PLACE</span>
-    <span class="chip chip-stake">Odds: $8.0</span>
-    <span class="chip">Form: 33219</span>
-  </div>
   <div class="pick-footer">
-    T: Jonathan O&#x27;Connor · D: Hannah Lewis (C)
+    T: Gary Hall Jnr · D: Gary Hall Jnr
     
-  </div>
-</div>
-<div class="pick">
-  <div class="pick-header">
-    <span class="pick-name">#6 ELLI JOH</span>
-    <span class="pick-code code-harness">🏇 HR</span>
-  </div>
-  <div class="pick-race">
-    R6 · Stawell · 2180M · 10 runners
-  </div>
-  <div class="pick-chips">
-    <span class="chip chip-bet">$10 PLACE</span>
-    <span class="chip chip-stake">Odds: $9.0</span>
-    <span class="chip">Form: 71378</span>
-  </div>
-  <div class="pick-footer">
-    T: Julie Brimacombe · D: Jackie Barker
     
+    · Source: db_heuristic
   </div>
-</div>
-<div class="pick">
-  <div class="pick-header">
-    <span class="pick-name">#7 MACHX THE STRANGER</span>
-    <span class="pick-code code-harness">🏇 HR</span>
-  </div>
-  <div class="pick-race">
-    R1 · Canberra · 1770M · 9 runners
-  </div>
-  <div class="pick-chips">
-    <span class="chip chip-bet">$10 PLACE</span>
-    <span class="chip chip-stake">Odds: N/A</span>
-    <span class="chip">Form: s1467</span>
-  </div>
-  <div class="pick-footer">
-    T: Michael Hawke · D: Harrison Ross (C)
-    
-  </div>
-</div>
-<div class="pick">
-  <div class="pick-header">
-    <span class="pick-name">#8 RAGING ON NZ</span>
-    <span class="pick-code code-harness">🏇 HR</span>
-  </div>
-  <div class="pick-race">
-    R7 · Canberra · 1770M · 10 runners
-  </div>
-  <div class="pick-chips">
-    <span class="chip chip-bet">$10 PLACE</span>
-    <span class="chip chip-stake">Odds: N/A</span>
-    <span class="chip">Form: s2713</span>
-  </div>
-  <div class="pick-footer">
-    T: Nathan Turnbull · D: Jett Turnbull (C)
-    
-  </div>
-</div>
-<div class="pick">
-  <div class="pick-header">
-    <span class="pick-name">#9 CHEVRONS GOLD</span>
-    <span class="pick-code code-harness">🏇 HR</span>
-  </div>
-  <div class="pick-race">
-    R10 · Pinjarra · 1177M · 10 runners
-  </div>
-  <div class="pick-chips">
-    <span class="chip chip-bet">$10 PLACE</span>
-    <span class="chip chip-stake">Odds: $9.00</span>
-    <span class="chip">Form: 42996</span>
-  </div>
-  <div class="pick-footer">
-    T: Peter Anderson · D: Darcy Kulcsar (C,5)
-    
-  </div>
-</div>
-<div class="pick">
-  <div class="pick-header">
-    <span class="pick-name">#10 BEE BEE BEROC</span>
-    <span class="pick-code code-harness">🏇 HR</span>
-  </div>
-  <div class="pick-race">
-    R5 · Pinjarra · 2631M · 11 runners
-  </div>
-  <div class="pick-chips">
-    <span class="chip chip-bet">$10 PLACE</span>
-    <span class="chip chip-stake">Odds: $12.00</span>
-    <span class="chip">Form: 26773</span>
-  </div>
-  <div class="pick-footer">
-    T: Garry Johnson · D: Brock Johnson
-    
-  </div>
+  
 </div>
 
+<div class="footer">
+  <strong>Engine:</strong> MasterAggregator (7-factor) + calibrated_selector for thoroughbreds<br>
+  DB signal model for harness · <a href="index.html" style="color:var(--gold);">← Hub</a>
+</div>
 </body>
 </html>
