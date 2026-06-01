@@ -1,0 +1,152 @@
+[
+  {
+    "player": "Bradgley Rodriguez",
+    "team": "San Diego Padres",
+    "opponent": "San Francisco Giants",
+    "market": "earned runs",
+    "model_prob": 0.724,
+    "edge": 0.224,
+    "is_home": 1,
+    "strength": "STRONG"
+  },
+  {
+    "player": "Richard Lovelady",
+    "team": "New York Mets",
+    "opponent": "St. Louis Cardinals",
+    "market": "earned runs",
+    "model_prob": 0.722,
+    "edge": 0.222,
+    "is_home": 0,
+    "strength": "STRONG"
+  },
+  {
+    "player": "Blade Tidwell",
+    "team": "San Francisco Giants",
+    "opponent": "San Diego Padres",
+    "market": "earned runs",
+    "model_prob": 0.721,
+    "edge": 0.221,
+    "is_home": 0,
+    "strength": "STRONG"
+  },
+  {
+    "player": "Elvis Alvarado",
+    "team": "Athletics",
+    "opponent": "Atlanta Braves",
+    "market": "earned runs",
+    "model_prob": 0.719,
+    "edge": 0.219,
+    "is_home": 0,
+    "strength": "STRONG"
+  },
+  {
+    "player": "Justin Sterner",
+    "team": "Athletics",
+    "opponent": "Atlanta Braves",
+    "market": "earned runs",
+    "model_prob": 0.715,
+    "edge": 0.215,
+    "is_home": 0,
+    "strength": "STRONG"
+  },
+  {
+    "player": "Adrian Morejon",
+    "team": "San Diego Padres",
+    "opponent": "San Francisco Giants",
+    "market": "earned runs",
+    "model_prob": 0.715,
+    "edge": 0.215,
+    "is_home": 1,
+    "strength": "STRONG"
+  },
+  {
+    "player": "Kyle Hart",
+    "team": "San Diego Padres",
+    "opponent": "San Francisco Giants",
+    "market": "earned runs",
+    "model_prob": 0.714,
+    "edge": 0.214,
+    "is_home": 1,
+    "strength": "STRONG"
+  },
+  {
+    "player": "Tyler Wells",
+    "team": "Baltimore Orioles",
+    "opponent": "Texas Rangers",
+    "market": "earned runs",
+    "model_prob": 0.713,
+    "edge": 0.213,
+    "is_home": 1,
+    "strength": "STRONG"
+  },
+  {
+    "player": "Chris Murphy",
+    "team": "Chicago White Sox",
+    "opponent": "Miami Marlins",
+    "market": "earned runs",
+    "model_prob": 0.709,
+    "edge": 0.209,
+    "is_home": 0,
+    "strength": "STRONG"
+  },
+  {
+    "player": "Zach Agnos",
+    "team": "Colorado Rockies",
+    "opponent": "Toronto Blue Jays",
+    "market": "earned runs",
+    "model_prob": 0.705,
+    "edge": 0.205,
+    "is_home": 0,
+    "strength": "STRONG"
+  },
+  {
+    "player": "Lucas Sims",
+    "team": "Chicago White Sox",
+    "opponent": "Miami Marlins",
+    "market": "earned runs",
+    "model_prob": 0.703,
+    "edge": 0.203,
+    "is_home": 0,
+    "strength": "STRONG"
+  },
+  {
+    "player": "Connor Seabold",
+    "team": "Detroit Tigers",
+    "opponent": "Arizona Diamondbacks",
+    "market": "earned runs",
+    "model_prob": 0.703,
+    "edge": 0.203,
+    "is_home": 0,
+    "strength": "STRONG"
+  },
+  {
+    "player": "Aaron Ashby",
+    "team": "Milwaukee Brewers",
+    "opponent": "Tampa Bay Rays",
+    "market": "earned runs",
+    "model_prob": 0.7,
+    "edge": 0.2,
+    "is_home": 1,
+    "strength": "STRONG"
+  },
+  {
+    "player": "Jake Woodford",
+    "team": "Milwaukee Brewers",
+    "opponent": "Tampa Bay Rays",
+    "market": "earned runs",
+    "model_prob": 0.697,
+    "edge": 0.197,
+    "is_home": 1,
+    "strength": "STRONG"
+  },
+  {
+    "player": "Enyel De Los Santos",
+    "team": "Houston Astros",
+    "opponent": "Boston Red Sox",
+    "market": "earned runs",
+    "model_prob": 0.697,
+    "edge": 0.197,
+    "is_home": 1,
+    "strength": "STRONG"
+  }
+]
