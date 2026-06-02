@@ -1,10 +1,10 @@
-**Daztech Weekly Backtest — $(date +%Y-%m-%d)**
+**Daztech Weekly Backtest — 2026-06-02**
 Universe: 104 bets, 21 settled, 83 pending
 Hit rate: 38.1% (8W / 13L)
-ROI: +82.6%  |  P&L: \$+20.03  |  Staked: \$24.25
+ROI: +82.6%  |  P&L: $+20.03  |  Staked: $24.25
 
 **By sport:**
-  - nba         13 bets  ROI  +61.7%  hit 46.1%  \$+10.03
-  - racing       8 bets  ROI +125.0%  hit 25.0%  \$+10.00
+  - nba         13 bets  ROI  +61.7%  hit 46.1%  $+10.03
+  - racing       8 bets  ROI +125.0%  hit 25.0%  $+10.00
   - nrl        (none settled yet, 63 pending)
   - greyhounds (none settled yet, 10 pending)

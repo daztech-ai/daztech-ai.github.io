@@ -1,11 +1,11 @@
 {
   "starting": 1000.0,
-  "current": 900.0,
-  "total_bets": 11,
+  "current": 890.0,
+  "total_bets": 12,
   "total_winners": 0,
-  "total_staked_alltime": 110.0,
+  "total_staked_alltime": 120.0,
   "total_returned_alltime": 0.0,
-  "roi_pct": 0.0,
+  "roi_pct": -100.0,
   "history": [
     {
       "date": "2026-06-01",
@@ -17,6 +17,15 @@
       "total_bets": 10,
       "roi_pct": -100.0,
       "note": "June 1 reset. Top 10 picks: 9 harness + 1 TB. Pending settlement."
+    },
+    {
+      "date": "2026-06-02",
+      "type": "settlement_cron",
+      "staked": 10.0,
+      "returned": 0.0,
+      "bets": 1,
+      "winners": 0,
+      "roi_pct": -100.0
     }
   ],
   "last_updated": "2026-06-02",

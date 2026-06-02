@@ -93,16 +93,16 @@
     "recommended_stake": 10.0,
     "odds": 0.0,
     "sportsbet_market": "Place",
-    "status": "pending",
-    "result_payout": null,
+    "status": "lost",
+    "result_payout": 0.0,
     "notes": "Master rating: 0 | Prob: None | Fair: None | Form: 31815 | T: Lachlan Prothero | ",
     "is_paper": true,
     "recommendation_time": "2026-06-02T20:08:41.254249",
     "odds_at_rec": 0.0,
     "closing_odds": null,
     "clv": null,
-    "settlement_status": "pending",
-    "outcome": null
+    "settlement_status": "settled",
+    "outcome": "lost"
   },
   {
     "timestamp": "2026-06-02T20:08:41.254249",
