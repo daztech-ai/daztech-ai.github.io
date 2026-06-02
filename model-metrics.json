@@ -123,6 +123,68 @@
       "iso_path": "/home/daz/daztech-betting-engine/models/racing_iso_v_20260531_205526.json",
       "version": "v_20260531_205526",
       "promoted": true
+    },
+    {
+      "timestamp": "2026-06-01T06:00:20.557552+00:00",
+      "sport": "racing",
+      "samples_trained": 10156,
+      "samples_test": 4353,
+      "brier_raw": 0.07573852688074112,
+      "brier_calibrated": 0.07680216431617737,
+      "brier_old": 0.07562265545129776,
+      "logloss_calibrated": 0.28516755193109805,
+      "auc_calibrated": 0.6454911788073705,
+      "best_params": {
+        "learning_rate": 0.05,
+        "max_depth": 3,
+        "n_estimators": 100
+      },
+      "top_features": [
+        {
+          "feature": "form_recency_score",
+          "importance": 0.1925787478685379
+        },
+        {
+          "feature": "class_tier",
+          "importance": 0.13635610044002533
+        },
+        {
+          "feature": "barrier",
+          "importance": 0.09323098510503769
+        },
+        {
+          "feature": "field_size",
+          "importance": 0.09126490354537964
+        },
+        {
+          "feature": "weight_allocated",
+          "importance": 0.0719316229224205
+        },
+        {
+          "feature": "jockey_win_rate",
+          "importance": 0.06755485385656357
+        },
+        {
+          "feature": "form_avg_finish",
+          "importance": 0.06742295622825623
+        },
+        {
+          "feature": "form_win_pct_last6",
+          "importance": 0.057143062353134155
+        },
+        {
+          "feature": "form_win_pct_last3",
+          "importance": 0.050111137330532074
+        },
+        {
+          "feature": "distance_m",
+          "importance": 0.046824194490909576
+        }
+      ],
+      "model_path": "/home/daz/daztech-betting-engine/models/racing_xgb_v_20260601_160056.json",
+      "iso_path": "/home/daz/daztech-betting-engine/models/racing_iso_v_20260601_160056.json",
+      "version": "v_20260601_160056",
+      "promoted": false
     }
   ],
   "nrl": [
@@ -190,6 +252,67 @@
     },
     {
       "timestamp": "2026-05-31T10:56:16.598179+00:00",
+      "sport": "nrl",
+      "samples_trained": 65,
+      "samples_test": 28,
+      "brier_raw": 0.2943820357322693,
+      "brier_calibrated": 0.48448899388313293,
+      "brier_old": 0.48448899388313293,
+      "logloss_calibrated": 1.9347745809677905,
+      "auc_calibrated": 0.2890625,
+      "best_params": {
+        "learning_rate": 0.01,
+        "max_depth": 3,
+        "n_estimators": 100
+      },
+      "top_features": [
+        {
+          "feature": "home_last5_form",
+          "importance": 0.21762795746326447
+        },
+        {
+          "feature": "home_rating_def",
+          "importance": 0.1831078976392746
+        },
+        {
+          "feature": "away_rating_off",
+          "importance": 0.17565932869911194
+        },
+        {
+          "feature": "home_rating_off",
+          "importance": 0.1442718207836151
+        },
+        {
+          "feature": "away_last5_form",
+          "importance": 0.1441533863544464
+        },
+        {
+          "feature": "away_rating_def",
+          "importance": 0.13517962396144867
+        },
+        {
+          "feature": "home_avg_tries_for",
+          "importance": 0.0
+        },
+        {
+          "feature": "home_avg_tries_against",
+          "importance": 0.0
+        },
+        {
+          "feature": "away_avg_tries_for",
+          "importance": 0.0
+        },
+        {
+          "feature": "away_avg_tries_against",
+          "importance": 0.0
+        }
+      ],
+      "promoted": false,
+      "model_path": null,
+      "reject_reason": "auc_below_0.5 (0.289)"
+    },
+    {
+      "timestamp": "2026-06-01T06:00:20.557552+00:00",
       "sport": "nrl",
       "samples_trained": 65,
       "samples_test": 28,
