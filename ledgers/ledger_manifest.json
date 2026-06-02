@@ -4,9 +4,6 @@
   "2026-05-29_racing_ledger.json",
   "2026-05-31_nba_ledger.json",
   "2026-05-31_nrl_ledger.json",
-  "paper_football_backfill.json",
-  "paper_nrl_backfill.json",
-  "paper_nrl_full_backfill.json",
-  "paper_racing_backfill.json",
-  "paper_trading_backfill_nrl.json"
+  "2026-06-01_daily.json",
+  "2026-06-02_daily.json"
 ]
