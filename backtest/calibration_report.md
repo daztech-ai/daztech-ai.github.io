@@ -1,6 +1,6 @@
 # 30-Day Calibration Backtest — Daztech Betting Engine
 
-**Generated:** 2026-06-02 08:33:40 UTC
+**Generated:** 2026-06-02 08:34:15 UTC
 **Ledger files processed:** 7
 
 ## Headline
