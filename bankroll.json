@@ -1,9 +1,9 @@
 {
   "starting": 1000.0,
   "current": 900.0,
-  "total_bets": 10,
+  "total_bets": 11,
   "total_winners": 0,
-  "total_staked_alltime": 100.0,
+  "total_staked_alltime": 110.0,
   "total_returned_alltime": 0.0,
   "roi_pct": 0.0,
   "history": [
@@ -19,5 +19,13 @@
       "note": "June 1 reset. Top 10 picks: 9 harness + 1 TB. Pending settlement."
     }
   ],
-  "last_updated": "2026-06-01"
+  "last_updated": "2026-06-02",
+  "by_sport": {
+    "greyhounds": {
+      "bets": 1,
+      "staked": 10.0,
+      "returned": 0.0,
+      "winners": 0
+    }
+  }
 }

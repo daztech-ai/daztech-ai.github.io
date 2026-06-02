@@ -496,3 +496,47 @@
 2026-06-01 16:00:57,070 [INFO]   [nrl]: rejected
 2026-06-01 16:00:57,070 [INFO]   [nba]: skipped
 2026-06-01 16:00:57,070 [INFO] ============================================================
+2026-06-02 16:00:55,010 [INFO] ============================================================
+2026-06-02 16:00:55,011 [INFO] Daztech Retrain Pipeline — 2026-06-02T06:00:55.010197+00:00
+2026-06-02 16:00:55,011 [INFO] Force mode: False, Dry run: False
+2026-06-02 16:00:55,011 [INFO] ============================================================
+2026-06-02 16:00:55,012 [INFO] 
+────────────────────────────────────────
+[RACING] Starting retrain...
+────────────────────────────────────────
+2026-06-02 16:00:55,075 [INFO] Racing: 1336 races with results found
+2026-06-02 16:01:17,446 [INFO] Racing features: 14930 rows, 20 features, win_rate=0.086
+2026-06-02 16:01:17,456 [INFO] [racing] Train: 10451 rows, Test: 4479 rows
+2026-06-02 16:01:17,456 [INFO] [racing] Train win rate: 0.086, Test win rate: 0.084
+2026-06-02 16:01:20,999 [INFO] [racing] Best params: {'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 500}
+2026-06-02 16:01:21,195 [INFO] [racing] Brier raw=0.0751, calibrated=0.0760
+2026-06-02 16:01:21,196 [INFO] [racing] AUC raw=0.649, calibrated=0.650
+2026-06-02 16:01:21,196 [WARNING] [racing] REJECTED: new Brier 0.0760 >= old Brier 0.0756
+2026-06-02 16:01:21,203 [INFO] [racing] Model saved to /home/daz/daztech-betting-engine/models/racing_xgb_v_20260602_160121.json
+2026-06-02 16:01:21,203 [INFO] [racing] Status: rejected
+2026-06-02 16:01:21,203 [INFO] 
+────────────────────────────────────────
+[NRL] Starting retrain...
+────────────────────────────────────────
+2026-06-02 16:01:21,205 [INFO] NRL: 100 completed games
+2026-06-02 16:01:21,223 [INFO] NRL features: 93 rows, 13 features, win_rate=0.527
+2026-06-02 16:01:21,228 [INFO] [nrl] Train: 65 rows, Test: 28 rows
+2026-06-02 16:01:21,228 [INFO] [nrl] Train win rate: 0.508, Test win rate: 0.571
+2026-06-02 16:01:21,543 [INFO] [nrl] Best params: {'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 100}
+2026-06-02 16:01:21,569 [INFO] [nrl] Brier raw=0.2944, calibrated=0.4845
+2026-06-02 16:01:21,569 [INFO] [nrl] AUC raw=0.284, calibrated=0.289
+2026-06-02 16:01:21,569 [WARNING] [nrl] AUC 0.289 < 0.5 — model worse than random, skipping
+2026-06-02 16:01:21,569 [INFO] 
+────────────────────────────────────────
+[NBA] Starting retrain...
+────────────────────────────────────────
+2026-06-02 16:01:21,569 [WARNING] NBA: only 0 completed games — need 30+, skipping
+2026-06-02 16:01:21,570 [WARNING] [nba] Skipped — insufficient data or feature builder returned None
+2026-06-02 16:01:21,571 [INFO] Metrics saved to /home/daz/daztech-betting-engine/output/model-metrics.json
+2026-06-02 16:01:21,571 [INFO] 
+============================================================
+2026-06-02 16:01:21,571 [INFO] Retrain pipeline complete — 2026-06-02T06:01:21.571779+00:00
+2026-06-02 16:01:21,571 [INFO]   [racing]: rejected
+2026-06-02 16:01:21,571 [INFO]   [nrl]: rejected
+2026-06-02 16:01:21,571 [INFO]   [nba]: skipped
+2026-06-02 16:01:21,571 [INFO] ============================================================
