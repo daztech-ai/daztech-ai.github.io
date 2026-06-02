@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>How Daz Works — Architecture &amp; Build Status</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚙️</text></svg>">
+<script>
+  // Mirror the hub's theme system so this page feels native
+  (function(){
+    var s = localStorage.getItem('daztech-theme');
+    var d = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    document.documentElement.dataset.theme = s || (d ? 'dark' : 'light');
+  })();
+</script>
+<style>
+  :root {
+    --bg: #faf7f2;
+    --surface: #ffffff;
+    --text: #2d2922;
+    --muted: #8c8880;
+    --gold: #c8960c;
+    --gold-soft: rgba(200,150,12,0.10);
+    --gold-line: rgba(200,150,12,0.25);
+    --border: #e8e4dc;
+    --live: #16a34a;
+    --positive: #16a34a;
+    --negative: #dc2626;
+    --warning: #d97706;
+    --info: #2563eb;
+    --code-bg: #f5f2ec;
+    --shadow: 0 1px 3px rgba(0,0,0,0.04);
+    --shadow-hover: 0 2px 8px rgba(0,0,0,0.06);
+    --radius: 10px;
+  }
+  html[data-theme="dark"] {
+    --bg: #0a0a0f;
+    --surface: #12121a;
+    --text: #e0e0e0;
+    --muted: #777;
+    --gold: #ffd700;
+    --gold-soft: rgba(255,215,0,0.08);
+    --gold-line: rgba(255,215,0,0.22);
+    --border: rgba(255,255,255,0.08);
+    --code-bg: #1a1a23;
+    --shadow: none;
+    --shadow-hover: none;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin:0; padding:0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--gold); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: 920px; margin: 0 auto; padding: 32px 20px 80px; }
+
+  /* TOP BAR */
+  .topbar {
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 14px 20px; border-bottom: 1px solid var(--border);
+    background: var(--surface); position:sticky; top:0; z-index:10;
+  }
+  .topbar .brand { font-weight:800; letter-spacing:-0.01em; font-size:15px; }
+  .topbar .brand span { color: var(--gold); }
+  .topbar .navlinks { display:flex; gap:18px; font-size:13px; }
+  .topbar .navlinks a { color: var(--muted); }
+  .topbar .navlinks a:hover { color: var(--gold); text-decoration:none; }
+  .theme-toggle {
+    background:transparent; border:1px solid var(--border); color:var(--text);
+    padding: 5px 10px; border-radius:6px; cursor:pointer; font-size:13px;
+  }
+  .theme-toggle:hover { border-color: var(--gold); }
+
+  /* HERO */
+  .hero {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px 24px;
+    margin-top: 20px;
+    box-shadow: var(--shadow);
+  }
+  .hero h1 {
+    font-size: 26px; line-height: 1.2; margin: 0 0 10px;
+    letter-spacing: -0.02em;
+  }
+  .hero .lede { font-size: 16px; color: var(--muted); margin: 0 0 6px; }
+  .hero .verdict {
+    display:inline-block; margin-top: 14px; padding: 6px 12px;
+    background: var(--gold-soft); border: 1px solid var(--gold-line);
+    border-radius: 999px; font-size: 13px; color: var(--gold); font-weight: 600;
+  }
+
+  /* SECTIONS */
+  section { margin-top: 36px; }
+  section h2 {
+    font-size: 13px; text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--gold); margin: 0 0 14px; font-weight: 700;
+  }
+  section h2 .num {
+    display:inline-block; width:22px; height:22px; line-height:22px;
+    background: var(--gold-soft); border: 1px solid var(--gold-line);
+    border-radius: 50%; text-align:center; margin-right:8px;
+    font-size: 11px;
+  }
+  .panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px 22px;
+    box-shadow: var(--shadow);
+  }
+  .panel + .panel { margin-top: 12px; }
+  .panel h3 { margin: 0 0 10px; font-size: 17px; }
+  .panel p { margin: 0 0 10px; color: var(--text); }
+  .panel .sub { color: var(--muted); font-size: 14px; }
+
+  /* FLOW DIAGRAM */
+  .flow {
+    display: flex; align-items: stretch; gap: 6px; overflow-x: auto;
+    padding: 8px 0 12px; scrollbar-width: thin;
+  }
+  .flow-step {
+    flex: 0 0 132px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--gold);
+    border-radius: var(--radius);
+    padding: 12px 12px 14px;
+    box-shadow: var(--shadow);
+    position: relative;
+  }
+  .flow-step .ico { font-size: 22px; }
+  .flow-step .step-num {
+    position:absolute; top:8px; right:10px; font-size: 11px;
+    color: var(--muted); font-weight: 700;
+  }
+  .flow-step h4 { margin: 8px 0 4px; font-size: 14px; }
+  .flow-step p { margin: 0; font-size: 12px; color: var(--muted); line-height:1.4; }
+  .flow-step .built {
+    display:inline-block; margin-top: 8px; font-size: 11px; color: var(--positive);
+    font-weight: 600;
+  }
+  .flow-step.partial .built { color: var(--warning); }
+  .flow-step.gap .built { color: var(--negative); }
+  .flow-arrow {
+    flex: 0 0 18px; display:flex; align-items:center; justify-content:center;
+    color: var(--gold); font-size: 18px; font-weight: 800;
+  }
+
+  /* STAGE GRID */
+  .stages { display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+  .stage {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px;
+    box-shadow: var(--shadow);
+  }
+  .stage .head { display:flex; align-items:center; gap:10px; margin-bottom: 10px; }
+  .stage .head .ico { font-size: 22px; }
+  .stage .head h4 { margin: 0; font-size: 15px; }
+  .stage .head .status {
+    margin-left: auto; font-size: 11px; padding: 2px 8px; border-radius: 999px;
+    background: var(--gold-soft); color: var(--gold); font-weight: 700;
+  }
+  .stage.partial .head .status { background: rgba(217,119,6,0.12); color: var(--warning); }
+  .stage.gap .head .status { background: rgba(220,38,38,0.12); color: var(--negative); }
+  .stage ul { margin: 6px 0 0 0; padding-left: 18px; }
+  .stage li { font-size: 13.5px; margin: 4px 0; color: var(--text); }
+  .stage li code, .stage p code, code {
+    background: var(--code-bg); padding: 1px 6px; border-radius: 4px;
+    font-size: 12.5px; font-family: 'SF Mono', Menlo, Consolas, monospace;
+  }
+  .stage .foot {
+    margin-top: 12px; padding-top: 10px; border-top: 1px dashed var(--border);
+    font-size: 12.5px; color: var(--muted);
+  }
+
+  /* TABLE */
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--border); }
+  th { color: var(--muted); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; }
+  tr:last-child td { border-bottom: 0; }
+  .pill { display:inline-block; font-size: 11px; padding: 2px 8px; border-radius: 999px; font-weight: 600; }
+  .pill.green { background: rgba(22,163,74,0.12); color: var(--positive); }
+  .pill.amber { background: rgba(217,119,6,0.12); color: var(--warning); }
+  .pill.red   { background: rgba(220,38,38,0.12); color: var(--negative); }
+  .pill.gray  { background: var(--code-bg); color: var(--muted); }
+
+  /* SCORECARD */
+  .scorecard { display:grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; }
+  .score {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 14px;
+  }
+  .score .q { font-size: 12.5px; color: var(--muted); margin-bottom: 6px; }
+  .score .a { font-size: 15px; font-weight: 700; }
+  .score .a.yes { color: var(--positive); }
+  .score .a.partly { color: var(--warning); }
+  .score .a.no { color: var(--negative); }
+  .score .note { font-size: 12px; color: var(--muted); margin-top: 4px; }
+
+  /* OUTPUT CARDS */
+  .output-grid {
+    display:grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px;
+  }
+  .out-tile {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 14px; text-decoration:none; color: var(--text);
+    display:block; transition: transform 0.1s, border-color 0.1s;
+  }
+  .out-tile:hover { transform: translateY(-1px); border-color: var(--gold); text-decoration:none; }
+  .out-tile .lbl { font-size: 12px; color: var(--muted); margin-bottom: 4px; }
+  .out-tile .ttl { font-size: 15px; font-weight: 700; }
+  .out-tile .sub { font-size: 12.5px; color: var(--muted); margin-top: 4px; }
+
+  /* FOOTER */
+  footer {
+    margin-top: 50px; padding-top: 20px; border-top: 1px solid var(--border);
+    color: var(--muted); font-size: 12.5px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;
+  }
+
+  @media (max-width: 600px) {
+    .wrap { padding: 18px 14px 60px; }
+    .hero { padding: 22px 18px; }
+    .hero h1 { font-size: 22px; }
+    .flow-step { flex: 0 0 116px; padding: 10px; }
+    .flow-arrow { flex: 0 0 12px; font-size: 14px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand">Daz<span>tech</span> · <span style="color:var(--muted);font-weight:500;">How it works</span></div>
+  <div class="navlinks">
+    <a href="index.html">Hub</a>
+    <a href="results.html">Results</a>
+    <a href="https://github.com/daztech-ai/daztech-betting-engine" target="_blank" rel="noopener">Source ↗</a>
+    <button class="theme-toggle" onclick="toggleTheme()">◐</button>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <div class="hero">
+    <h1>From raw data to a daily betting card — Daz in one page</h1>
+    <p class="lede">Daz is a multi-sport betting engine that scrapes free data, models probability, applies a hard risk gate, and publishes a daily card to GitHub Pages. Every pick is auditable, every stake is sized, and nothing reaches a card without passing 13 safety gates.</p>
+    <span class="verdict">Build status · ~80% of vision live · racing &amp; NRL production, NBA/MLB in progress</span>
+  </div>
+
+  <!-- 1. THE FLOW -->
+  <section>
+    <h2><span class="num">1</span>The flow at a glance</h2>
+    <div class="flow">
+      <div class="flow-step">
+        <div class="step-num">01</div>
+        <div class="ico">🌐</div>
+        <h4>Data Sources</h4>
+        <p>10 free sources: HKJC, GoBet, Racing Australia, NBA, NRL, MLB…</p>
+        <span class="built">✓ Built</span>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="step-num">02</div>
+        <div class="ico">🕷️</div>
+        <h4>Scrapers + BABS</h4>
+        <p>21 modules. BABS drives a browser for JS-heavy sites (Harness, Greyhounds).</p>
+        <span class="built">✓ Built</span>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="step-num">03</div>
+        <div class="ico">🗄️</div>
+        <h4>SQLite DB</h4>
+        <p>One unified <code>betting.db</code>. 18k runners · 1.9k games · 13k odds.</p>
+        <span class="built">✓ Built</span>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step partial">
+        <div class="step-num">04</div>
+        <div class="ico">🧠</div>
+        <h4>Models</h4>
+        <p>7-factor racing, NRL try/margin, NBA props, MLB pitcher SO (AUC 0.92).</p>
+        <span class="built">◐ Most built</span>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="step-num">05</div>
+        <div class="ico">🛡️</div>
+        <h4>Risk Gate</h4>
+        <p>13 deterministic gates — bankroll, jurisdiction, exposure. No LLM in loop.</p>
+        <span class="built">✓ Built</span>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="step-num">06</div>
+        <div class="ico">📒</div>
+        <h4>Jarvis Ledger</h4>
+        <p>Approved picks → stakes, prices, edges, conv. JSONL for backtest + tax.</p>
+        <span class="built">✓ Built</span>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="step-num">07</div>
+        <div class="ico">📱</div>
+        <h4>Cards → Pages</h4>
+        <p>Mobile-first HTML, hub-first, why-toggle, dark/light. Git push = live.</p>
+        <span class="built">✓ Built</span>
+      </div>
+    </div>
+    <p class="sub" style="font-size:13px; color:var(--muted);">Each stage is independent — swap a scraper, retrain a model, or re-skin a card without touching the others.</p>
+  </section>
+
+  <!-- 2. STAGE DETAIL -->
+  <section>
+    <h2><span class="num">2</span>What's actually built, stage by stage</h2>
+
+    <div class="stages">
+
+      <div class="stage">
+        <div class="head">
+          <div class="ico">🌐</div>
+          <h4>1. Data Sources</h4>
+          <span class="status">10 live</span>
+        </div>
+        <ul>
+          <li>HKJC, GoBet — HK racing tips &amp; cards</li>
+          <li>Racing Australia — acceptances + results (8 states)</li>
+          <li>Racing &amp; Sports — speedmaps (BABS)</li>
+          <li>Harness.org.au, TheDogs — BABS-driven</li>
+          <li>NBA, NRL, MLB, Football (EPL/CSV)</li>
+        </ul>
+        <div class="foot">All free. No paid odds feed. Server-rendered where possible.</div>
+      </div>
+
+      <div class="stage">
+        <div class="head">
+          <div class="ico">🕷️</div>
+          <h4>2. Scrapers + BABS</h4>
+          <span class="status">Built</span>
+        </div>
+        <ul>
+          <li><code>run_scrapers.py</code> — 10 registered sources, one CLI</li>
+          <li>21 Python modules in <code>src/scrapers/</code></li>
+          <li>BABS = Browser Agent Bridge. Firefox+Edge via CDP. Replaces 5+ years of Selenium pain.</li>
+          <li>TokenJuice compression opt-in for LLM-friendly output</li>
+        </ul>
+        <div class="foot">3 cron scrapes/day: 8am HKJC, 8pm Thu GoBet, 8pm Fri acceptances.</div>
+      </div>
+
+      <div class="stage">
+        <div class="head">
+          <div class="ico">🗄️</div>
+          <h4>3. Database</h4>
+          <span class="status">Schema v3</span>
+        </div>
+        <ul>
+          <li>SQLite, WAL mode, 16 MB at <code>data/betting.db</code></li>
+          <li>8 sports tables · 4 racing tables · scrape_log</li>
+          <li>Conventions: <code>team_name</code>, <code>league_code</code>, <code>runner_id</code> nullable</li>
+          <li>Backtest data: 11,940 historical results</li>
+        </ul>
+        <div class="foot">One DB = one source of truth. No CSV sprawl.</div>
+      </div>
+
+      <div class="stage partial">
+        <div class="head">
+          <div class="ico">🧠</div>
+          <h4>4. Models</h4>
+          <span class="status">Most built</span>
+        </div>
+        <ul>
+          <li><strong>Racing</strong> — 7-factor aggregator (form, speed, class, barrier, weight, connections, track-fit) + Phase 3 calibration (Bayesian blend, Monte Carlo, XGBoost)</li>
+          <li><strong>NRL</strong> — 5 modules: team ratings, try-scorer, margin, SGM builder, props</li>
+          <li><strong>NBA</strong> — ad-hoc game scripts (G6, G7). No reusable pipeline yet.</li>
+          <li><strong>MLB</strong> — pitcher strikeout model (AUC 0.916), daily picks</li>
+        </ul>
+        <div class="foot">Isotonic calibration. 8% edge threshold (racing), 5% (sports). ML: XGBoost on engineered features.</div>
+      </div>
+
+      <div class="stage">
+        <div class="head">
+          <div class="ico">🛡️</div>
+          <h4>5. Risk Gate</h4>
+          <span class="status">Built</span>
+        </div>
+        <ul>
+          <li><code>RiskManager</code> in <code>src/engine/execution/risk.py</code></li>
+          <li>13 gates: kill switches, jurisdiction, venue allowlist, bankroll, loss limits, drawdown</li>
+          <li>Every decision → JSONL audit log</li>
+          <li>No LLM anywhere in the kill chain (deterministic only)</li>
+        </ul>
+        <div class="foot">A model can be 100% right and still be blocked here. Bankroll &gt; conviction.</div>
+      </div>
+
+      <div class="stage">
+        <div class="head">
+          <div class="ico">📒</div>
+          <h4>6. Jarvis Ledger</h4>
+          <span class="status">Built</span>
+        </div>
+        <ul>
+          <li><code>src/output/jarvis_ledger.py</code> — ledger builder</li>
+          <li>Per-bet: pick, market, price, model prob, edge, stake (Kelly), conviction tier, timestamp</li>
+          <li>Output: JSONL + per-day JSON in <code>output/ledgers/</code></li>
+          <li>Feeds: backtest, tax reports, ROI dashboard</li>
+        </ul>
+        <div class="foot">A bet that wasn't in Jarvis didn't happen. That's the rule.</div>
+      </div>
+
+      <div class="stage">
+        <div class="head">
+          <div class="ico">📱</div>
+          <h4>7. Cards → GitHub Pages</h4>
+          <span class="status">Built</span>
+        </div>
+        <ul>
+          <li><code>src/output/unified_card.py</code> — single card for racing/NRL/NBA</li>
+          <li>Hub-first: <code>index.html</code> lists all cards, mobile-first, why-toggle on every pick</li>
+          <li><code>src/publish/github_pages.py</code> — git push = live</li>
+          <li>35+ cards already published. Auto-refresh every 5 min.</li>
+        </ul>
+        <div class="foot">Domain: daztech-ai.github.io. CNAME configured.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 3. WHAT COMES OUT -->
+  <section>
+    <h2><span class="num">3</span>What you actually see</h2>
+    <div class="panel">
+      <p>Every morning, the cron fires, the engine runs, and these appear on the site:</p>
+      <div class="output-grid" style="margin-top:12px;">
+        <a class="out-tile" href="index.html">
+          <div class="lbl">Live</div>
+          <div class="ttl">🏠 Hub</div>
+          <div class="sub">Decision dashboard + filterable cards (Live / Racing / NRL / NBA / Tennis / UCL / Results)</div>
+        </a>
+        <a class="out-tile" href="racing_2026-05-30.html">
+          <div class="lbl">Racing</div>
+          <div class="ttl">🐎 Calibrated Card</div>
+          <div class="sub">Top 10 picks w/ edge, model prob, Kelly stake, why-toggle</div>
+        </a>
+        <a class="out-tile" href="nrl_round14_2026-05-30.html">
+          <div class="lbl">NRL</div>
+          <div class="ttl">🏉 Round Card</div>
+          <div class="sub">Margins, try-scorer SGMs (cross-checked vs 22-man team lists)</div>
+        </a>
+        <a class="out-tile" href="nba-game7.html">
+          <div class="lbl">NBA</div>
+          <div class="ttl">🏀 Game SGMs</div>
+          <div class="sub">Per-game analysis. Ad-hoc, not yet a daily pipeline.</div>
+        </a>
+        <a class="out-tile" href="results.html">
+          <div class="lbl">Results</div>
+          <div class="ttl">📒 Settled Ledger</div>
+          <div class="sub">Yesterday's picks → win/loss/P&amp;L by sport, by conviction tier</div>
+        </a>
+        <a class="out-tile" href="src/ui/dashboard.html">
+          <div class="lbl">Internal</div>
+          <div class="ttl">📈 Dashboard</div>
+          <div class="sub">Bankroll curve, hit rate, edge-vs-decile, calibration plot</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. ARE WE ON TRACK? -->
+  <section>
+    <h2><span class="num">4</span>Are we on the right track?</h2>
+    <p class="sub" style="font-size:14px; color:var(--muted); margin-top:-4px;">Honest scorecard against the original build scope.</p>
+    <div class="scorecard">
+      <div class="score">
+        <div class="q">Data layer sound?</div>
+        <div class="a yes">Yes</div>
+        <div class="note">One DB, 30k+ records, conventions enforced, backfillable.</div>
+      </div>
+      <div class="score">
+        <div class="q">Picks explainable?</div>
+        <div class="a yes">Yes</div>
+        <div class="note">Every card shows model prob, edge, stake, and the "why" behind it.</div>
+      </div>
+      <div class="score">
+        <div class="q">Risk enforced?</div>
+        <div class="a yes">Yes</div>
+        <div class="note">13 gates. No LLM. Every decision audited. Kill switches wired.</div>
+      </div>
+      <div class="score">
+        <div class="q">Model actually better than market?</div>
+        <div class="a partly">Open</div>
+        <div class="note">Calibration + backtest harness live. 200+ settled bets to date. Still tuning edge thresholds.</div>
+      </div>
+      <div class="score">
+        <div class="q">Multi-sport coverage?</div>
+        <div class="a partly">Partial</div>
+        <div class="note">Racing &amp; NRL production. MLB picks daily. NBA &amp; football ad-hoc. AFL/tennis not started.</div>
+      </div>
+      <div class="score">
+        <div class="q">Publishing loop closed?</div>
+        <div class="a yes">Yes</div>
+        <div class="note">Cron → run_engine → ledger → card → git push → live. Mobile cards auto-refresh.</div>
+      </div>
+      <div class="score">
+        <div class="q">Autonomous end-to-end?</div>
+        <div class="a partly">Mostly</div>
+        <div class="note">Cron handles morning + evening. Final in-play updates still manual. 3am wake-ups rare now.</div>
+      </div>
+      <div class="score">
+        <div class="q">Productised (subscription)?</div>
+        <div class="a no">Not yet</div>
+        <div class="note">Engine works. Channel/monetisation not built. That's the next chapter.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. WHAT'S STILL ON THE BOARD -->
+  <section>
+    <h2><span class="num">5</span>What's still on the board</h2>
+    <div class="panel">
+      <table>
+        <thead><tr><th>Item</th><th>Why it matters</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>NBA daily pipeline</td>
+            <td>Manual per-game scripts. Need: schedule → props → SGMs → card.</td>
+            <td><span class="pill amber">In progress</span></td>
+          </tr>
+          <tr>
+            <td>AFL coverage</td>
+            <td>Tipping season overlap. No scraper, no model.</td>
+            <td><span class="pill red">Not started</span></td>
+          </tr>
+          <tr>
+            <td>Calibration backtest on settled ledger</td>
+            <td>200+ settled bets is enough to validate edge threshold. Not done yet.</td>
+            <td><span class="pill amber">Ready to run</span></td>
+          </tr>
+          <tr>
+            <td>TokenJuice bug fixes</td>
+            <td>HTML skip_tags, drop_matching, JSONC. Opt-in only.</td>
+            <td><span class="pill gray">Polish</span></td>
+          </tr>
+          <tr>
+            <td>Consolidate dead scripts</td>
+            <td>3 cheatsheet variants, 2 backtest variants, broken <code>run.py</code>.</td>
+            <td><span class="pill gray">Cleanup</span></td>
+          </tr>
+          <tr>
+            <td>Subscription / channel layer</td>
+            <td>Engine outputs to GitHub Pages. Distribution &amp; paywall = separate build.</td>
+            <td><span class="pill red">Not started</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 6. TL;DR -->
+  <section>
+    <h2><span class="num">6</span>TL;DR</h2>
+    <div class="panel">
+      <p><strong>What's real today:</strong> an end-to-end pipeline that scrapes 10 sources, models probability for racing &amp; NRL, runs every pick through a 13-gate risk gate, writes a JSONL ledger, and publishes mobile cards to a live hub. Cron-driven, audit-logged, with zero paid data.</p>
+      <p><strong>What it proves:</strong> the architecture is sound. The data layer, the modelling surface, the risk gate, and the publishing loop are all production-shaped. We can swap any stage without breaking the others.</p>
+      <p><strong>What it doesn't prove yet:</strong> that the model consistently beats the market over a large sample. We have the data, the backtest harness, and the ledger to find out — we just haven't run that final test.</p>
+      <p><strong>What would unlock the next chapter:</strong> a 30-day backtest of the settled ledger against closing odds, then a paid channel (Telegram or web) that turns the engine into a product.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div>Last updated 2 June 2026 · auto-generated from <code>ARCHITECTURE.md</code> + live cron state</div>
+    <div><a href="https://github.com/daztech-ai/daztech-betting-engine" target="_blank" rel="noopener">Source ↗</a> · <a href="index.html">Hub ↗</a></div>
+  </footer>
+</div>
+
+<script>
+  function toggleTheme() {
+    var cur = document.documentElement.dataset.theme;
+    var next = cur === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = next;
+    localStorage.setItem('daztech-theme', next);
+  }
+</script>
+</body>
+</html>
