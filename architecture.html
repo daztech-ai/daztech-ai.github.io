@@ -272,7 +272,7 @@
         <div class="step-num">02</div>
         <div class="ico">🕷️</div>
         <h4>Scrapers + BABS</h4>
-        <p>21 modules. BABS drives a browser for JS-heavy sites (Harness, Greyhounds).</p>
+        <p>15 modules. BABS drives a browser for JS-heavy sites (TheDogs, Racing&amp;Sports).</p>
         <span class="built">✓ Built</span>
       </div>
       <div class="flow-arrow">→</div>
@@ -280,7 +280,7 @@
         <div class="step-num">03</div>
         <div class="ico">🗄️</div>
         <h4>SQLite DB</h4>
-        <p>One unified <code>betting.db</code>. 18k runners · 1.9k games · 13k odds.</p>
+        <p>One unified <code>betting.db</code>. 19k runners · 1.9k races · 12.7k results · 26k odds.</p>
         <span class="built">✓ Built</span>
       </div>
       <div class="flow-arrow">→</div>
@@ -296,7 +296,7 @@
         <div class="step-num">05</div>
         <div class="ico">🛡️</div>
         <h4>Risk Gate</h4>
-        <p>13 deterministic gates — bankroll, jurisdiction, exposure. No LLM in loop.</p>
+        <p>Deterministic risk layer (kill switches, jurisdiction, bankroll, exposure). No LLM in loop.</p>
         <span class="built">✓ Built</span>
       </div>
       <div class="flow-arrow">→</div>
@@ -335,7 +335,7 @@
           <li>HKJC, GoBet — HK racing tips &amp; cards</li>
           <li>Racing Australia — acceptances + results (8 states)</li>
           <li>Racing &amp; Sports — speedmaps (BABS)</li>
-          <li>Harness.org.au, TheDogs — BABS-driven</li>
+          <li>Harness.org.au — HTTP scraper (Phase A3) · TheDogs — BABS-driven</li>
           <li>NBA, NRL, MLB, Football (EPL/CSV)</li>
         </ul>
         <div class="foot">All free. No paid odds feed. Server-rendered where possible.</div>
@@ -349,7 +349,7 @@
         </div>
         <ul>
           <li><code>run_scrapers.py</code> — 10 registered sources, one CLI</li>
-          <li>21 Python modules in <code>src/scrapers/</code></li>
+          <li>15 scraper + 6 store modules in <code>src/scrapers/</code></li>
           <li>BABS = Browser Agent Bridge. Firefox+Edge via CDP. Replaces 5+ years of Selenium pain.</li>
           <li>TokenJuice compression opt-in for LLM-friendly output</li>
         </ul>
@@ -366,7 +366,7 @@
           <li>SQLite, WAL mode, 16 MB at <code>data/betting.db</code></li>
           <li>8 sports tables · 4 racing tables · scrape_log</li>
           <li>Conventions: <code>team_name</code>, <code>league_code</code>, <code>runner_id</code> nullable</li>
-          <li>Backtest data: 11,940 historical results</li>
+          <li>Backtest data: 12,743 historical results (Phase A3 added 173 harness rows)</li>
         </ul>
         <div class="foot">One DB = one source of truth. No CSV sprawl.</div>
       </div>
@@ -394,7 +394,7 @@
         </div>
         <ul>
           <li><code>RiskManager</code> in <code>src/engine/execution/risk.py</code></li>
-          <li>13 gates: kill switches, jurisdiction, venue allowlist, bankroll, loss limits, drawdown</li>
+          <li>Named kill methods: global, venue, sport, strategy, stale-data, model-health (gates layer wraps these)</li>
           <li>Every decision → JSONL audit log</li>
           <li>No LLM anywhere in the kill chain (deterministic only)</li>
         </ul>
@@ -492,7 +492,7 @@
       <div class="score">
         <div class="q">Risk enforced?</div>
         <div class="a yes">Yes</div>
-        <div class="note">13 gates. No LLM. Every decision audited. Kill switches wired.</div>
+        <div class="note">6 named kill methods + per-pick gates (odds/edge/bankroll/exposure). No LLM. Every decision audited.</div>
       </div>
       <div class="score">
         <div class="q">Model actually better than market?</div>
@@ -568,7 +568,7 @@
   <section>
     <h2><span class="num">6</span>TL;DR</h2>
     <div class="panel">
-      <p><strong>What's real today:</strong> an end-to-end pipeline that scrapes 10 sources, models probability for racing &amp; NRL, runs every pick through a 13-gate risk gate, writes a JSONL ledger, and publishes mobile cards to a live hub. Cron-driven, audit-logged, with zero paid data.</p>
+      <p><strong>What's real today:</strong> an end-to-end pipeline that scrapes 10+ sources, models probability for racing, NRL, NBA &amp; MLB, runs every pick through a deterministic risk gate, writes a JSONL ledger, and publishes mobile cards to a live hub. Cron-driven, audit-logged, with zero paid data. <strong>June 2026:</strong> paper settlement now works end-to-end (NBA/racing/MLB/harness) via nightly cron; greyhounds wired into daily card.</p>
       <p><strong>What it proves:</strong> the architecture is sound. The data layer, the modelling surface, the risk gate, and the publishing loop are all production-shaped. We can swap any stage without breaking the others.</p>
       <p><strong>What it doesn't prove yet:</strong> that the model consistently beats the market over a large sample. We have the data, the backtest harness, and the ledger to find out — we just haven't run that final test.</p>
       <p><strong>What would unlock the next chapter:</strong> a 30-day backtest of the settled ledger against closing odds, then a paid channel (Telegram or web) that turns the engine into a product.</p>
@@ -576,7 +576,7 @@
   </section>
 
   <footer>
-    <div>Last updated 2 June 2026 · auto-generated from <code>ARCHITECTURE.md</code> + live cron state</div>
+    <div>Last updated 2 June 2026 (post Phase A1–C1) · auto-generated from <code>ARCHITECTURE.md</code> + live cron state</div>
     <div><a href="https://github.com/daztech-ai/daztech-betting-engine" target="_blank" rel="noopener">Source ↗</a> · <a href="index.html">Hub ↗</a></div>
   </footer>
 </div>
