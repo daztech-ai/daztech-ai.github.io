@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>TGE Rate Amendment — Analysis · Daztech</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📦</text></svg>">
+<script>
+  // Mirror the hub's theme system so this page feels native
+  (function(){
+    var s = localStorage.getItem('daztech-theme');
+    var d = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    document.documentElement.dataset.theme = s || (d ? 'dark' : 'light');
+  })();
+  function toggleTheme(){
+    var t = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = t;
+    localStorage.setItem('daztech-theme', t);
+  }
+</script>
+<style>
+  :root {
+    --bg: #faf7f2;
+    --surface: #ffffff;
+    --text: #2d2922;
+    --muted: #8c8880;
+    --gold: #c8960c;
+    --gold-soft: rgba(200,150,12,0.10);
+    --gold-line: rgba(200,150,12,0.25);
+    --border: #e8e4dc;
+    --live: #16a34a;
+    --positive: #16a34a;
+    --negative: #dc2626;
+    --warning: #d97706;
+    --info: #2563eb;
+    --code-bg: #f5f2ec;
+    --shadow: 0 1px 3px rgba(0,0,0,0.04);
+    --shadow-hover: 0 2px 8px rgba(0,0,0,0.06);
+    --radius: 10px;
+    --ice: #eff6ff;
+    --soft-amber: #fef3c7;
+  }
+  html[data-theme="dark"] {
+    --bg: #0a0a0f;
+    --surface: #12121a;
+    --text: #e0e0e0;
+    --muted: #777;
+    --gold: #ffd700;
+    --gold-soft: rgba(255,215,0,0.08);
+    --gold-line: rgba(255,215,0,0.22);
+    --border: rgba(255,255,255,0.08);
+    --code-bg: #1a1a23;
+    --ice: rgba(96,165,250,0.10);
+    --soft-amber: rgba(245,158,11,0.15);
+    --shadow: none;
+    --shadow-hover: none;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin:0; padding:0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--gold); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: 920px; margin: 0 auto; padding: 32px 20px 80px; }
+
+  /* TOP BAR */
+  .topbar {
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 14px 20px; border-bottom: 1px solid var(--border);
+    background: var(--surface); position:sticky; top:0; z-index:10;
+  }
+  .topbar .brand { font-weight:800; letter-spacing:-0.01em; font-size:15px; }
+  .topbar .brand span { color: var(--gold); }
+  .topbar .navlinks { display:flex; gap:18px; font-size:13px; align-items: center; }
+  .topbar .navlinks a { color: var(--muted); }
+  .topbar .navlinks a:hover { color: var(--gold); text-decoration:none; }
+  .topbar .navlinks a.active { color: var(--text); font-weight: 600; }
+  .theme-toggle {
+    background:transparent; border:1px solid var(--border); color:var(--text);
+    padding: 5px 10px; border-radius:6px; cursor:pointer; font-size:13px;
+  }
+  .theme-toggle:hover { border-color: var(--gold); }
+
+  /* HERO */
+  .hero {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px 24px;
+    margin-top: 20px;
+    box-shadow: var(--shadow);
+  }
+  .hero h1 {
+    font-size: 26px; line-height: 1.2; margin: 0 0 10px;
+    letter-spacing: -0.02em;
+  }
+  .hero .lede { font-size: 16px; color: var(--muted); margin: 0 0 6px; }
+  .hero .verdict {
+    display:inline-block; margin-top: 14px; padding: 6px 12px;
+    background: var(--soft-amber); border: 1px solid var(--warning);
+    border-radius: 999px; font-size: 13px; color: var(--warning); font-weight: 700;
+  }
+  .hero .meta {
+    display: flex; flex-wrap: wrap; gap: 18px;
+    margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--border);
+    font-size: 13px; color: var(--muted);
+  }
+  .hero .meta div { display: flex; flex-direction: column; }
+  .hero .meta strong { color: var(--text); font-weight: 600; font-size: 14px; }
+  .hero .meta span { font-size: 12px; }
+
+  /* SECTIONS */
+  section { margin-top: 36px; }
+  section h2 {
+    font-size: 13px; text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--gold); margin: 0 0 14px; font-weight: 700;
+  }
+  section h2 .num {
+    display:inline-block; width:22px; height:22px; line-height:22px;
+    background: var(--gold-soft); border: 1px solid var(--gold-line);
+    border-radius: 50%; text-align:center; margin-right:8px;
+    font-size: 11px;
+  }
+  .panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px 22px;
+    box-shadow: var(--shadow);
+  }
+  .panel + .panel { margin-top: 12px; }
+  .panel h3 { margin: 0 0 10px; font-size: 17px; }
+  .panel p { margin: 0 0 10px; color: var(--text); }
+  .panel .sub { color: var(--muted); font-size: 14px; }
+  .panel .lead { color: var(--text); font-size: 14.5px; margin: 0 0 14px; }
+
+  /* CALLOUT BANNERS */
+  .callout {
+    display: flex; gap: 12px; align-items: flex-start;
+    background: var(--gold-soft); border: 1px solid var(--gold-line);
+    border-radius: var(--radius); padding: 14px 16px;
+    margin: 12px 0;
+  }
+  .callout.amber {
+    background: var(--soft-amber); border-color: var(--warning);
+  }
+  .callout.amber .callout-ico { color: var(--warning); }
+  .callout.critical {
+    background: rgba(220,38,38,0.08); border-color: var(--negative);
+  }
+  .callout.critical .callout-ico { color: var(--negative); }
+  .callout .callout-ico { font-size: 20px; line-height: 1.2; }
+  .callout .callout-body { font-size: 14px; line-height: 1.5; }
+  .callout .callout-body strong { color: var(--text); }
+
+  /* TABLE */
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--border); }
+  th { color: var(--muted); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; }
+  tr:last-child td { border-bottom: 0; }
+  td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  td.lane { font-weight: 600; }
+  td.skew { color: var(--negative); font-weight: 700; }
+  td.cheap { color: var(--positive); font-weight: 700; }
+  td.expensive { color: var(--negative); font-weight: 700; }
+
+  .pill { display:inline-block; font-size: 11px; padding: 2px 8px; border-radius: 999px; font-weight: 600; }
+  .pill.green { background: rgba(22,163,74,0.12); color: var(--positive); }
+  .pill.amber { background: rgba(217,119,6,0.12); color: var(--warning); }
+  .pill.red   { background: rgba(220,38,38,0.12); color: var(--negative); }
+  .pill.gray  { background: var(--code-bg); color: var(--muted); }
+  .pill.ice   { background: var(--ice); color: var(--info); }
+
+  /* SCORECARD */
+  .scorecard { display:grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; }
+  .score {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 14px;
+  }
+  .score .q { font-size: 12.5px; color: var(--muted); margin-bottom: 6px; }
+  .score .a { font-size: 15px; font-weight: 700; }
+  .score .a.yes { color: var(--positive); }
+  .score .a.partly { color: var(--warning); }
+  .score .a.no { color: var(--negative); }
+  .score .note { font-size: 12px; color: var(--muted); margin-top: 4px; }
+
+  /* CHECKLIST */
+  .checklist { list-style: none; padding: 0; margin: 0; }
+  .checklist li {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    display: grid; grid-template-columns: 28px 1fr; gap: 10px;
+    align-items: start;
+  }
+  .checklist li:last-child { border-bottom: 0; }
+  .checklist .n {
+    width: 22px; height: 22px; line-height: 22px; text-align: center;
+    background: var(--gold-soft); border: 1px solid var(--gold-line);
+    border-radius: 50%; font-size: 11px; color: var(--gold);
+    font-weight: 700; margin-top: 2px;
+  }
+  .checklist .body { font-size: 14px; line-height: 1.5; }
+  .checklist .body strong { display: block; margin-bottom: 2px; }
+  .checklist .body .ask { color: var(--info); font-size: 13px; }
+
+  /* 3-COL INPUT GRID */
+  .input-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 10px; margin-top: 10px;
+  }
+  .input-tile {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 14px;
+  }
+  .input-tile .label { font-size: 12px; color: var(--muted); margin-bottom: 4px; }
+  .input-tile .desc { font-size: 13.5px; line-height: 1.4; }
+
+  /* STEPS */
+  .step-list { display: flex; flex-direction: column; gap: 10px; }
+  .step {
+    display: grid; grid-template-columns: 80px 1fr; gap: 14px;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 14px 16px;
+  }
+  .step .when {
+    font-weight: 700; color: var(--gold); font-size: 12px;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    border-right: 1px solid var(--border); padding-right: 14px;
+  }
+  .step h4 { margin: 0 0 4px; font-size: 15px; }
+  .step p { margin: 0; font-size: 13.5px; color: var(--muted); }
+
+  /* FOOTER */
+  footer {
+    margin-top: 60px; padding-top: 24px;
+    border-top: 1px solid var(--border);
+    font-size: 12px; color: var(--muted);
+  }
+  footer a { color: var(--muted); }
+  footer a:hover { color: var(--gold); }
+
+  /* MOBILE */
+  @media (max-width: 600px) {
+    .wrap { padding: 18px 14px 60px; }
+    .hero { padding: 22px 18px; }
+    .hero h1 { font-size: 22px; }
+    .topbar .navlinks { gap: 12px; font-size: 12px; }
+    .topbar .navlinks a:not(.active):not(.theme-toggle) { display: none; }
+    .step { grid-template-columns: 1fr; }
+    .step .when { border-right: 0; border-bottom: 1px solid var(--border); padding: 0 0 8px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand">Daz<span>tech</span> · <span style="color:var(--muted);font-weight:500;">TGE Rate Analysis</span></div>
+  <div class="navlinks">
+    <a href="index.html">Hub</a>
+    <a href="architecture.html">How it works</a>
+    <a href="results.html">Results</a>
+    <a class="active">TGE Analysis</a>
+    <button class="theme-toggle" onclick="toggleTheme()">◐</button>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <div class="hero">
+    <h1>Team Global Express — Rate Amendment, Montu</h1>
+    <p class="lede">3-month pallet EXPRESS rate card, 3 origins × 268 destinations, non-reciprocal. Reviewed against public market context. The headline: <strong>short term, high minimum, quarterly reviews, no fuel figure in writing</strong>. Three clauses to negotiate before signing.</p>
+    <span class="verdict">⚠ Recommendation: Don't sign yet. Two weeks of negotiation + 1 competitor quote in parallel.</span>
+    <div class="meta">
+      <div>
+        <strong>Prepared for</strong>
+        <span>Danny Efendi · Montu</span>
+      </div>
+      <div>
+        <strong>Source</strong>
+        <span>DocuSign envelope 7D2589DE…1FAD9 (21pp)</span>
+      </div>
+      <div>
+        <strong>Issued by</strong>
+        <span>Gordon Ma, TGE (Melbourne)</span>
+      </div>
+      <div>
+        <strong>Document date</strong>
+        <span>3 June 2026</span>
+      </div>
+      <div>
+        <strong>Term</strong>
+        <span>1 Jun → 30 Aug 2026</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 1. CONTRACT AT A GLANCE -->
+  <section>
+    <h2><span class="num">1</span>The contract at a glance</h2>
+    <div class="scorecard">
+      <div class="score">
+        <div class="q">Term length</div>
+        <div class="a partly">3 months</div>
+        <div class="note">Industry standard is 12-month fixed.</div>
+      </div>
+      <div class="score">
+        <div class="q">Rate reviews</div>
+        <div class="a no">Every 3 months</div>
+        <div class="note">No upward cap stated in the doc.</div>
+      </div>
+      <div class="score">
+        <div class="q">Trade minimum</div>
+        <div class="a partly">$200 / month</div>
+        <div class="note">Behaviour if missed not specified.</div>
+      </div>
+      <div class="score">
+        <div class="q">Reciprocal</div>
+        <div class="a no">N (all lanes)</div>
+        <div class="note">Directionality skew on — see §3.</div>
+      </div>
+      <div class="score">
+        <div class="q">Fuel surcharge</div>
+        <div class="a no">Not quoted</div>
+        <div class="note">Linked URL only; market ~20–25%.</div>
+      </div>
+      <div class="score">
+        <div class="q">Account Service Fee</div>
+        <div class="a no">$37.50 / invoice</div>
+        <div class="note">Compounds at low invoice count.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. WHAT YOU'RE ACTUALLY SIGNING -->
+  <section>
+    <h2><span class="num">2</span>What you're actually signing</h2>
+    <div class="panel">
+      <p class="lead">Standard Pallet Service, EXPRESS tier, leg rate basis. 3 origins (SYD, MEL, BNE — no ADL or PER) to 268 destinations each, full Australian network including regional and remote. 5 weight breaks. Density rule 3 m³/tonne — light freight billed on cubic.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Field</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Type</td><td>Standard Pallet Service — EXPRESS — Leg Rate</td></tr>
+          <tr><td>Effective</td><td><strong>1 June 2026 → 30 Aug 2026</strong> (3 months — unusually short)</td></tr>
+          <tr><td>Account</td><td>Montu (Account No. currently shows 0 — placeholder)</td></tr>
+          <tr><td>Origins</td><td>SYDNEY, MELBOURNE, BRISBANE (no ADL or PER origin in this card)</td></tr>
+          <tr><td>Destinations</td><td>268 per origin (full AU network incl. regional/remote)</td></tr>
+          <tr><td>Service tier</td><td>EXPRESS only (no Economy or Premium tier offered)</td></tr>
+          <tr><td>Reciprocal</td><td><strong>N</strong> for every lane (non-reciprocal — directionality skew on)</td></tr>
+          <tr><td>Weight breaks</td><td>0-750 / 751-1500 / 1501-3000 / 3001-5000 / 5001+ kg</td></tr>
+          <tr><td>Density rule</td><td>3 m³/tonne (333.33 kg/m³) — light freight billed on cubic</td></tr>
+          <tr><td>Payment terms</td><td>14 days</td></tr>
+          <tr><td>Trade commit.</td><td>$200/month <strong>minimum</strong> to keep these rates</td></tr>
+          <tr><td>Rate review</td><td><strong>Every 3 months</strong>, no upward cap stated (Clause 16)</td></tr>
+          <tr><td>Fuel surcharge</td><td>Added on top — current rate not in this document (link only)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 3. WORKED COSTS -->
+  <section>
+    <h2><span class="num">3</span>Worked cost examples</h2>
+    <p class="sub" style="color:var(--muted); font-size:14px; margin: -8px 0 14px;">1 pallet ≈ 500 kg, no fuel surcharge, no surcharges. Per-kg column uses the 751-1500 kg break.</p>
+    <div class="panel">
+      <table>
+        <thead>
+          <tr>
+            <th>Lane</th>
+            <th>Per-kg</th>
+            <th>Per-pallet (~500 kg)</th>
+            <th>Minimum applies if ≤</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="lane">SYD → MEL</td><td class="num">$0.099</td><td class="num">$49.50 + base</td><td class="num">770 kg ($76.00 min)</td></tr>
+          <tr><td class="lane">MEL → SYD</td><td class="num skew">$0.119</td><td class="num">$59.50 + base</td><td class="num">820 kg ($97.00 min)</td></tr>
+          <tr><td class="lane">SYD → BNE</td><td class="num">$0.147</td><td class="num">$73.50 + base</td><td class="num">715 kg ($105.00 min)</td></tr>
+          <tr><td class="lane">BNE → SYD</td><td class="num cheap">$0.091</td><td class="num">$45.50 + base</td><td class="num">900 kg ($82.00 min)</td></tr>
+          <tr><td class="lane">SYD → ADL</td><td class="num">$0.133</td><td class="num">$66.50 + base</td><td class="num">715 kg ($95.00 min)</td></tr>
+          <tr><td class="lane">SYD → PER</td><td class="num expensive">$0.363</td><td class="num expensive">$181.50 + base</td><td class="num">580 kg ($211.00 min)</td></tr>
+          <tr><td class="lane">MEL → BNE</td><td class="num">$0.171</td><td class="num">$85.50 + base</td><td class="num">680 kg ($116.00 min)</td></tr>
+          <tr><td class="lane">BNE → MEL</td><td class="num cheap">$0.094</td><td class="num">$47.00 + base</td><td class="num">820 kg ($77.00 min)</td></tr>
+          <tr><td class="lane">BNE → Gold Coast</td><td class="num">$0.111</td><td class="num">$55.50 + base</td><td class="num">595 kg ($66.00 min)</td></tr>
+          <tr><td class="lane">BNE → Newcastle</td><td class="num">$0.157</td><td class="num">$78.50 + base</td><td class="num">516 kg ($81.00 min)</td></tr>
+          <tr><td class="lane">MEL → Cairns</td><td class="num">$0.351</td><td class="num">$175.50 + base</td><td class="num">570 kg ($200.00 min)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout">
+      <div class="callout-ico">💡</div>
+      <div class="callout-body">
+        <strong>Reading the table:</strong> per-pallet cost = (kg × per-kg rate) + base charge. The "minimum applies if ≤" column tells you the smallest shipment at which you'd actually pay the per-kg rate — below that weight, the minimum kicks in. Lighter, larger shipments get billed on cubic (3 m³/tonne) instead.
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. DIRECTIONALITY SKEW -->
+  <section>
+    <h2><span class="num">4</span>Directionality skew — same lane, opposite direction</h2>
+    <p class="sub" style="color:var(--muted); font-size:14px; margin: -8px 0 14px;">Reciprocal = N for every lane. TGE is pricing by lane economics, not by symmetry. This affects routing decisions more than headline costs.</p>
+    <div class="panel">
+      <table>
+        <thead>
+          <tr>
+            <th>Lane pair</th>
+            <th>Direction A</th>
+            <th>Direction B</th>
+            <th>Skew</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="lane">MEL ↔ BNE</td>
+            <td class="num">MEL→BNE $0.171/kg</td>
+            <td class="num">BNE→MEL $0.094/kg</td>
+            <td class="num skew">+45% eastbound</td>
+          </tr>
+          <tr>
+            <td class="lane">SYD ↔ BNE</td>
+            <td class="num">SYD→BNE $0.147/kg</td>
+            <td class="num">BNE→SYD $0.091/kg</td>
+            <td class="num skew">+38% northbound</td>
+          </tr>
+          <tr>
+            <td class="lane">SYD ↔ MEL</td>
+            <td class="num">SYD→MEL $0.099/kg</td>
+            <td class="num">MEL→SYD $0.119/kg</td>
+            <td class="num skew">+20% westbound</td>
+          </tr>
+          <tr>
+            <td class="lane">BNE ↔ Newcastle</td>
+            <td class="num">BNE→New $0.157/kg</td>
+            <td class="num">New→BNE — not in card</td>
+            <td class="num"><span class="pill gray">scope gap</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout">
+      <div class="callout-ico">↔</div>
+      <div class="callout-body">
+        <strong>If Montu also moves freight back</strong> from these destinations, ask Gordon Ma to flip Reciprocal to Y. This typically unlocks 10–20% lower per-kg rates on symmetric lanes.
+      </div>
+    </div>
+
+    <div class="callout critical">
+      <div class="callout-ico">⚠</div>
+      <div class="callout-body">
+        <strong>Scope gap:</strong> only SYD, MEL, BNE are origin cities. No ADL or PER origins. If Montu ships from South Australia or Western Australia, this card is incomplete. Confirm with Gordon Ma whether those go on a separate amendment or need to be added before signing.
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. HIDDEN COSTS -->
+  <section>
+    <h2><span class="num">5</span>Hidden costs that will eat the headline rate</h2>
+    <p class="sub" style="color:var(--muted); font-size:14px; margin: -8px 0 14px;">Surcharges are quoted on top of the leg rate. Several have no obvious trigger and will compound monthly.</p>
+    <div class="panel">
+      <table>
+        <thead>
+          <tr>
+            <th>Charge</th>
+            <th>Amount</th>
+            <th>Trigger / Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Account Service Fee</td>
+            <td class="num"><span class="pill red">$37.50 / invoice</span></td>
+            <td><strong>Compounds at low invoice count.</strong> Typically waivable over volume.</td>
+          </tr>
+          <tr><td>Manual Consignment</td><td class="num">$30.50 / con</td><td>If you don't use MyTeamGE API or e-label</td></tr>
+          <tr><td>Futile Pickup</td><td class="num">$110.00 / pickup</td><td>Driver arrives, freight not ready</td></tr>
+          <tr><td>Hand Unload Fee</td><td class="num">$77.50 / pallet</td><td>No MHE at receiver</td></tr>
+          <tr><td>Non-MHE Handling</td><td class="num">$25.00 / item</td><td>Loose cartons, un-securred</td></tr>
+          <tr><td>Re-Delivery</td><td class="num">$104.00 + per pallet</td><td>First delivery fails, same address</td></tr>
+          <tr><td>Tail Lift</td><td class="num">$17.00 / con</td><td>No dock/forklift at either end</td></tr>
+          <tr><td>Citylink Surcharge</td><td class="num">1.25% of freight</td><td>Through Melbourne (Transurban)</td></tr>
+          <tr><td>Over-Length (2.5-3.69m)</td><td class="num">$60.00 / con</td><td>Single items over 2.5m</td></tr>
+          <tr><td>Over-Length (3.7-5.99m)</td><td class="num">$175.00 / con</td><td>&nbsp;</td></tr>
+          <tr><td>Over-Length (6.0-7.29m)</td><td class="num">$250.00 / con</td><td>&nbsp;</td></tr>
+          <tr><td>Over-Length (7.3m+)</td><td class="num"><span class="pill red">$900.00 / con</span></td><td>Out-of-gauge freight</td></tr>
+          <tr><td>Dangerous Goods</td><td class="num">$176.50 / con</td><td>ADG code compliance</td></tr>
+          <tr><td>AQIS (Tasmania)</td><td class="num">$0.07 – $0.12 / kg</td><td>Biosecurity inspection</td></tr>
+          <tr><td>TGES Extra Cover</td><td class="num">$50 base + 3% of value > $500</td><td>Insurance beyond $500</td></tr>
+          <tr><td>Time Slot / Window</td><td class="num">$50.00 / con</td><td>Booked delivery windows</td></tr>
+          <tr><td>Express 9am/12pm/TE</td><td class="num">$44.87 + tiered</td><td>Time-critical tier surcharge</td></tr>
+          <tr>
+            <td><strong>Fuel Surcharge</strong></td>
+            <td class="num"><span class="pill red">NOT QUOTED</span></td>
+            <td><strong>Linked URL only.</strong> Request current FSC % in writing. Market is ~20–25%.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout amber">
+      <div class="callout-ico">💰</div>
+      <div class="callout-body">
+        <strong>The sleeper cost: $37.50/invoice.</strong> If Montu ships 50 consignments/month across multiple invoices, that's <strong>$1,875/month</strong> just in admin — <strong>$22,500/year</strong>. Always request this be waived for accounts above the $200/month trade minimum.
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. NEGOTIATION CHECKLIST -->
+  <section>
+    <h2><span class="num">6</span>What to push back on before signing</h2>
+    <p class="sub" style="color:var(--muted); font-size:14px; margin: -8px 0 14px;">Six clauses worth tightening. None are deal-breakers, but each materially affects TCO.</p>
+    <div class="panel">
+      <ol class="checklist">
+        <li>
+          <span class="n">1</span>
+          <div class="body">
+            <strong>3-month term</strong>
+            <span class="ask">→ Negotiate 12 months (industry standard) or 6-month lock + 6-month review</span>
+            <div class="sub" style="margin-top:4px;">TGE is hedging on fuel/labour. Industry standard is 12-month fixed.</div>
+          </div>
+        </li>
+        <li>
+          <span class="n">2</span>
+          <div class="body">
+            <strong>Quarterly rate reviews</strong>
+            <span class="ask">→ Add CPI cap clause (max +X% per review)</span>
+            <div class="sub" style="margin-top:4px;">No upward cap in the doc. Aug 2026 review is the obvious jump point.</div>
+          </div>
+        </li>
+        <li>
+          <span class="n">3</span>
+          <div class="body">
+            <strong>$200/month minimum</strong>
+            <span class="ask">→ Clarify behaviour if trade dips below the floor</span>
+            <div class="sub" style="margin-top:4px;">Does the rate card get re-rated upward? Invoiced top-up? Confirm in writing.</div>
+          </div>
+        </li>
+        <li>
+          <span class="n">4</span>
+          <div class="body">
+            <strong>Fuel surcharge undefined</strong>
+            <span class="ask">→ Get current FSC % + the index it tracks in writing</span>
+            <div class="sub" style="margin-top:4px;">FSC is added on top. Market is 20-25% — some carriers sneak in 28-30%.</div>
+          </div>
+        </li>
+        <li>
+          <span class="n">5</span>
+          <div class="body">
+            <strong>Reciprocal = N on every lane</strong>
+            <span class="ask">→ Ask to flip Reciprocal to Y for symmetric trade lanes</span>
+            <div class="sub" style="margin-top:4px;">Unlocks 10-20% lower per-kg on return lanes. Material if Montu moves freight both ways.</div>
+          </div>
+        </li>
+        <li>
+          <span class="n">6</span>
+          <div class="body">
+            <strong>Account No. is 0</strong>
+            <span class="ask">→ Confirm real account number on the DocuSign; ask to waive the $37.50 Account Service Fee</span>
+            <div class="sub" style="margin-top:4px;">Doc is currently a template. Final sign needs correct number, legal entity, and fee waiver.</div>
+          </div>
+        </li>
+        <li>
+          <span class="n">7</span>
+          <div class="body">
+            <strong>No ADL or PER origins</strong>
+            <span class="ask">→ Add to this card or get a separate amendment for SA/WA origins</span>
+            <div class="sub" style="margin-top:4px;">If you ship from South Australia or Western Australia, the card is incomplete.</div>
+          </div>
+        </li>
+        <li>
+          <span class="n">8</span>
+          <div class="body">
+            <strong>EXPRESS only — no Economy tier</strong>
+            <span class="ask">→ Ask for an Economy/Standard tier for non-urgent freight</span>
+            <div class="sub" style="margin-top:4px;">Likely 15-25% cheaper per kg on non-time-critical lanes.</div>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 7. MARKET COMPARISON -->
+  <section>
+    <h2><span class="num">7</span>Market comparison — honest gap</h2>
+    <p class="sub" style="color:var(--muted); font-size:14px; margin: -8px 0 14px;">Daz does not currently have competitor rate cards on file. Public market context only — a real benchmark needs the inputs listed below.</p>
+    <div class="panel">
+      <table>
+        <thead>
+          <tr>
+            <th>Topic</th>
+            <th>Public context</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>TGE position</strong></td>
+            <td>One of Australia's top-2 pallet freight networks (alongside StarTrack).</td>
+          </tr>
+          <tr>
+            <td><strong>ACCC view</strong></td>
+            <td>2024 ACCC decision blocking the AusPost / TGE merger explicitly noted TGE's premium positioning on some lanes.</td>
+          </tr>
+          <tr>
+            <td><strong>Main competitors</strong></td>
+            <td><strong>StarTrack</strong> (AusPost subsidiary — often price-leader east-coast metro), <strong>Toll</strong> (NZ-headquartered), <strong>FedEx / TNT</strong> (premium tier), <strong>Mainfreight</strong>, <strong>Northline</strong>, <strong>Followmont</strong> (QLD-dominant), <strong>SCT Logistics</strong> (rail-road).</td>
+          </tr>
+          <tr>
+            <td><strong>Term structure tell</strong></td>
+            <td>3-month + 3-month review is <strong>TGE-specific</strong>. Most majors are 12-month fixed.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="margin-top:24px; font-size: 14px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em;">To do a real benchmark, Daz needs one of:</h3>
+    <div class="input-grid">
+      <div class="input-tile">
+        <div class="label">Option 1</div>
+        <div class="desc"><strong>Last TGE contract</strong> — enables lane-by-lane delta comparison.</div>
+      </div>
+      <div class="input-tile">
+        <div class="label">Option 2</div>
+        <div class="desc"><strong>StarTrack or Toll quote</strong> on your top 10 lanes by spend.</div>
+      </div>
+      <div class="input-tile">
+        <div class="label">Option 3</div>
+        <div class="desc"><strong>Scrape TGE public card</strong> for uncontracted lanes; build a parallel benchmark.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. RECOMMENDED NEXT STEPS -->
+  <section>
+    <h2><span class="num">8</span>Recommended next steps</h2>
+    <p class="sub" style="color:var(--muted); font-size:14px; margin: -8px 0 14px;">Two weeks, three workstreams, then decide.</p>
+    <div class="step-list">
+      <div class="step">
+        <div class="when">Week 1</div>
+        <div>
+          <h4>Negotiate the 6-8 clauses</h4>
+          <p>Send Gordon Ma a redline covering items 1-8 in §6. Target outcome: 12-month term, CPI cap on reviews, clarity on $200/mo minimum, fuel figure in writing, reciprocal Y on symmetric lanes, Economy tier offered. Ask to waive the $37.50 Account Service Fee.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="when">Week 1-2</div>
+        <div>
+          <h4>Get a competitor quote in parallel</h4>
+          <p>Approach StarTrack and Toll with your top 10 lanes by spend. Mention you have a current TGE offer expiring 30 Aug — they'll sharpen their pencils. Same lane list, same volumes, same Express tier. Compare line by line.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="when">Week 2</div>
+        <div>
+          <h4>Decide</h4>
+          <p>Three outcomes: (a) TGE counters competitively — sign. (b) TGE won't budge and a competitor is materially cheaper — switch. (c) Mixed — split volumes. Either way, you'll know the real cost of TGE vs market.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="callout-ico">🔧</div>
+      <div class="callout-body">
+        <strong>Optional · S5 scope:</strong> Daz can build a rate-card model in the engine so every future TGE amendment auto-flags lanes that are &gt;X% off the median. Defer if the S4 pipeline is still in flight.
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p><strong>Sources &amp; data</strong> — Source PDF: <code>~/.hermes/cache/documents/doc_b6fd5eaf9331_Review_and_Sign_Team_Global_Express_-_Rate_A.pdf</code> (21pp, 1.7 MB). 804 rate rows parsed (3 origins × 268 destinations), 4,020 data points (5 weight breaks). Page extracts at <code>/tmp/tge_page_01.txt</code> through <code>/tmp/tge_page_21.txt</code>.</p>
+    <p style="margin-top: 8px;"><strong>Disclaimer:</strong> All figures quoted are ex-GST, ex-fuel-surcharge, ex-accessorials unless stated. Market comparison context is based on public information, not Daz's first-party rate data. Daz does not currently hold competitor rate cards on file.</p>
+    <p style="margin-top: 12px;">Prepared by Daz (Daztech Agentic OS) · <a href="index.html">Daztech Hub</a> · <a href="architecture.html">How it works</a></p>
+  </footer>
+
+</div>
+
+</body>
+</html>
