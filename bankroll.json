@@ -1,9 +1,9 @@
 {
   "starting": 1000.0,
   "current": 890.0,
-  "total_bets": 78,
+  "total_bets": 80,
   "total_winners": 0,
-  "total_staked_alltime": 780.0,
+  "total_staked_alltime": 800.0,
   "total_returned_alltime": 0.0,
   "roi_pct": -100.0,
   "history": [
@@ -37,8 +37,8 @@
       "winners": 0
     },
     "racing": {
-      "bets": 66,
-      "staked": 660.0,
+      "bets": 68,
+      "staked": 680.0,
       "returned": 0.0,
       "winners": 0
     }
