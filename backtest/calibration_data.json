@@ -1,8 +1,8 @@
 {
   "summary": {
-    "n_total_bets": 104,
+    "n_total_bets": 94,
     "n_settled": 21,
-    "n_pending": 83,
+    "n_pending": 73,
     "n_won": 8,
     "n_lost": 13,
     "staked": 24.25,
@@ -44,18 +44,18 @@
     },
     {
       "key": "racing",
-      "n_bets": 18,
+      "n_bets": 8,
       "n_settled": 8,
       "n_won": 2,
       "n_lost": 6,
-      "n_pending": 10,
+      "n_pending": 0,
       "staked": 8.0,
       "returned": 18.0,
       "pnl": 10.0,
       "roi_pct": 125.0,
       "hit_rate_pct": 25.0,
       "avg_edge_pct": 11.41,
-      "avg_clv_pct": 0.0
+      "avg_clv_pct": null
     },
     {
       "key": "greyhounds",
@@ -103,21 +103,6 @@
       "hit_rate_pct": 0.0,
       "avg_edge_pct": 18.51,
       "avg_clv_pct": null
-    },
-    {
-      "key": "harness",
-      "n_bets": 10,
-      "n_settled": 0,
-      "n_won": 0,
-      "n_lost": 0,
-      "n_pending": 10,
-      "staked": 0,
-      "returned": 0,
-      "pnl": 0,
-      "roi_pct": 0.0,
-      "hit_rate_pct": 0.0,
-      "avg_edge_pct": null,
-      "avg_clv_pct": 0.0
     }
   ],
   "by_model_rating": [
@@ -138,18 +123,18 @@
     },
     {
       "key": "MODERATE",
-      "n_bets": 77,
+      "n_bets": 67,
       "n_settled": 7,
       "n_won": 3,
       "n_lost": 4,
-      "n_pending": 70,
+      "n_pending": 60,
       "staked": 6.75,
       "returned": 11.62,
       "pnl": 4.87,
       "roi_pct": 72.15,
       "hit_rate_pct": 42.86,
       "avg_edge_pct": 0.28,
-      "avg_clv_pct": 0.0
+      "avg_clv_pct": null
     },
     {
       "key": "59.3",
@@ -352,18 +337,18 @@
   "by_confidence_tier": [
     {
       "key": "unranked",
-      "n_bets": 16,
+      "n_bets": 6,
       "n_settled": 5,
       "n_won": 3,
       "n_lost": 2,
-      "n_pending": 11,
+      "n_pending": 1,
       "staked": 4.0,
       "returned": 13.0,
       "pnl": 9.0,
       "roi_pct": 225.0,
       "hit_rate_pct": 60.0,
       "avg_edge_pct": null,
-      "avg_clv_pct": 0.0
+      "avg_clv_pct": null
     },
     {
       "key": "top_10",

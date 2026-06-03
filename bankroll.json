@@ -1,9 +1,9 @@
 {
   "starting": 1000.0,
   "current": 890.0,
-  "total_bets": 12,
+  "total_bets": 78,
   "total_winners": 0,
-  "total_staked_alltime": 120.0,
+  "total_staked_alltime": 780.0,
   "total_returned_alltime": 0.0,
   "roi_pct": -100.0,
   "history": [
@@ -28,11 +28,17 @@
       "roi_pct": -100.0
     }
   ],
-  "last_updated": "2026-06-02",
+  "last_updated": "2026-06-03",
   "by_sport": {
     "greyhounds": {
       "bets": 1,
       "staked": 10.0,
+      "returned": 0.0,
+      "winners": 0
+    },
+    "racing": {
+      "bets": 66,
+      "staked": 660.0,
       "returned": 0.0,
       "winners": 0
     }
