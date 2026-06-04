@@ -1,22 +1,22 @@
 {
   "starting": 1000.0,
   "current": 890.0,
-  "total_bets": 80,
+  "total_bets": 100,
   "total_winners": 0,
-  "total_staked_alltime": 800.0,
+  "total_staked_alltime": 1000.0,
   "total_returned_alltime": 0.0,
   "roi_pct": -100.0,
   "history": [
     {
       "date": "2026-06-01",
-      "type": "daily_card",
+      "type": "paper_card",
       "staked": 100.0,
       "returned": 0.0,
       "profit": -100.0,
       "winners": 0,
       "total_bets": 10,
       "roi_pct": -100.0,
-      "note": "June 1 reset. Top 10 picks: 9 harness + 1 TB. Pending settlement."
+      "note": "June 1 reset. Top 10 picks: 9 harness + 1 TB. Pending settlement. (Retroactively classified: 06-01 was 100% paper per scripts/generate_daily_card.py:664 hardcoded is_paper=True. S4 Bug C follow-up T5.)"
     },
     {
       "date": "2026-06-02",
@@ -28,7 +28,7 @@
       "roi_pct": -100.0
     }
   ],
-  "last_updated": "2026-06-03",
+  "last_updated": "2026-06-04",
   "by_sport": {
     "greyhounds": {
       "bets": 1,
@@ -37,8 +37,8 @@
       "winners": 0
     },
     "racing": {
-      "bets": 68,
-      "staked": 680.0,
+      "bets": 88,
+      "staked": 880.0,
       "returned": 0.0,
       "winners": 0
     }
