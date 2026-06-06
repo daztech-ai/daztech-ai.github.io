@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Daztech Top 0 — 2026-06-06</title>
+<style>
+  :root {
+    --bg: #0a0a0f; --surface: #111118; --border: #1e1e2a;
+    --text: #d4d4d8; --muted: #71717a; --gold: #c8960c;
+    --positive: #16a34a; --negative: #dc2626; --warning: #d97706;
+    --info: #3b82f6; --radius: 10px; --chip-bg: #1a1a24;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg); color: var(--text);
+    max-width: 520px; margin: 0 auto; padding: 16px;
+    line-height: 1.45; -webkit-text-size-adjust: 100%;
+  }
+  .page-header { text-align: center; margin-bottom: 12px; }
+  .page-header h1 { font-size: 1.15em; font-weight: 700; }
+  .page-header .sub { font-size: 0.7em; color: var(--muted); margin-top: 2px; }
+  .bankroll-bar {
+    text-align: center; padding: 8px 14px; margin-bottom: 14px;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); font-size: 0.7em; color: var(--muted);
+  }
+  .bankroll-bar strong { color: var(--gold); }
+  /* S4 Bug C: paper-trading banner. Gold border, muted background, full
+     width. Sits above the bankroll bar so the paper status is the first
+     thing the eye lands on. Hides itself when any pick is live. */
+  .paper-banner {
+    text-align: center; padding: 8px 14px; margin-bottom: 8px;
+    background: rgba(200, 150, 12, 0.08); border: 1px solid var(--gold);
+    border-radius: var(--radius); font-size: 0.72em; color: var(--gold);
+    font-weight: 600;
+  }
+  .paper-banner .sub {
+    display: block; font-size: 0.82em; font-weight: 400; color: var(--muted);
+    margin-top: 2px;
+  }
+  .pick {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 12px 14px; margin-bottom: 8px;
+    cursor: pointer;
+  }
+  .pick-header { margin-bottom: 6px; }
+  .pick-name { font-size: 1em; font-weight: 700; color: var(--text); }
+  .pick-rating {
+    font-size: 0.65em; color: var(--gold); margin-left: 8px;
+  }
+  .pick-code {
+    display: inline-block; font-size: 0.6em; padding: 1px 6px;
+    border-radius: 3px; margin-left: 6px; vertical-align: middle;
+  }
+  .code-thoroughbred { background: #1a2a1a; color: #4ade80; }
+  .code-harness { background: #1a1a2a; color: #60a5fa; }
+  .code-greyhounds { background: #2a1a1a; color: #f87171; }
+  .pick-race { font-size: 0.68em; color: var(--muted); margin-top: 1px; }
+  .pick-chips { display: flex; flex-wrap: wrap; gap: 5px; margin: 6px 0; }
+  .chip {
+    font-size: 0.65em; font-weight: 600; padding: 2px 7px;
+    border-radius: 4px; background: var(--chip-bg);
+    border: 1px solid var(--border); color: var(--text);
+    white-space: nowrap;
+  }
+  .chip-bet { border-color: var(--positive); color: var(--positive); }
+  .chip-stake { border-color: var(--gold); color: var(--gold); }
+  .chip-conviction-STRONG { border-color: var(--positive); color: var(--positive); }
+  .chip-conviction-MODERATE { border-color: var(--warning); color: var(--warning); }
+  .pick-footer { font-size: 0.6em; color: var(--muted); }
+  .jarvis-note {
+    font-size: 0.58em; color: var(--info); margin-top: 4px;
+    font-style: italic;
+  }
+  .footer {
+    text-align: center; font-size: 0.6em; color: var(--muted);
+    margin-top: 20px; padding-top: 12px; border-top: 1px solid var(--border);
+  }
+</style>
+</head>
+<body>
+<div class="page-header">
+  <h1>🎯 Daztech Top 0</h1>
+  <div class="sub">2026-06-06 · $10.0/bet · $0.0 total exposure · Engine-backed</div>
+</div>
+<div class="paper-banner">🧪 Paper trading — no money at risk.<span class="sub">Bankroll shown for reference only.</span></div>
+<div class="bankroll-bar">
+  Paper bankroll: <strong>$890.00</strong> (reference only) · 0 picks logged · $0 simulated exposure
+</div>
+
+<div style="margin:16px 0 8px;padding:8px 12px;border-left:3px solid var(--warning);background:var(--surface);border-radius:0 var(--radius) var(--radius) 0;">
+  <span style="font-size:0.7em;font-weight:700;color:var(--warning);">👁 WATCH — no stake · 9 observations</span>
+</div>
+<div class="pick" style="opacity:0.85;border-left:2px solid var(--warning);">
+  <div class="pick-header">
+    <span class="pick-name">👁 KNOW THYSELF</span><span class="pick-rating">55</span>
+    <span class="pick-code code-thoroughbred">🏇 TB</span>
+  </div>
+  <div class="pick-race">
+    R9 · Royal Randwick ·  · 20 runners
+    · Going: Soft 6
+  </div>
+  <div class="pick-chips">
+    <span class="chip" style="border-color:var(--warning);color:var(--warning);">WATCH</span>
+    <span class="chip chip-stake">Odds: N/A</span>
+    <span class="chip">Form: 11119x</span>
+    <span class="chip chip-conviction-SPECULATIVE">SPECULATIVE</span>
+    
+  </div>
+  <div class="pick-footer">
+    T: Paul Messara &amp; Leah Gavranich · D: Aaron Bullock
+    · Barrier: 21
+    · Weight: 59
+    · Source: engine
+  </div>
+  
+</div>
+<div class="pick" style="opacity:0.85;border-left:2px solid var(--warning);">
+  <div class="pick-header">
+    <span class="pick-name">👁 ARTIE PANTZ</span><span class="pick-rating">55</span>
+    <span class="pick-code code-thoroughbred">🏇 TB</span>
+  </div>
+  <div class="pick-race">
+    R2 · Sportsbet Longreach ·  · 12 runners
+    · Going: Good
+  </div>
+  <div class="pick-chips">
+    <span class="chip" style="border-color:var(--warning);color:var(--warning);">WATCH</span>
+    <span class="chip chip-stake">Odds: N/A</span>
+    <span class="chip">Form: 2205x8</span>
+    <span class="chip chip-conviction-SPECULATIVE">SPECULATIVE</span>
+    
+  </div>
+  <div class="pick-footer">
+    T: Toni Schofield · D: Ms Maddie Mankelow(a1.5/52kg)
+    · Barrier: 1
+    · Weight: 60
+    · Source: engine
+  </div>
+  
+</div>
+<div class="pick" style="opacity:0.85;border-left:2px solid var(--warning);">
+  <div class="pick-header">
+    <span class="pick-name">👁 ZOUSTRONG</span><span class="pick-rating">51</span>
+    <span class="pick-code code-thoroughbred">🏇 TB</span>
+  </div>
+  <div class="pick-race">
+    R3 · Sportsbet Longreach ·  · 12 runners
+    · Going: Good
+  </div>
+  <div class="pick-chips">
+    <span class="chip" style="border-color:var(--warning);color:var(--warning);">WATCH</span>
+    <span class="chip chip-stake">Odds: N/A</span>
+    <span class="chip">Form: x7926x</span>
+    <span class="chip chip-conviction-SPECULATIVE">SPECULATIVE</span>
+    
+  </div>
+  <div class="pick-footer">
+    T: Toni Schofield · D: Ms Maddie Mankelow(a1.5/52kg)
+    · Barrier: 7
+    · Weight: 61.5
+    · Source: engine
+  </div>
+  
+</div>
+<div class="pick" style="opacity:0.85;border-left:2px solid var(--warning);">
+  <div class="pick-header">
+    <span class="pick-name">👁 BLOOMIN’ GOLD</span><span class="pick-rating">51</span>
+    <span class="pick-code code-thoroughbred">🏇 TB</span>
+  </div>
+  <div class="pick-race">
+    R4 · Sportsbet Longreach ·  · 12 runners
+    · Going: Good
+  </div>
+  <div class="pick-chips">
+    <span class="chip" style="border-color:var(--warning);color:var(--warning);">WATCH</span>
+    <span class="chip chip-stake">Odds: N/A</span>
+    <span class="chip">Form: 127x5x</span>
+    <span class="chip chip-conviction-SPECULATIVE">SPECULATIVE</span>
+    
+  </div>
+  <div class="pick-footer">
+    T: Toni Schofield · D: Ms Maddie Mankelow(a1.5/52kg)
+    · Barrier: 11
+    · Weight: 59.5
+    · Source: engine
+  </div>
+  
+</div>
+<div class="pick" style="opacity:0.85;border-left:2px solid var(--warning);">
+  <div class="pick-header">
+    <span class="pick-name">👁 ENNIROC</span><span class="pick-rating">46</span>
+    <span class="pick-code code-thoroughbred">🏇 TB</span>
+  </div>
+  <div class="pick-race">
+    R4 · Grafton ·  · 11 runners
+    · Going: Soft 6
+  </div>
+  <div class="pick-chips">
+    <span class="chip" style="border-color:var(--warning);color:var(--warning);">WATCH</span>
+    <span class="chip chip-stake">Odds: N/A</span>
+    <span class="chip">Form: 2375x4</span>
+    <span class="chip chip-conviction-SPECULATIVE">SPECULATIVE</span>
+    
+  </div>
+  <div class="pick-footer">
+    T: David Hatch · D: Grady Spokes(a2/55kg)
+    · Barrier: 11
+    · Weight: 57
+    · Source: engine
+  </div>
+  
+</div>
+<div class="pick" style="opacity:0.85;border-left:2px solid var(--warning);">
+  <div class="pick-header">
+    <span class="pick-name">👁 WHATTA WHITT</span><span class="pick-rating">46</span>
+    <span class="pick-code code-thoroughbred">🏇 TB</span>
+  </div>
+  <div class="pick-race">
+    R5 · Moranbah ·  · 7 runners
+    · Going: Good
+  </div>
+  <div class="pick-chips">
+    <span class="chip" style="border-color:var(--warning);color:var(--warning);">WATCH</span>
+    <span class="chip chip-stake">Odds: N/A</span>
+    <span class="chip">Form: 372793</span>
+    <span class="chip chip-conviction-SPECULATIVE">SPECULATIVE</span>
+    
+  </div>
+  <div class="pick-footer">
+    T: Lachie Manzelmann · D: Ms Amie Meissner(a2/53.5kg)
+    · Barrier: 6
+    · Weight: 60
+    · Source: engine
+  </div>
+  
+</div>
+<div class="pick" style="opacity:0.85;border-left:2px solid var(--warning);">
+  <div class="pick-header">
+    <span class="pick-name">👁 HOLLERLOUD</span><span class="pick-rating">46</span>
+    <span class="pick-code code-thoroughbred">🏇 TB</span>
+  </div>
+  <div class="pick-race">
+    R3 · Sportsbet Mount Isa ·  · 8 runners
+    · Going: Good
+  </div>
+  <div class="pick-chips">
+    <span class="chip" style="border-color:var(--warning);color:var(--warning);">WATCH</span>
+    <span class="chip chip-stake">Odds: N/A</span>
+    <span class="chip">Form: 217061</span>
+    <span class="chip chip-conviction-SPECULATIVE">SPECULATIVE</span>
+    
+  </div>
+  <div class="pick-footer">
+    T: Tanya Parry · D: Mitch Goring(a2/57kg)
+    · Barrier: 1
+    · Weight: 66.5
+    · Source: engine
+  </div>
+  
+</div>
+<div class="pick" style="opacity:0.85;border-left:2px solid var(--warning);">
+  <div class="pick-header">
+    <span class="pick-name">👁 RING AHOY</span><span class="pick-rating">45</span>
+    <span class="pick-code code-thoroughbred">🏇 TB</span>
+  </div>
+  <div class="pick-race">
+    R3 · Grafton ·  · 9 runners
+    · Going: Soft 6
+  </div>
+  <div class="pick-chips">
+    <span class="chip" style="border-color:var(--warning);color:var(--warning);">WATCH</span>
+    <span class="chip chip-stake">Odds: N/A</span>
+    <span class="chip">Form: 386937</span>
+    <span class="chip chip-conviction-SPECULATIVE">SPECULATIVE</span>
+    
+  </div>
+  <div class="pick-footer">
+    T: David Hatch · D: Grady Spokes(a2/55kg)
+    · Barrier: 6
+    · Weight: 59
+    · Source: engine
+  </div>
+  
+</div>
+<div class="pick" style="opacity:0.85;border-left:2px solid var(--warning);">
+  <div class="pick-header">
+    <span class="pick-name">👁 HE’S A COPY BOY</span><span class="pick-rating">45</span>
+    <span class="pick-code code-thoroughbred">🏇 TB</span>
+  </div>
+  <div class="pick-race">
+    R6 · Grafton ·  · 14 runners
+    · Going: Soft 6
+  </div>
+  <div class="pick-chips">
+    <span class="chip" style="border-color:var(--warning);color:var(--warning);">WATCH</span>
+    <span class="chip chip-stake">Odds: N/A</span>
+    <span class="chip">Form: 613554</span>
+    <span class="chip chip-conviction-SPECULATIVE">SPECULATIVE</span>
+    
+  </div>
+  <div class="pick-footer">
+    T: Samantha McGuren · D: Ms Grace Palmer(a3/52kg)
+    · Barrier: 7
+    · Weight: 61.5
+    · Source: engine
+  </div>
+  
+</div>
+
+<div class="footer">
+  <strong>Engine:</strong> MasterAggregator (7-factor) + calibrated_selector for thoroughbreds<br>
+  DB signal model for harness · <a href="index.html" style="color:var(--gold);">← Hub</a>
+</div>
+</body>
+</html>
