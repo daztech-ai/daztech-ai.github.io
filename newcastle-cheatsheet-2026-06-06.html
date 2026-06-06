@@ -1,606 +1,478 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=520, initial-scale=1.0">
-<title>Newcastle Cheatsheet — 06 June 2026</title>
-<style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { 
-    background: #0a0a0f; color: #d4d4d8; font-family: -apple-system, 'Segoe UI', sans-serif;
-    max-width: 520px; margin: 0 auto; padding: 12px; line-height: 1.45;
-}
-.header { 
-    background: linear-gradient(135deg, #1a1030 0%, #0d0d18 100%);
-    border: 1px solid #2a2040; border-radius: 10px; padding: 14px; margin-bottom: 14px;
-    text-align: center;
-}
-.header h1 { color: #ff6b35; font-size: 1.3em; margin-bottom: 4px; }
-.header .subtitle { color: #8b7eaa; font-size: 0.85em; }
-.header .meta { color: #64648c; font-size: 0.75em; margin-top: 6px; }
-
-.alert-box {
-    background: #1a1025; border: 1px solid #8b5cf6; border-radius: 8px;
-    padding: 10px 14px; margin-bottom: 14px; font-size: 0.85em;
-}
-.alert-box .title { color: #a78bfa; font-weight: bold; margin-bottom: 4px; }
-.alert-box .items { color: #8b7eaa; }
-
-.race-card {
-    background: #11111a; border: 1px solid #222233; border-radius: 8px;
-    margin-bottom: 12px; overflow: hidden;
-}
-.race-header {
-    background: linear-gradient(135deg, #1a1530 0%, #11111a 100%);
-    padding: 10px 14px; border-bottom: 1px solid #222;
-}
-.race-header .rnum { color: #ff6b35; font-weight: bold; font-size: 1.05em; }
-.race-header .rname { color: #d4d4d8; font-size: 0.9em; }
-.race-header .rdist { color: #64648c; font-size: 0.8em; }
-.race-header .scratched { color: #ef4444; font-size: 0.75em; margin-top: 2px; }
-
-.pick-row {
-    display: flex; align-items: center; padding: 8px 14px;
-    border-bottom: 1px solid #1a1a28; gap: 10px;
-}
-.pick-row:last-child { border-bottom: none; }
-.pick-row.top-pick { background: rgba(139, 92, 246, 0.08); }
-
-.pick-num { 
-    width: 28px; height: 28px; border-radius: 6px; display: flex; 
-    align-items: center; justify-content: center; font-weight: bold; 
-    font-size: 0.85em; flex-shrink: 0;
-}
-.pick-num.top { background: #8b5cf6; color: #fff; }
-.pick-num.mid { background: #2a2040; color: #a78bfa; }
-.pick-num.low { background: #1a1530; color: #64648c; }
-
-.pick-info { flex: 1; min-width: 0; }
-.pick-name { color: #e4e4e7; font-size: 0.9em; font-weight: 600; }
-.pick-detail { color: #71718a; font-size: 0.75em; }
-.pick-stats { text-align: right; flex-shrink: 0; }
-.pick-score { color: #a78bfa; font-size: 0.85em; font-weight: bold; }
-.pick-odds { color: #ff6b35; font-size: 0.85em; font-weight: bold; }
-.pick-edge { color: #22c55e; font-size: 0.75em; }
-.pick-note { color: #f59e0b; font-size: 0.7em; }
-
-.barrier-tag { 
-    display: inline-block; background: #1a2040; color: #6b8cf6; 
-    padding: 1px 6px; border-radius: 3px; font-size: 0.7em; margin-right: 4px; 
-}
-
-.track-section {
-    background: #11111a; border: 1px solid #222233; border-radius: 8px;
-    padding: 12px 14px; margin-bottom: 14px;
-}
-.track-section h3 { color: #8b5cf6; font-size: 0.95em; margin-bottom: 6px; }
-.track-section p { color: #8b7eaa; font-size: 0.8em; line-height: 1.5; }
-
-.footer {
-    text-align: center; padding: 16px; color: #4a4a6a; font-size: 0.7em;
-    border-top: 1px solid #1a1a28; margin-top: 8px;
-}
-
-.verdict { 
-    background: linear-gradient(135deg, #1a1030 0%, #0d1520 100%);
-    border: 1px solid #8b5cf6; border-radius: 8px; padding: 12px 14px;
-    margin-bottom: 14px;
-}
-.verdict .title { color: #ff6b35; font-weight: bold; font-size: 0.95em; }
-.verdict .text { color: #a78bfa; font-size: 0.85em; margin-top: 4px; }
-
-.conviction-high { color: #ff6b35; }
-.conviction-mid { color: #f59e0b; }
-.conviction-low { color: #8b7eaa; }
-
-.best-section {
-    background: linear-gradient(135deg, #1a1020 0%, #0f0f1a 100%);
-    border: 2px solid #ff6b35; border-radius: 10px; padding: 14px;
-    margin-bottom: 14px;
-}
-.best-section h2 { color: #ff6b35; font-size: 1.05em; margin-bottom: 8px; }
-.best-item { 
-    display: flex; align-items: center; gap: 10px; padding: 6px 0;
-    border-bottom: 1px solid #1f1f2e;
-}
-.best-item:last-child { border-bottom: none; }
-.best-rank { 
-    min-width: 24px; color: #ff6b35; font-weight: bold; font-size: 1.1em; 
-}
-</style>
-</head>
-<body>
-
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=520,initial-scale=1.0">
+<title>Newcastle Cheatsheet — 06 June 2026</title><style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0f;color:#d4d4d8;font-family:-apple-system,'Segoe UI',sans-serif;max-width:520px;margin:0 auto;padding:12px;line-height:1.45}
+.header{background:linear-gradient(135deg,#1a1030,#0d0d18);border:1px solid #2a2040;border-radius:10px;padding:14px;margin-bottom:14px;text-align:center}
+.header h1{color:#ff6b35;font-size:1.3em;margin-bottom:4px}
+.header .subtitle{color:#8b7eaa;font-size:.85em}
+.header .meta{color:#64648c;font-size:.75em;margin-top:6px}
+.alert-box{background:#1a1025;border:1px solid #8b5cf6;border-radius:8px;padding:10px 14px;margin-bottom:14px;font-size:.85em}
+.alert-box .title{color:#a78bfa;font-weight:bold;margin-bottom:4px}
+.alert-box .items{color:#8b7eaa;line-height:1.5}
+.race-card{background:#11111a;border:1px solid #222233;border-radius:8px;margin-bottom:12px;overflow:hidden}
+.race-header{background:linear-gradient(135deg,#1a1530,#11111a);padding:10px 14px;border-bottom:1px solid #222}
+.race-header .rnum{color:#ff6b35;font-weight:bold;font-size:1.05em}
+.race-header .rname{color:#d4d4d8;font-size:.9em}
+.race-header .rdist{color:#64648c;font-size:.8em;margin-top:2px}
+.consensus-bar{display:flex;gap:6px;font-size:.7em;margin-top:4px}
+.consensus-tag{padding:1px 6px;border-radius:3px}
+.consensus-tag.both{background:#22c55e22;color:#22c55e;border:1px solid #22c55e44}
+.consensus-tag.single{background:#f59e0b22;color:#f59e0b;border:1px solid #f59e0b44}
+.pick-row{display:flex;align-items:center;padding:8px 14px;border-bottom:1px solid #1a1a28;gap:10px}
+.pick-row:last-child{border-bottom:none}
+.pick-row.top-pick{background:rgba(139,92,246,.08)}
+.pick-row.consensus-pick{background:rgba(34,197,94,.06);border-left:3px solid #22c55e}
+.pick-num{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:.85em;flex-shrink:0}
+.pick-num.top{background:#8b5cf6;color:#fff}
+.pick-num.mid{background:#2a2040;color:#a78bfa}
+.pick-num.low{background:#1a1530;color:#64648c}
+.pick-info{flex:1;min-width:0}
+.pick-name{color:#e4e4e7;font-size:.9em;font-weight:600}
+.pick-detail{color:#71718a;font-size:.75em}
+.pick-stats{text-align:right;flex-shrink:0}
+.pick-score{color:#a78bfa;font-size:.85em;font-weight:bold}
+.pick-odds{color:#ff6b35;font-size:.85em;font-weight:bold}
+.pick-tipsters{font-size:.65em;margin-top:2px}
+.best-section{background:linear-gradient(135deg,#1a1020,#0f0f1a);border:2px solid #ff6b35;border-radius:10px;padding:14px;margin-bottom:14px}
+.best-section h2{color:#ff6b35;font-size:1.05em;margin-bottom:8px}
+.best-item{display:flex;align-items:center;gap:10px;padding:6px 0;border-bottom:1px solid #1f1f2e}
+.best-item:last-child{border-bottom:none}
+.best-rank{min-width:24px;color:#ff6b35;font-weight:bold;font-size:1.1em}
+.track-section{background:#11111a;border:1px solid #222;border-radius:8px;padding:12px 14px;margin-bottom:14px}
+.track-section h3{color:#8b5cf6;font-size:.95em;margin-bottom:6px}
+.track-section p{color:#8b7eaa;font-size:.8em;line-height:1.5}
+.footer{text-align:center;padding:16px;color:#4a4a6a;font-size:.7em;border-top:1px solid #1a1a28;margin-top:8px}
+.verdict{background:linear-gradient(135deg,#1a1030,#0d1520);border:1px solid #8b5cf6;border-radius:8px;padding:12px 14px;margin-bottom:14px}
+.verdict .title{color:#ff6b35;font-weight:bold;font-size:.95em}
+.verdict .text{color:#a78bfa;font-size:.85em;margin-top:4px}
+.score-bar{display:inline-block;height:4px;border-radius:2px;background:#8b5cf6;margin-top:2px}
+</style></head><body>
 <div class="header">
-    <h1>🏇 Newcastle Cheatsheet</h1>
-    <div class="subtitle">Mark Hughes Foundation Race Day — 06 June 2026</div>
-    <div class="meta">
-        Track: Soft 6 | Rail: True | Weather: Fine | 8 Races | Generated 11:34 AEST<br>
-        <span style="color:#ef4444">34 scratchings applied</span> | Engine: Daztech AI
-    </div>
+<h1>🏇 Newcastle Cheatsheet</h1>
+<div class="subtitle">Mark Hughes Foundation Race Day — 06 June 2026</div>
+<div class="meta">Soft 6 | Rail True | Fine | 8 Races | 34 Scratchings Applied | 11:48 AEST<br>
+<span style="color:#22c55e">Expert consensus:</span> Back A Winner (Bryce Parker) + KRUZEY (Michael Kruse)</div>
 </div>
-
 <div class="alert-box">
-    <div class="title">⚠ Engine Advisory</div>
-    <div class="items">
-        • Provincial BM/maiden meeting — MasterAggregator ratings below 55 threshold for most runners<br>
-        • No live market odds available — all selections are WATCH only<br>
-        • 34 scratchings across card (R3 heavily impacted: 6 remain from 14)<br>
-        • Engine-backed form/rating analysis below — use as guide, not bet instructions
-    </div>
+<div class="title">⚠ Engine Advisory</div>
+<div class="items">
+• Provincial BM/maiden meeting — MasterAggregator filtered below 55 threshold<br>
+• <b>Expert tips integrated:</b> Back A Winner (Bryce Parker) + KRUZEY (Michael Kruse)<br>
+• 🔥 = both tipsters agree | ⭐ = one tipster<br>
+• No live market odds (GoBet doesn't cover provincial) — KRUZEY odds shown where available<br>
+• Scoring: form (60%) + official rating (30%) + recency (10%) = 0-100
+</div></div><div class="best-section"><h2>🎯 Top 5 — Consensus + Score</h2><div class="best-item">
+<div class="best-rank">#1</div>
+<div class="pick-info">
+<div class="pick-name">R5 #10 LIGHTHOUSE LASS <span style="color:#22c55e;font-size:.75em">🔥 DUAL TIP</span></div>
+<div class="pick-detail">B7 | Keagan Latham | Richard & Will Freedman | Form: 22283</div>
 </div>
-
-<div class="best-section">
-    <h2>🎯 Best of the Card</h2>
-
-    <div class="best-item">
-        <div class="best-rank">#1</div>
-        <div class="pick-info">
-            <div class="pick-name">R6 #2 CELEBES SEA</div>
-            <div class="pick-detail">Barrier 3 | Brock Ryan | Gerald Ryan & Sterling Alexiou | Form: 1</div>
-        </div>
-        <div class="pick-stats">
-            <div class="pick-score">Score 506.3</div>
-            <div class="pick-note">Rating R63</div>
-        </div>
-    </div>
-    <div class="best-item">
-        <div class="best-rank">#2</div>
-        <div class="pick-info">
-            <div class="pick-name">R7 #10 BENAMERA</div>
-            <div class="pick-detail">Barrier 7 | Chad Lever | Stephen O'Halloran | Form: 8424x81817</div>
-        </div>
-        <div class="pick-stats">
-            <div class="pick-score">Score 505.7</div>
-            <div class="pick-note">Rating R57</div>
-        </div>
-    </div>
-    <div class="best-item">
-        <div class="best-rank">#3</div>
-        <div class="pick-info">
-            <div class="pick-name">R8 #4 ROTHROCK</div>
-            <div class="pick-detail">Barrier 8 | Lee Magorrian | Paul Perry | Form: 7x53583711</div>
-        </div>
-        <div class="pick-stats">
-            <div class="pick-score">Score 472.6</div>
-            <div class="pick-note">Rating R66</div>
-        </div>
-    </div>
+<div class="pick-stats"><div class="pick-score">36.9</div><div class="pick-odds"> | $3.60</div></div>
+</div><div class="best-item">
+<div class="best-rank">#2</div>
+<div class="pick-info">
+<div class="pick-name">R6 #6 GLASTONBURY GIRL <span style="color:#22c55e;font-size:.75em">🔥 DUAL TIP</span></div>
+<div class="pick-detail">B5 | Mitchell Bell | Matthew Smith | Form: 1x328</div>
 </div>
-
-<div class="race-card">
-    <div class="race-header">
-        <div class="rnum">RACE 1</div>
-        <div class="rname">THE BURWOOD INN SUPER MAIDEN PLATE (900m) — $60k</div>
-        <div class="rdist">m | 11 runners | 3 scratched: #3, #5, #13</div>
-    </div>
-
-    <div class="pick-row top-pick">
-        <div class="pick-num top">#9</div>
-        <div class="pick-info">
-            <div class="pick-name">MISTY VEIL</div>
-            <div class="pick-detail"><span class="barrier-tag">B14</span>Mitchell Bell | Ciaron Maher | Last 3: 3228</div>
-            
-        </div>
-        <div class="pick-stats">
-            <div class="pick-score">336.5</div>
-        </div>
-    </div>
-    <div class="pick-row ">
-        <div class="pick-num mid">#8</div>
-        <div class="pick-info">
-            <div class="pick-name">LOVE YOU ANYWAY</div>
-            <div class="pick-detail"><span class="barrier-tag">B9</span>Ms Shannen Llewellyn(a2/54kg) | Barry Lawrence | Last 5: 22224</div>
-            
-        </div>
-        <div class="pick-stats">
-            <div class="pick-score">262.5</div>
-        </div>
-    </div>
-    <div class="pick-row ">
-        <div class="pick-num low">#1</div>
-        <div class="pick-info">
-            <div class="pick-name">MR CORNSTAR</div>
-            <div class="pick-detail"><span class="barrier-tag">B1</span>Ms Liberty Smyth(a3/52kg) | Damien Smith | Last 2: 79527</div>
-            
-        </div>
-        <div class="pick-stats">
-            <div class="pick-score">262.0</div>
-        </div>
-    </div>
-    <div class="pick-row ">
-        <div class="pick-num low">#11</div>
-        <div class="pick-info">
-            <div class="pick-name">VINGT NEUF NOIR</div>
-            <div class="pick-detail"><span class="barrier-tag">B4</span>Brock Ryan | John Thompson | Last 2: 79062</div>
-            
-        </div>
-        <div class="pick-stats">
-            <div class="pick-score">247.0</div>
-        </div>
-    </div>
+<div class="pick-stats"><div class="pick-score">34.5</div><div class="pick-odds"> | $4.50</div></div>
+</div><div class="best-item">
+<div class="best-rank">#3</div>
+<div class="pick-info">
+<div class="pick-name">R8 #3 MONKHANA <span style="color:#22c55e;font-size:.75em">🔥 DUAL TIP</span></div>
+<div class="pick-detail">B5 | Rory Hutchings | Denim Wynen | Form: x9367</div>
 </div>
-
-<div class="race-card">
-    <div class="race-header">
-        <div class="rnum">RACE 2</div>
-        <div class="rname">OMNIA WHEEL F&M MAIDEN PLATE (1400m) — $42k</div>
-        <div class="rdist">m | 8 runners | 2 scratched: #4, #5</div>
-    </div>
-
-    <div class="pick-row top-pick">
-        <div class="pick-num top">#8</div>
-        <div class="pick-info">
-            <div class="pick-name">WHERE’S MY HALO</div>
-            <div class="pick-detail"><span class="barrier-tag">B3</span>Mitchell Bell | Ron Quinton | Last 4: 47223</div>
-            
-        </div>
-        <div class="pick-stats">
-            <div class="pick-score">287.5</div>
-        </div>
-    </div>
-    <div class="pick-row ">
-        <div class="pick-num mid">#1</div>
-        <div class="pick-info">
-            <div class="pick-name">MOVIE NIGHT</div>
-            <div class="pick-detail"><span class="barrier-tag">B1</span>Keagan Latham | Tom Charlton | Last 2: 4872</div>
-            
-        </div>
-        <div class="pick-stats">
-            <div class="pick-score">276.5</div>
-        </div>
-    </div>
-    <div class="pick-row ">
-        <div class="pick-num low">#7</div>
-        <div class="pick-info">
-            <div class="pick-name">WEE WINN</div>
-            <div class="pick-detail"><span class="barrier-tag">B9</span>Mitch Stapleford(a1.5/54kg) | Peter Snowden | Last 1: 837</div>
-            
-        </div>
-        <div class="pick-stats">
-            <div class="pick-score">250.0</div>
-        </div>
-    </div>
-    <div class="pick-row ">
-        <div class="pick-num low">#6</div>
-        <div class="pick-info">
-            <div class="pick-name">ROYAL BOTANIC</div>
-            <div class="pick-detail"><span class="barrier-tag">B5</span>Andrew Gibbons | Kris Lees | Last 3: 442</div>
-            
-        </div>
-        <div class="pick-stats">
-            <div class="pick-score">235.0</div>
-        </div>
-    </div>
+<div class="pick-stats"><div class="pick-score">28.1</div><div class="pick-odds"> | $5.50</div></div>
+</div><div class="best-item">
+<div class="best-rank">#4</div>
+<div class="pick-info">
+<div class="pick-name">R7 #3 PORTOFINO <span style="color:#22c55e;font-size:.75em">⭐ ⭐ BAW</span></div>
+<div class="pick-detail">B5 | Brodie Loy ★ | Mack Griffith | Form: 34x11</div>
 </div>
-
-<div class="race-card">
-    <div class="race-header">
-        <div class="rnum">RACE 3</div>
-        <div class="rname">PALMIERI LEGAL CHAMBERS CG&E MAIDEN PLATE (1400m) — $42k</div>
-        <div class="rdist">m | 6 runners | 8 scratched: #2, #4, #5, #6, #8, #10, #12, #14</div>
-    </div>
-
-    <div class="pick-row top-pick">
-        <div class="pick-num top">#1</div>
-        <div class="pick-info">
-            <div class="pick-name">AETHELWULF</div>
-            <div class="pick-detail"><span class="barrier-tag">B7</span>Keagan Latham | Matthew Smith | Last 1: 2</div>
-            
-        </div>
-        <div class="pick-stats">
-            <div class="pick-score">350.0</div>
-        </div>
-    </div>
-    <div class="pick-row ">
-        <div class="pick-num mid">#13</div>
-        <div class="pick-info">
-            <div class="pick-name">GRIDLOCK</div>
-            <div class="pick-detail"><span class="barrier-tag">B9</span>Mitchell Bell | Michael Freedman | Last 1: 63</div>
-            
-        </div>
-        <div class="pick-stats">
-            <div class="pick-score">250.0</div>
-        </div>
-    </div>
-    <div class="pick-row ">
-        <div class="pick-num low">#9</div>
-        <div class="pick-info">
-            <div class="pick-name">STAR OF WINSTON</div>
-            <div class="pick-detail"><span class="barrier-tag">B5</span>Rory Hutchings | Tom Charlton | Last 1: 63</div>
-            
-        </div>
-        <div class="pick-stats">
-            <div class="pick-score">250.0</div>
-        </div>
-    </div>
-    <div class="pick-row ">
-        <div class="pick-num low">#11</div>
-        <div class="pick-info">
-            <div class="pick-name">TITAN OF FURY</div>
-            <div class="pick-detail"><span class="barrier-tag">B2</span>Ms Shannen Llewellyn(a2/54kg) | Paul Perry | Last 3: 39526</div>
-            
-        </div>
-        <div class="pick-stats">
-            <div class="pick-score">239.0</div>
-        </div>
-    </div>
+<div class="pick-stats"><div class="pick-score">47.9</div></div>
+</div><div class="best-item">
+<div class="best-rank">#5</div>
+<div class="pick-info">
+<div class="pick-name">R5 #6 EMALYN <span style="color:#22c55e;font-size:.75em">⭐ ⭐ BAW</span></div>
+<div class="pick-detail">B12 | Ms Shannen Llewellyn(a2/54kg) | Nathan Doyle | Form: 23722</div>
 </div>
-
-<div class="race-card">
-    <div class="race-header">
-        <div class="rnum">RACE 4</div>
-        <div class="rname">HART ACCOUNTANTS MIDWAY 2YO MAIDEN HANDICAP (1200m) — $60k</div>
-        <div class="rdist">m | 11 runners | 3 scratched: #6, #12, #14</div>
-    </div>
-
-    <div class="pick-row top-pick">
-        <div class="pick-num top">#1</div>
-        <div class="pick-info">
-            <div class="pick-name">EXIT CLAUSE</div>
-            <div class="pick-detail"><span class="barrier-tag">B1</span>Mitchell Bell | Jason Coyle | Last 1: 3</div>
-            
-        </div>
-        <div class="pick-stats">
-            <div class="pick-score">250.0</div>
-        </div>
-    </div>
-    <div class="pick-row ">
-        <div class="pick-num mid">#9</div>
-        <div class="pick-info">
-            <div class="pick-name">DON’T DOUBT FRANK</div>
-            <div class="pick-detail"><span class="barrier-tag">B12</span>Christian Reith | Brad Widdup | Last 1: 4</div>
-            
-        </div>
-        <div class="pick-stats">
-            <div class="pick-score">100.0</div>
-        </div>
-    </div>
-    <div class="pick-row ">
-        <div class="pick-num low">#10</div>
-        <div class="pick-info">
-            <div class="pick-name">EXHILARATION</div>
-            <div class="pick-detail"><span class="barrier-tag">B10</span>Brock Ryan | John Thompson | Last 1: 0</div>
-            
-        </div>
-        <div class="pick-stats">
-            <div class="pick-score">0.0</div>
-        </div>
-    </div>
-    <div class="pick-row ">
-        <div class="pick-num low">#11</div>
-        <div class="pick-info">
-            <div class="pick-name">REMEMBER THE TIME</div>
-            <div class="pick-detail"><span class="barrier-tag">B3</span>Grant Buckley | Paul & Martha Cave | No form</div>
-            
-        </div>
-        <div class="pick-stats">
-            <div class="pick-score">0.0</div>
-        </div>
-    </div>
+<div class="pick-stats"><div class="pick-score">41.0</div></div>
+</div></div><div class="race-card">
+<div class="race-header">
+<div class="rnum">RACE 1</div>
+<div class="rname">The Burwood Inn Super Maiden Plate (900m) — $60k</div>
+<div class="rdist">m | 11 runners | Scratched: #3, #5, #13</div>
+</div><div class="pick-row top-pick">
+<div class="pick-num top">#11</div>
+<div class="pick-info">
+<div class="pick-name">VINGT NEUF NOIR</div>
+<div class="pick-detail">B4 | Brock Ryan | John Thompson | Form: 906x2</div>
 </div>
+<div class="pick-stats">
+<div class="pick-score">8.4</div>
 
-<div class="race-card">
-    <div class="race-header">
-        <div class="rnum">RACE 5</div>
-        <div class="rname">BELLA GROUP SERVICES CLASS 1 HANDICAP (1200m) — $42k</div>
-        <div class="rdist">m | 8 runners | 7 scratched: #2, #3, #4, #9, #13, #14, #15</div>
-    </div>
-
-    <div class="pick-row top-pick">
-        <div class="pick-num top">#11</div>
-        <div class="pick-info">
-            <div class="pick-name">HIDDEN STAR</div>
-            <div class="pick-detail"><span class="barrier-tag">B3</span>Rory Hutchings | Mark Minervini | Last 3: 3831</div>
-            
-        </div>
-        <div class="pick-stats">
-            <div class="pick-score">390.9</div>
-        </div>
-    </div>
-    <div class="pick-row ">
-        <div class="pick-num mid">#6</div>
-        <div class="pick-info">
-            <div class="pick-name">EMALYN</div>
-            <div class="pick-detail"><span class="barrier-tag">B12</span>Ms Shannen Llewellyn(a2/54kg) | Nathan Doyle | Last 4: 23722</div>
-            
-        </div>
-        <div class="pick-stats">
-            <div class="pick-score">337.6</div>
-        </div>
-    </div>
-    <div class="pick-row ">
-        <div class="pick-num low">#8</div>
-        <div class="pick-info">
-            <div class="pick-name">CALL ME SASSY</div>
-            <div class="pick-detail"><span class="barrier-tag">B5</span>Mitchell Bell | David Pfieffer | Last 5: 13322</div>
-            
-        </div>
-        <div class="pick-stats">
-            <div class="pick-score">331.5</div>
-        </div>
-    </div>
-    <div class="pick-row ">
-        <div class="pick-num low">#12</div>
-        <div class="pick-info">
-            <div class="pick-name">GONG GIRL</div>
-            <div class="pick-detail"><span class="barrier-tag">B1</span>Brock Ryan | David Pfieffer | Last 4: 44631</div>
-            
-        </div>
-        <div class="pick-stats">
-            <div class="pick-score">324.3</div>
-        </div>
-    </div>
+<div class="pick-tipsters"><span class="consensus-tag single">⭐ ⭐ BAW</span></div>
+</div></div><div class="pick-row ">
+<div class="pick-num mid">#9</div>
+<div class="pick-info">
+<div class="pick-name">MISTY VEIL</div>
+<div class="pick-detail">B14 | Mitchell Bell | Ciaron Maher | Form: x228x</div>
 </div>
+<div class="pick-stats">
+<div class="pick-score">7.7</div>
 
-<div class="race-card">
-    <div class="race-header">
-        <div class="rnum">RACE 6</div>
-        <div class="rname">AUSURE INSURANCE F&M BENCHMARK 64 HANDICAP (1400m) — $42k</div>
-        <div class="rdist">m | 11 runners | 3 scratched: #5, #8, #14</div>
-    </div>
-
-    <div class="pick-row top-pick">
-        <div class="pick-num top">#2</div>
-        <div class="pick-info">
-            <div class="pick-name">CELEBES SEA</div>
-            <div class="pick-detail"><span class="barrier-tag">B3</span>Brock Ryan | Gerald Ryan & Sterling Alexiou | Last 1: 1</div>
-            
-        </div>
-        <div class="pick-stats">
-            <div class="pick-score">506.3</div>
-        </div>
-    </div>
-    <div class="pick-row ">
-        <div class="pick-num mid">#6</div>
-        <div class="pick-info">
-            <div class="pick-name">GLASTONBURY GIRL</div>
-            <div class="pick-detail"><span class="barrier-tag">B5</span>Mitchell Bell | Matthew Smith | Last 4: 11328</div>
-            
-        </div>
-        <div class="pick-stats">
-            <div class="pick-score">364.6</div>
-        </div>
-    </div>
-    <div class="pick-row ">
-        <div class="pick-num low">#13</div>
-        <div class="pick-info">
-            <div class="pick-name">INCANTRESS</div>
-            <div class="pick-detail"><span class="barrier-tag">B2</span>Andrew Gibbons | Steve Hodge | Last 4: 71512</div>
-            
-        </div>
-        <div class="pick-stats">
-            <div class="pick-score">357.8</div>
-        </div>
-    </div>
-    <div class="pick-row ">
-        <div class="pick-num low">#11</div>
-        <div class="pick-info">
-            <div class="pick-name">FAIZA STAR</div>
-            <div class="pick-detail"><span class="barrier-tag">B11</span>Ms Kacie Adams | Darren Treacy | Last 5: 21431</div>
-            
-        </div>
-        <div class="pick-stats">
-            <div class="pick-score">348.0</div>
-        </div>
-    </div>
+<div class="pick-tipsters"><span class="consensus-tag single">⭐ ⭐ BAW</span></div>
+</div></div><div class="pick-row ">
+<div class="pick-num low">#8</div>
+<div class="pick-info">
+<div class="pick-name">LOVE YOU ANYWAY</div>
+<div class="pick-detail">B9 | Ms Shannen Llewellyn(a2/54kg) | Barry Lawrence | Form: 22224</div>
 </div>
+<div class="pick-stats">
+<div class="pick-score">17.7</div>
 
-<div class="race-card">
-    <div class="race-header">
-        <div class="rnum">RACE 7</div>
-        <div class="rname">REWARD HOSPITALITY CG&E BENCHMARK 64 HANDICAP (1400m) — $42k</div>
-        <div class="rdist">m | 11 runners | 5 scratched: #5, #6, #12, #14, #15</div>
-    </div>
-
-    <div class="pick-row top-pick">
-        <div class="pick-num top">#10</div>
-        <div class="pick-info">
-            <div class="pick-name">BENAMERA</div>
-            <div class="pick-detail"><span class="barrier-tag">B7</span>Chad Lever | Stephen O'Halloran | Last 2: 81817</div>
-            
-        </div>
-        <div class="pick-stats">
-            <div class="pick-score">505.7</div>
-        </div>
-    </div>
-    <div class="pick-row ">
-        <div class="pick-num mid">#3</div>
-        <div class="pick-info">
-            <div class="pick-name">PORTOFINO</div>
-            <div class="pick-detail"><span class="barrier-tag">B5</span>Brodie Loy | Mack Griffith | Last 4: 73411</div>
-            
-        </div>
-        <div class="pick-stats">
-            <div class="pick-score">413.4</div>
-        </div>
-    </div>
-    <div class="pick-row ">
-        <div class="pick-num low">#2</div>
-        <div class="pick-info">
-            <div class="pick-name">AUZSTAR</div>
-            <div class="pick-detail"><span class="barrier-tag">B6</span>Ms Liberty Smyth(a3/52kg) | Marc Quinn | Last 3: D9231</div>
-            
-        </div>
-        <div class="pick-stats">
-            <div class="pick-score">405.1</div>
-        </div>
-    </div>
-    <div class="pick-row ">
-        <div class="pick-num low">#9</div>
-        <div class="pick-info">
-            <div class="pick-name">TANGLEWOOD JIMMY</div>
-            <div class="pick-detail"><span class="barrier-tag">B11</span>Ms Shannen Llewellyn(a2/54kg) | Wayne Wilkes | Last 5: 51232</div>
-            
-        </div>
-        <div class="pick-stats">
-            <div class="pick-score">330.8</div>
-        </div>
-    </div>
+<div class="pick-tipsters"></div>
+</div></div><div class="pick-row ">
+<div class="pick-num low">#2</div>
+<div class="pick-info">
+<div class="pick-name">SAMMY THE BULL</div>
+<div class="pick-detail">B15 | Matt Kirk (a4/55kg) ★ | Tanya Randell | Form: x3335</div>
 </div>
+<div class="pick-stats">
+<div class="pick-score">9.9</div>
 
-<div class="race-card">
-    <div class="race-header">
-        <div class="rnum">RACE 8</div>
-        <div class="rname">JAG DATA & POWER PROVINCIAL BENCHMARK 68 HANDICAP (1600m) — $42k</div>
-        <div class="rdist">m | 11 runners | 3 scratched: #1, #8, #10</div>
-    </div>
-
-    <div class="pick-row top-pick">
-        <div class="pick-num top">#4</div>
-        <div class="pick-info">
-            <div class="pick-name">ROTHROCK</div>
-            <div class="pick-detail"><span class="barrier-tag">B8</span>Lee Magorrian | Paul Perry | Last 3: 83711</div>
-            
-        </div>
-        <div class="pick-stats">
-            <div class="pick-score">472.6</div>
-        </div>
-    </div>
-    <div class="pick-row ">
-        <div class="pick-num mid">#9</div>
-        <div class="pick-info">
-            <div class="pick-name">MURPHILLY</div>
-            <div class="pick-detail"><span class="barrier-tag">B4</span>Grant Buckley | Kylie Gavenlock | Last 5: 12341</div>
-            
-        </div>
-        <div class="pick-stats">
-            <div class="pick-score">326.2</div>
-        </div>
-    </div>
-    <div class="pick-row ">
-        <div class="pick-num low">#6</div>
-        <div class="pick-info">
-            <div class="pick-name">PICCADERRO</div>
-            <div class="pick-detail"><span class="barrier-tag">B6</span>Keagan Latham | Jason Deamer | Last 3: 17815</div>
-            
-        </div>
-        <div class="pick-stats">
-            <div class="pick-score">263.0</div>
-        </div>
-    </div>
-    <div class="pick-row ">
-        <div class="pick-num low">#3</div>
-        <div class="pick-info">
-            <div class="pick-name">MONKHANA</div>
-            <div class="pick-detail"><span class="barrier-tag">B5</span>Rory Hutchings | Denim Wynen | Last 1: 79367</div>
-            
-        </div>
-        <div class="pick-stats">
-            <div class="pick-score">256.7</div>
-        </div>
-    </div>
+<div class="pick-tipsters"></div>
+</div></div></div><div class="race-card">
+<div class="race-header">
+<div class="rnum">RACE 2</div>
+<div class="rname">Omnia Wheel F&M Maiden Plate (1400m) — $42k</div>
+<div class="rdist">m | 8 runners | Scratched: #4, #5</div>
+</div><div class="pick-row top-pick">
+<div class="pick-num top">#8</div>
+<div class="pick-info">
+<div class="pick-name">WHERE’S MY HALO</div>
+<div class="pick-detail">B3 | Mitchell Bell | Ron Quinton | Form: 7223x</div>
 </div>
+<div class="pick-stats">
+<div class="pick-score">11.8</div>
 
-<div class="track-section">
-    <h3>🏟 Track Profile — Newcastle</h3>
-    <p>NEWCASTLE TRACK PROFILE<br>- Provincial NSW, Soft 6 today<br>- Rail: True (entire circuit)<br>- 900m: Sharp sprint, inside barriers (1-4) favoured, leaders advantage<br>- 1200m: Fair track, slight leader bias when rail True<br>- 1400m: Balanced, all running styles can win<br>- 1600m: Staying test, midfield/backmarkers come into play<br>- Weather: Fine, no rain last 24hrs, 60mm last 7 days</p>
+<div class="pick-tipsters"><span class="consensus-tag single">⭐ ⭐ BAW</span></div>
+</div></div><div class="pick-row ">
+<div class="pick-num mid">#6</div>
+<div class="pick-info">
+<div class="pick-name">ROYAL BOTANIC</div>
+<div class="pick-detail">B5 | Andrew Gibbons | Kris Lees | Form: 442</div>
 </div>
+<div class="pick-stats">
+<div class="pick-score">11.2</div>
 
-<div class="footer">
-    Daztech AI Betting Engine · Provincial Analysis · 11:34 AEST<br>
-    Engine-backed form ratings. No live odds = WATCH mode only.<br>
-    Not financial advice. Gamble responsibly.
+<div class="pick-tipsters"><span class="consensus-tag single">⭐ ⭐ BAW</span></div>
+</div></div><div class="pick-row ">
+<div class="pick-num low">#1</div>
+<div class="pick-info">
+<div class="pick-name">MOVIE NIGHT</div>
+<div class="pick-detail">B1 | Keagan Latham | Tom Charlton | Form: 487x2</div>
 </div>
-</body>
-</html>
+<div class="pick-stats">
+<div class="pick-score">8.8</div>
+
+<div class="pick-tipsters"><span class="consensus-tag single">⭐ ⭐ BAW</span></div>
+</div></div><div class="pick-row ">
+<div class="pick-num low">#9</div>
+<div class="pick-info">
+<div class="pick-name">ZEPHYR SONG</div>
+<div class="pick-detail">B7 | Zac Wadick(a0/53kg) | Gai Waterhouse & Adrian Bott | Form: 2x454</div>
+</div>
+<div class="pick-stats">
+<div class="pick-score">5.5</div>
+
+<div class="pick-tipsters"><span class="consensus-tag single">⭐ ⭐ BAW</span></div>
+</div></div></div><div class="race-card">
+<div class="race-header">
+<div class="rnum">RACE 3</div>
+<div class="rname">Palmieri Legal Chambers CG&E Maiden Plate (1400m) — $42k</div>
+<div class="rdist">m | 6 runners | Scratched: #2, #4, #5, #6, #8, #10, #12, #14</div>
+</div><div class="pick-row top-pick">
+<div class="pick-num top">#11</div>
+<div class="pick-info">
+<div class="pick-name">TITAN OF FURY</div>
+<div class="pick-detail">B2 | Ms Shannen Llewellyn(a2/54kg) | Paul Perry | Form: 39526</div>
+</div>
+<div class="pick-stats">
+<div class="pick-score">8.0</div>
+
+<div class="pick-tipsters"><span class="consensus-tag single">⭐ ⭐ BAW</span></div>
+</div></div><div class="pick-row ">
+<div class="pick-num mid">#1</div>
+<div class="pick-info">
+<div class="pick-name">AETHELWULF</div>
+<div class="pick-detail">B7 | Keagan Latham | Matthew Smith | Form: 2x</div>
+</div>
+<div class="pick-stats">
+<div class="pick-score">6.5</div>
+
+<div class="pick-tipsters"><span class="consensus-tag single">⭐ ⭐ BAW</span></div>
+</div></div><div class="pick-row ">
+<div class="pick-num low">#13</div>
+<div class="pick-info">
+<div class="pick-name">GRIDLOCK</div>
+<div class="pick-detail">B9 | Mitchell Bell | Michael Freedman | Form: 63</div>
+</div>
+<div class="pick-stats">
+<div class="pick-score">5.3</div>
+
+<div class="pick-tipsters"><span class="consensus-tag single">⭐ ⭐ BAW</span></div>
+</div></div><div class="pick-row ">
+<div class="pick-num low">#7</div>
+<div class="pick-info">
+<div class="pick-name">MONOTONE</div>
+<div class="pick-detail">B4 | Chad Lever | Bjorn Baker | Form: 68x4</div>
+</div>
+<div class="pick-stats">
+<div class="pick-score">2.1</div>
+
+<div class="pick-tipsters"><span class="consensus-tag single">⭐ ⭐ BAW</span></div>
+</div></div></div><div class="race-card">
+<div class="race-header">
+<div class="rnum">RACE 4</div>
+<div class="rname">Hart Accountants Midway 2YO Maiden Handicap (1200m) — $60k</div>
+<div class="rdist">m | 11 runners | Scratched: #6, #12, #14</div>
+</div><div class="pick-row top-pick">
+<div class="pick-num top">#1</div>
+<div class="pick-info">
+<div class="pick-name">EXIT CLAUSE</div>
+<div class="pick-detail">B1 | Mitchell Bell | Jason Coyle | Form: 3</div>
+</div>
+<div class="pick-stats">
+<div class="pick-score">5.3</div>
+
+<div class="pick-tipsters"><span class="consensus-tag single">⭐ ⭐ BAW</span></div>
+</div></div><div class="pick-row ">
+<div class="pick-num mid">#9</div>
+<div class="pick-info">
+<div class="pick-name">DON’T DOUBT FRANK</div>
+<div class="pick-detail">B12 | Christian Reith | Brad Widdup | Form: 4</div>
+</div>
+<div class="pick-stats">
+<div class="pick-score">2.1</div>
+
+<div class="pick-tipsters"><span class="consensus-tag single">⭐ ⭐ BAW</span></div>
+</div></div><div class="pick-row ">
+<div class="pick-num low">#7</div>
+<div class="pick-info">
+<div class="pick-name">THE AUTUMN CHOICE</div>
+<div class="pick-detail">B7 | Chad Lever | Geoff Allendorf | Form: 8</div>
+</div>
+<div class="pick-stats">
+<div class="pick-score">0.0</div>
+
+<div class="pick-tipsters"><span class="consensus-tag single">⭐ ⭐ BAW</span></div>
+</div></div><div class="pick-row ">
+<div class="pick-num low">#10</div>
+<div class="pick-info">
+<div class="pick-name">EXHILARATION</div>
+<div class="pick-detail">B10 | Brock Ryan | John Thompson | Form: 0</div>
+</div>
+<div class="pick-stats">
+<div class="pick-score">0.0</div>
+
+<div class="pick-tipsters"></div>
+</div></div></div><div class="race-card">
+<div class="race-header">
+<div class="rnum">RACE 5</div>
+<div class="rname">Bella Group Services Class 1 Handicap (1200m) — $42k</div>
+<div class="rdist">m | 8 runners | Scratched: #2, #3, #4, #9, #13, #14, #15</div>
+</div><div class="pick-row consensus-pick">
+<div class="pick-num top">#10</div>
+<div class="pick-info">
+<div class="pick-name">LIGHTHOUSE LASS</div>
+<div class="pick-detail">B7 | Keagan Latham | Richard & Will Freedman | Form: 22283</div>
+</div>
+<div class="pick-stats">
+<div class="pick-score">36.9</div>
+<div class="pick-odds">$3.60</div>
+<div class="pick-tipsters"><span class="consensus-tag both">🔥 BOTH</span></div>
+</div></div><div class="pick-row ">
+<div class="pick-num mid">#6</div>
+<div class="pick-info">
+<div class="pick-name">EMALYN</div>
+<div class="pick-detail">B12 | Ms Shannen Llewellyn(a2/54kg) | Nathan Doyle | Form: 23722</div>
+</div>
+<div class="pick-stats">
+<div class="pick-score">41.0</div>
+
+<div class="pick-tipsters"><span class="consensus-tag single">⭐ ⭐ BAW</span></div>
+</div></div><div class="pick-row ">
+<div class="pick-num low">#8</div>
+<div class="pick-info">
+<div class="pick-name">CALL ME SASSY</div>
+<div class="pick-detail">B5 | Mitchell Bell | David Pfieffer | Form: 33x22</div>
+</div>
+<div class="pick-stats">
+<div class="pick-score">40.1</div>
+
+<div class="pick-tipsters"><span class="consensus-tag single">⭐ ⭐ BAW</span></div>
+</div></div><div class="pick-row ">
+<div class="pick-num low">#11</div>
+<div class="pick-info">
+<div class="pick-name">HIDDEN STAR</div>
+<div class="pick-detail">B3 | Rory Hutchings | Mark Minervini | Form: 38x31</div>
+</div>
+<div class="pick-stats">
+<div class="pick-score">39.6</div>
+
+<div class="pick-tipsters"><span class="consensus-tag single">⭐ ⭐ BAW</span></div>
+</div></div></div><div class="race-card">
+<div class="race-header">
+<div class="rnum">RACE 6</div>
+<div class="rname">AUsure Insurance F&M BM64 Handicap (1400m) — $42k</div>
+<div class="rdist">m | 11 runners | Scratched: #5, #8, #14</div>
+</div><div class="pick-row consensus-pick">
+<div class="pick-num top">#6</div>
+<div class="pick-info">
+<div class="pick-name">GLASTONBURY GIRL</div>
+<div class="pick-detail">B5 | Mitchell Bell | Matthew Smith | Form: 1x328</div>
+</div>
+<div class="pick-stats">
+<div class="pick-score">34.5</div>
+<div class="pick-odds">$4.50</div>
+<div class="pick-tipsters"><span class="consensus-tag both">🔥 BOTH</span></div>
+</div></div><div class="pick-row ">
+<div class="pick-num mid">#2</div>
+<div class="pick-info">
+<div class="pick-name">CELEBES SEA</div>
+<div class="pick-detail">B3 | Brock Ryan | Gerald Ryan & Sterling Alexiou | Form: 1</div>
+</div>
+<div class="pick-stats">
+<div class="pick-score">36.2</div>
+
+<div class="pick-tipsters"><span class="consensus-tag single">⭐ ⭐ BAW</span></div>
+</div></div><div class="pick-row ">
+<div class="pick-num low">#1</div>
+<div class="pick-info">
+<div class="pick-name">LADY PANKHURST</div>
+<div class="pick-detail">B1 | Rory Hutchings | John Sargent | Form: 189x5</div>
+</div>
+<div class="pick-stats">
+<div class="pick-score">27.2</div>
+
+<div class="pick-tipsters"><span class="consensus-tag single">⭐ ⭐ BAW</span></div>
+</div></div><div class="pick-row ">
+<div class="pick-num low">#13</div>
+<div class="pick-info">
+<div class="pick-name">INCANTRESS</div>
+<div class="pick-detail">B2 | Andrew Gibbons | Steve Hodge | Form: 1x512</div>
+</div>
+<div class="pick-stats">
+<div class="pick-score">40.8</div>
+
+<div class="pick-tipsters"></div>
+</div></div></div><div class="race-card">
+<div class="race-header">
+<div class="rnum">RACE 7</div>
+<div class="rname">Reward Hospitality CG&E BM64 Handicap (1400m) — $42k</div>
+<div class="rdist">m | 11 runners | Scratched: #5, #6, #12, #14, #15</div>
+</div><div class="pick-row top-pick">
+<div class="pick-num top">#3</div>
+<div class="pick-info">
+<div class="pick-name">PORTOFINO</div>
+<div class="pick-detail">B5 | Brodie Loy ★ | Mack Griffith | Form: 34x11</div>
+</div>
+<div class="pick-stats">
+<div class="pick-score">47.9</div>
+
+<div class="pick-tipsters"><span class="consensus-tag single">⭐ ⭐ BAW</span></div>
+</div></div><div class="pick-row ">
+<div class="pick-num mid">#7</div>
+<div class="pick-info">
+<div class="pick-name">OLLIE’S SECRET</div>
+<div class="pick-detail">B10 | Christian Reith | Jan Bowen | Form: 31514</div>
+</div>
+<div class="pick-stats">
+<div class="pick-score">39.8</div>
+
+<div class="pick-tipsters"><span class="consensus-tag single">⭐ ⭐ BAW</span></div>
+</div></div><div class="pick-row ">
+<div class="pick-num low">#1</div>
+<div class="pick-info">
+<div class="pick-name">LOCKDOWN GAMBLE</div>
+<div class="pick-detail">B4 | Mitch Stapleford(a1.5/54kg) | David J Smith | Form: 5423x</div>
+</div>
+<div class="pick-stats">
+<div class="pick-score">34.9</div>
+
+<div class="pick-tipsters"><span class="consensus-tag single">⭐ ⭐ BAW</span></div>
+</div></div><div class="pick-row ">
+<div class="pick-num low">#16</div>
+<div class="pick-info">
+<div class="pick-name">RHINESTONE LAD</div>
+<div class="pick-detail">B1 | Keagan Latham | Kim Waugh | Form: 4334x</div>
+</div>
+<div class="pick-stats">
+<div class="pick-score">27.4</div>
+
+<div class="pick-tipsters"><span class="consensus-tag single">⭐ ⭐ BAW</span></div>
+</div></div></div><div class="race-card">
+<div class="race-header">
+<div class="rnum">RACE 8</div>
+<div class="rname">JAG Data & Power Provincial BM68 Handicap (1600m) — $42k</div>
+<div class="rdist">m | 11 runners | Scratched: #1, #8, #10</div>
+</div><div class="pick-row consensus-pick">
+<div class="pick-num top">#3</div>
+<div class="pick-info">
+<div class="pick-name">MONKHANA</div>
+<div class="pick-detail">B5 | Rory Hutchings | Denim Wynen | Form: x9367</div>
+</div>
+<div class="pick-stats">
+<div class="pick-score">28.1</div>
+<div class="pick-odds">$5.50</div>
+<div class="pick-tipsters"><span class="consensus-tag both">🔥 BOTH</span></div>
+</div></div><div class="pick-row ">
+<div class="pick-num mid">#9</div>
+<div class="pick-info">
+<div class="pick-name">MURPHILLY</div>
+<div class="pick-detail">B4 | Grant Buckley | Kylie Gavenlock | Form: 234x1</div>
+</div>
+<div class="pick-stats">
+<div class="pick-score">40.3</div>
+
+<div class="pick-tipsters"><span class="consensus-tag single">⭐ ⭐ BAW</span></div>
+</div></div><div class="pick-row ">
+<div class="pick-num low">#11</div>
+<div class="pick-info">
+<div class="pick-name">UNREAL EXPECTATION</div>
+<div class="pick-detail">B10 | Zac Wadick(a0/53kg) | Tara & Philippe Vigouroux | Form: 6x346</div>
+</div>
+<div class="pick-stats">
+<div class="pick-score">25.2</div>
+
+<div class="pick-tipsters"><span class="consensus-tag single">⭐ ⭐ BAW</span></div>
+</div></div><div class="pick-row ">
+<div class="pick-num low">#2</div>
+<div class="pick-info">
+<div class="pick-name">RUSH ATTACK</div>
+<div class="pick-detail">B14 | Mitchell Bell | Nathan Doyle | Form: 4x688</div>
+</div>
+<div class="pick-stats">
+<div class="pick-score">24.4</div>
+
+<div class="pick-tipsters"><span class="consensus-tag single">⭐ ⭐ BAW</span></div>
+</div></div></div><div class="track-section"><h3>🏟 Newcastle Track Profile</h3><p>
+Soft 6 | Rail: True (entire circuit) | Weather: Fine, no rain last 24hrs, 60mm last 7 days<br>
+<b>900m:</b> Sharp sprint, inside barriers (1-4) favoured, leaders advantage<br>
+<b>1200m:</b> Fair track, slight leader bias with rail True<br>
+<b>1400m:</b> Balanced, all running styles can win<br>
+<b>1600m:</b> Staying test, midfield/backmarkers come into play
+</p></div><div class="verdict">
+<div class="title">📋 Verdict — 06 June 2026</div>
+<div class="text">
+<b>Consensus plays (both tipsters agree):</b><br>
+• R5 #10 Lighthouse Lass — BAW top pick + KRUZEY Best Bet $3.60<br>
+• R6 #6 Glastonbury Girl — BAW third pick + KRUZEY $4.50 (taking on short fav)<br>
+• R8 #3 Monkhana — BAW third pick + KRUZEY $5.50 (blinkers on first time)<br>
+<br><b>Best Bet (per Back A Winner):</b><br>
+• R7 #3 Portofino — back-to-back wins, $3.50→$2.80 market support<br>
+<br>
+Engine filtered this provincial card (sub-55 master_rating). Expert consensus is the signal here.
+KRUZEY odds provide rough market — use for edge estimation only, Sportsbet live odds unavailable.
+</div></div><div class="footer">Daztech AI · Engine-backed form + expert consensus · 11:48 AEST<br>
+Not financial advice. Gamble responsibly.</div></body></html>
