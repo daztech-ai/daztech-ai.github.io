@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bulldogs v Eels — NRL Round 14, 2026 | Daztech SGM Engine</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #0a0a0f;
+    color: #e0e0e0;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 20px;
+    line-height: 1.5;
+  }
+  h1 { text-align: center; font-size: 1.5em; margin: 20px 0 5px; color: #fff; }
+  h2 { font-size: 1.1em; color: #ccc; margin: 22px 0 10px; border-bottom: 1px solid #252535; padding-bottom: 6px; }
+  .subtitle { text-align: center; color: #888; font-size: 0.85em; margin-bottom: 20px; }
+  .card {
+    background: #141420;
+    border: 1px solid #252535;
+    border-radius: 10px;
+    padding: 18px;
+    margin-bottom: 14px;
+  }
+  .hero {
+    text-align: center;
+    background: linear-gradient(135deg, #1a1a2e 0%, #141420 100%);
+    border: 1px solid #252535;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 16px;
+  }
+  .hero-teams { font-size: 1.6em; font-weight: 800; margin-bottom: 8px; }
+  .hero-teams .home { color: #00549E; }
+  .hero-teams .away { color: #FFC425; }
+  .hero-winner { font-size: 1.15em; color: #4fc3f7; margin-bottom: 6px; }
+  .hero-prob { font-size: 2.2em; font-weight: 800; color: #4fc3f7; }
+  .hero-meta { font-size: 0.9em; color: #999; margin-top: 6px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 0.68em; margin: 6px 4px; }
+  .badge-blue { background: #1a3a5c; color: #4fc3f7; }
+  .badge-green { background: #1a3a1a; color: #4AA331; }
+  .badge-red { background: #2e1a1a; color: #ef5350; }
+  .badge-yellow { background: #2e2a1a; color: #f0a500; }
+  .badge-purple { background: #2a1a3a; color: #ce93d8; }
+
+  .late-mail { border-left: 3px solid #ef5350; }
+  .late-mail .alert { color: #ef5350; font-weight: 700; }
+
+  .odds-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    text-align: center;
+  }
+  .odds-item {
+    background: #1a1a2e;
+    border-radius: 8px;
+    padding: 14px 10px;
+  }
+  .odds-label { font-size: 0.72em; color: #777; text-transform: uppercase; }
+  .odds-value { font-size: 1.35em; font-weight: 700; color: #fff; }
+  .odds-sub { font-size: 0.72em; color: #555; margin-top: 3px; }
+
+  .edge-box {
+    padding: 14px;
+    border-radius: 8px;
+    margin: 12px 0;
+    font-size: 0.88em;
+  }
+  .edge-neutral { background: #1a1a2e; border-left: 3px solid #FAA71C; }
+  .edge-positive { background: #1a2e1a; border-left: 3px solid #4AA331; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.83em;
+  }
+  th { text-align: left; color: #888; font-weight: 600; padding: 7px 8px; border-bottom: 1px solid #252535; font-size: 0.78em; text-transform: uppercase; }
+  td { padding: 7px 8px; border-bottom: 1px solid #1a1a2e; }
+  .pn { color: #e0e0e0; font-weight: 600; }
+  .pp { color: #888; font-size: 0.88em; }
+  .pg { color: #666; }
+  .pt { color: #4fc3f7; font-weight: 700; }
+  .pr { color: #f0a500; font-weight: 600; }
+  .fire { color: #f0a500; }
+
+  .form-row { display: flex; gap: 5px; margin: 4px 0; }
+  .form-dot { width: 22px; height: 22px; border-radius: 4px; font-size: 0.62em; display: flex; align-items: center; justify-content: center; font-weight: 700; }
+  .form-W { background: #1a3a1a; color: #4AA331; border: 1px solid #4AA331; }
+  .form-L { background: #2e1a1a; color: #B92722; border: 1px solid #B92722; }
+  .form-D { background: #2e2a1a; color: #FAA71C; border: 1px solid #FAA71C; }
+
+  .sgm-box {
+    background: #1a1a2e;
+    border: 1px solid #252535;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 12px 0;
+  }
+  .sgm-tier { font-size: 0.78em; margin-bottom: 4px; }
+  .sgm-legs { margin: 8px 0; }
+  .sgm-leg { padding: 6px 0; border-bottom: 1px solid #1f1f35; }
+  .sgm-leg:last-child { border-bottom: none; }
+  .sgm-note { font-size: 0.78em; color: #888; margin-top: 8px; }
+  .sgm-risk { font-size: 0.78em; margin-top: 6px; }
+
+  .expert-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin: 10px 0;
+  }
+  .expert-card {
+    background: #1a1a2e;
+    border-radius: 8px;
+    padding: 12px;
+    text-align: center;
+  }
+  .expert-name { font-size: 0.78em; color: #888; }
+  .expert-pick { font-size: 0.95em; color: #fff; font-weight: 600; margin: 4px 0; }
+  .expert-detail { font-size: 0.72em; color: #666; }
+
+  .notes {
+    background: #1a1a2e;
+    border-left: 3px solid #00549E;
+    padding: 12px;
+    margin: 12px 0;
+    font-size: 0.8em;
+    color: #999;
+  }
+  .disclaimer {
+    background: #1a1a2e;
+    border-left: 3px solid #f0a500;
+    padding: 12px;
+    margin: 25px 0 10px;
+    font-size: 0.75em;
+    color: #888;
+  }
+  .footer {
+    text-align: center;
+    margin-top: 30px;
+    padding: 15px;
+    font-size: 0.7em;
+    color: #555;
+    border-top: 1px solid #1a1a2e;
+  }
+  .footer a { color: #4fc3f7; }
+  .inline-badges { margin: 8px 0; }
+
+  .team-list-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .team-list-col h3 { font-size: 0.9em; margin-bottom: 8px; }
+  .player-row { display: flex; align-items: center; padding: 4px 0; border-bottom: 1px solid #1a1a2e; font-size: 0.82em; }
+  .player-num { width: 24px; color: #666; font-weight: 600; }
+  .player-name { flex: 1; }
+  .player-pos { color: #777; font-size: 0.85em; width: 60px; text-align: right; }
+  .player-row.inj { opacity: 0.4; text-decoration: line-through; }
+  .player-row.new { color: #4AA331; }
+
+  .toggle-wrap { margin: 10px 0; }
+  .toggle-btn {
+    background: #1a1a2e;
+    border: 1px solid #252535;
+    color: #999;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.82em;
+  }
+  .toggle-btn:hover { color: #fff; border-color: #555; }
+  .toggle-content { display: none; margin-top: 10px; }
+  .toggle-content.open { display: block; }
+
+  @media (max-width: 600px) {
+    .odds-grid { grid-template-columns: 1fr; }
+    .expert-grid { grid-template-columns: 1fr; }
+    .team-list-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<h1>🏉 Bulldogs v Eels — NRL Round 14, 2026</h1>
+<div class="subtitle">
+  Mon 8 Jun 2026 · 4:05pm AEST · Accor Stadium (Sydney)<br>
+  <span class="inline-badges">
+    <span class="badge badge-blue">8-Factor Engine</span>
+    <span class="badge badge-green">2025-26 Live Data</span>
+    <span class="badge badge-purple">Expert Consensus</span>
+    <span class="badge badge-red">Late Mail</span>
+  </span>
+</div>
+
+<!-- LATE MAIL -->
+<div class="card late-mail">
+  <h2>🚨 Late Mail & Team News</h2>
+  <p><span class="alert">⚠️ Mitchell Moses (Eels captain/halfback) — OUT (calf, 2nd straight week)</span></p>
+  <p><strong>Bulldogs:</strong> Minimal changes — Sean O'Sullivan & Logan Spinks IN for Hopoi & Sua on interchange only. Coach Ciraldo sticks solid after Tigers loss. No Origin absences. Full squad available.</p>
+  <p><strong>Eels:</strong> Moses remains sidelined — their primary playmaker, goal-kicker, and captain. Dylan Brown shifts to halfback. Attack has struggled without him (8pts v Storm, 22pts v Knights). Zac Lomax (wing) returns. Kelma Tuilagi named on edge — Betseeker flags him as a try threat vs Bulldogs right-edge defensive turnstile Jaeman Salmon.</p>
+  <p><strong>Weather:</strong> Sydney Olympic Park — 16°C, partly cloudy, no rain forecast. Dry track.</p>
+  <div class="badge badge-green" style="margin-top:8px;">Last updated: Mon 8 Jun, 8:20am AEST</div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-teams">
+    <span class="home">Bulldogs</span> v <span class="away">Eels</span>
+  </div>
+  <div class="hero-winner">Daztech Engine: <strong>Bulldogs</strong> to win</div>
+  <div class="hero-prob">64.1% WP</div>
+  <div class="hero-meta">
+    Predicted margin ~6.3 pts · Confidence: 19.0% (LOW)<br>
+    <span class="badge badge-yellow">⚠️ Close game — both teams 4-8, bottom 5</span><br>
+    <span style="font-size:0.8em; color:#888;">Factors: 2024=0.15 · 2025=0.25 · 2026=0.60 (recency-weighted)</span>
+  </div>
+</div>
+
+<!-- 2026 FORM -->
+<div class="card">
+  <h2>📊 2026 Season Form (Rounds 1-14)</h2>
+  <table>
+    <tr><th>Team</th><th>Record</th><th>Win%</th><th>PF/g</th><th>PA/g</th><th>Diff</th><th>Last 5</th></tr>
+    <tr>
+      <td class="pn">Bulldogs</td>
+      <td>4W-8L</td><td>33.3%</td><td>18.2</td><td>26.5</td><td style="color:#ef5350;">-8.3</td>
+      <td>
+        <div class="form-row">
+          <span class="form-dot form-W">W</span><span class="form-dot form-L">L</span><span class="form-dot form-L">L</span><span class="form-dot form-W">W</span><span class="form-dot form-L">L</span>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="pn">Eels</td>
+      <td>4W-8L</td><td>33.3%</td><td>21.4</td><td>33.9</td><td style="color:#ef5350;">-12.5</td>
+      <td>
+        <div class="form-row">
+          <span class="form-dot form-L">L</span><span class="form-dot form-W">W</span><span class="form-dot form-L">L</span><span class="form-dot form-L">L</span><span class="form-dot form-L">L</span>
+        </div>
+      </td>
+    </tr>
+  </table>
+  <div class="notes">
+    <strong>H2H 2026:</strong> Eels 38 def Bulldogs 20 (Round 7 @ CommBank). First meeting at Accor in 2026.<br>
+    <strong>Bulldogs:</strong> Beat Panthers (32-16) and Storm (30-20) — can spike against top teams. Lost to Tigers 16-22 last start.<br>
+    <strong>Eels:</strong> Defence worst in NRL (33.9 PA/g). Without Moses, attack has scored 15 PPG over last 2 games.<br>
+    <strong>H2H history:</strong> Under 27-10 since 2008. Last 5: 42 or fewer total points in 4 of 5.
+  </div>
+</div>
+
+<!-- MARKET ODDS -->
+<div class="card">
+  <h2>💰 Market Odds (Bet365)</h2>
+  <div class="odds-grid">
+    <div class="odds-item">
+      <div class="odds-label">Head-to-Head</div>
+      <div class="odds-value">Bulldogs $1.44</div>
+      <div class="odds-sub">Eels $2.65</div>
+    </div>
+    <div class="odds-item">
+      <div class="odds-label">Line</div>
+      <div class="odds-value">Bulldogs -6.5</div>
+      <div class="odds-sub">$1.91 / $1.91</div>
+    </div>
+    <div class="odds-item">
+      <div class="odds-label">Total Points</div>
+      <div class="odds-value">O/U 50.5</div>
+      <div class="odds-sub">$1.91 / $1.91</div>
+    </div>
+  </div>
+  <div class="edge-box edge-neutral">
+    <strong>Engine vs Market:</strong> Engine 64.1% WP vs Market fair 64.8% — <strong>no edge on H2H</strong>.<br>
+    <strong>Under 50.5:</strong> Stats Insider 57% probability, Betseeker 63% when two bottom-5 teams meet. <strong>This is the consensus value angle.</strong><br>
+    <strong>Bulldogs -6.5:</strong> Stats Insider 55% cover probability. GoBet picks Bulldogs 13+ at $2.70 as value.
+  </div>
+</div>
+
+<!-- TRY SCORERS -->
+<div class="card">
+  <h2>🏃 Try Scorer Analysis <span class="badge badge-green">2025-26 Live Data</span></h2>
+  
+  <h3 style="color:#00549E; margin-bottom:8px;">Bulldogs</h3>
+  <table>
+    <tr><th>Player</th><th>Pos</th><th>G</th><th>T</th><th>LB</th><th>T/G</th><th>Rating</th></tr>
+    <tr><td class="pn">Jacob Kiraz <span class="fire">🔥</span></td><td class="pp">FB</td><td class="pg">25</td><td class="pt">15</td><td class="pg">17</td><td class="pr">0.60</td><td>🟢 Elite</td></tr>
+    <tr><td class="pn">Jacob Preston</td><td class="pp">2R</td><td class="pg">31</td><td class="pt">15</td><td class="pg">17</td><td class="pr">0.48</td><td>🟢 Strong</td></tr>
+    <tr><td class="pn">Bronson Xerri</td><td class="pp">C</td><td class="pg">33</td><td class="pt">10</td><td class="pg">17</td><td class="pr">0.30</td><td>🟡 Mod</td></tr>
+    <tr><td class="pn">Marcelo Montoya</td><td class="pp">W</td><td class="pg">27</td><td class="pt">9</td><td class="pg">17</td><td class="pr">0.33</td><td>🟡 Mod</td></tr>
+    <tr><td class="pn">Lachlan Galvin</td><td class="pp">HB</td><td class="pg">25</td><td class="pt">9</td><td class="pg">9</td><td class="pr">0.36</td><td>🟡 Mod</td></tr>
+    <tr><td class="pn">Matt Burton</td><td class="pp">5/8</td><td class="pg">30</td><td class="pt">8</td><td class="pg">15</td><td class="pr">0.27</td><td>🟠 Low</td></tr>
+    <tr><td class="pn">Enari Tuala</td><td class="pp">W</td><td class="pg">19</td><td class="pt">7</td><td class="pg">14</td><td class="pr">0.37</td><td>🟡 Mod</td></tr>
+  </table>
+
+  <h3 style="color:#FFC425; margin: 16px 0 8px;">Eels</h3>
+  <table>
+    <tr><th>Player</th><th>Pos</th><th>G</th><th>T</th><th>LB</th><th>T/G</th><th>Rating</th></tr>
+    <tr><td class="pn">Josh Addo-Carr ⭐</td><td class="pp">W</td><td class="pg">33</td><td class="pt">25</td><td class="pg">30</td><td class="pr">0.76</td><td>🟢 Elite</td></tr>
+    <tr><td class="pn">Isaiah Iongi</td><td class="pp">FB</td><td class="pg">26</td><td class="pt">11</td><td class="pg">15</td><td class="pr">0.42</td><td>🟢 Strong</td></tr>
+    <tr><td class="pn">Will Penisini</td><td class="pp">C</td><td class="pg">25</td><td class="pt">9</td><td class="pg">10</td><td class="pr">0.36</td><td>🟡 Mod</td></tr>
+    <tr><td class="pn">Sean Russell</td><td class="pp">C</td><td class="pg">30</td><td class="pt">9</td><td class="pg">8</td><td class="pr">0.30</td><td>🟡 Mod</td></tr>
+    <tr><td class="pn">Zac Lomax</td><td class="pp">W</td><td class="pg">19</td><td class="pt">9</td><td class="pg">11</td><td class="pr">0.47</td><td>🟢 Strong</td></tr>
+    <tr><td class="pn">Mitchell Moses</td><td class="pp">HB</td><td class="pg">24</td><td class="pt">7</td><td class="pg">5</td><td class="pr">0.29</td><td style="color:#ef5350;">❌ OUT</td></tr>
+    <tr><td class="pn">Dylan Brown</td><td class="pp">HB</td><td class="pg">20</td><td class="pt">5</td><td class="pg">7</td><td class="pr">0.25</td><td>🟠 Low</td></tr>
+  </table>
+  <div class="notes">
+    <strong>Source:</strong> Champion Data MC API (2025-2026 seasons). T/G = tries per game. LB = line breaks.<br>
+    <strong>🔥 Kiraz:</strong> 5-game try-scoring streak (all 3 expert sources). 0.60 T/G as fullback — elite for a spine player.<br>
+    <strong>⭐ Addo-Carr:</strong> 0.76 T/G, 30 line breaks in 33 games. Former Bulldog — revenge narrative. Stats Insider gives him 53% anytime try probability.<br>
+    <strong>❌ Moses OUT:</strong> Removes Eels' primary try assist threat (15 TA in 24G). Eels attack downgraded.
+  </div>
+</div>
+
+<!-- EXPERT CONSENSUS -->
+<div class="card">
+  <h2>🧠 Expert Consensus</h2>
+  <div class="expert-grid">
+    <div class="expert-card">
+      <div class="expert-name">Stats Insider</div>
+      <div class="expert-pick">Bulldogs $1.44</div>
+      <div class="expert-detail">72% WP · U50.5 57%<br>Bulldogs -6.5 at 55%<br>Tuala 50% / Addo-Carr 53%</div>
+      <span class="badge badge-blue" style="margin-top:6px;">10K simulations</span>
+    </div>
+    <div class="expert-card">
+      <div class="expert-name">Betseeker</div>
+      <div class="expert-pick">Under 50.5</div>
+      <div class="expert-detail">"Super bet" · 27-10 H2H since '08<br>63% when two bottom-5 meet<br>SGM: U42.5 / Kiraz / B.Kelly</div>
+      <span class="badge badge-green" style="margin-top:6px;">Best Bet</span>
+    </div>
+    <div class="expert-card">
+      <div class="expert-name">GoBet</div>
+      <div class="expert-pick">Bulldogs -5.5</div>
+      <div class="expert-detail">"Better roster to handle pressure"<br>Moses OUT is the difference<br>SGM: -5.5 / Kiraz / Crichton / U50.5</div>
+      <span class="badge badge-yellow" style="margin-top:6px;">Value: 13+ @ $2.70</span>
+    </div>
+  </div>
+  <div class="notes" style="margin-top:12px;">
+    <strong>Consensus (3/3):</strong> Under 50.5 total points · Jacob Kiraz anytime try · Bulldogs to win<br>
+    <strong>Consensus (2/3):</strong> Bulldogs to cover -5.5 line<br>
+    <strong>Divergence:</strong> GoBet picks Crichton try (not in 2025-26 data). Betseeker picks Brian Kelly try (Eels winger, 0 T in 2025-26 data — likely error or different B.Kelly).
+  </div>
+</div>
+
+<!-- SGM BUILDER -->
+<div class="card">
+  <h2>🎯 SGM Builder — Engine-Backed Legs</h2>
+
+  <div class="sgm-box">
+    <div class="sgm-tier"><span class="badge badge-green">🟢 CONSERVATIVE</span> 2 legs · Positive correlation</div>
+    <div class="sgm-legs">
+      <div class="sgm-leg"><strong>1. Under 50.5 Total Points</strong> @ $1.91<br><span style="color:#888;font-size:0.82em;">All 3 experts. 27-10 H2H since 2008. 63% when 2 bottom-5 teams meet. Both teams bottom-5 attacks. Moses OUT reduces Eels scoring.</span></div>
+      <div class="sgm-leg"><strong>2. Jacob Kiraz Anytime Try</strong> @ ~$2.00<br><span style="color:#888;font-size:0.82em;">5-game try streak. 0.60 T/G (2025-26). All 3 experts pick him. GoBet quotes $2 odds.</span></div>
+    </div>
+    <div class="sgm-note"><strong>Correlation:</strong> Weak negative — fewer total tries reduces individual try probability. But Kiraz's scoring rate is high enough to offset. Estimated combined: ~$3.80.</div>
+  </div>
+
+  <div class="sgm-box">
+    <div class="sgm-tier"><span class="badge badge-yellow">🟡 BALANCED</span> 3 legs · Mixed correlation</div>
+    <div class="sgm-legs">
+      <div class="sgm-leg"><strong>1. Bulldogs to Win</strong> @ $1.44<br><span style="color:#888;font-size:0.82em;">Engine 64.1% WP. Market fair 64.8%. At home. Eels without Moses. Both teams 4-8 but Bulldogs at Accor.</span></div>
+      <div class="sgm-leg"><strong>2. Under 50.5 Total Points</strong> @ $1.91<br><span style="color:#888;font-size:0.82em;">27-10 H2H. Bottom-5 defence matchup. Bulldogs low-scoring (18.2 PPG).</span></div>
+      <div class="sgm-leg"><strong>3. Jacob Kiraz Anytime Try</strong> @ ~$2.00<br><span style="color:#888;font-size:0.82em;">Consensus try scorer pick. Eels defence worst in NRL (33.9 PA/g) — try opportunities.</span></div>
+    </div>
+    <div class="sgm-note"><strong>Correlation:</strong> Bulldogs win → game likely low-scoring → Kiraz scores. All cascade from Bulldogs control. If Eels win, all 3 legs fail. Estimated combined: ~$5.50.</div>
+    <div class="sgm-risk"><span style="color:#f0a500;">⚠️ Risk: Both teams 4-8. Either can win. Close game expected.</span></div>
+  </div>
+
+  <div class="sgm-box">
+    <div class="sgm-tier"><span class="badge badge-red">🟠 COUNTER-TREND</span> 2 legs · Value angle</div>
+    <div class="sgm-legs">
+      <div class="sgm-leg"><strong>1. Bulldogs 13+ (Alternative Margin)</strong> @ ~$2.70<br><span style="color:#888;font-size:0.82em;">GoBet value pick. Bulldogs can spike — beat Panthers 32-16, Storm 30-20. Eels defence worst in comp. Eels without Moses = low scoring.</span></div>
+      <div class="sgm-leg"><strong>2. Josh Addo-Carr Anytime Try</strong> @ ~$1.80<br><span style="color:#888;font-size:0.82em;">0.76 T/G. 30 line breaks. Revenge game vs former club. 53% anytime per Stats Insider. Eels' primary try threat regardless of result.</span></div>
+    </div>
+    <div class="sgm-note"><strong>Correlation:</strong> Negative — Bulldogs 13+ implies Eels score few. But Addo-Carr scores even in losses (elite winger, kick returns, intercept ability). Estimated combined: ~$4.85.</div>
+    <div class="sgm-risk"><span style="color:#ef5350;">⚠️ High risk: Eels already beat Bulldogs 38-20 this year. 13+ margin is speculative.</span></div>
+  </div>
+</div>
+
+<!-- DISCLAIMER -->
+<div class="disclaimer">
+  <strong>⚠️ Disclaimer:</strong> Predictions generated by the Daztech NRL SGM Engine using recency-weighted factors from 4,959 NRL matches (2001-2026).
+  Factors: 2024=0.15, 2025=0.25, 2026=0.60. Player stats from Champion Data MC API (2025-2026).
+  Expert consensus aggregated from 3 public betting preview sites. Market odds from Bet365 via Stats Insider.
+  The engine uses heuristic weights and has a known defence cross-term limitation. Margin estimates are indicative.
+  Not financial advice. Gamble responsibly. 18+ only.
+</div>
+
+<div class="footer">
+  <p><strong>Daztech NRL SGM Engine v1</strong> · Built by Deez (OpenClaw) · Game day: Mon 8 Jun 2026</p>
+  <p>
+    Data: <a href="https://mc.championdata.com">Champion Data MC API</a> (player stats) ·
+    <a href="https://fixturedownload.com">fixturedownload.com</a> (results) ·
+    <a href="https://github.com/beauhobba/NRL-Data">beauhobba/NRL-Data</a> (history)
+  </p>
+  <p>
+    Experts: <a href="https://www.statsinsider.com.au">Stats Insider</a> ·
+    <a href="https://www.betseeker.com.au">Betseeker</a> ·
+    <a href="https://www.gobet.com.au">GoBet</a>
+  </p>
+</div>
+
+</body>
+</html>
