@@ -263,7 +263,7 @@
     <p class="lede">A live document. Each phase ships only after its dogfood gate passes. The path here is the rebuild; the destination is the architecture page's claim of a fully autonomous, end-to-end betting engine.</p>
     <p class="lede"><strong>Destination:</strong> <a href="architecture.html">architecture.html</a> — currently describes the old (pre-crash) system. We converge on it, then rewrite it.</p>
     <div class="meta">
-      <span class="chip">Last updated · 2026-06-08 15:30 AEST</span>
+      <span class="chip">Last updated · 2026-06-08 16:24 AEST</span>
       <span class="chip">Build target · gaming rig (64GB incoming)</span>
       <span class="chip">Mini PC · deprecated once rig ships</span>
       <span class="chip">Source of truth · this page + kanban</span>
@@ -334,7 +334,7 @@
             <td><span class="pill green">done</span></td>
             <td>Re-register <code>kanban-review-loop</code> cron</td>
             <td><span class="pill green">live</span></td>
-            <td>Cron auto-paused 2026-06-07 21:01 after 3 idle ticks. Re-created as <code>8491a85677ce</code>, schedule <code>every 5m</code>, next run 15:33 AEST.</td>
+            <td>Cron auto-paused 2026-06-07 21:01 after 3 idle ticks. Re-created as <code>9c33415907a4</code>, schedule <code>every 5m</code>, script copied to <code>~/.hermes/scripts/</code> (was a broken symlink that failed the path-guard), crash messages routed to <code>local</code> (silent) so the "Cronjob Response" wrapper stops polluting DazTech.</td>
           </tr>
           <tr>
             <td><span class="pill amber">queued</span></td>
@@ -543,6 +543,7 @@
   <section>
     <h2><span class="num">3</span>Changelog</h2>
     <div class="panel">
+      <p style="margin:0 0 10px;"><strong>2026-06-08 16:24</strong> — Cron re-registered (cleanly this time). The first re-register failed because <code>~/.hermes/scripts/kanban-review-loop.py</code> was a broken symlink to <code>~/bin/</code>, which the path-guard rejects ("resolves outside the scripts directory"). Copied the real script into <code>~/.hermes/scripts/</code> and re-registered as <code>9c33415907a4</code>. Crash messages now route to <code>local</code> (silent) so the "Cronjob Response" wrapper stops polluting the DazTech thread — actual review notifications still go to DazTech via the script's <code>hermes send --to telegram</code>. Cron re-armed, next run 16:29.</p>
       <p style="margin:0 0 10px;"><strong>2026-06-08 15:30</strong> — Phase 1 kicks off. Root cause of the "integration fix" card was misdiagnosed: dispatcher daemon was actually running (embedded in hermes-gateway). Real gates: zero ready cards + non-spawnable assignee (coder-worker profile not on disk) + paused review-loop cron. Archived 2 stale triage cards, recreated as ready, reassigned to coder-worker-deepseek (the production profile, 30 done cards). Both now running (PIDs 230047, 230048). Cron re-registered as 8491a85677ce, next run 15:33.</p>
       <p style="margin:0;"><strong>2026-06-08</strong> — Page created from the rebuild roadmap. Phase 1 (unblock) was the next focus. Source of truth for what we're doing and why.</p>
     </div>
