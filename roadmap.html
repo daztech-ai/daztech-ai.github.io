@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Roadmap · Daz Betting Engine</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🗺️</text></svg>">
+<script>
+  // Mirror the hub's theme system so this page feels native
+  (function(){
+    var s = localStorage.getItem('daztech-theme');
+    var d = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    document.documentElement.dataset.theme = s || (d ? 'dark' : 'light');
+  })();
+</script>
+<style>
+  :root {
+    --bg: #faf7f2;
+    --surface: #ffffff;
+    --text: #2d2922;
+    --muted: #8c8880;
+    --gold: #c8960c;
+    --gold-soft: rgba(200,150,12,0.10);
+    --gold-line: rgba(200,150,12,0.25);
+    --border: #e8e4dc;
+    --live: #16a34a;
+    --positive: #16a34a;
+    --negative: #dc2626;
+    --warning: #d97706;
+    --info: #2563eb;
+    --code-bg: #f5f2ec;
+    --shadow: 0 1px 3px rgba(0,0,0,0.04);
+    --shadow-hover: 0 2px 8px rgba(0,0,0,0.06);
+    --radius: 10px;
+  }
+  html[data-theme="dark"] {
+    --bg: #0a0a0f;
+    --surface: #12121a;
+    --text: #e0e0e0;
+    --muted: #777;
+    --gold: #ffd700;
+    --gold-soft: rgba(255,215,0,0.08);
+    --gold-line: rgba(255,215,0,0.22);
+    --border: rgba(255,255,255,0.08);
+    --code-bg: #1a1a23;
+    --shadow: none;
+    --shadow-hover: none;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin:0; padding:0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--gold); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 32px 20px 80px; }
+
+  /* TOP BAR */
+  .topbar {
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 14px 20px; border-bottom: 1px solid var(--border);
+    background: var(--surface); position:sticky; top:0; z-index:10;
+  }
+  .topbar .brand { font-weight:800; letter-spacing:-0.01em; font-size:15px; }
+  .topbar .brand span { color: var(--gold); }
+  .topbar .navlinks { display:flex; gap:18px; font-size:13px; }
+  .topbar .navlinks a { color: var(--muted); }
+  .topbar .navlinks a:hover { color: var(--gold); text-decoration:none; }
+  .theme-toggle {
+    background:transparent; border:1px solid var(--border); color:var(--text);
+    padding: 5px 10px; border-radius:6px; cursor:pointer; font-size:13px;
+  }
+  .theme-toggle:hover { border-color: var(--gold); }
+
+  /* HERO */
+  .hero {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px 24px;
+    margin-top: 20px;
+    box-shadow: var(--shadow);
+  }
+  .hero h1 {
+    font-size: 26px; line-height: 1.2; margin: 0 0 10px;
+    letter-spacing: -0.02em;
+  }
+  .hero .lede { font-size: 16px; color: var(--muted); margin: 0 0 6px; }
+  .hero .meta {
+    margin-top: 14px; display:flex; flex-wrap:wrap; gap:8px;
+    font-size: 12.5px; color: var(--muted);
+  }
+  .hero .meta .chip {
+    background: var(--code-bg); padding: 3px 10px; border-radius: 999px;
+    border: 1px solid var(--border);
+  }
+
+  /* SECTIONS */
+  section { margin-top: 36px; }
+  section h2 {
+    font-size: 13px; text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--gold); margin: 0 0 14px; font-weight: 700;
+  }
+  section h2 .num {
+    display:inline-block; width:22px; height:22px; line-height:22px;
+    background: var(--gold-soft); border: 1px solid var(--gold-line);
+    border-radius: 50%; text-align:center; margin-right:8px;
+    font-size: 11px;
+  }
+  .panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px 22px;
+    box-shadow: var(--shadow);
+  }
+  .panel + .panel { margin-top: 12px; }
+  .panel h3 { margin: 0 0 10px; font-size: 17px; }
+  .panel p { margin: 0 0 10px; color: var(--text); }
+  .panel .sub { color: var(--muted); font-size: 14px; }
+
+  /* STARTING POINT */
+  .state-grid { display:grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .state {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px;
+  }
+  .state h4 {
+    margin: 0 0 8px; font-size: 13px; text-transform: uppercase;
+    letter-spacing: 0.08em; color: var(--muted); font-weight: 700;
+  }
+  .state ul { margin: 0; padding-left: 18px; }
+  .state li { font-size: 13.5px; margin: 4px 0; }
+  .state .head {
+    display:flex; align-items:center; gap:8px; margin-bottom: 8px;
+  }
+  .state .head .dot {
+    width: 9px; height: 9px; border-radius: 50%;
+  }
+  .state .head .dot.green { background: var(--positive); }
+  .state .head .dot.amber { background: var(--warning); }
+  .state .head .dot.red   { background: var(--negative); }
+
+  /* PHASE CARDS */
+  .phase {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 22px 24px;
+    box-shadow: var(--shadow);
+    border-left: 4px solid var(--gold);
+  }
+  .phase + .phase { margin-top: 16px; }
+  .phase.live { border-left-color: var(--positive); }
+  .phase.next { border-left-color: var(--warning); }
+  .phase.done { border-left-color: var(--muted); opacity: 0.85; }
+  .phase .ph-head {
+    display:flex; align-items:baseline; gap:12px; flex-wrap:wrap;
+    margin-bottom: 8px;
+  }
+  .phase .ph-tag {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--gold);
+  }
+  .phase.live .ph-tag { color: var(--positive); }
+  .phase.next .ph-tag { color: var(--warning); }
+  .phase .ph-name {
+    font-size: 19px; font-weight: 700; margin: 0;
+  }
+  .phase .ph-window {
+    font-size: 12.5px; color: var(--muted); margin-left: auto;
+  }
+  .phase .ph-goal {
+    color: var(--muted); font-size: 14px; margin: 0 0 16px;
+  }
+  .phase table { margin-top: 6px; }
+  .phase th { font-size: 11px; }
+  .phase td code, .phase th code {
+    background: var(--code-bg); padding: 1px 6px; border-radius: 4px;
+    font-size: 12.5px; font-family: 'SF Mono', Menlo, Consolas, monospace;
+  }
+
+  /* TABLE */
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; }
+  tr:last-child td { border-bottom: 0; }
+  .pill { display:inline-block; font-size: 11px; padding: 2px 8px; border-radius: 999px; font-weight: 600; white-space: nowrap; }
+  .pill.green { background: rgba(22,163,74,0.12); color: var(--positive); }
+  .pill.amber { background: rgba(217,119,6,0.12); color: var(--warning); }
+  .pill.red   { background: rgba(220,38,38,0.12); color: var(--negative); }
+  .pill.gray  { background: var(--code-bg); color: var(--muted); }
+  .pill.blue  { background: rgba(37,99,235,0.12); color: var(--info); }
+
+  /* SUCCESS BAR */
+  .done-banner {
+    background: var(--gold-soft);
+    border: 1px solid var(--gold-line);
+    border-radius: var(--radius);
+    padding: 16px 20px;
+    margin-top: 16px;
+    font-size: 14.5px;
+  }
+  .done-banner strong { color: var(--gold); }
+
+  /* SUCCESS CRITERIA */
+  .criteria {
+    background: var(--code-bg);
+    border-left: 3px solid var(--gold);
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin-top: 14px;
+    font-size: 14px;
+  }
+  .criteria h5 {
+    margin: 0 0 6px; font-size: 12px; text-transform: uppercase;
+    letter-spacing: 0.08em; color: var(--gold); font-weight: 700;
+  }
+  .criteria ol { margin: 0; padding-left: 20px; }
+  .criteria li { margin: 3px 0; }
+
+  /* FOOTER */
+  footer {
+    margin-top: 50px; padding-top: 20px; border-top: 1px solid var(--border);
+    color: var(--muted); font-size: 12.5px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;
+  }
+
+  @media (max-width: 600px) {
+    .wrap { padding: 18px 14px 60px; }
+    .hero { padding: 22px 18px; }
+    .hero h1 { font-size: 22px; }
+    .state-grid { grid-template-columns: 1fr; }
+    .phase { padding: 18px 16px; }
+    .phase .ph-window { margin-left: 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand">Daz<span>tech</span> · <span style="color:var(--muted);font-weight:500;">Roadmap</span></div>
+  <div class="navlinks">
+    <a href="index.html">Hub</a>
+    <a href="architecture.html">How it works</a>
+    <a href="roadmap.html" class="active">Roadmap</a>
+    <a href="results.html">Results</a>
+    <a href="https://github.com/daztech-ai/daztech-betting-engine" target="_blank" rel="noopener">Source ↗</a>
+    <button class="theme-toggle" onclick="toggleTheme()">◐</button>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <div class="hero">
+    <h1>Roadmap — Daz Betting Engine rebuild</h1>
+    <p class="lede">A live document. Each phase ships only after its dogfood gate passes. The path here is the rebuild; the destination is the architecture page's claim of a fully autonomous, end-to-end betting engine.</p>
+    <p class="lede"><strong>Destination:</strong> <a href="architecture.html">architecture.html</a> — currently describes the old (pre-crash) system. We converge on it, then rewrite it.</p>
+    <div class="meta">
+      <span class="chip">Last updated · 2026-06-08</span>
+      <span class="chip">Build target · gaming rig (64GB incoming)</span>
+      <span class="chip">Mini PC · deprecated once rig ships</span>
+      <span class="chip">Source of truth · this page + kanban</span>
+    </div>
+  </div>
+
+  <!-- HONEST STARTING POINT -->
+  <section>
+    <h2><span class="num">0</span>Honest starting point</h2>
+    <div class="state-grid">
+      <div class="state">
+        <div class="head"><span class="dot green"></span><h4 style="color:var(--positive);margin:0;">Done (proven)</h4></div>
+        <ul>
+          <li>Scaffold + BABS integration (<code>engine v0.0.0+0b</code>)</li>
+          <li>Model math (1a) — Poisson validates vs 26-season EPL</li>
+          <li>Kelly risk (1b) — real <code>risk()</code> with stake sizing</li>
+          <li>Backtest harness (1d) — Brier/ROI/CLV metrics wired</li>
+          <li>Market prices (2a) — Pinnacle + vig-adjusted implied</li>
+          <li>Isotonic calibration (2b) — code merged, review pending</li>
+          <li>ELO + time-decay features (2c) — code merged, review pending</li>
+          <li>290 tests passing, cold-start budgets met</li>
+          <li>BABS v0.5.0 — 5 transports incl. openclaw bridge</li>
+        </ul>
+      </div>
+      <div class="state">
+        <div class="head"><span class="dot red"></span><h4 style="color:var(--negative);margin:0;">Gaps (the actual work)</h4></div>
+        <ul>
+          <li>Integration layer: dispatcher daemon not running, 3 cards stuck in triage</li>
+          <li>Data plane: <code>betting.db</code> is 0 bytes — no real fixtures/odds scraped</li>
+          <li>Agent personas: Wave 4-5 trim + 2 Jira caveats queued</li>
+          <li>First settled bet: still 0 winners on the rig</li>
+          <li>Architecture page: frozen at the old (pre-crash) system</li>
+          <li>GitHub push: not done (both repos local-only private per agreement)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHASE 1 -->
+  <section>
+    <h2><span class="num">1</span>Phased plan</h2>
+
+    <div class="phase next">
+      <div class="ph-head">
+        <span class="ph-tag">● Next</span>
+        <h3 class="ph-name">Phase 1 — Unblock the system</h3>
+        <span class="ph-window">1-2 days</span>
+      </div>
+      <p class="ph-goal">Get the kanban working for us, not against us. 3 cards move out of triage in parallel. Every future spawn costs less budget.</p>
+      <table>
+        <thead>
+          <tr><th style="width:60px;">#</th><th>Card</th><th style="width:24%;">Why first</th><th style="width:30%;">Dogfood gate</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="pill amber">triage</span></td>
+            <td><code>t_1c540ed6</code><br>Start kanban dispatcher daemon</td>
+            <td>Meta-gate. 3 cards waiting on it.</td>
+            <td>Daemon running, 3 cards promoted out of <code>triage</code></td>
+          </tr>
+          <tr>
+            <td><span class="pill amber">triage</span></td>
+            <td><code>t_765b9a25</code><br>Wave 4-5 persona trim + 2 Jira caveats</td>
+            <td>Persona drift = per-spawn budget tax. Wave 1-3 cut 53% off PROMPT.</td>
+            <td>2 real dogfoods (coder + reviewer) under 10 min, no scope creep</td>
+          </tr>
+          <tr>
+            <td><span class="pill amber">blocked</span></td>
+            <td><code>t_502b11fe</code><br>2b: calibration via isotonic regression</td>
+            <td>Code merged; letting it sit = calibration work in limbo.</td>
+            <td>Daz-as-reviewer verdict on 2b (Daz is the last line of defence)</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="sub" style="margin-top:14px;">Order: 1.1 first (meta-gate), 1.2 + 1.3 can run in parallel after the daemon is up.</p>
+    </div>
+
+    <div class="phase">
+      <div class="ph-head">
+        <span class="ph-tag">○ Queued</span>
+        <h3 class="ph-name">Phase 2 — Wake the data plane</h3>
+        <span class="ph-window">2-3 days</span>
+      </div>
+      <p class="ph-goal"><code>betting.db</code> is no longer 0 bytes. One real source, end-to-end, no shortcuts.</p>
+      <table>
+        <thead>
+          <tr><th style="width:60px;">#</th><th>Task</th><th style="width:24%;">Why</th><th style="width:30%;">Dogfood gate</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="pill gray">2.1</span></td>
+            <td>BABS dogfood: scrape 1 NRL fixture source against live data</td>
+            <td>Proves openclaw bridge + browser transport works on a real site.</td>
+            <td>Real rows in <code>nrl_fixtures</code> table, ≥30 rows for Brier-meaningful volume</td>
+          </tr>
+          <tr>
+            <td><span class="pill gray">2.2</span></td>
+            <td>Wire <code>daz-betting-engine run</code> end-to-end against scraped data</td>
+            <td>Engine is currently unproven against live input.</td>
+            <td><code>engine run</code> produces ≥1 card from real data, no exceptions</td>
+          </tr>
+          <tr>
+            <td><span class="pill gray">2.3</span></td>
+            <td>Settle 1 round</td>
+            <td>Proves the ledger loop closes.</td>
+            <td>At least 1 settled row, pnl sign-correct</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="sub" style="margin-top:14px;"><strong>The hard call:</strong> NRL.com fixtures first — server-rendered, no JS, lowest scraper risk. Racing Australia second once the loop is closed.</p>
+    </div>
+
+    <div class="phase">
+      <div class="ph-head">
+        <span class="ph-tag">○ Queued</span>
+        <h3 class="ph-name">Phase 3 — First settled proof</h3>
+        <span class="ph-window">~1 week</span>
+      </div>
+      <p class="ph-goal">20-30 settled bets with calibration holding. The honest test: Brier and ROI from live picks match or beat the 26-season EPL backtest.</p>
+      <table>
+        <thead>
+          <tr><th style="width:60px;">#</th><th>Task</th><th style="width:24%;">Why</th><th style="width:30%;">Dogfood gate</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="pill gray">3.1</span></td>
+            <td>Daily cron: BABS scrape → engine run → settle</td>
+            <td>Replaces "nudge Daz to make it work" pattern.</td>
+            <td>3 consecutive days, zero manual intervention</td>
+          </tr>
+          <tr>
+            <td><span class="pill gray">3.2</span></td>
+            <td>Backtest 2c features against 26-season EPL</td>
+            <td>Features were merged on real data; calibration needs the matching backtest.</td>
+            <td>Brier &lt; 0.21 OR ROI ≥ 0, logit both</td>
+          </tr>
+          <tr>
+            <td><span class="pill gray">3.3</span></td>
+            <td>Racing: B/C-grade scraper, second source</td>
+            <td>Doubles sport coverage, second test of the data plane.</td>
+            <td>Same as 2.1, racing table populated</td>
+          </tr>
+          <tr>
+            <td><span class="pill gray">3.4</span></td>
+            <td>Calibration drift detector</td>
+            <td>Without this, rig reverts to "0/100 because model silently broke".</td>
+            <td>Detector fires on synthetic injected drift, alerting path works</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="criteria">
+        <h5>Honest success criterion for Phase 3</h5>
+        <ol>
+          <li>Brier and ROI from settled bets <strong>match or beat</strong> the EPL backtest</li>
+          <li>If they don't: the rig-vs-EPL gap is a real problem, not a backtest artefact — Phase 4 becomes "fix the gap", not "ship"</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="ph-head">
+        <span class="ph-tag">○ Future</span>
+        <h3 class="ph-name">Phase 4 — Publish</h3>
+        <span class="ph-window">1-2 weeks after Phase 3</span>
+      </div>
+      <p class="ph-goal">The architecture page describes what the rig actually does, not what the old one did. The rig is publicly visible.</p>
+      <table>
+        <thead>
+          <tr><th style="width:60px;">#</th><th>Task</th><th style="width:24%;">Why</th><th style="width:30%;">Dogfood gate</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="pill gray">4.1</span></td>
+            <td>Update <code>architecture.html</code> with rig state</td>
+            <td>Page is frozen at the old system.</td>
+            <td>Page renders, claims match git log</td>
+          </tr>
+          <tr>
+            <td><span class="pill gray">4.2</span></td>
+            <td>GitHub push: <code>daz-betting-engine</code> to public</td>
+            <td>Standing agreement: public after settled-ledger proof.</td>
+            <td>Repo live, 1+ commit per day for a week</td>
+          </tr>
+          <tr>
+            <td><span class="pill gray">4.3</span></td>
+            <td>GitHub push: BABS to public</td>
+            <td>Standing agreement: BABS public at v0.3.0+, we're at 0.5.0.</td>
+            <td>Same as 4.2</td>
+          </tr>
+          <tr>
+            <td><span class="pill gray">4.4</span></td>
+            <td>Auto-refresh loop: cron → engine → ledger → card → push</td>
+            <td>Closes the "fully autonomous" question on the architecture page.</td>
+            <td>1 week autonomous, zero nudges</td>
+          </tr>
+          <tr>
+            <td><span class="pill gray">4.5</span></td>
+            <td>Dashboard (<code>src/ui/dashboard.html</code>) actually working</td>
+            <td>Currently 404 on the live site, was hand-driven.</td>
+            <td>Loads, bankroll curve updates from real ledger</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="phase">
+      <div class="ph-head">
+        <span class="ph-tag">○ Future</span>
+        <h3 class="ph-name">Phase 5 — Branch out</h3>
+        <span class="ph-window">Months 2-6</span>
+      </div>
+      <p class="ph-goal">The rig starts paying for itself. Each new sport is a fresh test of the data plane + model + risk + ledger loop.</p>
+      <table>
+        <thead>
+          <tr><th style="width:60px;">#</th><th>Task</th><th style="width:36%;">Source</th><th style="width:30%;">Dogfood gate</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="pill gray">5.1</span></td>
+            <td>Tennis: SGP correlation model</td>
+            <td>Wizard of Odds (Tier 1)</td>
+            <td>Joint Monte Carlo SGM engine proven on at least 1 tournament</td>
+          </tr>
+          <tr>
+            <td><span class="pill gray">5.2</span></td>
+            <td>NBA: kill the "0 completed games" dead pipeline properly</td>
+            <td>swar/nba_api + BBR (Tier 2)</td>
+            <td>30+ settled games, AUC > 0.55 (above random)</td>
+          </tr>
+          <tr>
+            <td><span class="pill gray">5.3</span></td>
+            <td>Football (EPL): 26-season backtest goes live</td>
+            <td>Football-Data.co.uk (Tier 1)</td>
+            <td>Daily picks, weekly settle, ROI logged</td>
+          </tr>
+          <tr>
+            <td><span class="pill gray">5.4</span></td>
+            <td>AFL Tables integration</td>
+            <td>AFL Tables (Tier 2)</td>
+            <td>Real AFL data lands, no schema break</td>
+          </tr>
+          <tr>
+            <td><span class="pill gray">5.5</span></td>
+            <td>Pinnacle line proxy for AU markets</td>
+            <td>Pinnacle + OddsPortal (Tier 1/2)</td>
+            <td>Closing-line benchmark available for NRL + racing picks</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- WHAT DONE LOOKS LIKE -->
+  <section>
+    <h2><span class="num">2</span>What "done" looks like</h2>
+    <div class="done-banner">
+      When you can come back in 2 weeks and:
+    </div>
+    <div class="panel">
+      <ol style="margin:0;padding-left:20px;">
+        <li><code>daz-betting-engine status</code> shows real bankroll, real picks, real P&amp;L</li>
+        <li><code>betting.db</code> is &gt;1MB, growing daily</li>
+        <li>The <a href="architecture.html">architecture page</a> describes what the rig actually does, not what the old one did</li>
+        <li>0 manual nudges for 7+ days</li>
+        <li>The first Brier-vs-backtest verdict is in the wiki</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- UPDATE LOG -->
+  <section>
+    <h2><span class="num">3</span>Changelog</h2>
+    <div class="panel">
+      <p style="margin:0;"><strong>2026-06-08</strong> — Page created from the rebuild roadmap. Phase 1 (unblock) is the next focus. Source of truth for what we're doing and why.</p>
+    </div>
+  </section>
+
+  <footer>
+    <span>Daztech Betting Engine · live roadmap</span>
+    <span>Updated as we make progress — not aspirational, not stale</span>
+  </footer>
+
+</div>
+
+<script>
+  function toggleTheme() {
+    var cur = document.documentElement.dataset.theme;
+    var next = cur === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = next;
+    localStorage.setItem('daztech-theme', next);
+  }
+</script>
+
+</body>
+</html>
