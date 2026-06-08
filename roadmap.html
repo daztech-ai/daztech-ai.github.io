@@ -263,10 +263,11 @@
     <p class="lede">A live document. Each phase ships only after its dogfood gate passes. The path here is the rebuild; the destination is the architecture page's claim of a fully autonomous, end-to-end betting engine.</p>
     <p class="lede"><strong>Destination:</strong> <a href="architecture.html">architecture.html</a> — currently describes the old (pre-crash) system. We converge on it, then rewrite it.</p>
     <div class="meta">
-      <span class="chip">Last updated · 2026-06-09 05:15 AEST</span>
+      <span class="chip">Last updated · 2026-06-09 08:25 AEST</span>
       <span class="chip">Build target · gaming rig (64GB incoming)</span>
       <span class="chip">Mini PC · deprecated once rig ships</span>
       <span class="chip">Source of truth · this page + kanban</span>
+      <span class="chip" style="background:var(--negative);color:#fff;">FIFA World Cup 2026 — 3 days away (June 11)</span>
     </div>
   </div>
 
@@ -297,6 +298,7 @@
           <li>First settled bet: <strong>1/1, +1.0u ROI (n=1 caveat)</strong></li>
           <li>Architecture page: frozen at the old (pre-crash) system</li>
           <li>GitHub push: not done (both repos local-only private per agreement)</li>
+          <li><strong>Review gaps (2026-06-08 deez audit):</strong> 11 of 14 confirmed real. Phase 3 cards filed for the live ones (#1 no live odds → <code>t_de27833c</code>, #2 racing settle → punted, #3 selection layer → wired in Card 1, #7 bankroll → <code>t_1d81fc98</code>). Architecture-debt items (#8, #9, #14) deferred.</li>
         </ul>
       </div>
     </div>
@@ -425,47 +427,79 @@
 
     <div class="phase">
       <div class="ph-head">
-        <span class="ph-tag">○ Queued</span>
-        <h3 class="ph-name">Phase 3 — First settled proof</h3>
-        <span class="ph-window">~1 week</span>
+        <span class="ph-tag">● Live</span>
+        <h3 class="ph-name">Phase 3 — Live odds + World Cup + bankroll</h3>
+        <span class="ph-window">In progress — FIFA WC 2026 starts June 11</span>
       </div>
-      <p class="ph-goal">20-30 settled bets with calibration holding. The honest test: Brier and ROI from live picks match or beat the 26-season EPL backtest.</p>
+      <p class="ph-goal">Pivoted from "model-first" to "odds-first." The World Cup 2026 is a one-time, dense, high-volume edge-detection window (104 games, 4 weeks, 3-way markets, AU bookmakers in <code>au</code> region). Model math still matters for value-bet side, but the risk-free arb path (back-lay + Dutch book) is the priority because the WC is a finite event.</p>
       <table>
         <thead>
           <tr><th style="width:60px;">#</th><th>Task</th><th style="width:24%;">Why</th><th style="width:30%;">Dogfood gate</th></tr>
         </thead>
         <tbody>
           <tr>
-            <td><span class="pill amber">3.1</span></td>
-            <td>Daily cron: BABS scrape → engine run → settle</td>
-            <td>Day 1: manual (BvE). Day 2: AUTOMATED (script + cron shipped, wrapper wired to call both NRL + racing). Day 3: pending 23:30 AEST cron fire tonight.</td>
-            <td>3 consecutive days, zero manual intervention — Day 1 ✅ Day 2 (script+wrapper ready) ✅, Day 3 fires tonight</td>
+            <td><span class="pill green">done</span></td>
+            <td><code>t_e491a326</code> Phase 3.1: daily settle cron (NRL)</td>
+            <td>Day 1: manual BvE win. Day 2: script+wrapper ready. Day 3: 23:30 AEST cron fires nightly.</td>
+            <td>3 consecutive days, zero manual intervention</td>
           </tr>
           <tr>
-            <td><span class="pill gray">3.2</span></td>
-            <td>Backtest 2c features against 26-season EPL</td>
-            <td>Features were merged on real data; calibration needs the matching backtest.</td>
-            <td>Brier &lt; 0.21 OR ROI ≥ 0, logit both</td>
+            <td><span class="pill amber">running</span></td>
+            <td><code>t_de27833c</code> engine-live-1: The Odds API integration (live + historical + arb detector)</td>
+            <td>Core live odds source. 11 AU bookmakers (Sportsbet, TAB, Neds, Ladbrokes, Betfair, Unibet) + 10 international books. <code>h2h_lay</code> for Betfair sharp line. Historical endpoint for backtest. Arb detector (back-back Dutch + back-lay matched) — the World Cup value path. API key in <code>~/.hermes/.env</code> (Daz to rotate post-shipping).</td>
+            <td>Live fetch returns 5+ NRL events, arb detector fires on synthetic 2% Dutch book, full test suite green, code committed. Worker PID active.</td>
           </tr>
           <tr>
-            <td><span class="pill gray">3.3</span></td>
-            <td>Racing: B/C-grade scraper, second source</td>
-            <td>Doubles sport coverage, second test of the data plane.</td>
-            <td>Same as 2.1, racing table populated</td>
+            <td><span class="pill amber">ready</span></td>
+            <td><code>t_83d6e0b4</code> engine-soccer-1: World Cup / international soccer model</td>
+            <td>Adapt EPL Poisson (Brier 0.21, 26-season validated) for international play: lower scoring (2.6 vs 2.7), knockout tournament structure (no draws after groups). 104 WC games, 4 weeks, draw market available (unlike NRL).</td>
+            <td>WC 2022 backtest matches or beats EPL baseline, full test suite green, code committed</td>
           </tr>
           <tr>
-            <td><span class="pill gray">3.4</span></td>
-            <td>Calibration drift detector</td>
-            <td>Without this, rig reverts to "0/100 because model silently broke".</td>
-            <td>Detector fires on synthetic injected drift, alerting path works</td>
+            <td><span class="pill amber">ready</span></td>
+            <td><code>t_1d81fc98</code> engine-bankroll-1: Bankroll state machine</td>
+            <td>Close review gap #7. Drawdown cap, peak tracking, kill switch (reject all bets if drawdown > X%), tier classification (Tier 1 high-edge to Tier 4 no-bet). Pure Python, no installs. gmalbert reference for design, not code.</td>
+            <td>Kill switch activates on synthetic 15% drawdown, tier classifier passes all edge cases, state persists across restarts, full test suite green, code committed</td>
+          </tr>
+          <tr>
+            <td><span class="pill gray">live+1</span></td>
+            <td>engine-live-2: 26-season EPL backtest against Odds API historical</td>
+            <td>Validate the model's edge calculation against real Pinnacle closing line + Betfair lay. 988 snapshots × 40 credits = 39,520 credits. One-shot on $59 plan, then downgrade to $30.</td>
+            <td>Brier/ROI from Odds API backtest matches our internal 26-season baseline (Brier 0.21, ROI -5.4%)</td>
+          </tr>
+          <tr>
+            <td><span class="pill gray">post-wc</span></td>
+            <td>engine-arb-1: Betfair integration (lay prices + order placement)</td>
+            <td>Close review gap #2. Betfair Exchange is the sharpest AU market. Lay prices enable matched betting. Solves racing settlement gap (review #1) for racing.com events. <strong>3-5 day card, requires Betfair account.</strong></td>
+            <td>Back-lay arb fires on 3+ live opportunities, integration test places + cancels a real $0.10 bet on Betfair sandbox</td>
+          </tr>
+          <tr>
+            <td><span class="pill gray">deferred</span></td>
+            <td>3.2 Backtest 2c features (ELO + time-decay) — DEPRIORITISED</td>
+            <td>Dixon-Coles abandoned (math-2, math-3). 2c ELO+form on a negative-EV base model is wasted effort. Re-evaluate after we have live Odds API data + World Cup settled bets.</td>
+            <td>Re-scoped post WC</td>
+          </tr>
+          <tr>
+            <td><span class="pill gray">deferred</span></td>
+            <td>3.3 Racing scraper (B/C-grade + second source) — DEPRIORITISED</td>
+            <td>No AU racing in Odds API. Racing.com / Racing Australia direct is a separate auth flow. Punt until betting volume justifies it. Betfair can handle racing settlement later (engine-arb-1).</td>
+            <td>Re-scoped post WC if needed</td>
+          </tr>
+          <tr>
+            <td><span class="pill gray">deferred</span></td>
+            <td>3.4 Calibration drift detector — DEPRIORITISED</td>
+            <td>Need live settled bets to detect drift. Phase 3 has the live data. Detector is a Phase 4 item, not Phase 3.</td>
+            <td>Phase 4 card</td>
           </tr>
         </tbody>
       </table>
       <div class="criteria">
         <h5>Honest success criterion for Phase 3</h5>
         <ol>
-          <li>Brier and ROI from settled bets <strong>match or beat</strong> the EPL backtest</li>
-          <li>If they don't: the rig-vs-EPL gap is a real problem, not a backtest artefact — Phase 4 becomes "fix the gap", not "ship"</li>
+          <li>Engine places real bets via live Odds API data (not hardcoded odds)</li>
+          <li>Arb detector surfaces 1+ opportunity per WC match-day (matched betting or Dutch book)</li>
+          <li>Bankroll state machine prevents drawdown &gt; configured cap (kill switch fires when expected)</li>
+          <li>26-season backtest validates our model against real Pinnacle closing line</li>
         </ol>
       </div>
     </div>
