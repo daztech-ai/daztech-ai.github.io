@@ -263,7 +263,7 @@
     <p class="lede">A live document. Each phase ships only after its dogfood gate passes. The path here is the rebuild; the destination is the architecture page's claim of a fully autonomous, end-to-end betting engine.</p>
     <p class="lede"><strong>Destination:</strong> <a href="architecture.html">architecture.html</a> — currently describes the old (pre-crash) system. We converge on it, then rewrite it.</p>
     <div class="meta">
-      <span class="chip">Last updated · 2026-06-08 20:13 AEST</span>
+      <span class="chip">Last updated · 2026-06-08 20:45 AEST</span>
       <span class="chip">Build target · gaming rig (64GB incoming)</span>
       <span class="chip">Mini PC · deprecated once rig ships</span>
       <span class="chip">Source of truth · this page + kanban</span>
@@ -291,7 +291,7 @@
       <div class="state">
         <div class="head"><span class="dot red"></span><h4 style="color:var(--negative);margin:0;">Gaps (the actual work)</h4></div>
         <ul>
-          <li>Integration layer: dispatcher daemon not running, 3 cards stuck in triage</li>
+          <li>Integration layer: dispatcher daemon not running, 3 cards stuck in triage (was 3, now 0 — daz's "few on triage" was stale; the state is clean)</li>
           <li>Data plane: <code>betting.db</code> 0 bytes → 12,288 bytes / 10 rows / UPSERT idempotent (FIXED)</li>
           <li>Agent personas: Wave 4-5 trim + 2 Jira caveats queued</li>
           <li>First settled bet: <strong>1/1, +1.0u ROI (n=1 caveat)</strong></li>
@@ -405,6 +405,18 @@
             <td><code>t_6ef998ad</code> research-1: Root-cause complete — picked (a) Dixon-Coles</td>
             <td>Atlas published wiki page in 6 min. H1=8/10 (Poisson form, dominant), H2=7/10 (Pinnacle CLV), H3=6/10 (features). 92.5% bet rate = noise, 7% Brier skill over random. Theoretical max ROI ~1.6%. Recommended Dixon-Coles: +3-5pp ROI uplift, medium engineering cost (200-500 LOC).</td>
             <td>✅ Wiki published, hypothesis scores filed, (a) Dixon-Coles recommended</td>
+          </tr>
+          <tr>
+            <td><span class="pill green">done</span></td>
+            <td><code>t_8a9f2d7f</code> engine-math-2: Dixon-Coles / bivariate Poisson</td>
+            <td>Worker shipped <code>src/daz_betting_engine/model/dixon_coles.py</code> + 6-season backtest. <strong>Result: ROI regressed -5.4% → -7.5%.</strong> ρ converges to <strong>negative</strong> (~-0.005) on 2000-2020 EPL data — the opposite of Dixon &amp; Coles 1997 finding. Modern EPL has FEWER low-score draws than independent Poisson predicts. τ-correction hurts, not helps. Brier improved -0.5% (0.2057 vs 0.2067) but ROI worsened. Card moved to done with negative finding; worker self-filed follow-up <code>t_adf1e196</code>.</td>
+            <td>✅ <code>dixon_coles.py</code> shipped, <code>reports/dixon_coles_vs_poisson.json</code> published, negative verdict recorded honestly</td>
+          </tr>
+          <tr>
+            <td><span class="pill amber">3.1b</span></td>
+            <td><code>t_adf1e196</code> engine-math-3: investigate negative-ρ failure mode</td>
+            <td>Worker self-filed follow-up: "is Dixon-Coles implementation correct? Is the EPL draw structure different post-2000? Would bivariate Poisson (ρ ≥ 0) help? What about other leagues?". 5-hypothesis investigation, ~0.5-1 day analysis. <strong>Currently running</strong> (PID 259281, started 20:31 AEST, coder-worker-deepseek reading existing implementation).</td>
+            <td>Verdict one of: (a) implementation bug, (b) Dixon-Coles not applicable to modern EPL, (c) different model form needed. Wiki writeup required.</td>
           </tr>
         </tbody>
       </table>
