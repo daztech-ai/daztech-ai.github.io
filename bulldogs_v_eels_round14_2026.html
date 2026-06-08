@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bulldogs v Eels — NRL Round 14, 2026 | Daztech SGM Engine</title>
+<style>
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; background:#0a0a0f; color:#e0e0e0; max-width:880px; margin:0 auto; padding:20px; line-height:1.5; }
+  h1 { text-align:center; font-size:1.5em; margin:20px 0 5px; color:#fff; }
+  h2 { font-size:1.1em; color:#ccc; margin:22px 0 10px; border-bottom:1px solid #252535; padding-bottom:6px; }
+  .subtitle { text-align:center; color:#888; font-size:0.85em; margin-bottom:20px; }
+  .card { background:#141420; border:1px solid #252535; border-radius:10px; padding:18px; margin-bottom:14px; }
+  .hero { text-align:center; background:linear-gradient(135deg,#1a1a2e 0%,#141420 100%); border:1px solid #252535; border-radius:12px; padding:24px; margin-bottom:16px; }
+  .hero-teams { font-size:1.6em; font-weight:800; margin-bottom:8px; }
+  .hero-teams .home { color:#00549E; } .hero-teams .away { color:#FFC425; }
+  .hero-pick { font-size:1.15em; color:#4fc3f7; margin-bottom:6px; }
+  .hero-prob { font-size:2.2em; font-weight:800; color:#4fc3f7; }
+  .hero-meta { font-size:0.85em; color:#999; margin-top:6px; }
+  .badge { display:inline-block; padding:3px 10px; border-radius:12px; font-size:0.66em; margin:4px 2px; }
+  .badge-blue { background:#1a3a5c; color:#4fc3f7; } .badge-green { background:#1a3a1a; color:#4AA331; }
+  .badge-red { background:#2e1a1a; color:#ef5350; } .badge-yellow { background:#2e2a1a; color:#f0a500; }
+  .badge-purple { background:#2a1a3a; color:#ce93d8; }
+  .alert { color:#ef5350; font-weight:700; }
+
+  .team-lineups { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .player-line { display:flex; align-items:center; padding:5px 0; border-bottom:1px solid #1a1a2e; font-size:0.82em; }
+  .player-num { width:22px; color:#666; font-weight:700; text-align:center; }
+  .player-name { flex:1; }
+  .player-pos { color:#888; font-size:0.82em; width:55px; text-align:right; }
+  .player-out { opacity:0.35; text-decoration:line-through; }
+
+  .odds-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; text-align:center; }
+  .odds-box { background:#1a1a2e; border-radius:8px; padding:14px 10px; }
+  .odds-label { font-size:0.7em; color:#777; text-transform:uppercase; }
+  .odds-val { font-size:1.3em; font-weight:700; color:#fff; }
+  .odds-sub { font-size:0.7em; color:#555; margin-top:3px; }
+
+  .edge { padding:14px; border-radius:8px; margin:12px 0; font-size:0.86em; }
+  .edge-ok { background:#1a1a2e; border-left:3px solid #4AA331; }
+
+  table { width:100%; border-collapse:collapse; font-size:0.82em; }
+  th { text-align:left; color:#888; font-weight:600; padding:7px 8px; border-bottom:1px solid #252535; font-size:0.74em; text-transform:uppercase; }
+  td { padding:7px 8px; border-bottom:1px solid #1a1a2e; }
+  .pn { color:#e0e0e0; font-weight:600; } .pp { color:#888; font-size:0.85em; }
+  .pg { color:#666; } .pt { color:#4fc3f7; font-weight:700; } .pr { color:#f0a500; font-weight:600; }
+  .fire { color:#f0a500; }
+
+  .form-row { display:flex; gap:5px; }
+  .fd { width:22px; height:22px; border-radius:4px; font-size:0.6em; display:flex; align-items:center; justify-content:center; font-weight:700; }
+  .fd-W { background:#1a3a1a; color:#4AA331; border:1px solid #4AA331; }
+  .fd-L { background:#2e1a1a; color:#B92722; border:1px solid #B92722; }
+
+  .expert-panel { display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin:10px 0; }
+  .expert-card { background:#1a1a2e; border-radius:8px; padding:12px; text-align:center; }
+  .expert-name { font-size:0.74em; color:#777; }
+  .expert-pick-main { font-size:0.92em; color:#fff; font-weight:600; margin:4px 0; }
+  .expert-pick-sub { font-size:0.68em; color:#666; }
+
+  .sgm-box { background:#1a1a2e; border:1px solid #252535; border-radius:8px; padding:16px; margin:12px 0; }
+  .sgm-tier { font-size:0.74em; margin-bottom:4px; }
+  .sgm-leg { padding:6px 0; border-bottom:1px solid #1f1f35; }
+  .sgm-leg:last-child { border-bottom:none; }
+  .sgm-note { font-size:0.74em; color:#888; margin-top:8px; }
+  .sgm-risk { font-size:0.74em; margin-top:6px; }
+
+  .notes { background:#1a1a2e; border-left:3px solid #00549E; padding:12px; margin:12px 0; font-size:0.78em; color:#999; }
+  .disclaimer { background:#1a1a2e; border-left:3px solid #f0a500; padding:12px; margin:25px 0 10px; font-size:0.72em; color:#888; }
+  .footer { text-align:center; margin-top:30px; padding:15px; font-size:0.66em; color:#555; border-top:1px solid #1a1a2e; }
+  .footer a { color:#4fc3f7; }
+
+  @media (max-width:600px) { .odds-grid,.expert-panel,.team-lineups { grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+
+<h1>🏉 Bulldogs v Eels — NRL Round 14, 2026</h1>
+<div class="subtitle">
+  Mon 8 Jun 2026 · 4:05pm AEST · Accor Stadium (Sydney)<br>
+  <span style="margin-top:6px;display:inline-block;">
+    <span class="badge badge-red">🔴 DOGFOOD — Cold start rebuild</span>
+    <span class="badge badge-blue">8-Factor Engine</span>
+    <span class="badge badge-green">2025-26 Live Data</span>
+    <span class="badge badge-purple">5 Experts + Late Mail</span>
+  </span>
+</div>
+
+<!-- LATE MAIL -->
+<div class="card">
+  <h2>🚨 Late Mail — Final Teams Confirmed</h2>
+
+  <div class="team-lineups">
+    <div class="team-col">
+      <h3 style="color:#00549E;">Bulldogs (1-17)</h3>
+      <div class="player-line"><span class="player-num">1</span><span class="player-name">Jacob Kiraz</span><span class="player-pos">FB</span></div>
+      <div class="player-line"><span class="player-num">2</span><span class="player-name">Jethro Rinakama</span><span class="player-pos">W</span></div>
+      <div class="player-line"><span class="player-num">3</span><span class="player-name">Bronson Xerri</span><span class="player-pos">C</span></div>
+      <div class="player-line"><span class="player-num">4</span><span class="player-name">Stephen Crichton</span><span class="player-pos">C</span> <span class="badge badge-yellow">⚠️ injury</span></div>
+      <div class="player-line"><span class="player-num">5</span><span class="player-name">Enari Tuala</span><span class="player-pos">W</span></div>
+      <div class="player-line"><span class="player-num">6</span><span class="player-name">Matt Burton</span><span class="player-pos">5/8</span></div>
+      <div class="player-line"><span class="player-num">7</span><span class="player-name">Lachlan Galvin</span><span class="player-pos">HB</span></div>
+      <div class="player-line"><span class="player-num">8</span><span class="player-name">Max King</span><span class="player-pos">P</span></div>
+      <div class="player-line"><span class="player-num">14</span><span class="player-name">Bailey Hayward</span><span class="player-pos">HK</span></div>
+      <div class="player-line"><span class="player-num">10</span><span class="player-name">Leo Thompson</span><span class="player-pos">P</span></div>
+      <div class="player-line"><span class="player-num">11</span><span class="player-name">Sitili Tupouniua</span><span class="player-pos">2R</span></div>
+      <div class="player-line"><span class="player-num">12</span><span class="player-name">Jaeman Salmon</span><span class="player-pos">2R</span></div>
+      <div class="player-line"><span class="player-num">13</span><span class="player-name">Harry Hayes</span><span class="player-pos">L</span></div>
+      <div class="player-line" style="color:#888;margin-top:4px;font-size:0.8em;"><span class="player-num">INT</span> Reardon · Underhill · Curran · O'Sullivan · Spinks</div>
+      <div class="player-line" style="margin-top:4px;font-size:0.78em;color:#666;"><span class="player-num">RES</span> Connor Tracey (#22) — dropped from 17</div>
+    </div>
+    <div class="team-col">
+      <h3 style="color:#FFC425;">Eels (1-17)</h3>
+      <div class="player-line"><span class="player-num">1</span><span class="player-name">Isaiah Iongi</span><span class="player-pos">FB</span></div>
+      <div class="player-line"><span class="player-num">2</span><span class="player-name">Brian Kelly</span><span class="player-pos">W</span></div>
+      <div class="player-line"><span class="player-num">3</span><span class="player-name">Jordan Samrani</span><span class="player-pos">C</span></div>
+      <div class="player-line"><span class="player-num">4</span><span class="player-name">Sean Russell</span><span class="player-pos">C</span></div>
+      <div class="player-line"><span class="player-num">5</span><span class="player-name">Josh Addo-Carr</span><span class="player-pos">W</span> ⭐</div>
+      <div class="player-line"><span class="player-num">6</span><span class="player-name">Joash Papalii</span><span class="player-pos">5/8</span> <span class="badge badge-red">new</span></div>
+      <div class="player-line"><span class="player-num">7</span><span class="player-name">Ronald Volkman</span><span class="player-pos">HB</span> <span class="badge badge-red">new</span></div>
+      <div class="player-line"><span class="player-num">8</span><span class="player-name">Luca Moretti</span><span class="player-pos">P</span></div>
+      <div class="player-line"><span class="player-num">9</span><span class="player-name">Tallyn Da Silva</span><span class="player-pos">HK</span></div>
+      <div class="player-line"><span class="player-num">10</span><span class="player-name">Jack Williams</span><span class="player-pos">P</span></div>
+      <div class="player-line"><span class="player-num">11</span><span class="player-name">Kelma Tuilagi</span><span class="player-pos">2R</span></div>
+      <div class="player-line"><span class="player-num">12</span><span class="player-name">Kitione Kautoga</span><span class="player-pos">2R</span></div>
+      <div class="player-line"><span class="player-num">13</span><span class="player-name">Jack de Belin</span><span class="player-pos">L</span></div>
+      <div class="player-line" style="color:#888;margin-top:4px;font-size:0.8em;"><span class="player-num">INT</span> Walker · Tuivaiti · Edwards · Twidle · Brown · Guymer</div>
+      <div class="player-line player-out" style="margin-top:6px;"><span style="color:#ef5350;font-size:0.76em;">❌ OUT: Mitchell Moses (calf) · Dylan Brown (calf) — both halves</span></div>
+    </div>
+  </div>
+
+  <div class="notes" style="margin-top:12px;">
+    <strong>🔴 Eels halves crisis:</strong> Both Moses and Dylan Brown OUT. Halves pairing Papalii & Volkman — completely untested at NRL level. Eels scored 8pts and 22pts in 2 games without Moses. Now missing both.<br>
+    <strong>Bulldogs:</strong> Crichton named but carrying injury concern. Connor Tracey dropped (#22). Jaeman Salmon at right edge — Betseeker flags him as defensive liability vs Tuilagi.<br>
+    <span class="badge badge-green" style="margin-top:4px;">Source: Zero Tackle confirmed 20-man squads, scraped live</span>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-teams"><span class="home">Bulldogs</span> v <span class="away">Eels</span></div>
+  <div class="hero-pick">Daztech Engine: <strong>Bulldogs</strong> to win</div>
+  <div class="hero-prob">64.1% WP</div>
+  <div class="hero-meta">
+    Margin ~6.3 pts · Confidence: LOW (both teams 4-8)<br>
+    <span style="font-size:0.78em;color:#888;">4,966 matches · recency-wtd: 2026=0.60 2025=0.25 2024=0.15</span>
+  </div>
+</div>
+
+<!-- 2026 FORM -->
+<div class="card">
+  <h2>📊 2026 Season</h2>
+  <table>
+    <tr><th>Team</th><th>Record</th><th>Win%</th><th>PF/g</th><th>PA/g</th><th>Diff</th><th>Last 5</th></tr>
+    <tr>
+      <td class="pn">Bulldogs</td><td>4-8</td>
+      <td>33%</td>
+      <td>18.2</td><td>26.5</td>
+      <td style="color:#ef5350;">-8.3</td>
+      <td><div class="form-row"><span class="fd fd-W">W</span><span class="fd fd-L">L</span><span class="fd fd-L">L</span><span class="fd fd-W">W</span><span class="fd fd-L">L</span></div></td>
+    </tr>
+    <tr>
+      <td class="pn">Eels</td><td>4-8</td>
+      <td>33%</td>
+      <td>21.4</td><td>33.9</td>
+      <td style="color:#ef5350;">-12.5</td>
+      <td><div class="form-row"><span class="fd fd-L">L</span><span class="fd fd-W">W</span><span class="fd fd-L">L</span><span class="fd fd-L">L</span><span class="fd fd-L">L</span></div></td>
+    </tr>
+  </table>
+  <div class="notes">
+    <strong>H2H 2026:</strong> Eels 38 def Bulldogs 20 (Rd7 @ CommBank) — WITH Moses. Different game today: no Moses, no Brown, Bulldogs home.<br>
+    <strong>Engine factors:</strong> Bulldogs att=19.8 def=23.3 win=44% · Eels att=21.6 def=30.8 win=35%
+  </div>
+</div>
+
+<!-- MARKET -->
+<div class="card">
+  <h2>💰 Live Odds <span class="badge badge-red">Sportsbet 1.47/2.71</span> <span class="badge badge-blue">Bet365 1.41/2.75</span></h2>
+  <div class="odds-grid">
+    <div class="odds-box">
+      <div class="odds-label">Head-to-Head</div>
+      <div class="odds-val">Bulldogs $1.47</div>
+      <div class="odds-sub">Eels $2.71 · Bet365 now $1.41</div>
+    </div>
+    <div class="odds-box">
+      <div class="odds-label">Line (-6.5)</div>
+      <div class="odds-val">Bulldogs $1.93</div>
+      <div class="odds-sub">Eels $1.87 · Bet365 $1.91</div>
+    </div>
+    <div class="odds-box">
+      <div class="odds-label">Total O/U 50.5</div>
+      <div class="odds-val">$1.90 / $1.90</div>
+      <div class="odds-sub">Bet365 $1.91 · Under is consensus</div>
+    </div>
+  </div>
+  <div class="edge edge-ok">
+    <strong>Engine 64.1% vs Sportsbet fair 64.8%</strong> — no H2H edge. Bet365 has sharpened from $1.44→$1.41 (market moving Bulldogs).<br>
+    <strong>Under 50.5:</strong> Sportsbet $1.90 · 27-10 H2H since 2008 · 5/5 experts · <strong>Consensus best bet.</strong>
+  </div>
+</div>
+
+<!-- TRY SCORERS -->
+<div class="card">
+  <h2>🏃 Try Scorers <span class="badge badge-green">2025-26 Champion Data</span> <span class="badge badge-red">Sportsbet live</span></h2>
+  
+  <h3 style="color:#00549E;margin-bottom:8px;">Bulldogs</h3>
+  <table>
+    <tr><th>Player</th><th>Pos</th><th>G</th><th>T</th><th>T/G</th><th>1+ Try</th><th>2+ Try</th></tr>
+    <tr><td class="pn">Jacob Preston</td><td class="pp">Second Row</td><td class="pg">31</td><td class="pt">15</td><td class="pr">0.48</td><td>—</td><td>—</td></tr>
+<tr><td class="pn">Jacob Kiraz</td><td class="pp">Fullback</td><td class="pg">25</td><td class="pt">15</td><td class="pr">0.60</td><td>$1.96</td><td>$5.00</td></tr>
+<tr><td class="pn">Bronson Xerri</td><td class="pp">Centre</td><td class="pg">33</td><td class="pt">10</td><td class="pr">0.30</td><td>$2.20</td><td>$6.00</td></tr>
+<tr><td class="pn">Marcelo Montoya</td><td class="pp">Wing</td><td class="pg">27</td><td class="pt">9</td><td class="pr">0.33</td><td>—</td><td>—</td></tr>
+<tr><td class="pn">Lachlan Galvin</td><td class="pp">Halfback</td><td class="pg">25</td><td class="pt">9</td><td class="pr">0.36</td><td>$2.70</td><td>$9.00</td></tr>
+<tr><td class="pn">Matt Burton</td><td class="pp">Five-Eighth</td><td class="pg">30</td><td class="pt">8</td><td class="pr">0.27</td><td>$3.00</td><td>$10.50</td></tr>
+<tr><td class="pn">Viliame Kikau</td><td class="pp">Second Row</td><td class="pg">27</td><td class="pt">7</td><td class="pr">0.26</td><td>—</td><td>—</td></tr>
+  </table>
+
+  <h3 style="color:#FFC425;margin:16px 0 8px;">Eels</h3>
+  <table>
+    <tr><th>Player</th><th>Pos</th><th>G</th><th>T</th><th>T/G</th><th>1+ Try</th><th>2+ Try</th></tr>
+    <tr><td class="pn">Josh Addo-Carr</td><td class="pp">Wing</td><td class="pg">33</td><td class="pt">25</td><td class="pr">0.76</td><td>$1.78</td><td>$3.70</td></tr>
+<tr><td class="pn">Isaiah Iongi</td><td class="pp">Fullback</td><td class="pg">26</td><td class="pt">11</td><td class="pr">0.42</td><td>—</td><td>—</td></tr>
+<tr><td class="pn">Sean Russell</td><td class="pp">Centre</td><td class="pg">30</td><td class="pt">9</td><td class="pr">0.30</td><td>$2.90</td><td>$9.75</td></tr>
+<tr><td class="pn">Will Penisini</td><td class="pp">Centre</td><td class="pg">25</td><td class="pt">9</td><td class="pr">0.36</td><td>—</td><td>—</td></tr>
+<tr><td class="pn">Zac Lomax</td><td class="pp">Wing</td><td class="pg">19</td><td class="pt">9</td><td class="pr">0.47</td><td>—</td><td>—</td></tr>
+<tr><td class="pn">Mitchell Moses</td><td class="pp">Halfback</td><td class="pg">24</td><td class="pt">7</td><td class="pr">0.29</td><td>—</td><td>—</td></tr>
+<tr><td class="pn">Jordan Samrani</td><td class="pp">Centre</td><td class="pg">24</td><td class="pt">6</td><td class="pr">0.25</td><td>$3.40</td><td>$14.00</td></tr>
+  </table>
+  <div class="notes">
+    <strong>🔥 Kiraz $1.96</strong> — 5-game try streak · 0.60 T/G · all 5 experts · <strong>best value Bulldog</strong><br>
+    <strong>⭐ Addo-Carr $1.78</strong> — 0.76 T/G · 30 line breaks · revenge game · <strong>shortest price on Sportsbet</strong><br>
+    <strong>💰 Value:</strong> Tuala $1.83 (engine says 0.37 T/G — Sportsbet favourite may be overpriced). Tuilagi $5.10 longshot (Betseeker value pick).<br>
+    <strong>⚡ Live scraped:</strong> Sportsbet preloaded state via BABS curl_cffi chrome120
+  </div>
+</div>
+
+<!-- EXPERTS -->
+<div class="card">
+  <h2>🧠 Expert Consensus — 5 Sources</h2>
+  <div class="expert-panel">
+    <div class="expert-card">
+      <div class="expert-name">Stats Insider</div>
+      <div class="expert-pick-main">Bulldogs $1.41</div>
+      <div class="expert-pick-sub">72% WP · U50.5 57%<br>Bulldogs -6.5 at 55%</div>
+    </div>
+    <div class="expert-card">
+      <div class="expert-name">Betseeker</div>
+      <div class="expert-pick-main">Under 50.5 ⭐</div>
+      <div class="expert-pick-sub">SGM: U42.5/Kiraz/B.Kelly<br>Value: Tuilagi try</div>
+    </div>
+    <div class="expert-card">
+      <div class="expert-name">GoBet</div>
+      <div class="expert-pick-main">Bulldogs -5.5</div>
+      <div class="expert-pick-sub">SGM: -5.5/Kiraz/Crichton/U50.5<br>Value: Bulldogs 13+ @ $2.70</div>
+    </div>
+    <div class="expert-card">
+      <div class="expert-name">Dimers</div>
+      <div class="expert-pick-main">Under 49.5 ⭐</div>
+      <div class="expert-pick-sub">Bulldogs 71.5% WP<br>Bulldogs -6.5 at 55%</div>
+    </div>
+    <div class="expert-card">
+      <div class="expert-name">Before You Bet</div>
+      <div class="expert-pick-main">Either by 10.5</div>
+      <div class="expert-pick-sub">SGM: U50.5/Eels 1st/Addo-Carr<br>Close game expected</div>
+    </div>
+  </div>
+  <div class="notes" style="margin-top:10px;">
+    <strong>✅ CONSENSUS (5/5):</strong> Under 50.5 · Bulldogs to win · Jacob Kiraz anytime try<br>
+    <strong>✅ CONSENSUS (3/5):</strong> Josh Addo-Carr anytime try · Bulldogs to cover -6.5<br>
+    <strong>⚠️ Contrarian:</strong> Before You Bet thinks it'll be closer than odds suggest
+  </div>
+</div>
+
+<!-- SGM -->
+<div class="card">
+  <h2>🎯 SGM Builder — Engine + Expert Backed</h2>
+
+  <div class="sgm-box">
+    <div class="sgm-tier"><span class="badge badge-green">🟢 CONSERVATIVE</span> 2 legs · Highest conviction</div>
+    <div class="sgm-leg"><strong>1. Under 50.5 Total Points</strong> (Sportsbet $1.90)<br><span style="color:#888;font-size:0.8em;">5/5 experts. 27-10 H2H since 2008. 63% when 2 bottom-5 teams. Both Eels halves OUT.</span></div>
+    <div class="sgm-leg"><strong>2. Jacob Kiraz Anytime Try</strong> (Sportsbet $1.96)<br><span style="color:#888;font-size:0.8em;">5-game try streak. 0.60 T/G. 5/5 experts. Eels defence worst in NRL.</span></div>
+    <div class="sgm-note"><strong>Est. combined:</strong> ~$3.72 at Sportsbet</div>
+  </div>
+
+  <div class="sgm-box">
+    <div class="sgm-tier"><span class="badge badge-yellow">🟡 BALANCED</span> 3 legs</div>
+    <div class="sgm-leg"><strong>1. Bulldogs to Win</strong> (Sportsbet $1.47)<br><span style="color:#888;font-size:0.8em;">Engine 64.1%. 5/5 experts. At home. Eels without both halves.</span></div>
+    <div class="sgm-leg"><strong>2. Under 50.5 Total Points</strong> (Sportsbet $1.90)</div>
+    <div class="sgm-leg"><strong>3. Jacob Kiraz Anytime Try</strong> (Sportsbet $1.96)</div>
+    <div class="sgm-note"><strong>Correlation:</strong> Bulldogs win → low score → Kiraz scores. All cascade. Est. ~$5.47 at Sportsbet.</div>
+    <div class="sgm-risk"><span style="color:#f0a500;">⚠️ If Eels somehow win, all 3 legs fail.</span></div>
+  </div>
+
+  <div class="sgm-box">
+    <div class="sgm-tier"><span class="badge badge-red">🟠 VALUE</span> 2 legs · Higher return</div>
+    <div class="sgm-leg"><strong>1. Bulldogs 13+ Alt Margin</strong> (Sportsbet $2.55)<br><span style="color:#888;font-size:0.8em;">GoBet value pick. Bulldogs can spike. Eels defence worst in comp. No halves.</span></div>
+    <div class="sgm-leg"><strong>2. Josh Addo-Carr Anytime Try</strong> (Sportsbet $1.78)<br><span style="color:#888;font-size:0.8em;">0.76 T/G. Revenge game. Scores in losses too. Est. combined ~$4.54.</span></div>
+    <div class="sgm-risk"><span style="color:#ef5350;">⚠️ Eels beat Bulldogs 38-20 in Rd7 (with Moses). 13+ margin demands best performance.</span></div>
+  </div>
+</div>
+
+<div class="disclaimer">
+  <strong>⚠️ Disclaimer:</strong> Daztech NRL SGM Engine v1 · 4,966 matches · recency-wtd factors.
+  Player data: Champion Data MC API (2025-26). Odds: Sportsbet live (curl_cffi) + Bet365 via Stats Insider.
+  Expert consensus from 5 public betting previews. Engine uses heuristic weights — has known defence cross-term limitation.
+  Not financial advice. Gamble responsibly. 18+ only.
+</div>
+
+<div class="footer">
+  <p><strong>Daztech NRL SGM Engine v1</strong> · Cold-start rebuild · Mon 8 Jun 2026</p>
+  <p>Data: Champion Data MC API · fixturedownload.com · beauhobba/NRL-Data</p>
+  <p>Experts: Stats Insider · Betseeker · GoBet · Dimers · Before You Bet</p>
+</div>
+
+</body>
+</html>
