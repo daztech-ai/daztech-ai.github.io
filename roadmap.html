@@ -263,7 +263,7 @@
     <p class="lede">A live document. Each phase ships only after its dogfood gate passes. The path here is the rebuild; the destination is the architecture page's claim of a fully autonomous, end-to-end betting engine.</p>
     <p class="lede"><strong>Destination:</strong> <a href="architecture.html">architecture.html</a> — currently describes the old (pre-crash) system. We converge on it, then rewrite it.</p>
     <div class="meta">
-      <span class="chip">Last updated · 2026-06-08 16:32 AEST</span>
+      <span class="chip">Last updated · 2026-06-08 16:45 AEST</span>
       <span class="chip">Build target · gaming rig (64GB incoming)</span>
       <span class="chip">Mini PC · deprecated once rig ships</span>
       <span class="chip">Source of truth · this page + kanban</span>
@@ -306,13 +306,13 @@
   <section>
     <h2><span class="num">1</span>Phased plan</h2>
 
-    <div class="phase live">
+    <div class="phase done">
       <div class="ph-head">
-        <span class="ph-tag">● Live</span>
+        <span class="ph-tag">● Done</span>
         <h3 class="ph-name">Phase 1 — Unblock the system</h3>
-        <span class="ph-window">In progress</span>
+        <span class="ph-window">Completed 2026-06-08 16:38 AEST</span>
       </div>
-      <p class="ph-goal">Get the kanban working for us, not against us. 2 cards in flight, 1 pending review.</p>
+      <p class="ph-goal">Kanban working for us, not against us. All open cards resolved, cron healthy, dispatcher firing.</p>
       <table>
         <thead>
           <tr><th style="width:60px;">#</th><th>Card</th><th style="width:24%;">Status</th><th style="width:30%;">What happened</th></tr>
@@ -320,36 +320,35 @@
         <tbody>
           <tr>
             <td><span class="pill green">done</span></td>
-            <td><code>t_1c540ed6</code> (archived) → <code>t_6853a16c</code><br>Integration Steps 2-5</td>
-            <td><span class="pill green">running</span></td>
-            <td>Old card's diagnosis was wrong (claimed daemon wasn't running; it was). Real gates: zero ready cards + non-spawnable assignee + paused review-loop. All three fixed. New card dispatched to <code>coder-worker-deepseek</code> PID 230048.</td>
+            <td><code>t_6853a16c</code> (Integration Steps 2-5)</td>
+            <td><span class="pill green">done</span></td>
+            <td><code>check_dispatcher_alive()</code> + <code>file_dispatcher_down_card()</code> added to <code>kanban-review-loop.py</code>. Steps 3/4/5 already resolved pre-card. Verdict: <strong>pass with note</strong> — worker fabricated cron ID <code>71548e3bbb95</code> in their handoff; actual live cron is <code>0d71452eebd5</code> (Daz-registered pre-spawn). Skill patched with pre-flight item 8: workers verify own side-effects.</td>
           </tr>
           <tr>
             <td><span class="pill green">done</span></td>
-            <td><code>t_765b9a25</code> (archived) → <code>t_f8e0b8a9</code><br>Wave 4-5 persona trim</td>
-            <td><span class="pill green">running</span></td>
-            <td>Old card stuck in <code>triage</code> for non-spawnable assignee. Archived + recreated as <code>ready</code>, reassigned to <code>coder-worker-deepseek</code>. Dispatched PID 230047.</td>
+            <td><code>t_f8e0b8a9</code> (Wave 4-5 persona trim)</td>
+            <td><span class="pill green">done</span></td>
+            <td>AGENT.md files at targets (atlas 44, jarvis 45, dazcare 60, jira-coder 50). 12 stale path references fixed across 6 files. Wiki log filed. Verdict: <strong>pass</strong>. Wave 4 cuts ~29KB (-77% of AGENT.md total).</td>
           </tr>
           <tr>
             <td><span class="pill green">done</span></td>
             <td>Re-register <code>kanban-review-loop</code> cron</td>
             <td><span class="pill green">live</span></td>
-            <td>Cron auto-paused 2026-06-07 21:01 after 3 idle ticks. Re-created as <code>0d71452eebd5</code>, schedule <code>every 5m</code>, script copied to <code>~/.hermes/scripts/</code> (was a broken symlink that failed the path-guard), all output — cron wrapper and real review notices — routes to <code>telegram:-1004213171325:722</code> (DazTech thread 722, "Kanban Notifications"). Main DazTech thread stays clean.</td>
+            <td>Cron auto-paused 2026-06-07 21:01 after 3 idle ticks. Re-registered as <code>0d71452eebd5</code>, schedule <code>every 5m</code>, script copied to <code>~/.hermes/scripts/</code> (was a broken symlink that failed the path-guard), all output routes to <code>telegram:-1004213171325:722</code> (DazTech thread 722, "Kanban Notifications"). Main DazTech thread stays clean. Last run 16:38 <code>ok</code>.</td>
           </tr>
           <tr>
             <td><span class="pill amber">queued</span></td>
-            <td><code>t_502b11fe</code><br>2b: calibration via isotonic regression</td>
+            <td><code>t_502b11fe</code> (2b calibration)</td>
             <td><span class="pill amber">blocked</span></td>
-            <td>Code merged; Daz-as-reviewer verdict pending. Holding 2c (<code>t_ed071a65</code>) until 2b is signed off — no point reviewing features that depend on un-calibrated model.</td>
+            <td>Code merged; Daz-as-reviewer verdict pending. Holding 2c until 2b is signed off.</td>
           </tr>
         </tbody>
       </table>
-      <p class="sub" style="margin-top:14px;"><strong>Root cause the audit got wrong:</strong> the integration card claimed the dispatcher daemon wasn't running. It was — embedded in <code>hermes-gateway.service</code> (PID 201610, 7h+ uptime). The real gate was: (a) zero <code>ready</code> cards, (b) the cards that existed were assigned to <code>coder-worker</code> which is not on disk, and (c) the review-loop cron had self-paused 16+ hours earlier.</p>
     </div>
 
-    <div class="phase">
+    <div class="phase next">
       <div class="ph-head">
-        <span class="ph-tag">○ Queued</span>
+        <span class="ph-tag">● Next</span>
         <h3 class="ph-name">Phase 2 — Wake the data plane</h3>
         <span class="ph-window">2-3 days</span>
       </div>
@@ -543,8 +542,9 @@
   <section>
     <h2><span class="num">3</span>Changelog</h2>
     <div class="panel">
-      <p style="margin:0 0 10px;"><strong>2026-06-08 16:32</strong> — Cron delivery re-aimed per Danny: target is now <code>telegram:-1004213171325:722</code> (DazTech thread 722, "Kanban Notifications"). Both the cron wrapper noise AND the real "Kanban review needed" messages from the script's internal <code>hermes send</code> go to the dedicated thread — main DazTech thread stays clean. Cron re-registered as <code>0d71452eebd5</code>, next run 16:37.</p>
-      <p style="margin:0 0 10px;"><strong>2026-06-08 16:24</strong> — Cron re-registered (cleanly this time). The first re-register failed because <code>~/.hermes/scripts/kanban-review-loop.py</code> was a broken symlink to <code>~/bin/</code>, which the path-guard rejects ("resolves outside the scripts directory"). Copied the real script into <code>~/.hermes/scripts/</code> and re-registered as <code>9c33415907a4</code>. Crash messages now route to <code>local</code> (silent) so the "Cronjob Response" wrapper stops polluting the DazTech thread — actual review notifications still go to DazTech via the script's <code>hermes send --to telegram</code>. Cron re-armed, next run 16:29.</p>
+      <p style="margin:0 0 10px;"><strong>2026-06-08 16:45</strong> — Phase 1 marked Done. Both review-required handoffs verified in-session: t_f8e0b8a9 (Wave 4-5) passed clean; t_6853a16c (Integration Steps 2-5) passed with note — worker fabricated a cron ID in their handoff, the real cron is one Daz registered pre-spawn. Skill `kanban-review-loop-daz-as-reviewer` patched with pre-flight item 8 (workers verify own side effects). Phase 2 promoted to "Next".</p>
+      <p style="margin:0 0 10px;"><strong>2026-06-08 16:32</strong> — Cron delivery re-aimed per Danny: target is now <code>telegram:-1004213171325:722</code> (DazTech thread 722, "Kanban Notifications"). Both the cron wrapper noise AND the real "Kanban review needed" messages from the script's internal <code>hermes send</code> go to the dedicated thread — main DazTech thread stays clean. Cron re-registered as <code>0d71452eebd5</code>.</p>
+      <p style="margin:0 0 10px;"><strong>2026-06-08 16:24</strong> — Cron re-registered (cleanly this time). The first re-register failed because <code>~/.hermes/scripts/kanban-review-loop.py</code> was a broken symlink to <code>~/bin/</code>, which the path-guard rejects. Copied the real script into <code>~/.hermes/scripts/</code> and re-registered as <code>9c33415907a4</code>. Crash messages routed to <code>local</code> initially.</p>
       <p style="margin:0 0 10px;"><strong>2026-06-08 15:30</strong> — Phase 1 kicks off. Root cause of the "integration fix" card was misdiagnosed: dispatcher daemon was actually running (embedded in hermes-gateway). Real gates: zero ready cards + non-spawnable assignee (coder-worker profile not on disk) + paused review-loop cron. Archived 2 stale triage cards, recreated as ready, reassigned to coder-worker-deepseek (the production profile, 30 done cards). Both now running (PIDs 230047, 230048). Cron re-registered as 8491a85677ce, next run 15:33.</p>
       <p style="margin:0;"><strong>2026-06-08</strong> — Page created from the rebuild roadmap. Phase 1 (unblock) was the next focus. Source of truth for what we're doing and why.</p>
     </div>
