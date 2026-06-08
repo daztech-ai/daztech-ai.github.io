@@ -263,7 +263,7 @@
     <p class="lede">A live document. Each phase ships only after its dogfood gate passes. The path here is the rebuild; the destination is the architecture page's claim of a fully autonomous, end-to-end betting engine.</p>
     <p class="lede"><strong>Destination:</strong> <a href="architecture.html">architecture.html</a> — currently describes the old (pre-crash) system. We converge on it, then rewrite it.</p>
     <div class="meta">
-      <span class="chip">Last updated · 2026-06-08 20:45 AEST</span>
+      <span class="chip">Last updated · 2026-06-09 05:15 AEST</span>
       <span class="chip">Build target · gaming rig (64GB incoming)</span>
       <span class="chip">Mini PC · deprecated once rig ships</span>
       <span class="chip">Source of truth · this page + kanban</span>
@@ -415,8 +415,8 @@
           <tr>
             <td><span class="pill amber">3.1b</span></td>
             <td><code>t_adf1e196</code> engine-math-3: investigate negative-ρ failure mode</td>
-            <td>Worker self-filed follow-up: "is Dixon-Coles implementation correct? Is the EPL draw structure different post-2000? Would bivariate Poisson (ρ ≥ 0) help? What about other leagues?". 5-hypothesis investigation, ~0.5-1 day analysis. <strong>Currently running</strong> (PID 259281, started 20:31 AEST, coder-worker-deepseek reading existing implementation).</td>
-            <td>Verdict one of: (a) implementation bug, (b) Dixon-Coles not applicable to modern EPL, (c) different model form needed. Wiki writeup required.</td>
+            <td>Worker ran 5-hypothesis investigation in 24 min. Wiki post-mortem at <code>engine-math-3-dixon-coles-postmortem.md</code>. <strong>Key finding: implementation is correct, modern EPL has FEWER low-score draws than Poisson predicts (opposite of 1997 data), draw deficit is ACCELERATING (2010s are 5x further from Poisson than 2000s), and the real killer is the calibration interaction — raw DC and Poisson are nearly tied (-2.85% vs -2.82%) but isotonic calibration amplifies DC's negative-ρ bias 80% more than Poisson. Best model: basic Poisson + calibration at ROI -5.4%.</strong></td>
+            <td>✅ Post-mortem complete. <strong>Verdict: abandon Dixon-Coles.</strong> Worker recommends ordered probit (models H/D/A directly) + market-side improvements. <strong>Daz decision required.</strong></td>
           </tr>
         </tbody>
       </table>
