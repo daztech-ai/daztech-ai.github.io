@@ -263,7 +263,7 @@
     <p class="lede">A live document. Each phase ships only after its dogfood gate passes. The path here is the rebuild; the destination is the architecture page's claim of a fully autonomous, end-to-end betting engine.</p>
     <p class="lede"><strong>Destination:</strong> <a href="architecture.html">architecture.html</a> — currently describes the old (pre-crash) system. We converge on it, then rewrite it.</p>
     <div class="meta">
-      <span class="chip">Last updated · 2026-06-08 17:48 AEST</span>
+      <span class="chip">Last updated · 2026-06-08 19:02 AEST</span>
       <span class="chip">Build target · gaming rig (64GB incoming)</span>
       <span class="chip">Mini PC · deprecated once rig ships</span>
       <span class="chip">Source of truth · this page + kanban</span>
@@ -339,8 +339,8 @@
           <tr>
             <td><span class="pill amber">queued</span></td>
             <td><code>t_502b11fe</code> (2b calibration)</td>
-            <td><span class="pill amber">blocked</span></td>
-            <td>Code merged; Daz-as-reviewer verdict pending. Holding 2c until 2b is signed off.</td>
+            <td><span class="pill green">done</span></td>
+            <td>Daz verdict 2026-06-08 18:58: PASS-with-hold. Calibration code shipped (Brier 0.207, log-loss 1.038, ROI -5.4% — calibration flattened edge). 2c held; root-cause research card <code>t_23a95c1a</code> filed in triage.</td>
           </tr>
         </tbody>
       </table>
@@ -377,10 +377,10 @@
             <td><strong>Pass.</strong> <code>data/betting.db</code> = 12,288 bytes, 10 rows. UPSERT idempotency verified. 313/313 tests pass. Single source of truth achieved.</td>
           </tr>
           <tr>
-            <td><span class="pill amber">running</span></td>
+            <td><span class="pill green">done</span></td>
             <td><code>t_09cfb0a7</code> Phase 2.2: <code>daz-betting-engine run</code> end-to-end</td>
-            <td>Engine is currently unproven against live DB data.</td>
-            <td><code>engine run</code> exits 0, produces ≥1 pick, smoke test passes</td>
+            <td>Engine was unproven against live DB data.</td>
+            <td><strong>Pass.</strong> <code>daz-betting-engine run --sport nrl</code> exits 0, loads 3 fixtures from <code>betting.db</code>, runs <code>predict_nrl()</code> + edge calc, writes 3 picks to <code>data/ledger/picks.jsonl</code> (13.7KB). 319/319 tests pass, ruff + mypy --strict clean, wiki log filed. Caveat: default factors → all home teams 81% (Phase 2.3 work).</td>
           </tr>
           <tr>
             <td><span class="pill gray">2.3</span></td>
@@ -390,13 +390,19 @@
           </tr>
           <tr>
             <td><span class="pill amber">triage</span></td>
-            <td><code>t_d9ef5595</code> 2c: feature engineering (HOLD pending 2b verdict)</td>
-            <td>2b backtest shows negative ROI on 4/6 test seasons — adding features to a negative-EV model is wasted effort unless underlying model is fixed first.</td>
-            <td>Daz decision needed: Option A (accept 2b, dispatch 2c) or Option B (hold 2c, file "fix the model" card)</td>
+            <td><code>t_d9ef5595</code> 2c: feature engineering (HOLD)</td>
+            <td>Daz verdict (Option B, 2026-06-08 18:58): hold 2c, root-cause the model first. Filed <code>t_23a95c1a</code> (research-1) to investigate.</td>
+            <td>Awaiting t_23a95c1a (root-cause wiki page) before re-evaluating 2c</td>
+          </tr>
+          <tr>
+            <td><span class="pill amber">triage</span></td>
+            <td><code>t_23a95c1a</code> engine-math-research-1: Root-cause EPL negative-EV</td>
+            <td>2b backtest: Brier 0.207 ✅, log-loss 1.038 ❌, ROI -5.4% flat. Calibration flattened the edge — model is structurally negative-EV, not just miscalibrated. Research before re-features.</td>
+            <td>Wiki page with hypothesis scores (1/2/3), pick (a/b/c/d), engineering cost, ROI estimate</td>
           </tr>
         </tbody>
       </table>
-      <p class="sub" style="margin-top:14px;"><strong>Live state of the doggie game (R14):</strong> Bulldogs 12 – 12 Eels, 2H 72:25. Engine called 96.2% Bulldogs pre-game — wrong, Eels clawed back from 0-12. Live evidence that 2b calibration work is urgent, not optional.</p>
+      <p class="sub" style="margin-top:14px;"><strong>Live state of the doggie game (R14):</strong> R14 concluded. Engine called 96.2% Bulldogs pre-game (BvE was 12-0 at half) — wrong, Eels clawed back to 12-12 by 72:25. FT result pending fetch. Live evidence that calibration matters: even the most lopsided leads don't lock in NRL. This is the calibration gap that 2b is fixing, and the structural issue that research-1 needs to root-cause.</p>
     </div>
 
     <div class="phase">
@@ -560,6 +566,7 @@
   <section>
     <h2><span class="num">3</span>Changelog</h2>
     <div class="panel">
+      <p style="margin:0 0 10px;"><strong>2026-06-08 19:02</strong> — Phase 2.2 landed. <code>daz-betting-engine run --sport nrl</code> now exits 0, loads 3 fixtures from betting.db, emits 3 picks (Bulldogs v Eels live + 2 upcoming). 319/319 tests, ruff+mypy --strict clean. Data plane is real, end-to-end. The "all home teams get 81%" gap is the next layer (default factors) — filed as research card <code>t_23a95c1a</code> (Root-cause EPL negative-EV) per Daz verdict B. 2c (ELO + form features) is parked behind it. Both fix cards already PASS: scraper (nrl.com/draw/data API) and SQLite writer (12,288 bytes, 10 rows, UPSERT). R14 game BvE concluded; final result pending fetch.</p>
       <p style="margin:0 0 10px;"><strong>2026-06-08 17:35</strong> — Phase 2.1 landed (with process notes). BABS dogfood on Bulldogs v Eels: 8 R14 fixtures scraped, engine ran end-to-end, model called 96.2% Bulldogs pre-game (vs 64% hand-driven). Engine appears well-calibrated — live state 12-6 to Bulldogs at 2H 61:56. Two fix cards dispatched: t_fedee0ec (BABS scraper → direct /draw/data API, Vue SPA fix) and t_89a55c9b (write fixtures to data/betting.db, not just JSONL). Both running. Game state in Phase 2 panel.</p>
       <p style="margin:0 0 10px;"><strong>2026-06-08 16:45</strong> — Phase 1 marked Done. Both review-required handoffs verified in-session: t_f8e0b8a9 (Wave 4-5) passed clean; t_6853a16c (Integration Steps 2-5) passed with note — worker fabricated a cron ID in their handoff, the real cron is one Daz registered pre-spawn. Skill `kanban-review-loop-daz-as-reviewer` patched with pre-flight item 8 (workers verify own side effects). Phase 2 promoted to "Next".</p>
       <p style="margin:0 0 10px;"><strong>2026-06-08 16:32</strong> — Cron delivery re-aimed per Danny: target is now <code>telegram:-1004213171325:722</code> (DazTech thread 722, "Kanban Notifications"). Both the cron wrapper noise AND the real "Kanban review needed" messages from the script's internal <code>hermes send</code> go to the dedicated thread — main DazTech thread stays clean. Cron re-registered as <code>0d71452eebd5</code>.</p>
