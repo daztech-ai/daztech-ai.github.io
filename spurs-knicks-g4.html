@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Spurs @ Knicks — NBA Finals Game 4 SGM</title>
+<style>
+:root {
+  --bg: #0f0f0f;
+  --card: #1a1a1a;
+  --border: #2a2a2a;
+  --text: #e0e0e0;
+  --dim: #888;
+  --green: #00c853;
+  --yellow: #ffc107;
+  --orange: #ff9800;
+  --red: #ff5252;
+  --blue: #448aff;
+  --knicks: #006bb6;
+  --spurs: #c4ced4;
+  --accent: #ff6d00;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; font-size: 16px; line-height: 1.5; -webkit-font-smoothing: antialiased; padding-bottom: 80px; }
+
+/* Sticky Bar */
+.sticky { position: sticky; top: 0; z-index: 100; background: linear-gradient(135deg, #1a1a1a 0%, #111 100%); border-bottom: 1px solid var(--border); padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; }
+.sticky .matchup { font-weight: 700; font-size: 14px; }
+.sticky .matchup .at { color: var(--dim); font-weight: 400; }
+.sticky .odds { text-align: right; }
+.sticky .odds .spread { font-weight: 700; color: var(--blue); }
+.sticky .odds .total { font-size: 13px; color: var(--dim); }
+
+/* Hero */
+.hero { padding: 20px 16px; text-align: center; border-bottom: 1px solid var(--border); }
+.hero .wp { font-size: 64px; font-weight: 900; letter-spacing: -2px; }
+.hero .wp-label { font-size: 13px; color: var(--dim); text-transform: uppercase; letter-spacing: 1px; }
+.hero .prediction { margin-top: 8px; font-size: 18px; font-weight: 600; }
+.hero .margin { font-size: 14px; color: var(--dim); }
+.hero .badge { display: inline-block; padding: 3px 10px; border-radius: 99px; font-size: 12px; font-weight: 600; margin: 4px; }
+.hero .badge-knicks { background: var(--knicks); color: #fff; }
+.hero .badge-spurs { background: #333; color: var(--spurs); }
+
+/* Cards */
+.card { margin: 12px 16px; background: var(--card); border-radius: 12px; border: 1px solid var(--border); overflow: hidden; }
+.card-header { padding: 14px 16px; font-weight: 700; font-size: 15px; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid var(--border); }
+.card-header .icon { font-size: 18px; }
+.card-body { padding: 14px 16px; }
+.card-body p { margin-bottom: 8px; font-size: 14px; color: #ccc; }
+.card-body p:last-child { margin-bottom: 0; }
+
+/* Alert */
+.alert { margin: 12px 16px; background: #1a0a0a; border: 1px solid #ff525244; border-radius: 12px; padding: 14px 16px; display: flex; align-items: flex-start; gap: 10px; }
+.alert-icon { font-size: 20px; flex-shrink: 0; }
+.alert-title { font-weight: 700; color: var(--red); font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; }
+.alert-body { font-size: 14px; color: #ccc; margin-top: 2px; }
+
+/* Grid 3-col */
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; padding: 4px 0; }
+.grid-3 .cell { background: #222; border-radius: 8px; padding: 12px 10px; text-align: center; }
+.grid-3 .cell .label { font-size: 11px; color: var(--dim); text-transform: uppercase; letter-spacing: 0.5px; }
+.grid-3 .cell .value { font-size: 18px; font-weight: 700; margin-top: 2px; }
+.grid-3 .cell .sub { font-size: 12px; color: var(--dim); }
+.grid-3 .green { color: var(--green); }
+.grid-3 .red { color: var(--red); }
+
+/* Try-scorer rows */
+.player-row { display: flex; align-items: center; padding: 10px 0; border-bottom: 1px solid #222; gap: 10px; }
+.player-row:last-child { border-bottom: none; }
+.player-rank { width: 24px; text-align: center; font-weight: 700; font-size: 14px; color: var(--dim); flex-shrink: 0; }
+.player-info { flex: 1; min-width: 0; }
+.player-name { font-weight: 600; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.player-form { font-size: 12px; color: var(--dim); }
+.player-badge { display: inline-block; padding: 1px 6px; border-radius: 99px; font-size: 10px; font-weight: 700; margin-left: 4px; }
+.badge-green { background: #00c85322; color: var(--green); }
+.badge-yellow { background: #ffc10722; color: var(--yellow); }
+.badge-orange { background: #ff980022; color: var(--orange); }
+.player-odds { text-align: right; flex-shrink: 0; }
+.player-odds .price { font-weight: 700; font-size: 15px; color: var(--blue); }
+.player-odds .book { font-size: 10px; color: var(--dim); }
+
+/* SGM Builder */
+.sgm-card { margin: 12px 16px; border-radius: 12px; overflow: hidden; border: 2px solid transparent; }
+.sgm-conservative { border-color: var(--green); }
+.sgm-balanced { border-color: var(--yellow); }
+.sgm-counter { border-color: var(--orange); }
+.sgm-header { padding: 12px 16px; font-weight: 700; font-size: 14px; display: flex; align-items: center; gap: 8px; }
+.sgm-conservative .sgm-header { background: #00c85311; color: var(--green); }
+.sgm-balanced .sgm-header { background: #ffc10711; color: var(--yellow); }
+.sgm-counter .sgm-header { background: #ff980011; color: var(--orange); }
+.sgm-body { background: var(--card); padding: 14px 16px; }
+.sgm-leg { display: flex; align-items: center; padding: 8px 0; border-bottom: 1px solid #222; gap: 8px; }
+.sgm-leg:last-child { border-bottom: none; }
+.sgm-leg .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.sgm-conservative .sgm-leg .dot { background: var(--green); }
+.sgm-balanced .sgm-leg .dot { background: var(--yellow); }
+.sgm-counter .sgm-leg .dot { background: var(--orange); }
+.sgm-leg .pick { flex: 1; font-size: 14px; }
+.sgm-leg .odds { font-weight: 700; font-size: 14px; }
+.sgm-footer { padding: 10px 16px; background: #111; display: flex; justify-content: space-between; align-items: center; font-size: 13px; }
+.sgm-footer .payout { font-weight: 700; font-size: 16px; }
+.sgm-footer .stake { color: var(--dim); }
+
+/* Edge bar */
+.edge-bar { display: flex; align-items: center; gap: 10px; padding: 12px 0; }
+.edge-bar .edge-label { font-size: 12px; color: var(--dim); width: 50px; }
+.edge-bar .edge-track { flex: 1; height: 6px; background: #333; border-radius: 3px; overflow: hidden; }
+.edge-bar .edge-fill { height: 100%; border-radius: 3px; }
+.edge-bar .edge-val { font-size: 12px; font-weight: 600; width: 45px; text-align: right; }
+
+/* Expert grid adaptive */
+.expert-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+@media(min-width:600px) { .expert-grid { grid-template-columns: 1fr 1fr 1fr; } }
+.expert-cell { background: #222; border-radius: 8px; padding: 12px; }
+.expert-cell .source { font-size: 12px; color: var(--dim); font-weight: 600; }
+.expert-cell .pick { font-size: 14px; font-weight: 700; margin-top: 2px; }
+.expert-cell .pick.leans-knicks { color: var(--knicks); }
+.expert-cell .pick.leans-spurs { color: var(--spurs); }
+
+/* FAB */
+.fab { position: fixed; bottom: 20px; right: 20px; background: var(--accent); color: #fff; border: none; border-radius: 99px; padding: 14px 24px; font-size: 15px; font-weight: 700; box-shadow: 0 4px 20px rgba(255,109,0,0.4); cursor: pointer; z-index: 200; }
+.fab:hover { opacity: 0.9; }
+
+/* Disclaimer */
+.disclaimer { margin: 20px 16px; padding: 12px; background: #111; border-radius: 8px; font-size: 11px; color: #555; text-align: center; line-height: 1.4; }
+
+/* Details/accordion */
+details { margin: 8px 0; }
+details summary { padding: 10px 0; font-weight: 600; font-size: 14px; cursor: pointer; color: var(--blue); }
+details .inner { padding: 8px 0; font-size: 13px; color: #aaa; line-height: 1.6; }
+
+/* Responsive */
+@media(max-width:374px) {
+  .hero .wp { font-size: 48px; }
+  .grid-3 .cell .value { font-size: 15px; }
+}
+</style>
+</head>
+<body>
+
+<!-- STICKY BAR -->
+<div class="sticky">
+  <div class="matchup">SAS <span class="at">@</span> NYK <span style="font-size:12px;color:#888;">· G4 · Thu 10:30am</span></div>
+  <div class="odds">
+    <div class="spread">NYK -1.5</div>
+    <div class="total">O/U 216.5</div>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="wp-label">Knicks Win Probability</div>
+  <div class="wp">57%</div>
+  <div style="margin-top:4px;">
+    <span class="badge badge-knicks">NYK -1.5</span>
+    <span class="badge badge-spurs">SAS +110</span>
+  </div>
+  <div class="prediction">Knicks 110 – 107 Spurs</div>
+  <div class="margin">Dimers 10K sims · numberFire 56.8% · Consensus mixed</div>
+</div>
+
+<!-- LATE MAIL -->
+<div class="alert">
+  <div class="alert-icon">📋</div>
+  <div>
+    <div class="alert-title">Late Mail — Both Teams Healthy</div>
+    <div class="alert-body">No injuries reported. Both squads at full strength for Game 4. Official NBA injury report: clean.</div>
+  </div>
+</div>
+
+<!-- ODDS GRID -->
+<div class="card">
+  <div class="card-header"><span class="icon">💰</span> Live Odds (FanDuel / DraftKings)</div>
+  <div class="card-body">
+    <div class="grid-3">
+      <div class="cell">
+        <div class="label">Spurs ML</div>
+        <div class="value green">+110</div>
+        <div class="sub">implied 47.6%</div>
+      </div>
+      <div class="cell">
+        <div class="label">Knicks ML</div>
+        <div class="value">-130</div>
+        <div class="sub">implied 56.5%</div>
+      </div>
+      <div class="cell">
+        <div class="label">Spread</div>
+        <div class="value">NYK -1.5</div>
+        <div class="sub">-118 / SAS -104</div>
+      </div>
+    </div>
+    <div class="grid-3" style="margin-top:8px;">
+      <div class="cell">
+        <div class="label">Over 216.5</div>
+        <div class="value">-112</div>
+      </div>
+      <div class="cell">
+        <div class="label">Under 216.5</div>
+        <div class="value">-108</div>
+      </div>
+      <div class="cell">
+        <div class="label">SAS +2.5</div>
+        <div class="value">$1.87</div>
+        <div class="sub">BeforeYouBet</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ENGINE vs MARKET EDGE -->
+<div class="card">
+  <div class="card-header"><span class="icon">📊</span> Edge Analysis</div>
+  <div class="card-body">
+    <div class="edge-bar">
+      <div class="edge-label">Knicks ML</div>
+      <div class="edge-track"><div class="edge-fill" style="width:57%;background:var(--blue);"></div></div>
+      <div class="edge-val" style="color:var(--dim);">+0.5%</div>
+    </div>
+    <div class="edge-bar">
+      <div class="edge-label">Spurs ML</div>
+      <div class="edge-track"><div class="edge-fill" style="width:43%;background:var(--spurs);"></div></div>
+      <div class="edge-val" style="color:var(--green);">+2.1%</div>
+    </div>
+    <div class="edge-bar">
+      <div class="edge-label">Over 216.5</div>
+      <div class="edge-track"><div class="edge-fill" style="width:51%;background:var(--yellow);"></div></div>
+      <div class="edge-val" style="color:var(--dim);">+0.3%</div>
+    </div>
+    <p style="font-size:12px;color:var(--dim);margin-top:8px;">
+      Spurs ML offers slim edge (+2.1%) vs market fair. Under 3% threshold — no strong value signal. Games are coin-flip territory.
+    </p>
+  </div>
+</div>
+
+<!-- PLAYER PROPS -->
+<div class="card">
+  <div class="card-header"><span class="icon">🎯</span> Player Props — Top Picks</div>
+  <div class="card-body">
+    <div class="player-row">
+      <div class="player-rank">1</div>
+      <div class="player-info">
+        <div class="player-name">Wemby 2+ Threes <span class="player-badge badge-green">8/10</span></div>
+        <div class="player-form">Cleared all 3 Finals games · Knicks forcing deep shots</div>
+      </div>
+      <div class="player-odds"><div class="price">1.52</div><div class="book">FanDuel</div></div>
+    </div>
+    <div class="player-row">
+      <div class="player-rank">2</div>
+      <div class="player-info">
+        <div class="player-name">OG Anunoby 20+ Pts <span class="player-badge badge-yellow">+196</span></div>
+        <div class="player-form">28 in G3 (9/13 FG) · 19.9 PPG playoffs · 9 FTA</div>
+      </div>
+      <div class="player-odds"><div class="price">2.96</div><div class="book">FanDuel</div></div>
+    </div>
+    <div class="player-row">
+      <div class="player-rank">3</div>
+      <div class="player-info">
+        <div class="player-name">Brunson 25+ Pts</div>
+        <div class="player-form">32 in G3 · Averaging 28.3 in Finals · Home cooking</div>
+      </div>
+      <div class="player-odds"><div class="price">1.80</div><div class="book">est.</div></div>
+    </div>
+    <div class="player-row">
+      <div class="player-rank">4</div>
+      <div class="player-info">
+        <div class="player-name">Wemby Under 11.5 Reb <span class="player-badge badge-yellow">6/8</span></div>
+        <div class="player-form">Avg 8.0 RPG since WCF G3 · KAT winning boards battle</div>
+      </div>
+      <div class="player-odds"><div class="price">1.88</div><div class="book">FanDuel</div></div>
+    </div>
+    <div class="player-row">
+      <div class="player-rank">5</div>
+      <div class="player-info">
+        <div class="player-name">Bridges 15+ P+A <span class="player-badge badge-green">10/12</span></div>
+        <div class="player-form">Only 2 pts in G3 — massive bounce-back spot</div>
+      </div>
+      <div class="player-odds"><div class="price">1.65</div><div class="book">est.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- EXPERT CONSENSUS -->
+<div class="card">
+  <div class="card-header"><span class="icon">🧠</span> Expert Consensus</div>
+  <div class="card-body">
+    <div class="expert-grid">
+      <div class="expert-cell">
+        <div class="source">OddsShark</div>
+        <div class="pick leans-spurs">Spurs ML (+112) · Wemby U11.5R</div>
+      </div>
+      <div class="expert-cell">
+        <div class="source">BeforeYouBet</div>
+        <div class="pick leans-spurs">Spurs +2.5 ($1.87)</div>
+      </div>
+      <div class="expert-cell">
+        <div class="source">ClutchPoints</div>
+        <div class="pick leans-spurs">Spurs (momentum)</div>
+      </div>
+      <div class="expert-cell">
+        <div class="source">Pickswise</div>
+        <div class="pick leans-knicks">Knicks ML + OG 20+ + Wemby 2×3 (+480 SGP)</div>
+      </div>
+      <div class="expert-cell">
+        <div class="source">Dimers / numberFire</div>
+        <div class="pick leans-knicks">Knicks 56.8-57.5% · 110-107</div>
+      </div>
+      <div class="expert-cell">
+        <div class="source">FantasyAlarm</div>
+        <div class="pick leans-spurs">Spurs +3.5 (cashed G3)</div>
+      </div>
+    </div>
+    <p style="font-size:12px;color:var(--dim);margin-top:8px;">
+      Consensus: 4 Spurs, 2 Knicks on ATS/ML. Models lean Knicks, humans lean Spurs. Classic — the line is telling you this is a toss-up.
+    </p>
+  </div>
+</div>
+
+<!-- SGM BUILDER -->
+<div class="sgm-card sgm-conservative">
+  <div class="sgm-header">🟢 Conservative SGM</div>
+  <div class="sgm-body">
+    <div class="sgm-leg">
+      <div class="dot"></div>
+      <div class="pick">Wemby 2+ Threes</div>
+      <div class="odds">1.52</div>
+    </div>
+    <div class="sgm-leg">
+      <div class="dot"></div>
+      <div class="pick">Brunson 20+ Points</div>
+      <div class="odds">1.30</div>
+    </div>
+    <div class="sgm-leg">
+      <div class="dot"></div>
+      <div class="pick">OG Anunoby 15+ Points</div>
+      <div class="odds">1.40</div>
+    </div>
+  </div>
+  <div class="sgm-footer">
+    <span>Est. Payout</span>
+    <span class="payout" style="color:var(--green);">~$2.77</span>
+    <span class="stake">3-leg</span>
+  </div>
+</div>
+
+<div class="sgm-card sgm-balanced">
+  <div class="sgm-header">🟡 Balanced SGM</div>
+  <div class="sgm-body">
+    <div class="sgm-leg">
+      <div class="dot"></div>
+      <div class="pick">Knicks ML</div>
+      <div class="odds">1.77</div>
+    </div>
+    <div class="sgm-leg">
+      <div class="dot"></div>
+      <div class="pick">Wemby 2+ Threes</div>
+      <div class="odds">1.52</div>
+    </div>
+    <div class="sgm-leg">
+      <div class="dot"></div>
+      <div class="pick">OG Anunoby 20+ Points</div>
+      <div class="odds">2.96</div>
+    </div>
+  </div>
+  <div class="sgm-footer">
+    <span>Est. Payout</span>
+    <span class="payout" style="color:var(--yellow);">~$7.96</span>
+    <span class="stake">3-leg · Pickswise equiv: +480</span>
+  </div>
+</div>
+
+<div class="sgm-card sgm-counter">
+  <div class="sgm-header">🟠 Counter-Trend SGM</div>
+  <div class="sgm-body">
+    <div class="sgm-leg">
+      <div class="dot"></div>
+      <div class="pick">Spurs ML</div>
+      <div class="odds">2.10</div>
+    </div>
+    <div class="sgm-leg">
+      <div class="dot"></div>
+      <div class="pick">Wemby 30+ Points</div>
+      <div class="odds">3.50</div>
+    </div>
+    <div class="sgm-leg">
+      <div class="dot"></div>
+      <div class="pick">Under 216.5 Total</div>
+      <div class="odds">1.93</div>
+    </div>
+  </div>
+  <div class="sgm-footer">
+    <span>Est. Payout</span>
+    <span class="payout" style="color:var(--orange);">~$14.20</span>
+    <span class="stake">3-leg · High variance</span>
+  </div>
+</div>
+
+<!-- NUTTZ PICK -->
+<div class="card" style="border-left: 3px solid var(--accent);">
+  <div class="card-header"><span class="icon">🥜</span> Nuttz's Play</div>
+  <div class="card-body">
+    <p><strong>Balanced SGM:</strong> Knicks ML + Wemby 2+ Threes + OG 20+ Points</p>
+    <p style="font-size:13px;color:#aaa;">
+      OG is the value leg at +196 — he's been the Knicks' quiet assassin all postseason (19.9 PPG). Wemby from deep is automatic right now. Knicks ML is the conviction play: KAT bounce-back, MSG crowd, Brunson finding his shot. Thibs teams don't go down 2-2 at home lightly.
+    </p>
+    <p style="font-size:12px;color:var(--dim);margin-top:6px;">
+      <strong>Stake:</strong> 2.5% of bankroll (SGM variance) · Confirm live Sportsbet odds before locking · Odds are FanDuel/DraftKings approx — check SB
+    </p>
+  </div>
+</div>
+
+<!-- KEY MATCHUPS -->
+<div class="card">
+  <div class="card-header"><span class="icon">🔑</span> 3 Keys to Game 4</div>
+  <div class="card-body">
+    <p><strong>1. KAT's 4th Quarter</strong><br><span style="font-size:13px;color:#aaa;">0 points in Q4 all Finals. That's not sustainable. Foul trouble killed him in G3 — expect Thibs to scheme around it.</span></p>
+    <p><strong>2. Mitchell Robinson Minutes</strong><br><span style="font-size:13px;color:#aaa;">Only 7 minutes in G3. More Robinson = more Wemby resistance. Watch for his minute count early.</span></p>
+    <p><strong>3. OG vs Wemby Help Defense</strong><br><span style="font-size:13px;color:#aaa;">OG attacked the rim fearlessly in G3 (9 FTA). If he's not scared of Wemby, the Knicks' offense opens up.</span></p>
+  </div>
+</div>
+
+<!-- DRIFT CHECK -->
+<div class="card">
+  <div class="card-header"><span class="icon">✅</span> Drift Check</div>
+  <div class="card-body">
+    <details open>
+      <summary>DRIFT CHECK — Spurs @ Knicks Finals G4</summary>
+      <div class="inner">
+        [✅] Prediction: 57% Knicks, cross-verified Dimers + numberFire<br>
+        [✅] Roster: Both teams fully healthy. No DNPs reported.<br>
+        [✅] Team news: NBA injury report clean. Squads at full strength.<br>
+        [✅] Odds: Within expected ranges (ML 1.77–2.10, total 216.5)<br>
+        [✅] Experts: 6/6 sources, consensus verified<br>
+        [✅] Late mail: Injury reports current (<24h)<br>
+        ⚠️ Note: Sportsbet odds not live — using FanDuel/DraftKings. Confirm on SB before bet placement.<br>
+        <strong>RESULT: PASS</strong>
+      </div>
+    </details>
+  </div>
+</div>
+
+<!-- DISCLAIMER -->
+<div class="disclaimer">
+  🥜 Nuttz's SGM Engine — NBA Finals G4<br>
+  Data: Dimers · numberFire · OddsShark · Pickswise · ClutchPoints · FanDuel · FantasyAlarm · BeforeYouBet<br>
+  Odds approx. Confirm live on Sportsbet. Gamble responsibly. Gambling is entertainment, not income.
+</div>
+
+<a href="https://www.sportsbet.com.au" class="fab">🤑 Bet Now</a>
+
+</body>
+</html>
