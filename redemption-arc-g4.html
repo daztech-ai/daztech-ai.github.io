@@ -1,229 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>🔥 REDEMPTION ARC — NBA Finals G4</title>
-<style>
-:root{--bg:#0a0a0a;--card:#141414;--border:#2a2a2a;--text:#e0e0e0;--dim:#888;--green:#00c853;--yellow:#ffc107;--orange:#ff9800;--red:#ff1744;--blue:#448aff;--gold:#ffab00;--sb:#e22b2b}
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased;padding-bottom:80px}
-
-/* HERO BANNER */
-.hero-banner{background:linear-gradient(135deg,#1a0000 0%,#0a0015 50%,#000 100%);padding:24px 16px;text-align:center;border-bottom:2px solid var(--gold);position:relative;overflow:hidden}
-.hero-banner::before{content:"";position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(circle at 30% 50%,rgba(255,171,0,0.08),transparent 60%),radial-gradient(circle at 70% 50%,rgba(226,43,43,0.06),transparent 60%)}
-.hero-banner .title{font-size:28px;font-weight:900;position:relative;z-index:1;background:linear-gradient(135deg,#ff6d00,#ff1744,#ffab00);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.hero-banner .subtitle{font-size:14px;color:var(--dim);margin-top:4px;position:relative;z-index:1}
-.hero-banner .names{font-size:18px;font-weight:700;margin-top:8px;position:relative;z-index:1}
-.hero-banner .names span{color:var(--gold)}
-
-/* Player cards side by side */
-.player-cards{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px}
-@media(max-width:400px){.player-cards{grid-template-columns:1fr;gap:16px}}
-.p-card{background:var(--card);border-radius:16px;border:1px solid var(--border);overflow:hidden}
-.p-card .pc-header{padding:14px 16px;font-size:16px;font-weight:800;text-align:center;border-bottom:1px solid var(--border)}
-.pc-danny{background:linear-gradient(135deg,#1a0a00,#1a0000);color:var(--gold)}
-.pc-loi{background:linear-gradient(135deg,#0a001a,#00001a);color:var(--blue)}
-.p-card .pc-body{padding:16px}
-
-/* SGM legs in player cards */
-.leg-row{display:flex;align-items:center;padding:10px 0;border-bottom:1px solid #1a1a1a;gap:8px}
-.leg-row:last-child{border-bottom:none}
-.leg-num{width:22px;height:22px;border-radius:50%;background:#222;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0}
-.leg-num.g{background:#00c85322;color:var(--green)}
-.leg-num.y{background:#ffc10722;color:var(--yellow)}
-.leg-text{flex:1;font-size:13px;line-height:1.3}
-.leg-odds{font-weight:700;font-size:14px;flex-shrink:0;color:var(--sb)}
-
-/* Payout bar */
-.payout-bar{background:#111;padding:12px 16px;display:flex;justify-content:space-between;align-items:center}
-.payout-bar .label{font-size:12px;color:var(--dim)}
-.payout-bar .amount{font-size:22px;font-weight:900}
-.payout-bar .profit{font-size:13px;color:var(--green);margin-top:2px}
-
-/* Hail Mary section */
-.hail-section{margin:20px 16px}
-.section-title{font-size:20px;font-weight:900;margin-bottom:12px;display:flex;align-items:center;gap:8px}
-.section-title .emoji{font-size:24px}
-
-.hail-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-@media(max-width:400px){.hail-grid{grid-template-columns:1fr}}
-.hail-card{background:var(--card);border-radius:16px;border:2px solid var(--orange);overflow:hidden}
-.hail-card .hc-header{background:linear-gradient(135deg,#1a0a00,#1a0000);padding:12px 16px;font-weight:800;font-size:15px;text-align:center;color:var(--orange);border-bottom:1px solid var(--border)}
-
-.hail-leg{display:flex;align-items:center;padding:9px 14px;border-bottom:1px solid #1a1a1a;gap:8px;font-size:12px}
-.hail-leg:last-child{border-bottom:none}
-.hail-leg .hl-num{width:20px;height:20px;border-radius:50%;background:#ff980022;color:var(--orange);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0}
-.hail-leg .hl-text{flex:1;line-height:1.3}
-.hail-leg .hl-odds{font-weight:700;font-size:13px;flex-shrink:0;color:var(--sb)}
-
-.hail-payout{background:#111;padding:10px 16px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border)}
-.hail-payout .stake-label{font-size:11px;color:var(--dim)}
-.hail-payout .payout-amount{font-size:18px;font-weight:900;color:var(--orange)}
-
-/* Comparison */
-.compare-bar{background:#0d0d0d;border:1px solid var(--border);border-radius:12px;padding:16px;margin:0 16px 20px}
-.compare-bar .cb-title{font-size:14px;font-weight:700;margin-bottom:8px}
-.compare-row{display:flex;justify-content:space-between;padding:6px 0;font-size:13px;border-bottom:1px solid #1a1a1a}
-.compare-row:last-child{border-bottom:none}
-.compare-row .cr-label{color:var(--dim)}
-.compare-row .cr-val{font-weight:700}
-.compare-row .good{color:var(--green)}
-
-/* Strategy note */
-.note{background:linear-gradient(135deg,#1a1a0a,#0a1a0a);border:1px solid var(--yellow);border-radius:12px;padding:14px 16px;margin:16px;font-size:13px}
-.note strong{color:var(--yellow)}
-
-.disclaimer{margin:20px 16px;padding:12px;background:#0d0d0d;border-radius:8px;font-size:11px;color:#444;text-align:center;line-height:1.4}
-.fab{position:fixed;bottom:20px;right:20px;background:var(--sb);color:#fff;border:none;border-radius:99px;padding:14px 24px;font-size:15px;font-weight:700;box-shadow:0 4px 20px rgba(226,43,43,0.4);cursor:pointer;z-index:200;text-decoration:none}
-</style>
+    <title>Redemption Arc SGM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1 { color: #2c3e50; }
+        .odds { margin: 10px 0; }
+    </style>
 </head>
 <body>
-
-<!-- HERO -->
-<div class="hero-banner">
-  <div class="title">🔥 REDEMPTION ARC</div>
-  <div class="subtitle">NBA Finals Game 4 · Spurs @ Knicks · Thu 10:30am AEST</div>
-  <div class="names"><span>Danny</span> & <span>Loi</span></div>
-</div>
-
-<!-- COMPARISON -->
-<div class="compare-bar">
-  <div class="cb-title">📋 The Plan</div>
-  <div class="compare-row"><span class="cr-label">Each down from event</span><span class="cr-val" style="color:var(--red)">-$300</span></div>
-  <div class="compare-row"><span class="cr-label">Bonus Bet each</span><span class="cr-val good">$50 free play</span></div>
-  <div class="compare-row"><span class="cr-label">SGM stake (bonus)</span><span class="cr-val">$50 bonus bet</span></div>
-  <div class="compare-row"><span class="cr-label">Hail Mary stake each</span><span class="cr-val">$5 cash</span></div>
-  <div class="compare-row"><span class="cr-label">Total at risk (real $)</span><span class="cr-val">$10 total</span></div>
-  <div class="compare-row"><span class="cr-label">Max upside combined</span><span class="cr-val good">$1,000+ profit</span></div>
-</div>
-
-<!-- PLAYER CARDS -->
-<div class="player-cards">
-  
-  <!-- DANNY -->
-  <div class="p-card">
-    <div class="pc-header pc-danny">🥜 Danny's Card</div>
-    <div class="pc-body">
-      <div class="leg-row">
-        <div class="leg-num g">1</div>
-        <div class="leg-text">Knicks ML<br><small style="color:var(--dim)">KAT bounce-back · MSG · desperate</small></div>
-        <div class="leg-odds">$1.77</div>
-      </div>
-      <div class="leg-row">
-        <div class="leg-num g">2</div>
-        <div class="leg-text">Wemby 2+ Made Threes<br><small style="color:var(--dim)">3/3 Finals · Knicks forcing deep</small></div>
-        <div class="leg-odds">$1.52</div>
-      </div>
-      <div class="leg-row">
-        <div class="leg-num y">3</div>
-        <div class="leg-text">OG Anunoby 20+ Points<br><small style="color:var(--dim)">28 in G3 · 19.9 PPG playoffs</small></div>
-        <div class="leg-odds">$3.00</div>
-      </div>
-      <div class="leg-row">
-        <div class="leg-num y">4</div>
-        <div class="leg-text">Brunson 25+ Points<br><small style="color:var(--dim)">32 in G3 · home cooking</small></div>
-        <div class="leg-odds">$1.45</div>
-      </div>
+    <h1>Redemption Arc SGM</h1>
+    <div class="odds">
+        <strong>Sportsbet Odds (Pending): </strong>
+        <ul>
+            <li>H2H: [TBA] </li>
+            <li>Spread: [TBA] </li>
+            <li>Total: [TBA] </li>
+        </ul>
     </div>
-    <div class="payout-bar">
-      <div><div class="label">Combined Multi</div><div class="amount" style="color:var(--gold)">~$11.70</div></div>
-      <div style="text-align:right"><div class="label">Bonus Bet Profit</div><div class="profit">+$535</div></div>
-    </div>
-  </div>
-
-  <!-- LOI -->
-  <div class="p-card">
-    <div class="pc-header pc-loi">🔥 Loi's Card</div>
-    <div class="pc-body">
-      <div class="leg-row">
-        <div class="leg-num g">1</div>
-        <div class="leg-text">Knicks ML<br><small style="color:var(--dim)">KAT bounce-back · MSG · desperate</small></div>
-        <div class="leg-odds">$1.77</div>
-      </div>
-      <div class="leg-row">
-        <div class="leg-num g">2</div>
-        <div class="leg-text">Wemby 2+ Made Threes<br><small style="color:var(--dim)">3/3 Finals · Knicks forcing deep</small></div>
-        <div class="leg-odds">$1.52</div>
-      </div>
-      <div class="leg-row">
-        <div class="leg-num y">3</div>
-        <div class="leg-text">OG Anunoby 20+ Points<br><small style="color:var(--dim)">28 in G3 · 19.9 PPG playoffs</small></div>
-        <div class="leg-odds">$3.00</div>
-      </div>
-      <div class="leg-row">
-        <div class="leg-num g">4</div>
-        <div class="leg-text">Over 209.5 Total Points<br><small style="color:var(--dim)">Alt total · all 3 games > 210</small></div>
-        <div class="leg-odds">$1.50</div>
-      </div>
-    </div>
-    <div class="payout-bar">
-      <div><div class="label">Combined Multi</div><div class="amount" style="color:var(--blue)">~$12.10</div></div>
-      <div style="text-align:right"><div class="label">Bonus Bet Profit</div><div class="profit">+$555</div></div>
-    </div>
-  </div>
-
-</div>
-
-<!-- HAIL MARY -->
-<div class="hail-section">
-  <div class="section-title"><span class="emoji">💀</span> HAIL MARY 10-LEGGER — $5 Each</div>
-  
-  <div class="hail-grid">
-    
-    <!-- DANNY HAIL MARY -->
-    <div class="hail-card">
-      <div class="hc-header">🥜 Danny — $5</div>
-      <div class="hail-leg"><div class="hl-num">1</div><div class="hl-text">Wemby 2+ Made Threes</div><div class="hl-odds">$1.52</div></div>
-      <div class="hail-leg"><div class="hl-num">2</div><div class="hl-text">OG Anunoby 15+ Points</div><div class="hl-odds">$1.58</div></div>
-      <div class="hail-leg"><div class="hl-num">3</div><div class="hl-text">Brunson 25+ Points</div><div class="hl-odds">$1.45</div></div>
-      <div class="hail-leg"><div class="hl-num">4</div><div class="hl-text">KAT 10+ Rebounds</div><div class="hl-odds">$1.40</div></div>
-      <div class="hail-leg"><div class="hl-num">5</div><div class="hl-text">De'Aaron Fox 6+ Assists</div><div class="hl-odds">$1.63</div></div>
-      <div class="hail-leg"><div class="hl-num">6</div><div class="hl-text">Dylan Harper 6+ Rebounds</div><div class="hl-odds">$1.51</div></div>
-      <div class="hail-leg"><div class="hl-num">7</div><div class="hl-text">Champagnie 2+ Made Threes</div><div class="hl-odds">$1.52</div></div>
-      <div class="hail-leg"><div class="hl-num">8</div><div class="hl-text">Josh Hart 8+ Rebounds</div><div class="hl-odds">$1.59</div></div>
-      <div class="hail-leg"><div class="hl-num">9</div><div class="hl-text">Over 209.5 Total Points</div><div class="hl-odds">$1.50</div></div>
-      <div class="hail-leg"><div class="hl-num">10</div><div class="hl-text">Stephon Castle 6+ Assists</div><div class="hl-odds">$1.36</div></div>
-      <div class="hail-payout">
-        <span class="stake-label">$5 @ ~$150</span>
-        <span class="payout-amount">~$750</span>
-      </div>
-    </div>
-    
-    <!-- LOI HAIL MARY -->
-    <div class="hail-card">
-      <div class="hc-header">🔥 Loi — $5</div>
-      <div class="hail-leg"><div class="hl-num">1</div><div class="hl-text">Wemby 2+ Made Threes</div><div class="hl-odds">$1.52</div></div>
-      <div class="hail-leg"><div class="hl-num">2</div><div class="hl-text">Brunson 20+ Points</div><div class="hl-odds">$1.12</div></div>
-      <div class="hail-leg"><div class="hl-num">3</div><div class="hl-text">OG Anunoby 15+ Points</div><div class="hl-odds">$1.58</div></div>
-      <div class="hail-leg"><div class="hl-num">4</div><div class="hl-text">KAT 8+ Rebounds</div><div class="hl-odds">$1.14</div></div>
-      <div class="hail-leg"><div class="hl-num">5</div><div class="hl-text">Josh Hart 6+ Rebounds</div><div class="hl-odds">$1.16</div></div>
-      <div class="hail-leg"><div class="hl-num">6</div><div class="hl-text">Stephon Castle 4+ Assists</div><div class="hl-odds">$1.06</div></div>
-      <div class="hail-leg"><div class="hl-num">7</div><div class="hl-text">Brunson 4+ Assists</div><div class="hl-odds">$1.12</div></div>
-      <div class="hail-leg"><div class="hl-num">8</div><div class="hl-text">De'Aaron Fox 4+ Assists</div><div class="hl-odds">$1.11</div></div>
-      <div class="hail-leg"><div class="hl-num">9</div><div class="hl-text">Wemby 1+ Made Threes</div><div class="hl-odds">$1.06</div></div>
-      <div class="hail-leg"><div class="hl-num">10</div><div class="hl-text">Devin Vassell 4+ Rebounds</div><div class="hl-odds">$1.32</div></div>
-      <div class="hail-payout">
-        <span class="stake-label">$5 @ ~$8</span>
-        <span class="payout-amount">~$40</span>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<!-- STRATEGY -->
-<div class="note">
-  <strong>🎯 The Strategy:</strong><br>
-  <strong>Bonus Bets:</strong> Only pay PROFIT (no stake return). Higher odds = more value. Danny at $11.70 returns $535 profit. Loi at $12.10 returns $555 profit. Risk: $0 real cash.<br><br>
-  <strong>Hail Mary:</strong> Danny's 10-legger is high-risk, high-reward (~$150 combined). Loi's is a safer 10-legger with gimme legs (~$8 combined) — more likely to hit but pays less. Total real risk: $10.
-</div>
-
-<div style="text-align:center;margin:20px 16px;font-size:12px;color:var(--dim)">
-  All odds: <span class="sb-tag" style="background:var(--sb);color:#fff;font-size:10px;padding:1px 5px;border-radius:4px;display:inline-block">Sportsbet Live via BABS</span>&nbsp;Gamble responsibly. This is entertainment, not income.
-</div>
-
-<a href="https://www.sportsbet.com.au/betting/basketball-us/nba" class="fab">🤑 Lock It In</a>
-
+    <p>SGM legs will be updated once live odds are confirmed. Mobile-first layout ready.</p>
 </body>
 </html>
