@@ -263,7 +263,7 @@
     <p class="lede">A live document. Each phase ships only after its dogfood gate passes. The path here is the rebuild; the destination is the architecture page's claim of a fully autonomous, end-to-end betting engine.</p>
     <p class="lede"><strong>Destination:</strong> <a href="architecture.html">architecture.html</a> — currently describes the old (pre-crash) system. We converge on it, then rewrite it.</p>
     <div class="meta">
-      <span class="chip">Last updated · 2026-06-09 08:25 AEST</span>
+      <span class="chip">Last updated · 2026-06-09 08:55 AEST</span>
       <span class="chip">Build target · gaming rig (64GB incoming)</span>
       <span class="chip">Mini PC · deprecated once rig ships</span>
       <span class="chip">Source of truth · this page + kanban</span>
@@ -444,10 +444,10 @@
             <td>3 consecutive days, zero manual intervention</td>
           </tr>
           <tr>
-            <td><span class="pill amber">running</span></td>
+            <td><span class="pill green">done</span></td>
             <td><code>t_de27833c</code> engine-live-1: The Odds API integration (live + historical + arb detector)</td>
             <td>Core live odds source. 11 AU bookmakers (Sportsbet, TAB, Neds, Ladbrokes, Betfair, Unibet) + 10 international books. <code>h2h_lay</code> for Betfair sharp line. Historical endpoint for backtest. Arb detector (back-back Dutch + back-lay matched) — the World Cup value path. API key in <code>~/.hermes/.env</code> (Daz to rotate post-shipping).</td>
-            <td>Live fetch returns 5+ NRL events, arb detector fires on synthetic 2% Dutch book, full test suite green, code committed. Worker PID active.</td>
+            <td><strong>Done.</strong> 544/544 tests pass (+167 new). Live API returns 5+ NRL events with 11 bookmakers. Arb detector fires on synthetic Dutch book (1.67% edge) + back-lay (25% edge). Ruff + mypy --strict clean. Commit <code>34067d3</code>. Wiki at <code>engine-live-1-odds-api-integration-2026-06.md</code>.</td>
           </tr>
           <tr>
             <td><span class="pill amber">ready</span></td>
@@ -462,9 +462,9 @@
             <td>Kill switch activates on synthetic 15% drawdown, tier classifier passes all edge cases, state persists across restarts, full test suite green, code committed</td>
           </tr>
           <tr>
-            <td><span class="pill gray">live+1</span></td>
-            <td>engine-live-2: 26-season EPL backtest against Odds API historical</td>
-            <td>Validate the model's edge calculation against real Pinnacle closing line + Betfair lay. 988 snapshots × 40 credits = 39,520 credits. One-shot on $59 plan, then downgrade to $30.</td>
+            <td><span class=\"pill red\">blocked</span></td>
+            <td><code>t_3ae10774</code> engine-live-2: 26-season EPL backtest against Odds API historical</td>
+            <td>Validate the model's edge calculation against real Pinnacle closing line + Betfair lay. 988 snapshots × 40 credits = 39,520 credits. <strong>BLOCKED on $59/mo plan upgrade.</strong> Follow-up filed by engine-live-1 worker.</td>
             <td>Brier/ROI from Odds API backtest matches our internal 26-season baseline (Brier 0.21, ROI -5.4%)</td>
           </tr>
           <tr>
