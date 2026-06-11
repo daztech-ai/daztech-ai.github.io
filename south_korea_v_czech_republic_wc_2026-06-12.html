@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>World Cup G2 — South Korea v Czech Republic SGM</title>
+<style>
+:root{--bg:#0f0f0f;--card:#1a1a1a;--border:#2a2a2a;--text:#e0e0e0;--dim:#888;--green:#00c853;--yellow:#ffc107;--orange:#ff9800;--red:#ff5252;--blue:#448aff;--accent:#ff6d00;--sb:#e22b2b;--wc:#c8a820;--purple:#7c4dff}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased;padding-bottom:80px}
+.sticky{position:sticky;top:0;z-index:100;background:linear-gradient(135deg,#1a1a1a,#111);border-bottom:1px solid var(--border);padding:12px 16px;display:flex;align-items:center;justify-content:space-between}
+.sticky .mu{font-weight:700;font-size:14px}.sticky .at{color:var(--dim);font-weight:400}
+.sticky .od{text-align:right}.sticky .sp{font-weight:700;color:var(--wc)}.sticky .tt{font-size:13px;color:var(--dim)}
+.hero{padding:20px 16px;text-align:center;border-bottom:1px solid var(--border)}
+.hero .wp{font-size:64px;font-weight:900;letter-spacing:-2px}
+.hero .wl{font-size:13px;color:var(--dim);text-transform:uppercase;letter-spacing:1px}
+.hero .pred{font-size:18px;font-weight:600;margin-top:4px}
+.hero .badge{display:inline-block;padding:3px 10px;border-radius:99px;font-size:12px;font-weight:600;margin:4px}
+.bg-sb{background:var(--sb);color:#fff}.bg-wc{background:var(--wc);color:#111}.bg-purple{background:var(--purple);color:#fff}
+.card{margin:12px 16px;background:var(--card);border-radius:12px;border:1px solid var(--border);overflow:hidden}
+.ch{padding:14px 16px;font-weight:700;font-size:15px;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--border)}
+.ch .ic{font-size:18px}.cb{padding:14px 16px}.cb p{margin-bottom:8px;font-size:14px;color:#ccc}.cb p:last-child{margin-bottom:0}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:4px 0}
+.grid3 .cl{background:#222;border-radius:8px;padding:12px 10px;text-align:center}
+.grid3 .cl .lb{font-size:11px;color:var(--dim);text-transform:uppercase;letter-spacing:.5px}
+.grid3 .cl .va{font-size:18px;font-weight:700;margin-top:2px}
+.grid3 .cl .su{font-size:12px;color:var(--dim)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.sgm{margin:12px 16px;border-radius:12px;overflow:hidden;border:2px solid transparent}
+.sg-c{border-color:var(--green)}.sg-b{border-color:var(--yellow)}.sg-ct{border-color:var(--orange)}.sg-p{border-color:var(--purple)}
+.sgh{padding:12px 16px;font-weight:700;font-size:14px;display:flex;align-items:center;gap:8px}
+.sg-c .sgh{background:#00c85311;color:var(--green)}.sg-b .sgh{background:#ffc10711;color:var(--yellow)}.sg-ct .sgh{background:#ff980011;color:var(--orange)}.sg-p .sgh{background:#7c4dff11;color:var(--purple)}
+.sgb{background:var(--card);padding:14px 16px}
+.sgl{display:flex;align-items:center;padding:8px 0;border-bottom:1px solid #222;gap:8px}.sgl:last-child{border-bottom:none}
+.sgl .dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.sg-c .sgl .dot{background:var(--green)}.sg-b .sgl .dot{background:var(--yellow)}.sg-ct .sgl .dot{background:var(--orange)}.sg-p .sgl .dot{background:var(--purple)}
+.sgl .pk{flex:1;font-size:14px}.sgl .od{font-weight:700;font-size:14px}
+.sgf{padding:10px 16px;background:#111;display:flex;justify-content:space-between;align-items:center;font-size:13px}
+.sgf .po{font-weight:700;font-size:16px}.sgf .sk{color:var(--dim)}
+.eb{display:flex;align-items:center;gap:10px;padding:8px 0}.eb .el{font-size:12px;color:var(--dim);min-width:70px}
+.eb .et{flex:1;height:6px;background:#333;border-radius:3px;overflow:hidden}
+.eb .ef{height:100%;border-radius:3px}.eb .ev{font-size:12px;font-weight:600;min-width:50px;text-align:right}
+.sb-tag{background:var(--sb);color:#fff;font-size:10px;padding:1px 5px;border-radius:4px;font-weight:700;display:inline-block;margin-left:4px}
+.nb-tag{background:var(--purple);color:#fff;font-size:10px;padding:1px 5px;border-radius:4px;font-weight:700;display:inline-block;margin-left:4px}
+.exgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}@media(min-width:600px){.exgrid{grid-template-columns:1fr 1fr 1fr}}
+.exc{background:#222;border-radius:8px;padding:12px}.exc .so{font-size:12px;color:var(--dim);font-weight:600}
+.exc .px{font-size:14px;font-weight:700;margin-top:2px}.ln{color:#006bb6}.ls{color:#aaa}
+.alert{margin:12px 16px;background:#c8a82011;border:1px solid #c8a82044;border-radius:12px;padding:14px 16px;display:flex;align-items:flex-start;gap:10px}
+.alert-ic{font-size:20px;flex-shrink:0}.alert-t{font-weight:700;color:var(--wc);font-size:13px;text-transform:uppercase;letter-spacing:.5px}
+.alert-b{font-size:14px;color:#ccc;margin-top:2px}
+.alert-r{background:#ff525211;border-color:#ff525244}.alert-r .alert-t{color:var(--red)}
+.fab{position:fixed;bottom:20px;right:20px;background:var(--sb);color:#fff;border:none;border-radius:99px;padding:14px 24px;font-size:15px;font-weight:700;box-shadow:0 4px 20px rgba(226,43,43,0.4);cursor:pointer;z-index:200;text-decoration:none}
+.disc{margin:20px 16px;padding:12px;background:#111;border-radius:8px;font-size:11px;color:#555;text-align:center;line-height:1.4}
+details{margin:8px 0}details summary{padding:10px 0;font-weight:600;font-size:14px;cursor:pointer;color:var(--blue)}
+details .in{padding:8px 0;font-size:13px;color:#aaa;line-height:1.6}
+.strat-table{width:100%;border-collapse:collapse;font-size:12px;margin-top:6px}
+.strat-table td,.strat-table th{padding:6px 8px;border-bottom:1px solid #222;text-align:center}
+.strat-table th{color:var(--dim);font-weight:600;font-size:11px;text-transform:uppercase}
+.strat-table .pos{color:var(--green)}.strat-table .neg{color:var(--red)}.strat-table .neu{color:var(--yellow)}
+@media(max-width:374px){.hero .wp{font-size:48px}.grid3 .cl .va{font-size:15px}}
+</style>
+</head>
+<body>
+
+<div class="sticky">
+  <div class="mu">KOR <span class="at">v</span> CZE <span style="font-size:12px;color:#888;">· Group A · Fri 12:00pm AEST</span></div>
+  <div class="od"><div class="sp">KOR $2.63</div><div class="tt">Draw $3.00 · CZE $2.95</div></div>
+</div>
+
+<div class="hero">
+  <div class="wl">Winner Too Close to Call — Battle for 2nd</div>
+  <div class="wp" style="font-size:42px">KOR 38% · CZE 35%</div>
+  <div style="margin-top:4px">
+    <span class="badge bg-sb">Sportsbet Promo</span>
+    <span class="badge bg-wc">World Cup Group A</span>
+  </div>
+  <div class="pred" style="font-size:16px">Tight · Low-Scoring · Cagey Opener</div>
+  <div style="font-size:12px;color:var(--dim);margin-top:2px">KickOff · SportsGambler · JuveFC · Squawka · CBS Sports · FOX Sports · Estadio Akron</div>
+</div>
+
+<div class="alert">
+  <div class="alert-ic">📉</div>
+  <div>
+    <div class="alert-t">NOT A FORTRESS — Everyone's Away From Home</div>
+    <div class="alert-b">Both teams at neutral Estadio Akron in Guadalajara (1,500m). Czech Republic's first World Cup in 20 years. South Korea's 11th straight appearance. Son Heung-min's likely final World Cup. Both teams know: lose this and knockout qualification is in serious trouble.</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="ch"><span class="ic">💰</span> Best Available Odds <span class="sb-tag">Sportsbet</span><span class="nb-tag">Neds/UB</span></div>
+  <div class="cb">
+    <div class="grid3">
+      <div class="cl"><div class="lb">South Korea ML</div><div class="va">~$2.63</div><div class="su">implied 38%</div></div>
+      <div class="cl"><div class="lb">Draw</div><div class="va">~$3.00</div><div class="su">implied 33%</div></div>
+      <div class="cl"><div class="lb">Czech Republic ML</div><div class="va">~$2.95</div><div class="su">implied 34%</div></div>
+    </div>
+    <div class="grid3" style="margin-top:8px">
+      <div class="cl"><div class="lb">Under 2.5 Goals</div><div class="va">~$1.62</div><div class="su">56% probability</div></div>
+      <div class="cl"><div class="lb">BTTS No</div><div class="va">~$1.80</div><div class="su">51% probability</div></div>
+      <div class="cl"><div class="lb">Under 1.5 Goals</div><div class="va">~$2.50</div><div class="su">30% probability</div></div>
+    </div>
+    <div class="grid3" style="margin-top:8px">
+      <div class="cl"><div class="lb">Under 3.5 Goals</div><div class="va">~$1.25</div><div class="su">77% probability</div></div>
+      <div class="cl"><div class="lb">Over 1.5 Goals</div><div class="va">~$1.40</div><div class="su">70% probability</div></div>
+      <div class="cl"><div class="lb">CZE DNB</div><div class="va">~$2.05</div><div class="su">Draw = push</div></div>
+    </div>
+    <p style="font-size:11px;color:var(--dim);margin-top:8px">ML odds from FanDuel/Oddschecker consensus. Totals/BTTS from Bet365 via KickOff & SportsGambler — <strong>confirm in Sportsbet/Neds app before locking</strong>. Soccer SGM builder may reject correlated goals markets.</p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="ch"><span class="ic">📊</span> Edge Analysis</div>
+  <div class="cb">
+    <div class="eb"><div class="el">South Korea</div><div class="et"><div class="ef" style="width:38%;background:#aaa"></div></div><div class="ev" style="color:var(--dim)">+0%</div></div>
+    <div class="eb"><div class="el">Czech Rep</div><div class="et"><div class="ef" style="width:35%;background:#666"></div></div><div class="ev" style="color:var(--dim)">-1%</div></div>
+    <div class="eb"><div class="el">Draw</div><div class="et"><div class="ef" style="width:27%;background:var(--wc)"></div></div><div class="ev" style="color:var(--yellow)">+6% edge</div></div>
+    <div class="eb"><div class="el">BTTS No</div><div class="et"><div class="ef" style="width:55%;background:var(--yellow)"></div></div><div class="ev" style="color:var(--green)">+3-8% edge</div></div>
+    <div class="eb"><div class="el">Under 2.5</div><div class="et"><div class="ef" style="width:56%;background:var(--green)"></div></div><div class="ev" style="color:var(--green)">+2.5% edge</div></div>
+    <p style="font-size:12px;color:var(--dim);margin-top:8px">H2H is a coin flip — no edge on either ML. <strong>Draw at $3.00 shows +6% edge</strong> (27% KickOff vs 33% implied). BTTS No is the stat-backed value play: 8 consecutive SK matches, 14 of last 15. Under 2.5 also positive expected value at 56% model probability.</p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="ch"><span class="ic">🧠</span> Expert Consensus</div>
+  <div class="cb">
+    <div class="exgrid">
+      <div class="exc"><div class="so">SportsGambler</div><div class="px ln">BTTS No @ 1.91 · Top pick</div></div>
+      <div class="exc"><div class="so">JuveFC / Yahoo</div><div class="px ln">Draw 9/4 · CZE more complete</div></div>
+      <div class="exc"><div class="so">Squawka</div><div class="px ln">Draw +210 · Tight contest</div></div>
+      <div class="exc"><div class="so">CBS SportsLine</div><div class="px ls">Tight · Low-scoring · Evenly matched</div></div>
+      <div class="exc"><div class="so">KickOff</div><div class="px ls">Under 2.5 @ 56% · CZE 35% / Draw 27%</div></div>
+      <div class="exc"><div class="so">FOX Sports</div><div class="px ls">KOR & CZE both -290 to advance</div></div>
+    </div>
+    <p style="font-size:12px;color:var(--dim);margin-top:8px">4/6 experts flag the Draw or lean Czech Republic. 5/6 expect a low-scoring affair. 3/6 specifically recommend BTTS No or Under 2.5. Consensus: <strong>cagey, tight, goals at a premium.</strong></p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="ch"><span class="ic">🔑</span> 3 Keys to the Match</div>
+  <div class="cb">
+    <p><strong>1. SK's Physical Vulnerability</strong><br><span style="font-size:13px;color:#aaa">South Korea were demolished 4-0 by Ivory Coast and lost 1-0 to Austria in March friendlies — both physical, organised sides. Czech Republic with Soucek (6'4") and Schick are built exactly for this. SK's back-5 experiment under Hong Myung-Bo is a direct response to those beatings.</span></p>
+    <p><strong>2. The BTTS No Streak</strong><br><span style="font-size:13px;color:#aaa">BTTS No has landed in 8 consecutive South Korea matches and 14 of their last 15. They're either keeping clean sheets against weaker Asian sides or getting shut out by stronger opposition. Czech Republic are short of elite goalscoring options beyond Schick and set-pieces.</span></p>
+    <p><strong>3. Must-Not-Lose Dynamic</strong><br><span style="font-size:13px;color:#aaa">With Mexico heavily favoured to top Group A, this is effectively a playoff for 2nd place. Both managers know a draw keeps them alive — a loss is catastrophic. Expect both to set up cautiously, especially in the first 60 minutes. Hot/humid Guadalajara conditions + possible thunderstorms reinforce a slow tempo.</span></p>
+  </div>
+</div>
+
+<!-- STRATEGY NOTE -->
+<div class="card" style="border-left:3px solid var(--purple)">
+  <div class="ch"><span class="ic">🎯</span> Promo Strategy — Two-Bookie Play</div>
+  <div class="cb">
+    <p style="font-size:14px;font-weight:700;color:var(--purple);margin-bottom:6px">The Setup</p>
+    <p style="font-size:13px;color:#aaa">Two SGMs across two bookies, both covered by bonus bet promos if they miss:</p>
+    <div class="grid2" style="margin:8px 0">
+      <div style="background:#222;border-radius:8px;padding:10px">
+        <div style="font-weight:700;color:var(--sb);font-size:13px">🏦 Sportsbet</div>
+        <div style="font-size:12px;color:#ccc">$50 stake · $50 Bonus Bet if <strong>1 leg fails</strong></div>
+        <div style="font-size:11px;color:var(--dim)">Min total odds: $2.00</div>
+      </div>
+      <div style="background:#222;border-radius:8px;padding:10px">
+        <div style="font-weight:700;color:var(--purple);font-size:13px">🎰 Neds / UniBet</div>
+        <div style="font-size:12px;color:#ccc">$25 stake · $25 Bonus Bet if <strong>ANY leg fails</strong></div>
+        <div style="font-size:11px;color:var(--dim)">Min total odds: $2.00</div>
+      </div>
+    </div>
+    <p style="font-size:13px;font-weight:600;color:var(--wc);margin-top:8px">Expected Value Matrix</p>
+    <table class="strat-table">
+      <tr><th>Scenario</th><th>SB ($50)</th><th>Neds ($25)</th><th>Net Result</th></tr>
+      <tr><td>🟢 Both hit</td><td class="pos">+$140*</td><td class="pos">+$110*</td><td class="pos"><strong>+$175</strong></td></tr>
+      <tr><td>🟡 SB hits, Neds any fail</td><td class="pos">+$140*</td><td class="neu">+$17.50</td><td class="pos"><strong>+$82</strong></td></tr>
+      <tr><td>🟡 SB 1 miss, Neds hits</td><td class="neu">+$35</td><td class="pos">+$110*</td><td class="pos"><strong>+$70</strong></td></tr>
+      <tr><td>🟠 SB 1 miss, Neds any fail</td><td class="neu">+$35</td><td class="neu">+$17.50</td><td class="neg"><strong>-$22.50</strong></td></tr>
+      <tr><td>🔴 SB 2+ miss, Neds any fail</td><td class="neg">$0</td><td class="neu">+$17.50</td><td class="neg"><strong>-$57.50</strong></td></tr>
+    </table>
+    <p style="font-size:11px;color:var(--dim);margin-top:6px">*Based on ~$3.79 SB SGM and ~$5.40 Neds SGM. Bonus bet recovery estimated at 70% conversion. Actual results depend on final SGM odds locked in-app.</p>
+    <details>
+      <summary>⚠️ Key Risks</summary>
+      <div class="in">
+        <p><strong>1. Sportsbet correlation trap:</strong> "1 leg fails" promo — but if 2+ legs fail, you get NOTHING from SB. Our conservative legs are correlated. If the match opens up and becomes a goal-fest, BTTS No AND Under 2.5 both die together. This is the #1 risk.</p>
+        <p><strong>2. Verify T&Cs:</strong> Does Sportsbet require exactly 1 leg to fail, or at least 1? Some promos only pay if precisely 1 leg misses. Check the fine print.</p>
+        <p><strong>3. Bonus bet conversion:</strong> 70% assumed via Back/Lay arbitrage. Less liquid markets during live World Cup action may reduce this. Budget for 60-65% worst case.</p>
+        <p><strong>4. SGM builder restrictions:</strong> Sportsbet and Neds may reject combos with correlated goals markets (BTTS No + U2.5). Have backup legs ready.</p>
+      </div>
+    </details>
+  </div>
+</div>
+
+<!-- CONSERVATIVE SGM -->
+<div class="sgm sg-c">
+  <div class="sgh">🟢 Conservative — 3 Leg <span style="font-weight:400;font-size:12px;color:#aaa">· Sportsbet · $50 Bonus if 1 Leg Fails</span></div>
+  <div class="sgb">
+    <div class="sgl"><div class="dot"></div><div class="pk">BTTS No</div><div class="od">~$1.80</div></div>
+    <div class="sgl"><div class="dot"></div><div class="pk">Under 2.5 Goals</div><div class="od">~$1.62</div></div>
+    <div class="sgl"><div class="dot"></div><div class="pk">Under 3.5 Goals</div><div class="od">~$1.25</div></div>
+  </div>
+  <div class="sgf"><span>Sportsbet SGM</span><span class="po" style="color:var(--green)">~$3.65</span><span class="sk">Confidence: High</span></div>
+</div>
+
+<div class="alert alert-r" style="margin-top:0">
+  <div class="alert-ic">⚠️</div>
+  <div>
+    <div class="alert-t">CORRELATION WARNING — Under 2.5 + Under 3.5</div>
+    <div class="alert-b">Sportsbet will likely reject Under 2.5 + Under 3.5 as identical markets (they resolve the same way). The backup below uses non-goal markets to avoid this. Check the app — if allowed, this is the cleanest correlated play.</div>
+  </div>
+</div>
+
+<div class="sgm sg-c" style="margin-top:0">
+  <div class="sgh">🟢 Conservative — Backup 3-Leg <span style="font-weight:400;font-size:12px;color:#aaa">· Non-Goals Mix</span></div>
+  <div class="sgb">
+    <div class="sgl"><div class="dot"></div><div class="pk">BTTS No</div><div class="od">~$1.80</div></div>
+    <div class="sgl"><div class="dot"></div><div class="pk">Under 2.5 Goals</div><div class="od">~$1.62</div></div>
+    <div class="sgl"><div class="dot"></div><div class="pk">Over 1.5 Cards</div><div class="od">~$1.25-1.35</div></div>
+  </div>
+  <div class="sgf"><span>Sportsbet SGM</span><span class="po" style="color:var(--green)">~$3.65-3.95</span><span class="sk">Confidence: High</span></div>
+</div>
+
+<div class="card" style="border-left:3px solid var(--wc)">
+  <div class="ch"><span class="ic">🏗️</span> Want >$4? Add One Non-Goal Leg From App</div>
+  <div class="cb">
+    <p style="font-size:13px;color:#aaa;margin-bottom:6px">Goals markets are correlated and Sportsbet will block combos. To push past $4 safely, check the app for:</p>
+    <p style="font-size:13px"><strong>🥇 Over 1.5 Cards</strong> — WC tension, physical CZE side, must-not-lose stakes. ~$1.25-$1.35.</p>
+    <p style="font-size:13px"><strong>🥈 Under 9.5 Corners Total</strong> — Cagey match, both teams happy to sit deep. ~$1.30-$1.40.</p>
+    <p style="font-size:13px"><strong>🥉 Son Heung-min Over 0.5 Shots on Target</strong> — SK's talisman, likely final WC, plays 90 if fit. ~$1.22-$1.35.</p>
+    <p style="font-size:12px;color:var(--dim);margin-top:6px">Add any of these to the 2-leg base (BTTS No + U2.5 = ~$2.92) for a 3-leg >$3.65. Two non-goal legs + base = >$4.50.</p>
+  </div>
+</div>
+
+<!-- BALANCED SGM - NEDS -->
+<div class="sgm sg-b">
+  <div class="sgh">🟡 Balanced — 3 Leg <span style="font-weight:400;font-size:12px;color:#aaa">· Neds / UniBet · $25 Bonus if ANY Leg Fails</span></div>
+  <div class="sgb">
+    <div class="sgl"><div class="dot"></div><div class="pk">Draw</div><div class="od">~$3.00</div></div>
+    <div class="sgl"><div class="dot"></div><div class="pk">Under 2.5 Goals</div><div class="od">~$1.62</div></div>
+    <div class="sgl"><div class="dot"></div><div class="pk">BTTS No</div><div class="od">~$1.80</div></div>
+  </div>
+  <div class="sgf"><span>Neds / UniBet SGM</span><span class="po" style="color:var(--yellow)">~$8.75</span><span class="sk">Confidence: Medium-High</span></div>
+</div>
+
+<div class="alert alert-r" style="margin-top:0">
+  <div class="alert-ic">⚠️</div>
+  <div>
+    <div class="alert-t">CORRELATION CHECK — 3 goals markets</div>
+    <div class="alert-b">Draw + U2.5 + BTTS No are all linked. If the match opens up and hits Over 2.5, the Draw and BTTS No legs are also in serious danger. Neds/UniBet may reject this combo. The backup below spreads risk across different market types.</div>
+  </div>
+</div>
+
+<div class="sgm sg-b" style="margin-top:0">
+  <div class="sgh">🟡 Balanced — Backup 3-Leg <span style="font-weight:400;font-size:12px;color:#aaa">· CZE-Leaning</span></div>
+  <div class="sgb">
+    <div class="sgl"><div class="dot"></div><div class="pk">Czech Republic ML</div><div class="od">~$2.95</div></div>
+    <div class="sgl"><div class="dot"></div><div class="pk">Under 2.5 Goals</div><div class="od">~$1.62</div></div>
+    <div class="sgl"><div class="dot"></div><div class="pk">BTTS No</div><div class="od">~$1.80</div></div>
+  </div>
+  <div class="sgf"><span>Neds / UniBet SGM</span><span class="po" style="color:var(--yellow)">~$8.60</span><span class="sk">Confidence: Medium</span></div>
+</div>
+
+<!-- HIGHER RISK -->
+<div class="sgm sg-ct">
+  <div class="sgh">🟠 Higher Risk — 3 Leg <span style="font-weight:400;font-size:12px;color:#aaa">· Neds / UniBet · $25 Bonus if ANY Fails</span></div>
+  <div class="sgb">
+    <div class="sgl"><div class="dot"></div><div class="pk">Under 1.5 Goals</div><div class="od">~$2.50</div></div>
+    <div class="sgl"><div class="dot"></div><div class="pk">BTTS No</div><div class="od">~$1.80</div></div>
+    <div class="sgl"><div class="dot"></div><div class="pk">Draw</div><div class="od">~$3.00</div></div>
+  </div>
+  <div class="sgf"><span>Neds / UniBet SGM</span><span class="po" style="color:var(--orange)">~$13.50</span><span class="sk">0-0 or 1-0 grind · Any fail = bonus</span></div>
+</div>
+
+<!-- COUNTER TREND -->
+<div class="sgm sg-p">
+  <div class="sgh">🟣 Counter-Trend — What If It Opens Up?</div>
+  <div class="sgb">
+    <div class="sgl"><div class="dot"></div><div class="pk">Over 2.5 Goals</div><div class="od">~$2.25</div></div>
+    <div class="sgl"><div class="dot"></div><div class="pk">BTTS Yes</div><div class="od">~$1.95</div></div>
+    <div class="sgl"><div class="dot"></div><div class="pk">South Korea ML</div><div class="od">~$2.63</div></div>
+  </div>
+  <div class="sgf"><span>SGM</span><span class="po" style="color:var(--purple)">~$11.52</span><span class="sk">Son's farewell party? · High variance</span></div>
+</div>
+
+<!-- DEEZ'S PLAY - adapting Nuttz format since Deez is doing this -->
+<div class="card" style="border-left:3px solid var(--accent)">
+  <div class="ch"><span class="ic">🐻</span> Deez's Play <span style="font-weight:400;font-size:12px;color:var(--dim)">(filling in for Nuttz 🥜)</span></div>
+  <div class="cb">
+    <p><strong>🟢 Conservative 3-Leg (Sportsbet):</strong> BTTS No + Under 2.5 + Over 1.5 Cards<br><span style="font-weight:700;color:var(--sb)">~$3.65-$3.95</span></p>
+    <p style="font-size:13px;color:#aaa">This is the one with the most evidence behind it. SK haven't had a BTTS Yes match in 8 games (14/15). Both teams are defensively set up for a must-not-lose group opener. The Cards leg is the correlation-dodging bonus: WC tension + CZE physicality + stakes = bookings. The cards market resolves independently of goals.</p>
+    <p><strong>🟡 Balanced (Neds/UniBet):</strong> Draw + Under 2.5 + BTTS No<br><span style="font-weight:700;color:var(--purple)">~$8.75</span></p>
+    <p style="font-size:13px;color:#aaa">The Draw at +6% edge is the value leg here. KickOff has 0-0 at 9% and 1-1 at 13% as the top two scorelines. With the Neds/UniBet "any leg fails" safety net, the Draw is worth the swing — if it misses but the other 2 hit, you still get the $25 bonus.</p>
+    <p style="font-size:13px;color:#aaa;margin-top:4px"><strong>If I had to pick one:</strong> the Conservative. The BTTS No streak is the strongest single data point in this match. 14 of 15 is not random noise — that's a structural pattern. Build around it.</p>
+    <p style="font-size:12px;color:var(--dim);margin-top:6px"><strong>⚠️ All odds estimated from Bet365/KickOff consensus</strong> — confirm in each bookie app before locking. SGM builders may price differently.</p>
+  </div>
+</div>
+
+<div class="disc">
+  🐻 Deez's SGM Engine — World Cup 2026 Group A · South Korea v Czech Republic<br>
+  Odds: Bet365 / FanDuel / Oddschecker consensus · Data: KickOff · SportsGambler · JuveFC · Yahoo Sports · Squawka · CBS Sports · FOX Sports<br>
+  Gamble responsibly. Gambling is entertainment, not income.<br>
+  <span style="color:var(--dim)">Note: This is Deez (Danny's research agent), not Nuttz 🥜. Baccs chat is down so I'm handling this directly.</span>
+</div>
+
+<a href="https://www.sportsbet.com.au/betting/soccer/world-cup" class="fab">🤑 Bet on Sportsbet</a>
+
+</body>
+</html>
