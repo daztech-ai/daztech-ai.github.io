@@ -412,6 +412,62 @@
       margin-left: 4px;
     }
     .view-toggle:hover { background: rgba(94, 106, 210, 0.10); }
+    /* Bet Action Workflow (v1) */
+    .action-queue { margin-bottom: 18px; }
+    .action-queue .section-panel { border-left: 3px solid var(--accent); }
+    .action-warning {
+      background: rgba(210,153,34,0.08); border: 1px solid rgba(210,153,34,0.15);
+      border-radius: 8px; color: var(--watch); font-size: 13px; margin: 0 0 14px; padding: 12px 14px;
+    }
+    .action-list { display: grid; gap: 10px; }
+    .action-card {
+      border: 0; border-radius: 8px; background: var(--panel-2);
+      box-shadow: var(--shadow-card); padding: 18px;
+    }
+    .action-card.placed { opacity: 0.65; }
+    .action-card.skipped { opacity: 0.50; }
+    .action-top {
+      display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 10px; align-items: start;
+    }
+    .action-event { font-size: 16px; font-weight: 850; }
+    .action-meta { color: var(--muted); font-size: 13px; margin-top: 2px; }
+    .action-detail {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      gap: 8px; margin: 12px 0;
+    }
+    .action-detail .ad-item { font-size: 13px; }
+    .action-detail .ad-item strong { display: block; font-size: 15px; }
+    .action-detail .ad-item span { color: var(--muted); font-size: 11px; }
+    .action-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      border: 0; border-radius: 8px; background: var(--accent-2); color: #ffffff;
+      cursor: pointer; font-size: 13px; font-weight: 800; padding: 9px 14px;
+      text-decoration: none; margin-top: 10px;
+    }
+    .action-btn:hover { opacity: 0.9; }
+    .action-confirm { margin-top: 12px; padding: 10px; background: var(--panel); border-radius: 8px; }
+    .action-confirm input {
+      background: var(--panel-2); border: 1px solid var(--line); border-radius: 6px;
+      color: var(--ink); font: inherit; padding: 8px 10px; width: 140px;
+    }
+    .action-confirm input:focus { border-color: var(--accent); outline: 0; }
+    .action-confirm .result { display: inline-block; margin-left: 10px; font-weight: 800; }
+    .action-confirm .result.place { color: var(--bet); }
+    .action-confirm .result.skip { color: var(--pass); }
+    .action-btn-bar {
+      display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; align-items: center;
+    }
+    .btn-small {
+      border: 1px solid var(--line); border-radius: 6px; background: var(--panel);
+      color: var(--ink); cursor: pointer; font-size: 12px; font-weight: 600;
+      padding: 6px 10px;
+    }
+    .btn-small:hover { border-color: var(--accent); }
+    .btn-small.placed { background: rgba(39,166,68,0.12); border-color: var(--bet); color: var(--bet); }
+    .btn-small.skipped { background: rgba(248,81,73,0.08); border-color: var(--pass); color: var(--pass); }
+    .btn-small.checked { background: rgba(94,106,210,0.10); border-color: var(--accent); color: var(--accent); }
+    .copy-feedback { color: var(--bet); font-size: 12px; margin-left: 8px; opacity: 0; transition: opacity 0.2s; }
+    .copy-feedback.show { opacity: 1; }
     footer {
       color: var(--muted);
       border-top: 1px solid var(--line);
@@ -441,8 +497,8 @@
         <a class="nav-link" href="#queue">Queue</a>
         <a class="nav-link" href="#events">Events</a>
         <a class="nav-link" href="#alerts">Alerts</a>
-        <a class="nav-link" id="raw-report-link" href="recommendations.html">Raw report</a>
-        <a class="nav-link" id="dashboard-link" href="dashboard.html">Dashboard</a>
+        <a class="nav-link" id="raw-report-link" href="sgm-daily/recommendations.html">Raw report</a>
+        <a class="nav-link" id="dashboard-link" href="sgm-daily/dashboard.html">Dashboard</a>
         <button class="theme-toggle" id="theme-toggle" type="button">Toggle theme</button>
       </nav>
     </div>
@@ -458,7 +514,7 @@
         </p>
         <div class="hero-actions">
           <a class="primary-link" href="#queue">Review queue</a>
-          <a class="secondary-link" id="agent-json-link" href="agent_feed.json">Open agent JSON</a>
+          <a class="secondary-link" id="agent-json-link" href="sgm-daily/agent_feed.json">Open agent JSON</a>
         </div>
       </section>
       <aside class="ops-panel" aria-live="polite">
@@ -481,6 +537,8 @@
 
     <div class="layout">
       <div>
+        <section class="action-queue" id="action-queue" aria-label="Action Queue"></section>
+
         <section class="section-panel" id="queue">
           <div class="section-head">
             <div>
@@ -538,9 +596,9 @@
       return value;
     }
 
-    const FEED_URL = resolveAssetUrl("agent_feed.json");
-    const RECOMMENDATIONS_URL = resolveAssetUrl("recommendations.html");
-    const DASHBOARD_URL = resolveAssetUrl("dashboard.html");
+    const FEED_URL = resolveAssetUrl("sgm-daily/agent_feed.json");
+    const RECOMMENDATIONS_URL = resolveAssetUrl("sgm-daily/recommendations.html");
+    const DASHBOARD_URL = resolveAssetUrl("sgm-daily/dashboard.html");
     const FALLBACK_FEED = JSON.parse(
       document.getElementById("sgm-initial-feed").textContent
     );
@@ -592,6 +650,228 @@
         return Number(b.estimated_edge ?? -999) - Number(a.estimated_edge ?? -999);
       });
     }
+
+    // ─── Bet Action Workflow (v1) ───────────────────────────────────
+    var _sgmRecData = {};
+    const _BOOK_URLS = { sportsbet: "https://www.sportsbet.com.au" };
+
+    function getBetState(id) {
+      try { return JSON.parse(localStorage.getItem("sgm-bet-" + id) || "null") || {}; }
+      catch(e) { return {}; }
+    }
+    function setBetState(id, updates) {
+      var s = getBetState(id);
+      Object.assign(s, updates);
+      s.ts = Date.now();
+      localStorage.setItem("sgm-bet-" + id, JSON.stringify(s));
+    }
+
+    function formatLegsForCopy(rec) {
+      var legs = rec.legs || [];
+      if (legs.length === 0) return "No legs";
+      return legs.map(function(l, i) {
+        return "Leg " + (i+1) + ": " + (l.market || "?") + " — " + (l.selection || "?") + " @ " + decimalOdds(l.sportsbet_odds);
+      }).join("\n");
+    }
+
+    function copyBetDetails(rec) {
+      var legs = rec.legs || [];
+      var text = [
+        "Book: " + (rec.bookmaker || "sportsbet"),
+        "Event: " + (rec.event || ""),
+        "Sport: " + (rec.sport || ""),
+        "Bet Mode: " + (rec.bet_mode || ""),
+        "Legs: " + legs.length,
+        "Combined Odds: " + decimalOdds(rec.combined_sportsbet_odds),
+        "Fair Odds: " + decimalOdds(rec.estimated_fair_odds),
+        "Edge: " + pct(rec.estimated_edge, 2),
+        "Min Acceptable Odds: " + decimalOdds(rec.minimum_sgm_odds_for_bet),
+        "Suggested Stake: " + money(rec.suggested_stake),
+        "Confidence: " + (rec.confidence || "low"),
+        "",
+        "--- LEG DETAILS ---",
+        formatLegsForCopy(rec),
+        "",
+        "Note: Verify the SGM price on Sportsbet before placing.",
+      ].join("\n");
+      navigator.clipboard.writeText(text).then(function() {}).catch(function() { prompt("Copy manually:", text); });
+      return text;
+    }
+
+    function renderActionQueue(feed) {
+      var recs = feed.recommendations || [];
+      var bets = recs.filter(function(r) { return r.recommendation === "bet"; });
+      var watches = recs.filter(function(r) { return r.recommendation === "watch"; });
+      bets.sort(function(a, b) { return Number(b.estimated_edge || 0) - Number(a.estimated_edge || 0); });
+      watches.sort(function(a, b) { return Number(b.estimated_edge || 0) - Number(a.estimated_edge || 0); });
+
+      var items = bets.length >= 4 ? bets.slice(0, 4)
+        : bets.concat(watches).slice(0, 4);
+
+      var target = document.getElementById("action-queue");
+      if (!target) return;
+      if (!items.length) {
+        target.innerHTML = '<section class="section-panel"><div class="section-head"><h2>⚡ Action Queue</h2></div><div class="empty">No actionable bets or watches today.</div></section>';
+        return;
+      }
+
+      var isWatchOnly = bets.length === 0;
+      var headerTitle = isWatchOnly ? "⚡ Action Queue — ⚠️ Needs confirmation" : "⚡ Action Queue";
+      var headerNote = isWatchOnly
+        ? "No BET items today. Showing WATCH candidates that need manual SGM price confirmation."
+        : '"Check these first — confirm Sportsbet SGM price before placing."';
+
+      var cards = items.map(function(rec) {
+        var rid = rec.recommendation_id || "";
+        var bk = (rec.bookmaker || "sportsbet").toLowerCase();
+        var bookUrl = _BOOK_URLS[bk] || "";
+        var betModeLabel = (rec.bet_mode || "").replace(/_/g, " ");
+        var legCount = (rec.legs || []).length;
+
+        var state = getBetState(rid);
+        var stateClass = "";
+        if (state.placed) stateClass = " placed";
+        else if (state.skipped) stateClass = " skipped";
+        else if (state.checked) stateClass = " checked";
+
+        var copyBtn = '<button class="btn-small" data-rec-id="' + rid + '" data-action="copy">📋 Copy Bet Details</button><span class="copy-feedback"></span>';
+        var checkBtn = state.placed
+          ? '<button class="btn-small placed">✅ Placed $' + (state.placed_stake || "") + '</button>'
+          : state.skipped
+            ? '<button class="btn-small skipped">✕ Skipped</button>'
+            : state.checked
+              ? '<button class="btn-small checked">👁 Checked</button>'
+              : '<button class="btn-small" data-rec-id="' + rid + '" data-action="check">👁 Mark Checked</button>';
+        var placeBtn = (state.checked && !state.placed && !state.skipped)
+          ? '<button class="btn-small" data-rec-id="' + rid + '" data-action="place">✅ Record Placed</button>'
+          : '';
+        var skipBtn = (state.checked && !state.placed && !state.skipped)
+          ? '<button class="btn-small" data-rec-id="' + rid + '" data-action="skip">✕ Skip</button>'
+          : '';
+        var resetBtn = (state.placed || state.skipped)
+          ? '<button class="btn-small" data-rec-id="' + rid + '" data-action="reset">↩ Reset</button>'
+          : '';
+
+        var openBtn = bookUrl
+          ? '<a class="action-btn" href="' + bookUrl + '" target="_blank" rel="noopener">🔍 Open Sportsbet SGM</a>'
+          : '';
+
+        var confirmHtml = '';
+        if (!state.placed && !state.skipped) {
+          confirmHtml = '<div class="action-confirm">' +
+            '<label style="font-size:12px;color:var(--muted);display:block;margin-bottom:4px">📊 Actual SGM odds shown on Sportsbet (combined price)</label>' +
+            '<input type="number" step="0.01" min="1.01" placeholder="e.g. ' + decimalOdds(rec.combined_sportsbet_odds) + '" ' +
+            'data-rec-id="' + rid + '" data-action="odds-input" />' +
+            '<span id="conf-' + rid + '" class="result"></span>' +
+            '</div>';
+        }
+
+        var cardHtml = '<article class="action-card' + stateClass + '">' +
+          '<div class="action-top"><div>' +
+          '<div class="action-event">' + escapeHtml(rec.event || "") + '</div>' +
+          '<div class="action-meta">' + escapeHtml(rec.sport || "") + ' | ' + escapeHtml(betModeLabel) + ' | ' + legCount + ' legs</div>' +
+          '</div>' +
+          '<span class="decision-chip decision-' + escapeHtml(rec.recommendation) + '">' + escapeHtml(decisionLabels[rec.recommendation] || rec.recommendation) + '</span></div>' +
+          '<div class="action-detail">' +
+          '<div class="ad-item"><strong>' + escapeHtml(rec.bookmaker || "sportsbet") + '</strong><span>Book</span></div>' +
+          '<div class="ad-item"><strong>' + legCount + '</strong><span>Legs</span></div>' +
+          '<div class="ad-item"><strong>' + decimalOdds(rec.combined_sportsbet_odds) + '</strong><span>Combined odds</span></div>' +
+          '<div class="ad-item"><strong>' + decimalOdds(rec.estimated_fair_odds) + '</strong><span>Fair odds</span></div>' +
+          '<div class="ad-item"><strong>' + decimalOdds(rec.minimum_sgm_odds_for_bet) + '</strong><span>Min acceptable</span></div>' +
+          '<div class="ad-item"><strong>' + pct(rec.estimated_edge, 2) + '</strong><span>Edge</span></div>' +
+          '<div class="ad-item"><strong>' + money(rec.suggested_stake) + '</strong><span>Stake</span></div>' +
+          '<div class="ad-item"><strong>' + escapeHtml(rec.confidence || "low") + '</strong><span>Confidence</span></div>' +
+          '</div>' +
+          '<div class="action-btn-bar">' + openBtn + copyBtn + checkBtn + placeBtn + skipBtn + resetBtn + '</div>' +
+          confirmHtml +
+          '</article>';
+
+        _sgmRecData[rid] = rec;
+        return cardHtml;
+      }).join("");
+
+      target.innerHTML =
+        '<section class="section-panel">' +
+        '<div class="section-head"><div><h2>' + headerTitle + '</h2><p class="section-note">' + headerNote + '</p></div></div>' +
+        '<div class="action-warning">⚠️ Do not place until you confirm the exact SGM combined price on Sportsbet. The engine estimates individual leg prices — the Sportsbet SGM builder may use different rounding.</div>' +
+        '<div class="action-list">' + cards + '</div>' +
+        '</section>';
+    }
+
+    function handleOddsInput(input) {
+      var rid = input.dataset.recId;
+      var v = parseFloat(input.value);
+      var result = document.getElementById("conf-" + rid);
+      if (!v || v < 1) {
+        result.innerHTML = "";
+        result.className = "result";
+        return;
+      }
+      var rec = _sgmRecData[rid];
+      if (!rec) return;
+      var prob = rec.estimated_fair_probability;
+      if (!prob) { result.innerHTML = '<span class="result skip">Missing fair probability</span>'; result.className = "result skip"; return; }
+      var edge = v * prob - 1;
+      if (edge >= 0.03) {
+        var minOdds = rec.minimum_sgm_odds_for_bet;
+        var warn = minOdds && v < minOdds ? " ⚠️ Below minimum acceptable odds (" + decimalOdds(minOdds) + ")" : "";
+        result.innerHTML = '<span class="result place">✅ PLACE</span> ' + pct(edge, 2) + ' edge' + warn;
+        result.className = "result place";
+      } else {
+        result.innerHTML = '<span class="result skip">✕ SKIP</span> ' + pct(edge, 2) + ' edge';
+        result.className = "result skip";
+      }
+    }
+
+    var _actionQueueListenersAttached = false;
+    function attachActionQueueListeners() {
+      if (_actionQueueListenersAttached) return;
+      _actionQueueListenersAttached = true;
+      var container = document.getElementById("action-queue");
+      if (!container) return;
+
+      container.addEventListener("click", function(e) {
+        var btn = e.target.closest("[data-action]");
+        if (!btn) return;
+        var action = btn.dataset.action;
+        var rid = btn.dataset.recId;
+        if (!rid) return;
+
+        if (action === "copy") {
+          var rec = _sgmRecData[rid];
+          if (!rec) return;
+          copyBetDetails(rec);
+          var feedback = btn.nextElementSibling;
+          if (feedback) {
+            feedback.textContent = "✔ Copied";
+            feedback.classList.add("show");
+            setTimeout(function() { feedback.classList.remove("show"); }, 2000);
+          }
+        } else if (action === "check") {
+          setBetState(rid, {checked: true});
+          render(currentFeed);
+        } else if (action === "place") {
+          var rec2 = _sgmRecData[rid];
+          if (confirm("Record placed?")) {
+            setBetState(rid, {placed: true, placed_stake: rec2.suggested_stake, placed_odds: rec2.combined_sportsbet_odds});
+            render(currentFeed);
+          }
+        } else if (action === "skip") {
+          setBetState(rid, {skipped: true});
+          render(currentFeed);
+        } else if (action === "reset") {
+          setBetState(rid, {});
+          render(currentFeed);
+        }
+      });
+
+      container.addEventListener("input", function(e) {
+        if (e.target.dataset.action === "odds-input") {
+          handleOddsInput(e.target);
+        }
+      });
+    }
+    // ─── End Bet Action Workflow ─────────────────────────────────────
 
     function renderHeroLede(feed) {
       const slate = feed.daily_slate || {};
@@ -818,7 +1098,7 @@
               <td><span class="bracket-count">${r.count}</span></td>
               <td><span class="bracket-best-edge">${(r.bestEdge * 100).toFixed(2)}%</span></td>
               <td>${r.events.size} event${r.events.size !== 1 ? "s" : ""}</td>
-              <td><button class="bracket-toggle" onclick="var d=document.getElementById('${bid}');d.style.display=d.style.display==='none'?'':'none'">
+              <td><button class="bracket-toggle" data-bracket-toggle="${bid}">
                 ▸ Expand</button></td>
             </tr>
             <tr id="${bid}" style="display:none">
@@ -911,7 +1191,7 @@
           ${isPass
             ? `<div  id="${detailsId}">
                  <button class="details-toggle" aria-expanded="false"
-                   onclick="var b=this,d=document.getElementById(this.parentElement.id);b.setAttribute('aria-expanded',String(b.getAttribute('aria-expanded')!=='true'));d.querySelector('.details-body').toggleAttribute('open')"
+                   data-details-toggle="${detailsId}"
                  ><span class="arrow">▸</span> Show details</button>
                  <div class="details-body">${detailsContent}</div>
                </div>`
@@ -1050,6 +1330,8 @@
       renderStats(feed);
       renderTakeaway(feed);
       renderFilters(feed);
+      renderActionQueue(feed);
+      attachActionQueueListeners();
       renderRecommendations(feed);
       renderAlerts(feed);
       renderEventCoverage(feed);
@@ -1081,6 +1363,27 @@
 
     setupReportLinks();
     setupTheme();
+    // ─── Delegated toggle handlers (no inline onclick) ─────
+    document.addEventListener("click", function(e) {
+      // Bracket expand toggles
+      var bracketBtn = e.target.closest("[data-bracket-toggle]");
+      if (bracketBtn) {
+        var bid = bracketBtn.dataset.bracketToggle;
+        var row = document.getElementById(bid);
+        if (row) row.style.display = row.style.display === "none" ? "" : "none";
+        return;
+      }
+      // Details toggles
+      var detailsBtn = e.target.closest("[data-details-toggle]");
+      if (detailsBtn) {
+        var did = detailsBtn.dataset.detailsToggle;
+        var parent = document.getElementById(did);
+        if (!parent) return;
+        detailsBtn.setAttribute("aria-expanded", String(detailsBtn.getAttribute("aria-expanded") !== "true"));
+        var body = parent.querySelector(".details-body");
+        if (body) body.toggleAttribute("open");
+      }
+    });
     loadFeed();
   </script>
 </body>
