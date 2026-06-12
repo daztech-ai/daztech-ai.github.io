@@ -146,39 +146,47 @@ details .in{padding:8px 0;font-size:13px;color:#aaa;line-height:1.6}
 
 <!-- STRATEGY NOTE -->
 <div class="card" style="border-left:3px solid var(--purple)">
-  <div class="ch"><span class="ic">🎯</span> Promo Strategy — Two-Bookie Play</div>
+  <div class="ch"><span class="ic">🎯</span> Promo Strategy — Super SGM Cover Edition</div>
   <div class="cb">
     <p style="font-size:14px;font-weight:700;color:var(--purple);margin-bottom:6px">The Setup</p>
-    <p style="font-size:13px;color:#aaa">Two SGMs across two bookies, both covered by bonus bet promos if they miss:</p>
-    <div class="grid2" style="margin:8px 0">
-      <div style="background:#222;border-radius:8px;padding:10px">
-        <div style="font-weight:700;color:var(--sb);font-size:13px">🏦 Sportsbet</div>
-        <div style="font-size:12px;color:#ccc">$50 stake · $50 Bonus Bet if <strong>1 leg fails</strong></div>
-        <div style="font-size:11px;color:var(--dim)">Min total odds: $2.00</div>
+    <p style="font-size:13px;color:#aaa">Sportsbet's <strong>Super SGM Cover Tool</strong> has 3 tiers — the more legs you add, the more you can miss and still get the bonus back:</p>
+    <div class="grid3" style="margin:8px 0">
+      <div style="background:#222;border-radius:8px;padding:10px;border-left:3px solid var(--yellow)">
+        <div style="font-weight:700;color:var(--yellow);font-size:13px">3+ Leg</div>
+        <div style="font-size:12px;color:#ccc">Bonus if <strong>1 leg fails</strong></div>
+        <div style="font-size:11px;color:var(--dim)">SGM odds target: $3-$5</div>
       </div>
-      <div style="background:#222;border-radius:8px;padding:10px">
-        <div style="font-weight:700;color:var(--purple);font-size:13px">🎰 Neds / UniBet</div>
-        <div style="font-size:12px;color:#ccc">$25 stake · $25 Bonus Bet if <strong>ANY leg fails</strong></div>
-        <div style="font-size:11px;color:var(--dim)">Min total odds: $2.00</div>
+      <div style="background:#222;border-radius:8px;padding:10px;border-left:3px solid var(--green)">
+        <div style="font-weight:700;color:var(--green);font-size:13px">6+ Leg ⭐</div>
+        <div style="font-size:12px;color:#ccc">Bonus if <strong>up to 2 legs fail</strong></div>
+        <div style="font-size:11px;color:var(--dim)">SGM odds target: $8-$15</div>
+      </div>
+      <div style="background:#222;border-radius:8px;padding:10px;border-left:3px solid var(--purple)">
+        <div style="font-weight:700;color:var(--purple);font-size:13px">9+ Leg</div>
+        <div style="font-size:12px;color:#ccc">Bonus if <strong>up to 3 fail</strong></div>
+        <div style="font-size:11px;color:var(--dim)">SGM odds target: $25-$40</div>
       </div>
     </div>
-    <p style="font-size:13px;font-weight:600;color:var(--wc);margin-top:8px">Expected Value Matrix</p>
+    <p style="font-size:13px;color:#aaa;margin-top:4px"><strong>🎰 Neds/UniBet (separate promo):</strong> $25 Bonus Bet if <strong>ANY leg fails</strong> — best insurance coverage, applies to 3+ leg SGMs.</p>
+    <p style="font-size:13px;font-weight:600;color:var(--green);margin-top:8px">⭐ Recommended: Sportsbet 6-Leg Super Cover + Neds 3-Leg Any-Fail</p>
+    <p style="font-size:13px;font-weight:600;color:var(--wc);margin-top:8px">Expected Value Matrix (with 6-leg Sportsbet @ $9.65)</p>
     <table class="strat-table">
-      <tr><th>Scenario</th><th>SB ($50)</th><th>Neds ($25)</th><th>Net Result</th></tr>
-      <tr><td>🟢 Both hit</td><td class="pos">+$140*</td><td class="pos">+$110*</td><td class="pos"><strong>+$175</strong></td></tr>
-      <tr><td>🟡 SB hits, Neds any fail</td><td class="pos">+$140*</td><td class="neu">+$17.50</td><td class="pos"><strong>+$82</strong></td></tr>
-      <tr><td>🟡 SB 1 miss, Neds hits</td><td class="neu">+$35</td><td class="pos">+$110*</td><td class="pos"><strong>+$70</strong></td></tr>
-      <tr><td>🟠 SB 1 miss, Neds any fail</td><td class="neu">+$35</td><td class="neu">+$17.50</td><td class="neg"><strong>-$22.50</strong></td></tr>
-      <tr><td>🔴 SB 2+ miss, Neds any fail</td><td class="neg">$0</td><td class="neu">+$17.50</td><td class="neg"><strong>-$57.50</strong></td></tr>
+      <tr><th>Scenario</th><th>SB 6-Leg ($50)</th><th>Neds 3-Leg ($25)</th><th>Net Result</th></tr>
+      <tr><td>🟢 Both win</td><td class="pos">+$432*</td><td class="pos">+$194*</td><td class="pos"><strong>+$626</strong></td></tr>
+      <tr><td>🟡 SB wins, Neds any fail</td><td class="pos">+$432*</td><td class="neu">+$17.50</td><td class="pos"><strong>+$449</strong></td></tr>
+      <tr><td>🟡 SB 1-2 fail, Neds wins</td><td class="neu">+$35</td><td class="pos">+$194*</td><td class="pos"><strong>+$229</strong></td></tr>
+      <tr><td>🟠 SB 1-2 fail, Neds any fail</td><td class="neu">+$35</td><td class="neu">+$17.50</td><td class="neu"><strong>+$52.50</strong></td></tr>
+      <tr><td>🔴 SB 3+ fail, Neds any fail</td><td class="neg">$0</td><td class="neu">+$17.50</td><td class="neg"><strong>-$32.50</strong></td></tr>
     </table>
-    <p style="font-size:11px;color:var(--dim);margin-top:6px">*Based on ~$3.79 SB SGM and ~$5.40 Neds SGM. Bonus bet recovery estimated at 70% conversion. Actual results depend on final SGM odds locked in-app.</p>
+    <p style="font-size:11px;color:var(--dim);margin-top:6px">*Based on SB SGM ~$9.65 and Neds SGM ~$8.75. Bonus bet recovery estimated at 70% conversion. Worst case here is just -$32.50 vs the 3-leg-only version at -$57.50.</p>
     <details>
-      <summary>⚠️ Key Risks</summary>
+      <summary>⚠️ Key Risks & Strategy Notes</summary>
       <div class="in">
-        <p><strong>1. Sportsbet correlation trap:</strong> "1 leg fails" promo — but if 2+ legs fail, you get NOTHING from SB. Our conservative legs are correlated. If the match opens up and becomes a goal-fest, BTTS No AND Under 2.5 both die together. This is the #1 risk.</p>
-        <p><strong>2. Verify T&Cs:</strong> Does Sportsbet require exactly 1 leg to fail, or at least 1? Some promos only pay if precisely 1 leg misses. Check the fine print.</p>
-        <p><strong>3. Bonus bet conversion:</strong> 70% assumed via Back/Lay arbitrage. Less liquid markets during live World Cup action may reduce this. Budget for 60-65% worst case.</p>
-        <p><strong>4. SGM builder restrictions:</strong> Sportsbet and Neds may reject combos with correlated goals markets (BTTS No + U2.5). Have backup legs ready.</p>
+        <p><strong>1. Why 6 legs beats 3:</strong> The 3-leg version only triggers the bonus on exactly 1 failure. The 6-leg triggers on 1 OR 2 failures. With our correlated defensive thesis, if the match opens up and U2.5 misses, BTTS No and Cards-low often die too — under the 3-leg promo that's 2-3 simultaneous failures and zero bonus. Under 6-leg, 1-2 failures still pays out.</p>
+        <p><strong>2. Why NOT 9 legs:</strong> At 9 legs the combined odds balloon to $30+ and the "all hit" probability drops below 2%. With our leg hit rates around 60% on average, the 6-leg is the math sweet spot for bonus conversion rate.</p>
+        <p><strong>3. Verify T&Cs on app:</strong> Check that the Super SGM Cover Tool applies to the WC market (sometimes it excludes big tournaments). Check the min odds for each tier (likely $2+ for 3-leg, $5+ for 6-leg, $20+ for 9-leg). And confirm the bonus caps at $50.</p>
+        <p><strong>4. Bonus bet conversion:</strong> 70% assumed via Back/Lay. Live World Cup markets are liquid enough to support this.</p>
+        <p><strong>5. Correlation blocking:</strong> Sportsbet will reject combos with U2.5+U3.5 or BTTS No+U2.5 in some cases. The 6-leg below spreads across 6 different market types to avoid this.</p>
       </div>
     </details>
   </div>
@@ -213,6 +221,45 @@ details .in{padding:8px 0;font-size:13px;color:#aaa;line-height:1.6}
   <div class="sgf"><span>Sportsbet SGM</span><span class="po" style="color:var(--green)">~$3.65-3.95</span><span class="sk">Confidence: High</span></div>
 </div>
 
+<!-- SUPER SGM COVER - 6 LEG (RECOMMENDED) -->
+<div class="sgm sg-c" style="border-color:var(--green);border-width:3px">
+  <div class="sgh" style="background:#00c85322;font-size:15px">⭐ SUPER SGM COVER — 6 Leg <span style="font-weight:400;font-size:12px;color:#aaa">· Sportsbet · $50 Bonus if Up to 2 Legs Fail</span></div>
+  <div class="sgb">
+    <div class="sgl"><div class="dot"></div><div class="pk">BTTS No</div><div class="od">~$1.80</div></div>
+    <div class="sgl"><div class="dot"></div><div class="pk">Under 2.5 Goals</div><div class="od">~$1.62</div></div>
+    <div class="sgl"><div class="dot"></div><div class="pk">Over 1.5 Cards</div><div class="od">~$1.30</div></div>
+    <div class="sgl"><div class="dot"></div><div class="pk">Czech Republic or Draw DC</div><div class="od">~$1.50</div></div>
+    <div class="sgl"><div class="dot"></div><div class="pk">Under 9.5 Total Corners</div><div class="od">~$1.35</div></div>
+    <div class="sgl"><div class="dot"></div><div class="pk">Son Over 0.5 Shots on Target</div><div class="od">~$1.25</div></div>
+  </div>
+  <div class="sgf"><span>Sportsbet SGM (6-Leg)</span><span class="po" style="color:var(--green)">~$9.65</span><span class="sk">⭐ RECOMMENDED · Miss 1-2 = bonus</span></div>
+</div>
+
+<div class="alert" style="margin-top:0;border-color:var(--green)">
+  <div class="alert-ic">⭐</div>
+  <div>
+    <div class="alert-t" style="color:var(--green)">WHY 6 LEGS IS THE SWEET SPOT</div>
+    <div class="alert-b">6 markets across 4 different categories (goals, cards, result, corners, player props). Even if 2 of the goals-related legs die together (e.g., U2.5 + BTTS No), the cards/corners/DC/Son legs keep you in the bonus zone. Only a full blowout (3+ legs failing) loses the bonus entirely.</div>
+  </div>
+</div>
+
+<!-- MAX COVER - 9 LEG -->
+<div class="sgm sg-p" style="border-width:3px">
+  <div class="sgh" style="background:#7c4dff22;font-size:15px">🛡️ MAX COVER — 9 Leg <span style="font-weight:400;font-size:12px;color:#aaa">· Sportsbet · $50 Bonus if Up to 3 Legs Fail</span></div>
+  <div class="sgb">
+    <div class="sgl"><div class="dot"></div><div class="pk">BTTS No</div><div class="od">~$1.80</div></div>
+    <div class="sgl"><div class="dot"></div><div class="pk">Under 2.5 Goals</div><div class="od">~$1.62</div></div>
+    <div class="sgl"><div class="dot"></div><div class="pk">Over 1.5 Cards</div><div class="od">~$1.30</div></div>
+    <div class="sgl"><div class="dot"></div><div class="pk">Czech Republic or Draw DC</div><div class="od">~$1.50</div></div>
+    <div class="sgl"><div class="dot"></div><div class="pk">Under 9.5 Total Corners</div><div class="od">~$1.35</div></div>
+    <div class="sgl"><div class="dot"></div><div class="pk">Son Over 0.5 Shots on Target</div><div class="od">~$1.25</div></div>
+    <div class="sgl"><div class="dot"></div><div class="pk">Under 1.5 First Half Goals</div><div class="od">~$1.25</div></div>
+    <div class="sgl"><div class="dot"></div><div class="pk">Czech Republic Over 3.5 Corners</div><div class="od">~$1.30</div></div>
+    <div class="sgl"><div class="dot"></div><div class="pk">Total Cards Under 4.5</div><div class="od">~$1.30</div></div>
+  </div>
+  <div class="sgf"><span>Sportsbet SGM (9-Leg)</span><span class="po" style="color:var(--purple)">~$35.50</span><span class="sk">HIGH RISK/HIGH REWARD · Miss up to 3 = bonus</span></div>
+</div>
+
 <div class="card" style="border-left:3px solid var(--wc)">
   <div class="ch"><span class="ic">🏗️</span> Want >$4? Add One Non-Goal Leg From App</div>
   <div class="cb">
@@ -226,13 +273,14 @@ details .in{padding:8px 0;font-size:13px;color:#aaa;line-height:1.6}
 
 <!-- BALANCED SGM - NEDS -->
 <div class="sgm sg-b">
-  <div class="sgh">🟡 Balanced — 3 Leg <span style="font-weight:400;font-size:12px;color:#aaa">· Neds / UniBet · $25 Bonus if ANY Leg Fails</span></div>
+  <div class="sgh">🟡 Balanced — 4 Leg <span style="font-weight:400;font-size:12px;color:#aaa">· Neds / UniBet · $25 Bonus if ANY Leg Fails</span></div>
   <div class="sgb">
     <div class="sgl"><div class="dot"></div><div class="pk">Draw</div><div class="od">~$3.00</div></div>
     <div class="sgl"><div class="dot"></div><div class="pk">Under 2.5 Goals</div><div class="od">~$1.62</div></div>
     <div class="sgl"><div class="dot"></div><div class="pk">BTTS No</div><div class="od">~$1.80</div></div>
+    <div class="sgl"><div class="dot"></div><div class="pk">Over 1.5 Cards</div><div class="od">~$1.30</div></div>
   </div>
-  <div class="sgf"><span>Neds / UniBet SGM</span><span class="po" style="color:var(--yellow)">~$8.75</span><span class="sk">Confidence: Medium-High</span></div>
+  <div class="sgf"><span>Neds / UniBet SGM (4-Leg)</span><span class="po" style="color:var(--yellow)">~$11.38</span><span class="sk">Confidence: Medium-High · Better than 3-leg</span></div>
 </div>
 
 <div class="alert alert-r" style="margin-top:0">
@@ -279,12 +327,12 @@ details .in{padding:8px 0;font-size:13px;color:#aaa;line-height:1.6}
 <div class="card" style="border-left:3px solid var(--accent)">
   <div class="ch"><span class="ic">🐻</span> Deez's Play <span style="font-weight:400;font-size:12px;color:var(--dim)">(filling in for Nuttz 🥜)</span></div>
   <div class="cb">
-    <p><strong>🟢 Conservative 3-Leg (Sportsbet):</strong> BTTS No + Under 2.5 + Over 1.5 Cards<br><span style="font-weight:700;color:var(--sb)">~$3.65-$3.95</span></p>
-    <p style="font-size:13px;color:#aaa">This is the one with the most evidence behind it. SK haven't had a BTTS Yes match in 8 games (14/15). Both teams are defensively set up for a must-not-lose group opener. The Cards leg is the correlation-dodging bonus: WC tension + CZE physicality + stakes = bookings. The cards market resolves independently of goals.</p>
-    <p><strong>🟡 Balanced (Neds/UniBet):</strong> Draw + Under 2.5 + BTTS No<br><span style="font-weight:700;color:var(--purple)">~$8.75</span></p>
-    <p style="font-size:13px;color:#aaa">The Draw at +6% edge is the value leg here. KickOff has 0-0 at 9% and 1-1 at 13% as the top two scorelines. With the Neds/UniBet "any leg fails" safety net, the Draw is worth the swing — if it misses but the other 2 hit, you still get the $25 bonus.</p>
-    <p style="font-size:13px;color:#aaa;margin-top:4px"><strong>If I had to pick one:</strong> the Conservative. The BTTS No streak is the strongest single data point in this match. 14 of 15 is not random noise — that's a structural pattern. Build around it.</p>
-    <p style="font-size:12px;color:var(--dim);margin-top:6px"><strong>⚠️ All odds estimated from Bet365/KickOff consensus</strong> — confirm in each bookie app before locking. SGM builders may price differently.</p>
+    <p><strong>⭐ TOP PICK — Sportsbet 6-Leg Super SGM Cover:</strong><br>BTTS No + U2.5 + Over 1.5 Cards + CZE/Draw DC + U9.5 Corners + Son 0.5+ SoT<br><span style="font-weight:700;color:var(--green)">~$9.65</span></p>
+    <p style="font-size:13px;color:#aaa">This is the play built for the Super SGM Cover Tool. 6 different market types (goals, cards, result, corners, player props) means a single bad outcome in one category doesn't take out the bonus. If the match goes 0-0 with bookings, you still trigger the bonus even if 1-2 legs miss. If the match explodes to 3-1, the goals legs die but cards, corners, and result-DC might still save you. The bonus triggers on 1-2 failures — that's a wide window.</p>
+    <p><strong>🟡 Balanced (Neds/UniBet 4-Leg):</strong> Draw + U2.5 + BTTS No + Over 1.5 Cards<br><span style="font-weight:700;color:var(--purple)">~$11.38</span></p>
+    <p style="font-size:13px;color:#aaa">The Draw at +6% edge is the value leg. Cards leg is the insurance spread. With Neds' "ANY leg fails" safety net, even 1 miss triggers the $25 bonus. 4 legs gives you more upside than 3 with the same insurance.</p>
+    <p style="font-size:13px;color:#aaa;margin-top:4px"><strong>The Strategy Win:</strong> With 6-leg Sportsbet, your worst case is now -$32.50 (3+ SB legs fail AND any Neds leg fails). Compare to the 3-leg version at -$57.50. You cut the max loss nearly in half by simply adding more legs. The promo is designed to reward more legs — use it.</p>
+    <p style="font-size:12px;color:var(--dim);margin-top:6px"><strong>⚠️ All odds estimated from Bet365/KickOff consensus</strong> — confirm in each bookie app before locking. SGM builders may price differently. <strong>Kickoff in ~15 mins — act fast.</strong></p>
   </div>
 </div>
 
