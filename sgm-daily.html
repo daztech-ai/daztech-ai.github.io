@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daztech · SGM Daily Slate</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
+<script>
+  (function(){
+    var s = localStorage.getItem('daztech-theme');
+    var d = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    document.documentElement.dataset.theme = s || (d ? 'dark' : 'light');
+  })();
+</script>
+<style>
+  :root {
+    --bg: #faf7f2; --surface: #ffffff; --text: #2d2922; --muted: #8c8880;
+    --gold: #c8960c; --gold-soft: rgba(200,150,12,0.08); --gold-line: rgba(200,150,12,0.25);
+    --positive: #2ea043; --warning: #d29922; --negative: #f85149; --info: #58a6ff;
+    --border: #e5e0d5; --shadow: 0 1px 4px rgba(0,0,0,0.06);
+  }
+  html[data-theme="dark"] {
+    --bg: #0d1117; --surface: #161b22; --text: #c9d1d9; --muted: #8b949e;
+    --gold: #ffd700; --gold-soft: rgba(255,215,0,0.06); --gold-line: rgba(255,215,0,0.18);
+    --border: #30363d; --shadow: none;
+    --positive: #3fb950; --warning: #d29922; --negative: #f85149; --info: #58a6ff;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.5; min-height: 100vh;
+  }
+
+  /* ─── Topbar ──────────────────────────────── */
+  .topbar {
+    position: sticky; top: 0; z-index: 10;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0 24px; height: 52px;
+    background: var(--surface); border-bottom: 1px solid var(--border);
+  }
+  .brand { font-weight: 700; font-size: 15px; color: var(--gold); letter-spacing: -0.2px; }
+  .brand span { color: var(--muted); font-weight: 400; }
+  .navlinks { display: flex; gap: 18px; align-items: center; }
+  .navlinks a { color: var(--muted); text-decoration: none; font-size: 13px; font-weight: 500; }
+  .navlinks a:hover, .navlinks a.active { color: var(--text); }
+  .navlinks a.active { color: var(--gold); }
+  .theme-toggle {
+    background: none; border: 1px solid var(--border); border-radius: 6px;
+    color: var(--muted); cursor: pointer; padding: 4px 8px; font-size: 14px;
+  }
+
+  /* ─── Hero ────────────────────────────────── */
+  .hero {
+    text-align: center; padding: 40px 24px 28px;
+    border-bottom: 1px solid var(--border);
+  }
+  .hero h1 { font-size: 2rem; font-weight: 800; letter-spacing: -0.5px; }
+  .hero .subtitle { color: var(--muted); margin-top: 6px; font-size: 14px; }
+  .hero .date-chip {
+    display: inline-block; margin-top: 12px; padding: 4px 12px;
+    background: var(--gold-soft); color: var(--gold); border-radius: 20px;
+    font-size: 12px; font-weight: 600;
+  }
+
+  /* ─── Layout ──────────────────────────────── */
+  main {
+    max-width: 1120px; margin: 0 auto; padding: 24px 20px 60px;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  @media (max-width: 768px) { main { grid-template-columns: 1fr; } }
+
+  /* ─── Cards ───────────────────────────────── */
+  .panel {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 8px; padding: 20px;
+  }
+  .panel.full { grid-column: 1 / -1; }
+  .panel h2 {
+    font-size: 15px; font-weight: 700; margin-bottom: 14px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .panel h2 .num {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 24px; height: 24px; border-radius: 50%;
+    background: var(--gold-soft); color: var(--gold);
+    font-size: 12px; font-weight: 700;
+  }
+
+  /* ─── Stats grid ──────────────────────────── */
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .stat {
+    text-align: center; padding: 14px 8px;
+    border: 1px solid var(--border); border-radius: 6px;
+  }
+  .stat .value { font-size: 22px; font-weight: 800; }
+  .stat .label { font-size: 11px; color: var(--muted); margin-top: 2px; }
+  .stat.bet .value { color: var(--positive); }
+  .stat.watch .value { color: var(--warning); }
+  .stat.pass .value { color: var(--negative); }
+
+  /* ─── Recommendation table ────────────────── */
+  .rec-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .rec-table th { text-align: left; color: var(--muted); font-weight: 600; font-size: 11px; padding: 6px 8px; border-bottom: 1px solid var(--border); }
+  .rec-table td { padding: 8px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .rec-table tr:last-child td { border-bottom: none; }
+  .pill {
+    display: inline-block; padding: 2px 8px; border-radius: 10px;
+    font-size: 11px; font-weight: 700; text-transform: uppercase;
+  }
+  .pill.bet { background: rgba(46,160,67,0.15); color: var(--positive); }
+  .pill.watch { background: rgba(210,153,34,0.15); color: var(--warning); }
+  .pill.pass { background: rgba(248,81,73,0.15); color: var(--negative); }
+  .flag { display: inline-block; font-size: 10px; color: var(--muted); background: var(--bg); padding: 1px 5px; border-radius: 3px; margin: 1px; }
+
+  /* ─── Alerts ──────────────────────────────── */
+  .alert {
+    padding: 10px 14px; border-radius: 6px; margin-bottom: 8px;
+    font-size: 13px; border-left: 3px solid;
+  }
+  .alert.error { background: rgba(248,81,73,0.08); border-color: var(--negative); }
+  .alert.warning { background: rgba(210,153,34,0.08); border-color: var(--warning); }
+  .alert.info { background: rgba(88,166,255,0.08); border-color: var(--info); }
+
+  /* ─── Footer ──────────────────────────────── */
+  footer {
+    text-align: center; padding: 20px; border-top: 1px solid var(--border);
+    font-size: 12px; color: var(--muted);
+  }
+  footer a { color: var(--gold); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand">Daztech<span> · SGM</span></div>
+  <div class="navlinks">
+    <a href="index.html">Hub</a>
+    <a href="architecture.html">How it works</a>
+    <a href="roadmap.html">Roadmap</a>
+    <a href="sgm-daily.html" class="active">SGM</a>
+    <a href="https://github.com/daztech-ai/daztech-ai.github.io" target="_blank" rel="noopener">Source ↗</a>
+    <button class="theme-toggle" onclick="toggleTheme()">◐</button>
+  </div>
+</div>
+
+<div class="hero">
+  <h1>SGM Daily Slate</h1>
+  <p class="subtitle">Automated same-game multi analysis — bet/watch/pass with reasoning</p>
+  <span class="date-chip" id="date-chip">2026-06-12</span>
+</div>
+
+<main>
+  <!-- Stats -->
+  <div class="panel full">
+    <h2><span class="num">1</span>Today's slate</h2>
+    <div class="stats" id="stats-grid">
+      <div class="stat bet"><div class="value" id="stat-bets">—</div><div class="label">Bets</div></div>
+      <div class="stat watch"><div class="value" id="stat-watches">—</div><div class="label">Watching</div></div>
+      <div class="stat pass"><div class="value" id="stat-passes">—</div><div class="label">Passed</div></div>
+      <div class="stat"><div class="value" id="stat-total">—</div><div class="label">Total</div></div>
+      <div class="stat"><div class="value" id="stat-events">—</div><div class="label">Events</div></div>
+      <div class="stat"><div class="value" id="stat-staked">—</div><div class="label">Staked</div></div>
+    </div>
+  </div>
+
+  <!-- Recommendations -->
+  <div class="panel full">
+    <h2><span class="num">2</span>Recommendations</h2>
+    <div style="overflow-x:auto">
+      <table class="rec-table">
+        <thead>
+          <tr>
+            <th>Event</th>
+            <th>Decision</th>
+            <th>Mode</th>
+            <th>Edge</th>
+            <th>Stake</th>
+            <th>Confidence</th>
+            <th>Source Quality</th>
+            <th>Flags</th>
+            <th>Reasoning</th>
+          </tr>
+        </thead>
+        <tbody id="rec-tbody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Alerts -->
+  <div class="panel">
+    <h2><span class="num">3</span>Alerts</h2>
+    <div id="alerts-container"></div>
+  </div>
+
+  <!-- Source quality -->
+  <div class="panel">
+    <h2><span class="num">4</span>Source coverage</h2>
+    <div id="sources-container"></div>
+  </div>
+</main>
+
+<footer>
+  <p>Daztech SGM Engine v2 · Generated <span id="gen-time">—</span> · <a href="https://github.com/daztech-ai/daztech-ai.github.io/blob/main/sgm-daily.html">View source</a></p>
+</footer>
+
+<script>
+function toggleTheme(){
+  var r = document.documentElement;
+  r.dataset.theme = r.dataset.theme === 'dark' ? 'light' : 'dark';
+  localStorage.setItem('daztech-theme', r.dataset.theme);
+}
+
+// Load the live agent feed
+fetch('sgm-daily/agent_feed.json?' + Date.now())
+  .then(function(r){ return r.json(); })
+  .then(function(feed){
+    // Stats
+    var s = feed.daily_slate;
+    document.getElementById('stat-bets').textContent = s.bets;
+    document.getElementById('stat-watches').textContent = s.watches;
+    document.getElementById('stat-passes').textContent = s.passes;
+    document.getElementById('stat-total').textContent = s.total_candidates;
+    document.getElementById('stat-staked').textContent = '$' + s.total_staked.toFixed(2);
+    var events = new Set(feed.recommendations.map(function(r){ return r.event; }));
+    document.getElementById('stat-events').textContent = events.size;
+    document.getElementById('date-chip').textContent = s.date || feed.generated_at.split('T')[0];
+    document.getElementById('gen-time').textContent = feed.generated_at;
+
+    // Recommendation table
+    var tbody = document.getElementById('rec-tbody');
+    feed.recommendations.forEach(function(r){
+      var flags = (r.data_quality_flags || []).map(function(f){
+        return '<span class="flag">' + f + '</span>';
+      }).join(' ');
+      var edge = r.estimated_edge != null ? (r.estimated_edge * 100).toFixed(2) + '%' : '—';
+      var row = '<tr>' +
+        '<td><strong>' + escapeHtml(r.event) + '</strong><br><span style="font-size:11px;color:var(--muted)">' + escapeHtml(r.home_team) + ' vs ' + escapeHtml(r.away_team) + '</span></td>' +
+        '<td><span class="pill ' + r.recommendation + '">' + r.recommendation + '</span></td>' +
+        '<td>' + (r.bet_mode || '—') + '</td>' +
+        '<td style="font-family:monospace">' + edge + '</td>' +
+        '<td style="font-family:monospace">$' + r.suggested_stake.toFixed(2) + '</td>' +
+        '<td>' + r.confidence + '</td>' +
+        '<td>' + r.source_quality + '</td>' +
+        '<td>' + flags + '</td>' +
+        '<td style="font-size:11px;color:var(--muted)">' + escapeHtml(r.reasoning || '') + '</td>' +
+        '</tr>';
+      tbody.insertAdjacentHTML('beforeend', row);
+    });
+
+    // Alerts
+    var ac = document.getElementById('alerts-container');
+    if (feed.alerts.length === 0) {
+      ac.innerHTML = '<p style="color:var(--muted)">No alerts.</p>';
+    } else {
+      feed.alerts.forEach(function(a){
+        ac.insertAdjacentHTML('beforeend',
+          '<div class="alert ' + a.severity + '">' +
+          '<strong>' + escapeHtml(a.title) + '</strong> &mdash; ' +
+          escapeHtml(a.body) + '</div>'
+        );
+      });
+    }
+
+    // Source quality breakdown
+    var sq = {};
+    feed.recommendations.forEach(function(r){
+      sq[r.source_quality] = (sq[r.source_quality] || 0) + 1;
+    });
+    var sc = document.getElementById('sources-container');
+    var keys = Object.keys(sq).sort();
+    if (keys.length === 0) {
+      sc.innerHTML = '<p style="color:var(--muted)">No source data.</p>';
+    } else {
+      var items = keys.map(function(k){
+        return '<div style="margin-bottom:4px"><strong>' + k + '</strong>: ' + sq[k] + ' recommendations</div>';
+      });
+      sc.innerHTML = items.join('');
+    }
+  })
+  .catch(function(e){
+    document.body.innerHTML += '<div style="color:var(--negative);padding:20px;text-align:center">Failed to load feed: ' + e.message + '</div>';
+  });
+
+function escapeHtml(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+</script>
+</body>
+</html>

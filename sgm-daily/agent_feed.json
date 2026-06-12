@@ -1,0 +1,289 @@
+{
+  "feed_version": "1.0",
+  "generated_at": "2026-06-12T02:16:15.519794+00:00",
+  "daily_slate": {
+    "total_candidates": 12,
+    "bets": 0,
+    "watches": 12,
+    "passes": 0,
+    "total_staked": 0.0
+  },
+  "alerts": [
+    {
+      "severity": "warning",
+      "title": "Daily SGM Slate",
+      "body": "**Daily SGM Slate** \u2014 12 candidates\n\ud83d\udfe2 0 bets \u2014 $0.00 total staked\n\ud83d\udfe1 12 watching \u2014 \ud83d\udd34 0 passed",
+      "trigger": "daily_slate",
+      "generated_at": "2026-06-12T02:16:15.519744+00:00"
+    },
+    {
+      "severity": "error",
+      "title": "Stale Odds Detected",
+      "body": "12 recommendation(s) have stale or missing odds data. Odds should be refreshed within 24h.",
+      "trigger": "stale_data",
+      "generated_at": "2026-06-12T02:16:15.519751+00:00"
+    }
+  ],
+  "recommendations": [
+    {
+      "recommendation_id": "0c28831c-7ea8-4d82-bc0a-cb4461577bf5",
+      "event": "Storm vs Roosters",
+      "sport": "nrl",
+      "home_team": "Storm",
+      "away_team": "Roosters",
+      "commence_time": "2026-07-15T10:00:00Z",
+      "bet_mode": "core_sgm",
+      "recommendation": "watch",
+      "suggested_stake": 0.0,
+      "estimated_edge": -0.099820432,
+      "confidence": "low",
+      "source_quality": "weak",
+      "data_quality_flags": [
+        "combined_price_estimated",
+        "expert_analysis_required",
+        "manual_price_required",
+        "model_probability_missing"
+      ],
+      "reasoning": "Edge: -9.98% | Price: estimated_leg_product | Exact Sportsbet SGM price still required"
+    },
+    {
+      "recommendation_id": "bc32015c-8f1e-4108-aeed-b65b21aff481",
+      "event": "Storm vs Roosters",
+      "sport": "nrl",
+      "home_team": "Storm",
+      "away_team": "Roosters",
+      "commence_time": "2026-07-15T10:00:00Z",
+      "bet_mode": "core_sgm",
+      "recommendation": "watch",
+      "suggested_stake": 0.0,
+      "estimated_edge": -0.099820432,
+      "confidence": "low",
+      "source_quality": "weak",
+      "data_quality_flags": [
+        "combined_price_estimated",
+        "expert_analysis_required",
+        "manual_price_required",
+        "model_probability_missing"
+      ],
+      "reasoning": "Edge: -9.98% | Price: estimated_leg_product | Exact Sportsbet SGM price still required"
+    },
+    {
+      "recommendation_id": "96827fad-8ee8-4865-9a23-9a643bf07f7b",
+      "event": "Storm vs Roosters",
+      "sport": "nrl",
+      "home_team": "Storm",
+      "away_team": "Roosters",
+      "commence_time": "2026-07-15T10:00:00Z",
+      "bet_mode": "core_sgm",
+      "recommendation": "watch",
+      "suggested_stake": 0.0,
+      "estimated_edge": -0.10054,
+      "confidence": "low",
+      "source_quality": "weak",
+      "data_quality_flags": [
+        "combined_price_estimated",
+        "expert_analysis_required",
+        "manual_price_required",
+        "model_probability_missing"
+      ],
+      "reasoning": "Edge: -10.05% | Price: estimated_leg_product | Exact Sportsbet SGM price still required"
+    },
+    {
+      "recommendation_id": "75f935bc-d22b-457e-8f81-c7aed25c0c59",
+      "event": "Storm vs Roosters",
+      "sport": "nrl",
+      "home_team": "Storm",
+      "away_team": "Roosters",
+      "commence_time": "2026-07-15T10:00:00Z",
+      "bet_mode": "core_sgm",
+      "recommendation": "watch",
+      "suggested_stake": 0.0,
+      "estimated_edge": -0.10054,
+      "confidence": "low",
+      "source_quality": "weak",
+      "data_quality_flags": [
+        "combined_price_estimated",
+        "expert_analysis_required",
+        "manual_price_required",
+        "model_probability_missing"
+      ],
+      "reasoning": "Edge: -10.05% | Price: estimated_leg_product | Exact Sportsbet SGM price still required"
+    },
+    {
+      "recommendation_id": "10092e21-8cd4-49e8-89a9-1df2d7c9617d",
+      "event": "Broncos vs Panthers",
+      "sport": "nrl",
+      "home_team": "Broncos",
+      "away_team": "Panthers",
+      "commence_time": "2026-07-15T10:00:00Z",
+      "bet_mode": "core_sgm",
+      "recommendation": "watch",
+      "suggested_stake": 0.0,
+      "estimated_edge": -0.099820432,
+      "confidence": "low",
+      "source_quality": "weak",
+      "data_quality_flags": [
+        "combined_price_estimated",
+        "expert_analysis_required",
+        "manual_price_required",
+        "model_probability_missing"
+      ],
+      "reasoning": "Edge: -9.98% | Price: estimated_leg_product | Exact Sportsbet SGM price still required"
+    },
+    {
+      "recommendation_id": "85a96128-21f7-417a-8bc2-1cf607eb735c",
+      "event": "Broncos vs Panthers",
+      "sport": "nrl",
+      "home_team": "Broncos",
+      "away_team": "Panthers",
+      "commence_time": "2026-07-15T10:00:00Z",
+      "bet_mode": "core_sgm",
+      "recommendation": "watch",
+      "suggested_stake": 0.0,
+      "estimated_edge": -0.099820432,
+      "confidence": "low",
+      "source_quality": "weak",
+      "data_quality_flags": [
+        "combined_price_estimated",
+        "expert_analysis_required",
+        "manual_price_required",
+        "model_probability_missing"
+      ],
+      "reasoning": "Edge: -9.98% | Price: estimated_leg_product | Exact Sportsbet SGM price still required"
+    },
+    {
+      "recommendation_id": "bb8a16e7-61eb-45b1-adbc-b5d82f203414",
+      "event": "Broncos vs Panthers",
+      "sport": "nrl",
+      "home_team": "Broncos",
+      "away_team": "Panthers",
+      "commence_time": "2026-07-15T10:00:00Z",
+      "bet_mode": "core_sgm",
+      "recommendation": "watch",
+      "suggested_stake": 0.0,
+      "estimated_edge": -0.10054,
+      "confidence": "low",
+      "source_quality": "weak",
+      "data_quality_flags": [
+        "combined_price_estimated",
+        "expert_analysis_required",
+        "manual_price_required",
+        "model_probability_missing"
+      ],
+      "reasoning": "Edge: -10.05% | Price: estimated_leg_product | Exact Sportsbet SGM price still required"
+    },
+    {
+      "recommendation_id": "2e96deda-8e4f-4c63-a726-59954e3bba2a",
+      "event": "Broncos vs Panthers",
+      "sport": "nrl",
+      "home_team": "Broncos",
+      "away_team": "Panthers",
+      "commence_time": "2026-07-15T10:00:00Z",
+      "bet_mode": "core_sgm",
+      "recommendation": "watch",
+      "suggested_stake": 0.0,
+      "estimated_edge": -0.10054,
+      "confidence": "low",
+      "source_quality": "weak",
+      "data_quality_flags": [
+        "combined_price_estimated",
+        "expert_analysis_required",
+        "manual_price_required",
+        "model_probability_missing"
+      ],
+      "reasoning": "Edge: -10.05% | Price: estimated_leg_product | Exact Sportsbet SGM price still required"
+    },
+    {
+      "recommendation_id": "3f1fe016-2cae-4e95-bcfc-f527b7947e18",
+      "event": "Sharks vs Eels",
+      "sport": "nrl",
+      "home_team": "Sharks",
+      "away_team": "Eels",
+      "commence_time": "2026-07-15T10:00:00Z",
+      "bet_mode": "core_sgm",
+      "recommendation": "watch",
+      "suggested_stake": 0.0,
+      "estimated_edge": -0.099820432,
+      "confidence": "low",
+      "source_quality": "weak",
+      "data_quality_flags": [
+        "combined_price_estimated",
+        "expert_analysis_required",
+        "manual_price_required",
+        "model_probability_missing"
+      ],
+      "reasoning": "Edge: -9.98% | Price: estimated_leg_product | Exact Sportsbet SGM price still required"
+    },
+    {
+      "recommendation_id": "24fa5860-a1f2-4aff-8437-1c157a4b42bb",
+      "event": "Sharks vs Eels",
+      "sport": "nrl",
+      "home_team": "Sharks",
+      "away_team": "Eels",
+      "commence_time": "2026-07-15T10:00:00Z",
+      "bet_mode": "core_sgm",
+      "recommendation": "watch",
+      "suggested_stake": 0.0,
+      "estimated_edge": -0.099820432,
+      "confidence": "low",
+      "source_quality": "weak",
+      "data_quality_flags": [
+        "combined_price_estimated",
+        "expert_analysis_required",
+        "manual_price_required",
+        "model_probability_missing"
+      ],
+      "reasoning": "Edge: -9.98% | Price: estimated_leg_product | Exact Sportsbet SGM price still required"
+    },
+    {
+      "recommendation_id": "1e2a7b71-1d37-4678-9d6c-ba9aca9df325",
+      "event": "Sharks vs Eels",
+      "sport": "nrl",
+      "home_team": "Sharks",
+      "away_team": "Eels",
+      "commence_time": "2026-07-15T10:00:00Z",
+      "bet_mode": "core_sgm",
+      "recommendation": "watch",
+      "suggested_stake": 0.0,
+      "estimated_edge": -0.10054,
+      "confidence": "low",
+      "source_quality": "weak",
+      "data_quality_flags": [
+        "combined_price_estimated",
+        "expert_analysis_required",
+        "manual_price_required",
+        "model_probability_missing"
+      ],
+      "reasoning": "Edge: -10.05% | Price: estimated_leg_product | Exact Sportsbet SGM price still required"
+    },
+    {
+      "recommendation_id": "b5b376a3-4b90-4543-86f0-184ea47b390c",
+      "event": "Sharks vs Eels",
+      "sport": "nrl",
+      "home_team": "Sharks",
+      "away_team": "Eels",
+      "commence_time": "2026-07-15T10:00:00Z",
+      "bet_mode": "core_sgm",
+      "recommendation": "watch",
+      "suggested_stake": 0.0,
+      "estimated_edge": -0.10054,
+      "confidence": "low",
+      "source_quality": "weak",
+      "data_quality_flags": [
+        "combined_price_estimated",
+        "expert_analysis_required",
+        "manual_price_required",
+        "model_probability_missing"
+      ],
+      "reasoning": "Edge: -10.05% | Price: estimated_leg_product | Exact Sportsbet SGM price still required"
+    }
+  ],
+  "audit": {
+    "total_recommendations": 12,
+    "total_alerts": 2,
+    "alert_triggers": [
+      "daily_slate",
+      "stale_data"
+    ]
+  }
+}

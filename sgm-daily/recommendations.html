@@ -1,0 +1,688 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SGM Recommendation Report</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f7f8fb;
+      --ink: #111827;
+      --muted: #5b6472;
+      --line: #d8dde6;
+      --panel: #ffffff;
+      --good: #116a3a;
+      --watch: #8a5a00;
+      --bad: #9f1d20;
+      --accent: #174ea6;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.45;
+    }
+    header {
+      padding: 28px 18px 18px;
+      border-bottom: 1px solid var(--line);
+      background: #ffffff;
+    }
+    main {
+      width: min(1120px, calc(100% - 28px));
+      margin: 20px auto 42px;
+    }
+    h1, h2, h3 { margin: 0; }
+    h1 { font-size: clamp(26px, 4vw, 42px); }
+    .subtitle { margin-top: 8px; color: var(--muted); }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 10px;
+      margin-top: 18px;
+    }
+    .metric {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      background: var(--panel);
+    }
+    .metric strong { display: block; font-size: 22px; }
+    .metric span { color: var(--muted); font-size: 13px; }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      margin: 14px 0;
+      padding: 16px;
+    }
+    .card-head {
+      display: flex;
+      gap: 12px;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 10px;
+      margin-bottom: 12px;
+    }
+    .badge {
+      display: inline-block;
+      border-radius: 999px;
+      padding: 4px 9px;
+      font-size: 12px;
+      font-weight: 700;
+      background: #edf2ff;
+      color: var(--accent);
+      margin: 3px 4px 3px 0;
+    }
+    .decision-watch { color: var(--watch); }
+    .decision-pass { color: var(--bad); }
+    .decision-bet { color: var(--good); }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      font-size: 14px;
+    }
+    th, td {
+      text-align: left;
+      border-bottom: 1px solid var(--line);
+      padding: 8px 6px;
+      vertical-align: top;
+    }
+    th { color: var(--muted); font-size: 12px; text-transform: uppercase; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 10px;
+      margin: 12px 0;
+    }
+    .note {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 4px;
+    }
+    .source-section {
+      margin-top: 10px;
+      padding-top: 8px;
+      border-top: 1px dashed var(--line);
+    }
+    .source-section ul {
+      margin: 4px 0 0;
+      padding-left: 18px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .stake-positive { color: var(--good); font-weight: 700; }
+    footer {
+      color: var(--muted);
+      font-size: 12px;
+      border-top: 1px solid var(--line);
+      padding-top: 14px;
+      margin-top: 24px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>SGM Recommendation Report</h1>
+    <p class="subtitle">Final betting decisions with expert analysis</p>
+  </header>
+  <main>
+    <section class="summary">
+  <div class="metric"><strong>12</strong><span>Total</span></div>
+  <div class="metric"><strong>0</strong><span>Bet</span></div>
+  <div class="metric"><strong>12</strong><span>Watch</span></div>
+  <div class="metric"><strong>0</strong><span>Pass</span></div>
+  <div class="metric"><strong>$0.00</strong><span>Total Staked (Bets)</span></div>
+</section>
+    <section class="card">
+  <div class="card-head">
+    <div>
+      <h2>Storm vs Roosters</h2>
+      <p class="note">nrl / core_sgm</p>
+    </div>
+    <div>
+      <h3 class="decision-watch">WATCH</h3>
+      <p class="note">Confidence: low</p>
+    </div>
+  </div>
+  <div class="grid">
+    <div><strong>26.3%</strong><br><span class="note">Fair probability</span></div>
+    <div><strong>3.80</strong><br><span class="note">Fair odds</span></div>
+    <div><strong>3.42</strong><br><span class="note">Combined SGM price</span></div>
+    <div><strong>-10.0%</strong><br><span class="note">Estimated edge</span></div>
+    <div><strong class="">$0.00</strong><br><span class="note">Stake (cap $50.00)</span></div>
+  </div>
+  <table>
+    <thead>
+      <tr><th>Market</th><th>Selection</th><th>Odds</th><th>Model Prob</th><th>Leg Edge</th></tr>
+    </thead>
+    <tbody><tr>
+  <td>h2h</td>
+  <td>Home</td>
+  <td>1.80</td>
+  <td>55.6%</td>
+  <td>0.0%</td>
+</tr>
+<tr>
+  <td>totals</td>
+  <td>Over 42.5 42.5</td>
+  <td>1.90</td>
+  <td>52.6%</td>
+  <td>0.0%</td>
+</tr></tbody>
+  </table>
+  <p>Edge: -9.98% | Price: estimated_leg_product | Exact Sportsbet SGM price still required</p>
+  <div><span class="badge">combined_price_estimated</span><span class="badge">expert_analysis_required</span><span class="badge">manual_price_required</span><span class="badge">model_probability_missing</span></div>
+  <div class="source-section">
+    <strong>Expert Sources:</strong>
+    <p class="note">Quality: weak</p>
+    <ul><li>NRL Official (official, neutral) — Official NRL draw, ladder, and team lists.</li></ul>
+  </div>
+</section>
+<section class="card">
+  <div class="card-head">
+    <div>
+      <h2>Storm vs Roosters</h2>
+      <p class="note">nrl / core_sgm</p>
+    </div>
+    <div>
+      <h3 class="decision-watch">WATCH</h3>
+      <p class="note">Confidence: low</p>
+    </div>
+  </div>
+  <div class="grid">
+    <div><strong>26.3%</strong><br><span class="note">Fair probability</span></div>
+    <div><strong>3.80</strong><br><span class="note">Fair odds</span></div>
+    <div><strong>3.42</strong><br><span class="note">Combined SGM price</span></div>
+    <div><strong>-10.0%</strong><br><span class="note">Estimated edge</span></div>
+    <div><strong class="">$0.00</strong><br><span class="note">Stake (cap $50.00)</span></div>
+  </div>
+  <table>
+    <thead>
+      <tr><th>Market</th><th>Selection</th><th>Odds</th><th>Model Prob</th><th>Leg Edge</th></tr>
+    </thead>
+    <tbody><tr>
+  <td>h2h</td>
+  <td>Home</td>
+  <td>1.80</td>
+  <td>55.6%</td>
+  <td>0.0%</td>
+</tr>
+<tr>
+  <td>totals</td>
+  <td>Under 42.5 42.5</td>
+  <td>1.90</td>
+  <td>52.6%</td>
+  <td>0.0%</td>
+</tr></tbody>
+  </table>
+  <p>Edge: -9.98% | Price: estimated_leg_product | Exact Sportsbet SGM price still required</p>
+  <div><span class="badge">combined_price_estimated</span><span class="badge">expert_analysis_required</span><span class="badge">manual_price_required</span><span class="badge">model_probability_missing</span></div>
+  <div class="source-section">
+    <strong>Expert Sources:</strong>
+    <p class="note">Quality: weak</p>
+    <ul><li>NRL Official (official, neutral) — Official NRL draw, ladder, and team lists.</li></ul>
+  </div>
+</section>
+<section class="card">
+  <div class="card-head">
+    <div>
+      <h2>Storm vs Roosters</h2>
+      <p class="note">nrl / core_sgm</p>
+    </div>
+    <div>
+      <h3 class="decision-watch">WATCH</h3>
+      <p class="note">Confidence: low</p>
+    </div>
+  </div>
+  <div class="grid">
+    <div><strong>23.7%</strong><br><span class="note">Fair probability</span></div>
+    <div><strong>4.22</strong><br><span class="note">Fair odds</span></div>
+    <div><strong>3.80</strong><br><span class="note">Combined SGM price</span></div>
+    <div><strong>-10.1%</strong><br><span class="note">Estimated edge</span></div>
+    <div><strong class="">$0.00</strong><br><span class="note">Stake (cap $50.00)</span></div>
+  </div>
+  <table>
+    <thead>
+      <tr><th>Market</th><th>Selection</th><th>Odds</th><th>Model Prob</th><th>Leg Edge</th></tr>
+    </thead>
+    <tbody><tr>
+  <td>h2h</td>
+  <td>Away</td>
+  <td>2.00</td>
+  <td>50.0%</td>
+  <td>0.0%</td>
+</tr>
+<tr>
+  <td>totals</td>
+  <td>Over 42.5 42.5</td>
+  <td>1.90</td>
+  <td>52.6%</td>
+  <td>0.0%</td>
+</tr></tbody>
+  </table>
+  <p>Edge: -10.05% | Price: estimated_leg_product | Exact Sportsbet SGM price still required</p>
+  <div><span class="badge">combined_price_estimated</span><span class="badge">expert_analysis_required</span><span class="badge">manual_price_required</span><span class="badge">model_probability_missing</span></div>
+  <div class="source-section">
+    <strong>Expert Sources:</strong>
+    <p class="note">Quality: weak</p>
+    <ul><li>NRL Official (official, neutral) — Official NRL draw, ladder, and team lists.</li></ul>
+  </div>
+</section>
+<section class="card">
+  <div class="card-head">
+    <div>
+      <h2>Storm vs Roosters</h2>
+      <p class="note">nrl / core_sgm</p>
+    </div>
+    <div>
+      <h3 class="decision-watch">WATCH</h3>
+      <p class="note">Confidence: low</p>
+    </div>
+  </div>
+  <div class="grid">
+    <div><strong>23.7%</strong><br><span class="note">Fair probability</span></div>
+    <div><strong>4.22</strong><br><span class="note">Fair odds</span></div>
+    <div><strong>3.80</strong><br><span class="note">Combined SGM price</span></div>
+    <div><strong>-10.1%</strong><br><span class="note">Estimated edge</span></div>
+    <div><strong class="">$0.00</strong><br><span class="note">Stake (cap $50.00)</span></div>
+  </div>
+  <table>
+    <thead>
+      <tr><th>Market</th><th>Selection</th><th>Odds</th><th>Model Prob</th><th>Leg Edge</th></tr>
+    </thead>
+    <tbody><tr>
+  <td>h2h</td>
+  <td>Away</td>
+  <td>2.00</td>
+  <td>50.0%</td>
+  <td>0.0%</td>
+</tr>
+<tr>
+  <td>totals</td>
+  <td>Under 42.5 42.5</td>
+  <td>1.90</td>
+  <td>52.6%</td>
+  <td>0.0%</td>
+</tr></tbody>
+  </table>
+  <p>Edge: -10.05% | Price: estimated_leg_product | Exact Sportsbet SGM price still required</p>
+  <div><span class="badge">combined_price_estimated</span><span class="badge">expert_analysis_required</span><span class="badge">manual_price_required</span><span class="badge">model_probability_missing</span></div>
+  <div class="source-section">
+    <strong>Expert Sources:</strong>
+    <p class="note">Quality: weak</p>
+    <ul><li>NRL Official (official, neutral) — Official NRL draw, ladder, and team lists.</li></ul>
+  </div>
+</section>
+<section class="card">
+  <div class="card-head">
+    <div>
+      <h2>Broncos vs Panthers</h2>
+      <p class="note">nrl / core_sgm</p>
+    </div>
+    <div>
+      <h3 class="decision-watch">WATCH</h3>
+      <p class="note">Confidence: low</p>
+    </div>
+  </div>
+  <div class="grid">
+    <div><strong>26.3%</strong><br><span class="note">Fair probability</span></div>
+    <div><strong>3.80</strong><br><span class="note">Fair odds</span></div>
+    <div><strong>3.42</strong><br><span class="note">Combined SGM price</span></div>
+    <div><strong>-10.0%</strong><br><span class="note">Estimated edge</span></div>
+    <div><strong class="">$0.00</strong><br><span class="note">Stake (cap $50.00)</span></div>
+  </div>
+  <table>
+    <thead>
+      <tr><th>Market</th><th>Selection</th><th>Odds</th><th>Model Prob</th><th>Leg Edge</th></tr>
+    </thead>
+    <tbody><tr>
+  <td>h2h</td>
+  <td>Home</td>
+  <td>1.80</td>
+  <td>55.6%</td>
+  <td>0.0%</td>
+</tr>
+<tr>
+  <td>totals</td>
+  <td>Over 42.5 42.5</td>
+  <td>1.90</td>
+  <td>52.6%</td>
+  <td>0.0%</td>
+</tr></tbody>
+  </table>
+  <p>Edge: -9.98% | Price: estimated_leg_product | Exact Sportsbet SGM price still required</p>
+  <div><span class="badge">combined_price_estimated</span><span class="badge">expert_analysis_required</span><span class="badge">manual_price_required</span><span class="badge">model_probability_missing</span></div>
+  <div class="source-section">
+    <strong>Expert Sources:</strong>
+    <p class="note">Quality: weak</p>
+    <ul><li>NRL Official (official, neutral) — Official NRL draw, ladder, and team lists.</li></ul>
+  </div>
+</section>
+<section class="card">
+  <div class="card-head">
+    <div>
+      <h2>Broncos vs Panthers</h2>
+      <p class="note">nrl / core_sgm</p>
+    </div>
+    <div>
+      <h3 class="decision-watch">WATCH</h3>
+      <p class="note">Confidence: low</p>
+    </div>
+  </div>
+  <div class="grid">
+    <div><strong>26.3%</strong><br><span class="note">Fair probability</span></div>
+    <div><strong>3.80</strong><br><span class="note">Fair odds</span></div>
+    <div><strong>3.42</strong><br><span class="note">Combined SGM price</span></div>
+    <div><strong>-10.0%</strong><br><span class="note">Estimated edge</span></div>
+    <div><strong class="">$0.00</strong><br><span class="note">Stake (cap $50.00)</span></div>
+  </div>
+  <table>
+    <thead>
+      <tr><th>Market</th><th>Selection</th><th>Odds</th><th>Model Prob</th><th>Leg Edge</th></tr>
+    </thead>
+    <tbody><tr>
+  <td>h2h</td>
+  <td>Home</td>
+  <td>1.80</td>
+  <td>55.6%</td>
+  <td>0.0%</td>
+</tr>
+<tr>
+  <td>totals</td>
+  <td>Under 42.5 42.5</td>
+  <td>1.90</td>
+  <td>52.6%</td>
+  <td>0.0%</td>
+</tr></tbody>
+  </table>
+  <p>Edge: -9.98% | Price: estimated_leg_product | Exact Sportsbet SGM price still required</p>
+  <div><span class="badge">combined_price_estimated</span><span class="badge">expert_analysis_required</span><span class="badge">manual_price_required</span><span class="badge">model_probability_missing</span></div>
+  <div class="source-section">
+    <strong>Expert Sources:</strong>
+    <p class="note">Quality: weak</p>
+    <ul><li>NRL Official (official, neutral) — Official NRL draw, ladder, and team lists.</li></ul>
+  </div>
+</section>
+<section class="card">
+  <div class="card-head">
+    <div>
+      <h2>Broncos vs Panthers</h2>
+      <p class="note">nrl / core_sgm</p>
+    </div>
+    <div>
+      <h3 class="decision-watch">WATCH</h3>
+      <p class="note">Confidence: low</p>
+    </div>
+  </div>
+  <div class="grid">
+    <div><strong>23.7%</strong><br><span class="note">Fair probability</span></div>
+    <div><strong>4.22</strong><br><span class="note">Fair odds</span></div>
+    <div><strong>3.80</strong><br><span class="note">Combined SGM price</span></div>
+    <div><strong>-10.1%</strong><br><span class="note">Estimated edge</span></div>
+    <div><strong class="">$0.00</strong><br><span class="note">Stake (cap $50.00)</span></div>
+  </div>
+  <table>
+    <thead>
+      <tr><th>Market</th><th>Selection</th><th>Odds</th><th>Model Prob</th><th>Leg Edge</th></tr>
+    </thead>
+    <tbody><tr>
+  <td>h2h</td>
+  <td>Away</td>
+  <td>2.00</td>
+  <td>50.0%</td>
+  <td>0.0%</td>
+</tr>
+<tr>
+  <td>totals</td>
+  <td>Over 42.5 42.5</td>
+  <td>1.90</td>
+  <td>52.6%</td>
+  <td>0.0%</td>
+</tr></tbody>
+  </table>
+  <p>Edge: -10.05% | Price: estimated_leg_product | Exact Sportsbet SGM price still required</p>
+  <div><span class="badge">combined_price_estimated</span><span class="badge">expert_analysis_required</span><span class="badge">manual_price_required</span><span class="badge">model_probability_missing</span></div>
+  <div class="source-section">
+    <strong>Expert Sources:</strong>
+    <p class="note">Quality: weak</p>
+    <ul><li>NRL Official (official, neutral) — Official NRL draw, ladder, and team lists.</li></ul>
+  </div>
+</section>
+<section class="card">
+  <div class="card-head">
+    <div>
+      <h2>Broncos vs Panthers</h2>
+      <p class="note">nrl / core_sgm</p>
+    </div>
+    <div>
+      <h3 class="decision-watch">WATCH</h3>
+      <p class="note">Confidence: low</p>
+    </div>
+  </div>
+  <div class="grid">
+    <div><strong>23.7%</strong><br><span class="note">Fair probability</span></div>
+    <div><strong>4.22</strong><br><span class="note">Fair odds</span></div>
+    <div><strong>3.80</strong><br><span class="note">Combined SGM price</span></div>
+    <div><strong>-10.1%</strong><br><span class="note">Estimated edge</span></div>
+    <div><strong class="">$0.00</strong><br><span class="note">Stake (cap $50.00)</span></div>
+  </div>
+  <table>
+    <thead>
+      <tr><th>Market</th><th>Selection</th><th>Odds</th><th>Model Prob</th><th>Leg Edge</th></tr>
+    </thead>
+    <tbody><tr>
+  <td>h2h</td>
+  <td>Away</td>
+  <td>2.00</td>
+  <td>50.0%</td>
+  <td>0.0%</td>
+</tr>
+<tr>
+  <td>totals</td>
+  <td>Under 42.5 42.5</td>
+  <td>1.90</td>
+  <td>52.6%</td>
+  <td>0.0%</td>
+</tr></tbody>
+  </table>
+  <p>Edge: -10.05% | Price: estimated_leg_product | Exact Sportsbet SGM price still required</p>
+  <div><span class="badge">combined_price_estimated</span><span class="badge">expert_analysis_required</span><span class="badge">manual_price_required</span><span class="badge">model_probability_missing</span></div>
+  <div class="source-section">
+    <strong>Expert Sources:</strong>
+    <p class="note">Quality: weak</p>
+    <ul><li>NRL Official (official, neutral) — Official NRL draw, ladder, and team lists.</li></ul>
+  </div>
+</section>
+<section class="card">
+  <div class="card-head">
+    <div>
+      <h2>Sharks vs Eels</h2>
+      <p class="note">nrl / core_sgm</p>
+    </div>
+    <div>
+      <h3 class="decision-watch">WATCH</h3>
+      <p class="note">Confidence: low</p>
+    </div>
+  </div>
+  <div class="grid">
+    <div><strong>26.3%</strong><br><span class="note">Fair probability</span></div>
+    <div><strong>3.80</strong><br><span class="note">Fair odds</span></div>
+    <div><strong>3.42</strong><br><span class="note">Combined SGM price</span></div>
+    <div><strong>-10.0%</strong><br><span class="note">Estimated edge</span></div>
+    <div><strong class="">$0.00</strong><br><span class="note">Stake (cap $50.00)</span></div>
+  </div>
+  <table>
+    <thead>
+      <tr><th>Market</th><th>Selection</th><th>Odds</th><th>Model Prob</th><th>Leg Edge</th></tr>
+    </thead>
+    <tbody><tr>
+  <td>h2h</td>
+  <td>Home</td>
+  <td>1.80</td>
+  <td>55.6%</td>
+  <td>0.0%</td>
+</tr>
+<tr>
+  <td>totals</td>
+  <td>Over 42.5 42.5</td>
+  <td>1.90</td>
+  <td>52.6%</td>
+  <td>0.0%</td>
+</tr></tbody>
+  </table>
+  <p>Edge: -9.98% | Price: estimated_leg_product | Exact Sportsbet SGM price still required</p>
+  <div><span class="badge">combined_price_estimated</span><span class="badge">expert_analysis_required</span><span class="badge">manual_price_required</span><span class="badge">model_probability_missing</span></div>
+  <div class="source-section">
+    <strong>Expert Sources:</strong>
+    <p class="note">Quality: weak</p>
+    <ul><li>NRL Official (official, neutral) — Official NRL draw, ladder, and team lists.</li></ul>
+  </div>
+</section>
+<section class="card">
+  <div class="card-head">
+    <div>
+      <h2>Sharks vs Eels</h2>
+      <p class="note">nrl / core_sgm</p>
+    </div>
+    <div>
+      <h3 class="decision-watch">WATCH</h3>
+      <p class="note">Confidence: low</p>
+    </div>
+  </div>
+  <div class="grid">
+    <div><strong>26.3%</strong><br><span class="note">Fair probability</span></div>
+    <div><strong>3.80</strong><br><span class="note">Fair odds</span></div>
+    <div><strong>3.42</strong><br><span class="note">Combined SGM price</span></div>
+    <div><strong>-10.0%</strong><br><span class="note">Estimated edge</span></div>
+    <div><strong class="">$0.00</strong><br><span class="note">Stake (cap $50.00)</span></div>
+  </div>
+  <table>
+    <thead>
+      <tr><th>Market</th><th>Selection</th><th>Odds</th><th>Model Prob</th><th>Leg Edge</th></tr>
+    </thead>
+    <tbody><tr>
+  <td>h2h</td>
+  <td>Home</td>
+  <td>1.80</td>
+  <td>55.6%</td>
+  <td>0.0%</td>
+</tr>
+<tr>
+  <td>totals</td>
+  <td>Under 42.5 42.5</td>
+  <td>1.90</td>
+  <td>52.6%</td>
+  <td>0.0%</td>
+</tr></tbody>
+  </table>
+  <p>Edge: -9.98% | Price: estimated_leg_product | Exact Sportsbet SGM price still required</p>
+  <div><span class="badge">combined_price_estimated</span><span class="badge">expert_analysis_required</span><span class="badge">manual_price_required</span><span class="badge">model_probability_missing</span></div>
+  <div class="source-section">
+    <strong>Expert Sources:</strong>
+    <p class="note">Quality: weak</p>
+    <ul><li>NRL Official (official, neutral) — Official NRL draw, ladder, and team lists.</li></ul>
+  </div>
+</section>
+<section class="card">
+  <div class="card-head">
+    <div>
+      <h2>Sharks vs Eels</h2>
+      <p class="note">nrl / core_sgm</p>
+    </div>
+    <div>
+      <h3 class="decision-watch">WATCH</h3>
+      <p class="note">Confidence: low</p>
+    </div>
+  </div>
+  <div class="grid">
+    <div><strong>23.7%</strong><br><span class="note">Fair probability</span></div>
+    <div><strong>4.22</strong><br><span class="note">Fair odds</span></div>
+    <div><strong>3.80</strong><br><span class="note">Combined SGM price</span></div>
+    <div><strong>-10.1%</strong><br><span class="note">Estimated edge</span></div>
+    <div><strong class="">$0.00</strong><br><span class="note">Stake (cap $50.00)</span></div>
+  </div>
+  <table>
+    <thead>
+      <tr><th>Market</th><th>Selection</th><th>Odds</th><th>Model Prob</th><th>Leg Edge</th></tr>
+    </thead>
+    <tbody><tr>
+  <td>h2h</td>
+  <td>Away</td>
+  <td>2.00</td>
+  <td>50.0%</td>
+  <td>0.0%</td>
+</tr>
+<tr>
+  <td>totals</td>
+  <td>Over 42.5 42.5</td>
+  <td>1.90</td>
+  <td>52.6%</td>
+  <td>0.0%</td>
+</tr></tbody>
+  </table>
+  <p>Edge: -10.05% | Price: estimated_leg_product | Exact Sportsbet SGM price still required</p>
+  <div><span class="badge">combined_price_estimated</span><span class="badge">expert_analysis_required</span><span class="badge">manual_price_required</span><span class="badge">model_probability_missing</span></div>
+  <div class="source-section">
+    <strong>Expert Sources:</strong>
+    <p class="note">Quality: weak</p>
+    <ul><li>NRL Official (official, neutral) — Official NRL draw, ladder, and team lists.</li></ul>
+  </div>
+</section>
+<section class="card">
+  <div class="card-head">
+    <div>
+      <h2>Sharks vs Eels</h2>
+      <p class="note">nrl / core_sgm</p>
+    </div>
+    <div>
+      <h3 class="decision-watch">WATCH</h3>
+      <p class="note">Confidence: low</p>
+    </div>
+  </div>
+  <div class="grid">
+    <div><strong>23.7%</strong><br><span class="note">Fair probability</span></div>
+    <div><strong>4.22</strong><br><span class="note">Fair odds</span></div>
+    <div><strong>3.80</strong><br><span class="note">Combined SGM price</span></div>
+    <div><strong>-10.1%</strong><br><span class="note">Estimated edge</span></div>
+    <div><strong class="">$0.00</strong><br><span class="note">Stake (cap $50.00)</span></div>
+  </div>
+  <table>
+    <thead>
+      <tr><th>Market</th><th>Selection</th><th>Odds</th><th>Model Prob</th><th>Leg Edge</th></tr>
+    </thead>
+    <tbody><tr>
+  <td>h2h</td>
+  <td>Away</td>
+  <td>2.00</td>
+  <td>50.0%</td>
+  <td>0.0%</td>
+</tr>
+<tr>
+  <td>totals</td>
+  <td>Under 42.5 42.5</td>
+  <td>1.90</td>
+  <td>52.6%</td>
+  <td>0.0%</td>
+</tr></tbody>
+  </table>
+  <p>Edge: -10.05% | Price: estimated_leg_product | Exact Sportsbet SGM price still required</p>
+  <div><span class="badge">combined_price_estimated</span><span class="badge">expert_analysis_required</span><span class="badge">manual_price_required</span><span class="badge">model_probability_missing</span></div>
+  <div class="source-section">
+    <strong>Expert Sources:</strong>
+    <p class="note">Quality: weak</p>
+    <ul><li>NRL Official (official, neutral) — Official NRL draw, ladder, and team lists.</li></ul>
+  </div>
+</section>
+    <footer>
+      Engine output is decision support only. Confirm Sportsbet bet-slip price,
+      late mail, source analysis, and responsible-gambling limits before placing a bet.
+    </footer>
+  </main>
+</body>
+</html>
