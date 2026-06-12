@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>WC2026 — Canada v Bosnia Bonus Cash Card v2 (Neds)</title>
+<style>
+:root{--bg:#0a0a14;--card:#16162a;--border:#2a2a4a;--text:#e0e0e8;--dim:#888;--green:#00e676;--yellow:#ffeb3b;--orange:#ff9100;--red:#ff5252;--blue:#5c9dff;--accent:#ff6d00;--neds:#00a651;--bb:#a855f7;--gold:#ffd700;--cyan:#00e5ff}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased;padding-bottom:80px}
+.sticky{position:sticky;top:0;z-index:100;background:linear-gradient(135deg,#16162a,#0a0a14);border-bottom:1px solid var(--border);padding:12px 16px;display:flex;align-items:center;justify-content:space-between}
+.sticky .mu{font-weight:700;font-size:14px}.sticky .at{color:var(--dim);font-weight:400}
+.sticky .od{text-align:right}.sticky .sp{font-weight:700;color:var(--neds)}.sticky .tt{font-size:13px;color:var(--dim)}
+.hero{padding:20px 16px;text-align:center;border-bottom:1px solid var(--border);background:linear-gradient(180deg,#0a0a14,#1a0a2a)}
+.hero .wp{font-size:64px;font-weight:900;letter-spacing:-2px;background:linear-gradient(90deg,#00e676,#00e5ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero .wl{font-size:13px;color:var(--dim);text-transform:uppercase;letter-spacing:1px}
+.hero .pred{font-size:18px;font-weight:600;margin-top:4px;color:var(--cyan)}
+.hero .badge{display:inline-block;padding:3px 10px;border-radius:99px;font-size:12px;font-weight:600;margin:4px}
+.bg-wc{background:linear-gradient(90deg,#1976d2,#d32f2f);color:#fff}
+.bg-flag{background:#d32f2f;color:#fff}
+.neds-tag{background:var(--neds);color:#fff;font-size:10px;padding:1px 5px;border-radius:4px;font-weight:700;display:inline-block;margin-left:4px}
+.bb-tag{background:var(--bb);color:#fff;font-size:10px;padding:1px 5px;border-radius:4px;font-weight:700;display:inline-block;margin-left:4px}
+.card{margin:12px 16px;background:var(--card);border-radius:12px;border:1px solid var(--border);overflow:hidden}
+.ch{padding:14px 16px;font-weight:700;font-size:15px;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--border)}
+.ch .ic{font-size:18px}.cb{padding:14px 16px}.cb p{margin-bottom:8px;font-size:14px;color:#ccc}.cb p:last-child{margin-bottom:0}
+.alert{margin:12px 16px;background:#1a0a2a;border:1px solid #a855f744;border-radius:12px;padding:14px 16px;display:flex;align-items:flex-start;gap:10px}
+.alert-ic{font-size:20px;flex-shrink:0}.alert-t{font-weight:700;color:var(--bb);font-size:13px;text-transform:uppercase;letter-spacing:.5px}
+.alert-b{font-size:14px;color:#ccc;margin-top:2px}
+.alert-b strong{color:#fff}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:4px 0}
+.grid3 .cl{background:#1a1a2a;border-radius:8px;padding:12px 10px;text-align:center}
+.grid3 .cl .lb{font-size:11px;color:var(--dim);text-transform:uppercase;letter-spacing:.5px}
+.grid3 .cl .va{font-size:18px;font-weight:700;margin-top:2px}
+.grid3 .cl .su{font-size:12px;color:var(--dim)}.gr{color:var(--green)}.rd{color:var(--red)}
+.bankroll{background:linear-gradient(135deg,#16162a,#0a0a14);border:1px solid var(--bb);border-radius:12px;margin:12px 16px;padding:14px 16px;position:relative;overflow:hidden}
+.bankroll::before{content:'';position:absolute;top:0;right:0;width:100px;height:100px;background:radial-gradient(circle,#a855f733 0%,transparent 70%);pointer-events:none}
+.bankroll .row{display:flex;justify-content:space-between;align-items:center;margin:4px 0;font-size:14px;position:relative}
+.bankroll .row .lbl{color:var(--dim);font-size:12px;text-transform:uppercase;letter-spacing:.5px}
+.bankroll .row .val{font-weight:700;font-size:18px}
+.bankroll .row .val.bb{color:var(--bb)}
+.bankroll .row .val.green{color:var(--green)}
+.bankroll .row .val.gold{color:var(--gold)}
+.sgm{margin:12px 16px;border-radius:12px;overflow:hidden;border:2px solid transparent;position:relative}
+.sg-c{border-color:var(--green)}.sg-b{border-color:var(--yellow)}.sg-ct{border-color:var(--orange)}.sg-bb{border-color:var(--bb);box-shadow:0 0 16px rgba(168,85,247,0.3)}
+.sg-gold{border-color:var(--gold);box-shadow:0 0 20px rgba(255,215,0,0.3);background:linear-gradient(135deg,#1a1a0a,#0a0a14)}
+.sgh{padding:12px 16px;font-weight:700;font-size:14px;display:flex;align-items:center;gap:8px}
+.sg-c .sgh{background:#00e67611;color:var(--green)}
+.sg-b .sgh{background:#ffeb3b11;color:var(--yellow)}
+.sg-ct .sgh{background:#ff910011;color:var(--orange)}
+.sg-bb .sgh{background:linear-gradient(90deg,#a855f711,#7c3aed11);color:#c084fc}
+.sg-gold .sgh{background:linear-gradient(90deg,#ffd70033,#ff6d0033);color:var(--gold)}
+.bb-pill{background:linear-gradient(90deg,#a855f7,#7c3aed);color:#fff;font-size:10px;padding:2px 8px;border-radius:99px;font-weight:700;margin-left:auto;letter-spacing:.5px}
+.gold-pill{background:linear-gradient(90deg,#ffd700,#ff6d00);color:#000;font-size:10px;padding:2px 8px;border-radius:99px;font-weight:700;margin-left:auto;letter-spacing:.5px}
+.sgb{background:#0a0a14;padding:14px 16px}
+.sgl{display:flex;align-items:center;padding:8px 0;border-bottom:1px solid #2a2a4a;gap:8px}.sgl:last-child{border-bottom:none}
+.sgl .dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--bb)}
+.sgl .pk{flex:1;font-size:14px}.sgl .od{font-weight:700;font-size:14px}
+.sgf{padding:10px 16px;background:#050510;display:flex;justify-content:space-between;align-items:center;font-size:13px;flex-wrap:wrap;gap:4px}
+.sgf .po{font-weight:700;font-size:18px}.sgf .sk{color:var(--dim)}
+.sgf .breakdown{width:100%;font-size:11px;color:var(--dim);margin-top:4px;line-height:1.5}
+.sgf .breakdown strong{color:var(--green)}
+.fab{position:fixed;bottom:20px;right:20px;background:var(--neds);color:#fff;border:none;border-radius:99px;padding:14px 24px;font-size:15px;font-weight:700;box-shadow:0 4px 20px rgba(0,166,81,0.4);cursor:pointer;z-index:200;text-decoration:none}
+.src{font-size:10px;color:var(--dim);display:block;margin-top:1px}
+.strategy{margin:12px 16px;background:linear-gradient(135deg,#1a1a2a,#0a0a14);border:1px solid var(--gold);border-radius:12px;padding:14px 16px}
+.strategy h3{color:var(--gold);font-size:14px;margin-bottom:8px;letter-spacing:.5px}
+.strategy p{font-size:13px;color:#ccc;margin-bottom:6px}
+.strategy .key{color:var(--gold);font-weight:700}
+.src-block{font-size:11px;color:var(--dim);margin-top:8px;line-height:1.5}
+@media(max-width:374px){.hero .wp{font-size:48px}.grid3 .cl .va{font-size:15px}}
+</style>
+</head>
+<body>
+
+<div class="sticky">
+  <div class="mu">CAN <span class="at">v</span> BIH <span style="font-size:12px;color:#888;">· WC Group B · Sat 5:00am AEST</span><span class="neds-tag" style="margin-left:6px">NEDS</span></div>
+  <div class="od"><div class="sp" style="color:var(--neds)">CAN $1.83</div><div class="tt">BIH $4.60 · Draw $3.40</div></div>
+</div>
+
+<div class="hero">
+  <div class="wl">Score Prediction Consensus</div>
+  <div class="wp">1-0</div>
+  <div style="margin-top:4px">
+    <span class="badge bg-wc">🏆 World Cup 2026</span>
+    <span class="badge bg-flag">Group B · Co-Host</span>
+  </div>
+  <div class="pred">Canada 1 – 0 Bosnia-Herzegovina</div>
+  <div style="font-size:12px;color:var(--dim);margin-top:2px">RotoWire · KickOff Algorithm · Goal.com · Canada 6/6 experts ML</div>
+</div>
+
+<div class="alert">
+  <div class="alert-ic">💸</div>
+  <div>
+    <div class="alert-t">NEDS BONUS CASH — STRUCTURED PLAYBOOK</div>
+    <div class="alert-b">Flexible stake · <strong>Profit-only payouts</strong> · <strong>No promos</strong> (SGM Cover, Multi Boost off) · Pays into regular cash balance. <strong>Optimal BB odds: $4.00+</strong> (below that, bet cash instead — the math doesn't work)</div>
+  </div>
+</div>
+
+<div class="bankroll">
+  <div class="row"><div class="lbl">Bonus Cash Available</div><div class="val bb">$50.00</div></div>
+  <div class="row"><div class="lbl">BB Math Reality</div><div class="val gold">$50 BB @ $5.00 = $200 cash</div></div>
+  <div class="row"><div class="lbl">Sweet Spot</div><div class="val green">$4.00 — $13.00 odds</div></div>
+  <div class="row"><div class="lbl">Below $2.50 odds?</div><div class="val" style="color:var(--red);font-size:13px">Bet cash instead</div></div>
+</div>
+
+<div class="card">
+  <div class="ch"><span class="ic">💰</span> Live Odds (Neds reference · FanDuel cross-checked)</div>
+  <div class="cb">
+    <div class="grid3">
+      <div class="cl"><div class="lb">Canada ML</div><div class="va gr">$1.83</div><div class="su">implied 54.6%</div></div>
+      <div class="cl"><div class="lb">Draw</div><div class="va">$3.40</div><div class="su">implied 29.4%</div></div>
+      <div class="cl"><div class="lb">Bosnia ML</div><div class="va">$4.60</div><div class="su">implied 21.7%</div></div>
+    </div>
+    <div class="grid3" style="margin-top:8px">
+      <div class="cl"><div class="lb">Over 2.5</div><div class="va">$1.80</div></div>
+      <div class="cl"><div class="lb">Under 2.5</div><div class="va gr">$2.00</div><div class="su">5/6 experts lean</div></div>
+      <div class="cl"><div class="lb">CAN -1.5</div><div class="va">$3.55</div><div class="su">Spread value</div></div>
+    </div>
+    <div class="grid3" style="margin-top:8px">
+      <div class="cl"><div class="lb">David AT</div><div class="va">$2.50</div><div class="su">+185 best</div></div>
+      <div class="cl"><div class="lb">David 1st Goal</div><div class="va">$3.75</div><div class="su">+275 best</div></div>
+      <div class="cl"><div class="lb">David 2+ Goals</div><div class="va">$7.00</div><div class="su">Swing</div></div>
+    </div>
+    <div class="grid3" style="margin-top:8px">
+      <div class="cl"><div class="lb">Džeko AT</div><div class="va">$4.00</div></div>
+      <div class="cl"><div class="lb">1-0 Correct</div><div class="va gr">$5.50</div><div class="su">RotoWire pick</div></div>
+      <div class="cl"><div class="lb">CAN Clean Sheet</div><div class="va">$2.50</div><div class="su">Bosnia 7 in row</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="sgm sg-gold">
+  <div class="sgh">💎 THE 1-0 SCRIPT — Best BB Play<span class="gold-pill">$50 BB → $500-600</span></div>
+  <div class="sgb">
+    <div class="sgl"><div class="dot" style="background:var(--gold)"></div><div class="pk">Canada to Win 1-0 <span class="src">Neds Correct Score</span></div><div class="od">$5.50</div></div>
+    <div class="sgl"><div class="dot" style="background:var(--gold)"></div><div class="pk">Jonathan David Anytime Goal <span class="src">Neds</span></div><div class="od">$2.50</div></div>
+  </div>
+  <div class="sgf">
+    <span>Neds SGM · 2 legs</span>
+    <span class="po" style="color:var(--gold)">~$13.75</span>
+    <span class="sk">BB · profit-only payout</span>
+    <span class="breakdown">$50 BB · Profit = $50 × (13.75 − 1) = <strong style="color:var(--gold)">$637 cash</strong> if both hit · The "David scores the only goal" exact script · 4/6 sources on 1-0 (RotoWire score prediction + KickOff algorithm + Goal.com cagey opener + Bosnia 7 straight conceding max 1)</span>
+  </div>
+</div>
+
+<div class="sgm sg-bb">
+  <div class="sgh">💸 PRIMARY BB (safer creative) — Canada Win + David + Clean Sheet<span class="bb-pill">$50 BB → $375-500</span></div>
+  <div class="sgb">
+    <div class="sgl"><div class="dot"></div><div class="pk">Canada Win (90 mins) <span class="src">Neds</span></div><div class="od">$1.83</div></div>
+    <div class="sgl"><div class="dot"></div><div class="pk">Jonathan David Anytime Goal <span class="src">Neds</span></div><div class="od">$2.50</div></div>
+    <div class="sgl"><div class="dot"></div><div class="pk">Canada Clean Sheet (Bosnia 0 goals) <span class="src">Neds</span></div><div class="od">$2.50</div></div>
+  </div>
+  <div class="sgf">
+    <span>Neds SGM · 3 legs</span>
+    <span class="po" style="color:#c084fc">~$11.44</span>
+    <span class="sk">BB · profit-only payout</span>
+    <span class="breakdown">$50 BB · Profit = $50 × (11.44 − 1) = <strong style="color:var(--green)">$522 cash</strong> if all 3 hit · Covers 1-0, 2-0, 3-0, 4-0 wins · Bosnia 7 straight conceding max 1 supports CS · 6/6 experts on Canada ML</span>
+  </div>
+</div>
+
+<div class="sgm sg-bb">
+  <div class="sgh">💸 HALFTIME/FULLTIME DOUBLE — Canada Leads At HT And FT<span class="bb-pill">$50 BB → $400-550</span></div>
+  <div class="sgb">
+    <div class="sgl"><div class="dot"></div><div class="pk">Halftime/Fulltime: Canada / Canada <span class="src">Neds</span></div><div class="od">~$3.50</div></div>
+    <div class="sgl"><div class="dot"></div><div class="pk">Jonathan David Anytime Goal <span class="src">Neds</span></div><div class="od">$2.50</div></div>
+  </div>
+  <div class="sgf">
+    <span>Neds SGM · 2 legs</span>
+    <span class="po" style="color:#c084fc">~$8.75</span>
+    <span class="sk">BB · profit-only payout</span>
+    <span class="breakdown">$50 BB · Profit = $50 × (8.75 − 1) = <strong style="color:var(--green)">$387 cash</strong> if both hit · Canada dominate first half at home, hold lead · "Cagey opener" means HT could be 0-0 or 1-0, but if David scores early, this is the play</span>
+  </div>
+</div>
+
+<div class="sgm sg-ct">
+  <div class="sgh" style="background:linear-gradient(90deg,#ff910011,#ff6d0011);color:var(--orange)">💸 SWING — David First Canada Goalscorer<span class="bb-pill" style="background:linear-gradient(90deg,#ff9100,#ff6d00)">$50 BB → $175-250</span></div>
+  <div class="sgb">
+    <div class="sgl"><div class="dot" style="background:var(--orange)"></div><div class="pk">First Canada Goalscorer: Jonathan David <span class="src">Neds</span></div><div class="od">$3.75</div></div>
+  </div>
+  <div class="sgf">
+    <span>Neds Single</span>
+    <span class="po" style="color:var(--orange)">$3.75</span>
+    <span class="sk">BB · profit-only payout</span>
+    <span class="breakdown">$50 BB · Profit = $50 × (3.75 − 1) = <strong style="color:var(--green)">$137 cash</strong> if David scores Canada's first goal · Cleaner than 2+ goals · 13 in 26 under Marsch, Canada's main striker with Davies out</span>
+  </div>
+</div>
+
+<div class="sgm" style="border-color:var(--yellow)">
+  <div class="sgh" style="background:#ffeb3b11;color:var(--yellow)">💸 CONSERVATIVE — Correct Score Group (Canada 1-0 OR 2-0 OR 2-1)<span style="background:linear-gradient(90deg,#ffeb3b,#ffc107);color:#000;font-size:10px;padding:2px 8px;border-radius:99px;font-weight:700;margin-left:auto">$50 BB → $125-200</span></div>
+  <div class="sgb">
+    <div class="sgl"><div class="dot" style="background:var(--yellow)"></div><div class="pk">Correct Score Group: Canada to win 1-0 / 2-0 / 2-1 <span class="src">Neds</span></div><div class="od">~$3.00</div></div>
+  </div>
+  <div class="sgf">
+    <span>Neds Score Group Market</span>
+    <span class="po" style="color:var(--yellow)">~$3.00</span>
+    <span class="sk">BB · profit-only payout</span>
+    <span class="breakdown">$50 BB · Profit = $50 × (3.00 − 1) = <strong style="color:var(--green)">$100 cash</strong> if Canada wins by 1 or 2 goals · Covers all realistic Canada win scorelines · Loses only on 3+ goal margin, Bosnia win, or draw</span>
+  </div>
+</div>
+
+<div class="strategy">
+  <h3>💡 BB STRATEGY — The Math</h3>
+  <p><span class="key">$50 BB at $1.83 = $41 cash.</span> Dogshit. Bet cash instead.</p>
+  <p><span class="key">$50 BB at $2.50 = $75 cash.</span> Still meh.</p>
+  <p><span class="key">$50 BB at $5.00 = $200 cash.</span> Sweet spot. 4x return.</p>
+  <p><span class="key">$50 BB at $10.00 = $450 cash.</span> Good. 9x return.</p>
+  <p><span class="key">$50 BB at $13.75 = $637 cash.</span> The 1-0 + David SGM. The play.</p>
+  <p style="margin-top:8px;font-size:12px;color:var(--dim)">The Bonus Cash structure REWARDS swings. Below $2.50 odds, the BB loses to a cash bet on vig alone. Above $4.00, the BB outperforms cash bets of equivalent size. The 1-0 + David SGM at ~$13.75 is the optimal BB: aligned with the 4-source consensus score prediction, two positively correlated legs, and 10x+ return on the bonus.</p>
+</div>
+
+<div class="card" style="border-left:3px solid var(--bb)">
+  <div class="ch"><span class="ic">🐻</span> Deez's Read — The 1-0 Script</div>
+  <div class="cb">
+    <p><strong>💎 THE PLAY: Canada 1-0 + David Anytime Goal SGM @ ~$13.75</strong><br><span style="font-weight:700;color:var(--gold)">$50 BB → $637 cash</span><br><span style="font-size:12px;color:var(--dim)">RotoWire's score prediction. KickOff's algorithm. Goal.com's "cagey opener" thesis. Bosnia 7 straight conceding max 1 goal. Davies out for Canada (less cutting edge). Džeko 40 with fitness questions. The 1-0 to Canada with David scoring is the modal outcome — and it's the 12.75x SGM that the BB was made for.</span></p>
+    <p><strong>💸 THE SAFER CREATIVE: Canada Win + David AT + Clean Sheet SGM @ ~$11.44</strong><br><span style="font-weight:700;color:#c084fc">$50 BB → $522 cash</span><br><span style="font-size:12px;color:var(--dim)">Covers 1-0, 2-0, 3-0, 4-0 wins. Bosnia defensive structure limits their goal threat, 6/6 experts on Canada ML, David top individual pick. The "Canada wins by any clean sheet margin with David scoring" frame.</span></p>
+    <p><strong>🟡 THE FLOOR: Correct Score Group (CAN 1-0 / 2-0 / 2-1) @ ~$3.00</strong><br><span style="font-weight:700;color:var(--yellow)">$50 BB → $100 cash</span><br><span style="font-size:12px;color:var(--dim)">Covers all realistic Canada win scorelines with a single. Loses only on Bosnia win, draw, or 3+ goal margin (which we don't see in the consensus read). Lower payout, higher hit rate (~40%).</span></p>
+    <p><strong>Why I missed these on v1:</strong> I was anchored on the David AT single at $2.50. That's a $75 cash BB — same value as a $50 cash bet on a $1.50 line. The BB is wasted on singles under $2.50. The right BB play is a <strong>multi-leg SGM that aligns with the strongest read (1-0 to Canada with David scoring)</strong>. That's what makes the BB count.</p>
+    <p style="font-size:12px;color:var(--dim);margin-top:6px"><strong>Bonus Cash rules reminder:</strong> Toggle "Bonus Cash" in Neds bet slip · Profit-only payout · No promos · Pays into regular cash balance · Stake NOT returned on win</p>
+  </div>
+</div>
+
+<div class="src-block" style="margin:12px 16px">
+  📊 Sources: Neds · FanDuel · DraftKings · Betway · RotoWire (predicted 1-0) · KickOff (algorithm 1-0) · Goal.com (cagey opener) · Sports Interaction (David AT top pick) · SI (Bosnia 7 straight max 1 conceded) · FOX Sports (David +185 best) · 365scores · Yahoo · FIFA.com · Canada Soccer
+</div>
+
+<div class="disc">
+  🐻 Deez's Bonus Cash Card v2 — FIFA World Cup 2026 Group B · Canada v Bosnia-Herzegovina · Sat 13 Jun 2026 05:00 AEST · v2.0<br>
+  Odds: Neds reference · Verify exact SGM prices in Neds app before placing<br>
+  Gamble responsibly. Gambling is entertainment, not income.
+</div>
+
+<a href="https://www.neds.com.au/sports/soccer" class="fab">🤑 Bet on Neds</a>
+
+</body>
+</html>
