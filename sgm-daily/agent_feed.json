@@ -1,281 +1,965 @@
 {
   "feed_version": "1.0",
-  "generated_at": "2026-06-12T02:16:15.519794+00:00",
+  "generated_at": "2026-06-12T03:31:44.325242+00:00",
   "daily_slate": {
     "total_candidates": 12,
     "bets": 0,
-    "watches": 12,
-    "passes": 0,
+    "watches": 0,
+    "passes": 12,
     "total_staked": 0.0
   },
   "alerts": [
     {
       "severity": "warning",
       "title": "Daily SGM Slate",
-      "body": "**Daily SGM Slate** \u2014 12 candidates\n\ud83d\udfe2 0 bets \u2014 $0.00 total staked\n\ud83d\udfe1 12 watching \u2014 \ud83d\udd34 0 passed",
+      "body": "**Daily SGM Slate** \u2014 12 candidates\n\ud83d\udfe2 0 bets \u2014 $0.00 total staked\n\ud83d\udfe1 0 watching \u2014 \ud83d\udd34 12 passed",
       "trigger": "daily_slate",
-      "generated_at": "2026-06-12T02:16:15.519744+00:00"
+      "generated_at": "2026-06-12T03:31:44.325091+00:00"
     },
     {
       "severity": "error",
       "title": "Stale Odds Detected",
       "body": "12 recommendation(s) have stale or missing odds data. Odds should be refreshed within 24h.",
       "trigger": "stale_data",
-      "generated_at": "2026-06-12T02:16:15.519751+00:00"
+      "generated_at": "2026-06-12T03:31:44.325098+00:00"
     }
   ],
   "recommendations": [
     {
-      "recommendation_id": "0c28831c-7ea8-4d82-bc0a-cb4461577bf5",
+      "recommendation_id": "be1e3395-fd6c-4eaf-9d58-4eefa21435da",
       "event": "Storm vs Roosters",
       "sport": "nrl",
+      "bookmaker": "sportsbet",
       "home_team": "Storm",
       "away_team": "Roosters",
       "commence_time": "2026-07-15T10:00:00Z",
       "bet_mode": "core_sgm",
-      "recommendation": "watch",
+      "leg_count": 2,
+      "recommendation": "pass",
       "suggested_stake": 0.0,
-      "estimated_edge": -0.099820432,
+      "max_stake_cap": 50.0,
+      "combined_sportsbet_odds": 3.42,
+      "estimated_fair_probability": 0.2387367396,
+      "estimated_fair_odds": 4.188714320533512,
+      "estimated_edge": -0.183520350568,
       "confidence": "low",
-      "source_quality": "weak",
+      "correlation_risk": "medium",
+      "data_quality": "mixed",
+      "source_quality": "strong",
+      "source_summary": "Official NRL draw, ladder, and team lists.; Verified team announcements and injury updates.; Recent form and head-to-head records from official NRL stats. (+1 more)",
+      "unsupported_claims_flag": false,
       "data_quality_flags": [
         "combined_price_estimated",
         "expert_analysis_required",
-        "manual_price_required",
-        "model_probability_missing"
+        "manual_price_required"
       ],
-      "reasoning": "Edge: -9.98% | Price: estimated_leg_product | Exact Sportsbet SGM price still required"
+      "legs": [
+        {
+          "market": "h2h",
+          "selection": "Home",
+          "sportsbet_odds": 1.8,
+          "implied_probability": 0.556,
+          "model_probability": 0.52952,
+          "edge": -0.02648,
+          "line": null,
+          "player": null
+        },
+        {
+          "market": "totals",
+          "selection": "Over 42.5 42.5",
+          "sportsbet_odds": 1.9,
+          "implied_probability": 0.526,
+          "model_probability": 0.50095,
+          "edge": -0.02505,
+          "line": 42.5,
+          "player": null
+        }
+      ],
+      "sources": [
+        {
+          "source_name": "NRL Official",
+          "source_type": "official",
+          "url": "https://www.nrl.com/draw/",
+          "retrieved_at": "2026-06-12T03:31:44+00:00",
+          "relevance": "high",
+          "stance": "supports",
+          "key_points": [
+            "Official NRL draw, ladder, and team lists.",
+            "Verified team announcements and injury updates."
+          ]
+        },
+        {
+          "source_name": "NRL Form Guide",
+          "source_type": "stats",
+          "url": "https://www.nrl.com/stats/",
+          "retrieved_at": "2026-06-12T03:31:44+00:00",
+          "relevance": "medium",
+          "stance": "supports",
+          "key_points": [
+            "Recent form and head-to-head records from official NRL stats.",
+            "Team performance metrics: attack, defence, completion rates."
+          ]
+        }
+      ],
+      "reasoning": "Edge: -18.35% | Price: estimated_leg_product | Pass: estimated edge (-18.35%) is too negative to bet. Wait for better odds or consider different legs."
     },
     {
-      "recommendation_id": "bc32015c-8f1e-4108-aeed-b65b21aff481",
+      "recommendation_id": "beb8eaa5-39b2-4e19-95b8-3e11c5dab6b3",
       "event": "Storm vs Roosters",
       "sport": "nrl",
+      "bookmaker": "sportsbet",
       "home_team": "Storm",
       "away_team": "Roosters",
       "commence_time": "2026-07-15T10:00:00Z",
       "bet_mode": "core_sgm",
-      "recommendation": "watch",
+      "leg_count": 2,
+      "recommendation": "pass",
       "suggested_stake": 0.0,
-      "estimated_edge": -0.099820432,
+      "max_stake_cap": 50.0,
+      "combined_sportsbet_odds": 3.42,
+      "estimated_fair_probability": 0.2387367396,
+      "estimated_fair_odds": 4.188714320533512,
+      "estimated_edge": -0.183520350568,
       "confidence": "low",
-      "source_quality": "weak",
+      "correlation_risk": "medium",
+      "data_quality": "mixed",
+      "source_quality": "strong",
+      "source_summary": "Official NRL draw, ladder, and team lists.; Verified team announcements and injury updates.; Recent form and head-to-head records from official NRL stats. (+1 more)",
+      "unsupported_claims_flag": false,
       "data_quality_flags": [
         "combined_price_estimated",
         "expert_analysis_required",
-        "manual_price_required",
-        "model_probability_missing"
+        "manual_price_required"
       ],
-      "reasoning": "Edge: -9.98% | Price: estimated_leg_product | Exact Sportsbet SGM price still required"
+      "legs": [
+        {
+          "market": "h2h",
+          "selection": "Home",
+          "sportsbet_odds": 1.8,
+          "implied_probability": 0.556,
+          "model_probability": 0.52952,
+          "edge": -0.02648,
+          "line": null,
+          "player": null
+        },
+        {
+          "market": "totals",
+          "selection": "Under 42.5 42.5",
+          "sportsbet_odds": 1.9,
+          "implied_probability": 0.526,
+          "model_probability": 0.50095,
+          "edge": -0.02505,
+          "line": 42.5,
+          "player": null
+        }
+      ],
+      "sources": [
+        {
+          "source_name": "NRL Official",
+          "source_type": "official",
+          "url": "https://www.nrl.com/draw/",
+          "retrieved_at": "2026-06-12T03:31:44+00:00",
+          "relevance": "high",
+          "stance": "supports",
+          "key_points": [
+            "Official NRL draw, ladder, and team lists.",
+            "Verified team announcements and injury updates."
+          ]
+        },
+        {
+          "source_name": "NRL Form Guide",
+          "source_type": "stats",
+          "url": "https://www.nrl.com/stats/",
+          "retrieved_at": "2026-06-12T03:31:44+00:00",
+          "relevance": "medium",
+          "stance": "supports",
+          "key_points": [
+            "Recent form and head-to-head records from official NRL stats.",
+            "Team performance metrics: attack, defence, completion rates."
+          ]
+        }
+      ],
+      "reasoning": "Edge: -18.35% | Price: estimated_leg_product | Pass: estimated edge (-18.35%) is too negative to bet. Wait for better odds or consider different legs."
     },
     {
-      "recommendation_id": "96827fad-8ee8-4865-9a23-9a643bf07f7b",
+      "recommendation_id": "6b372c93-5c05-4a10-920a-c87a85969657",
       "event": "Storm vs Roosters",
       "sport": "nrl",
+      "bookmaker": "sportsbet",
       "home_team": "Storm",
       "away_team": "Roosters",
       "commence_time": "2026-07-15T10:00:00Z",
       "bet_mode": "core_sgm",
-      "recommendation": "watch",
+      "leg_count": 2,
+      "recommendation": "pass",
       "suggested_stake": 0.0,
-      "estimated_edge": -0.10054,
+      "max_stake_cap": 50.0,
+      "combined_sportsbet_odds": 3.8,
+      "estimated_fair_probability": 0.21469264245,
+      "estimated_fair_odds": 4.657821472540173,
+      "estimated_edge": -0.18416795869,
       "confidence": "low",
-      "source_quality": "weak",
+      "correlation_risk": "medium",
+      "data_quality": "mixed",
+      "source_quality": "strong",
+      "source_summary": "Official NRL draw, ladder, and team lists.; Verified team announcements and injury updates.; Recent form and head-to-head records from official NRL stats. (+1 more)",
+      "unsupported_claims_flag": false,
       "data_quality_flags": [
         "combined_price_estimated",
         "expert_analysis_required",
-        "manual_price_required",
-        "model_probability_missing"
+        "manual_price_required"
       ],
-      "reasoning": "Edge: -10.05% | Price: estimated_leg_product | Exact Sportsbet SGM price still required"
+      "legs": [
+        {
+          "market": "h2h",
+          "selection": "Away",
+          "sportsbet_odds": 2.0,
+          "implied_probability": 0.5,
+          "model_probability": 0.47619,
+          "edge": -0.02381,
+          "line": null,
+          "player": null
+        },
+        {
+          "market": "totals",
+          "selection": "Over 42.5 42.5",
+          "sportsbet_odds": 1.9,
+          "implied_probability": 0.526,
+          "model_probability": 0.50095,
+          "edge": -0.02505,
+          "line": 42.5,
+          "player": null
+        }
+      ],
+      "sources": [
+        {
+          "source_name": "NRL Official",
+          "source_type": "official",
+          "url": "https://www.nrl.com/draw/",
+          "retrieved_at": "2026-06-12T03:31:44+00:00",
+          "relevance": "high",
+          "stance": "supports",
+          "key_points": [
+            "Official NRL draw, ladder, and team lists.",
+            "Verified team announcements and injury updates."
+          ]
+        },
+        {
+          "source_name": "NRL Form Guide",
+          "source_type": "stats",
+          "url": "https://www.nrl.com/stats/",
+          "retrieved_at": "2026-06-12T03:31:44+00:00",
+          "relevance": "medium",
+          "stance": "supports",
+          "key_points": [
+            "Recent form and head-to-head records from official NRL stats.",
+            "Team performance metrics: attack, defence, completion rates."
+          ]
+        }
+      ],
+      "reasoning": "Edge: -18.42% | Price: estimated_leg_product | Pass: estimated edge (-18.42%) is too negative to bet. Wait for better odds or consider different legs."
     },
     {
-      "recommendation_id": "75f935bc-d22b-457e-8f81-c7aed25c0c59",
+      "recommendation_id": "73fb247d-bb41-4fd5-b6ac-1a53d8d0b58e",
       "event": "Storm vs Roosters",
       "sport": "nrl",
+      "bookmaker": "sportsbet",
       "home_team": "Storm",
       "away_team": "Roosters",
       "commence_time": "2026-07-15T10:00:00Z",
       "bet_mode": "core_sgm",
-      "recommendation": "watch",
+      "leg_count": 2,
+      "recommendation": "pass",
       "suggested_stake": 0.0,
-      "estimated_edge": -0.10054,
+      "max_stake_cap": 50.0,
+      "combined_sportsbet_odds": 3.8,
+      "estimated_fair_probability": 0.21469264245,
+      "estimated_fair_odds": 4.657821472540173,
+      "estimated_edge": -0.18416795869,
       "confidence": "low",
-      "source_quality": "weak",
+      "correlation_risk": "medium",
+      "data_quality": "mixed",
+      "source_quality": "strong",
+      "source_summary": "Official NRL draw, ladder, and team lists.; Verified team announcements and injury updates.; Recent form and head-to-head records from official NRL stats. (+1 more)",
+      "unsupported_claims_flag": false,
       "data_quality_flags": [
         "combined_price_estimated",
         "expert_analysis_required",
-        "manual_price_required",
-        "model_probability_missing"
+        "manual_price_required"
       ],
-      "reasoning": "Edge: -10.05% | Price: estimated_leg_product | Exact Sportsbet SGM price still required"
+      "legs": [
+        {
+          "market": "h2h",
+          "selection": "Away",
+          "sportsbet_odds": 2.0,
+          "implied_probability": 0.5,
+          "model_probability": 0.47619,
+          "edge": -0.02381,
+          "line": null,
+          "player": null
+        },
+        {
+          "market": "totals",
+          "selection": "Under 42.5 42.5",
+          "sportsbet_odds": 1.9,
+          "implied_probability": 0.526,
+          "model_probability": 0.50095,
+          "edge": -0.02505,
+          "line": 42.5,
+          "player": null
+        }
+      ],
+      "sources": [
+        {
+          "source_name": "NRL Official",
+          "source_type": "official",
+          "url": "https://www.nrl.com/draw/",
+          "retrieved_at": "2026-06-12T03:31:44+00:00",
+          "relevance": "high",
+          "stance": "supports",
+          "key_points": [
+            "Official NRL draw, ladder, and team lists.",
+            "Verified team announcements and injury updates."
+          ]
+        },
+        {
+          "source_name": "NRL Form Guide",
+          "source_type": "stats",
+          "url": "https://www.nrl.com/stats/",
+          "retrieved_at": "2026-06-12T03:31:44+00:00",
+          "relevance": "medium",
+          "stance": "supports",
+          "key_points": [
+            "Recent form and head-to-head records from official NRL stats.",
+            "Team performance metrics: attack, defence, completion rates."
+          ]
+        }
+      ],
+      "reasoning": "Edge: -18.42% | Price: estimated_leg_product | Pass: estimated edge (-18.42%) is too negative to bet. Wait for better odds or consider different legs."
     },
     {
-      "recommendation_id": "10092e21-8cd4-49e8-89a9-1df2d7c9617d",
+      "recommendation_id": "8a89a2ef-ffa7-43d4-b71d-d38f20da7660",
       "event": "Broncos vs Panthers",
       "sport": "nrl",
+      "bookmaker": "sportsbet",
       "home_team": "Broncos",
       "away_team": "Panthers",
       "commence_time": "2026-07-15T10:00:00Z",
       "bet_mode": "core_sgm",
-      "recommendation": "watch",
+      "leg_count": 2,
+      "recommendation": "pass",
       "suggested_stake": 0.0,
-      "estimated_edge": -0.099820432,
+      "max_stake_cap": 50.0,
+      "combined_sportsbet_odds": 3.42,
+      "estimated_fair_probability": 0.2387367396,
+      "estimated_fair_odds": 4.188714320533512,
+      "estimated_edge": -0.183520350568,
       "confidence": "low",
-      "source_quality": "weak",
+      "correlation_risk": "medium",
+      "data_quality": "mixed",
+      "source_quality": "strong",
+      "source_summary": "Official NRL draw, ladder, and team lists.; Verified team announcements and injury updates.; Recent form and head-to-head records from official NRL stats. (+1 more)",
+      "unsupported_claims_flag": false,
       "data_quality_flags": [
         "combined_price_estimated",
         "expert_analysis_required",
-        "manual_price_required",
-        "model_probability_missing"
+        "manual_price_required"
       ],
-      "reasoning": "Edge: -9.98% | Price: estimated_leg_product | Exact Sportsbet SGM price still required"
+      "legs": [
+        {
+          "market": "h2h",
+          "selection": "Home",
+          "sportsbet_odds": 1.8,
+          "implied_probability": 0.556,
+          "model_probability": 0.52952,
+          "edge": -0.02648,
+          "line": null,
+          "player": null
+        },
+        {
+          "market": "totals",
+          "selection": "Over 42.5 42.5",
+          "sportsbet_odds": 1.9,
+          "implied_probability": 0.526,
+          "model_probability": 0.50095,
+          "edge": -0.02505,
+          "line": 42.5,
+          "player": null
+        }
+      ],
+      "sources": [
+        {
+          "source_name": "NRL Official",
+          "source_type": "official",
+          "url": "https://www.nrl.com/draw/",
+          "retrieved_at": "2026-06-12T03:31:44+00:00",
+          "relevance": "high",
+          "stance": "supports",
+          "key_points": [
+            "Official NRL draw, ladder, and team lists.",
+            "Verified team announcements and injury updates."
+          ]
+        },
+        {
+          "source_name": "NRL Form Guide",
+          "source_type": "stats",
+          "url": "https://www.nrl.com/stats/",
+          "retrieved_at": "2026-06-12T03:31:44+00:00",
+          "relevance": "medium",
+          "stance": "supports",
+          "key_points": [
+            "Recent form and head-to-head records from official NRL stats.",
+            "Team performance metrics: attack, defence, completion rates."
+          ]
+        }
+      ],
+      "reasoning": "Edge: -18.35% | Price: estimated_leg_product | Pass: estimated edge (-18.35%) is too negative to bet. Wait for better odds or consider different legs."
     },
     {
-      "recommendation_id": "85a96128-21f7-417a-8bc2-1cf607eb735c",
+      "recommendation_id": "c7adcc2d-ae87-4efd-ac3e-b67c649a4068",
       "event": "Broncos vs Panthers",
       "sport": "nrl",
+      "bookmaker": "sportsbet",
       "home_team": "Broncos",
       "away_team": "Panthers",
       "commence_time": "2026-07-15T10:00:00Z",
       "bet_mode": "core_sgm",
-      "recommendation": "watch",
+      "leg_count": 2,
+      "recommendation": "pass",
       "suggested_stake": 0.0,
-      "estimated_edge": -0.099820432,
+      "max_stake_cap": 50.0,
+      "combined_sportsbet_odds": 3.42,
+      "estimated_fair_probability": 0.2387367396,
+      "estimated_fair_odds": 4.188714320533512,
+      "estimated_edge": -0.183520350568,
       "confidence": "low",
-      "source_quality": "weak",
+      "correlation_risk": "medium",
+      "data_quality": "mixed",
+      "source_quality": "strong",
+      "source_summary": "Official NRL draw, ladder, and team lists.; Verified team announcements and injury updates.; Recent form and head-to-head records from official NRL stats. (+1 more)",
+      "unsupported_claims_flag": false,
       "data_quality_flags": [
         "combined_price_estimated",
         "expert_analysis_required",
-        "manual_price_required",
-        "model_probability_missing"
+        "manual_price_required"
       ],
-      "reasoning": "Edge: -9.98% | Price: estimated_leg_product | Exact Sportsbet SGM price still required"
+      "legs": [
+        {
+          "market": "h2h",
+          "selection": "Home",
+          "sportsbet_odds": 1.8,
+          "implied_probability": 0.556,
+          "model_probability": 0.52952,
+          "edge": -0.02648,
+          "line": null,
+          "player": null
+        },
+        {
+          "market": "totals",
+          "selection": "Under 42.5 42.5",
+          "sportsbet_odds": 1.9,
+          "implied_probability": 0.526,
+          "model_probability": 0.50095,
+          "edge": -0.02505,
+          "line": 42.5,
+          "player": null
+        }
+      ],
+      "sources": [
+        {
+          "source_name": "NRL Official",
+          "source_type": "official",
+          "url": "https://www.nrl.com/draw/",
+          "retrieved_at": "2026-06-12T03:31:44+00:00",
+          "relevance": "high",
+          "stance": "supports",
+          "key_points": [
+            "Official NRL draw, ladder, and team lists.",
+            "Verified team announcements and injury updates."
+          ]
+        },
+        {
+          "source_name": "NRL Form Guide",
+          "source_type": "stats",
+          "url": "https://www.nrl.com/stats/",
+          "retrieved_at": "2026-06-12T03:31:44+00:00",
+          "relevance": "medium",
+          "stance": "supports",
+          "key_points": [
+            "Recent form and head-to-head records from official NRL stats.",
+            "Team performance metrics: attack, defence, completion rates."
+          ]
+        }
+      ],
+      "reasoning": "Edge: -18.35% | Price: estimated_leg_product | Pass: estimated edge (-18.35%) is too negative to bet. Wait for better odds or consider different legs."
     },
     {
-      "recommendation_id": "bb8a16e7-61eb-45b1-adbc-b5d82f203414",
+      "recommendation_id": "6ea47180-84a6-4b1b-b734-5808f920a907",
       "event": "Broncos vs Panthers",
       "sport": "nrl",
+      "bookmaker": "sportsbet",
       "home_team": "Broncos",
       "away_team": "Panthers",
       "commence_time": "2026-07-15T10:00:00Z",
       "bet_mode": "core_sgm",
-      "recommendation": "watch",
+      "leg_count": 2,
+      "recommendation": "pass",
       "suggested_stake": 0.0,
-      "estimated_edge": -0.10054,
+      "max_stake_cap": 50.0,
+      "combined_sportsbet_odds": 3.8,
+      "estimated_fair_probability": 0.21469264245,
+      "estimated_fair_odds": 4.657821472540173,
+      "estimated_edge": -0.18416795869,
       "confidence": "low",
-      "source_quality": "weak",
+      "correlation_risk": "medium",
+      "data_quality": "mixed",
+      "source_quality": "strong",
+      "source_summary": "Official NRL draw, ladder, and team lists.; Verified team announcements and injury updates.; Recent form and head-to-head records from official NRL stats. (+1 more)",
+      "unsupported_claims_flag": false,
       "data_quality_flags": [
         "combined_price_estimated",
         "expert_analysis_required",
-        "manual_price_required",
-        "model_probability_missing"
+        "manual_price_required"
       ],
-      "reasoning": "Edge: -10.05% | Price: estimated_leg_product | Exact Sportsbet SGM price still required"
+      "legs": [
+        {
+          "market": "h2h",
+          "selection": "Away",
+          "sportsbet_odds": 2.0,
+          "implied_probability": 0.5,
+          "model_probability": 0.47619,
+          "edge": -0.02381,
+          "line": null,
+          "player": null
+        },
+        {
+          "market": "totals",
+          "selection": "Over 42.5 42.5",
+          "sportsbet_odds": 1.9,
+          "implied_probability": 0.526,
+          "model_probability": 0.50095,
+          "edge": -0.02505,
+          "line": 42.5,
+          "player": null
+        }
+      ],
+      "sources": [
+        {
+          "source_name": "NRL Official",
+          "source_type": "official",
+          "url": "https://www.nrl.com/draw/",
+          "retrieved_at": "2026-06-12T03:31:44+00:00",
+          "relevance": "high",
+          "stance": "supports",
+          "key_points": [
+            "Official NRL draw, ladder, and team lists.",
+            "Verified team announcements and injury updates."
+          ]
+        },
+        {
+          "source_name": "NRL Form Guide",
+          "source_type": "stats",
+          "url": "https://www.nrl.com/stats/",
+          "retrieved_at": "2026-06-12T03:31:44+00:00",
+          "relevance": "medium",
+          "stance": "supports",
+          "key_points": [
+            "Recent form and head-to-head records from official NRL stats.",
+            "Team performance metrics: attack, defence, completion rates."
+          ]
+        }
+      ],
+      "reasoning": "Edge: -18.42% | Price: estimated_leg_product | Pass: estimated edge (-18.42%) is too negative to bet. Wait for better odds or consider different legs."
     },
     {
-      "recommendation_id": "2e96deda-8e4f-4c63-a726-59954e3bba2a",
+      "recommendation_id": "601452a2-54d2-4c89-a097-b5f34f39e803",
       "event": "Broncos vs Panthers",
       "sport": "nrl",
+      "bookmaker": "sportsbet",
       "home_team": "Broncos",
       "away_team": "Panthers",
       "commence_time": "2026-07-15T10:00:00Z",
       "bet_mode": "core_sgm",
-      "recommendation": "watch",
+      "leg_count": 2,
+      "recommendation": "pass",
       "suggested_stake": 0.0,
-      "estimated_edge": -0.10054,
+      "max_stake_cap": 50.0,
+      "combined_sportsbet_odds": 3.8,
+      "estimated_fair_probability": 0.21469264245,
+      "estimated_fair_odds": 4.657821472540173,
+      "estimated_edge": -0.18416795869,
       "confidence": "low",
-      "source_quality": "weak",
+      "correlation_risk": "medium",
+      "data_quality": "mixed",
+      "source_quality": "strong",
+      "source_summary": "Official NRL draw, ladder, and team lists.; Verified team announcements and injury updates.; Recent form and head-to-head records from official NRL stats. (+1 more)",
+      "unsupported_claims_flag": false,
       "data_quality_flags": [
         "combined_price_estimated",
         "expert_analysis_required",
-        "manual_price_required",
-        "model_probability_missing"
+        "manual_price_required"
       ],
-      "reasoning": "Edge: -10.05% | Price: estimated_leg_product | Exact Sportsbet SGM price still required"
+      "legs": [
+        {
+          "market": "h2h",
+          "selection": "Away",
+          "sportsbet_odds": 2.0,
+          "implied_probability": 0.5,
+          "model_probability": 0.47619,
+          "edge": -0.02381,
+          "line": null,
+          "player": null
+        },
+        {
+          "market": "totals",
+          "selection": "Under 42.5 42.5",
+          "sportsbet_odds": 1.9,
+          "implied_probability": 0.526,
+          "model_probability": 0.50095,
+          "edge": -0.02505,
+          "line": 42.5,
+          "player": null
+        }
+      ],
+      "sources": [
+        {
+          "source_name": "NRL Official",
+          "source_type": "official",
+          "url": "https://www.nrl.com/draw/",
+          "retrieved_at": "2026-06-12T03:31:44+00:00",
+          "relevance": "high",
+          "stance": "supports",
+          "key_points": [
+            "Official NRL draw, ladder, and team lists.",
+            "Verified team announcements and injury updates."
+          ]
+        },
+        {
+          "source_name": "NRL Form Guide",
+          "source_type": "stats",
+          "url": "https://www.nrl.com/stats/",
+          "retrieved_at": "2026-06-12T03:31:44+00:00",
+          "relevance": "medium",
+          "stance": "supports",
+          "key_points": [
+            "Recent form and head-to-head records from official NRL stats.",
+            "Team performance metrics: attack, defence, completion rates."
+          ]
+        }
+      ],
+      "reasoning": "Edge: -18.42% | Price: estimated_leg_product | Pass: estimated edge (-18.42%) is too negative to bet. Wait for better odds or consider different legs."
     },
     {
-      "recommendation_id": "3f1fe016-2cae-4e95-bcfc-f527b7947e18",
+      "recommendation_id": "e2c8c3d6-e8d1-4272-a49d-007ef97523bd",
       "event": "Sharks vs Eels",
       "sport": "nrl",
+      "bookmaker": "sportsbet",
       "home_team": "Sharks",
       "away_team": "Eels",
       "commence_time": "2026-07-15T10:00:00Z",
       "bet_mode": "core_sgm",
-      "recommendation": "watch",
+      "leg_count": 2,
+      "recommendation": "pass",
       "suggested_stake": 0.0,
-      "estimated_edge": -0.099820432,
+      "max_stake_cap": 50.0,
+      "combined_sportsbet_odds": 3.42,
+      "estimated_fair_probability": 0.2387367396,
+      "estimated_fair_odds": 4.188714320533512,
+      "estimated_edge": -0.183520350568,
       "confidence": "low",
-      "source_quality": "weak",
+      "correlation_risk": "medium",
+      "data_quality": "mixed",
+      "source_quality": "strong",
+      "source_summary": "Official NRL draw, ladder, and team lists.; Verified team announcements and injury updates.; Recent form and head-to-head records from official NRL stats. (+1 more)",
+      "unsupported_claims_flag": false,
       "data_quality_flags": [
         "combined_price_estimated",
         "expert_analysis_required",
-        "manual_price_required",
-        "model_probability_missing"
+        "manual_price_required"
       ],
-      "reasoning": "Edge: -9.98% | Price: estimated_leg_product | Exact Sportsbet SGM price still required"
+      "legs": [
+        {
+          "market": "h2h",
+          "selection": "Home",
+          "sportsbet_odds": 1.8,
+          "implied_probability": 0.556,
+          "model_probability": 0.52952,
+          "edge": -0.02648,
+          "line": null,
+          "player": null
+        },
+        {
+          "market": "totals",
+          "selection": "Over 42.5 42.5",
+          "sportsbet_odds": 1.9,
+          "implied_probability": 0.526,
+          "model_probability": 0.50095,
+          "edge": -0.02505,
+          "line": 42.5,
+          "player": null
+        }
+      ],
+      "sources": [
+        {
+          "source_name": "NRL Official",
+          "source_type": "official",
+          "url": "https://www.nrl.com/draw/",
+          "retrieved_at": "2026-06-12T03:31:44+00:00",
+          "relevance": "high",
+          "stance": "supports",
+          "key_points": [
+            "Official NRL draw, ladder, and team lists.",
+            "Verified team announcements and injury updates."
+          ]
+        },
+        {
+          "source_name": "NRL Form Guide",
+          "source_type": "stats",
+          "url": "https://www.nrl.com/stats/",
+          "retrieved_at": "2026-06-12T03:31:44+00:00",
+          "relevance": "medium",
+          "stance": "supports",
+          "key_points": [
+            "Recent form and head-to-head records from official NRL stats.",
+            "Team performance metrics: attack, defence, completion rates."
+          ]
+        }
+      ],
+      "reasoning": "Edge: -18.35% | Price: estimated_leg_product | Pass: estimated edge (-18.35%) is too negative to bet. Wait for better odds or consider different legs."
     },
     {
-      "recommendation_id": "24fa5860-a1f2-4aff-8437-1c157a4b42bb",
+      "recommendation_id": "ab3a0243-7ab0-44c2-b899-1de4e64a07da",
       "event": "Sharks vs Eels",
       "sport": "nrl",
+      "bookmaker": "sportsbet",
       "home_team": "Sharks",
       "away_team": "Eels",
       "commence_time": "2026-07-15T10:00:00Z",
       "bet_mode": "core_sgm",
-      "recommendation": "watch",
+      "leg_count": 2,
+      "recommendation": "pass",
       "suggested_stake": 0.0,
-      "estimated_edge": -0.099820432,
+      "max_stake_cap": 50.0,
+      "combined_sportsbet_odds": 3.42,
+      "estimated_fair_probability": 0.2387367396,
+      "estimated_fair_odds": 4.188714320533512,
+      "estimated_edge": -0.183520350568,
       "confidence": "low",
-      "source_quality": "weak",
+      "correlation_risk": "medium",
+      "data_quality": "mixed",
+      "source_quality": "strong",
+      "source_summary": "Official NRL draw, ladder, and team lists.; Verified team announcements and injury updates.; Recent form and head-to-head records from official NRL stats. (+1 more)",
+      "unsupported_claims_flag": false,
       "data_quality_flags": [
         "combined_price_estimated",
         "expert_analysis_required",
-        "manual_price_required",
-        "model_probability_missing"
+        "manual_price_required"
       ],
-      "reasoning": "Edge: -9.98% | Price: estimated_leg_product | Exact Sportsbet SGM price still required"
+      "legs": [
+        {
+          "market": "h2h",
+          "selection": "Home",
+          "sportsbet_odds": 1.8,
+          "implied_probability": 0.556,
+          "model_probability": 0.52952,
+          "edge": -0.02648,
+          "line": null,
+          "player": null
+        },
+        {
+          "market": "totals",
+          "selection": "Under 42.5 42.5",
+          "sportsbet_odds": 1.9,
+          "implied_probability": 0.526,
+          "model_probability": 0.50095,
+          "edge": -0.02505,
+          "line": 42.5,
+          "player": null
+        }
+      ],
+      "sources": [
+        {
+          "source_name": "NRL Official",
+          "source_type": "official",
+          "url": "https://www.nrl.com/draw/",
+          "retrieved_at": "2026-06-12T03:31:44+00:00",
+          "relevance": "high",
+          "stance": "supports",
+          "key_points": [
+            "Official NRL draw, ladder, and team lists.",
+            "Verified team announcements and injury updates."
+          ]
+        },
+        {
+          "source_name": "NRL Form Guide",
+          "source_type": "stats",
+          "url": "https://www.nrl.com/stats/",
+          "retrieved_at": "2026-06-12T03:31:44+00:00",
+          "relevance": "medium",
+          "stance": "supports",
+          "key_points": [
+            "Recent form and head-to-head records from official NRL stats.",
+            "Team performance metrics: attack, defence, completion rates."
+          ]
+        }
+      ],
+      "reasoning": "Edge: -18.35% | Price: estimated_leg_product | Pass: estimated edge (-18.35%) is too negative to bet. Wait for better odds or consider different legs."
     },
     {
-      "recommendation_id": "1e2a7b71-1d37-4678-9d6c-ba9aca9df325",
+      "recommendation_id": "cd3e77cf-bfe8-4b6e-a44e-4ff925c6b30d",
       "event": "Sharks vs Eels",
       "sport": "nrl",
+      "bookmaker": "sportsbet",
       "home_team": "Sharks",
       "away_team": "Eels",
       "commence_time": "2026-07-15T10:00:00Z",
       "bet_mode": "core_sgm",
-      "recommendation": "watch",
+      "leg_count": 2,
+      "recommendation": "pass",
       "suggested_stake": 0.0,
-      "estimated_edge": -0.10054,
+      "max_stake_cap": 50.0,
+      "combined_sportsbet_odds": 3.8,
+      "estimated_fair_probability": 0.21469264245,
+      "estimated_fair_odds": 4.657821472540173,
+      "estimated_edge": -0.18416795869,
       "confidence": "low",
-      "source_quality": "weak",
+      "correlation_risk": "medium",
+      "data_quality": "mixed",
+      "source_quality": "strong",
+      "source_summary": "Official NRL draw, ladder, and team lists.; Verified team announcements and injury updates.; Recent form and head-to-head records from official NRL stats. (+1 more)",
+      "unsupported_claims_flag": false,
       "data_quality_flags": [
         "combined_price_estimated",
         "expert_analysis_required",
-        "manual_price_required",
-        "model_probability_missing"
+        "manual_price_required"
       ],
-      "reasoning": "Edge: -10.05% | Price: estimated_leg_product | Exact Sportsbet SGM price still required"
+      "legs": [
+        {
+          "market": "h2h",
+          "selection": "Away",
+          "sportsbet_odds": 2.0,
+          "implied_probability": 0.5,
+          "model_probability": 0.47619,
+          "edge": -0.02381,
+          "line": null,
+          "player": null
+        },
+        {
+          "market": "totals",
+          "selection": "Over 42.5 42.5",
+          "sportsbet_odds": 1.9,
+          "implied_probability": 0.526,
+          "model_probability": 0.50095,
+          "edge": -0.02505,
+          "line": 42.5,
+          "player": null
+        }
+      ],
+      "sources": [
+        {
+          "source_name": "NRL Official",
+          "source_type": "official",
+          "url": "https://www.nrl.com/draw/",
+          "retrieved_at": "2026-06-12T03:31:44+00:00",
+          "relevance": "high",
+          "stance": "supports",
+          "key_points": [
+            "Official NRL draw, ladder, and team lists.",
+            "Verified team announcements and injury updates."
+          ]
+        },
+        {
+          "source_name": "NRL Form Guide",
+          "source_type": "stats",
+          "url": "https://www.nrl.com/stats/",
+          "retrieved_at": "2026-06-12T03:31:44+00:00",
+          "relevance": "medium",
+          "stance": "supports",
+          "key_points": [
+            "Recent form and head-to-head records from official NRL stats.",
+            "Team performance metrics: attack, defence, completion rates."
+          ]
+        }
+      ],
+      "reasoning": "Edge: -18.42% | Price: estimated_leg_product | Pass: estimated edge (-18.42%) is too negative to bet. Wait for better odds or consider different legs."
     },
     {
-      "recommendation_id": "b5b376a3-4b90-4543-86f0-184ea47b390c",
+      "recommendation_id": "bbb40d4c-e339-4dfc-ba37-044472562c8a",
       "event": "Sharks vs Eels",
       "sport": "nrl",
+      "bookmaker": "sportsbet",
       "home_team": "Sharks",
       "away_team": "Eels",
       "commence_time": "2026-07-15T10:00:00Z",
       "bet_mode": "core_sgm",
-      "recommendation": "watch",
+      "leg_count": 2,
+      "recommendation": "pass",
       "suggested_stake": 0.0,
-      "estimated_edge": -0.10054,
+      "max_stake_cap": 50.0,
+      "combined_sportsbet_odds": 3.8,
+      "estimated_fair_probability": 0.21469264245,
+      "estimated_fair_odds": 4.657821472540173,
+      "estimated_edge": -0.18416795869,
       "confidence": "low",
-      "source_quality": "weak",
+      "correlation_risk": "medium",
+      "data_quality": "mixed",
+      "source_quality": "strong",
+      "source_summary": "Official NRL draw, ladder, and team lists.; Verified team announcements and injury updates.; Recent form and head-to-head records from official NRL stats. (+1 more)",
+      "unsupported_claims_flag": false,
       "data_quality_flags": [
         "combined_price_estimated",
         "expert_analysis_required",
-        "manual_price_required",
-        "model_probability_missing"
+        "manual_price_required"
       ],
-      "reasoning": "Edge: -10.05% | Price: estimated_leg_product | Exact Sportsbet SGM price still required"
+      "legs": [
+        {
+          "market": "h2h",
+          "selection": "Away",
+          "sportsbet_odds": 2.0,
+          "implied_probability": 0.5,
+          "model_probability": 0.47619,
+          "edge": -0.02381,
+          "line": null,
+          "player": null
+        },
+        {
+          "market": "totals",
+          "selection": "Under 42.5 42.5",
+          "sportsbet_odds": 1.9,
+          "implied_probability": 0.526,
+          "model_probability": 0.50095,
+          "edge": -0.02505,
+          "line": 42.5,
+          "player": null
+        }
+      ],
+      "sources": [
+        {
+          "source_name": "NRL Official",
+          "source_type": "official",
+          "url": "https://www.nrl.com/draw/",
+          "retrieved_at": "2026-06-12T03:31:44+00:00",
+          "relevance": "high",
+          "stance": "supports",
+          "key_points": [
+            "Official NRL draw, ladder, and team lists.",
+            "Verified team announcements and injury updates."
+          ]
+        },
+        {
+          "source_name": "NRL Form Guide",
+          "source_type": "stats",
+          "url": "https://www.nrl.com/stats/",
+          "retrieved_at": "2026-06-12T03:31:44+00:00",
+          "relevance": "medium",
+          "stance": "supports",
+          "key_points": [
+            "Recent form and head-to-head records from official NRL stats.",
+            "Team performance metrics: attack, defence, completion rates."
+          ]
+        }
+      ],
+      "reasoning": "Edge: -18.42% | Price: estimated_leg_product | Pass: estimated edge (-18.42%) is too negative to bet. Wait for better odds or consider different legs."
     }
   ],
   "audit": {
