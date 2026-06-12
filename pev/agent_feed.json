@@ -1,13 +1,13 @@
 {
   "feed_version": "pev.v1",
-  "generated_at": "2026-06-12T10:23:51.754551+00:00",
+  "generated_at": "2026-06-12T10:45:15.524160+00:00",
   "daily_summary": {
     "total_opportunities": 100,
-    "ready": 3,
-    "verify": 0,
+    "ready": 4,
+    "verify": 1,
     "bets": 0,
-    "watches": 7,
-    "passes": 90,
+    "watches": 6,
+    "passes": 89,
     "sports_scanned": [
       "rugbyleague_nrl",
       "soccer_fifa_world_cup"
@@ -26,13 +26,13 @@
       "tabtouch",
       "unibet"
     ],
-    "credits_remaining": 11166,
-    "best_edge": 0.1286024906107926,
-    "total_staked": 10.360000000000001
+    "credits_remaining": 10910,
+    "best_edge": 0.15722600091217362,
+    "total_staked": 18.57
   },
   "opportunities": [
     {
-      "opportunity_id": "04129ea8-8b48-4d19-87ea-3f83f6e10728",
+      "opportunity_id": "ca4fb5a7-3966-43a9-817a-a3cfeb091c05",
       "sport": "soccer_fifa_world_cup",
       "event_id": "26634922d3f78c146440816023e40de8",
       "event_label": "Qatar vs Switzerland",
@@ -61,10 +61,11 @@
         "unibet"
       ],
       "data_quality_flags": [],
-      "reasoning": "Positive edge 12.9% at Betfair (7.2) vs fair 6.38 Comparison: 9 book(s)"
+      "reasoning": "Positive edge 12.9% at Betfair (7.2) vs fair 6.38 Comparison: 9 book(s)",
+      "minimum_acceptable_odds": 6.570958385876419
     },
     {
-      "opportunity_id": "30cc88bb-3f6c-42cb-82ca-ed81492a1a73",
+      "opportunity_id": "95b6b2d9-39c7-43dd-8365-3888d60e0bfb",
       "sport": "soccer_fifa_world_cup",
       "event_id": "26634922d3f78c146440816023e40de8",
       "event_label": "Qatar vs Switzerland",
@@ -95,24 +96,25 @@
       "data_quality_flags": [
         "low_variance_consensus"
       ],
-      "reasoning": "Positive edge 10.0% at Betfair (17.5) vs fair 15.90 Comparison: 9 book(s)"
+      "reasoning": "Positive edge 10.0% at Betfair (17.5) vs fair 15.90 Comparison: 9 book(s)",
+      "minimum_acceptable_odds": 16.38089094796864
     },
     {
-      "opportunity_id": "5f2dc0aa-57da-4ff0-bf9a-340ff95f8be8",
+      "opportunity_id": "5d133e22-8210-4879-8cc4-8d321e932515",
       "sport": "soccer_fifa_world_cup",
-      "event_id": "c12986f447a515fbe641addd786dbb24",
-      "event_label": "USA vs Paraguay",
+      "event_id": "d1f4f946c70a0b4e81f5d43e9d32361c",
+      "event_label": "Canada vs Bosnia & Herzegovina",
       "market": "h2h",
-      "selection": "Paraguay",
+      "selection": "Bosnia & Herzegovina",
       "point": null,
       "player": null,
       "target_bookmaker": "betfair_ex_au",
-      "target_odds": 4.2,
-      "fair_probability": 0.2492173308081784,
-      "fair_odds": 4.012562034739454,
-      "edge": 0.04671278939434928,
+      "target_odds": 5.1,
+      "fair_probability": 0.20909365863494303,
+      "fair_odds": 4.782545805207329,
+      "edge": 0.06637765903820946,
       "decision": "ready",
-      "suggested_stake": 3.65,
+      "suggested_stake": 4.05,
       "max_stake_cap": 50.0,
       "confidence": "low",
       "comparison_bookmakers": [
@@ -129,10 +131,74 @@
       "data_quality_flags": [
         "low_variance_consensus"
       ],
-      "reasoning": "Positive edge 4.7% at Betfair (4.2) vs fair 4.01 Comparison: 9 book(s)"
+      "reasoning": "Positive edge 6.6% at Betfair (5.1) vs fair 4.78 Comparison: 9 book(s)",
+      "minimum_acceptable_odds": 4.926022179363549
     },
     {
-      "opportunity_id": "cdacc08b-cdd2-40f0-9a86-f9bbd184953b",
+      "opportunity_id": "e0974434-c96c-4a13-b910-fd2540a7d5a8",
+      "sport": "soccer_fifa_world_cup",
+      "event_id": "c12986f447a515fbe641addd786dbb24",
+      "event_label": "USA vs Paraguay",
+      "market": "h2h",
+      "selection": "Paraguay",
+      "point": null,
+      "player": null,
+      "target_bookmaker": "betfair_ex_au",
+      "target_odds": 4.2,
+      "fair_probability": 0.2499285646252024,
+      "fair_odds": 4.001143292682927,
+      "edge": 0.04969997142585008,
+      "decision": "ready",
+      "suggested_stake": 3.88,
+      "max_stake_cap": 50.0,
+      "confidence": "low",
+      "comparison_bookmakers": [
+        "betr_au",
+        "betright",
+        "dabble_au",
+        "ladbrokes_au",
+        "playup",
+        "pointsbetau",
+        "tab",
+        "tabtouch",
+        "unibet"
+      ],
+      "data_quality_flags": [
+        "low_variance_consensus"
+      ],
+      "reasoning": "Positive edge 5.0% at Betfair (4.2) vs fair 4.00 Comparison: 9 book(s)",
+      "minimum_acceptable_odds": 4.121177591463415
+    },
+    {
+      "opportunity_id": "d5576f6e-bb44-4456-a79a-9857f37f0171",
+      "sport": "rugbyleague_nrl",
+      "event_id": "360b7bc18bc251b59f91c82955e79d1d",
+      "event_label": "Dolphins vs Sydney Roosters",
+      "market": "h2h",
+      "selection": "Sydney Roosters",
+      "point": null,
+      "player": null,
+      "target_bookmaker": "betfair_ex_au",
+      "target_odds": 11.0,
+      "fair_probability": 0.10520236371928851,
+      "fair_odds": 9.505489844964893,
+      "edge": 0.15722600091217362,
+      "decision": "verify",
+      "suggested_stake": 3.93,
+      "max_stake_cap": 50.0,
+      "confidence": "medium",
+      "comparison_bookmakers": [
+        "pointsbetau",
+        "tab",
+        "tabtouch",
+        "unibet"
+      ],
+      "data_quality_flags": [],
+      "reasoning": "Positive edge 15.7% at Betfair (11.0) vs fair 9.51 Comparison: 4 book(s)",
+      "minimum_acceptable_odds": 9.79065454031384
+    },
+    {
+      "opportunity_id": "2864722e-917d-49a9-915a-01302e522eed",
       "sport": "rugbyleague_nrl",
       "event_id": "fe9cec1e3f524e0e813826c48b25f966",
       "event_label": "New Zealand Warriors vs Cronulla Sutherland Sharks",
@@ -161,44 +227,11 @@
         "unibet"
       ],
       "data_quality_flags": [],
-      "reasoning": "Marginal edge 3.0% at Betfair (3.2) \u2014 below BET threshold of 3.0% Comparison: 9 book(s)"
+      "reasoning": "Marginal edge 3.0% at Betfair (3.2) \u2014 below BET threshold of 3.0% Comparison: 9 book(s)",
+      "minimum_acceptable_odds": 3.200357142857143
     },
     {
-      "opportunity_id": "a0fa4213-3ed6-4c16-be56-2b1f7283148f",
-      "sport": "soccer_fifa_world_cup",
-      "event_id": "d1f4f946c70a0b4e81f5d43e9d32361c",
-      "event_label": "Canada vs Bosnia & Herzegovina",
-      "market": "h2h",
-      "selection": "Bosnia & Herzegovina",
-      "point": null,
-      "player": null,
-      "target_bookmaker": "betfair_ex_au",
-      "target_odds": 4.9,
-      "fair_probability": 0.20909365863494303,
-      "fair_odds": 4.782545805207329,
-      "edge": 0.024558927311220845,
-      "decision": "watch",
-      "suggested_stake": 0.0,
-      "max_stake_cap": 50.0,
-      "confidence": "low",
-      "comparison_bookmakers": [
-        "betr_au",
-        "betright",
-        "dabble_au",
-        "ladbrokes_au",
-        "playup",
-        "pointsbetau",
-        "tab",
-        "tabtouch",
-        "unibet"
-      ],
-      "data_quality_flags": [
-        "low_variance_consensus"
-      ],
-      "reasoning": "Marginal edge 2.5% at Betfair (4.9) \u2014 below BET threshold of 3.0% Comparison: 9 book(s)"
-    },
-    {
-      "opportunity_id": "cb8d110c-930a-4b01-8e66-429c98da4f4a",
+      "opportunity_id": "c9bbfa01-7252-4168-8c30-25a7fc396050",
       "sport": "soccer_fifa_world_cup",
       "event_id": "f6c8748a16516e0998f95de14235432a",
       "event_label": "Brazil vs Morocco",
@@ -229,10 +262,11 @@
       "data_quality_flags": [
         "low_variance_consensus"
       ],
-      "reasoning": "Marginal edge 2.4% at Betfair (6.0) \u2014 below BET threshold of 3.0% Comparison: 9 book(s)"
+      "reasoning": "Marginal edge 2.4% at Betfair (6.0) \u2014 below BET threshold of 3.0% Comparison: 9 book(s)",
+      "minimum_acceptable_odds": 6.03758024691358
     },
     {
-      "opportunity_id": "b8424b3c-b1a0-4afb-b80c-75a31037cbc0",
+      "opportunity_id": "02e7c10a-a799-4ff4-90c7-286ead7ef399",
       "sport": "soccer_fifa_world_cup",
       "event_id": "26634922d3f78c146440816023e40de8",
       "event_label": "Qatar vs Switzerland",
@@ -261,10 +295,11 @@
         "unibet"
       ],
       "data_quality_flags": [],
-      "reasoning": "Marginal edge 1.9% at SportsBet (6.5) \u2014 below BET threshold of 3.0% Comparison: 9 book(s)"
+      "reasoning": "Marginal edge 1.9% at SportsBet (6.5) \u2014 below BET threshold of 3.0% Comparison: 9 book(s)",
+      "minimum_acceptable_odds": 6.570958385876419
     },
     {
-      "opportunity_id": "0295991d-43a9-4c7c-8ad0-9653930a1e96",
+      "opportunity_id": "74c4a856-9041-4b3d-b59f-ced52fe74acf",
       "sport": "rugbyleague_nrl",
       "event_id": "fe9cec1e3f524e0e813826c48b25f966",
       "event_label": "New Zealand Warriors vs Cronulla Sutherland Sharks",
@@ -293,10 +328,11 @@
         "unibet"
       ],
       "data_quality_flags": [],
-      "reasoning": "Marginal edge 1.4% at Neds (3.15) \u2014 below BET threshold of 3.0% Comparison: 9 book(s)"
+      "reasoning": "Marginal edge 1.4% at Neds (3.15) \u2014 below BET threshold of 3.0% Comparison: 9 book(s)",
+      "minimum_acceptable_odds": 3.200357142857143
     },
     {
-      "opportunity_id": "3a95b96c-b988-4dc5-9f7d-b8d55b2d37ad",
+      "opportunity_id": "a9f8b404-43c0-401a-ac90-c565c8cf5358",
       "sport": "soccer_fifa_world_cup",
       "event_id": "d1f4f946c70a0b4e81f5d43e9d32361c",
       "event_label": "Canada vs Bosnia & Herzegovina",
@@ -327,10 +363,11 @@
       "data_quality_flags": [
         "low_variance_consensus"
       ],
-      "reasoning": "Marginal edge 0.7% at Betfair (3.65) \u2014 below BET threshold of 3.0% Comparison: 9 book(s)"
+      "reasoning": "Marginal edge 0.7% at Betfair (3.65) \u2014 below BET threshold of 3.0% Comparison: 9 book(s)",
+      "minimum_acceptable_odds": 3.7323980463980466
     },
     {
-      "opportunity_id": "e9587fe6-6302-4e97-b847-8355f5fefe36",
+      "opportunity_id": "56ff602d-b3c2-46d3-a5da-cb5249224b5e",
       "sport": "soccer_fifa_world_cup",
       "event_id": "f6c8748a16516e0998f95de14235432a",
       "event_label": "Brazil vs Morocco",
@@ -361,10 +398,11 @@
       "data_quality_flags": [
         "low_variance_consensus"
       ],
-      "reasoning": "Marginal edge 0.1% at Betfair (4.0) \u2014 below BET threshold of 3.0% Comparison: 9 book(s)"
+      "reasoning": "Marginal edge 0.1% at Betfair (4.0) \u2014 below BET threshold of 3.0% Comparison: 9 book(s)",
+      "minimum_acceptable_odds": 4.116531986531987
     },
     {
-      "opportunity_id": "58e0be5c-0e06-4452-9049-59584eb16c53",
+      "opportunity_id": "e673d38f-349b-4b43-94be-b0e2ec755f73",
       "sport": "rugbyleague_nrl",
       "event_id": "360b7bc18bc251b59f91c82955e79d1d",
       "event_label": "Dolphins vs Sydney Roosters",
@@ -373,7 +411,7 @@
       "point": null,
       "player": null,
       "target_bookmaker": "betfair_ex_au",
-      "target_odds": 1.22,
+      "target_odds": 1.1,
       "fair_probability": 0.0,
       "fair_odds": 0.0,
       "edge": 0.0,
@@ -385,10 +423,11 @@
       "data_quality_flags": [
         "low_bookmaker_count"
       ],
-      "reasoning": "No fair consensus available for Dolphins (h2h_lay) \u2014 insufficient comparison data."
+      "reasoning": "No fair consensus available for Dolphins (h2h_lay) \u2014 insufficient comparison data.",
+      "minimum_acceptable_odds": 999.0
     },
     {
-      "opportunity_id": "e78608b9-4275-4677-b56b-10aa5b93902d",
+      "opportunity_id": "ba8980f9-360c-41e9-a476-093464181b10",
       "sport": "rugbyleague_nrl",
       "event_id": "360b7bc18bc251b59f91c82955e79d1d",
       "event_label": "Dolphins vs Sydney Roosters",
@@ -397,7 +436,7 @@
       "point": null,
       "player": null,
       "target_bookmaker": "betfair_ex_au",
-      "target_odds": 8.8,
+      "target_odds": 21.0,
       "fair_probability": 0.0,
       "fair_odds": 0.0,
       "edge": 0.0,
@@ -409,10 +448,11 @@
       "data_quality_flags": [
         "low_bookmaker_count"
       ],
-      "reasoning": "No fair consensus available for Sydney Roosters (h2h_lay) \u2014 insufficient comparison data."
+      "reasoning": "No fair consensus available for Sydney Roosters (h2h_lay) \u2014 insufficient comparison data.",
+      "minimum_acceptable_odds": 999.0
     },
     {
-      "opportunity_id": "276fb14c-2a0d-48e3-8bed-bcec53066ecb",
+      "opportunity_id": "4d2c5b16-6643-436c-a293-13858f27b439",
       "sport": "rugbyleague_nrl",
       "event_id": "fe9cec1e3f524e0e813826c48b25f966",
       "event_label": "New Zealand Warriors vs Cronulla Sutherland Sharks",
@@ -435,10 +475,11 @@
       "data_quality_flags": [
         "low_bookmaker_count"
       ],
-      "reasoning": "No fair consensus available for Over (team_totals) \u2014 insufficient comparison data. Comparison: 1 book(s)"
+      "reasoning": "No fair consensus available for Over (team_totals) \u2014 insufficient comparison data. Comparison: 1 book(s)",
+      "minimum_acceptable_odds": 999.0
     },
     {
-      "opportunity_id": "c2ad4855-5995-418b-b205-615738a5971b",
+      "opportunity_id": "4ed55286-c22e-4b3c-b8f3-7e9bb40d47df",
       "sport": "rugbyleague_nrl",
       "event_id": "fe9cec1e3f524e0e813826c48b25f966",
       "event_label": "New Zealand Warriors vs Cronulla Sutherland Sharks",
@@ -461,10 +502,11 @@
       "data_quality_flags": [
         "low_bookmaker_count"
       ],
-      "reasoning": "No fair consensus available for Under (team_totals) \u2014 insufficient comparison data. Comparison: 1 book(s)"
+      "reasoning": "No fair consensus available for Under (team_totals) \u2014 insufficient comparison data. Comparison: 1 book(s)",
+      "minimum_acceptable_odds": 999.0
     },
     {
-      "opportunity_id": "2cae87f9-1431-4eaf-b6ba-caa5fe3db57d",
+      "opportunity_id": "754290af-a153-4d0f-80a6-5cf52a2d2d93",
       "sport": "rugbyleague_nrl",
       "event_id": "fe9cec1e3f524e0e813826c48b25f966",
       "event_label": "New Zealand Warriors vs Cronulla Sutherland Sharks",
@@ -485,10 +527,11 @@
       "data_quality_flags": [
         "low_bookmaker_count"
       ],
-      "reasoning": "No fair consensus available for Over (team_totals) \u2014 insufficient comparison data."
+      "reasoning": "No fair consensus available for Over (team_totals) \u2014 insufficient comparison data.",
+      "minimum_acceptable_odds": 999.0
     },
     {
-      "opportunity_id": "9d0347a1-9a1d-46b8-8208-3670829cd570",
+      "opportunity_id": "aeea87b6-2b5f-4cb1-86dd-1daba50a9369",
       "sport": "rugbyleague_nrl",
       "event_id": "fe9cec1e3f524e0e813826c48b25f966",
       "event_label": "New Zealand Warriors vs Cronulla Sutherland Sharks",
@@ -509,10 +552,11 @@
       "data_quality_flags": [
         "low_bookmaker_count"
       ],
-      "reasoning": "No fair consensus available for Under (team_totals) \u2014 insufficient comparison data."
+      "reasoning": "No fair consensus available for Under (team_totals) \u2014 insufficient comparison data.",
+      "minimum_acceptable_odds": 999.0
     },
     {
-      "opportunity_id": "88c0047b-0f41-44cd-a0b2-578dda2ff773",
+      "opportunity_id": "3fa5e904-3ac7-4c48-8d19-5143731537c3",
       "sport": "rugbyleague_nrl",
       "event_id": "fe9cec1e3f524e0e813826c48b25f966",
       "event_label": "New Zealand Warriors vs Cronulla Sutherland Sharks",
@@ -535,10 +579,11 @@
       "data_quality_flags": [
         "low_bookmaker_count"
       ],
-      "reasoning": "No fair consensus available for Cronulla Sutherland Sharks (spreads) \u2014 insufficient comparison data. Comparison: 1 book(s)"
+      "reasoning": "No fair consensus available for Cronulla Sutherland Sharks (spreads) \u2014 insufficient comparison data. Comparison: 1 book(s)",
+      "minimum_acceptable_odds": 999.0
     },
     {
-      "opportunity_id": "cfa7e824-c827-4dd6-a762-3b5fcfd2fc0c",
+      "opportunity_id": "50e8cc84-16a2-46f5-bf81-4617fe52f9c4",
       "sport": "rugbyleague_nrl",
       "event_id": "fe9cec1e3f524e0e813826c48b25f966",
       "event_label": "New Zealand Warriors vs Cronulla Sutherland Sharks",
@@ -561,10 +606,11 @@
       "data_quality_flags": [
         "low_bookmaker_count"
       ],
-      "reasoning": "No fair consensus available for New Zealand Warriors (spreads) \u2014 insufficient comparison data. Comparison: 1 book(s)"
+      "reasoning": "No fair consensus available for New Zealand Warriors (spreads) \u2014 insufficient comparison data. Comparison: 1 book(s)",
+      "minimum_acceptable_odds": 999.0
     },
     {
-      "opportunity_id": "87f0ff3d-ea6c-4ddb-b58d-3b68644382ba",
+      "opportunity_id": "fa974577-26aa-4da3-9169-61877008ebae",
       "sport": "rugbyleague_nrl",
       "event_id": "fe9cec1e3f524e0e813826c48b25f966",
       "event_label": "New Zealand Warriors vs Cronulla Sutherland Sharks",
@@ -585,10 +631,11 @@
       "data_quality_flags": [
         "low_bookmaker_count"
       ],
-      "reasoning": "No fair consensus available for Cronulla Sutherland Sharks (h2h_lay) \u2014 insufficient comparison data."
+      "reasoning": "No fair consensus available for Cronulla Sutherland Sharks (h2h_lay) \u2014 insufficient comparison data.",
+      "minimum_acceptable_odds": 999.0
     },
     {
-      "opportunity_id": "df7fabb3-a230-4219-a6b5-1bde74a22f1f",
+      "opportunity_id": "42f9f696-368f-4a90-8bd2-37c1285f02e4",
       "sport": "rugbyleague_nrl",
       "event_id": "fe9cec1e3f524e0e813826c48b25f966",
       "event_label": "New Zealand Warriors vs Cronulla Sutherland Sharks",
@@ -609,10 +656,11 @@
       "data_quality_flags": [
         "low_bookmaker_count"
       ],
-      "reasoning": "No fair consensus available for New Zealand Warriors (h2h_lay) \u2014 insufficient comparison data."
+      "reasoning": "No fair consensus available for New Zealand Warriors (h2h_lay) \u2014 insufficient comparison data.",
+      "minimum_acceptable_odds": 999.0
     },
     {
-      "opportunity_id": "9bd77ff8-4ab0-43be-b5d9-35553652951e",
+      "opportunity_id": "7e085c4f-d1d0-4407-9a96-7498d1ebf90d",
       "sport": "rugbyleague_nrl",
       "event_id": "836188d12bf0a856ac763b3f69509983",
       "event_label": "Parramatta Eels vs Canberra Raiders",
@@ -633,10 +681,11 @@
       "data_quality_flags": [
         "low_bookmaker_count"
       ],
-      "reasoning": "No fair consensus available for Over (team_totals) \u2014 insufficient comparison data."
+      "reasoning": "No fair consensus available for Over (team_totals) \u2014 insufficient comparison data.",
+      "minimum_acceptable_odds": 999.0
     },
     {
-      "opportunity_id": "d1ae0d0b-ee9f-4fa3-97f8-57cbb7586566",
+      "opportunity_id": "15961c48-11b4-495d-80aa-81b434ae88bc",
       "sport": "rugbyleague_nrl",
       "event_id": "836188d12bf0a856ac763b3f69509983",
       "event_label": "Parramatta Eels vs Canberra Raiders",
@@ -657,10 +706,11 @@
       "data_quality_flags": [
         "low_bookmaker_count"
       ],
-      "reasoning": "No fair consensus available for Under (team_totals) \u2014 insufficient comparison data."
+      "reasoning": "No fair consensus available for Under (team_totals) \u2014 insufficient comparison data.",
+      "minimum_acceptable_odds": 999.0
     },
     {
-      "opportunity_id": "96cbd0e7-2cbb-4f74-976b-87b5aea44ed0",
+      "opportunity_id": "68810c89-be81-47af-9e3c-d3dce36fe8dc",
       "sport": "rugbyleague_nrl",
       "event_id": "836188d12bf0a856ac763b3f69509983",
       "event_label": "Parramatta Eels vs Canberra Raiders",
@@ -681,10 +731,11 @@
       "data_quality_flags": [
         "low_bookmaker_count"
       ],
-      "reasoning": "No fair consensus available for Over (team_totals) \u2014 insufficient comparison data."
+      "reasoning": "No fair consensus available for Over (team_totals) \u2014 insufficient comparison data.",
+      "minimum_acceptable_odds": 999.0
     },
     {
-      "opportunity_id": "7013ebf7-a1aa-46e7-95b9-9a85003cabdd",
+      "opportunity_id": "0f8c1828-89b8-49cd-b643-139cacbf9916",
       "sport": "rugbyleague_nrl",
       "event_id": "836188d12bf0a856ac763b3f69509983",
       "event_label": "Parramatta Eels vs Canberra Raiders",
@@ -705,10 +756,11 @@
       "data_quality_flags": [
         "low_bookmaker_count"
       ],
-      "reasoning": "No fair consensus available for Under (team_totals) \u2014 insufficient comparison data."
+      "reasoning": "No fair consensus available for Under (team_totals) \u2014 insufficient comparison data.",
+      "minimum_acceptable_odds": 999.0
     },
     {
-      "opportunity_id": "bec55613-f09a-48f5-ac08-a97d26cc7108",
+      "opportunity_id": "a4716595-40d2-4768-890c-e6ff64803a7b",
       "sport": "rugbyleague_nrl",
       "event_id": "836188d12bf0a856ac763b3f69509983",
       "event_label": "Parramatta Eels vs Canberra Raiders",
@@ -731,10 +783,11 @@
       "data_quality_flags": [
         "low_bookmaker_count"
       ],
-      "reasoning": "No fair consensus available for Over (totals) \u2014 insufficient comparison data. Comparison: 1 book(s)"
+      "reasoning": "No fair consensus available for Over (totals) \u2014 insufficient comparison data. Comparison: 1 book(s)",
+      "minimum_acceptable_odds": 999.0
     },
     {
-      "opportunity_id": "32262953-0725-408c-a947-cb8a8033b1ab",
+      "opportunity_id": "cf8dabbe-194e-4839-914c-d9d412a70d31",
       "sport": "rugbyleague_nrl",
       "event_id": "836188d12bf0a856ac763b3f69509983",
       "event_label": "Parramatta Eels vs Canberra Raiders",
@@ -757,10 +810,11 @@
       "data_quality_flags": [
         "low_bookmaker_count"
       ],
-      "reasoning": "No fair consensus available for Under (totals) \u2014 insufficient comparison data. Comparison: 1 book(s)"
+      "reasoning": "No fair consensus available for Under (totals) \u2014 insufficient comparison data. Comparison: 1 book(s)",
+      "minimum_acceptable_odds": 999.0
     },
     {
-      "opportunity_id": "34b1bc41-1ff5-43e2-95ce-ba85e4acfc5e",
+      "opportunity_id": "fd6747df-d2e1-4f3d-acc9-5d376781f1bb",
       "sport": "rugbyleague_nrl",
       "event_id": "836188d12bf0a856ac763b3f69509983",
       "event_label": "Parramatta Eels vs Canberra Raiders",
@@ -781,10 +835,11 @@
       "data_quality_flags": [
         "low_bookmaker_count"
       ],
-      "reasoning": "No fair consensus available for Canberra Raiders (h2h_lay) \u2014 insufficient comparison data."
+      "reasoning": "No fair consensus available for Canberra Raiders (h2h_lay) \u2014 insufficient comparison data.",
+      "minimum_acceptable_odds": 999.0
     },
     {
-      "opportunity_id": "3e3aec79-22b2-483f-9103-fcdc969c278a",
+      "opportunity_id": "3da4f6d0-b592-445d-8cb1-fedff6b9af5e",
       "sport": "rugbyleague_nrl",
       "event_id": "836188d12bf0a856ac763b3f69509983",
       "event_label": "Parramatta Eels vs Canberra Raiders",
@@ -805,10 +860,11 @@
       "data_quality_flags": [
         "low_bookmaker_count"
       ],
-      "reasoning": "No fair consensus available for Parramatta Eels (h2h_lay) \u2014 insufficient comparison data."
+      "reasoning": "No fair consensus available for Parramatta Eels (h2h_lay) \u2014 insufficient comparison data.",
+      "minimum_acceptable_odds": 999.0
     },
     {
-      "opportunity_id": "4417a4b6-eef8-4ab3-ad34-9f0317d604cd",
+      "opportunity_id": "2d0fb41f-6026-48b8-b304-a605cf90d3e1",
       "sport": "soccer_fifa_world_cup",
       "event_id": "d1f4f946c70a0b4e81f5d43e9d32361c",
       "event_label": "Canada vs Bosnia & Herzegovina",
@@ -831,10 +887,11 @@
       "data_quality_flags": [
         "low_bookmaker_count"
       ],
-      "reasoning": "No fair consensus available for Yes (btts) \u2014 insufficient comparison data. Comparison: 1 book(s)"
+      "reasoning": "No fair consensus available for Yes (btts) \u2014 insufficient comparison data. Comparison: 1 book(s)",
+      "minimum_acceptable_odds": 999.0
     },
     {
-      "opportunity_id": "dd98dee9-83a6-476c-a4c4-71347f666df1",
+      "opportunity_id": "b66abca0-b096-4a07-acf5-ceb300511688",
       "sport": "soccer_fifa_world_cup",
       "event_id": "d1f4f946c70a0b4e81f5d43e9d32361c",
       "event_label": "Canada vs Bosnia & Herzegovina",
@@ -857,10 +914,11 @@
       "data_quality_flags": [
         "low_bookmaker_count"
       ],
-      "reasoning": "No fair consensus available for No (btts) \u2014 insufficient comparison data. Comparison: 1 book(s)"
+      "reasoning": "No fair consensus available for No (btts) \u2014 insufficient comparison data. Comparison: 1 book(s)",
+      "minimum_acceptable_odds": 999.0
     },
     {
-      "opportunity_id": "176a4697-c2a6-4c20-b19d-d7dacea193c0",
+      "opportunity_id": "d3f22cf9-d6cf-4a05-b3fe-12c6e4810965",
       "sport": "soccer_fifa_world_cup",
       "event_id": "d1f4f946c70a0b4e81f5d43e9d32361c",
       "event_label": "Canada vs Bosnia & Herzegovina",
@@ -869,7 +927,7 @@
       "point": null,
       "player": null,
       "target_bookmaker": "betfair_ex_au",
-      "target_odds": 5.0,
+      "target_odds": 5.2,
       "fair_probability": 0.0,
       "fair_odds": 0.0,
       "edge": 0.0,
@@ -881,10 +939,11 @@
       "data_quality_flags": [
         "low_bookmaker_count"
       ],
-      "reasoning": "No fair consensus available for Bosnia & Herzegovina (h2h_lay) \u2014 insufficient comparison data."
+      "reasoning": "No fair consensus available for Bosnia & Herzegovina (h2h_lay) \u2014 insufficient comparison data.",
+      "minimum_acceptable_odds": 999.0
     },
     {
-      "opportunity_id": "eabd2711-ff92-44b6-adc4-fa3067da100c",
+      "opportunity_id": "642c6daa-7aca-42d8-b0c2-eaa4b22b5255",
       "sport": "soccer_fifa_world_cup",
       "event_id": "d1f4f946c70a0b4e81f5d43e9d32361c",
       "event_label": "Canada vs Bosnia & Herzegovina",
@@ -893,7 +952,7 @@
       "point": null,
       "player": null,
       "target_bookmaker": "betfair_ex_au",
-      "target_odds": 1.91,
+      "target_odds": 1.88,
       "fair_probability": 0.0,
       "fair_odds": 0.0,
       "edge": 0.0,
@@ -905,10 +964,11 @@
       "data_quality_flags": [
         "low_bookmaker_count"
       ],
-      "reasoning": "No fair consensus available for Canada (h2h_lay) \u2014 insufficient comparison data."
+      "reasoning": "No fair consensus available for Canada (h2h_lay) \u2014 insufficient comparison data.",
+      "minimum_acceptable_odds": 999.0
     },
     {
-      "opportunity_id": "791d9731-4fa6-43c9-9a18-889467504cca",
+      "opportunity_id": "4a1ff279-f1c0-4ecd-b9a1-a415918abcbf",
       "sport": "soccer_fifa_world_cup",
       "event_id": "d1f4f946c70a0b4e81f5d43e9d32361c",
       "event_label": "Canada vs Bosnia & Herzegovina",
@@ -929,10 +989,11 @@
       "data_quality_flags": [
         "low_bookmaker_count"
       ],
-      "reasoning": "No fair consensus available for Draw (h2h_lay) \u2014 insufficient comparison data."
+      "reasoning": "No fair consensus available for Draw (h2h_lay) \u2014 insufficient comparison data.",
+      "minimum_acceptable_odds": 999.0
     },
     {
-      "opportunity_id": "4ae8065e-3537-4ae0-b8b8-5b5f6cd88211",
+      "opportunity_id": "fd7eb794-5b48-4388-9e9c-26949bb705d9",
       "sport": "soccer_fifa_world_cup",
       "event_id": "c12986f447a515fbe641addd786dbb24",
       "event_label": "USA vs Paraguay",
@@ -955,10 +1016,11 @@
       "data_quality_flags": [
         "low_bookmaker_count"
       ],
-      "reasoning": "No fair consensus available for Yes (btts) \u2014 insufficient comparison data. Comparison: 1 book(s)"
+      "reasoning": "No fair consensus available for Yes (btts) \u2014 insufficient comparison data. Comparison: 1 book(s)",
+      "minimum_acceptable_odds": 999.0
     },
     {
-      "opportunity_id": "23576a9e-29ea-42e4-a92b-952464092751",
+      "opportunity_id": "923cf68a-cdc0-4e46-b655-a0c1b4a37396",
       "sport": "soccer_fifa_world_cup",
       "event_id": "c12986f447a515fbe641addd786dbb24",
       "event_label": "USA vs Paraguay",
@@ -981,10 +1043,11 @@
       "data_quality_flags": [
         "low_bookmaker_count"
       ],
-      "reasoning": "No fair consensus available for No (btts) \u2014 insufficient comparison data. Comparison: 1 book(s)"
+      "reasoning": "No fair consensus available for No (btts) \u2014 insufficient comparison data. Comparison: 1 book(s)",
+      "minimum_acceptable_odds": 999.0
     },
     {
-      "opportunity_id": "cce52f77-3716-411b-8f13-d65b27999975",
+      "opportunity_id": "221a1879-801e-4bfc-8254-9ada316eb40f",
       "sport": "soccer_fifa_world_cup",
       "event_id": "c12986f447a515fbe641addd786dbb24",
       "event_label": "USA vs Paraguay",
@@ -1005,10 +1068,11 @@
       "data_quality_flags": [
         "low_bookmaker_count"
       ],
-      "reasoning": "No fair consensus available for Paraguay (h2h_lay) \u2014 insufficient comparison data."
+      "reasoning": "No fair consensus available for Paraguay (h2h_lay) \u2014 insufficient comparison data.",
+      "minimum_acceptable_odds": 999.0
     },
     {
-      "opportunity_id": "152e5d95-110a-4c0c-9c34-16c82421429a",
+      "opportunity_id": "a46eb7a0-57d4-4b1b-b5cd-71989a563bae",
       "sport": "soccer_fifa_world_cup",
       "event_id": "c12986f447a515fbe641addd786dbb24",
       "event_label": "USA vs Paraguay",
@@ -1029,10 +1093,11 @@
       "data_quality_flags": [
         "low_bookmaker_count"
       ],
-      "reasoning": "No fair consensus available for USA (h2h_lay) \u2014 insufficient comparison data."
+      "reasoning": "No fair consensus available for USA (h2h_lay) \u2014 insufficient comparison data.",
+      "minimum_acceptable_odds": 999.0
     },
     {
-      "opportunity_id": "1ba22ec2-a54c-465f-9af9-48ac7730a8c0",
+      "opportunity_id": "710548b1-5d0f-4135-abb9-493d87744787",
       "sport": "soccer_fifa_world_cup",
       "event_id": "c12986f447a515fbe641addd786dbb24",
       "event_label": "USA vs Paraguay",
@@ -1053,10 +1118,11 @@
       "data_quality_flags": [
         "low_bookmaker_count"
       ],
-      "reasoning": "No fair consensus available for Draw (h2h_lay) \u2014 insufficient comparison data."
+      "reasoning": "No fair consensus available for Draw (h2h_lay) \u2014 insufficient comparison data.",
+      "minimum_acceptable_odds": 999.0
     },
     {
-      "opportunity_id": "2449d16d-e7c9-40a1-89c1-8da5f9b076d9",
+      "opportunity_id": "10c70d7f-b23e-4b1f-b792-6894718b76aa",
       "sport": "soccer_fifa_world_cup",
       "event_id": "26634922d3f78c146440816023e40de8",
       "event_label": "Qatar vs Switzerland",
@@ -1077,10 +1143,11 @@
       "data_quality_flags": [
         "low_bookmaker_count"
       ],
-      "reasoning": "No fair consensus available for Qatar (h2h_lay) \u2014 insufficient comparison data."
+      "reasoning": "No fair consensus available for Qatar (h2h_lay) \u2014 insufficient comparison data.",
+      "minimum_acceptable_odds": 999.0
     },
     {
-      "opportunity_id": "882b7249-9ecc-4579-a4be-cb2d1a9266c4",
+      "opportunity_id": "e5afc61c-3971-4354-a399-a1a4ab275ded",
       "sport": "soccer_fifa_world_cup",
       "event_id": "26634922d3f78c146440816023e40de8",
       "event_label": "Qatar vs Switzerland",
@@ -1101,10 +1168,11 @@
       "data_quality_flags": [
         "low_bookmaker_count"
       ],
-      "reasoning": "No fair consensus available for Switzerland (h2h_lay) \u2014 insufficient comparison data."
+      "reasoning": "No fair consensus available for Switzerland (h2h_lay) \u2014 insufficient comparison data.",
+      "minimum_acceptable_odds": 999.0
     },
     {
-      "opportunity_id": "f86f1072-76fd-4be0-a9ed-02cc64ee54c3",
+      "opportunity_id": "8ce024e4-5736-4e78-b187-67b95aef4ab5",
       "sport": "soccer_fifa_world_cup",
       "event_id": "26634922d3f78c146440816023e40de8",
       "event_label": "Qatar vs Switzerland",
@@ -1125,10 +1193,11 @@
       "data_quality_flags": [
         "low_bookmaker_count"
       ],
-      "reasoning": "No fair consensus available for Draw (h2h_lay) \u2014 insufficient comparison data."
+      "reasoning": "No fair consensus available for Draw (h2h_lay) \u2014 insufficient comparison data.",
+      "minimum_acceptable_odds": 999.0
     },
     {
-      "opportunity_id": "2e6f34c9-f009-45ac-a868-94bf303d1ac4",
+      "opportunity_id": "673ad650-8d2c-4954-bcd3-3b163e7897ba",
       "sport": "soccer_fifa_world_cup",
       "event_id": "26634922d3f78c146440816023e40de8",
       "event_label": "Qatar vs Switzerland",
@@ -1151,10 +1220,11 @@
       "data_quality_flags": [
         "low_bookmaker_count"
       ],
-      "reasoning": "No fair consensus available for Yes (btts) \u2014 insufficient comparison data. Comparison: 1 book(s)"
+      "reasoning": "No fair consensus available for Yes (btts) \u2014 insufficient comparison data. Comparison: 1 book(s)",
+      "minimum_acceptable_odds": 999.0
     },
     {
-      "opportunity_id": "5461a310-eeb1-4153-9778-00731909348a",
+      "opportunity_id": "409b51fe-85a7-4270-83ff-7ceea10691f5",
       "sport": "soccer_fifa_world_cup",
       "event_id": "26634922d3f78c146440816023e40de8",
       "event_label": "Qatar vs Switzerland",
@@ -1177,10 +1247,11 @@
       "data_quality_flags": [
         "low_bookmaker_count"
       ],
-      "reasoning": "No fair consensus available for No (btts) \u2014 insufficient comparison data. Comparison: 1 book(s)"
+      "reasoning": "No fair consensus available for No (btts) \u2014 insufficient comparison data. Comparison: 1 book(s)",
+      "minimum_acceptable_odds": 999.0
     },
     {
-      "opportunity_id": "cb159754-a1b9-4ad3-88c8-762705feb731",
+      "opportunity_id": "7f059b28-b50f-4984-b90e-00ab9a89b9fe",
       "sport": "soccer_fifa_world_cup",
       "event_id": "f6c8748a16516e0998f95de14235432a",
       "event_label": "Brazil vs Morocco",
@@ -1203,10 +1274,11 @@
       "data_quality_flags": [
         "low_bookmaker_count"
       ],
-      "reasoning": "No fair consensus available for Yes (btts) \u2014 insufficient comparison data. Comparison: 1 book(s)"
+      "reasoning": "No fair consensus available for Yes (btts) \u2014 insufficient comparison data. Comparison: 1 book(s)",
+      "minimum_acceptable_odds": 999.0
     },
     {
-      "opportunity_id": "60dd07d1-d205-46ab-b0b3-4911232fd51a",
+      "opportunity_id": "a36641c1-0f49-422c-b334-521bcbddbbbd",
       "sport": "soccer_fifa_world_cup",
       "event_id": "f6c8748a16516e0998f95de14235432a",
       "event_label": "Brazil vs Morocco",
@@ -1229,10 +1301,11 @@
       "data_quality_flags": [
         "low_bookmaker_count"
       ],
-      "reasoning": "No fair consensus available for No (btts) \u2014 insufficient comparison data. Comparison: 1 book(s)"
+      "reasoning": "No fair consensus available for No (btts) \u2014 insufficient comparison data. Comparison: 1 book(s)",
+      "minimum_acceptable_odds": 999.0
     },
     {
-      "opportunity_id": "d39e08b6-65f6-42a5-9b03-9df508fef8c9",
+      "opportunity_id": "4942144a-39b5-472c-b454-d1c9eeac5d79",
       "sport": "soccer_fifa_world_cup",
       "event_id": "f6c8748a16516e0998f95de14235432a",
       "event_label": "Brazil vs Morocco",
@@ -1253,10 +1326,11 @@
       "data_quality_flags": [
         "low_bookmaker_count"
       ],
-      "reasoning": "No fair consensus available for Brazil (h2h_lay) \u2014 insufficient comparison data."
+      "reasoning": "No fair consensus available for Brazil (h2h_lay) \u2014 insufficient comparison data.",
+      "minimum_acceptable_odds": 999.0
     },
     {
-      "opportunity_id": "3a8536a2-9bfd-4d49-8953-8af35795286a",
+      "opportunity_id": "2fc54c6a-2c03-478f-9453-f1f7f04caad2",
       "sport": "soccer_fifa_world_cup",
       "event_id": "f6c8748a16516e0998f95de14235432a",
       "event_label": "Brazil vs Morocco",
@@ -1277,10 +1351,11 @@
       "data_quality_flags": [
         "low_bookmaker_count"
       ],
-      "reasoning": "No fair consensus available for Morocco (h2h_lay) \u2014 insufficient comparison data."
+      "reasoning": "No fair consensus available for Morocco (h2h_lay) \u2014 insufficient comparison data.",
+      "minimum_acceptable_odds": 999.0
     },
     {
-      "opportunity_id": "6e4d54ef-ae34-454c-a64f-47e0c918ece3",
+      "opportunity_id": "9f748e6b-a6ef-4714-bccc-308b8c8272d2",
       "sport": "soccer_fifa_world_cup",
       "event_id": "f6c8748a16516e0998f95de14235432a",
       "event_label": "Brazil vs Morocco",
@@ -1301,10 +1376,46 @@
       "data_quality_flags": [
         "low_bookmaker_count"
       ],
-      "reasoning": "No fair consensus available for Draw (h2h_lay) \u2014 insufficient comparison data."
+      "reasoning": "No fair consensus available for Draw (h2h_lay) \u2014 insufficient comparison data.",
+      "minimum_acceptable_odds": 999.0
     },
     {
-      "opportunity_id": "cabe44d5-b892-46ef-b1b6-de51c7689bd2",
+      "opportunity_id": "af730527-9cc8-4c21-af92-a69e4cec7f4d",
+      "sport": "soccer_fifa_world_cup",
+      "event_id": "c12986f447a515fbe641addd786dbb24",
+      "event_label": "USA vs Paraguay",
+      "market": "h2h",
+      "selection": "Paraguay",
+      "point": null,
+      "player": null,
+      "target_bookmaker": "sportsbet",
+      "target_odds": 4.0,
+      "fair_probability": 0.2499285646252024,
+      "fair_odds": 4.001143292682927,
+      "edge": -0.0002857414991904,
+      "decision": "pass",
+      "suggested_stake": 0.0,
+      "max_stake_cap": 50.0,
+      "confidence": "low",
+      "comparison_bookmakers": [
+        "betr_au",
+        "betright",
+        "dabble_au",
+        "ladbrokes_au",
+        "playup",
+        "pointsbetau",
+        "tab",
+        "tabtouch",
+        "unibet"
+      ],
+      "data_quality_flags": [
+        "low_variance_consensus"
+      ],
+      "reasoning": "Negative edge -0.0% at SportsBet (4.0) vs fair 4.00 Comparison: 9 book(s)",
+      "minimum_acceptable_odds": 4.121177591463415
+    },
+    {
+      "opportunity_id": "cd20e32e-2c09-4cb7-836a-8963cef5c43f",
       "sport": "rugbyleague_nrl",
       "event_id": "fe9cec1e3f524e0e813826c48b25f966",
       "event_label": "New Zealand Warriors vs Cronulla Sutherland Sharks",
@@ -1333,22 +1444,23 @@
         "unibet"
       ],
       "data_quality_flags": [],
-      "reasoning": "Negative edge -0.2% at SportsBet (3.1) vs fair 3.11 Comparison: 9 book(s)"
+      "reasoning": "Negative edge -0.2% at SportsBet (3.1) vs fair 3.11 Comparison: 9 book(s)",
+      "minimum_acceptable_odds": 3.200357142857143
     },
     {
-      "opportunity_id": "ff0277df-1e50-4601-a441-fa7d85334539",
+      "opportunity_id": "fb7c4d42-0520-4acb-86d5-972df65f89ff",
       "sport": "soccer_fifa_world_cup",
-      "event_id": "c12986f447a515fbe641addd786dbb24",
-      "event_label": "USA vs Paraguay",
+      "event_id": "d1f4f946c70a0b4e81f5d43e9d32361c",
+      "event_label": "Canada vs Bosnia & Herzegovina",
       "market": "h2h",
-      "selection": "Paraguay",
+      "selection": "Bosnia & Herzegovina",
       "point": null,
       "player": null,
       "target_bookmaker": "sportsbet",
-      "target_odds": 4.0,
-      "fair_probability": 0.2492173308081784,
-      "fair_odds": 4.012562034739454,
-      "edge": -0.0031306767672864,
+      "target_odds": 4.75,
+      "fair_probability": 0.20909365863494303,
+      "fair_odds": 4.782545805207329,
+      "edge": -0.006805121484020607,
       "decision": "pass",
       "suggested_stake": 0.0,
       "max_stake_cap": 50.0,
@@ -1367,10 +1479,11 @@
       "data_quality_flags": [
         "low_variance_consensus"
       ],
-      "reasoning": "Negative edge -0.3% at SportsBet (4.0) vs fair 4.01 Comparison: 9 book(s)"
+      "reasoning": "Negative edge -0.7% at SportsBet (4.75) vs fair 4.78 Comparison: 9 book(s)",
+      "minimum_acceptable_odds": 4.926022179363549
     },
     {
-      "opportunity_id": "0499c1be-fdc8-4ff7-979a-b9beab7d11e5",
+      "opportunity_id": "e8f5d869-e35f-43af-b08d-6f65ee5d8d70",
       "sport": "rugbyleague_nrl",
       "event_id": "836188d12bf0a856ac763b3f69509983",
       "event_label": "Parramatta Eels vs Canberra Raiders",
@@ -1401,10 +1514,11 @@
       "data_quality_flags": [
         "low_variance_consensus"
       ],
-      "reasoning": "Negative edge -1.1% at Betfair (2.24) vs fair 2.26 Comparison: 9 book(s)"
+      "reasoning": "Negative edge -1.1% at Betfair (2.24) vs fair 2.26 Comparison: 9 book(s)",
+      "minimum_acceptable_odds": 2.3326470588235293
     },
     {
-      "opportunity_id": "99e828bf-edec-4782-a025-f28b103cddd2",
+      "opportunity_id": "a2b68d1e-4b8b-46e7-8265-0ccf19db8314",
       "sport": "soccer_fifa_world_cup",
       "event_id": "f6c8748a16516e0998f95de14235432a",
       "event_label": "Brazil vs Morocco",
@@ -1435,10 +1549,11 @@
       "data_quality_flags": [
         "low_variance_consensus"
       ],
-      "reasoning": "Negative edge -1.5% at Betfair (1.7) vs fair 1.73 Comparison: 9 book(s)"
+      "reasoning": "Negative edge -1.5% at Betfair (1.7) vs fair 1.73 Comparison: 9 book(s)",
+      "minimum_acceptable_odds": 1.778341818181818
     },
     {
-      "opportunity_id": "09da3a58-9145-4887-89f3-e4f2d571348a",
+      "opportunity_id": "cc8ed12c-ab3e-4788-91d2-863ffb2ce03f",
       "sport": "rugbyleague_nrl",
       "event_id": "fe9cec1e3f524e0e813826c48b25f966",
       "event_label": "New Zealand Warriors vs Cronulla Sutherland Sharks",
@@ -1463,22 +1578,23 @@
       "data_quality_flags": [
         "low_variance_consensus"
       ],
-      "reasoning": "Negative edge -2.0% at SportsBet (1.96) vs fair 2.00 Comparison: 3 book(s)"
+      "reasoning": "Negative edge -2.0% at SportsBet (1.96) vs fair 2.00 Comparison: 3 book(s)",
+      "minimum_acceptable_odds": 2.06
     },
     {
-      "opportunity_id": "a73b68f7-cea9-435d-a0be-9a8764c2a966",
+      "opportunity_id": "c5b9ea84-712d-4475-bd60-0a6ac1954ccd",
       "sport": "soccer_fifa_world_cup",
-      "event_id": "d1f4f946c70a0b4e81f5d43e9d32361c",
-      "event_label": "Canada vs Bosnia & Herzegovina",
+      "event_id": "c12986f447a515fbe641addd786dbb24",
+      "event_label": "USA vs Paraguay",
       "market": "h2h",
-      "selection": "Canada",
+      "selection": "USA",
       "point": null,
       "player": null,
       "target_bookmaker": "betfair_ex_au",
-      "target_odds": 1.9,
-      "fair_probability": 0.5155333917379877,
-      "fair_odds": 1.9397385620915033,
-      "edge": -0.02048655569782337,
+      "target_odds": 2.14,
+      "fair_probability": 0.45718639870463856,
+      "fair_odds": 2.1872916666666664,
+      "edge": -0.021621106772073483,
       "decision": "pass",
       "suggested_stake": 0.0,
       "max_stake_cap": 50.0,
@@ -1497,10 +1613,11 @@
       "data_quality_flags": [
         "low_variance_consensus"
       ],
-      "reasoning": "Negative edge -2.0% at Betfair (1.9) vs fair 1.94 Comparison: 9 book(s)"
+      "reasoning": "Negative edge -2.2% at Betfair (2.14) vs fair 2.19 Comparison: 9 book(s)",
+      "minimum_acceptable_odds": 2.2529104166666665
     },
     {
-      "opportunity_id": "9ac38e78-c018-4d60-9554-b8119df6bb1b",
+      "opportunity_id": "9ccc0f22-2136-456b-9a25-976cc7e3435a",
       "sport": "rugbyleague_nrl",
       "event_id": "836188d12bf0a856ac763b3f69509983",
       "event_label": "Parramatta Eels vs Canberra Raiders",
@@ -1524,10 +1641,11 @@
       "data_quality_flags": [
         "low_variance_consensus"
       ],
-      "reasoning": "Negative edge -2.3% at SportsBet (1.98) vs fair 2.03 Comparison: 2 book(s)"
+      "reasoning": "Negative edge -2.3% at SportsBet (1.98) vs fair 2.03 Comparison: 2 book(s)",
+      "minimum_acceptable_odds": 2.0874666666666664
     },
     {
-      "opportunity_id": "b962a71a-b763-4b59-90db-7ec3da3d2078",
+      "opportunity_id": "3c600e2f-c4da-49b7-bf25-93996e0dd97f",
       "sport": "soccer_fifa_world_cup",
       "event_id": "f6c8748a16516e0998f95de14235432a",
       "event_label": "Brazil vs Morocco",
@@ -1558,78 +1676,11 @@
       "data_quality_flags": [
         "low_variance_consensus"
       ],
-      "reasoning": "Negative edge -2.4% at Neds (3.9) vs fair 4.00 Comparison: 9 book(s)"
+      "reasoning": "Negative edge -2.4% at Neds (3.9) vs fair 4.00 Comparison: 9 book(s)",
+      "minimum_acceptable_odds": 4.116531986531987
     },
     {
-      "opportunity_id": "2c0953a2-95e9-4058-9caa-fafd20d8b773",
-      "sport": "soccer_fifa_world_cup",
-      "event_id": "c12986f447a515fbe641addd786dbb24",
-      "event_label": "USA vs Paraguay",
-      "market": "h2h",
-      "selection": "USA",
-      "point": null,
-      "player": null,
-      "target_bookmaker": "betfair_ex_au",
-      "target_odds": 2.14,
-      "fair_probability": 0.45564748893592455,
-      "fair_odds": 2.194679054054054,
-      "edge": -0.024914373677121463,
-      "decision": "pass",
-      "suggested_stake": 0.0,
-      "max_stake_cap": 50.0,
-      "confidence": "low",
-      "comparison_bookmakers": [
-        "betr_au",
-        "betright",
-        "dabble_au",
-        "ladbrokes_au",
-        "playup",
-        "pointsbetau",
-        "tab",
-        "tabtouch",
-        "unibet"
-      ],
-      "data_quality_flags": [
-        "low_variance_consensus"
-      ],
-      "reasoning": "Negative edge -2.5% at Betfair (2.14) vs fair 2.19 Comparison: 9 book(s)"
-    },
-    {
-      "opportunity_id": "8a3a2350-cd39-439a-9f52-24ebe6c31867",
-      "sport": "soccer_fifa_world_cup",
-      "event_id": "c12986f447a515fbe641addd786dbb24",
-      "event_label": "USA vs Paraguay",
-      "market": "h2h",
-      "selection": "Draw",
-      "point": null,
-      "player": null,
-      "target_bookmaker": "betfair_ex_au",
-      "target_odds": 3.3,
-      "fair_probability": 0.2951286093275405,
-      "fair_odds": 3.3883533090151117,
-      "edge": -0.02607558921911635,
-      "decision": "pass",
-      "suggested_stake": 0.0,
-      "max_stake_cap": 50.0,
-      "confidence": "low",
-      "comparison_bookmakers": [
-        "betr_au",
-        "betright",
-        "dabble_au",
-        "ladbrokes_au",
-        "playup",
-        "pointsbetau",
-        "tab",
-        "tabtouch",
-        "unibet"
-      ],
-      "data_quality_flags": [
-        "low_variance_consensus"
-      ],
-      "reasoning": "Negative edge -2.6% at Betfair (3.3) vs fair 3.39 Comparison: 9 book(s)"
-    },
-    {
-      "opportunity_id": "f95e1587-7d95-471f-a465-663e3604fe5f",
+      "opportunity_id": "f18b4edf-3ae4-40e6-9f50-7f0d1d833b71",
       "sport": "soccer_fifa_world_cup",
       "event_id": "c12986f447a515fbe641addd786dbb24",
       "event_label": "USA vs Paraguay",
@@ -1639,9 +1690,9 @@
       "player": null,
       "target_bookmaker": "neds",
       "target_odds": 3.9,
-      "fair_probability": 0.2492173308081784,
-      "fair_odds": 4.012562034739454,
-      "edge": -0.02805240984810424,
+      "fair_probability": 0.2499285646252024,
+      "fair_odds": 4.001143292682927,
+      "edge": -0.02527859796171064,
       "decision": "pass",
       "suggested_stake": 0.0,
       "max_stake_cap": 50.0,
@@ -1660,10 +1711,11 @@
       "data_quality_flags": [
         "low_variance_consensus"
       ],
-      "reasoning": "Negative edge -2.8% at Neds (3.9) vs fair 4.01 Comparison: 9 book(s)"
+      "reasoning": "Negative edge -2.5% at Neds (3.9) vs fair 4.00 Comparison: 9 book(s)",
+      "minimum_acceptable_odds": 4.121177591463415
     },
     {
-      "opportunity_id": "3c302067-8b80-4c00-93e9-ce4f655c5252",
+      "opportunity_id": "16e1459c-b19e-43fc-94ee-f768e6b584d0",
       "sport": "rugbyleague_nrl",
       "event_id": "fe9cec1e3f524e0e813826c48b25f966",
       "event_label": "New Zealand Warriors vs Cronulla Sutherland Sharks",
@@ -1690,10 +1742,11 @@
         "unibet"
       ],
       "data_quality_flags": [],
-      "reasoning": "Negative edge -3.0% at SportsBet (1.89) vs fair 1.95 Comparison: 7 book(s)"
+      "reasoning": "Negative edge -3.0% at SportsBet (1.89) vs fair 1.95 Comparison: 7 book(s)",
+      "minimum_acceptable_odds": 2.0071794871794872
     },
     {
-      "opportunity_id": "e41b8b3b-8300-43b8-ae3d-710d50711bd6",
+      "opportunity_id": "34147983-7569-4a0c-8f68-253aa62ef87a",
       "sport": "rugbyleague_nrl",
       "event_id": "836188d12bf0a856ac763b3f69509983",
       "event_label": "Parramatta Eels vs Canberra Raiders",
@@ -1724,22 +1777,23 @@
       "data_quality_flags": [
         "low_variance_consensus"
       ],
-      "reasoning": "Negative edge -3.0% at SportsBet (1.96) vs fair 2.02 Comparison: 9 book(s)"
+      "reasoning": "Negative edge -3.0% at SportsBet (1.96) vs fair 2.02 Comparison: 9 book(s)",
+      "minimum_acceptable_odds": 2.0819148936170215
     },
     {
-      "opportunity_id": "756d7e67-ee9f-4a87-acbf-7cda99e51878",
+      "opportunity_id": "b19e9c19-aef1-453b-880f-f22192366e0a",
       "sport": "soccer_fifa_world_cup",
-      "event_id": "d1f4f946c70a0b4e81f5d43e9d32361c",
-      "event_label": "Canada vs Bosnia & Herzegovina",
+      "event_id": "c12986f447a515fbe641addd786dbb24",
+      "event_label": "USA vs Paraguay",
       "market": "h2h",
-      "selection": "Bosnia & Herzegovina",
+      "selection": "Draw",
       "point": null,
       "player": null,
-      "target_bookmaker": "sportsbet",
-      "target_odds": 4.6,
-      "fair_probability": 0.20909365863494303,
-      "fair_odds": 4.782545805207329,
-      "edge": -0.03816917027926206,
+      "target_bookmaker": "betfair_ex_au",
+      "target_odds": 3.3,
+      "fair_probability": 0.2928850366701591,
+      "fair_odds": 3.4143089430894307,
+      "edge": -0.03347937898847497,
       "decision": "pass",
       "suggested_stake": 0.0,
       "max_stake_cap": 50.0,
@@ -1758,10 +1812,46 @@
       "data_quality_flags": [
         "low_variance_consensus"
       ],
-      "reasoning": "Negative edge -3.8% at SportsBet (4.6) vs fair 4.78 Comparison: 9 book(s)"
+      "reasoning": "Negative edge -3.3% at Betfair (3.3) vs fair 3.41 Comparison: 9 book(s)",
+      "minimum_acceptable_odds": 3.5167382113821133
     },
     {
-      "opportunity_id": "dc247ba0-e602-4d21-872f-c9b36dc58343",
+      "opportunity_id": "65411ae5-1d30-4ac7-9774-b86702e2abe5",
+      "sport": "soccer_fifa_world_cup",
+      "event_id": "d1f4f946c70a0b4e81f5d43e9d32361c",
+      "event_label": "Canada vs Bosnia & Herzegovina",
+      "market": "h2h",
+      "selection": "Canada",
+      "point": null,
+      "player": null,
+      "target_bookmaker": "betfair_ex_au",
+      "target_odds": 1.87,
+      "fair_probability": 0.5155333917379877,
+      "fair_odds": 1.9397385620915033,
+      "edge": -0.035952557449963,
+      "decision": "pass",
+      "suggested_stake": 0.0,
+      "max_stake_cap": 50.0,
+      "confidence": "low",
+      "comparison_bookmakers": [
+        "betr_au",
+        "betright",
+        "dabble_au",
+        "ladbrokes_au",
+        "playup",
+        "pointsbetau",
+        "tab",
+        "tabtouch",
+        "unibet"
+      ],
+      "data_quality_flags": [
+        "low_variance_consensus"
+      ],
+      "reasoning": "Negative edge -3.6% at Betfair (1.87) vs fair 1.94 Comparison: 9 book(s)",
+      "minimum_acceptable_odds": 1.9979307189542486
+    },
+    {
+      "opportunity_id": "e2c2764b-1241-41e3-a3f7-e263a41d0baf",
       "sport": "rugbyleague_nrl",
       "event_id": "836188d12bf0a856ac763b3f69509983",
       "event_label": "Parramatta Eels vs Canberra Raiders",
@@ -1792,10 +1882,11 @@
       "data_quality_flags": [
         "low_variance_consensus"
       ],
-      "reasoning": "Negative edge -3.9% at SportsBet (1.72) vs fair 1.79 Comparison: 9 book(s)"
+      "reasoning": "Negative edge -3.9% at SportsBet (1.72) vs fair 1.79 Comparison: 9 book(s)",
+      "minimum_acceptable_odds": 1.844418604651163
     },
     {
-      "opportunity_id": "c053df31-5eb8-4111-a7fe-cc4aae68bebf",
+      "opportunity_id": "d28df4f6-a714-41c0-8b32-1f519a79de3f",
       "sport": "rugbyleague_nrl",
       "event_id": "836188d12bf0a856ac763b3f69509983",
       "event_label": "Parramatta Eels vs Canberra Raiders",
@@ -1826,37 +1917,11 @@
       "data_quality_flags": [
         "low_variance_consensus"
       ],
-      "reasoning": "Negative edge -4.0% at Neds (1.9) vs fair 1.98 Comparison: 9 book(s)"
+      "reasoning": "Negative edge -4.0% at Neds (1.9) vs fair 1.98 Comparison: 9 book(s)",
+      "minimum_acceptable_odds": 2.0385416666666663
     },
     {
-      "opportunity_id": "8a997c33-a446-4abd-97cf-37a5badb17e6",
-      "sport": "rugbyleague_nrl",
-      "event_id": "360b7bc18bc251b59f91c82955e79d1d",
-      "event_label": "Dolphins vs Sydney Roosters",
-      "market": "h2h",
-      "selection": "Dolphins",
-      "point": null,
-      "player": null,
-      "target_bookmaker": "betfair_ex_au",
-      "target_odds": 1.13,
-      "fair_probability": 0.8467277888599049,
-      "fair_odds": 1.181017102729641,
-      "edge": -0.04319759858830746,
-      "decision": "pass",
-      "suggested_stake": 0.0,
-      "max_stake_cap": 50.0,
-      "confidence": "low",
-      "comparison_bookmakers": [
-        "pointsbetau",
-        "tab",
-        "tabtouch",
-        "unibet"
-      ],
-      "data_quality_flags": [],
-      "reasoning": "Negative edge -4.3% at Betfair (1.13) vs fair 1.18 Comparison: 4 book(s)"
-    },
-    {
-      "opportunity_id": "bef15724-7c3b-4cd6-89bd-7e43ecd879e9",
+      "opportunity_id": "27c03a52-c085-46f2-b517-c0c2b26e54f0",
       "sport": "soccer_fifa_world_cup",
       "event_id": "26634922d3f78c146440816023e40de8",
       "event_label": "Qatar vs Switzerland",
@@ -1885,10 +1950,11 @@
         "unibet"
       ],
       "data_quality_flags": [],
-      "reasoning": "Negative edge -4.6% at Betfair (1.23) vs fair 1.29 Comparison: 9 book(s)"
+      "reasoning": "Negative edge -4.6% at Betfair (1.23) vs fair 1.29 Comparison: 9 book(s)",
+      "minimum_acceptable_odds": 1.3273565217391305
     },
     {
-      "opportunity_id": "41fd502d-a07a-4797-b367-b92193eec2c7",
+      "opportunity_id": "28810e19-e379-4ec3-bb30-51c713198924",
       "sport": "soccer_fifa_world_cup",
       "event_id": "f6c8748a16516e0998f95de14235432a",
       "event_label": "Brazil vs Morocco",
@@ -1919,10 +1985,11 @@
       "data_quality_flags": [
         "low_variance_consensus"
       ],
-      "reasoning": "Negative edge -4.9% at SportsBet (3.8) vs fair 4.00 Comparison: 9 book(s)"
+      "reasoning": "Negative edge -4.9% at SportsBet (3.8) vs fair 4.00 Comparison: 9 book(s)",
+      "minimum_acceptable_odds": 4.116531986531987
     },
     {
-      "opportunity_id": "18c49ae5-fc45-4a43-aaa0-0bb41d61d94d",
+      "opportunity_id": "1697a56b-6682-45f4-ab3a-9d65b3ef76d8",
       "sport": "rugbyleague_nrl",
       "event_id": "fe9cec1e3f524e0e813826c48b25f966",
       "event_label": "New Zealand Warriors vs Cronulla Sutherland Sharks",
@@ -1947,10 +2014,11 @@
       "data_quality_flags": [
         "low_variance_consensus"
       ],
-      "reasoning": "Negative edge -5.0% at Neds (1.9) vs fair 2.00 Comparison: 3 book(s)"
+      "reasoning": "Negative edge -5.0% at Neds (1.9) vs fair 2.00 Comparison: 3 book(s)",
+      "minimum_acceptable_odds": 2.06
     },
     {
-      "opportunity_id": "62d0c46e-5917-44b3-ba7a-7ce16132ca8c",
+      "opportunity_id": "52579dc1-d34d-4430-b863-29a1549eb583",
       "sport": "rugbyleague_nrl",
       "event_id": "fe9cec1e3f524e0e813826c48b25f966",
       "event_label": "New Zealand Warriors vs Cronulla Sutherland Sharks",
@@ -1975,10 +2043,11 @@
       "data_quality_flags": [
         "low_variance_consensus"
       ],
-      "reasoning": "Negative edge -5.0% at Neds (1.9) vs fair 2.00 Comparison: 3 book(s)"
+      "reasoning": "Negative edge -5.0% at Neds (1.9) vs fair 2.00 Comparison: 3 book(s)",
+      "minimum_acceptable_odds": 2.06
     },
     {
-      "opportunity_id": "3a051cc9-f1a8-437f-9644-cf0fe3756e66",
+      "opportunity_id": "8f771ce3-b6b8-42f7-ab8b-6c473a6d96b0",
       "sport": "rugbyleague_nrl",
       "event_id": "fe9cec1e3f524e0e813826c48b25f966",
       "event_label": "New Zealand Warriors vs Cronulla Sutherland Sharks",
@@ -2007,10 +2076,11 @@
         "unibet"
       ],
       "data_quality_flags": [],
-      "reasoning": "Negative edge -5.1% at Betfair (1.4) vs fair 1.47 Comparison: 9 book(s)"
+      "reasoning": "Negative edge -5.1% at Betfair (1.4) vs fair 1.47 Comparison: 9 book(s)",
+      "minimum_acceptable_odds": 1.518813559322034
     },
     {
-      "opportunity_id": "77c71a78-edac-4adc-ac27-183b65580ffe",
+      "opportunity_id": "a4c18866-38a0-446e-a363-14380cb03c24",
       "sport": "rugbyleague_nrl",
       "event_id": "836188d12bf0a856ac763b3f69509983",
       "event_label": "Parramatta Eels vs Canberra Raiders",
@@ -2041,10 +2111,11 @@
       "data_quality_flags": [
         "low_variance_consensus"
       ],
-      "reasoning": "Negative edge -5.1% at Neds (2.15) vs fair 2.26 Comparison: 9 book(s)"
+      "reasoning": "Negative edge -5.1% at Neds (2.15) vs fair 2.26 Comparison: 9 book(s)",
+      "minimum_acceptable_odds": 2.3326470588235293
     },
     {
-      "opportunity_id": "ed53667a-8ad7-4487-a54f-5b0d4d56451a",
+      "opportunity_id": "257625cc-7621-4e00-95b5-4fa7c4eb5f99",
       "sport": "rugbyleague_nrl",
       "event_id": "836188d12bf0a856ac763b3f69509983",
       "event_label": "Parramatta Eels vs Canberra Raiders",
@@ -2075,10 +2146,11 @@
       "data_quality_flags": [
         "low_variance_consensus"
       ],
-      "reasoning": "Negative edge -5.1% at Neds (1.7) vs fair 1.79 Comparison: 9 book(s)"
+      "reasoning": "Negative edge -5.1% at Neds (1.7) vs fair 1.79 Comparison: 9 book(s)",
+      "minimum_acceptable_odds": 1.844418604651163
     },
     {
-      "opportunity_id": "d4f3b77e-02f6-45b5-ac07-9a0b83a2288e",
+      "opportunity_id": "a2fe4e9c-568f-47b1-b609-864a1c63659b",
       "sport": "rugbyleague_nrl",
       "event_id": "836188d12bf0a856ac763b3f69509983",
       "event_label": "Parramatta Eels vs Canberra Raiders",
@@ -2109,10 +2181,11 @@
       "data_quality_flags": [
         "low_variance_consensus"
       ],
-      "reasoning": "Negative edge -5.1% at Betfair (1.7) vs fair 1.79 Comparison: 9 book(s)"
+      "reasoning": "Negative edge -5.1% at Betfair (1.7) vs fair 1.79 Comparison: 9 book(s)",
+      "minimum_acceptable_odds": 1.844418604651163
     },
     {
-      "opportunity_id": "e36852db-8470-4267-8c0a-11d17bc7495b",
+      "opportunity_id": "450e74b5-4468-4f3d-88fb-b3b5459107ae",
       "sport": "soccer_fifa_world_cup",
       "event_id": "26634922d3f78c146440816023e40de8",
       "event_label": "Qatar vs Switzerland",
@@ -2141,78 +2214,11 @@
         "unibet"
       ],
       "data_quality_flags": [],
-      "reasoning": "Negative edge -5.3% at Neds (1.22) vs fair 1.29 Comparison: 9 book(s)"
+      "reasoning": "Negative edge -5.3% at Neds (1.22) vs fair 1.29 Comparison: 9 book(s)",
+      "minimum_acceptable_odds": 1.3273565217391305
     },
     {
-      "opportunity_id": "8dbdecc7-5585-461b-9ee1-0c857393268c",
-      "sport": "soccer_fifa_world_cup",
-      "event_id": "c12986f447a515fbe641addd786dbb24",
-      "event_label": "USA vs Paraguay",
-      "market": "h2h",
-      "selection": "Draw",
-      "point": null,
-      "player": null,
-      "target_bookmaker": "neds",
-      "target_odds": 3.2,
-      "fair_probability": 0.2951286093275405,
-      "fair_odds": 3.3883533090151117,
-      "edge": -0.0555884501518704,
-      "decision": "pass",
-      "suggested_stake": 0.0,
-      "max_stake_cap": 50.0,
-      "confidence": "low",
-      "comparison_bookmakers": [
-        "betr_au",
-        "betright",
-        "dabble_au",
-        "ladbrokes_au",
-        "playup",
-        "pointsbetau",
-        "tab",
-        "tabtouch",
-        "unibet"
-      ],
-      "data_quality_flags": [
-        "low_variance_consensus"
-      ],
-      "reasoning": "Negative edge -5.6% at Neds (3.2) vs fair 3.39 Comparison: 9 book(s)"
-    },
-    {
-      "opportunity_id": "8e4463db-4698-4ad5-911a-def21e1ca37d",
-      "sport": "soccer_fifa_world_cup",
-      "event_id": "d1f4f946c70a0b4e81f5d43e9d32361c",
-      "event_label": "Canada vs Bosnia & Herzegovina",
-      "market": "h2h",
-      "selection": "Canada",
-      "point": null,
-      "player": null,
-      "target_bookmaker": "sportsbet",
-      "target_odds": 1.83,
-      "fair_probability": 0.5155333917379877,
-      "fair_odds": 1.9397385620915033,
-      "edge": -0.05657389311948251,
-      "decision": "pass",
-      "suggested_stake": 0.0,
-      "max_stake_cap": 50.0,
-      "confidence": "low",
-      "comparison_bookmakers": [
-        "betr_au",
-        "betright",
-        "dabble_au",
-        "ladbrokes_au",
-        "playup",
-        "pointsbetau",
-        "tab",
-        "tabtouch",
-        "unibet"
-      ],
-      "data_quality_flags": [
-        "low_variance_consensus"
-      ],
-      "reasoning": "Negative edge -5.7% at SportsBet (1.83) vs fair 1.94 Comparison: 9 book(s)"
-    },
-    {
-      "opportunity_id": "0e3ef908-69e7-4d5c-bee7-fbd7588d72af",
+      "opportunity_id": "614084e9-83a3-4b8b-9b0c-e90d6570eb27",
       "sport": "soccer_fifa_world_cup",
       "event_id": "d1f4f946c70a0b4e81f5d43e9d32361c",
       "event_label": "Canada vs Bosnia & Herzegovina",
@@ -2243,10 +2249,11 @@
       "data_quality_flags": [
         "low_variance_consensus"
       ],
-      "reasoning": "Negative edge -5.7% at Neds (1.83) vs fair 1.94 Comparison: 9 book(s)"
+      "reasoning": "Negative edge -5.7% at Neds (1.83) vs fair 1.94 Comparison: 9 book(s)",
+      "minimum_acceptable_odds": 1.9979307189542486
     },
     {
-      "opportunity_id": "2f6fea8a-3299-46af-9b62-1b8707ff684e",
+      "opportunity_id": "d2f767f6-8524-49a1-989f-ec9ed308b4d4",
       "sport": "soccer_fifa_world_cup",
       "event_id": "26634922d3f78c146440816023e40de8",
       "event_label": "Qatar vs Switzerland",
@@ -2277,10 +2284,11 @@
       "data_quality_flags": [
         "low_variance_consensus"
       ],
-      "reasoning": "Negative edge -5.7% at SportsBet (15.0) vs fair 15.90 Comparison: 9 book(s)"
+      "reasoning": "Negative edge -5.7% at SportsBet (15.0) vs fair 15.90 Comparison: 9 book(s)",
+      "minimum_acceptable_odds": 16.38089094796864
     },
     {
-      "opportunity_id": "680675fe-6b53-4bff-b9bc-ea2c18e17d28",
+      "opportunity_id": "23787e63-bd20-4985-8464-a78b3b0526cf",
       "sport": "soccer_fifa_world_cup",
       "event_id": "d1f4f946c70a0b4e81f5d43e9d32361c",
       "event_label": "Canada vs Bosnia & Herzegovina",
@@ -2311,10 +2319,11 @@
       "data_quality_flags": [
         "low_variance_consensus"
       ],
-      "reasoning": "Negative edge -5.9% at Neds (4.5) vs fair 4.78 Comparison: 9 book(s)"
+      "reasoning": "Negative edge -5.9% at Neds (4.5) vs fair 4.78 Comparison: 9 book(s)",
+      "minimum_acceptable_odds": 4.926022179363549
     },
     {
-      "opportunity_id": "97183612-92de-4b0c-96fb-b006387f6264",
+      "opportunity_id": "e9d6078f-7dbb-4421-9da4-ef2c83cb7a70",
       "sport": "rugbyleague_nrl",
       "event_id": "836188d12bf0a856ac763b3f69509983",
       "event_label": "Parramatta Eels vs Canberra Raiders",
@@ -2345,10 +2354,11 @@
       "data_quality_flags": [
         "low_variance_consensus"
       ],
-      "reasoning": "Negative edge -5.9% at SportsBet (2.13) vs fair 2.26 Comparison: 9 book(s)"
+      "reasoning": "Negative edge -5.9% at SportsBet (2.13) vs fair 2.26 Comparison: 9 book(s)",
+      "minimum_acceptable_odds": 2.3326470588235293
     },
     {
-      "opportunity_id": "c99b0b59-81d8-44b6-9451-26039fd917eb",
+      "opportunity_id": "92529cdd-9ff7-48af-8742-af749c9fe5da",
       "sport": "soccer_fifa_world_cup",
       "event_id": "26634922d3f78c146440816023e40de8",
       "event_label": "Qatar vs Switzerland",
@@ -2377,10 +2387,11 @@
         "unibet"
       ],
       "data_quality_flags": [],
-      "reasoning": "Negative edge -5.9% at Neds (6.0) vs fair 6.38 Comparison: 9 book(s)"
+      "reasoning": "Negative edge -5.9% at Neds (6.0) vs fair 6.38 Comparison: 9 book(s)",
+      "minimum_acceptable_odds": 6.570958385876419
     },
     {
-      "opportunity_id": "baf10ec1-4d59-4840-bda9-b608b4cdc525",
+      "opportunity_id": "798da604-ef16-4131-849e-333a8d79db18",
       "sport": "rugbyleague_nrl",
       "event_id": "836188d12bf0a856ac763b3f69509983",
       "event_label": "Parramatta Eels vs Canberra Raiders",
@@ -2411,10 +2422,39 @@
       "data_quality_flags": [
         "low_variance_consensus"
       ],
-      "reasoning": "Negative edge -6.0% at Neds (1.9) vs fair 2.02 Comparison: 9 book(s)"
+      "reasoning": "Negative edge -6.0% at Neds (1.9) vs fair 2.02 Comparison: 9 book(s)",
+      "minimum_acceptable_odds": 2.0819148936170215
     },
     {
-      "opportunity_id": "2dce1d5d-dfe1-49fe-a892-07ab7cbda39a",
+      "opportunity_id": "2d077241-e51b-4dad-a9a0-397f78088aee",
+      "sport": "rugbyleague_nrl",
+      "event_id": "360b7bc18bc251b59f91c82955e79d1d",
+      "event_label": "Dolphins vs Sydney Roosters",
+      "market": "h2h",
+      "selection": "Dolphins",
+      "point": null,
+      "player": null,
+      "target_bookmaker": "betfair_ex_au",
+      "target_odds": 1.05,
+      "fair_probability": 0.8947976362807115,
+      "fair_odds": 1.1175711238538464,
+      "edge": -0.06046248190525293,
+      "decision": "pass",
+      "suggested_stake": 0.0,
+      "max_stake_cap": 50.0,
+      "confidence": "low",
+      "comparison_bookmakers": [
+        "pointsbetau",
+        "tab",
+        "tabtouch",
+        "unibet"
+      ],
+      "data_quality_flags": [],
+      "reasoning": "Negative edge -6.0% at Betfair (1.05) vs fair 1.12 Comparison: 4 book(s)",
+      "minimum_acceptable_odds": 1.1510982575694617
+    },
+    {
+      "opportunity_id": "eb9a1fe1-126d-49d2-aab2-cbeb918a86ba",
       "sport": "soccer_fifa_world_cup",
       "event_id": "f6c8748a16516e0998f95de14235432a",
       "event_label": "Brazil vs Morocco",
@@ -2445,10 +2485,11 @@
       "data_quality_flags": [
         "low_variance_consensus"
       ],
-      "reasoning": "Negative edge -6.2% at Neds (1.62) vs fair 1.73 Comparison: 9 book(s)"
+      "reasoning": "Negative edge -6.2% at Neds (1.62) vs fair 1.73 Comparison: 9 book(s)",
+      "minimum_acceptable_odds": 1.778341818181818
     },
     {
-      "opportunity_id": "c9597c76-b715-499d-88a8-1792b7614f33",
+      "opportunity_id": "cf7a3349-9e13-445c-bb77-5d934cff8e39",
       "sport": "soccer_fifa_world_cup",
       "event_id": "f6c8748a16516e0998f95de14235432a",
       "event_label": "Brazil vs Morocco",
@@ -2479,10 +2520,11 @@
       "data_quality_flags": [
         "low_variance_consensus"
       ],
-      "reasoning": "Negative edge -6.2% at SportsBet (5.5) vs fair 5.86 Comparison: 9 book(s)"
+      "reasoning": "Negative edge -6.2% at SportsBet (5.5) vs fair 5.86 Comparison: 9 book(s)",
+      "minimum_acceptable_odds": 6.03758024691358
     },
     {
-      "opportunity_id": "f6eefce9-a6a4-49c9-91a8-56480b04e944",
+      "opportunity_id": "643fdea4-0361-4256-a7f1-2606d6367b96",
       "sport": "soccer_fifa_world_cup",
       "event_id": "d1f4f946c70a0b4e81f5d43e9d32361c",
       "event_label": "Canada vs Bosnia & Herzegovina",
@@ -2513,10 +2555,11 @@
       "data_quality_flags": [
         "low_variance_consensus"
       ],
-      "reasoning": "Negative edge -6.2% at SportsBet (3.4) vs fair 3.62 Comparison: 9 book(s)"
+      "reasoning": "Negative edge -6.2% at SportsBet (3.4) vs fair 3.62 Comparison: 9 book(s)",
+      "minimum_acceptable_odds": 3.7323980463980466
     },
     {
-      "opportunity_id": "f6ad4291-f574-43b9-8f5d-c4e0c6c8cb95",
+      "opportunity_id": "399f3fe5-47c6-4079-adb7-904915f0f320",
       "sport": "soccer_fifa_world_cup",
       "event_id": "d1f4f946c70a0b4e81f5d43e9d32361c",
       "event_label": "Canada vs Bosnia & Herzegovina",
@@ -2547,10 +2590,81 @@
       "data_quality_flags": [
         "low_variance_consensus"
       ],
-      "reasoning": "Negative edge -6.2% at Neds (3.4) vs fair 3.62 Comparison: 9 book(s)"
+      "reasoning": "Negative edge -6.2% at Neds (3.4) vs fair 3.62 Comparison: 9 book(s)",
+      "minimum_acceptable_odds": 3.7323980463980466
     },
     {
-      "opportunity_id": "9bdc596e-6f50-407a-9108-e639f29dac95",
+      "opportunity_id": "19c71c89-be38-4834-9cf3-3d9e3c815456",
+      "sport": "soccer_fifa_world_cup",
+      "event_id": "c12986f447a515fbe641addd786dbb24",
+      "event_label": "USA vs Paraguay",
+      "market": "h2h",
+      "selection": "Draw",
+      "point": null,
+      "player": null,
+      "target_bookmaker": "neds",
+      "target_odds": 3.2,
+      "fair_probability": 0.2928850366701591,
+      "fair_odds": 3.4143089430894307,
+      "edge": -0.06276788265549088,
+      "decision": "pass",
+      "suggested_stake": 0.0,
+      "max_stake_cap": 50.0,
+      "confidence": "low",
+      "comparison_bookmakers": [
+        "betr_au",
+        "betright",
+        "dabble_au",
+        "ladbrokes_au",
+        "playup",
+        "pointsbetau",
+        "tab",
+        "tabtouch",
+        "unibet"
+      ],
+      "data_quality_flags": [
+        "low_variance_consensus"
+      ],
+      "reasoning": "Negative edge -6.3% at Neds (3.2) vs fair 3.41 Comparison: 9 book(s)",
+      "minimum_acceptable_odds": 3.5167382113821133
+    },
+    {
+      "opportunity_id": "5ccfb84b-ba05-44f5-aea6-6a143d2efbf5",
+      "sport": "soccer_fifa_world_cup",
+      "event_id": "c12986f447a515fbe641addd786dbb24",
+      "event_label": "USA vs Paraguay",
+      "market": "h2h",
+      "selection": "USA",
+      "point": null,
+      "player": null,
+      "target_bookmaker": "sportsbet",
+      "target_odds": 2.05,
+      "fair_probability": 0.45718639870463856,
+      "fair_odds": 2.1872916666666664,
+      "edge": -0.06276788265549095,
+      "decision": "pass",
+      "suggested_stake": 0.0,
+      "max_stake_cap": 50.0,
+      "confidence": "low",
+      "comparison_bookmakers": [
+        "betr_au",
+        "betright",
+        "dabble_au",
+        "ladbrokes_au",
+        "playup",
+        "pointsbetau",
+        "tab",
+        "tabtouch",
+        "unibet"
+      ],
+      "data_quality_flags": [
+        "low_variance_consensus"
+      ],
+      "reasoning": "Negative edge -6.3% at SportsBet (2.05) vs fair 2.19 Comparison: 9 book(s)",
+      "minimum_acceptable_odds": 2.2529104166666665
+    },
+    {
+      "opportunity_id": "36b573df-20e8-4a02-8cff-a52b9651fb03",
       "sport": "rugbyleague_nrl",
       "event_id": "836188d12bf0a856ac763b3f69509983",
       "event_label": "Parramatta Eels vs Canberra Raiders",
@@ -2581,44 +2695,11 @@
       "data_quality_flags": [
         "low_variance_consensus"
       ],
-      "reasoning": "Negative edge -6.5% at SportsBet (1.85) vs fair 1.98 Comparison: 9 book(s)"
+      "reasoning": "Negative edge -6.5% at SportsBet (1.85) vs fair 1.98 Comparison: 9 book(s)",
+      "minimum_acceptable_odds": 2.0385416666666663
     },
     {
-      "opportunity_id": "c5980b5f-bf23-4087-ae82-83a7d4b07128",
-      "sport": "soccer_fifa_world_cup",
-      "event_id": "c12986f447a515fbe641addd786dbb24",
-      "event_label": "USA vs Paraguay",
-      "market": "h2h",
-      "selection": "USA",
-      "point": null,
-      "player": null,
-      "target_bookmaker": "sportsbet",
-      "target_odds": 2.05,
-      "fair_probability": 0.45564748893592455,
-      "fair_odds": 2.194679054054054,
-      "edge": -0.06592264768135467,
-      "decision": "pass",
-      "suggested_stake": 0.0,
-      "max_stake_cap": 50.0,
-      "confidence": "low",
-      "comparison_bookmakers": [
-        "betr_au",
-        "betright",
-        "dabble_au",
-        "ladbrokes_au",
-        "playup",
-        "pointsbetau",
-        "tab",
-        "tabtouch",
-        "unibet"
-      ],
-      "data_quality_flags": [
-        "low_variance_consensus"
-      ],
-      "reasoning": "Negative edge -6.6% at SportsBet (2.05) vs fair 2.19 Comparison: 9 book(s)"
-    },
-    {
-      "opportunity_id": "113be13b-9880-4c0b-a6f8-8356b3cbe8b0",
+      "opportunity_id": "97e1cf07-d427-472e-9ef4-ea6712e46bc2",
       "sport": "soccer_fifa_world_cup",
       "event_id": "f6c8748a16516e0998f95de14235432a",
       "event_label": "Brazil vs Morocco",
@@ -2649,10 +2730,11 @@
       "data_quality_flags": [
         "low_variance_consensus"
       ],
-      "reasoning": "Negative edge -6.8% at SportsBet (1.61) vs fair 1.73 Comparison: 9 book(s)"
+      "reasoning": "Negative edge -6.8% at SportsBet (1.61) vs fair 1.73 Comparison: 9 book(s)",
+      "minimum_acceptable_odds": 1.778341818181818
     },
     {
-      "opportunity_id": "9b6541e1-2a9f-4db1-9378-d6ac6b492dc7",
+      "opportunity_id": "0da6c815-cb92-4d77-bc79-d59a3379b2fa",
       "sport": "rugbyleague_nrl",
       "event_id": "fe9cec1e3f524e0e813826c48b25f966",
       "event_label": "New Zealand Warriors vs Cronulla Sutherland Sharks",
@@ -2679,10 +2761,11 @@
         "unibet"
       ],
       "data_quality_flags": [],
-      "reasoning": "Negative edge -7.0% at SportsBet (1.91) vs fair 2.05 Comparison: 7 book(s)"
+      "reasoning": "Negative edge -7.0% at SportsBet (1.91) vs fair 2.05 Comparison: 7 book(s)",
+      "minimum_acceptable_odds": 2.115675675675676
     },
     {
-      "opportunity_id": "871b560d-cdf4-4b53-ae6b-201a6511b4d9",
+      "opportunity_id": "a0e596e3-a8b5-4881-9d34-06e428130f18",
       "sport": "rugbyleague_nrl",
       "event_id": "fe9cec1e3f524e0e813826c48b25f966",
       "event_label": "New Zealand Warriors vs Cronulla Sutherland Sharks",
@@ -2711,10 +2794,46 @@
         "unibet"
       ],
       "data_quality_flags": [],
-      "reasoning": "Negative edge -7.1% at SportsBet (1.37) vs fair 1.47 Comparison: 9 book(s)"
+      "reasoning": "Negative edge -7.1% at SportsBet (1.37) vs fair 1.47 Comparison: 9 book(s)",
+      "minimum_acceptable_odds": 1.518813559322034
     },
     {
-      "opportunity_id": "af8f67a1-aa16-4118-9d18-159f424d3876",
+      "opportunity_id": "6b5c8e89-4b3a-417d-94b5-5b7be88156d0",
+      "sport": "soccer_fifa_world_cup",
+      "event_id": "d1f4f946c70a0b4e81f5d43e9d32361c",
+      "event_label": "Canada vs Bosnia & Herzegovina",
+      "market": "h2h",
+      "selection": "Canada",
+      "point": null,
+      "player": null,
+      "target_bookmaker": "sportsbet",
+      "target_odds": 1.8,
+      "fair_probability": 0.5155333917379877,
+      "fair_odds": 1.9397385620915033,
+      "edge": -0.07203989487162214,
+      "decision": "pass",
+      "suggested_stake": 0.0,
+      "max_stake_cap": 50.0,
+      "confidence": "low",
+      "comparison_bookmakers": [
+        "betr_au",
+        "betright",
+        "dabble_au",
+        "ladbrokes_au",
+        "playup",
+        "pointsbetau",
+        "tab",
+        "tabtouch",
+        "unibet"
+      ],
+      "data_quality_flags": [
+        "low_variance_consensus"
+      ],
+      "reasoning": "Negative edge -7.2% at SportsBet (1.8) vs fair 1.94 Comparison: 9 book(s)",
+      "minimum_acceptable_odds": 1.9979307189542486
+    },
+    {
+      "opportunity_id": "5f077f0b-78c5-43ee-aa36-3f5fa45c85b5",
       "sport": "rugbyleague_nrl",
       "event_id": "836188d12bf0a856ac763b3f69509983",
       "event_label": "Parramatta Eels vs Canberra Raiders",
@@ -2738,10 +2857,11 @@
       "data_quality_flags": [
         "low_variance_consensus"
       ],
-      "reasoning": "Negative edge -7.3% at SportsBet (1.83) vs fair 1.97 Comparison: 2 book(s)"
+      "reasoning": "Negative edge -7.3% at SportsBet (1.83) vs fair 1.97 Comparison: 2 book(s)",
+      "minimum_acceptable_odds": 2.0332467532467535
     },
     {
-      "opportunity_id": "c7afccc3-92c4-4cc6-b3b4-f0f1b7ac1572",
+      "opportunity_id": "cda569b3-9cbd-4bde-84e5-2f2492ced5ec",
       "sport": "rugbyleague_nrl",
       "event_id": "fe9cec1e3f524e0e813826c48b25f966",
       "event_label": "New Zealand Warriors vs Cronulla Sutherland Sharks",
@@ -2770,10 +2890,11 @@
         "unibet"
       ],
       "data_quality_flags": [],
-      "reasoning": "Negative edge -7.8% at Neds (1.36) vs fair 1.47 Comparison: 9 book(s)"
+      "reasoning": "Negative edge -7.8% at Neds (1.36) vs fair 1.47 Comparison: 9 book(s)",
+      "minimum_acceptable_odds": 1.518813559322034
     },
     {
-      "opportunity_id": "bbf7e45f-cf45-4ed7-a610-4834809f98ba",
+      "opportunity_id": "8316c852-d21f-4338-ab28-b94e05b0ca59",
       "sport": "soccer_fifa_world_cup",
       "event_id": "f6c8748a16516e0998f95de14235432a",
       "event_label": "Brazil vs Morocco",
@@ -2804,10 +2925,11 @@
       "data_quality_flags": [
         "low_variance_consensus"
       ],
-      "reasoning": "Negative edge -7.9% at Neds (5.4) vs fair 5.86 Comparison: 9 book(s)"
+      "reasoning": "Negative edge -7.9% at Neds (5.4) vs fair 5.86 Comparison: 9 book(s)",
+      "minimum_acceptable_odds": 6.03758024691358
     },
     {
-      "opportunity_id": "d989fb78-d78f-4406-be82-ff94749c399f",
+      "opportunity_id": "4cbe2ca5-c897-40a4-852e-08b4c296c16c",
       "sport": "rugbyleague_nrl",
       "event_id": "fe9cec1e3f524e0e813826c48b25f966",
       "event_label": "New Zealand Warriors vs Cronulla Sutherland Sharks",
@@ -2832,10 +2954,11 @@
       "data_quality_flags": [
         "low_variance_consensus"
       ],
-      "reasoning": "Negative edge -8.0% at SportsBet (1.84) vs fair 2.00 Comparison: 3 book(s)"
+      "reasoning": "Negative edge -8.0% at SportsBet (1.84) vs fair 2.00 Comparison: 3 book(s)",
+      "minimum_acceptable_odds": 2.06
     },
     {
-      "opportunity_id": "1b6b5a43-3d65-4d8a-862b-a37faaa02d4d",
+      "opportunity_id": "63485ba4-4405-4728-bf7d-674e01910563",
       "sport": "soccer_fifa_world_cup",
       "event_id": "26634922d3f78c146440816023e40de8",
       "event_label": "Qatar vs Switzerland",
@@ -2864,44 +2987,11 @@
         "unibet"
       ],
       "data_quality_flags": [],
-      "reasoning": "Negative edge -8.4% at SportsBet (1.18) vs fair 1.29 Comparison: 9 book(s)"
+      "reasoning": "Negative edge -8.4% at SportsBet (1.18) vs fair 1.29 Comparison: 9 book(s)",
+      "minimum_acceptable_odds": 1.3273565217391305
     },
     {
-      "opportunity_id": "28deb36f-525c-46e4-84dd-2723c9f15020",
-      "sport": "soccer_fifa_world_cup",
-      "event_id": "c12986f447a515fbe641addd786dbb24",
-      "event_label": "USA vs Paraguay",
-      "market": "h2h",
-      "selection": "Draw",
-      "point": null,
-      "player": null,
-      "target_bookmaker": "sportsbet",
-      "target_odds": 3.1,
-      "fair_probability": 0.2951286093275405,
-      "fair_odds": 3.3883533090151117,
-      "edge": -0.08510131108462445,
-      "decision": "pass",
-      "suggested_stake": 0.0,
-      "max_stake_cap": 50.0,
-      "confidence": "low",
-      "comparison_bookmakers": [
-        "betr_au",
-        "betright",
-        "dabble_au",
-        "ladbrokes_au",
-        "playup",
-        "pointsbetau",
-        "tab",
-        "tabtouch",
-        "unibet"
-      ],
-      "data_quality_flags": [
-        "low_variance_consensus"
-      ],
-      "reasoning": "Negative edge -8.5% at SportsBet (3.1) vs fair 3.39 Comparison: 9 book(s)"
-    },
-    {
-      "opportunity_id": "d4046bd2-905f-4adf-bc60-281f4552cfba",
+      "opportunity_id": "7fb2237b-d7f2-4a4c-96ce-140e27e54f9f",
       "sport": "soccer_fifa_world_cup",
       "event_id": "c12986f447a515fbe641addd786dbb24",
       "event_label": "USA vs Paraguay",
@@ -2911,9 +3001,9 @@
       "player": null,
       "target_bookmaker": "neds",
       "target_odds": 2.0,
-      "fair_probability": 0.45564748893592455,
-      "fair_odds": 2.194679054054054,
-      "edge": -0.0887050221281509,
+      "fair_probability": 0.45718639870463856,
+      "fair_odds": 2.1872916666666664,
+      "edge": -0.08562720259072289,
       "decision": "pass",
       "suggested_stake": 0.0,
       "max_stake_cap": 50.0,
@@ -2932,37 +3022,46 @@
       "data_quality_flags": [
         "low_variance_consensus"
       ],
-      "reasoning": "Negative edge -8.9% at Neds (2.0) vs fair 2.19 Comparison: 9 book(s)"
+      "reasoning": "Negative edge -8.6% at Neds (2.0) vs fair 2.19 Comparison: 9 book(s)",
+      "minimum_acceptable_odds": 2.2529104166666665
     },
     {
-      "opportunity_id": "6f8a2468-8b23-4a6b-a28e-f2e4531ca60e",
-      "sport": "rugbyleague_nrl",
-      "event_id": "360b7bc18bc251b59f91c82955e79d1d",
-      "event_label": "Dolphins vs Sydney Roosters",
+      "opportunity_id": "047eded4-503b-43f5-a08a-1c595bbb82ac",
+      "sport": "soccer_fifa_world_cup",
+      "event_id": "c12986f447a515fbe641addd786dbb24",
+      "event_label": "USA vs Paraguay",
       "market": "h2h",
-      "selection": "Sydney Roosters",
+      "selection": "Draw",
       "point": null,
       "player": null,
-      "target_bookmaker": "betfair_ex_au",
-      "target_odds": 5.7,
-      "fair_probability": 0.15327221114009515,
-      "fair_odds": 6.524339882367663,
-      "edge": -0.12634839650145765,
+      "target_bookmaker": "sportsbet",
+      "target_odds": 3.1,
+      "fair_probability": 0.2928850366701591,
+      "fair_odds": 3.4143089430894307,
+      "edge": -0.09205638632250679,
       "decision": "pass",
       "suggested_stake": 0.0,
       "max_stake_cap": 50.0,
       "confidence": "low",
       "comparison_bookmakers": [
+        "betr_au",
+        "betright",
+        "dabble_au",
+        "ladbrokes_au",
+        "playup",
         "pointsbetau",
         "tab",
         "tabtouch",
         "unibet"
       ],
-      "data_quality_flags": [],
-      "reasoning": "Negative edge -12.6% at Betfair (5.7) vs fair 6.52 Comparison: 4 book(s)"
+      "data_quality_flags": [
+        "low_variance_consensus"
+      ],
+      "reasoning": "Negative edge -9.2% at SportsBet (3.1) vs fair 3.41 Comparison: 9 book(s)",
+      "minimum_acceptable_odds": 3.5167382113821133
     },
     {
-      "opportunity_id": "1325878d-3009-4dbc-b43a-beceb1826346",
+      "opportunity_id": "acac6a8f-23f0-4866-a57d-9017d6323b49",
       "sport": "soccer_fifa_world_cup",
       "event_id": "26634922d3f78c146440816023e40de8",
       "event_label": "Qatar vs Switzerland",
@@ -2993,13 +3092,14 @@
       "data_quality_flags": [
         "low_variance_consensus"
       ],
-      "reasoning": "Negative edge -18.3% at Neds (13.0) vs fair 15.90 Comparison: 9 book(s)"
+      "reasoning": "Negative edge -18.3% at Neds (13.0) vs fair 15.90 Comparison: 9 book(s)",
+      "minimum_acceptable_odds": 16.38089094796864
     }
   ],
   "alerts": [
-    "Daily PEV Slate: 3 READY, 7 WATCH, 90 PASS",
+    "Daily PEV Slate: 4 READY, 1 VERIFY, 6 WATCH, 89 PASS",
     "Low Comparison Book Coverage: 38 opportunity(s) have insufficient comparison books.",
-    "High Edge Review Required: 2 actionable(s) with edge >10%. Manual sanity check recommended."
+    "High Edge Review Required: 3 actionable(s) with edge >10%. Manual sanity check recommended."
   ],
   "audit": {
     "decision_contract": "counts_match_opportunity_decisions",
