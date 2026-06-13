@@ -1,44 +1,48 @@
-# TOOLS.md - Local Notes
+# TOOLS.md — Nutz Local Notes
 
-Skills define _how_ tools work. This file is for _your_ specifics — the stuff that's unique to your setup.
+## API Keys
 
-## What Goes Here
+- **The Odds API:** `ODDS_API_KEY` (set in environment at `/home/daz/.openclaw/.env`)
+- Regions: `au` for Australian bookmakers, `us` for US books
+- Base URL: `https://api.the-odds-api.com/v4/`
 
-Things like:
+## BABS
 
-- Camera names and locations
-- SSH hosts and aliases
-- Preferred voices for TTS
-- Speaker/room names
-- Device nicknames
-- Anything environment-specific
+- Library: `/home/daz/babs/`
+- Quick start:
+  ```python
+  async with babs.Client() as client:
+      resp = await client.get(url="https://...", schema=...)
+  ```
+- Auto-escalates: cache → HTTP → browser → stealth → LLM
+- curl_cffi transport for bookmaker scraping (chrome120 impersonation)
 
-## Examples
+## Sportsbet Scrape
 
-```markdown
-### Cameras
+- Use BABS curl_cffi with chrome120 impersonation
+- Extract `window.__PRELOADED_STATE__` from page HTML
+- Parse `JSON.parse(...)` → `entities.sportsbook`
+- Win price: `(num + den) / den`
 
-- living-room → Main area, 180° wide angle
-- front-door → Entrance, motion-triggered
+## Champion Data (NRL)
 
-### SSH
+- 2025: comp_id `12755`
+- 2026: comp_id `12999`
+- Fixtures: `GET https://mc.championdata.com/data/{comp_id}/fixture.json`
+- Match data: `GET https://mc.championdata.com/data/{comp_id}/{match_id}.json`
 
-- home-server → 192.168.1.100, user: admin
+## Ledger
 
-### TTS
+- Path: `ledger/betting-journal.md`
+- Template: Use the bet recommendation format from SOUL.md
+- Post-audit every entry after match result
 
-- Preferred voice: "Nova" (warm, slightly British)
-- Default speaker: Kitchen HomePod
-```
+## SGM Engine Skill
 
-## Why Separate?
+- `~/.openclaw/workspace/skills/nrl-sgm-engine/SKILL.md`
 
-Skills are shared. Your setup is yours. Keeping them apart means you can update skills without losing your notes, and share skills without leaking your infrastructure.
+## Group Context
 
----
-
-Add whatever helps you do your job. This is your cheat sheet.
-
-## Related
-
-- [Agent workspace](/concepts/agent-workspace)
+- **Brudda Deez** supergroup: `-1003653936772` (Nutz + Daz)
+- **Baccs** supergroup: `-1003843065763` (Nutz only)
+- Both groups have Danny and David as decision-makers
