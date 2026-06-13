@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Sunday Cheat Sheet — Paired Plays</title>
+<style>
+:root{--bg:#0a0a0a;--card:#121212;--border:#1e1e1e;--text:#ddd;--dim:#777;--green:#00e676;--yellow:#ffc107;--orange:#ff9800;--red:#ff5252;--blue:#448aff;--pink:#e91e63;--sb:#e22b2b;--neds:#ff6600}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;font-size:15px;line-height:1.4;-webkit-font-smoothing:antialiased;padding-bottom:40px}
+h1{padding:20px 16px 8px;font-size:22px;font-weight:800}
+h2{padding:8px 16px 4px;font-size:13px;color:var(--dim);text-transform:uppercase;letter-spacing:1px}
+.event{margin:8px 12px;background:var(--card);border-radius:10px;border:1px solid var(--border);overflow:hidden}
+.ev-h{padding:10px 14px;font-weight:700;font-size:14px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px}
+.ev-h .time{font-size:12px;color:var(--dim);margin-left:auto}
+.promo-tag{display:inline-block;padding:2px 7px;border-radius:99px;font-size:10px;font-weight:700}
+.tag-sb{background:#e22b2b22;color:var(--sb)}.tag-neds{background:#ff660022;color:var(--neds)}.tag-bf{background:#448aff22;color:var(--blue)}.tag-paired{background:#00e67622;color:var(--green)}
+.paired{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--border)}
+.person{padding:12px 14px}.person+.person{border-left:1px solid var(--border)}
+.person .name{font-weight:700;font-size:14px;margin-bottom:6px}.person .name .emoji{font-size:18px}
+.person .line{display:flex;justify-content:space-between;padding:5px 0;font-size:13px;border-bottom:1px solid #1a1a1a}.person .line:last-child{border-bottom:none}
+.person .line .lab{color:var(--dim)}.person .line .val{font-weight:600}.person .line .val.g{color:var(--green)}.person .line .val.r{color:var(--red)}
+.person .stake{font-size:18px;font-weight:800;margin-top:6px;padding-top:6px;border-top:1px solid #222}
+.outcomes{padding:10px 14px;font-size:12px}
+.outcomes table{width:100%;border-collapse:collapse}
+.outcomes th{text-align:left;padding:4px 6px;color:var(--dim);font-size:10px;text-transform:uppercase;border-bottom:1px solid #1a1a1a}
+.outcomes td{padding:4px 6px;color:#aaa;border-bottom:1px solid #111}.outcomes td.g{color:var(--green);font-weight:600}.outcomes td.y{color:var(--yellow)}.outcomes td.r{color:var(--red)}
+.actions{padding:10px 14px;background:#0a0a0a;font-size:12px;display:flex;gap:8px;flex-wrap:wrap}
+.step{background:#222;border-radius:6px;padding:8px 10px;flex:1;min-width:140px}
+.step .who{font-weight:700;font-size:11px;color:var(--dim)}.step .do{font-size:13px;margin-top:2px}
+.note{padding:8px 14px;font-size:11px;color:var(--dim);border-top:1px solid var(--border)}
+.arb-row{background:#00e67608}
+</style>
+</head>
+<body>
+
+<h1>📋 Sunday Cheat Sheet</h1>
+<h2>Danny & Loi — Paired Plays</h2>
+
+<!-- ============================================================ -->
+<div class="event">
+  <div class="ev-h">
+    🏀 Knicks @ Spurs · NBA Finals G5
+    <span class="time">Today late</span>
+    <span class="promo-tag tag-sb">Sportsbet</span>
+    <span class="promo-tag tag-paired">Paired</span>
+  </div>
+  <div class="paired">
+    <div class="person">
+      <div class="name"><span class="emoji">🥜</span> Danny</div>
+      <div class="line"><span class="lab">Book</span><span class="val">Sportsbet</span></div>
+      <div class="line"><span class="lab">Bet</span><span class="val">SGM — 3 Leg</span></div>
+      <div class="line"><span class="lab">Leg 1</span><span class="val">Knicks +5.5</span></div>
+      <div class="line"><span class="lab">Leg 2</span><span class="val">Under 216.5</span></div>
+      <div class="line"><span class="lab">Leg 3</span><span class="val">OG Anunoby O18.5 Pts</span></div>
+      <div class="line"><span class="lab">Odds</span><span class="val g">$6.82</span></div>
+      <div class="stake">Stake: $50</div>
+    </div>
+    <div class="person">
+      <div class="name"><span class="emoji">🔒</span> Loi</div>
+      <div class="line"><span class="lab">Book</span><span class="val">Betfair Exchange</span></div>
+      <div class="line"><span class="lab">Bet</span><span class="val">Lay Knicks +5.5</span></div>
+      <div class="line"><span class="lab">Odds</span><span class="val">~$1.93</span></div>
+      <div class="line"><span class="lab">Liability</span><span class="val r">$46.50</span></div>
+      <div class="stake">Lay $50</div>
+    </div>
+  </div>
+  <div class="outcomes">
+    <table>
+      <tr><th>Scenario</th><th>Pool</th></tr>
+      <tr><td>Knicks cover + SGM hits</td><td class="g">+$244.50 🎉</td></tr>
+      <tr class="arb-row"><td>Knicks cover + SGM dies</td><td class="y">-$96.50 + $50 bonus</td></tr>
+      <tr><td>Spurs cover by 6+</td><td class="g">$0 + $50 bonus bet ✅</td></tr>
+    </table>
+  </div>
+  <div class="actions">
+    <div class="step"><div class="who">🥜 Danny</div><div class="do">Sportsbet → SGM builder → add 3 legs → place $50</div></div>
+    <div class="step"><div class="who">🔒 Loi</div><div class="do">Betfair → search Knicks +5.5 → click Lay → enter $50 stake</div></div>
+  </div>
+  <div class="note">🛡️ Promo: Sportsbet bonus bet back if SGM loses. Loi's lay covers the worst-case. OG pick is Loi's call over KAT.</div>
+</div>
+
+<!-- ============================================================ -->
+<div class="event">
+  <div class="ev-h">
+    🇨🇭 Qatar v Switzerland · World Cup Group B
+    <span class="time">Sun 5:00am AEST</span>
+    <span class="promo-tag tag-neds">Neds Cover</span>
+    <span class="promo-tag tag-paired">Paired</span>
+  </div>
+  <div class="paired">
+    <div class="person">
+      <div class="name"><span class="emoji">🥜</span> Danny</div>
+      <div class="line"><span class="lab">Book</span><span class="val">Neds</span></div>
+      <div class="line"><span class="lab">Bet</span><span class="val">SGM — 3 Leg</span></div>
+      <div class="line"><span class="lab">Leg 1</span><span class="val">Switzerland ML</span></div>
+      <div class="line"><span class="lab">Leg 2</span><span class="val">Over 2.5 Goals</span></div>
+      <div class="line"><span class="lab">Leg 3</span><span class="val">Embolo Anytime Goal</span></div>
+      <div class="line"><span class="lab">Odds</span><span class="val g">~$4.88</span></div>
+      <div class="stake">Stake: $50</div>
+    </div>
+    <div class="person">
+      <div class="name"><span class="emoji">🔒</span> Loi</div>
+      <div class="line"><span class="lab">Book</span><span class="val">Betfair Exchange</span></div>
+      <div class="line"><span class="lab">Bet</span><span class="val">Lay Switzerland ML</span></div>
+      <div class="line"><span class="lab">Odds</span><span class="val">~$1.23</span></div>
+      <div class="line"><span class="lab">Liability</span><span class="val r">$11.50</span></div>
+      <div class="stake">Lay $50</div>
+    </div>
+  </div>
+  <div class="outcomes">
+    <table>
+      <tr><th>Scenario</th><th>Pool</th></tr>
+      <tr><td>SUI win + Over 2.5 + Embolo scores</td><td class="g">+$182.50 🎉</td></tr>
+      <tr class="arb-row"><td>SUI win + SGM misses by 1 leg</td><td class="y">-$11.50 + $50 bonus</td></tr>
+      <tr><td>SUI draw or lose</td><td class="g">$0 🛡️</td></tr>
+    </table>
+  </div>
+  <div class="actions">
+    <div class="step"><div class="who">🥜 Danny</div><div class="do">Neds → SGM builder → Switzerland ML + Over 2.5 + Embolo ATG → $50</div></div>
+    <div class="step"><div class="who">🔒 Loi</div><div class="do">Betfair → Switzerland ML → Lay $50 @ $1.23 → liab $11.50</div></div>
+  </div>
+  <div class="note">🛡️ Neds Super SGM Cover: 3+ leg misses by 1 = bonus back up to $50. Cheapest lay of the day — $11.50 covers the pool. ⚠️ Confirm the Neds promo applies to World Cup SGMs.</div>
+</div>
+
+<!-- ============================================================ -->
+<div class="event">
+  <div class="ev-h">
+    🇧🇷 Brazil v Morocco · World Cup Group C
+    <span class="time">Sun 8:00am AEST</span>
+    <span class="promo-tag tag-neds">Neds Cover</span>
+    <span class="promo-tag tag-paired">Paired</span>
+  </div>
+  <div class="paired">
+    <div class="person">
+      <div class="name"><span class="emoji">🥜</span> Danny</div>
+      <div class="line"><span class="lab">Book</span><span class="val">Neds</span></div>
+      <div class="line"><span class="lab">Bet</span><span class="val">SGM — 3 Leg</span></div>
+      <div class="line"><span class="lab">Leg 1</span><span class="val">Brazil ML</span></div>
+      <div class="line"><span class="lab">Leg 2</span><span class="val">Over 2.5 Goals</span></div>
+      <div class="line"><span class="lab">Leg 3</span><span class="val">Vinicius Jr Anytime Goal</span></div>
+      <div class="line"><span class="lab">Odds</span><span class="val g">~$7.55</span></div>
+      <div class="stake">Stake: $50</div>
+    </div>
+    <div class="person">
+      <div class="name"><span class="emoji">🔒</span> Loi</div>
+      <div class="line"><span class="lab">Book</span><span class="val">Betfair Exchange</span></div>
+      <div class="line"><span class="lab">Bet</span><span class="val">Lay Brazil ML</span></div>
+      <div class="line"><span class="lab">Odds</span><span class="val">~$1.73</span></div>
+      <div class="line"><span class="lab">Liability</span><span class="val r">$36.50</span></div>
+      <div class="stake">Lay $50</div>
+    </div>
+  </div>
+  <div class="outcomes">
+    <table>
+      <tr><th>Scenario</th><th>Pool</th></tr>
+      <tr><td>Brazil win + Over 2.5 + Vini scores</td><td class="g">+$291 🎉</td></tr>
+      <tr class="arb-row"><td>Brazil win + SGM misses by 1 leg</td><td class="y">-$36.50 + $50 bonus</td></tr>
+      <tr><td>Brazil draw or lose</td><td class="g">$0 🛡️</td></tr>
+    </table>
+  </div>
+  <div class="actions">
+    <div class="step"><div class="who">🥜 Danny</div><div class="do">Neds → SGM → Brazil ML + Over 2.5 + Vinicius Jr ATG → $50</div></div>
+    <div class="step"><div class="who">🔒 Loi</div><div class="do">Betfair → Brazil ML → Lay $50 @ $1.73 → liab $36.50</div></div>
+  </div>
+  <div class="note">⚠️ Neymar out (calf) · Morocco missing Ezzalzouli · Brazil won opening WC games in 17 of last 18 tournaments. Vini is the standout scorer.</div>
+</div>
+
+<!-- ============================================================ -->
+<div class="event">
+  <div class="ev-h">
+    🏴󠁧󠁢󠁳󠁣󠁴󠁿 Haiti v Scotland · World Cup Group C
+    <span class="time">Sun 11:00am AEST</span>
+    <span class="promo-tag tag-neds">Neds Cover</span>
+    <span class="promo-tag tag-paired">Paired</span>
+  </div>
+  <div class="paired">
+    <div class="person">
+      <div class="name"><span class="emoji">🥜</span> Danny</div>
+      <div class="line"><span class="lab">Book</span><span class="val">Neds</span></div>
+      <div class="line"><span class="lab">Bet</span><span class="val">SGM — 3 Leg</span></div>
+      <div class="line"><span class="lab">Leg 1</span><span class="val">Scotland ML</span></div>
+      <div class="line"><span class="lab">Leg 2</span><span class="val">Scotland -1</span></div>
+      <div class="line"><span class="lab">Leg 3</span><span class="val">McTominay Anytime Goal</span></div>
+      <div class="line"><span class="lab">Odds</span><span class="val g">~$10.71</span></div>
+      <div class="stake">Stake: $25</div>
+    </div>
+    <div class="person">
+      <div class="name"><span class="emoji">🔒</span> Loi</div>
+      <div class="line"><span class="lab">Book</span><span class="val">Betfair Exchange</span></div>
+      <div class="line"><span class="lab">Bet</span><span class="val">Lay Scotland -1</span></div>
+      <div class="line"><span class="lab">Odds</span><span class="val">~$2.00</span></div>
+      <div class="line"><span class="lab">Liability</span><span class="val r">$50.00</span></div>
+      <div class="stake">Lay $50</div>
+    </div>
+  </div>
+  <div class="outcomes">
+    <table>
+      <tr><th>Scenario</th><th>Pool</th></tr>
+      <tr><td>SCO win by 2+ + McTominay scores</td><td class="g">+$192.75 🎉</td></tr>
+      <tr class="arb-row"><td>SCO win by 1 + McTominay scores</td><td class="y">-$50 + $25 bonus</td></tr>
+      <tr><td>Draw or Haiti result</td><td class="g">+$25 🛡️</td></tr>
+    </table>
+  </div>
+  <div class="actions">
+    <div class="step"><div class="who">🥜 Danny</div><div class="do">Neds → SGM → Scotland ML + -1 + McTominay ATG → $25</div></div>
+    <div class="step"><div class="who">🔒 Loi</div><div class="do">Betfair → Scotland -1 Asian Handicap → Lay $50</div></div>
+  </div>
+  <div class="note">⚠️ Lay on the -1 handicap, not ML — Scotland should win but -1 is where the SGM dies. McTominay cleared to play. Reduced $25 stake due to higher lay liability.</div>
+</div>
+
+<!-- ============================================================ -->
+<div class="event">
+  <div class="ev-h">
+    🇦🇺 Australia v Türkiye · World Cup Group D
+    <span class="time">Sun 2:00pm AEST</span>
+    <span class="promo-tag tag-neds">Neds Promos</span>
+    <span class="promo-tag tag-paired">Paired</span>
+  </div>
+
+  <div style="padding:8px 14px;font-size:12px;color:var(--dim);background:#0a0a0a">
+    <strong>Promo A:</strong> Bet $10 Aus Qualify → $10 bonus per group goal (max $50)
+  </div>
+  <div class="paired">
+    <div class="person">
+      <div class="name"><span class="emoji">🥜</span> Danny</div>
+      <div class="line"><span class="lab">Book</span><span class="val">Neds</span></div>
+      <div class="line"><span class="lab">Bet</span><span class="val">Aus to Qualify Group D</span></div>
+      <div class="line"><span class="lab">Odds</span><span class="val">~$3.00</span></div>
+      <div class="stake">Stake: $10</div>
+    </div>
+    <div class="person">
+      <div class="name"><span class="emoji">🔒</span> Loi</div>
+      <div class="line"><span class="lab">Book</span><span class="val">Betfair Exchange</span></div>
+      <div class="line"><span class="lab">Bet</span><span class="val">Lay Aus to Qualify</span></div>
+      <div class="line"><span class="lab">Odds</span><span class="val">~$3.50</span></div>
+      <div class="line"><span class="lab">Liability</span><span class="val r">$25.00</span></div>
+      <div class="stake">Lay $10</div>
+    </div>
+  </div>
+
+  <div style="padding:8px 14px;font-size:12px;color:var(--dim);background:#0a0a0a">
+    <strong>Promo B:</strong> Aus win + shot on target @ $10 (max $10) — BOOKIE PUMP
+  </div>
+  <div class="paired">
+    <div class="person">
+      <div class="name"><span class="emoji">🥜</span> Danny</div>
+      <div class="line"><span class="lab">Book</span><span class="val">Neds</span></div>
+      <div class="line"><span class="lab">Bet</span><span class="val">Aus Win + 1+ SOT</span></div>
+      <div class="line"><span class="lab">Odds</span><span class="val g">$10.00</span></div>
+      <div class="stake">Stake: $10</div>
+    </div>
+    <div class="person">
+      <div class="name"><span class="emoji">🔒</span> Loi</div>
+      <div class="line"><span class="lab">Book</span><span class="val">Betfair Exchange</span></div>
+      <div class="line"><span class="lab">Bet</span><span class="val">Lay Australia ML</span></div>
+      <div class="line"><span class="lab">Odds</span><span class="val">~$5.60</span></div>
+      <div class="line"><span class="lab">Liability</span><span class="val r">$46.00</span></div>
+      <div class="stake">Lay $10</div>
+    </div>
+  </div>
+
+  <div class="outcomes">
+    <table>
+      <tr><th>Promo</th><th>Aus Qualify</th><th>Aus Win + SOT</th><th>Total Pool</th></tr>
+      <tr><td>Aus win + SOT hits + qualify</td><td class="g">+$20 + bonuses</td><td class="g">+$90</td><td class="g">+$110+ 🎉</td></tr>
+      <tr><td>Aus qualify but don't win (draws)</td><td class="g">+$20 + bonuses</td><td class="y">-$10</td><td class="g">+$10+</td></tr>
+      <tr><td>Aus don't qualify</td><td class="r">-$10</td><td class="r">-$10</td><td class="r">-$20 + $71 lays</td></tr>
+    </table>
+  </div>
+  <div class="actions">
+    <div class="step"><div class="who">🥜 Danny</div><div class="do">Neds → search "Australia Qualify" → $10</div></div>
+    <div class="step"><div class="who">🥜 Danny</div><div class="do">Neds → find boosted promo → Aus Win + SOT → $10</div></div>
+    <div class="step"><div class="who">🔒 Loi</div><div class="do">Betfair → Lay Aus ML + Lay Aus Qualify → $10 each</div></div>
+  </div>
+  <div class="note">🦘 $10/goal bonus means 3+ Socceroos goals = $30-50 free bonus cash regardless of other outcomes. Promo A and B stack independently — claim both.</div>
+</div>
+
+<!-- ============================================================ -->
+<div class="event">
+  <div class="ev-h">
+    🏉 Wests Tigers v Gold Coast Titans · NRL R15
+    <span class="time">Sun 4:05pm AEST</span>
+    <span class="promo-tag tag-sb">Sportsbet</span>
+  </div>
+  <div class="outcomes" style="font-size:13px;padding:14px">
+    <p style="color:var(--dim);margin-bottom:8px">⚠️ No Neds promo applies to regular NRL. Engine finds no arb on this game. Bottom-table clash — pass unless you want a straight play.</p>
+    <p style="color:var(--dim)">Sportsbet still has SGM markets — but without a promo or paired lay it's straight gambling. Your call.</p>
+  </div>
+</div>
+
+<div style="padding:20px 16px">
+  <div style="background:#121212;border:1px solid var(--border);border-radius:10px;padding:14px">
+    <div style="font-weight:700;font-size:14px;margin-bottom:8px">💰 Total Pooled Exposure</div>
+    <table style="width:100%;border-collapse:collapse;font-size:12px">
+      <tr style="color:var(--dim);font-size:10px"><th style="text-align:left;padding:4px">Account</th><th style="text-align:right;padding:4px">Stakes</th></tr>
+      <tr><td style="padding:3px 4px">🥜 Danny — Sportsbet</td><td style="text-align:right;padding:3px 4px">$50</td></tr>
+      <tr><td style="padding:3px 4px">🥜 Danny — Neds</td><td style="text-align:right;padding:3px 4px">$145 (3 SGMs + 2 promos)</td></tr>
+      <tr style="border-top:1px solid #222"><td style="padding:3px 4px;font-weight:600">🔒 Loi — Betfair (liabilities)</td><td style="text-align:right;padding:3px 4px;color:var(--red)">~$208</td></tr>
+      <tr style="border-top:1px solid #222"><td style="padding:3px 4px;font-weight:700">Total Pooled</td><td style="text-align:right;padding:3px 4px;font-weight:700">~$403</td></tr>
+    </table>
+  </div>
+</div>
+
+<div style="margin:12px 16px;padding:12px;background:#111;border-radius:8px;font-size:11px;color:#555;text-align:center;line-height:1.4">
+  🥜 Nutz + Loi · Paired Playbook · Sunday 14 Jun 2026<br>
+  ⚠️ All odds estimated — verify in-app before placing · Check Neds promo T&Cs<br>
+  Pooled bankroll strategy — Danny & Loi share risk & reward<br>
+  Gamble responsibly. Gambling is entertainment, not income.
+</div>
+
+</body></html>
