@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daztech Betting Operator - Human and Agent Guide</title>
+<meta name="description" content="A concise guide to the Daztech selected-game betting operator workflow for humans and agents.">
+<style>
+:root {
+  --bg: #0b0c0d;
+  --surface: #141618;
+  --surface-2: #1b1e21;
+  --text: #f4f1ea;
+  --muted: #aaa397;
+  --line: #2b2f32;
+  --gold: #f0c64a;
+  --green: #3fd17f;
+  --red: #ff6f61;
+  --blue: #62b7ff;
+  --amber: #f2a93b;
+  --shadow: 0 18px 50px rgba(0,0,0,0.28);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: var(--bg); color: var(--text); line-height: 1.55; }
+a { color: inherit; }
+.topbar { position: sticky; top: 0; z-index: 10; border-bottom: 1px solid rgba(255,255,255,0.06); background: rgba(11,12,13,0.88); backdrop-filter: blur(14px); }
+.topbar-inner { max-width: 1180px; margin: 0 auto; padding: 14px 22px; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 700; }
+.brand-mark { width: 28px; height: 28px; border-radius: 8px; background: linear-gradient(135deg, #f0c64a, #5fd38d); box-shadow: 0 0 24px rgba(240,198,74,0.16); }
+.nav { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+.nav a { color: var(--muted); text-decoration: none; font-size: 13px; padding: 7px 10px; border-radius: 8px; }
+.nav a:hover { color: var(--text); background: rgba(255,255,255,0.06); }
+.hero { max-width: 1180px; margin: 0 auto; padding: 56px 22px 28px; display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(300px, 0.8fr); gap: 28px; align-items: stretch; }
+.eyebrow { color: var(--gold); font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0; margin: 0 0 12px; }
+h1 { margin: 0; font-size: clamp(34px, 5vw, 64px); line-height: 1.02; letter-spacing: 0; }
+.lede { margin: 20px 0 0; color: var(--muted); max-width: 760px; font-size: 18px; }
+.hero-actions { margin-top: 26px; display: flex; gap: 12px; flex-wrap: wrap; }
+.button { display: inline-flex; align-items: center; justify-content: center; min-height: 42px; padding: 0 16px; border-radius: 8px; border: 1px solid var(--line); background: var(--surface-2); color: var(--text); text-decoration: none; font-weight: 700; font-size: 14px; }
+.button.primary { background: var(--gold); border-color: var(--gold); color: #16130a; }
+.status-panel { border: 1px solid var(--line); background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02)); border-radius: 8px; padding: 20px; box-shadow: var(--shadow); }
+.status-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 16px; }
+.metric { border: 1px solid var(--line); border-radius: 8px; padding: 14px; background: rgba(0,0,0,0.18); }
+.metric strong { display: block; font-size: 22px; margin-bottom: 2px; }
+.metric span { color: var(--muted); font-size: 12px; }
+.wrap { max-width: 1180px; margin: 0 auto; padding: 18px 22px 70px; }
+.section { margin-top: 36px; }
+.section-head { display: flex; justify-content: space-between; gap: 20px; align-items: end; margin-bottom: 14px; }
+h2 { margin: 0; font-size: 26px; letter-spacing: 0; }
+.section-note { color: var(--muted); margin: 6px 0 0; max-width: 780px; }
+.grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.card { border: 1px solid var(--line); border-radius: 8px; padding: 18px; background: var(--surface); }
+.card h3 { margin: 0 0 8px; font-size: 17px; }
+.card p { margin: 0; color: var(--muted); }
+.card ul, .card ol { margin: 12px 0 0; padding-left: 20px; color: var(--muted); }
+.card li { margin: 6px 0; }
+.pill-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.pill { display: inline-flex; align-items: center; min-height: 28px; border-radius: 999px; padding: 0 10px; background: rgba(255,255,255,0.06); color: var(--muted); border: 1px solid rgba(255,255,255,0.06); font-size: 12px; font-weight: 700; }
+.pill.good { color: var(--green); border-color: rgba(63,209,127,0.28); background: rgba(63,209,127,0.08); }
+.pill.warn { color: var(--amber); border-color: rgba(242,169,59,0.28); background: rgba(242,169,59,0.08); }
+.pill.info { color: var(--blue); border-color: rgba(98,183,255,0.28); background: rgba(98,183,255,0.08); }
+.flow { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; counter-reset: step; }
+.step { position: relative; border: 1px solid var(--line); border-radius: 8px; padding: 18px; background: var(--surface); }
+.step:before { counter-increment: step; content: counter(step); width: 28px; height: 28px; display: grid; place-items: center; border-radius: 8px; background: var(--gold); color: #16130a; font-weight: 800; margin-bottom: 12px; }
+.step h3 { margin: 0 0 8px; font-size: 16px; }
+.step p { margin: 0; color: var(--muted); font-size: 14px; }
+.code-block { border: 1px solid var(--line); border-radius: 8px; background: #090a0b; overflow: hidden; }
+.code-title { display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; border-bottom: 1px solid var(--line); color: var(--muted); font-size: 12px; font-weight: 700; }
+pre { margin: 0; padding: 16px; overflow-x: auto; color: #e9e1cf; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 13px; line-height: 1.55; }
+.contract { display: grid; grid-template-columns: 280px minmax(0, 1fr); gap: 14px; }
+.contract-list { border: 1px solid var(--line); border-radius: 8px; background: var(--surface); padding: 10px; }
+.contract-list a { display: block; padding: 10px; color: var(--muted); text-decoration: none; border-radius: 8px; font-size: 14px; }
+.contract-list a:hover { background: rgba(255,255,255,0.06); color: var(--text); }
+.table { width: 100%; border-collapse: collapse; overflow: hidden; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); }
+.table th, .table td { text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.table th { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: 0; }
+.table tr:last-child td { border-bottom: 0; }
+.table td { color: var(--muted); }
+.table td strong { color: var(--text); }
+.callout { border: 1px solid rgba(240,198,74,0.35); background: rgba(240,198,74,0.08); border-radius: 8px; padding: 16px 18px; color: #eadfaf; }
+.footer { color: var(--muted); border-top: 1px solid var(--line); padding-top: 24px; margin-top: 48px; font-size: 13px; }
+@media (max-width: 900px) { .hero { grid-template-columns: 1fr; padding-top: 34px; } .grid, .grid.two, .flow, .contract { grid-template-columns: 1fr; } .section-head { display: block; } .topbar-inner { align-items: flex-start; flex-direction: column; } .nav { justify-content: flex-start; } }
+@media print { .topbar, .hero-actions { display: none; } body { background: #fff; color: #111; } .card, .step, .status-panel, .code-block, .table, .contract-list { box-shadow: none; border-color: #ddd; } }
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand"><span class="brand-mark"></span><span>Daztech Betting Operator</span></div>
+      <nav class="nav" aria-label="Page sections">
+        <a href="#built">What was built</a><a href="#humans">Humans</a><a href="#agents">Agents</a><a href="#contracts">Contracts</a><a href="#commands">Commands</a>
+      </nav>
+    </div>
+  </header>
+  <section class="hero">
+    <div>
+      <p class="eyebrow">Selected-game betting engine guide</p>
+      <h1>One game in. One decision out. Every action tracked.</h1>
+      <p class="lede">The Daztech betting product is now a manual-first operator workflow for selected games: analyze PEV singles and SGMs, check evidence and drift, record actions, settle results, and feed agents with stable JSON.</p>
+      <div class="hero-actions"><a class="button primary" href="#humans">Use as a human</a><a class="button" href="#agents">Use as an agent</a><a class="button" href="/">Back to Daztech hub</a></div>
+    </div>
+    <aside class="status-panel" aria-label="Product status">
+      <p class="eyebrow">Product status</p><h2>Core workflow shipped</h2>
+      <p class="section-note">The engine is designed for manual placement, honest abstention, and performance feedback over time.</p>
+      <div class="status-grid"><div class="metric"><strong>1</strong><span>selected game per request</span></div><div class="metric"><strong>JSON</strong><span>agent source of truth</span></div><div class="metric"><strong>$5</strong><span>long-shot cap</span></div><div class="metric"><strong>0</strong><span>automatic placements</span></div></div>
+      <div class="pill-row"><span class="pill good">Manual-first</span><span class="pill info">GitHub Pages-ready</span><span class="pill warn">Evidence must be real</span></div>
+    </aside>
+  </section>
+  <main class="wrap">
+    <section id="built" class="section">
+      <div class="section-head"><div><h2>What was built</h2><p class="section-note">A coherent operator product instead of a daily wall of disconnected picks.</p></div></div>
+      <div class="grid">
+        <article class="card"><h3>Selected-game workflow</h3><p>Run one request for one game with one stake. The engine returns check, build, verify, pass, or blocked.</p></article>
+        <article class="card"><h3>PEV and SGM engines</h3><p>Positive EV singles, core 2/3-leg SGMs, and a separate long-shot mode are normalized into one decision surface.</p></article>
+        <article class="card"><h3>Evidence and drift</h3><p>Source status, late-mail support, expert consensus slots, and drift checks help prevent false confidence.</p></article>
+        <article class="card"><h3>Operator HTML page</h3><p>A static human page with verdict, copy buttons, bookmaker CTA, exact odds input, and record action controls.</p></article>
+        <article class="card"><h3>Agent feeds</h3><p>Hermes and OpenClaw read JSON contracts rather than scraping HTML.</p></article>
+        <article class="card"><h3>Performance loop</h3><p>Placed bets become open bets, settlements update ROI, calibration, segments, and trust state.</p></article>
+      </div>
+    </section>
+    <section class="section"><h2>Product loop</h2><p class="section-note">This is the core operating rhythm the engine now supports.</p><div class="flow" style="margin-top:14px"><div class="step"><h3>Request</h3><p>Pick a game and provide stake, sport, bookmaker, and query or event ID.</p></div><div class="step"><h3>Analyze</h3><p>Run PEV singles, core SGMs, optional long-shot, evidence, and drift.</p></div><div class="step"><h3>Act</h3><p>Open bookmaker, copy/build legs, enter exact odds, then record check, skip, or place.</p></div><div class="step"><h3>Learn</h3><p>Settle later and let performance tracking update trust, ROI, and calibration.</p></div></div></section>
+    <section id="humans" class="section">
+      <div class="section-head"><div><h2>How humans use it</h2><p class="section-note">Danny uses the HTML page to decide what to physically check or build in the bookmaker app. The engine never places a bet.</p></div></div>
+      <div class="grid two">
+        <div class="code-block"><div class="code-title"><span>Analyze by game query</span><span>CLI</span></div><pre>daz-betting-engine assistant request \
+  --sport rugbyleague_nrl \
+  --query "Eels v Raiders" \
+  --stake 20 \
+  --bookmaker sportsbet \
+  --output reports/operator/latest \
+  --publish-dir reports/site/operator/latest</pre></div>
+        <div class="code-block"><div class="code-title"><span>Analyze by event ID</span><span>CLI</span></div><pre>daz-betting-engine assistant request \
+  --sport rugbyleague_nrl \
+  --event-id EVENT_ID \
+  --stake 20 \
+  --bookmaker sportsbet \
+  --output reports/operator/latest</pre></div>
+      </div>
+      <div class="grid" style="margin-top:14px"><article class="card"><h3>Open the operator page</h3><p>Use <strong>reports/operator/latest/index.html</strong> to see the verdict, action cards, evidence status, drift check, and exact odds widget.</p></article><article class="card"><h3>Check the bookmaker manually</h3><p>Use the bookmaker CTA and copy buttons. For SGMs, enter the exact bet-slip odds before treating anything as place eligible.</p></article><article class="card"><h3>Record the action</h3><p>Record checked, skipped, or placed. Static GitHub Pages mode falls back to downloadable/copyable JSONL.</p></article></div>
+    </section>
+    <section id="commands" class="section"><h2>Settlement and publishing commands</h2><p class="section-note">The feedback loop only becomes meaningful after results are recorded honestly.</p><div class="grid two" style="margin-top:14px"><div class="code-block"><div class="code-title"><span>Show and settle open bets</span><span>CLI</span></div><pre>daz-betting-engine performance open \
+  --ledger reports/game-assistant/actions.jsonl
+
+daz-betting-engine performance settle \
+  --ledger reports/game-assistant/actions.jsonl \
+  --candidate-id CANDIDATE_ID \
+  --result win \
+  --return-amount 17.50 \
+  --note "manual Sportsbet result"</pre></div><div class="code-block"><div class="code-title"><span>Refresh and publish</span><span>CLI</span></div><pre>daz-betting-engine performance report \
+  --ledger reports/game-assistant/actions.jsonl \
+  --output reports/performance/latest
+
+daz-betting-engine product publish \
+  --operator reports/operator/latest \
+  --performance reports/performance/latest \
+  --site-dir reports/site</pre></div></div></section>
+    <section id="agents" class="section"><div class="section-head"><div><h2>How agents use it</h2><p class="section-note">Hermes, OpenClaw, and future agents should read JSON only. HTML is for humans.</p></div></div><div class="contract"><div class="contract-list"><a href="#agent-flow">Agent decision flow</a><a href="#decision-meanings">Decision meanings</a><a href="#agent-rules">Rules agents must obey</a><a href="#contracts">JSON files</a></div><div class="card" id="agent-flow"><h3>Agent decision flow</h3><ol><li>Read <strong>manifest.json</strong>.</li><li>Load the latest <strong>operator_feed.json</strong>.</li><li>Inspect <strong>decision.primary_action</strong> and <strong>cards[]</strong>.</li><li>Check <strong>drift_check.status</strong>, <strong>evidence.status</strong>, and <strong>performance.trust_state</strong>.</li><li>Return CHECK, BUILD, VERIFY, PASS, or BLOCKED with the reason and required exact odds.</li></ol></div></div></section>
+    <section id="decision-meanings" class="section"><h2>Decision meanings</h2><table class="table" aria-label="Decision meanings"><thead><tr><th>Decision</th><th>Meaning</th><th>Human action</th></tr></thead><tbody><tr><td><strong>check</strong></td><td>Worth checking at the bookmaker now.</td><td>Open the app and confirm current odds.</td></tr><tr><td><strong>build</strong></td><td>Build the SGM and enter exact slip odds.</td><td>Do not place until exact odds clear the minimum.</td></tr><tr><td><strong>verify</strong></td><td>Possible angle but needs manual sanity check.</td><td>Review evidence, drift, and price carefully.</td></tr><tr><td><strong>pass</strong></td><td>No bet recommended.</td><td>Save the stake.</td></tr><tr><td><strong>blocked</strong></td><td>Unsafe, stale, incomplete, or negative edge.</td><td>Do not bet unless a future run changes the contract.</td></tr></tbody></table></section>
+    <section id="agent-rules" class="section"><h2>Rules agents must obey</h2><div class="grid two" style="margin-top:14px"><article class="card"><h3>Never do these</h3><ul><li>Never auto-place bets.</li><li>Never treat verify as place.</li><li>Never place an SGM without exact bookmaker slip odds.</li><li>Never fabricate evidence or expert consensus.</li><li>Never scrape HTML for decisions.</li></ul></article><article class="card"><h3>Always preserve these distinctions</h3><ul><li>Long-shot tickets are separate and capped at $5.</li><li>Conviction try-scorers are not engine-backed +EV.</li><li>Checked and skipped actions are audit events, not placed bets.</li><li>Only confirmed place actions enter performance as open bets.</li></ul></article></div></section>
+    <section id="contracts" class="section"><h2>Files agents should read</h2><p class="section-note">These files are the stable machine contracts. They are enough to make a decision without opening the page.</p><div class="code-block" style="margin-top:14px"><div class="code-title"><span>Agent-readable outputs</span><span>JSON</span></div><pre>reports/site/manifest.json
+reports/site/operator/latest/operator_feed.json
+reports/site/operator/latest/agent_feed.json
+reports/site/performance/performance_feed.json</pre></div><div class="grid" style="margin-top:14px"><article class="card"><h3>operator_feed.json</h3><p>Current game decision: request, event, action cards, exact odds requirements, evidence, drift, performance snapshot, and ledger paths.</p></article><article class="card"><h3>performance_feed.json</h3><p>Trust and outcomes: open bets, recent settlements, ROI, segments, calibration, and warnings.</p></article><article class="card"><h3>manifest.json</h3><p>Static site map: latest operator page, latest feeds, performance page, generated time, and warnings.</p></article></div></section>
+    <section class="section"><div class="callout"><strong>Bottom line:</strong> the original product is now a manual-first selected-game betting operator engine. It can analyze a game, produce human and agent outputs, track decisions, and measure performance over time. The next improvements are operational: use it on real games, publish the latest product site, and improve evidence sources as the workflow teaches what matters.</div></section>
+    <footer class="footer">Generated for Daztech on 2026-06-14. Manual betting only. This page documents product operation; it is not betting advice or a guarantee of profit.</footer>
+  </main>
+</div>
+</body>
+</html>
