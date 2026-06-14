@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Netherlands vs Japan — SGM Bet Request</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Netherlands vs Japan — SGM Bet Request (Updated)</title>
 <style>
 :root {
   --bg: #0e1116; --fg: #f0f0f0; --muted: #9aa0a6; --line: #2a2f3a;
@@ -19,8 +19,6 @@ body {
   margin: 0; padding: 0; line-height: 1.4;
 }
 .wrap { max-width: 860px; margin: 0 auto; padding: 16px; }
-
-/* Header */
 header.top {
   border-bottom: 1px solid var(--line);
   padding: 14px 0; margin-bottom: 14px;
@@ -43,11 +41,7 @@ header.top .meta { color: var(--muted); font-size: 0.85rem; }
 .match-header .stake-box { text-align: right; }
 .match-header .stake-box .label { color: var(--muted); font-size: 0.8rem; }
 .match-header .stake-box .amount { font-size: 1.4rem; font-weight: 700; color: var(--good); }
-
-/* Section titles */
 .section-title { font-size: 1rem; font-weight: 600; margin: 16px 0 10px 0; }
-
-/* Cards */
 .card {
   background: var(--card-bg);
   border: 1px solid var(--line);
@@ -65,8 +59,6 @@ header.top .meta { color: var(--muted); font-size: 0.85rem; }
   font-size: 1.2rem; font-weight: 700;
   white-space: nowrap; text-align: right;
 }
-
-/* Chips */
 .chip {
   display: inline-block; padding: 2px 8px; border-radius: 999px;
   font-size: 0.72rem; font-weight: 600; letter-spacing: 0.04em;
@@ -79,8 +71,7 @@ header.top .meta { color: var(--muted); font-size: 0.85rem; }
 .chip-verdict { background: var(--warn); color: #1a1a1a; }
 .chip-verdict-check { background: var(--good); }
 .chip-verdict-verify { background: var(--warn); color: #1a1a1a; }
-
-/* Leg list */
+.chip-veto { background: var(--bad); }
 .legs { margin: 8px 0 0 0; padding: 0; list-style: none; }
 .legs li {
   padding: 4px 0; border-top: 1px solid var(--line);
@@ -98,8 +89,6 @@ header.top .meta { color: var(--muted); font-size: 0.85rem; }
 }
 .leg-summary .row { display: flex; justify-content: space-between; padding: 2px 0; }
 .leg-summary .total { font-weight: 700; font-size: 1.0em; color: var(--good); }
-
-/* Context box */
 .context-box {
   background: var(--chip-bg);
   border: 1px solid var(--line);
@@ -112,24 +101,7 @@ header.top .meta { color: var(--muted); font-size: 0.85rem; }
 .context-box .item { flex: 1; min-width: 120px; }
 .context-box .k { color: var(--muted); font-size: 0.78em; }
 .context-box .v { font-weight: 500; }
-
-/* CTAs */
-.cta {
-  display: inline-block;
-  border: 1px solid var(--line); background: var(--chip-bg); color: var(--fg);
-  padding: 6px 12px; border-radius: 8px;
-  font-size: 0.85em; cursor: pointer; text-decoration: none;
-  margin-top: 8px;
-}
-.cta:hover { border-color: var(--info); }
-.cta-primary {
-  background: var(--info); color: #fff; border-color: var(--info);
-}
-
-/* Footer */
 footer { margin-top: 20px; padding: 12px 0; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.8rem; }
-
-/* Disclaimer box */
 .disclaimer {
   background: rgba(255, 107, 107, 0.08);
   border: 1px solid rgba(255, 107, 107, 0.25);
@@ -139,7 +111,16 @@ footer { margin-top: 20px; padding: 12px 0; border-top: 1px solid var(--line); c
   font-size: 0.8em;
   color: var(--bad);
 }
-
+.lineup-block {
+  background: var(--card-bg);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin-top: 12px;
+}
+.lineup-block .team-name { font-weight: 600; font-size: 0.95rem; margin-bottom: 4px; }
+.lineup-block .xi { color: var(--muted); font-size: 0.85rem; line-height: 1.5; }
+.lineup-block .note { color: var(--warn); font-size: 0.8rem; margin-top: 4px; }
 @media (max-width: 600px) {
   .match-header { flex-direction: column; align-items: flex-start; }
   .match-header .stake-box { text-align: left; }
@@ -153,7 +134,7 @@ footer { margin-top: 20px; padding: 12px 0; border-top: 1px solid var(--line); c
 
 <header class="top">
   <h1>⚽ SGM Bet Request</h1>
-  <div class="meta">generated 2026-06-15 · by Daz 🐻</div>
+  <div class="meta">Updated 2026-06-15 ~5:27am AEST · by Daz 🐻</div>
 </header>
 
 <div class="match-header">
@@ -168,18 +149,20 @@ footer { margin-top: 20px; padding: 12px 0; border-top: 1px solid var(--line); c
   </div>
 </div>
 
-<div class="disclaimer">
-  ⚠️ <strong>Engine not run for this match.</strong> These SGMs are based on research consensus, not the betting engine pipeline. Check live Sportsbet odds before building. Depay fitness TBD — verify lineups ~5am AEST.
+<!-- ─── LINEUPS ─── -->
+<div class="lineup-block">
+  <div class="team-name">🇳🇱 Netherlands — 4-3-3 (Koeman)</div>
+  <div class="xi">Verbruggen | Dumfries, Van Hecke, Van Dijk (c), Van de Ven | Gravenberch, De Jong, Reijnders | Summerville, Gakpo, <strong>Malen</strong></div>
+  <div class="note">⚠️ Depay BENCHED (fit but not risked). Malen leads the line as ST.</div>
+</div>
+<div class="lineup-block">
+  <div class="team-name">🇯🇵 Japan — 3-4-2-1 (Moriyasu)</div>
+  <div class="xi">Z. Suzuki | Watanabe, Taniguchi, H. Ito | Doan, Sano, Kamada, Nakamura | Kubo, Maeda | <strong>Ueda (c)</strong></div>
+  <div class="note">⚠️ Mitoma (hamstring), Minamino (ACL), Endo (retired) all OUT. Ueda captains.</div>
 </div>
 
-<div class="context-box">
-  <div class="row">
-    <div class="item"><div class="k">Bookmaker</div><div class="v">Sportsbet</div></div>
-    <div class="item"><div class="k">Kickoff</div><div class="v">6:00am AEST</div></div>
-    <div class="item"><div class="k">Lineup check</div><div class="v">~5:00am AEST</div></div>
-    <div class="item"><div class="k">Japan outs</div><div class="v">Mitoma, Minamino, Endo</div></div>
-    <div class="item"><div class="k">Netherlands ?</div><div class="v">Depay (hamstring)</div></div>
-  </div>
+<div class="disclaimer">
+  ⚠️ <strong>Lineup check complete.</strong> Depay on bench — conditional Depay SGM is dead. Malen starts as #9 (even better for his ATG). Malen has 15 goals in 20 Roma apps and is now the focal point of the attack.
 </div>
 
 <!-- ─── CORE SGM ─── -->
@@ -193,7 +176,7 @@ footer { margin-top: 20px; padding: 12px 0; border-top: 1px solid var(--line); c
         <span class="chip chip-verdict-check">CHECK</span>
       </div>
       <div class="card-title">Netherlands Win + Donyell Malen ATG</div>
-      <div class="card-subtitle">Lowest risk SGM. Form pick + Dutch win consensus.</div>
+      <div class="card-subtitle">Best value on the board. Malen confirmed ST, Netherlands win consensus.</div>
     </div>
     <div class="return">~$61.80</div>
   </div>
@@ -207,7 +190,7 @@ footer { margin-top: 20px; padding: 12px 0; border-top: 1px solid var(--line); c
     <div class="row total"><span>Total return</span><span>$61.80 ($51.80 profit)</span></div>
   </div>
   <div class="context-box" style="margin-bottom:0;">
-    Malen scored 15 goals in 20 apps for Roma Jan–May. Confirmed starter RW. RotoWire + FanDuel both pick him as top ATG value. Japan missing Mitoma weakens their right defensive channel.
+    ✅ <strong>CONFIRMED:</strong> Malen starts as <strong>central striker</strong> — even better than RW. 15 goals in 20 Roma apps Jan–May. Japan's defensive midfield (Sano/Kamada) is the weakest link after Endo's retirement.
   </div>
 </div>
 
@@ -222,7 +205,7 @@ footer { margin-top: 20px; padding: 12px 0; border-top: 1px solid var(--line); c
         <span class="chip chip-verdict">VERIFY</span>
       </div>
       <div class="card-title">Malen ATG + Gakpo ATG</div>
-      <div class="card-subtitle">Both Dutch wingers to score — each cut inside from the flanks.</div>
+      <div class="card-subtitle">Both Dutch scorers. Malen ST, Gakpo LW — double threat.</div>
     </div>
     <div class="return">~$94.50</div>
   </div>
@@ -236,7 +219,7 @@ footer { margin-top: 20px; padding: 12px 0; border-top: 1px solid var(--line); c
     <div class="row total"><span>Total return</span><span>$94.50 ($84.50 profit)</span></div>
   </div>
   <div class="context-box" style="margin-bottom:0;">
-    Gakpo: 20 goals in 50 caps, 38.76% goal probability per WhoScored, 3 goals in 2022 WC group stage. Both start in Koeman's 4-3-3, both cut inside from wings. JuveFc, Yahoo + OneFootball all back Gakpo. Needs 2 different Dutch scorers.
+    Gakpo: 20 goals in 50 caps, 38.76% goal probability per WhoScored, 3 goals in 2022 WC group stage. Both start in their preferred positions. Needs 2 different Dutch scorers.
   </div>
 </div>
 
@@ -251,7 +234,7 @@ footer { margin-top: 20px; padding: 12px 0; border-top: 1px solid var(--line); c
         <span class="chip chip-verdict">VERIFY</span>
       </div>
       <div class="card-title">Netherlands Win + Both Teams to Score + Over 1.5 Goals</div>
-      <div class="card-subtitle">High-probability combo — Dutch control, Japan counter.</div>
+      <div class="card-subtitle">High-probability combo. Japan score in streaks.</div>
     </div>
     <div class="return">~$48.50</div>
   </div>
@@ -266,7 +249,7 @@ footer { margin-top: 20px; padding: 12px 0; border-top: 1px solid var(--line); c
     <div class="row total"><span>Total return</span><span>$48.50 ($38.50 profit)</span></div>
   </div>
   <div class="context-box" style="margin-bottom:0;">
-    Netherlands unbeaten in 16 WC group matches (W12 D4). Both teams scored in Japan's last 7 matches including vs Brazil & England. CBS Sports expert leans Over 2.5. This is the safest SGM on the board.
+    Netherlands unbeaten in 16 WC group matches (W12 D4). Japan scored in 7 straight including vs Brazil & England. Netherlands conceded in 4 straight. CBS expert leans Over 2.5.
   </div>
 </div>
 
@@ -281,7 +264,7 @@ footer { margin-top: 20px; padding: 12px 0; border-top: 1px solid var(--line); c
         <span class="chip chip-verdict">VERIFY</span>
       </div>
       <div class="card-title">Netherlands Win + Malen ATG + Gakpo ATG</div>
-      <div class="card-subtitle">Both Dutch wingers score + Dutch win. Big payout.</div>
+      <div class="card-subtitle">Both starters to score + Dutch win.</div>
     </div>
     <div class="return">~$194.70</div>
   </div>
@@ -296,7 +279,7 @@ footer { margin-top: 20px; padding: 12px 0; border-top: 1px solid var(--line); c
     <div class="row total"><span>Total return</span><span>$194.70 ($184.70 profit)</span></div>
   </div>
   <div class="context-box" style="margin-bottom:0;">
-    Expensive combo but realistic: Netherlands were highest-scoring WCQ team in Europe (27 goals). Both wingers are confirmed starters in their preferred positions. Gakpo scored 3 in 2022 WC group stage.
+    Netherlands top WCQ scorers in Europe (27 goals). Both wingers/ST confirmed. Gakpo scored 3 in 2022 WC group stage.
   </div>
 </div>
 
@@ -311,7 +294,7 @@ footer { margin-top: 20px; padding: 12px 0; border-top: 1px solid var(--line); c
         <span class="chip chip-verdict">VERIFY</span>
       </div>
       <div class="card-title">Both Teams to Score + Ayase Ueda ATG</div>
-      <div class="card-subtitle">Japan's captain and top scorer to find the net in a goals game.</div>
+      <div class="card-subtitle">Japan's captain to score in a goals-in-it game.</div>
     </div>
     <div class="return">~$69.00</div>
   </div>
@@ -325,47 +308,63 @@ footer { margin-top: 20px; padding: 12px 0; border-top: 1px solid var(--line); c
     <div class="row total"><span>Total return</span><span>$69.00 ($59.00 profit)</span></div>
   </div>
   <div class="context-box" style="margin-bottom:0;">
-    Ueda: Japan captain, 25 Eredivisie goals this season (league top scorer). Plays club football in Netherlands — knows Dutch defenders. Japan's only proven goal scorer left after Mitoma/Minamino/Endo outs. If Japan score, it's likely him.
+    ✅ <strong>CONFIRMED:</strong> Ueda starts as captain and ST. 25 Eredivisie goals this season — league top scorer. Japan's only proven scorer left. Kubo and Maeda in support. Knows Van Dijk/Van de Ven from Eredivisie.
   </div>
 </div>
 
-<!-- ─── DEPAY BONUS ─── -->
-<div class="section-title">⚠️ If Depay Starts (check lineups ~5am AEST)</div>
+<!-- ─── BONUS ─── -->
+<div class="section-title">🔥 Bonus: Summerville ATG (Longer Odds)</div>
 
 <div class="card">
   <div class="card-head">
     <div>
       <div>
         <span class="chip chip-tier-ls">BONUS</span>
-        <span class="chip chip-verdict-check">CONDITIONAL</span>
+        <span class="chip chip-verdict-verify">VERIFY</span>
       </div>
-      <div class="card-title">Malen ATG + Depay ATG + Netherlands Win</div>
-      <div class="card-subtitle">Only if Depay confirmed in XI. Injury risk otherwise.</div>
+      <div class="card-title">Netherlands Win + Crysencio Summerville ATG</div>
+      <div class="card-subtitle">Confirmed starter, longer odds value play.</div>
     </div>
-    <div class="return">~$87.00</div>
+    <div class="return">~$89.00</div>
   </div>
   <ul class="legs">
     <li><span>🇳🇱 Netherlands (90-min money line)</span><span class="leg-odds">~$2.06</span></li>
-    <li><span>⚽ Memphis Depay — anytime goalscorer</span><span class="leg-odds">~$2.90</span></li>
-    <li><span>⚽ Donyell Malen — anytime goalscorer</span><span class="leg-odds">~$3.00</span></li>
+    <li><span>⚽ Crysencio Summerville — anytime goalscorer</span><span class="leg-odds">~$4.30</span></li>
   </ul>
   <div class="leg-summary">
-    <div class="row"><span>Multiplier</span><span>~$8.70</span></div>
+    <div class="row"><span>Multiplier</span><span>~$8.86</span></div>
     <div class="row"><span>Stake</span><span>$10</span></div>
-    <div class="row total"><span>Total return</span><span>$87.00 ($77.00 profit)</span></div>
+    <div class="row total"><span>Total return</span><span>~$88.60 ($78.60 profit)</span></div>
   </div>
   <div class="context-box" style="margin-bottom:0;">
-    Depay is Netherlands' all-time top scorer (55 goals). WhoScored gives him highest projected output (0.52). If he starts, this is a real play. If on bench, skip this and use the Malen-only SGMs above.
+    Summerville starts at RW. West Ham attacker, longer odds but confirmed in XI. Value angle if you want a different scorer than the consensus picks.
+  </div>
+</div>
+
+<!-- ─── VETOED ─── -->
+<div class="section-title">❌ Vetoed</div>
+<div class="card" style="opacity:0.5;">
+  <div class="card-head">
+    <div>
+      <div>
+        <span class="chip chip-veto">VETOED</span>
+      </div>
+      <div class="card-title" style="text-decoration:line-through;">Depay ATG SGM</div>
+      <div class="card-subtitle">Depay starts on bench — hamstring not risked. Remove this SGM.</div>
+    </div>
+  </div>
+  <div class="context-box" style="margin-bottom:0;">
+    If Depay gets 30min as a sub his odds shorten, but we can't back a sub minutes play with confidence.
   </div>
 </div>
 
 <div class="disclaimer">
-  📱 <strong>Building on Sportsbet:</strong> Open Sportsbet app → Soccer → World Cup 2026 → Netherlands vs Japan → Same Game Multi. Add the legs listed above. Enter $10 stake. Check exact Sportsbet odds before confirming — these are estimates based on FanDuel/ESPN prices converted.
+  📱 <strong>Building on Sportsbet:</strong> Open Sportsbet app → Soccer → World Cup 2026 → Netherlands vs Japan → Same Game Multi. Add the legs. These are FanDuel/ESPN odds converted — check exact Sportsbet odds before confirming.
 </div>
 
 <footer>
-  Daz 🐻 · bet request · Netherlands vs Japan · $10 stake · Sportsbet<br>
-  Engine: not run · Sources: FanDuel Research, RotoWire, CBS Sports, WhoScored · Generated 2026-06-15
+  Daz 🐻 · Updated with confirmed lineups · Netherlands vs Japan · $10 stake · Sportsbet<br>
+  Sources: 101greatgoals, World Soccer Talk, The Athletic, The Standard, FanDuel Research, RotoWire · 15 Jun 2026
 </footer>
 
 </div>
