@@ -1,0 +1,33 @@
+{
+  "manifest_version": "operator_product.v1",
+  "generated_at": "2026-06-14T05:01:02.013213+00:00",
+  "site_root": "/home/daz/projects/daz-betting-engine/reports/site",
+  "title": "Nutz Betting Cards",
+  "latest_operator": {
+    "page": "operator/latest/index.html",
+    "feed": "operator/latest/operator_feed.json",
+    "event_id": "013e00a00b421327a01239aee91c84c8",
+    "sport": "rugbyleague_nrl",
+    "primary_action": "pass",
+    "drift_status": "warn",
+    "evidence_status": "unavailable"
+  },
+  "performance": {
+    "page": "performance/index.html",
+    "feed": "performance/performance_feed.json",
+    "trust_state": "",
+    "settled_count": 0,
+    "open_count": 0,
+    "profit": "0",
+    "roi": "0"
+  },
+  "agent_contracts": {
+    "operator_feed_version": "operator_workflow.v1",
+    "performance_feed_version": "performance.v1"
+  },
+  "source_paths": {
+    "operator_dir": "/home/daz/.openclaw/workspace-baccs/reports/operator/nrl-tigers-titans",
+    "performance_dir": "/home/daz/projects/daz-betting-engine/reports/performance/latest"
+  },
+  "warnings": []
+}
