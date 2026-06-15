@@ -1,0 +1,317 @@
+{
+  "pev_recommendations": [],
+  "sgm_candidates": [],
+  "long_shot": {},
+  "raw": {
+    "bundle_version": "game_assistant.v1",
+    "generated_at": "2026-06-14T06:23:29.724171+00:00",
+    "audit": {
+      "bundle_version": "game_assistant.v1",
+      "sport": "soccer_fifa_world_cup",
+      "event_id": "b55f9569de3f4d731bc5537ff5ff43e4",
+      "bookmaker": "sportsbet",
+      "include_long_shot": true,
+      "render_html": false,
+      "write_ledger": false,
+      "bundle_dir": "/home/daz/.openclaw/workspace-baccs/reports/operator/wc-sweden-tunisia/_underlying_assistant/soccer_fifa_world_cup_b55f9569de3f4d731bc5537ff5ff43e4_20260614_062329",
+      "generated_at": "2026-06-14T06:23:30.369358+00:00",
+      "bet_placement": "manual_only"
+    },
+    "pev": {
+      "feed_version": "game_pev.v1",
+      "generated_at": "2026-06-14T06:23:29.725181+00:00",
+      "request": {
+        "sport": "soccer_fifa_world_cup",
+        "event_id": "b55f9569de3f4d731bc5537ff5ff43e4",
+        "event_query": null,
+        "target_bookmakers": [
+          "sportsbet",
+          "neds",
+          "betfair_ex_au"
+        ],
+        "comparison_bookmakers": [
+          "sportsbet",
+          "betfair_ex_au",
+          "betr_au",
+          "betright",
+          "bet365_au",
+          "dabble_au",
+          "ladbrokes_au",
+          "neds",
+          "playup",
+          "pointsbetau",
+          "tab",
+          "tabtouch",
+          "unibet"
+        ],
+        "markets": [
+          "h2h",
+          "spreads",
+          "totals",
+          "btts",
+          "draw_no_bet",
+          "double_chance",
+          "team_totals"
+        ],
+        "max_recommendations": 5,
+        "min_edge": 0.03,
+        "max_stake": 50.0,
+        "bankroll": 1000.0,
+        "fractional_kelly": 0.25
+      },
+      "event": {
+        "event_id": "b55f9569de3f4d731bc5537ff5ff43e4",
+        "sport": "soccer_fifa_world_cup",
+        "home_team": "Sweden",
+        "away_team": "Tunisia",
+        "event_label": "Sweden vs Tunisia",
+        "commence_time": "2026-06-15T02:00:00+00:00"
+      },
+      "decision_summary": {
+        "status": "actionable",
+        "best_action": "check",
+        "recommendation_count": 2,
+        "top_bookmaker": "betfair_ex_au",
+        "top_market": "h2h",
+        "top_selection": "Tunisia",
+        "top_edge": 0.03121674352607312,
+        "top_stake": 2.23,
+        "event_label": "Sweden vs Tunisia",
+        "blocked_count": 0
+      },
+      "recommendations": [
+        {
+          "recommendation_id": "63671f79-c6e5-4946-855e-f49aa54e2450",
+          "action": "check",
+          "bookmaker": "betfair_ex_au",
+          "bookmaker_label": "Betfair Exchange",
+          "bookmaker_url": "https://www.betfair.com.au/",
+          "event_label": "Sweden vs Tunisia",
+          "market": "h2h",
+          "market_label": "Head to Head",
+          "selection": "Tunisia",
+          "point": null,
+          "side": "back",
+          "current_odds": 4.5,
+          "minimum_acceptable_odds": 4.49,
+          "fair_probability": 0.22915927633912736,
+          "fair_odds": 4.363777089783282,
+          "edge": 0.03121674352607312,
+          "suggested_stake": 2.23,
+          "confidence": "medium",
+          "comparison_bookmakers": [
+            "betr_au",
+            "betright",
+            "dabble_au",
+            "ladbrokes_au",
+            "playup",
+            "pointsbetau",
+            "tab",
+            "tabtouch",
+            "unibet"
+          ],
+          "warnings": [
+            "verify_liquidity"
+          ],
+          "plain_english": "Check Betfair Exchange: Head to Head \u2014 Tunisia at 4.50 or better. Minimum acceptable odds: 4.49. Suggested stake: $2.23. Edge: +3.12%. Warnings: verify_liquidity. Do not place if odds fall below the minimum or if liquidity is poor."
+        },
+        {
+          "recommendation_id": "1ff4483d-fb19-42ab-8c68-7d83771f9177",
+          "action": "verify",
+          "bookmaker": "betfair_ex_au",
+          "bookmaker_label": "Betfair Exchange",
+          "bookmaker_url": "https://www.betfair.com.au/",
+          "event_label": "Sweden vs Tunisia",
+          "market": "h2h",
+          "market_label": "Head to Head",
+          "selection": "Draw",
+          "point": null,
+          "side": "back",
+          "current_odds": 3.55,
+          "minimum_acceptable_odds": 3.64,
+          "fair_probability": 0.28297745640153127,
+          "fair_odds": 3.533850408850409,
+          "edge": 0.004569970225436009,
+          "suggested_stake": 0.0,
+          "confidence": "low",
+          "comparison_bookmakers": [
+            "betr_au",
+            "betright",
+            "dabble_au",
+            "ladbrokes_au",
+            "playup",
+            "pointsbetau",
+            "tab",
+            "tabtouch",
+            "unibet"
+          ],
+          "warnings": [
+            "low_variance_consensus",
+            "verify_liquidity"
+          ],
+          "plain_english": "Verify Betfair Exchange: Head to Head \u2014 Draw at 3.55 or better. Minimum acceptable odds: 3.64. Suggested stake: $0.00. Edge: +0.46%. Warnings: low_variance_consensus, verify_liquidity."
+        }
+      ],
+      "blocked": [],
+      "audit": {
+        "books_compared": 12,
+        "books_list": [
+          "betfair_ex_au",
+          "betr_au",
+          "betright",
+          "dabble_au",
+          "ladbrokes_au",
+          "neds",
+          "playup",
+          "pointsbetau",
+          "sportsbet",
+          "tab",
+          "tabtouch",
+          "unibet"
+        ],
+        "markets_analyzed": [
+          "btts",
+          "double_chance",
+          "draw_no_bet",
+          "h2h",
+          "h2h_lay",
+          "spreads",
+          "totals"
+        ],
+        "consensus_method": "median_no_vig_excluding_target",
+        "bet_placement": "manual_only",
+        "blocked_count": 0
+      },
+      "status": "actionable",
+      "event_candidates": [],
+      "error": null
+    },
+    "sgm": {
+      "feed_version": "sgm_game.v1",
+      "generated_at": "2026-06-14T06:23:30+00:00",
+      "request": {
+        "sport": "soccer_fifa_world_cup",
+        "event_id": "b55f9569de3f4d731bc5537ff5ff43e4",
+        "event_query": null,
+        "bookmaker": "sportsbet",
+        "max_candidates": 5,
+        "allowed_leg_counts": [
+          2,
+          3
+        ],
+        "min_edge": "0.03",
+        "max_stake": "50",
+        "include_long_shot": true,
+        "no_fetch": false,
+        "mode": "both"
+      },
+      "event": {
+        "event_id": "b55f9569de3f4d731bc5537ff5ff43e4",
+        "sport": "fifa_world_cup",
+        "sport_key": "soccer_fifa_world_cup",
+        "home_team": "Sweden",
+        "away_team": "Tunisia",
+        "event_label": "Sweden vs Tunisia",
+        "commence_time": "2026-06-15T02:00:00+00:00",
+        "bookmaker": "sportsbet",
+        "captured_at": "2026-06-14T06:23:30+00:00",
+        "data_quality_flags": [
+          "market_missing:totals",
+          "stale_odds"
+        ]
+      },
+      "decision_summary": {
+        "status": "no_candidates",
+        "candidate_count": 0,
+        "best_candidate_id": null,
+        "best_minimum_acceptable_sgm_odds": null,
+        "bet_placement": "manual_only"
+      },
+      "leg_catalog": [
+        {
+          "leg_id": "b55f9569de3f4d731bc5537ff5ff43e4:h2h:0",
+          "sport": "soccer_fifa_world_cup",
+          "event_id": "b55f9569de3f4d731bc5537ff5ff43e4",
+          "event_label": "Sweden vs Tunisia",
+          "bookmaker": "sportsbet",
+          "market": "h2h",
+          "market_label": "Head to Head",
+          "selection": "Sweden",
+          "point": null,
+          "player": null,
+          "decimal_odds": "1.9",
+          "implied_probability": "0.52632",
+          "model_probability": null,
+          "edge": null,
+          "data_quality_flags": [],
+          "copyable_text": "Sweden"
+        }
+      ],
+      "candidates": [],
+      "blocked": [],
+      "audit": {
+        "feed_version": "sgm_game.v1",
+        "sport": "fifa_world_cup",
+        "sport_key": "soccer_fifa_world_cup",
+        "bookmaker": "sportsbet",
+        "exact_sgm_price_required": true,
+        "core_leg_counts": [
+          2,
+          3
+        ],
+        "long_shot_included": false,
+        "long_shot_requested": true,
+        "source": "ok",
+        "bet_placement": "manual_only",
+        "event_id": "b55f9569de3f4d731bc5537ff5ff43e4",
+        "generated_total": 0
+      },
+      "errors": []
+    },
+    "errors": [],
+    "summary": {
+      "bundle_version": "game_assistant.v1",
+      "generated_at": "2026-06-14T06:23:29.724171+00:00",
+      "request_id": "86f04f13-6bc4-4be9-a7a2-8cf5a18126de",
+      "audit": {
+        "bundle_version": "game_assistant.v1",
+        "sport": "soccer_fifa_world_cup",
+        "event_id": "b55f9569de3f4d731bc5537ff5ff43e4",
+        "bookmaker": "sportsbet",
+        "include_long_shot": true,
+        "render_html": false,
+        "write_ledger": false,
+        "bundle_dir": "/home/daz/.openclaw/workspace-baccs/reports/operator/wc-sweden-tunisia/_underlying_assistant/soccer_fifa_world_cup_b55f9569de3f4d731bc5537ff5ff43e4_20260614_062329",
+        "generated_at": "2026-06-14T06:23:30.369358+00:00",
+        "bet_placement": "manual_only"
+      },
+      "summary": {
+        "primary_action": "place",
+        "reason": "PEV +EV recommendation present"
+      },
+      "counts": {
+        "pev_recommendations": 2,
+        "sgm_candidates": 0,
+        "sgm_blocked": 0,
+        "sgm_actionable": 0,
+        "sgm_long_shot": 0
+      },
+      "pev_top": {
+        "recommendation_id": "63671f79-c6e5-4946-855e-f49aa54e2450",
+        "market": "h2h",
+        "selection": null,
+        "edge": 0.03121674352607312,
+        "bookmaker": "betfair_ex_au"
+      },
+      "sgm_top": null,
+      "errors": []
+    },
+    "bundle_path": "/home/daz/.openclaw/workspace-baccs/reports/operator/wc-sweden-tunisia/_underlying_assistant/soccer_fifa_world_cup_b55f9569de3f4d731bc5537ff5ff43e4_20260614_062329",
+    "bundle_json_path": "/home/daz/.openclaw/workspace-baccs/reports/operator/wc-sweden-tunisia/_underlying_assistant/soccer_fifa_world_cup_b55f9569de3f4d731bc5537ff5ff43e4_20260614_062329/bundle.json",
+    "agent_feed_path": "/home/daz/.openclaw/workspace-baccs/reports/operator/wc-sweden-tunisia/_underlying_assistant/soccer_fifa_world_cup_b55f9569de3f4d731bc5537ff5ff43e4_20260614_062329/agent_feed.json",
+    "html_path": null,
+    "index_html_path": null,
+    "ledger_path": null,
+    "credits_used": 0
+  }
+}

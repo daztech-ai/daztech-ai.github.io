@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Netherlands vs Japan — Daz Betting Engine</title>
+
+<style>
+:root {
+  --bg: #fafafa; --fg: #111; --muted: #666; --line: #e3e3e3;
+  --good: #157f3a; --bad: #b3261e; --warn: #b16a00; --info: #1e5bbf;
+  --chip-pass: #6b6b6b; --chip-check: #157f3a; --chip-build: #1e5bbf;
+  --chip-verify: #b16a00; --chip-blocked: #b3261e;
+}
+* { box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: var(--bg); color: var(--fg);
+  margin: 0; padding: 16px; max-width: 880px; margin: 0 auto;
+  line-height: 1.4;
+}
+h1, h2, h3 { margin: 8px 0; }
+.muted { color: var(--muted); }
+.small { font-size: 0.9em; }
+.header { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; }
+.header-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.header-row.sub { margin-top: 6px; }
+.teams strong { font-size: 1.25rem; }
+.stake { text-align: right; }
+.stake strong { font-size: 1.4rem; }
+.verdict {
+  background: #fff; border: 1px solid var(--line); border-radius: 12px;
+  padding: 16px; margin-top: 12px; text-align: center;
+}
+.verdict-headline { font-size: 1.1rem; margin-bottom: 8px; }
+.chip, .tier-chip, .action-chip {
+  display: inline-block; padding: 2px 8px; border-radius: 999px;
+  font-size: 0.78rem; font-weight: 600; letter-spacing: 0.04em;
+  color: #fff;
+}
+.chip-check { background: var(--chip-check); }
+.chip-build { background: var(--chip-build); }
+.chip-verify { background: var(--chip-verify); }
+.chip-pass { background: var(--chip-pass); }
+.chip-blocked { background: var(--chip-blocked); }
+.tier-engine { background: var(--good); }
+.tier-core { background: var(--info); }
+.tier-ls { background: #6b3aa0; }
+.tier-conv { background: #ad6a00; }
+.tier-dnb, .tier-blk { background: #6b6b6b; }
+section { background: #fff; border: 1px solid var(--line); border-radius: 12px;
+  padding: 14px 16px; margin-top: 12px; }
+.prob, .empty { background: #fff; }
+.cards .card { background: #fbfbfb; border: 1px solid var(--line); border-radius: 10px;
+  padding: 12px 14px; margin: 10px 0; }
+.card-head { display: flex; flex-direction: column; gap: 6px; }
+.chips { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+.card-title { margin: 4px 0 6px 0; }
+.kv { width: 100%; border-collapse: collapse; }
+.kv th, .kv td { text-align: left; padding: 4px 6px; border-bottom: 1px solid var(--line); font-size: 0.95em; }
+.kv th { color: var(--muted); font-weight: 500; }
+.legs { margin: 6px 0 8px 18px; padding: 0; }
+.legs li { margin: 2px 0; }
+.exact-odds { margin-top: 8px; }
+.exact-odds label { display: block; font-size: 0.9em; color: var(--muted); }
+.exact-odds-input { padding: 6px 8px; font-size: 1rem; width: 100%; max-width: 200px; border: 1px solid var(--line); border-radius: 6px; }
+.exact-odds-result { margin-top: 4px; }
+.cta-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.cta {
+  border: 1px solid var(--line); background: #fff; color: var(--fg);
+  padding: 6px 12px; border-radius: 8px; cursor: pointer; font-size: 0.92em;
+}
+.cta:hover { background: #f0f0f0; }
+.cta-place { background: var(--good); color: #fff; border-color: var(--good); }
+.cta-check { background: var(--info); color: #fff; border-color: var(--info); }
+.cta-skip { background: #fff; color: var(--bad); border-color: var(--bad); }
+.drift-pass { color: var(--good); }
+.drift-warn { color: var(--warn); }
+.drift-fail { color: var(--bad); }
+.drift-tbl th { color: var(--muted); font-weight: 500; }
+.toast {
+  position: fixed; bottom: 16px; right: 16px; background: #111; color: #fff;
+  padding: 8px 12px; border-radius: 6px; font-size: 0.92em;
+  opacity: 0; transition: opacity 0.2s;
+}
+.toast.show { opacity: 1; }
+@media (max-width: 600px) {
+  body { padding: 10px; }
+  .header-row { flex-direction: column; align-items: flex-start; }
+  .stake { text-align: left; }
+  .kv th, .kv td { font-size: 0.92em; }
+}
+</style>
+
+</head>
+<body>
+<h1>Selected-game bet request</h1>
+
+<header class="header">
+  <div class="header-row">
+    <div class="teams">
+      <strong>Netherlands vs Japan</strong>
+      <div class="muted">soccer_fifa_world_cup · kickoff 2026-06-14T20:00:00+00:00</div>
+    </div>
+    <div class="stake">
+      <div class="muted">stake</div>
+      <strong>$50</strong>
+    </div>
+  </div>
+  <div class="header-row sub">
+    <div class="muted">bookmaker: sportsbet</div>
+    <div class="muted">generated: 2026-06-14T04:49:02.576470+00:00</div>
+    <div class="muted">data: ✓ fresh</div>
+  </div>
+</header>
+<section class="verdict">
+  <div class="verdict-headline">ENGINE VERDICT — NO ACTIONABLE BET</div>
+  <div class="verdict-chip chip-pass">PASS</div>
+  <div class="muted small">no actionable candidates</div>
+</section>
+<section class="record-help muted small" aria-label="Record action help">
+  <strong>Recording an action?</strong>
+  Click any "Record ..." button below. If this page is hosted on GitHub
+  Pages (no local server), your browser will download a
+  <code>.jsonl</code> payload. Pipe it back in with:
+  <code>daz-betting-engine assistant record --stdin --ledger reports/game-assistant/actions.jsonl &lt; downloaded.jsonl</code>
+</section>
+<section class="empty"><p class="muted">No engine-backed probability summary — no actionable candidates.</p></section><section class="empty"><p class="muted">No engine-backed candidates at the current price.</p></section>
+<section class="evidence">
+  <h2>Evidence &amp; source coverage</h2>
+  <p class="muted small">Status: <strong>UNAVAILABLE</strong></p>
+  
+  
+  <p class="muted small">No live evidence configured. Provide --evidence-json for a manual pack.</p>
+</section>
+
+<section class="drift">
+  <h2>Drift check: <span class="drift-warn">WARN</span></h2>
+  <table class="kv drift-tbl">
+    <tr><th>Item</th><th>Status</th><th>Detail</th></tr>
+    <tr><td>Stake is present and &gt; 0</td><td class='drift-pass'>PASS</td><td class='muted small'>stake=$50</td></tr><tr><td>Event is resolved</td><td class='drift-pass'>PASS</td><td class='muted small'>event_id=32ec06abda2398ac41501c86eb9aa376</td></tr><tr><td>Odds freshness</td><td class='drift-warn'>WARN</td><td class='muted small'>no candidates to evaluate</td></tr><tr><td>Exact SGM price entered</td><td class='drift-pass'>PASS</td><td class='muted small'>no SGM build/check card</td></tr><tr><td>Engine contract (no blocked promotion)</td><td class='drift-pass'>PASS</td><td class='muted small'>blocked cards stay blocked</td></tr><tr><td>Source freshness</td><td class='drift-warn'>WARN</td><td class='muted small'>no live evidence — manual pack recommended</td></tr><tr><td>Team list confirmation for try-scorer</td><td class='drift-pass'>PASS</td><td class='muted small'>no unconfirmed conviction card</td></tr><tr><td>Performance trust</td><td class='drift-warn'>WARN</td><td class='muted small'>trust=insufficient_data (insufficient data is expected early)</td></tr><tr><td>Manual-only placement</td><td class='drift-pass'>PASS</td><td class='muted small'>user records placement; engine never places</td></tr>
+  </table>
+</section>
+
+<section class="perf">
+  <h2>Performance trust snapshot</h2>
+  <p>Trust state: <strong>insufficient_data</strong> · ROI: <strong>0</strong> · settled: <strong>0</strong></p>
+  
+</section>
+
+<section class="audit">
+  <h2>Raw audit / agent links</h2>
+  <ul class="muted small">
+    <li>Operator feed: <code>operator_feed.json</code></li>
+    <li>Agent feed: <code>agent_feed.json</code></li>
+    <li>Central ledger: <code>reports/game-assistant/actions.jsonl</code></li>
+    <li>Output dir: <code>/home/daz/.openclaw/workspace-baccs/reports/operator/wc-netherlands-japan</code></li>
+    <li>Request id: <code>7313b2a8-dd4b-4871-81a6-236465c6ef43</code></li>
+    <li>Stake: $50 · bankroll: $1000</li>
+  </ul>
+</section>
+
+<script id="operator-feed" type="application/json">{"feed_version": "operator_workflow.v1", "generated_at": "2026-06-14T04:49:02.576470+00:00", "request": {"sport": "soccer_fifa_world_cup", "event_id": "32ec06abda2398ac41501c86eb9aa376", "query": "", "stake": "50", "bankroll": "1000", "bookmaker": "sportsbet", "manual_bet_placement": true}, "event": {"event_id": "32ec06abda2398ac41501c86eb9aa376", "event_label": "Netherlands vs Japan", "home_team": "Netherlands", "away_team": "Japan", "commence_time": "2026-06-14T20:00:00+00:00"}, "decision": {"primary_action": "pass", "headline": "ENGINE VERDICT \u2014 NO ACTIONABLE BET", "engine_backed": false, "exact_odds_required": false, "recommended_card_id": "", "stake": "50", "max_stake": "50", "reason": "no actionable candidates"}, "cards": [], "evidence": {"status": "unavailable", "sources": [], "consensus": {"direction": "", "source_count": 0, "agreeing_sources": [], "primary_player": "", "score": 0}, "late_mail": {"status": "unavailable", "fetched_at": ""}, "try_scorer_scores": []}, "drift_check": {"status": "warn", "checklist": [{"id": "stake_present", "label": "Stake is present and > 0", "status": "pass", "detail": "stake=$50"}, {"id": "event_resolved", "label": "Event is resolved", "status": "pass", "detail": "event_id=32ec06abda2398ac41501c86eb9aa376"}, {"id": "odds_freshness", "label": "Odds freshness", "status": "warn", "detail": "no candidates to evaluate"}, {"id": "exact_sgm_price", "label": "Exact SGM price entered", "status": "pass", "detail": "no SGM build/check card"}, {"id": "engine_contract", "label": "Engine contract (no blocked promotion)", "status": "pass", "detail": "blocked cards stay blocked"}, {"id": "source_freshness", "label": "Source freshness", "status": "warn", "detail": "no live evidence \u2014 manual pack recommended"}, {"id": "team_list_confirmation", "label": "Team list confirmation for try-scorer", "status": "pass", "detail": "no unconfirmed conviction card"}, {"id": "performance_trust", "label": "Performance trust", "status": "warn", "detail": "trust=insufficient_data (insufficient data is expected early)"}, {"id": "manual_placement", "label": "Manual-only placement", "status": "pass", "detail": "user records placement; engine never places"}]}, "performance": {"trust_state": "insufficient_data", "roi": "0", "settled_count": 0, "warnings": []}, "ledger": {"bundle_ledger_path": "/home/daz/.openclaw/workspace-baccs/reports/operator/wc-netherlands-japan/ledger.jsonl", "central_ledger_path": "reports/game-assistant/actions.jsonl", "recording_mode": "manual"}, "audit": {"request_id": "7313b2a8-dd4b-4871-81a6-236465c6ef43", "output_dir": "/home/daz/.openclaw/workspace-baccs/reports/operator/wc-netherlands-japan", "publish_dir": ""}}</script>
+
+<script>
+(function () {
+  var feedEl = document.getElementById("operator-feed");
+  if (!feedEl) return;
+  var feed = JSON.parse(feedEl.textContent);
+
+  // ─── Exact-odds widget ───────────────────────────────────────
+  document.querySelectorAll(".exact-odds").forEach(function (w) {
+    var cardId = w.getAttribute("data-card-id");
+    var fair = parseFloat(w.getAttribute("data-fair-prob"));
+    var minOdds = parseFloat(w.getAttribute("data-min-odds"));
+    var card = document.querySelector(
+      '.card[data-card-id="' + cssEscape(cardId) + '"]'
+    );
+    var input = w.querySelector(".exact-odds-input");
+    var result = w.querySelector(".exact-odds-result");
+    input.addEventListener("input", function () {
+      var v = parseFloat(input.value);
+      if (!isFinite(v) || v <= 1) {
+        result.textContent = "Enter a valid decimal odds (>= 1.01).";
+        return;
+      }
+      var edge = (v * (isFinite(fair) ? fair : 0) - 1);
+      var minOK = !isFinite(minOdds) || v >= minOdds;
+      var decision = minOK && edge > 0 ? "PLACE eligible" : "SKIP";
+      result.innerHTML =
+        "exact edge = " + (edge * 100).toFixed(1) + "% · min " +
+        (isFinite(minOdds) ? minOdds : "?") + " → <strong>" + decision + "</strong>";
+    });
+  });
+
+  // ─── Copy buttons ────────────────────────────────────────────
+  function cardById(id) {
+    return feed.cards.find(function (c) { return c.card_id === id; }) || {};
+  }
+  function toast(msg) {
+    var t = document.getElementById("toast");
+    t.textContent = msg;
+    t.className = "toast show";
+    setTimeout(function () { t.className = "toast"; }, 1400);
+  }
+  document.querySelectorAll(".copy-legs").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var c = cardById(b.getAttribute("data-card-id"));
+      var txt = (c.legs || []).map(function (l) {
+        return typeof l === "string" ? l : (l.selection || JSON.stringify(l));
+      }).join("\n");
+      copyText(txt, "Legs copied");
+    });
+  });
+  document.querySelectorAll(".copy-details").forEach(function (c) {
+    c.addEventListener("click", function () {
+      var card = cardById(c.getAttribute("data-card-id"));
+      var txt = [
+        "Sport: " + (feed.request.sport || ""),
+        "Event: " + (feed.event.event_label || feed.event.event_id),
+        "Tier: " + (card.tier || ""),
+        "Action: " + (card.action || ""),
+        "Selection: " + (card.selection || card.title || ""),
+        "Odds: " + (card.current_odds || ""),
+        "Stake: $" + (card.stake || ""),
+        "Bookmaker: " + (card.bookmaker || "")
+      ].join("\n");
+      copyText(txt, "Bet details copied");
+    });
+  });
+
+  // ─── Record action buttons (POST or JSONL fallback) ──────────
+  document.querySelectorAll(".cta[data-action]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var action = b.getAttribute("data-action");
+      var cardId = b.getAttribute("data-card-id");
+      var card = cardById(cardId);
+      var payload = {
+        action: action,
+        candidate_id: cardId,
+        event_id: feed.event.event_id || "",
+        sport: feed.request.sport || "",
+        details: {
+          bet_type: card.tier || "",
+          tier: card.tier || "",
+          decision_source: card.engine_backed ? "engine" : "manual",
+          stake: card.stake || "",
+          exact_odds: card.current_odds || "",
+          confirmed_edge: card.edge || "",
+          bookmaker: card.bookmaker || "",
+          selection_summary: card.selection_summary || card.title || "",
+          legs: card.legs || []
+        }
+      };
+      postOrDownload(payload);
+    });
+  });
+
+  function postOrDownload(payload) {
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "/assistant/ledger-add");
+    xhr.timeout = 1500;
+    xhr.onload = function () {
+      if (xhr.status >= 200 && xhr.status < 300) {
+        toast("Recorded: " + payload.action);
+      } else {
+        downloadFallback(payload);
+      }
+    };
+    xhr.onerror = function () { downloadFallback(payload); };
+    xhr.ontimeout = function () { downloadFallback(payload); };
+    try {
+      xhr.setRequestHeader("Content-Type", "application/json");
+      xhr.send(JSON.stringify(payload));
+    } catch (e) {
+      downloadFallback(payload);
+    }
+  }
+  function downloadFallback(payload) {
+    var blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement("a");
+    a.href = url;
+    a.download = (payload.candidate_id || "action") + ".jsonl";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(function () { URL.revokeObjectURL(url); }, 500);
+    toast("Local server unreachable — JSONL downloaded. Pipe into:\n  daz-betting-engine assistant record --stdin --ledger <path>");
+  }
+  function copyText(text, msg) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () { toast(msg); });
+    } else {
+      var ta = document.createElement("textarea");
+      ta.value = text; document.body.appendChild(ta);
+      ta.select(); document.execCommand("copy");
+      ta.remove(); toast(msg);
+    }
+  }
+  function cssEscape(s) {
+    if (window.CSS && CSS.escape) return CSS.escape(s);
+    return String(s).replace(/[^a-zA-Z0-9_-]/g, function (c) { return "\\" + c; });
+  }
+})();
+</script>
+<div id="toast" class="toast"></div>
+
+</body>
+</html>

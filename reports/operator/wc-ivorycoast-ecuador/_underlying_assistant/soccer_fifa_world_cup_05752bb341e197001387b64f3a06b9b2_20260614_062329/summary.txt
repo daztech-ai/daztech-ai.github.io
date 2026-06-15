@@ -1,0 +1,1 @@
+[game-assistant] status=ok event=Ivory Coast vs Ecuador primary=place pev_recs=1 sgm_candidates=0 sgm_blocked=0 html=no ledger=no bundle=/home/daz/.openclaw/workspace-baccs/reports/operator/wc-ivorycoast-ecuador/_underlying_assistant/soccer_fifa_world_cup_05752bb341e197001387b64f3a06b9b2_20260614_062329

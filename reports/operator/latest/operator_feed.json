@@ -1,0 +1,122 @@
+{
+  "feed_version": "operator_workflow.v1",
+  "generated_at": "2026-06-13T21:28:17.103404+00:00",
+  "request": {
+    "sport": "soccer_fifa_world_cup",
+    "event_id": "f6c8748a16516e0998f95de14235432a",
+    "query": "",
+    "stake": "20",
+    "bankroll": "1000",
+    "bookmaker": "sportsbet",
+    "manual_bet_placement": true
+  },
+  "event": {
+    "event_id": "f6c8748a16516e0998f95de14235432a",
+    "event_label": "f6c8748a16516e0998f95de14235432a",
+    "home_team": "",
+    "away_team": "",
+    "commence_time": ""
+  },
+  "decision": {
+    "primary_action": "pass",
+    "headline": "ENGINE VERDICT \u2014 NO ACTIONABLE BET",
+    "engine_backed": false,
+    "exact_odds_required": false,
+    "recommended_card_id": "",
+    "stake": "20",
+    "max_stake": "20",
+    "reason": "no actionable candidates"
+  },
+  "cards": [],
+  "evidence": {
+    "status": "unavailable",
+    "sources": [],
+    "consensus": {
+      "direction": "",
+      "source_count": 0,
+      "agreeing_sources": [],
+      "primary_player": "",
+      "score": 0
+    },
+    "late_mail": {
+      "status": "unavailable",
+      "fetched_at": ""
+    },
+    "try_scorer_scores": []
+  },
+  "drift_check": {
+    "status": "warn",
+    "checklist": [
+      {
+        "id": "stake_present",
+        "label": "Stake is present and > 0",
+        "status": "pass",
+        "detail": "stake=$20"
+      },
+      {
+        "id": "event_resolved",
+        "label": "Event is resolved",
+        "status": "pass",
+        "detail": "event_id=f6c8748a16516e0998f95de14235432a"
+      },
+      {
+        "id": "odds_freshness",
+        "label": "Odds freshness",
+        "status": "warn",
+        "detail": "no candidates to evaluate"
+      },
+      {
+        "id": "exact_sgm_price",
+        "label": "Exact SGM price entered",
+        "status": "pass",
+        "detail": "no SGM build/check card"
+      },
+      {
+        "id": "engine_contract",
+        "label": "Engine contract (no blocked promotion)",
+        "status": "pass",
+        "detail": "blocked cards stay blocked"
+      },
+      {
+        "id": "source_freshness",
+        "label": "Source freshness",
+        "status": "warn",
+        "detail": "no live evidence \u2014 manual pack recommended"
+      },
+      {
+        "id": "team_list_confirmation",
+        "label": "Team list confirmation for try-scorer",
+        "status": "pass",
+        "detail": "no unconfirmed conviction card"
+      },
+      {
+        "id": "performance_trust",
+        "label": "Performance trust",
+        "status": "warn",
+        "detail": "trust=insufficient_data (insufficient data is expected early)"
+      },
+      {
+        "id": "manual_placement",
+        "label": "Manual-only placement",
+        "status": "pass",
+        "detail": "user records placement; engine never places"
+      }
+    ]
+  },
+  "performance": {
+    "trust_state": "insufficient_data",
+    "roi": "0",
+    "settled_count": 0,
+    "warnings": []
+  },
+  "ledger": {
+    "bundle_ledger_path": "/home/daz/.openclaw/workspace-baccs/reports/operator/latest/ledger.jsonl",
+    "central_ledger_path": "reports/game-assistant/actions.jsonl",
+    "recording_mode": "manual"
+  },
+  "audit": {
+    "request_id": "ac5f1c6d-415f-48bb-a011-fe988b76550d",
+    "output_dir": "/home/daz/.openclaw/workspace-baccs/reports/operator/latest",
+    "publish_dir": ""
+  }
+}

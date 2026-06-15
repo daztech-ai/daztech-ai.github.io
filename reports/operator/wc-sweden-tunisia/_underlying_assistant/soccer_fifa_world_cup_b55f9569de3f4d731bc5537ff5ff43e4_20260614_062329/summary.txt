@@ -1,0 +1,1 @@
+[game-assistant] status=ok event=Sweden vs Tunisia primary=place pev_recs=2 sgm_candidates=0 sgm_blocked=0 html=no ledger=no bundle=/home/daz/.openclaw/workspace-baccs/reports/operator/wc-sweden-tunisia/_underlying_assistant/soccer_fifa_world_cup_b55f9569de3f4d731bc5537ff5ff43e4_20260614_062329

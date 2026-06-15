@@ -1,0 +1,1 @@
+[game-assistant] status=ok event=? primary=pass pev_recs=0 sgm_candidates=0 sgm_blocked=0 html=no ledger=no bundle=/home/daz/.openclaw/workspace-baccs/reports/operator/latest/_underlying_assistant/soccer_fifa_world_cup_f6c8748a16516e0998f95de14235432a_20260613_212816

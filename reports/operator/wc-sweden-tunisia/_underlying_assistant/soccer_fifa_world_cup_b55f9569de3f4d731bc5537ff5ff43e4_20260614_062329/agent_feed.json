@@ -1,0 +1,37 @@
+{
+  "bundle_version": "game_assistant.v1",
+  "generated_at": "2026-06-14T06:23:29.724171+00:00",
+  "request_id": "86f04f13-6bc4-4be9-a7a2-8cf5a18126de",
+  "audit": {
+    "bundle_version": "game_assistant.v1",
+    "sport": "soccer_fifa_world_cup",
+    "event_id": "b55f9569de3f4d731bc5537ff5ff43e4",
+    "bookmaker": "sportsbet",
+    "include_long_shot": true,
+    "render_html": false,
+    "write_ledger": false,
+    "bundle_dir": "/home/daz/.openclaw/workspace-baccs/reports/operator/wc-sweden-tunisia/_underlying_assistant/soccer_fifa_world_cup_b55f9569de3f4d731bc5537ff5ff43e4_20260614_062329",
+    "generated_at": "2026-06-14T06:23:30.369358+00:00",
+    "bet_placement": "manual_only"
+  },
+  "summary": {
+    "primary_action": "place",
+    "reason": "PEV +EV recommendation present"
+  },
+  "counts": {
+    "pev_recommendations": 2,
+    "sgm_candidates": 0,
+    "sgm_blocked": 0,
+    "sgm_actionable": 0,
+    "sgm_long_shot": 0
+  },
+  "pev_top": {
+    "recommendation_id": "63671f79-c6e5-4946-855e-f49aa54e2450",
+    "market": "h2h",
+    "selection": null,
+    "edge": 0.03121674352607312,
+    "bookmaker": "betfair_ex_au"
+  },
+  "sgm_top": null,
+  "errors": []
+}

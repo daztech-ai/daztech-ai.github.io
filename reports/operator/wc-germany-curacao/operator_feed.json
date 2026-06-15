@@ -1,0 +1,122 @@
+{
+  "feed_version": "operator_workflow.v1",
+  "generated_at": "2026-06-14T06:23:30.394206+00:00",
+  "request": {
+    "sport": "soccer_fifa_world_cup",
+    "event_id": "d79edbd6aaeb578d33e313446b18d333",
+    "query": "",
+    "stake": "50",
+    "bankroll": "1000",
+    "bookmaker": "sportsbet",
+    "manual_bet_placement": true
+  },
+  "event": {
+    "event_id": "d79edbd6aaeb578d33e313446b18d333",
+    "event_label": "Germany vs Cura\u00e7ao",
+    "home_team": "Germany",
+    "away_team": "Cura\u00e7ao",
+    "commence_time": "2026-06-14T17:00:00+00:00"
+  },
+  "decision": {
+    "primary_action": "pass",
+    "headline": "ENGINE VERDICT \u2014 NO ACTIONABLE BET",
+    "engine_backed": false,
+    "exact_odds_required": false,
+    "recommended_card_id": "",
+    "stake": "50",
+    "max_stake": "50",
+    "reason": "no actionable candidates"
+  },
+  "cards": [],
+  "evidence": {
+    "status": "unavailable",
+    "sources": [],
+    "consensus": {
+      "direction": "",
+      "source_count": 0,
+      "agreeing_sources": [],
+      "primary_player": "",
+      "score": 0
+    },
+    "late_mail": {
+      "status": "unavailable",
+      "fetched_at": ""
+    },
+    "try_scorer_scores": []
+  },
+  "drift_check": {
+    "status": "warn",
+    "checklist": [
+      {
+        "id": "stake_present",
+        "label": "Stake is present and > 0",
+        "status": "pass",
+        "detail": "stake=$50"
+      },
+      {
+        "id": "event_resolved",
+        "label": "Event is resolved",
+        "status": "pass",
+        "detail": "event_id=d79edbd6aaeb578d33e313446b18d333"
+      },
+      {
+        "id": "odds_freshness",
+        "label": "Odds freshness",
+        "status": "warn",
+        "detail": "no candidates to evaluate"
+      },
+      {
+        "id": "exact_sgm_price",
+        "label": "Exact SGM price entered",
+        "status": "pass",
+        "detail": "no SGM build/check card"
+      },
+      {
+        "id": "engine_contract",
+        "label": "Engine contract (no blocked promotion)",
+        "status": "pass",
+        "detail": "blocked cards stay blocked"
+      },
+      {
+        "id": "source_freshness",
+        "label": "Source freshness",
+        "status": "warn",
+        "detail": "no live evidence \u2014 manual pack recommended"
+      },
+      {
+        "id": "team_list_confirmation",
+        "label": "Team list confirmation for try-scorer",
+        "status": "pass",
+        "detail": "no unconfirmed conviction card"
+      },
+      {
+        "id": "performance_trust",
+        "label": "Performance trust",
+        "status": "warn",
+        "detail": "trust=insufficient_data (insufficient data is expected early)"
+      },
+      {
+        "id": "manual_placement",
+        "label": "Manual-only placement",
+        "status": "pass",
+        "detail": "user records placement; engine never places"
+      }
+    ]
+  },
+  "performance": {
+    "trust_state": "insufficient_data",
+    "roi": "0",
+    "settled_count": 0,
+    "warnings": []
+  },
+  "ledger": {
+    "bundle_ledger_path": "/home/daz/.openclaw/workspace-baccs/reports/operator/wc-germany-curacao/ledger.jsonl",
+    "central_ledger_path": "reports/game-assistant/actions.jsonl",
+    "recording_mode": "manual"
+  },
+  "audit": {
+    "request_id": "b8dadffa-285c-4c3a-bb04-3db2ee890676",
+    "output_dir": "/home/daz/.openclaw/workspace-baccs/reports/operator/wc-germany-curacao",
+    "publish_dir": ""
+  }
+}

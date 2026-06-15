@@ -1,0 +1,37 @@
+{
+  "bundle_version": "game_assistant.v1",
+  "generated_at": "2026-06-14T06:23:29.723855+00:00",
+  "request_id": "4d1c7e9e-e424-495e-8983-e5533fd064d7",
+  "audit": {
+    "bundle_version": "game_assistant.v1",
+    "sport": "soccer_fifa_world_cup",
+    "event_id": "d79edbd6aaeb578d33e313446b18d333",
+    "bookmaker": "sportsbet",
+    "include_long_shot": true,
+    "render_html": false,
+    "write_ledger": false,
+    "bundle_dir": "/home/daz/.openclaw/workspace-baccs/reports/operator/wc-germany-curacao/_underlying_assistant/soccer_fifa_world_cup_d79edbd6aaeb578d33e313446b18d333_20260614_062329",
+    "generated_at": "2026-06-14T06:23:30.393307+00:00",
+    "bet_placement": "manual_only"
+  },
+  "summary": {
+    "primary_action": "place",
+    "reason": "PEV +EV recommendation present"
+  },
+  "counts": {
+    "pev_recommendations": 3,
+    "sgm_candidates": 0,
+    "sgm_blocked": 0,
+    "sgm_actionable": 0,
+    "sgm_long_shot": 0
+  },
+  "pev_top": {
+    "recommendation_id": "c2418fac-88c2-4e8b-874a-6ca98d40065e",
+    "market": "h2h",
+    "selection": null,
+    "edge": 0.2667102370625632,
+    "bookmaker": "sportsbet"
+  },
+  "sgm_top": null,
+  "errors": []
+}

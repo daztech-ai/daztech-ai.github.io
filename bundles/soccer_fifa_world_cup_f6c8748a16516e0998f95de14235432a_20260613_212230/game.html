@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="assistant-server" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brazil vs Morocco | Game Assistant</title>
+<style>
+:root {
+  --bg: #0e1217;
+  --card: #161c24;
+  --border: #2a313c;
+  --text: #e4e7eb;
+  --muted: #8b95a4;
+  --accent: #5fc4ff;
+  --good: #5ed985;
+  --warn: #ffb86b;
+  --bad: #ff6b6b;
+  --verify: #c084fc;
+  --blocked: #555;
+}
+* { box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+h1 { margin: 0 0 6px 0; font-size: 28px; }
+h2 { margin: 32px 0 12px 0; font-size: 20px; border-bottom: 1px solid var(--border); padding-bottom: 6px; }
+h3 { margin: 16px 0 8px 0; font-size: 16px; }
+.meta { color: var(--muted); font-size: 14px; margin-bottom: 20px; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 12px;
+}
+.card.build { border-left: 4px solid var(--good); }
+.card.verify { border-left: 4px solid var(--verify); }
+.card.blocked { border-left: 4px solid var(--blocked); opacity: 0.7; }
+.badge {
+  display: inline-block;
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 10px;
+  margin-right: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.badge.build { background: rgba(94,217,133,0.2); color: var(--good); }
+.badge.verify { background: rgba(192,132,252,0.2); color: var(--verify); }
+.badge.blocked { background: rgba(85,85,85,0.3); color: var(--muted); }
+.badge.long_shot { background: rgba(255,184,107,0.2); color: var(--warn); }
+.leg {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border);
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 14px;
+}
+.leg:last-child { border-bottom: none; }
+.leg .copyable { flex: 1; }
+.leg .odds { color: var(--accent); min-width: 60px; text-align: right; }
+.copy-btn {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  padding: 2px 8px;
+  font-size: 11px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 8px;
+}
+.copy-btn:hover { color: var(--accent); border-color: var(--accent); }
+.copy-all {
+  background: var(--accent);
+  border: none;
+  color: #0e1217;
+  padding: 6px 12px;
+  font-size: 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  margin: 8px 0;
+}
+.exact-odds-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+.exact-odds-row label { font-size: 12px; color: var(--muted); }
+.exact-odds-row input {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-family: ui-monospace, monospace;
+  font-size: 14px;
+  width: 100px;
+}
+.exact-odds-row .result {
+  font-weight: 600;
+  font-size: 14px;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+.exact-odds-row .result.place { background: rgba(94,217,133,0.2); color: var(--good); }
+.exact-odds-row .result.skip { background: rgba(255,107,107,0.2); color: var(--bad); }
+.exact-odds-row .result.verify { background: rgba(192,132,252,0.2); color: var(--verify); }
+.action-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+.action-btn {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 6px 14px;
+  font-size: 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.action-btn:hover { border-color: var(--accent); color: var(--accent); }
+.action-btn.place { border-color: var(--good); color: var(--good); }
+.action-btn.skip { border-color: var(--bad); color: var(--bad); }
+.audit {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 13px;
+  margin-top: 24px;
+  color: var(--muted);
+  font-family: ui-monospace, monospace;
+}
+.audit code { color: var(--accent); }
+.action-log {
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--muted);
+}
+.ledger-tail {
+  margin-top: 32px;
+  padding: 12px 16px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 12px;
+  font-family: ui-monospace, monospace;
+  max-height: 200px;
+  overflow-y: auto;
+}
+.ledger-line { padding: 4px 0; border-bottom: 1px solid var(--border); }
+.empty { color: var(--muted); padding: 8px; text-align: center; }
+.summary-banner {
+  padding: 14px 18px;
+  border-radius: 8px;
+  margin-bottom: 18px;
+  font-size: 15px;
+  border: 1px solid var(--border);
+  background: var(--card);
+}
+.summary-banner .summary-label { color: var(--muted); margin-right: 6px; }
+.summary-banner.place { border-color: var(--good); background: rgba(94,217,133,0.08); }
+.summary-banner.place strong { color: var(--good); }
+.summary-banner.watch { border-color: var(--verify); background: rgba(192,132,252,0.08); }
+.summary-banner.watch strong { color: var(--verify); }
+.summary-banner.skip { border-color: var(--bad); background: rgba(255,107,107,0.08); }
+.summary-banner.skip strong { color: var(--bad); }
+.summary-banner.pass { border-color: var(--muted); background: rgba(85,85,85,0.08); }
+.summary-banner.pass strong { color: var(--muted); }
+</style>
+</head>
+<body>
+<h1>Brazil vs Morocco | Game Assistant</h1>
+<div class="meta">Event: <strong>Brazil vs Morocco</strong> &middot; Commence: 2026-06-13T22:00:00+00:00 &middot; Bookmaker: sportsbet &middot; Generated: 2026-06-13T21:22:31.276653+00:00</div>
+<div class="summary-banner place"><span class="summary-label">primary_action:</span> <strong>PLACE</strong> &middot; PEV +EV recommendation present</div>
+<h2>PEV Recommendations</h2>
+<div class="card build" data-cand="{&quot;recommendation_id&quot;: &quot;7e9c35ee-859e-4161-97ae-6606c36f46fb&quot;, &quot;action&quot;: &quot;check&quot;, &quot;bookmaker&quot;: &quot;betfair_ex_au&quot;, &quot;bookmaker_label&quot;: &quot;Betfair Exchange&quot;, &quot;bookmaker_url&quot;: &quot;https://www.betfair.com.au/&quot;, &quot;event_label&quot;: &quot;Brazil vs Morocco&quot;, &quot;market&quot;: &quot;h2h&quot;, &quot;market_label&quot;: &quot;Head to Head&quot;, &quot;selection&quot;: &quot;Morocco&quot;, &quot;point&quot;: null, &quot;side&quot;: &quot;back&quot;, &quot;current_odds&quot;: 6.0, &quot;minimum_acceptable_odds&quot;: 5.86, &quot;fair_probability&quot;: 0.17587894705425894, &quot;fair_odds&quot;: 5.685728830816222, &quot;edge&quot;: 0.05527368232555364, &quot;suggested_stake&quot;: 2.76, &quot;confidence&quot;: &quot;low&quot;, &quot;comparison_bookmakers&quot;: [&quot;betr_au&quot;, &quot;betright&quot;, &quot;dabble_au&quot;, &quot;ladbrokes_au&quot;, &quot;playup&quot;, &quot;pointsbetau&quot;, &quot;tab&quot;, &quot;tabtouch&quot;, &quot;unibet&quot;], &quot;warnings&quot;: [&quot;low_variance_consensus&quot;, &quot;verify_liquidity&quot;], &quot;plain_english&quot;: &quot;Check Betfair Exchange: Head to Head \u2014 Morocco at 6.00 or better. Minimum acceptable odds: 5.86. Suggested stake: $2.76. Edge: +5.53%. Warnings: low_variance_consensus, verify_liquidity. Do not place if odds fall below the minimum or if liquidity is poor.&quot;}" data-candidate-id="7e9c35ee-859e-4161-97ae-6606c36f46fb"><h3><span class="badge build">+EV</span> h2h <small style="color:var(--muted)">edge: 0.05527368232555364 @ betfair_ex_au</small></h3><button class="copy-all" onclick="copyText("", this)">Copy all legs</button><div class="action-row"><button class="action-btn place">Record PLACE</button><button class="action-btn skip">Record SKIP</button></div></div>
+<div class="card build" data-cand="{&quot;recommendation_id&quot;: &quot;3e03fb84-6221-437d-bd1e-2935d65521fc&quot;, &quot;action&quot;: &quot;verify&quot;, &quot;bookmaker&quot;: &quot;betfair_ex_au&quot;, &quot;bookmaker_label&quot;: &quot;Betfair Exchange&quot;, &quot;bookmaker_url&quot;: &quot;https://www.betfair.com.au/&quot;, &quot;event_label&quot;: &quot;Brazil vs Morocco&quot;, &quot;market&quot;: &quot;h2h&quot;, &quot;market_label&quot;: &quot;Head to Head&quot;, &quot;selection&quot;: &quot;Draw&quot;, &quot;point&quot;: null, &quot;side&quot;: &quot;back&quot;, &quot;current_odds&quot;: 3.9, &quot;minimum_acceptable_odds&quot;: 3.94, &quot;fair_probability&quot;: 0.26119402985074625, &quot;fair_odds&quot;: 3.8285714285714287, &quot;edge&quot;: 0.018656716417910377, &quot;suggested_stake&quot;: 0.0, &quot;confidence&quot;: &quot;low&quot;, &quot;comparison_bookmakers&quot;: [&quot;betr_au&quot;, &quot;betright&quot;, &quot;dabble_au&quot;, &quot;ladbrokes_au&quot;, &quot;playup&quot;, &quot;pointsbetau&quot;, &quot;tab&quot;, &quot;tabtouch&quot;, &quot;unibet&quot;], &quot;warnings&quot;: [&quot;low_variance_consensus&quot;, &quot;verify_liquidity&quot;], &quot;plain_english&quot;: &quot;Verify Betfair Exchange: Head to Head \u2014 Draw at 3.90 or better. Minimum acceptable odds: 3.94. Suggested stake: $0.00. Edge: +1.87%. Warnings: low_variance_consensus, verify_liquidity.&quot;}" data-candidate-id="3e03fb84-6221-437d-bd1e-2935d65521fc"><h3><span class="badge build">+EV</span> h2h <small style="color:var(--muted)">edge: 0.018656716417910377 @ betfair_ex_au</small></h3><button class="copy-all" onclick="copyText("", this)">Copy all legs</button><div class="action-row"><button class="action-btn place">Record PLACE</button><button class="action-btn skip">Record SKIP</button></div></div>
+<h2>SGM Candidates</h2><div class="empty">no SGM candidates for this event (leg catalog: 1 legs, blocked: 0)</div>
+<div class="audit">Bet placement: <code>manual_only</code> &middot; bundle_id: <code>?</code></div>
+<div id="ledger-tail" class="ledger-tail"></div>
+<script type="application/json" id="bundle-data">{"audit": {"bundle_version": "game_assistant.v1", "sport": "soccer_fifa_world_cup", "event_id": "f6c8748a16516e0998f95de14235432a", "bookmaker": "sportsbet", "include_long_shot": true, "render_html": true, "write_ledger": true, "bundle_dir": "bundles/soccer_fifa_world_cup_f6c8748a16516e0998f95de14235432a_20260613_212230", "generated_at": "2026-06-13T21:22:31.276653+00:00", "bet_placement": "manual_only"}, "summary": {"bundle_version": "game_assistant.v1", "generated_at": "2026-06-13T21:22:30.702765+00:00", "request_id": "ff8bcbbe-2b3b-4bbd-a82e-a14e524cbc17", "audit": {"bundle_version": "game_assistant.v1", "sport": "soccer_fifa_world_cup", "event_id": "f6c8748a16516e0998f95de14235432a", "bookmaker": "sportsbet", "include_long_shot": true, "render_html": true, "write_ledger": true, "bundle_dir": "bundles/soccer_fifa_world_cup_f6c8748a16516e0998f95de14235432a_20260613_212230", "generated_at": "2026-06-13T21:22:31.277201+00:00", "bet_placement": "manual_only"}, "summary": {"primary_action": "place", "reason": "PEV +EV recommendation present"}, "counts": {"pev_recommendations": 2, "sgm_candidates": 0, "sgm_blocked": 0, "sgm_actionable": 0, "sgm_long_shot": 0}, "pev_top": {"recommendation_id": "7e9c35ee-859e-4161-97ae-6606c36f46fb", "market": "h2h", "selection": null, "edge": 0.05527368232555364, "bookmaker": "betfair_ex_au"}, "sgm_top": null, "errors": []}, "pev": {"status": "actionable", "decision_summary": {"status": "actionable", "best_action": "check", "recommendation_count": 2, "top_bookmaker": "betfair_ex_au", "top_market": "h2h", "top_selection": "Morocco", "top_edge": 0.05527368232555364, "top_stake": 2.76, "event_label": "Brazil vs Morocco", "blocked_count": 0}, "recommendation_count": 2}, "sgm": {"decision_summary": {"status": "no_candidates", "candidate_count": 0, "best_candidate_id": null, "best_minimum_acceptable_sgm_odds": null, "bet_placement": "manual_only"}, "candidate_count": 0, "blocked_count": 0}}</script>
+<script>
+const BUNDLE = JSON.parse(document.getElementById('bundle-data').textContent);
+
+function copyText(text, btn) {
+  navigator.clipboard.writeText(text).then(
+    () => { btn.textContent = 'copied'; setTimeout(() => btn.textContent = 'copy', 1200); },
+    () => { btn.textContent = 'failed'; }
+  );
+}
+
+function recalcExact(cardEl, cand) {
+  const input = cardEl.querySelector('.exact-odds-input');
+  const result = cardEl.querySelector('.result');
+  const raw = input.value.trim();
+  if (!raw) {
+    result.textContent = 'enter odds';
+    result.className = 'result';
+    return;
+  }
+  const exact = parseFloat(raw);
+  if (isNaN(exact) || exact <= 1) {
+    result.textContent = 'invalid';
+    result.className = 'result';
+    return;
+  }
+  // Decision contract from WP-A:
+  //   1. candidate action == blocked OR verify -> stay verify
+  //   2. exact >= minimum_acceptable -> PLACE
+  //   3. exact <  minimum_acceptable -> SKIP
+  if (cand.action === 'blocked' || cand.action === 'verify') {
+    if (cand.mode === 'long_shot_ticket') {
+      result.textContent = 'VERIFY (long-shot, never PLACE)';
+    } else {
+      result.textContent = 'VERIFY (orig ' + cand.action + ')';
+    }
+    result.className = 'result verify';
+    return;
+  }
+  const min = parseFloat(cand.minimum_acceptable_sgm_odds);
+  if (exact >= min) {
+    result.textContent = 'PLACE @ ' + exact.toFixed(2);
+    result.className = 'result place';
+  } else {
+    result.textContent = 'SKIP (' + exact.toFixed(2) + ' < min ' + min.toFixed(2) + ')';
+    result.className = 'result skip';
+  }
+}
+
+async function recordAction(cand, action) {
+  const payload = {
+    ts: new Date().toISOString(),
+    actor: 'page-user',
+    action: action,
+    event_id: BUNDLE.audit.event_id,
+    sport: BUNDLE.audit.sport,
+    candidate_id: cand.candidate_id,
+    details: {
+      mode: cand.mode,
+      min_odds: cand.minimum_acceptable_sgm_odds,
+      action_orig: cand.action,
+    },
+  };
+  // Tier 1: POST to the local assistant-serve server (if running).
+  // The endpoint can be overridden via a <meta name="assistant-server"> tag
+  // or window.ASSISTANT_SERVER_URL. Default is the local dev port.
+  const SERVER_URL = (function () {
+    if (typeof window !== 'undefined' && window.ASSISTANT_SERVER_URL) {
+      return window.ASSISTANT_SERVER_URL;
+    }
+    const m = document.querySelector('meta[name="assistant-server"]');
+    if (m) {
+      const base = m.getAttribute('content') || '';
+      if (base) return base.replace(/\/$/, '') + '/assistant/ledger-add';
+    }
+    return 'http://127.0.0.1:8765/assistant/ledger-add';
+  })();
+  // Note: we intentionally do NOT use navigator.sendBeacon here because
+  // sendBeacon sends with credentials: 'include' which triggers a
+  // CORS preflight requiring Access-Control-Allow-Credentials: true
+  // (and a non-wildcard origin). A plain fetch with credentials: 'omit'
+  // is simpler and works against the dev server.
+  try {
+    const resp = await fetch(SERVER_URL, {
+      method: 'POST',
+      credentials: 'omit',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+    if (resp.ok) {
+      appendLedgerLine(payload, 'POST');
+      return;
+    }
+  } catch (e) { /* fall through */ }
+  // Tier 2: download the action as a .jsonl file the user can pipe
+  // into `daz-betting-engine assistant record --stdin`.
+  const blob = new Blob([JSON.stringify(payload) + '\n'], { type: 'application/x-jsonlines' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'assistant-action-' + Date.now() + '.jsonl';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+  appendLedgerLine(payload, 'DOWNLOAD');
+  const log = document.createElement('div');
+  log.className = 'action-log';
+  log.textContent = 'server unreachable — downloaded action file. Run: daz-betting-engine assistant record --stdin < ' + a.download;
+  document.body.appendChild(log);
+}
+
+function appendLedgerLine(entry, tier) {
+  let tail = document.getElementById('ledger-tail');
+  if (!tail) {
+    tail = document.createElement('div');
+    tail.id = 'ledger-tail';
+    tail.className = 'ledger-tail';
+    document.body.appendChild(tail);
+  }
+  const line = document.createElement('div');
+  line.className = 'ledger-line';
+  line.textContent = '[' + entry.ts + '] ' + entry.actor + ' ' + entry.action + ' ' + (entry.candidate_id || '').slice(0, 8) + ' (' + tier + ')';
+  tail.insertBefore(line, tail.firstChild);
+}
+
+function _rec_id_pev(id, min) {
+  return { candidate_id: id, mode: "pev", minimum_acceptable_sgm_odds: min, action: "build" };
+}
+
+// Wire exact-odds inputs to the matching cand dataset.
+// The cand object is embedded server-side as data-cand="..." on the card,
+// so we read it directly from the DOM (no second <script> tag needed).
+function _wireCards() {
+  document.querySelectorAll('.card[data-cand]').forEach(function (card) {
+    let cand;
+    try { cand = JSON.parse(card.getAttribute('data-cand')); }
+    catch (e) { return; }
+    const input = card.querySelector('.exact-odds-input');
+    if (input) {
+      input.addEventListener('input', function () { recalcExact(card, cand); });
+    }
+    const placeBtn = card.querySelector('.action-btn.place');
+    if (placeBtn) {
+      placeBtn.addEventListener('click', function () { recordAction(cand, 'place'); });
+    }
+    const skipBtn = card.querySelector('.action-btn.skip');
+    if (skipBtn) {
+      skipBtn.addEventListener('click', function () { recordAction(cand, 'skip'); });
+    }
+  });
+}
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', _wireCards);
+} else {
+  _wireCards();
+}
+</script>
+</body>
+</html>
+

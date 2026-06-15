@@ -1,0 +1,313 @@
+{
+  "bundle_version": "game_assistant.v1",
+  "generated_at": "2026-06-13T21:22:30.702765+00:00",
+  "audit": {
+    "bundle_version": "game_assistant.v1",
+    "sport": "soccer_fifa_world_cup",
+    "event_id": "f6c8748a16516e0998f95de14235432a",
+    "bookmaker": "sportsbet",
+    "include_long_shot": true,
+    "render_html": true,
+    "write_ledger": true,
+    "bundle_dir": "bundles/soccer_fifa_world_cup_f6c8748a16516e0998f95de14235432a_20260613_212230",
+    "generated_at": "2026-06-13T21:22:31.277201+00:00",
+    "bet_placement": "manual_only"
+  },
+  "pev": {
+    "feed_version": "game_pev.v1",
+    "generated_at": "2026-06-13T21:22:30.703804+00:00",
+    "request": {
+      "sport": "soccer_fifa_world_cup",
+      "event_id": "f6c8748a16516e0998f95de14235432a",
+      "event_query": null,
+      "target_bookmakers": [
+        "sportsbet",
+        "neds",
+        "betfair_ex_au"
+      ],
+      "comparison_bookmakers": [
+        "sportsbet",
+        "betfair_ex_au",
+        "betr_au",
+        "betright",
+        "bet365_au",
+        "dabble_au",
+        "ladbrokes_au",
+        "neds",
+        "playup",
+        "pointsbetau",
+        "tab",
+        "tabtouch",
+        "unibet"
+      ],
+      "markets": [
+        "h2h",
+        "spreads",
+        "totals",
+        "btts",
+        "draw_no_bet",
+        "double_chance",
+        "team_totals"
+      ],
+      "max_recommendations": 5,
+      "min_edge": 0.03,
+      "max_stake": 50.0,
+      "bankroll": 1000.0,
+      "fractional_kelly": 0.25
+    },
+    "event": {
+      "event_id": "f6c8748a16516e0998f95de14235432a",
+      "sport": "soccer_fifa_world_cup",
+      "home_team": "Brazil",
+      "away_team": "Morocco",
+      "event_label": "Brazil vs Morocco",
+      "commence_time": "2026-06-13T22:00:00+00:00"
+    },
+    "decision_summary": {
+      "status": "actionable",
+      "best_action": "check",
+      "recommendation_count": 2,
+      "top_bookmaker": "betfair_ex_au",
+      "top_market": "h2h",
+      "top_selection": "Morocco",
+      "top_edge": 0.05527368232555364,
+      "top_stake": 2.76,
+      "event_label": "Brazil vs Morocco",
+      "blocked_count": 0
+    },
+    "recommendations": [
+      {
+        "recommendation_id": "7e9c35ee-859e-4161-97ae-6606c36f46fb",
+        "action": "check",
+        "bookmaker": "betfair_ex_au",
+        "bookmaker_label": "Betfair Exchange",
+        "bookmaker_url": "https://www.betfair.com.au/",
+        "event_label": "Brazil vs Morocco",
+        "market": "h2h",
+        "market_label": "Head to Head",
+        "selection": "Morocco",
+        "point": null,
+        "side": "back",
+        "current_odds": 6.0,
+        "minimum_acceptable_odds": 5.86,
+        "fair_probability": 0.17587894705425894,
+        "fair_odds": 5.685728830816222,
+        "edge": 0.05527368232555364,
+        "suggested_stake": 2.76,
+        "confidence": "low",
+        "comparison_bookmakers": [
+          "betr_au",
+          "betright",
+          "dabble_au",
+          "ladbrokes_au",
+          "playup",
+          "pointsbetau",
+          "tab",
+          "tabtouch",
+          "unibet"
+        ],
+        "warnings": [
+          "low_variance_consensus",
+          "verify_liquidity"
+        ],
+        "plain_english": "Check Betfair Exchange: Head to Head \u2014 Morocco at 6.00 or better. Minimum acceptable odds: 5.86. Suggested stake: $2.76. Edge: +5.53%. Warnings: low_variance_consensus, verify_liquidity. Do not place if odds fall below the minimum or if liquidity is poor."
+      },
+      {
+        "recommendation_id": "3e03fb84-6221-437d-bd1e-2935d65521fc",
+        "action": "verify",
+        "bookmaker": "betfair_ex_au",
+        "bookmaker_label": "Betfair Exchange",
+        "bookmaker_url": "https://www.betfair.com.au/",
+        "event_label": "Brazil vs Morocco",
+        "market": "h2h",
+        "market_label": "Head to Head",
+        "selection": "Draw",
+        "point": null,
+        "side": "back",
+        "current_odds": 3.9,
+        "minimum_acceptable_odds": 3.94,
+        "fair_probability": 0.26119402985074625,
+        "fair_odds": 3.8285714285714287,
+        "edge": 0.018656716417910377,
+        "suggested_stake": 0.0,
+        "confidence": "low",
+        "comparison_bookmakers": [
+          "betr_au",
+          "betright",
+          "dabble_au",
+          "ladbrokes_au",
+          "playup",
+          "pointsbetau",
+          "tab",
+          "tabtouch",
+          "unibet"
+        ],
+        "warnings": [
+          "low_variance_consensus",
+          "verify_liquidity"
+        ],
+        "plain_english": "Verify Betfair Exchange: Head to Head \u2014 Draw at 3.90 or better. Minimum acceptable odds: 3.94. Suggested stake: $0.00. Edge: +1.87%. Warnings: low_variance_consensus, verify_liquidity."
+      }
+    ],
+    "blocked": [],
+    "audit": {
+      "books_compared": 12,
+      "books_list": [
+        "betfair_ex_au",
+        "betr_au",
+        "betright",
+        "dabble_au",
+        "ladbrokes_au",
+        "neds",
+        "playup",
+        "pointsbetau",
+        "sportsbet",
+        "tab",
+        "tabtouch",
+        "unibet"
+      ],
+      "markets_analyzed": [
+        "btts",
+        "double_chance",
+        "draw_no_bet",
+        "h2h",
+        "h2h_lay",
+        "spreads",
+        "totals"
+      ],
+      "consensus_method": "median_no_vig_excluding_target",
+      "bet_placement": "manual_only",
+      "blocked_count": 0
+    },
+    "status": "actionable",
+    "event_candidates": [],
+    "error": null
+  },
+  "sgm": {
+    "feed_version": "sgm_game.v1",
+    "generated_at": "2026-06-13T21:22:31+00:00",
+    "request": {
+      "sport": "soccer_fifa_world_cup",
+      "event_id": "f6c8748a16516e0998f95de14235432a",
+      "event_query": null,
+      "bookmaker": "sportsbet",
+      "max_candidates": 5,
+      "allowed_leg_counts": [
+        2,
+        3
+      ],
+      "min_edge": "0.03",
+      "max_stake": "50",
+      "include_long_shot": true,
+      "no_fetch": false,
+      "mode": "both"
+    },
+    "event": {
+      "event_id": "f6c8748a16516e0998f95de14235432a",
+      "sport": "fifa_world_cup",
+      "sport_key": "soccer_fifa_world_cup",
+      "home_team": "Brazil",
+      "away_team": "Morocco",
+      "event_label": "Brazil vs Morocco",
+      "commence_time": "2026-06-13T22:00:00+00:00",
+      "bookmaker": "sportsbet",
+      "captured_at": "2026-06-13T21:22:31+00:00",
+      "data_quality_flags": [
+        "market_missing:totals",
+        "stale_odds"
+      ]
+    },
+    "decision_summary": {
+      "status": "no_candidates",
+      "candidate_count": 0,
+      "best_candidate_id": null,
+      "best_minimum_acceptable_sgm_odds": null,
+      "bet_placement": "manual_only"
+    },
+    "leg_catalog": [
+      {
+        "leg_id": "f6c8748a16516e0998f95de14235432a:h2h:0",
+        "sport": "soccer_fifa_world_cup",
+        "event_id": "f6c8748a16516e0998f95de14235432a",
+        "event_label": "Brazil vs Morocco",
+        "bookmaker": "sportsbet",
+        "market": "h2h",
+        "market_label": "Head to Head",
+        "selection": "Brazil",
+        "point": null,
+        "player": null,
+        "decimal_odds": "1.65",
+        "implied_probability": "0.60606",
+        "model_probability": null,
+        "edge": null,
+        "data_quality_flags": [],
+        "copyable_text": "Brazil"
+      }
+    ],
+    "candidates": [],
+    "blocked": [],
+    "audit": {
+      "feed_version": "sgm_game.v1",
+      "sport": "fifa_world_cup",
+      "sport_key": "soccer_fifa_world_cup",
+      "bookmaker": "sportsbet",
+      "exact_sgm_price_required": true,
+      "core_leg_counts": [
+        2,
+        3
+      ],
+      "long_shot_included": false,
+      "long_shot_requested": true,
+      "source": "ok",
+      "bet_placement": "manual_only",
+      "event_id": "f6c8748a16516e0998f95de14235432a",
+      "generated_total": 0
+    },
+    "errors": []
+  },
+  "errors": [],
+  "summary": {
+    "bundle_version": "game_assistant.v1",
+    "generated_at": "2026-06-13T21:22:30.702765+00:00",
+    "request_id": "ff8bcbbe-2b3b-4bbd-a82e-a14e524cbc17",
+    "audit": {
+      "bundle_version": "game_assistant.v1",
+      "sport": "soccer_fifa_world_cup",
+      "event_id": "f6c8748a16516e0998f95de14235432a",
+      "bookmaker": "sportsbet",
+      "include_long_shot": true,
+      "render_html": true,
+      "write_ledger": true,
+      "bundle_dir": "bundles/soccer_fifa_world_cup_f6c8748a16516e0998f95de14235432a_20260613_212230",
+      "generated_at": "2026-06-13T21:22:31.277201+00:00",
+      "bet_placement": "manual_only"
+    },
+    "summary": {
+      "primary_action": "place",
+      "reason": "PEV +EV recommendation present"
+    },
+    "counts": {
+      "pev_recommendations": 2,
+      "sgm_candidates": 0,
+      "sgm_blocked": 0,
+      "sgm_actionable": 0,
+      "sgm_long_shot": 0
+    },
+    "pev_top": {
+      "recommendation_id": "7e9c35ee-859e-4161-97ae-6606c36f46fb",
+      "market": "h2h",
+      "selection": null,
+      "edge": 0.05527368232555364,
+      "bookmaker": "betfair_ex_au"
+    },
+    "sgm_top": null,
+    "errors": []
+  },
+  "bundle_path": "bundles/soccer_fifa_world_cup_f6c8748a16516e0998f95de14235432a_20260613_212230",
+  "bundle_json_path": "bundles/soccer_fifa_world_cup_f6c8748a16516e0998f95de14235432a_20260613_212230/bundle.json",
+  "agent_feed_path": "bundles/soccer_fifa_world_cup_f6c8748a16516e0998f95de14235432a_20260613_212230/agent_feed.json",
+  "html_path": "bundles/soccer_fifa_world_cup_f6c8748a16516e0998f95de14235432a_20260613_212230/game.html",
+  "index_html_path": "bundles/soccer_fifa_world_cup_f6c8748a16516e0998f95de14235432a_20260613_212230/index.html",
+  "ledger_path": "bundles/soccer_fifa_world_cup_f6c8748a16516e0998f95de14235432a_20260613_212230/ledger.jsonl",
+  "credits_used": 0
+}

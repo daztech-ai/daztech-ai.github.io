@@ -1,0 +1,165 @@
+{
+  "pev_recommendations": [],
+  "sgm_candidates": [],
+  "long_shot": {},
+  "raw": {
+    "bundle_version": "game_assistant.v1",
+    "generated_at": "2026-06-13T21:28:28.625146+00:00",
+    "audit": {
+      "bundle_version": "game_assistant.v1",
+      "sport": "soccer_fifa_world_cup",
+      "event_id": "f6c8748a16516e0998f95de14235432a",
+      "bookmaker": "betfair_ex_au",
+      "include_long_shot": true,
+      "render_html": false,
+      "write_ledger": false,
+      "bundle_dir": "/home/daz/.openclaw/workspace-baccs/reports/operator/latest-betfair/_underlying_assistant/soccer_fifa_world_cup_f6c8748a16516e0998f95de14235432a_20260613_212828",
+      "generated_at": "2026-06-13T21:28:29.403187+00:00",
+      "bet_placement": "manual_only"
+    },
+    "pev": {
+      "feed_version": "game_pev.v1",
+      "generated_at": "2026-06-13T21:28:28.625906+00:00",
+      "request": {
+        "sport": "soccer_fifa_world_cup",
+        "event_id": "f6c8748a16516e0998f95de14235432a",
+        "event_query": null,
+        "target_bookmakers": [
+          "sportsbet",
+          "neds",
+          "betfair_ex_au"
+        ],
+        "comparison_bookmakers": [
+          "sportsbet",
+          "betfair_ex_au",
+          "betr_au",
+          "betright",
+          "bet365_au",
+          "dabble_au",
+          "ladbrokes_au",
+          "neds",
+          "playup",
+          "pointsbetau",
+          "tab",
+          "tabtouch",
+          "unibet"
+        ],
+        "markets": [
+          "h2h",
+          "spreads",
+          "totals",
+          "btts",
+          "draw_no_bet",
+          "double_chance",
+          "team_totals"
+        ],
+        "max_recommendations": 5,
+        "min_edge": 0.03,
+        "max_stake": 50.0,
+        "bankroll": 1000.0,
+        "fractional_kelly": 0.25
+      },
+      "event": null,
+      "decision_summary": {},
+      "recommendations": [],
+      "blocked": [],
+      "audit": {
+        "books_compared": 0,
+        "markets_analyzed": [],
+        "consensus_method": "median_no_vig_excluding_target",
+        "bet_placement": "manual_only"
+      },
+      "status": "error",
+      "event_candidates": [],
+      "error": "HTTPStatusError: https://api.the-odds-api.com/v4/sports/soccer_fifa_world_cup/odds/?apiKey=%2A%2A%2A&regions=au&markets=h2h&oddsFormat=decimal&dateFormat=iso&bookmakers=sportsbet%2Cbetfair_ex_au%2Cbetr_au%2Cbetright%2Cbet365_au%2Cdabble_au%2Cladbrokes_au%2Cneds%2Cplayup%2Cpointsbetau%2Ctab%2Ctabtouch%2Cunibet"
+    },
+    "sgm": {
+      "feed_version": "sgm_game.v1",
+      "generated_at": "2026-06-13T21:28:29+00:00",
+      "request": {
+        "sport": "soccer_fifa_world_cup",
+        "event_id": "f6c8748a16516e0998f95de14235432a",
+        "event_query": null,
+        "bookmaker": "betfair_ex_au",
+        "max_candidates": 5,
+        "allowed_leg_counts": [
+          2,
+          3
+        ],
+        "min_edge": "0.03",
+        "max_stake": "50",
+        "include_long_shot": true,
+        "no_fetch": false,
+        "mode": "both"
+      },
+      "event": null,
+      "decision_summary": {
+        "status": "no_candidates",
+        "candidate_count": 0,
+        "best_candidate_id": null,
+        "best_minimum_acceptable_sgm_odds": null,
+        "bet_placement": "manual_only"
+      },
+      "leg_catalog": [],
+      "candidates": [],
+      "blocked": [],
+      "audit": {
+        "feed_version": "sgm_game.v1",
+        "sport": "fifa_world_cup",
+        "sport_key": "soccer_fifa_world_cup",
+        "bookmaker": "sportsbet",
+        "exact_sgm_price_required": true,
+        "core_leg_counts": [
+          2,
+          3
+        ],
+        "long_shot_included": true,
+        "long_shot_requested": true,
+        "source": "not_found",
+        "bet_placement": "manual_only"
+      },
+      "errors": [
+        "event_id=f6c8748a16516e0998f95de14235432a not found: HTTPStatusError"
+      ]
+    },
+    "errors": [],
+    "summary": {
+      "bundle_version": "game_assistant.v1",
+      "generated_at": "2026-06-13T21:28:28.625146+00:00",
+      "request_id": "ee32bf3e-9a51-4be2-ac07-47f56a6042b0",
+      "audit": {
+        "bundle_version": "game_assistant.v1",
+        "sport": "soccer_fifa_world_cup",
+        "event_id": "f6c8748a16516e0998f95de14235432a",
+        "bookmaker": "betfair_ex_au",
+        "include_long_shot": true,
+        "render_html": false,
+        "write_ledger": false,
+        "bundle_dir": "/home/daz/.openclaw/workspace-baccs/reports/operator/latest-betfair/_underlying_assistant/soccer_fifa_world_cup_f6c8748a16516e0998f95de14235432a_20260613_212828",
+        "generated_at": "2026-06-13T21:28:29.403187+00:00",
+        "bet_placement": "manual_only"
+      },
+      "summary": {
+        "primary_action": "pass",
+        "reason": "no candidates, no errors"
+      },
+      "counts": {
+        "pev_recommendations": 0,
+        "sgm_candidates": 0,
+        "sgm_blocked": 0,
+        "sgm_actionable": 0,
+        "sgm_long_shot": 0
+      },
+      "pev_top": null,
+      "sgm_top": null,
+      "errors": []
+    },
+    "bundle_path": "/home/daz/.openclaw/workspace-baccs/reports/operator/latest-betfair/_underlying_assistant/soccer_fifa_world_cup_f6c8748a16516e0998f95de14235432a_20260613_212828",
+    "bundle_json_path": "/home/daz/.openclaw/workspace-baccs/reports/operator/latest-betfair/_underlying_assistant/soccer_fifa_world_cup_f6c8748a16516e0998f95de14235432a_20260613_212828/bundle.json",
+    "agent_feed_path": "/home/daz/.openclaw/workspace-baccs/reports/operator/latest-betfair/_underlying_assistant/soccer_fifa_world_cup_f6c8748a16516e0998f95de14235432a_20260613_212828/agent_feed.json",
+    "html_path": null,
+    "index_html_path": null,
+    "ledger_path": null,
+    "credits_used": 0
+  }
+}

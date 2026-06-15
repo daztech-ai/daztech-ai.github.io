@@ -1,0 +1,31 @@
+{
+  "bundle_version": "game_assistant.v1",
+  "generated_at": "2026-06-13T21:28:28.625146+00:00",
+  "request_id": "ee32bf3e-9a51-4be2-ac07-47f56a6042b0",
+  "audit": {
+    "bundle_version": "game_assistant.v1",
+    "sport": "soccer_fifa_world_cup",
+    "event_id": "f6c8748a16516e0998f95de14235432a",
+    "bookmaker": "betfair_ex_au",
+    "include_long_shot": true,
+    "render_html": false,
+    "write_ledger": false,
+    "bundle_dir": "/home/daz/.openclaw/workspace-baccs/reports/operator/latest-betfair/_underlying_assistant/soccer_fifa_world_cup_f6c8748a16516e0998f95de14235432a_20260613_212828",
+    "generated_at": "2026-06-13T21:28:29.403187+00:00",
+    "bet_placement": "manual_only"
+  },
+  "summary": {
+    "primary_action": "pass",
+    "reason": "no candidates, no errors"
+  },
+  "counts": {
+    "pev_recommendations": 0,
+    "sgm_candidates": 0,
+    "sgm_blocked": 0,
+    "sgm_actionable": 0,
+    "sgm_long_shot": 0
+  },
+  "pev_top": null,
+  "sgm_top": null,
+  "errors": []
+}

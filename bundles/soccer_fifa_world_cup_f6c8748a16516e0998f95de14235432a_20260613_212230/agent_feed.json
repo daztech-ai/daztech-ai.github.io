@@ -1,0 +1,37 @@
+{
+  "bundle_version": "game_assistant.v1",
+  "generated_at": "2026-06-13T21:22:30.702765+00:00",
+  "request_id": "ff8bcbbe-2b3b-4bbd-a82e-a14e524cbc17",
+  "audit": {
+    "bundle_version": "game_assistant.v1",
+    "sport": "soccer_fifa_world_cup",
+    "event_id": "f6c8748a16516e0998f95de14235432a",
+    "bookmaker": "sportsbet",
+    "include_long_shot": true,
+    "render_html": true,
+    "write_ledger": true,
+    "bundle_dir": "bundles/soccer_fifa_world_cup_f6c8748a16516e0998f95de14235432a_20260613_212230",
+    "generated_at": "2026-06-13T21:22:31.277201+00:00",
+    "bet_placement": "manual_only"
+  },
+  "summary": {
+    "primary_action": "place",
+    "reason": "PEV +EV recommendation present"
+  },
+  "counts": {
+    "pev_recommendations": 2,
+    "sgm_candidates": 0,
+    "sgm_blocked": 0,
+    "sgm_actionable": 0,
+    "sgm_long_shot": 0
+  },
+  "pev_top": {
+    "recommendation_id": "7e9c35ee-859e-4161-97ae-6606c36f46fb",
+    "market": "h2h",
+    "selection": null,
+    "edge": 0.05527368232555364,
+    "bookmaker": "betfair_ex_au"
+  },
+  "sgm_top": null,
+  "errors": []
+}

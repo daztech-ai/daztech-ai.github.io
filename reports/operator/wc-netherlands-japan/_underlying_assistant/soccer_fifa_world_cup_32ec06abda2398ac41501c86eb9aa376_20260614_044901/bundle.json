@@ -1,0 +1,229 @@
+{
+  "bundle_version": "game_assistant.v1",
+  "generated_at": "2026-06-14T04:49:01.962149+00:00",
+  "audit": {
+    "bundle_version": "game_assistant.v1",
+    "sport": "soccer_fifa_world_cup",
+    "event_id": "32ec06abda2398ac41501c86eb9aa376",
+    "bookmaker": "sportsbet",
+    "include_long_shot": true,
+    "render_html": false,
+    "write_ledger": false,
+    "bundle_dir": "/home/daz/.openclaw/workspace-baccs/reports/operator/wc-netherlands-japan/_underlying_assistant/soccer_fifa_world_cup_32ec06abda2398ac41501c86eb9aa376_20260614_044901",
+    "generated_at": "2026-06-14T04:49:02.574147+00:00",
+    "bet_placement": "manual_only"
+  },
+  "pev": {
+    "feed_version": "game_pev.v1",
+    "generated_at": "2026-06-14T04:49:01.963474+00:00",
+    "request": {
+      "sport": "soccer_fifa_world_cup",
+      "event_id": "32ec06abda2398ac41501c86eb9aa376",
+      "event_query": null,
+      "target_bookmakers": [
+        "sportsbet",
+        "neds",
+        "betfair_ex_au"
+      ],
+      "comparison_bookmakers": [
+        "sportsbet",
+        "betfair_ex_au",
+        "betr_au",
+        "betright",
+        "bet365_au",
+        "dabble_au",
+        "ladbrokes_au",
+        "neds",
+        "playup",
+        "pointsbetau",
+        "tab",
+        "tabtouch",
+        "unibet"
+      ],
+      "markets": [
+        "h2h",
+        "spreads",
+        "totals",
+        "btts",
+        "draw_no_bet",
+        "double_chance",
+        "team_totals"
+      ],
+      "max_recommendations": 5,
+      "min_edge": 0.03,
+      "max_stake": 50.0,
+      "bankroll": 1000.0,
+      "fractional_kelly": 0.25
+    },
+    "event": {
+      "event_id": "32ec06abda2398ac41501c86eb9aa376",
+      "sport": "soccer_fifa_world_cup",
+      "home_team": "Netherlands",
+      "away_team": "Japan",
+      "event_label": "Netherlands vs Japan",
+      "commence_time": "2026-06-14T20:00:00+00:00"
+    },
+    "decision_summary": {
+      "status": "verify",
+      "best_action": "verify",
+      "recommendation_count": 1,
+      "top_bookmaker": "betfair_ex_au",
+      "top_market": "h2h",
+      "top_selection": "Netherlands",
+      "top_edge": 0.0036279975223431084,
+      "top_stake": 0.0,
+      "event_label": "Netherlands vs Japan",
+      "blocked_count": 0
+    },
+    "recommendations": [
+      {
+        "recommendation_id": "57d62b36-f426-4dc0-aadd-1b25d854d916",
+        "action": "verify",
+        "bookmaker": "betfair_ex_au",
+        "bookmaker_label": "Betfair Exchange",
+        "bookmaker_url": "https://www.betfair.com.au/",
+        "event_label": "Netherlands vs Japan",
+        "market": "h2h",
+        "market_label": "Head to Head",
+        "selection": "Netherlands",
+        "point": null,
+        "side": "back",
+        "current_odds": 2.12,
+        "minimum_acceptable_odds": 2.18,
+        "fair_probability": 0.47340943279355807,
+        "fair_odds": 2.112336448598131,
+        "edge": 0.0036279975223431084,
+        "suggested_stake": 0.0,
+        "confidence": "low",
+        "comparison_bookmakers": [
+          "betr_au",
+          "betright",
+          "dabble_au",
+          "ladbrokes_au",
+          "pointsbetau",
+          "tab",
+          "tabtouch",
+          "unibet"
+        ],
+        "warnings": [
+          "verify_liquidity"
+        ],
+        "plain_english": "Verify Betfair Exchange: Head to Head — Netherlands at 2.12 or better. Minimum acceptable odds: 2.18. Suggested stake: $0.00. Edge: +0.36%. Warnings: verify_liquidity."
+      }
+    ],
+    "blocked": [],
+    "audit": {
+      "books_compared": 11,
+      "books_list": [
+        "betfair_ex_au",
+        "betr_au",
+        "betright",
+        "dabble_au",
+        "ladbrokes_au",
+        "neds",
+        "pointsbetau",
+        "sportsbet",
+        "tab",
+        "tabtouch",
+        "unibet"
+      ],
+      "markets_analyzed": [
+        "btts",
+        "double_chance",
+        "draw_no_bet",
+        "h2h",
+        "h2h_lay",
+        "totals"
+      ],
+      "consensus_method": "median_no_vig_excluding_target",
+      "bet_placement": "manual_only",
+      "blocked_count": 0
+    },
+    "status": "verify",
+    "event_candidates": [],
+    "error": null
+  },
+  "sgm": {
+    "feed_version": "sgm_game.v1",
+    "generated_at": "2026-06-14T04:49:02+00:00",
+    "request": {
+      "sport": "soccer_fifa_world_cup",
+      "event_id": "32ec06abda2398ac41501c86eb9aa376",
+      "event_query": null,
+      "bookmaker": "sportsbet",
+      "max_candidates": 5,
+      "allowed_leg_counts": [
+        2,
+        3
+      ],
+      "min_edge": "0.03",
+      "max_stake": "50",
+      "include_long_shot": true,
+      "no_fetch": false,
+      "mode": "both"
+    },
+    "event": {
+      "event_id": "32ec06abda2398ac41501c86eb9aa376",
+      "sport": "fifa_world_cup",
+      "sport_key": "soccer_fifa_world_cup",
+      "home_team": "Netherlands",
+      "away_team": "Japan",
+      "event_label": "Netherlands vs Japan",
+      "commence_time": "2026-06-14T20:00:00+00:00",
+      "bookmaker": "sportsbet",
+      "captured_at": "2026-06-14T04:49:02+00:00",
+      "data_quality_flags": [
+        "market_missing:totals",
+        "stale_odds"
+      ]
+    },
+    "decision_summary": {
+      "status": "no_candidates",
+      "candidate_count": 0,
+      "best_candidate_id": null,
+      "best_minimum_acceptable_sgm_odds": null,
+      "bet_placement": "manual_only"
+    },
+    "leg_catalog": [
+      {
+        "leg_id": "32ec06abda2398ac41501c86eb9aa376:h2h:0",
+        "sport": "soccer_fifa_world_cup",
+        "event_id": "32ec06abda2398ac41501c86eb9aa376",
+        "event_label": "Netherlands vs Japan",
+        "bookmaker": "sportsbet",
+        "market": "h2h",
+        "market_label": "Head to Head",
+        "selection": "Japan",
+        "point": null,
+        "player": null,
+        "decimal_odds": "3.75",
+        "implied_probability": "0.26667",
+        "model_probability": null,
+        "edge": null,
+        "data_quality_flags": [],
+        "copyable_text": "Japan"
+      }
+    ],
+    "candidates": [],
+    "blocked": [],
+    "audit": {
+      "feed_version": "sgm_game.v1",
+      "sport": "fifa_world_cup",
+      "sport_key": "soccer_fifa_world_cup",
+      "bookmaker": "sportsbet",
+      "exact_sgm_price_required": true,
+      "core_leg_counts": [
+        2,
+        3
+      ],
+      "long_shot_included": false,
+      "long_shot_requested": true,
+      "source": "ok",
+      "bet_placement": "manual_only",
+      "event_id": "32ec06abda2398ac41501c86eb9aa376",
+      "generated_total": 0
+    },
+    "errors": []
+  },
+  "errors": []
+}
