@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quest 3 512GB — Day One Guide + Stack Integration | DazTech</title>
+  <style>
+    :root {
+      --bg: #0d1117;
+      --surface: #161b22;
+      --surface2: #1c2333;
+      --border: #30363d;
+      --text: #e6edf3;
+      --text-dim: #8b949e;
+      --orange: #ff6b00;
+      --orange-dim: #cc5500;
+      --accent: #58a6ff;
+      --green: #3fb950;
+      --purple: #bc8cff;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    header {
+      text-align: center;
+      padding: 48px 0 32px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 40px;
+    }
+    header h1 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--orange), #ff9a4a);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 8px;
+    }
+    header .subtitle {
+      color: var(--text-dim);
+      font-size: 1rem;
+    }
+    header .badge {
+      display: inline-block;
+      margin-top: 12px;
+      background: var(--surface2);
+      border: 1px solid var(--orange);
+      color: var(--orange);
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+    .daz-bear {
+      font-size: 1.8rem;
+      margin-bottom: 8px;
+    }
+    h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin: 40px 0 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--orange);
+      display: inline-block;
+    }
+    h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 24px 0 8px;
+      color: var(--orange);
+    }
+    h4 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin: 16px 0 6px;
+      color: var(--text);
+    }
+    p, li {
+      color: var(--text-dim);
+      margin-bottom: 12px;
+    }
+    ul, ol {
+      padding-left: 24px;
+      margin-bottom: 16px;
+    }
+    li { margin-bottom: 6px; }
+    strong { color: var(--text); font-weight: 600; }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin: 16px 0 24px;
+    }
+    .card.orange {
+      border-left: 3px solid var(--orange);
+    }
+    .card.blue {
+      border-left: 3px solid var(--accent);
+    }
+    .card.green {
+      border-left: 3px solid var(--green);
+    }
+    .card.purple {
+      border-left: 3px solid var(--purple);
+    }
+    .card h3 { margin-top: 0; }
+
+    .step-list {
+      counter-reset: step;
+      list-style: none;
+      padding: 0;
+    }
+    .step-list li {
+      counter-increment: step;
+      padding-left: 44px;
+      position: relative;
+      margin-bottom: 16px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .step-list li:last-child { border-bottom: none; }
+    .step-list li::before {
+      content: counter(step);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 28px;
+      height: 28px;
+      background: var(--orange);
+      color: #000;
+      font-weight: 700;
+      font-size: 0.85rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .accessory-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 16px 0 24px;
+    }
+    @media (max-width: 600px) {
+      .accessory-grid { grid-template-columns: 1fr; }
+    }
+    .accessory-item {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+    }
+    .accessory-item h4 { margin: 0 0 4px; }
+    .accessory-item .price {
+      color: var(--green);
+      font-weight: 600;
+      font-size: 0.85rem;
+      margin: 4px 0;
+    }
+    .accessory-item .verdict {
+      color: var(--text-dim);
+      font-size: 0.85rem;
+      line-height: 1.5;
+    }
+    .accessory-item .pick {
+      display: inline-block;
+      margin-top: 6px;
+      padding: 2px 10px;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    .pick.top { background: #2d1b00; color: var(--orange); }
+    .pick.budget { background: #0d2818; color: var(--green); }
+    .pick.niche { background: #1b0d2d; color: var(--purple); }
+
+    .integration-flow {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin: 16px 0 24px;
+    }
+    .flow-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px 16px;
+      background: var(--surface2);
+      border-radius: 8px;
+      border-left: 3px solid var(--accent);
+    }
+    .flow-step .icon {
+      font-size: 1.3rem;
+      min-width: 32px;
+    }
+    .flow-step .content {
+      flex: 1;
+    }
+    .flow-step .content h4 { margin: 0 0 2px; color: var(--accent); }
+    .flow-step .content p { margin: 0; font-size: 0.9rem; }
+
+    .tag {
+      display: inline-block;
+      padding: 1px 8px;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-right: 4px;
+    }
+    .tag.blue { background: #0d2b45; color: var(--accent); }
+    .tag.green { background: #0d2818; color: var(--green); }
+    .tag.orange { background: #2d1b00; color: var(--orange); }
+    .tag.purple { background: #1b0d2d; color: var(--purple); }
+
+    footer {
+      text-align: center;
+      padding: 40px 0;
+      border-top: 1px solid var(--border);
+      margin-top: 48px;
+      color: var(--text-dim);
+      font-size: 0.85rem;
+    }
+    footer a { color: var(--orange); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    .toc {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin: 24px 0;
+    }
+    .toc h3 { margin: 0 0 8px; color: var(--text); }
+    .toc ul { margin: 0; }
+    .toc a { color: var(--accent); text-decoration: none; }
+    .toc a:hover { text-decoration: underline; }
+
+    .app-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0 24px;
+      font-size: 0.9rem;
+    }
+    .app-table th {
+      text-align: left;
+      padding: 8px 12px;
+      background: var(--surface2);
+      border-bottom: 2px solid var(--border);
+      color: var(--text-dim);
+      font-weight: 600;
+    }
+    .app-table td {
+      padding: 8px 12px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-dim);
+    }
+    .app-table tr:hover td {
+      background: var(--surface2);
+    }
+    .app-table .app-name {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.6rem; }
+      .app-table { font-size: 0.8rem; }
+      .app-table th, .app-table td { padding: 6px 8px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="daz-bear">🐻</div>
+  <h1>Quest 3 512GB — Day One Guide</h1>
+  <p class="subtitle">Unbox to unbeatable. Accessories, setup, and the full stack integration playbook.</p>
+  <span class="badge">June 2026</span>
+</header>
+
+<div class="toc">
+  <h3>📋 On this page</h3>
+  <ul>
+    <li><a href="#dayone">1. Day One Checklist</a></li>
+    <li><a href="#accessories">2. Best Accessories</a></li>
+    <li><a href="#games">3. First Games &amp; Apps</a></li>
+    <li><a href="#stack">4. Stack Integration — Quest 3 as IO</a></li>
+    <li><a href="#architecture">5. Architecture Sketch</a></li>
+  </ul>
+</div>
+
+<!-- ============ SECTION 1 ============ -->
+<h2 id="dayone">1. 🚀 Day One Checklist</h2>
+
+<ol class="step-list">
+
+  <li>
+    <strong>Unbox &amp; charge fully</strong><br>
+    The Quest 3 ships at partial charge. Plug it in while you set up the Meta Quest app on your phone. Full charge takes ~2 hours.
+  </li>
+
+  <li>
+    <strong>Install Meta Quest app</strong> <span class="tag blue">iOS / Android</span><br>
+    Download on your phone. Create or log into your Meta account. If you don't have one, use the same email you buy VR stuff with — you'll thank yourself later.
+  </li>
+
+  <li>
+    <strong>Pair &amp; update firmware</strong><br>
+    The app walks you through pairing. After that, go to <em>Settings → System → Software Update</em> and install everything. Don't skip this — new firmware bundles major performance fixes. Expect 15-20 mins.
+  </li>
+
+  <li>
+    <strong>Dial your IPD</strong><br>
+    Turn the IPD wheel on the bottom of the headset until text is sharp and your eyes aren't straining. Wrong IPD = headaches. Use a phone app or have someone help you measure.
+  </li>
+
+  <li>
+    <strong>Draw your Guardian boundary</strong><br>
+    Use the passthrough to draw a playspace. Mark your desk, walls, and any hazards (pets, low-hanging lights). Pro tip: bump the sensitivity to <strong>Advanced</strong> mode for a full room scan.
+  </li>
+
+  <li>
+    <strong>Enable 120Hz refresh</strong> <span class="tag orange">settings</span><br>
+    <em>Settings → Display → Refresh Rate → 120Hz</em>. Not every game supports it, but the ones that do look buttery. Worth the slight battery trade-off.
+  </li>
+
+  <li>
+    <strong>Turn on hand tracking</strong> <span class="tag orange">settings</span><br>
+    <em>Settings → Movement Tracking → Hand Tracking → Auto</em>. Lets you navigate menus without controllers. Essential for media browsing and light productivity.
+  </li>
+
+  <li>
+    <strong>Set up double-tap passthrough</strong><br>
+    <em>Settings → Movement Tracking → Passthrough Shortcut → Double Tap</em>. Tap the side of the headset twice to toggle between VR and the real world. You'll use this constantly.
+  </li>
+
+  <li>
+    <strong>Claim your freebies</strong><br>
+    The 512GB model comes with <strong>6 months of Quest+</strong> (two curated games/month, yours to keep). Also grab <em>First Encounters</em> — Meta's mixed reality demo that shows off the Quest 3's passthrough.
+  </li>
+
+  <li>
+    <strong>Enable Developer Mode</strong> <span class="tag purple">power user</span><br>
+    Go to the Meta Quest app → <em>Menu → Devices → Headset Settings → Developer Mode → On</em>. Required for sideloading (SideQuest, custom apps, utility tools). Do this day one.
+  </li>
+
+</ol>
+
+<!-- ============ SECTION 2 ============ -->
+<h2 id="accessories">2. 🛠️ Best Accessories</h2>
+
+<p>The stock strap is comfortable enough for 30 minutes. Beyond that, it's the weakest link in the Quest 3 package. Here's what to buy and in what order.</p>
+
+<h3>Must-Buy (Tier 1)</h3>
+
+<div class="accessory-grid">
+
+  <div class="accessory-item">
+    <h4>BOBOVR S3 Pro Head Strap</h4>
+    <div class="price">~$70 USD</div>
+    <div class="verdict">
+      The single best Quest 3 upgrade. Halo-style strap redistributes weight, has a built-in battery, and uses hot-swappable battery packs. You can carry a spare and never stop playing. The cooling fan is a nice bonus.
+    </div>
+    <span class="pick top">🏆 TOP PICK</span>
+  </div>
+
+  <div class="accessory-item">
+    <h4>KIWI Design K4 Duo Battery Strap</h4>
+    <div class="price">~$55 USD</div>
+    <div class="verdict">
+      Elite-style strap with a built-in 8000mAh battery. Adds ~2.5 hours of playtime. Feels more like an integrated part of the headset than the BOBOVR. Great alternative if you prefer the elite-style fit over halo.
+    </div>
+    <span class="pick top">🏆 RUNNER UP</span>
+  </div>
+
+  <div class="accessory-item">
+    <h4>AMVR Silicone Facial Interface</h4>
+    <div class="price">~$35 USD</div>
+    <div class="verdict">
+      Replaces the stock foam with a silicone pad that's easy to clean, more comfortable for long sessions, and blocks light leakage better. If you sweat in VR, this is mandatory.
+    </div>
+    <span class="pick top">🏆 COMFORT MUST</span>
+  </div>
+
+  <div class="accessory-item">
+    <h4>KIWI Design Knuckle Grips</h4>
+    <div class="price">~$20 USD</div>
+    <div class="verdict">
+      Silicone controller grips with adjustable knuckle straps. Open your hands without dropping controllers. Essential for Beat Saber, fitness games, and Gorilla Tag. Cheap and dramatically better feel.
+    </div>
+    <span class="pick top">🏆 BEST $20</span>
+  </div>
+
+</div>
+
+<h3>Nice-to-Have (Tier 2)</h3>
+
+<div class="accessory-grid">
+
+  <div class="accessory-item">
+    <h4>Anker Charging Dock</h4>
+    <div class="price">~$70 USD</div>
+    <div class="verdict">
+      Drop-and-charge. Headset + two controllers dock together. Keeps everything charged, organized, and looks good on your desk. Magnetic contacts mean no fumbling with USB-C.
+    </div>
+    <span class="pick budget">🎯 CONVENIENCE</span>
+  </div>
+
+  <div class="accessory-item">
+    <h4>Hard Shell Carrying Case</h4>
+    <div class="price">~$40-60 USD</div>
+    <div class="verdict">
+      If you travel, bring it to friends, or have kids — get a hard case. Protects the lenses from scratches and the controllers from getting crushed in a bag.
+    </div>
+    <span class="pick budget">🎯 PORTABILITY</span>
+  </div>
+
+  <div class="accessory-item">
+    <h4>Prescription Lens Inserts</h4>
+    <div class="price">~$50-80 USD</div>
+    <div class="verdict">
+      If you wear glasses, order these now. Your glasses won't fit comfortably inside the headset, and they'll scratch the Quest lenses. Zenni Optical and VR Optician both do Quest 3 inserts.
+    </div>
+    <span class="pick niche">👓 GAMMA USERS</span>
+  </div>
+
+  <div class="accessory-item">
+    <h4>INIU USB-C Link Cable</h4>
+    <div class="price">~$25 USD</div>
+    <div class="verdict">
+      For PC VR. 16ft, USB 3.0, braided. Cheaper than Meta's official cable and works identically. If you plan to play Half-Life: Alyx or modded Skyrim VR — you need this or a WiFi 6 router.
+    </div>
+    <span class="pick niche">💻 PC VR USERS</span>
+  </div>
+
+</div>
+
+<h3>Budget Setup ($80 total)</h3>
+
+<div class="card orange">
+  <p>If you only spend $80 on accessories:</p>
+  <ul>
+    <li><strong>BOBOVR M3 Pro strap</strong> (~$40) — 80% of the S3 Pro experience at half the price, no battery</li>
+    <li><strong>KIWI Knuckle Grips</strong> (~$20) — cheap, massive quality-of-life upgrade</li>
+    <li><strong>AMVR Facial Interface</strong> (~$20) — comfort and hygiene</li>
+  </ul>
+  <p style="margin-top: 8px;">That covers the three biggest pain points: weight distribution, controller security, and face comfort.</p>
+</div>
+
+<h3>Splurge Setup ($200 total)</h3>
+
+<div class="card green">
+  <ul>
+    <li><strong>BOBOVR S3 Pro</strong> (~$70) — best strap + battery</li>
+    <li><strong>AMVR Facial Interface</strong> (~$35)</li>
+    <li><strong>KIWI Knuckle Grips</strong> (~$20)</li>
+    <li><strong>Anker Charging Dock</strong> (~$70)</li>
+  </ul>
+  <p style="margin-top: 8px;">Everything you need for infinite playtime, zero cable management, and a clean desk. Worth every cent if you'll use the headset daily.</p>
+</div>
+
+<!-- ============ SECTION 3 ============ -->
+<h2 id="games">3. 🎮 First Games &amp; Apps</h2>
+
+<table class="app-table">
+  <thead>
+    <tr>
+      <th>App</th>
+      <th>Category</th>
+      <th>Why</th>
+      <th>Cost</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="app-name">Batman: Arkham Shadow</td>
+      <td>Action</td>
+      <td>Comes free with Quest 3 — ~30GB, looks incredible, teaches VR combat fundamentals</td>
+      <td>FREE</td>
+    </tr>
+    <tr>
+      <td class="app-name">Beat Saber</td>
+      <td>Rhythm / Fitness</td>
+      <td>The #1 VR game. Everyone loves it. Also counts as cardio.</td>
+      <td>$30</td>
+    </tr>
+    <tr>
+      <td class="app-name">Walkabout Mini Golf</td>
+      <td>Social / Chill</td>
+      <td>Best social VR game. Play with friends, gorgeous courses, zen vibes.</td>
+      <td>$15</td>
+    </tr>
+    <tr>
+      <td class="app-name">Superhot VR</td>
+      <td>Action / Puzzle</td>
+      <td>Time moves when you move. The definitive "show someone VR" experience.</td>
+      <td>$25</td>
+    </tr>
+    <tr>
+      <td class="app-name">Pistol Whip</td>
+      <td>Rhythm / Fitness</td>
+      <td>John Wick simulator. Shooting to the beat. Legit workout on hard.</td>
+      <td>$25</td>
+    </tr>
+    <tr>
+      <td class="app-name">Eleven Table Tennis</td>
+      <td>Sports</td>
+      <td>Shockingly realistic physics. Will make you forget you're in VR.</td>
+      <td>$15</td>
+    </tr>
+    <tr>
+      <td class="app-name">Asgard's Wrath 2</td>
+      <td>RPG</td>
+      <td>60+ hour AAA RPG, standalone on Quest. Epic scope, deep combat.</td>
+      <td>$60</td>
+    </tr>
+    <tr>
+      <td class="app-name">Red Matter 2</td>
+      <td>Puzzle / Adventure</td>
+      <td>Best graphics on Quest 3. Pancake lenses + this game = jaw-dropping.</td>
+      <td>$20</td>
+    </tr>
+    <tr>
+      <td class="app-name">Population: One</td>
+      <td>Battle Royale</td>
+      <td>VR Fortnite. Climbing, flying, shooting. Best multiplayer VR shooter.</td>
+      <td>FREE</td>
+    </tr>
+    <tr>
+      <td class="app-name">I Expect You To Die 1+2</td>
+      <td>Escape Room</td>
+      <td>James Bond escape room. Perfect for demos, great production value.</td>
+      <td>$25 each</td>
+    </tr>
+    <tr>
+      <td class="app-name">First Encounters</td>
+      <td>Mixed Reality</td>
+      <td>Meta's official MR demo. Showcases Quest 3's passthrough. Free, short, impressive.</td>
+      <td>FREE</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="card blue">
+  <strong>💰 Pro tip:</strong> The 512GB model gives you 6 months of Quest+. That's 12 free games (2/month). Claim them even if you don't plan to play immediately — they're yours to keep forever. Also, wishlist everything and wait for sales — Quest store runs frequent 30-50% off sales.
+</div>
+
+<!-- ============ SECTION 4 ============ -->
+<h2 id="stack">4. 🔗 Stack Integration — Quest 3 as IO</h2>
+
+<p>You asked about incorporating the headset into the stack as another form of IO. This is the interesting part. Here's what that looks like for a DazTech / betting-engine / coding stack.</p>
+
+<h3>The Core Idea</h3>
+<div class="card purple">
+  <p><strong>Quest 3 is not a gaming peripheral — it's an IO modality.</strong></p>
+  <p>It gives you: a 200° FOV canvas, hand tracking, voice input, spatial awareness (via passthrough), and a browser that runs web apps. That's a new output surface and a new input channel, not a toy.</p>
+</div>
+
+<h3>Use Cases in Order of Practicality</h3>
+
+<div class="integration-flow">
+
+  <div class="flow-step">
+    <div class="icon">🖥️</div>
+    <div class="content">
+      <h4>Virtual Multi-Monitor (Immersed)</h4>
+      <p>Replace physical monitors with virtual ones inside the headset. <strong>Immersed</strong> app gives you 3-5 monitors in VR. Your actual laptop screen becomes the keyboard view. Text is sharp enough on Quest 3 for full-day coding. Pair this with a productivity head strap and you have a portable 5-monitor workstation.</p>
+      <p><span class="tag blue">IMMERSED</span> <span class="tag blue">VIRTUAL DESKTOP</span> <span class="tag orange">DAILY DRIVER</span></p>
+    </div>
+  </div>
+
+  <div class="flow-step">
+    <div class="icon">📊</div>
+    <div class="content">
+      <h4>3D Data Visualization — Betting Engine Dashboard</h4>
+      <p>Your betting engine outputs structured data. Right now it's HTML cards on Flatland. In VR: render an NRL field model with live player tracking overlays, a 3D race track with horse positions, or a trading heatmap in 3D space. Three.js and WebXR make this straightforward to build. The engine already pushes to Cloudflare — the same data feeds a WebXR dashboard.</p>
+      <p><span class="tag green">ENGINE FEED</span> <span class="tag green">WEBXR</span> <span class="tag orange">PHASE 2</span></p>
+    </div>
+  </div>
+
+  <div class="flow-step">
+    <div class="icon">🔔</div>
+    <div class="content">
+      <h4>Real-Time Alert Surface</h4>
+      <p>Push notifications visible in-headset while working. A background service watches the engine pipeline (odds movements, model triggers, settled bets) and surfaces alerts as floating HUD elements or passthrough overlays. No need to alt-tab or check Telegram — the alert finds you.</p>
+      <p><span class="tag green">NOTIFICATIONS</span> <span class="tag blue">WS / SSE</span> <span class="tag orange">PHASE 1</span></p>
+    </div>
+  </div>
+
+  <div class="flow-step">
+    <div class="icon">🗣️</div>
+    <div class="content">
+      <h4>Voice-Controlled Operations Dashboard</h4>
+      <p>Quest 3 has built-in microphones and voice recognition. Build a minimal voice controller: say "<em>Run NRL scan</em>" to trigger the engine, "<em>Show today's bets</em>" to pull the current card, "<em>Deploy</em>" to run the CF deploy hook. Hands-free stack management while you're in the zone.</p>
+      <p><span class="tag purple">VOICE</span> <span class="tag purple">WOLFRAM ALPHA VIBE</span> <span class="tag orange">PHASE 2</span></p>
+    </div>
+  </div>
+
+  <div class="flow-step">
+    <div class="icon">🌐</div>
+    <div class="content">
+      <h4>Cloudflare-Powered VR Dashboard</h4>
+      <p>Your existing Cloudflare Pages site serves HTML. The Quest browser is a full WebGL + WebXR capable browser. Build a <code>vr-dashboard.daztech.pages.dev</code> microsite that renders in 3D using Three.js. Same deploy pipeline. Same data source. New surface.</p>
+      <p><span class="tag blue">CF PAGES</span> <span class="tag green">AGENT-MANAGED</span> <span class="tag orange">PHASE 1</span></p>
+    </div>
+  </div>
+
+  <div class="flow-step">
+    <div class="icon">🤖</div>
+    <div class="content">
+      <h4>Agent Visibility — See Your Stack</h4>
+      <p>Render the Hermes agent stack visually: Daz, Deez, Atlas, Jarvis each as a spatial entity with status indicators (online, processing, blocked, idle). A live spatial activity graph. When an agent completes a task, a visual pulse ripples through the graph. When something blocks, it glows red. This is the ultimate system observability surface.</p>
+      <p><span class="tag purple">AGENT VIS</span> <span class="tag purple">OBSERVABILITY</span> <span class="tag orange">PHASE 3</span></p>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============ SECTION 5 ============ -->
+<h2 id="architecture">5. 🏗️ Architecture Sketch</h2>
+
+<div class="card">
+  <pre style="background: #0d1117; padding: 16px; border-radius: 8px; overflow-x: auto; color: var(--text-dim); font-size: 0.8rem; line-height: 1.6;">
+┌──────────────────────────────────────────────────────────┐
+│                    Quest 3 Headset                        │
+│  ┌─────────────┐  ┌──────────────┐  ┌──────────────────┐ │
+│  │ VR Browser   │  │ Immersed /   │  │ WebXR Dashboard  │ │
+│  │ (3D dash)    │  │ Virtual Desk │  │ (Three.js)       │ │
+│  └──────┬───────┘  └──────┬───────┘  └───────┬──────────┘ │
+│         │                 │                   │            │
+└─────────┼─────────────────┼───────────────────┼────────────┘
+          │                 │                   │
+          ▼                 ▼                   ▼
+┌─────────────────────────────────────────────────────────────┐
+│                   Cloudflare Pages                            │
+│   vr-dashboard.daztech.pages.dev    daztech.pages.dev         │
+│   ┌──────────────┐    ┌──────────────┐    ┌──────────────┐   │
+│   │ Alert Surface │    │ 3D Viz Cards │    │ Engine Cards  │   │
+│   └──────────────┘    └──────────────┘    └──────────────┘   │
+└──────────────┬──────────────────────────────────────┬────────┘
+               │                                      │
+               ▼                                      ▼
+┌──────────────────────┐              ┌────────────────────────┐
+│  WebSocket / SSE      │              │  Betting Engine         │
+│  (real-time alerts)   │              │  (model/risk/place)     │
+└──────────────────────┘              └────────────────────────┘
+                                               │
+                                               ▼
+                                      ┌────────────────┐
+                                      │ Hermes Agents   │
+                                      │ Daz / Deez /    │
+                                      │ Atlas / Jarvis  │
+                                      └────────────────┘</pre>
+</div>
+
+<h3>Implementation Priority</h3>
+
+<div class="card blue">
+  <p><strong>Phase 1 (do this week):</strong></p>
+  <ul>
+    <li>Get Immersed running → use Quest 3 as multi-monitor for coding/trading</li>
+    <li>Set up a <code>quest.daztech.pages.dev</code> page (or similar) — quick Three.js spatial dashboard</li>
+    <li>Quest browser → navigate to engine output cards, see them in VR</li>
+  </ul>
+  <p style="margin-top: 12px;"><strong>Phase 2 (next sprint):</strong></p>
+  <ul>
+    <li>Build a WebXR-enabled betting dashboard that renders match data spatially</li>
+    <li>Wire WebSocket alert channel from engine → headset</li>
+    <li>Voice command prototype: "what are today's matches?" triggers engine query</li>
+  </ul>
+  <p style="margin-top: 12px;"><strong>Phase 3 (stretch):</strong></p>
+  <ul>
+    <li>Full agent stack spatial visualization</li>
+    <li>Gesture-based dashboard manipulation (drag panels, resize views)</li>
+    <li>Multiplayer — share the VR dashboard with others in the same space</li>
+  </ul>
+</div>
+
+<h3>Tools You'll Need</h3>
+
+<table class="app-table">
+  <thead>
+    <tr>
+      <th>Tool</th>
+      <th>What For</th>
+      <th>Cost</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="app-name">Immersed</td>
+      <td>Virtual monitors for your actual computer. Supports up to 5 screens.</td>
+      <td>Free tier / $15/mo Pro</td>
+    </tr>
+    <tr>
+      <td class="app-name">Virtual Desktop</td>
+      <td>Wireless PC VR streaming. Better latency than Air Link.</td>
+      <td>$25</td>
+    </tr>
+    <tr>
+      <td class="app-name">Three.js + WebXR</td>
+      <td>Build WebXR experiences that run in Quest browser. No app store needed.</td>
+      <td>Free</td>
+    </tr>
+    <tr>
+      <td class="app-name">Meta XR Simulator</td>
+      <td>Test Quest apps from your dev machine without wearing the headset.</td>
+      <td>Free</td>
+    </tr>
+    <tr>
+      <td class="app-name">SideQuest</td>
+      <td>Sideload custom APKs, dev builds, utility apps.</td>
+      <td>Free</td>
+    </tr>
+  </tbody>
+</table>
+
+<footer>
+  <p>Built by <strong>Daz 🐻</strong> for Danny · <a href="https://daztech.pages.dev">daztech.pages.dev</a> · June 2026</p>
+</footer>
+
+</body>
+</html>
