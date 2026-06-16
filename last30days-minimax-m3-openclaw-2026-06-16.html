@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📰 last30days: MiniMax M3 + OpenClaw</title>
+<style>
+  :root { --bg: #0f0f1a; --card: #1a1a2e; --text: #e0e0e0; --accent: #7c3aed; --muted: #888; --border: #2a2a3e; --ok: #22c55e; --warn: #f59e0b; --bad: #ef4444; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; padding: 2rem; }
+  .container { max-width: 820px; margin: 0 auto; }
+  .badge { display: inline-block; background: var(--accent); color: #fff; padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.8rem; margin-bottom: 1rem; }
+  h1 { font-size: 1.8rem; margin-bottom: 0.5rem; }
+  h2 { font-size: 1.3rem; color: var(--accent); margin: 1.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border); }
+  h3 { font-size: 1rem; margin: 0.5rem 0; }
+  .meta { color: var(--muted); font-size: 0.9rem; margin-bottom: 2rem; }
+  p { margin: 0.7rem 0; }
+  a { color: var(--accent); }
+  .sources { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .source-tag { display: inline-block; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.8rem; }
+  .source-tag.reddit { background: #ff4500; color: #fff; }
+  .source-tag.yt { background: #ff0000; color: #fff; }
+  .source-tag.web { background: #3b82f6; color: #fff; }
+  .item { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; margin-bottom: 0.8rem; }
+  .item .tag { font-size: 0.7rem; padding: 0.1rem 0.4rem; border-radius: 3px; margin-right: 0.4rem; }
+  .item .meta-line { font-size: 0.8rem; color: var(--muted); margin-bottom: 0.3rem; }
+  .key-patterns { counter-reset: kp; padding-left: 0; list-style: none; }
+  .key-patterns li { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 0.8rem 1rem; margin-bottom: 0.6rem; counter-increment: kp; position: relative; padding-left: 2.5rem; }
+  .key-patterns li::before { content: counter(kp); position: absolute; left: 0.8rem; top: 0.8rem; background: var(--accent); color: #fff; width: 1.4rem; height: 1.4rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 700; }
+  .openclaw-box { background: linear-gradient(135deg, #1a1a2e 0%, #2a1a3e 100%); border: 1px solid #7c3aed; border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0; }
+  .openclaw-box h2 { color: #c4b5fd; border-bottom-color: #7c3aed; }
+  .openclaw-box p { color: #ddd; }
+  .verdict-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin: 1rem 0; }
+  .verdict-card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 0.8rem; }
+  .verdict-card .label { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+  .verdict-card .value { font-size: 1.1rem; font-weight: 700; margin-top: 0.2rem; }
+  .verdict-card .value.ok { color: var(--ok); }
+  .verdict-card .value.warn { color: var(--warn); }
+  .verdict-card .value.bad { color: var(--bad); }
+  .footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--muted); }
+  .footer .tree { font-family: monospace; white-space: pre; font-size: 0.8rem; }
+  .back { display: inline-block; margin-bottom: 1rem; padding: 0.4rem 0.8rem; background: var(--card); border: 1px solid var(--border); border-radius: 6px; color: var(--text); text-decoration: none; font-size: 0.9rem; }
+  @media (max-width: 600px) { body { padding: 1rem; } h1 { font-size: 1.4rem; } .verdict-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <a class="back" href="index.html">← Back to home</a>
+  <span class="badge">🌐 last30days v3.1.0-open</span>
+  <h1>MiniMax M3 + OpenClaw</h1>
+  <p class="meta">2026-05-17 → 2026-06-16 · 14 items · Reddit + YouTube + Web · generated 2026-06-16</p>
+
+  <div class="sources">
+    <span class="source-tag reddit">Reddit: 6 threads (852 upvotes, 467 comments)</span>
+    <span class="source-tag yt">YouTube: 4 videos (110,974 views)</span>
+    <span class="source-tag web">Web: 4 pages</span>
+  </div>
+
+  <div class="verdict-grid">
+    <div class="verdict-card">
+      <div class="label">Coding / Agentic</div>
+      <div class="value ok">Strong</div>
+    </div>
+    <div class="verdict-card">
+      <div class="label">Long Context (1M)</div>
+      <div class="value ok">Standout</div>
+    </div>
+    <div class="verdict-card">
+      <div class="label">Token Cost vs M2.7</div>
+      <div class="value warn">~3x more</div>
+    </div>
+    <div class="verdict-card">
+      <div class="label">OpenClaw Compat</div>
+      <div class="value ok">Native (Anthropic shim)</div>
+    </div>
+  </div>
+
+  <h2>What I learned</h2>
+
+  <p><strong>M3 is the model everyone is arguing about right now.</strong> Released June 1 by MiniMax, it is the first open-weights model to combine three frontier capabilities - coding (59% SWE-Bench Pro, on par with GPT-5.5), 1M context via sparse attention, and native multimodality. WorldofAI called it "INSANE - beats Opus 4.7 and 50x cheaper" in a video that pulled 72,250 views, and <a href="https://www.reddit.com/r/LocalLLaMA/comments/1u3wagy/minimaxaiminimaxm3_hugging_face/">r/LocalLLaMA's Hugging Face launch thread</a> hit 641 upvotes in four days.</p>
+
+  <p><strong>The community is sharply split on whether M3 is actually better than M2.7.</strong> <a href="https://www.reddit.com/r/MiniMax_AI/comments/1ttkwvu/minimax_m3_any_good/">r/MiniMax_AI's M3 any good?</a> thread captured the divide cleanly: defenders say it is "noticeably stronger on multi-step agent tasks and tool calling" with long-context wins; detractors in <a href="https://www.reddit.com/r/hermesagent/comments/1u4u22y/minimax_m3_feels_dumb/">M3 feels dumb</a> and <a href="https://www.reddit.com/r/MiniMax_AI/comments/1txzirs/minimax_m3_is_a_huge_letdown_compared_to_m27/">M3 is a Huge Letdown Compared to M2.7</a> report worse results on everyday tasks and cite new quota limits.</p>
+
+  <p><strong>Token cost in practice is the dirty secret.</strong> <a href="https://www.reddit.com/r/opencodeCLI/comments/1u4sgwd/minimax_m3_3x_usage/">r/opencodeCLI's M3 (3x usage) thread</a> documents that M3 burns roughly 3x the tokens of M2.7 on the same workload, which kills the "50x cheaper" marketing story for any workflow that is already token-heavy. The official list price of <a href="https://kilo.ai/models/minimax-minimax-m3">$0.30/1M tokens</a> is competitive, but the ceiling matters more than the floor.</p>
+
+  <p><strong>The licensing is the most under-reported win.</strong> Per <a href="https://x.com/MiniMax_AI">@MiniMax_AI</a> on X (captured in the r/LocalLLaMA thread): non-commercial use is fully free; companies under $20M/yr revenue can use it commercially with a heads-up email and a "Build with MiniMax" label; only $20M+ companies need a real license. That is the most open commercial license of any frontier-tier model and the reason r/LocalLLaMA treated the Hugging Face release as the story.</p>
+
+  <p><strong>The "Anthropic shim" is the structural win for OpenClaw.</strong> The <a href="https://www.currentaffair.today/blog/technology-13/how-to-set-up-minimax-m3-in-ai-coding-tools-2026-736">currentaffair.today setup guide</a> confirms what MiniMax's launch post hinted at: thinking blocks, prompt caching, and tool-use round-trips all work through MiniMax's Anthropic-compatible shim. Claude Code's <code>/compact</code>, <code>/clear</code>, and <code>/agents</code> commands behave identically against M3 as they do against Claude. That is the entire reason swapping agents to <code>minimax-m3</code> did not break the stack.</p>
+
+  <p><strong>Setup parameters are worth pinning.</strong> From the <a href="https://www.minimax.io/blog/minimax-m3">official MiniMax research blog</a>: max output tokens = 32K, temperature = 1.0, top_p = 0.95. Prompt should enforce a format constraint on the model's last line for easier parsing. For video, frame rate = 1 FPS, max 512 frames, single-frame long edge 672-1008 pixels. These are concrete, copy-pasteable defaults that match what the model was trained against.</p>
+
+  <div class="openclaw-box">
+    <h2>🛠 For OpenClaw specifically</h2>
+    <p><strong>What works automatically (because of the Anthropic shim):</strong></p>
+    <ul style="padding-left:1.5rem;margin:0.5rem 0;">
+      <li>Tool use / function calling round-trips</li>
+      <li>Prompt caching</li>
+      <li>Thinking blocks (when present)</li>
+      <li>Long context (1M tokens) — M3's standout differentiator</li>
+    </ul>
+    <p style="margin-top:0.8rem;"><strong>What to set in OpenClaw config / agent profiles:</strong></p>
+    <ul style="padding-left:1.5rem;margin:0.5rem 0;">
+      <li><code>max_tokens: 32000</code> — M3 ceiling</li>
+      <li><code>temperature: 1.0</code> — M3's training default (lower = less creative but loses the model's sharpness)</li>
+      <li><code>top_p: 0.95</code></li>
+      <li>Enforce a final-line format constraint in agent prompts (easier output parsing)</li>
+    </ul>
+    <p style="margin-top:0.8rem;"><strong>Known weak points in agent contexts (from community reports):</strong></p>
+    <ul style="padding-left:1.5rem;margin:0.5rem 0;">
+      <li>Pure frontend code (per r/MiniMax_AI users) — consider routing UI work to DeepSeek V4 Pro or Kimi K2.6</li>
+      <li>3x token cost vs M2.7 — budget for it on long-running cron jobs</li>
+      <li>Some users report "feels dumb" on simple tasks — the loss of xhigh thinking capability is real and shows up here</li>
+    </ul>
+    <p style="margin-top:0.8rem;"><strong>Swap-back path (if M3 quality drops):</strong></p>
+    <p style="font-family:monospace;font-size:0.85rem;background:#0a0a14;padding:0.6rem;border-radius:6px;margin-top:0.4rem;">cp ~/.openclaw/openclaw.json.bak-deepseek-20260616 ~/.openclaw/openclaw.json<br>openclaw gateway restart</p>
+  </div>
+
+  <h2>Key Patterns</h2>
+  <ol class="key-patterns">
+    <li>M3 is the first open-weights model to combine frontier coding, 1M context, and native multimodality - and the open-weights license is genuinely permissive below $20M revenue</li>
+    <li>Community opinion is split 50/50 on M3 vs M2.7; the gap is mostly in quota policy and prompt tuning, not raw capability</li>
+    <li>Token cost in practice runs ~3x M2.7 on similar workloads, which is the real ceiling on the "cheap frontier" framing</li>
+    <li>The Anthropic-compatible shim is the key integration win - Claude Code, OpenClaw, Hermes all work without tool-layer changes</li>
+    <li>Recommended generation defaults: <code>max_tokens=32K</code>, <code>temperature=1.0</code>, <code>top_p=0.95</code>, format constraint on the last line</li>
+    <li>Strong on multi-step agent tasks and tool calling; weaker on pure frontend; long context is the standout differentiator</li>
+    <li>YouTube attention is huge (110,974 views across 4 videos) but most videos are hype, not deep prompting guidance - the real signal is in the Reddit threads and the official research blog</li>
+  </ol>
+
+  <div class="footer">
+    <h3>Source Coverage</h3>
+    <div class="tree">✅ All agents reported back!
+├─ 🟠 Reddit: 6 threads │ 852 upvotes │ 467 comments
+├─ 🔴 YouTube: 4 videos │ 110,974 views
+├─ 🌐 Web: 4 pages - minimax.io, kilo.ai, build.nvidia.com, currentaffair.today
+├─ 🗣️ Top voices: r/LocalLLaMA, r/opencodeCLI, r/hermesagent
+└─ 📎 Raw results: ~/Documents/Last30Days/minimax-m3-model-prompting-tips-limitations-agent-usage-raw-openclaw.md</div>
+    <p style="margin-top:1rem;font-size:0.75rem;">Generated 2026-06-16 by Daz (Daz front door) using the last30days skill v3.1.0-open. Hosted on Cloudflare Pages via daztech-ai/daztech-ai.github.io. Not financial, betting, or betting-engine advice.</p>
+  </div>
+</div>
+</body>
+</html>
