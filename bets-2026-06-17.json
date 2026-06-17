@@ -1,26 +1,50 @@
 {
   "date": "2026-06-17",
-  "type": "real_bet",
-  "match": "Austria vs Jordan",
-  "bookmaker": "Neds",
-  "promo": "SGM Cover",
-  "stake_type": "bonus_bet",
-  "stake": 50.00,
-  "legs": [
-    {"market": "H2H", "selection": "Austria Win", "odds": 1.36},
-    {"market": "BTTS", "selection": "Yes", "odds": 2.18},
-    {"market": "Over/Under 2.5", "selection": "Over 2.5", "odds": 1.78}
-  ],
-  "combined_odds": 4.44,
-  "combined_american": "+344",
-  "edge_pct": 14.4,
-  "ev_dollars": 7.22,
-  "verdict": "ENGINE BET",
-  "edge_threshold": 5.0,
-  "bonus_conversion_rate": 0.50,
-  "status": "LIVE",
-  "kickoff": "2026-06-17T04:00:00Z",
-  "kickoff_aest": "2026-06-17T14:00:00+10:00",
-  "result": "PENDING",
-  "note": "3-leg SGM on Neds SGM Cover promo. Using $50 bonus bet. Stake not returned on bonus bet - profit only. 1 leg fail = bonus back."
+  "bets": [
+    {
+      "match": "Argentina vs Algeria",
+      "bookmaker": "Neds",
+      "promo": "SGM Cover",
+      "stake_type": "no_bet",
+      "stake": 0,
+      "legs": [
+        {"market": "H2H", "selection": "Argentina Win", "odds": 1.44},
+        {"market": "BTTS", "selection": "Yes", "odds": 2.30},
+        {"market": "Over/Under 2.5", "selection": "Over 2.5", "odds": 1.63}
+      ],
+      "combined_odds": 5.40,
+      "edge_pct": 5.0,
+      "ev_dollars": 2.49,
+      "verdict": "ENGINE BET",
+      "result": "2 legs failed - no bet placed",
+      "final_score": "Argentina 3-0 Algeria",
+      "legs_result": ["Argentina Win PASSED", "BTTS Yes FAILED (Algeria 0)", "Over 2.5 FAILED (3 goals = under 2.5)"],
+      "status": "DID NOT BET"
+    },
+    {
+      "match": "Austria vs Jordan",
+      "bookmaker": "Neds",
+      "promo": "SGM Cover",
+      "stake_type": "bonus_bet",
+      "stake": 50.00,
+      "legs": [
+        {"market": "H2H", "selection": "Austria Win", "odds": 1.36},
+        {"market": "BTTS", "selection": "Yes", "odds": 2.18},
+        {"market": "Over/Under 2.5", "selection": "Over 2.5", "odds": 1.78}
+      ],
+      "combined_odds": 4.44,
+      "combined_american": "+344",
+      "edge_pct": 14.4,
+      "ev_dollars": 7.22,
+      "verdict": "ENGINE BET",
+      "edge_threshold": 5.0,
+      "bonus_conversion_rate": 0.50,
+      "status": "LIVE",
+      "kickoff": "2026-06-17T04:00:00Z",
+      "kickoff_aest": "2026-06-17T14:00:00+10:00",
+      "result": "PENDING",
+      "live_score_20min": "0-0",
+      "note": "3-leg SGM on Neds SGM Cover promo. Danny placed $50 bonus bet. 1 leg fail = bonus back."
+    }
+  ]
 }
