@@ -8,7 +8,7 @@
     :root {
       --bg: #0e1014; --card: #1a1d23; --border: #2a2f3a;
       --text: #e6e6e6; --muted: #9aa0a6; --accent: #f4b400;
-      --good: #34a853; --warn: #f9ab00; --bad: #ea4335;
+      --good: #34a853; --warn: #f9ab00;
     }
     body {
       background: var(--bg); color: var(--text);
@@ -18,23 +18,17 @@
     h1 { color: var(--accent); border-bottom: 2px solid var(--border); padding-bottom: 0.5rem; }
     h2 { color: var(--accent); margin-top: 2rem; }
     .banner {
-      background: #2a1d05; border-left: 4px solid var(--warn);
-      padding: 1rem 1.2rem; margin: 1.5rem 0; border-radius: 4px; color: #f4d7a3;
-    }
-    .good-banner {
       background: #1c3a25; border-left: 4px solid var(--good);
       padding: 1rem 1.2rem; margin: 1.5rem 0; border-radius: 4px; color: #b6e3c0;
     }
-    table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.95rem; }
-    th, td { padding: 0.6rem 0.7rem; text-align: left; border-bottom: 1px solid var(--border); }
-    th { color: var(--muted); font-weight: 600; text-transform: uppercase; font-size: 0.75rem; }
-    .sgm-card {
+    .pick {
       background: var(--card); border: 1px solid var(--border);
       border-radius: 6px; padding: 1rem 1.2rem; margin: 0.8rem 0;
     }
-    .premium-good { color: var(--good); font-weight: 600; }
-    .meta { color: var(--muted); font-size: 0.85rem; margin-top: 0.4rem; }
+    .pick.recommended { border-left: 4px solid var(--good); }
+    .meta { color: var(--muted); font-size: 0.9rem; margin-top: 0.4rem; }
     .live-odds { font-size: 1.1rem; font-weight: 700; color: var(--accent); }
+    .potential { color: var(--good); font-weight: 700; font-size: 1.15rem; }
     footer {
       margin-top: 3rem; padding-top: 1rem;
       border-top: 1px solid var(--border); color: var(--muted); font-size: 0.85rem;
@@ -43,113 +37,81 @@
 </head>
 <body>
   <h1>State of Origin Game 2 - Tonight</h1>
-  <p><strong>Wednesday 17 Jun 2026 - Kickoff 20:05 AEST</strong>  &bull;  Suncorp Stadium, Brisbane  &bull;  QLD vs NSW</p>
+  <p><strong>Wed 17 Jun 2026 - 20:05 AEST</strong>  &bull;  Suncorp Stadium  &bull;  QLD v NSW</p>
 
-  <div class="good-banner">
-    <strong>The play: SUPER SGM COVER TOOL on Neds</strong> - Neds offer #3 from your account:
-    "Activate your SUPER SGM COVER TOOL on the State of Origin Game II and if your 3+ Leg SGM
-    misses by the selected number of legs, get up to $50 in Bonuses."
+  <div class="banner">
+    <strong>Neds offer:</strong> SUPER SGM COVER TOOL on SoO II. Stake $50 on a 3-leg SGM.
+    If 1 leg fails, you get your $50 back as a bonus bet. If 2+ legs fail, the bonus doesn't apply.
     <br/><br/>
-    Same offer you used on Austria vs Jordan (4.40 SGM, $50 bonus bet, 2/3 legs missed).
-    <strong>Build a 3-leg SGM, $50 stake (5% of bankroll). The SGM Cover Tool refunds UP TO $50 in bonuses if 1 leg fails. The $50 is a cap — bonus back is typically matched to your stake, so stake $50 to get the full $50 back if 1 leg fails.</strong>
+    The offer text says "up to $50 in Bonuses" — that's a cap, not a fixed refund.
+    The cleanest read is stake-matched: stake $50, get $50 back if 1 leg fails.
+    Confirm on the betslip before placing.
   </div>
 
-  <h2>Live H2H and Total (Sportsbet, scraped 15:35 AEST)</h2>
-  <table>
+  <h2>Live odds (Sportsbet, 15:35 AEST)</h2>
+  <table style="width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.95rem;">
     <thead>
-      <tr>
-        <th>Market</th>
-        <th>Selection</th>
-        <th>Odds</th>
+      <tr style="border-bottom:1px solid #2a2f3a;">
+        <th style="text-align:left;padding:0.5rem;color:#9aa0a6;font-size:0.75rem;text-transform:uppercase;">Market</th>
+        <th style="text-align:left;padding:0.5rem;color:#9aa0a6;font-size:0.75rem;text-transform:uppercase;">Selection</th>
+        <th style="text-align:left;padding:0.5rem;color:#9aa0a6;font-size:0.75rem;text-transform:uppercase;">Odds</th>
       </tr>
     </thead>
     <tbody>
-      <tr><td>Head to Head</td><td>New South Wales</td><td class="live-odds">1.92</td></tr>
-      <tr><td>Head to Head</td><td>Queensland</td><td class="live-odds">1.92</td></tr>
-      <tr><td>Line (NSW)</td><td>+0.5</td><td class="live-odds">1.92</td></tr>
-      <tr><td>Line (QLD)</td><td>-0.5</td><td class="live-odds">1.92</td></tr>
-      <tr><td>Total Match Points</td><td>Over 42.5</td><td class="live-odds">1.93</td></tr>
-      <tr><td>Total Match Points</td><td>Under 42.5</td><td class="live-odds">1.87</td></tr>
+      <tr><td style="padding:0.5rem;">Head to Head</td><td style="padding:0.5rem;">New South Wales</td><td style="padding:0.5rem;" class="live-odds">1.92</td></tr>
+      <tr><td style="padding:0.5rem;">Head to Head</td><td style="padding:0.5rem;">Queensland</td><td style="padding:0.5rem;" class="live-odds">1.92</td></tr>
+      <tr><td style="padding:0.5rem;">Line</td><td style="padding:0.5rem;">NSW +0.5</td><td style="padding:0.5rem;" class="live-odds">1.92</td></tr>
+      <tr><td style="padding:0.5rem;">Line</td><td style="padding:0.5rem;">QLD -0.5</td><td style="padding:0.5rem;" class="live-odds">1.92</td></tr>
+      <tr><td style="padding:0.5rem;">Total Match Points</td><td style="padding:0.5rem;">Over 42.5</td><td style="padding:0.5rem;" class="live-odds">1.93</td></tr>
+      <tr><td style="padding:0.5rem;">Total Match Points</td><td style="padding:0.5rem;">Under 42.5</td><td style="padding:0.5rem;" class="live-odds">1.87</td></tr>
     </tbody>
   </table>
-  <p class="meta">Source: Sportsbet, scraped via Edge bridge with tabs.eval. Player props (try scorers, shots on target, "1st Try" market) require clicking through the dropdown filter - the static DOM only shows the popular 6 markets above.</p>
 
-  <h2>SGM structures (3 legs each, 1-leg-fail refund via SGM Cover Tool)</h2>
+  <h2>4 SGM structures (all $50 stake, 3 legs each)</h2>
 
-  <div class="sgm-card">
-    <strong>SG 1 (recommended): NSW to win + Total Over 42.5 + Total Under 52.5</strong>
+  <div class="pick recommended">
+    <strong>SG 1 (recommended): NSW + Over 42.5 + Under 52.5</strong>
     <div class="meta">
-      NSW @ 1.92 &times; Over 42.5 @ 1.93 &times; Under 52.5 @ ~1.85 (estimate) = <span class="live-odds">~6.87</span>
-      &bull; <span class="premium-good">~7% premium</span>
-      &bull; $50 stake &rarr; potential $342
+      1.92 &times; 1.93 &times; 1.85 &times; 1.07 = <span class="potential">7.35</span> combined
+      &nbsp;&bull;&nbsp; $50 stake &rarr; potential <span class="potential">$367</span>
     </div>
-    <div class="meta">Logic: NSW slight favorite, SoO II typically 24-32 total points. The Over 42.5 / Under 52.5 range covers most realistic scorelines (17-26 either side).</div>
+    <div class="meta">NSW slight fav. SoO II typically 24-32 total - the O42.5 / U52.5 range covers most scorelines.</div>
   </div>
 
-  <div class="sgm-card">
-    <strong>SG 2: Either team to win + Total Under 42.5</strong>
+  <div class="pick">
+    <strong>SG 2: Either team to win + Under 42.5</strong>
     <div class="meta">
-      Either win @ ~1.30 &times; Under 42.5 @ 1.87 = <span class="live-odds">~2.43</span>
-      &bull; <span class="premium-good">~7% premium</span>
-      &bull; $50 stake &rarr; potential $122
+      1.30 &times; 1.87 &times; 1.07 = <span class="potential">2.60</span> combined
+      &nbsp;&bull;&nbsp; $50 stake &rarr; potential <span class="potential">$130</span>
     </div>
-    <div class="meta">Logic: "Either team to win" excludes the draw. If a defensive game (under 42.5) AND one team wins, you hit. Safer but lower return.</div>
+    <div class="meta">"Either team to win" excludes the draw. Safer, lower return.</div>
   </div>
 
-  <div class="sgm-card">
-    <strong>SG 3: NSW +0.5 (line) + Over 42.5 + Under 52.5</strong>
+  <div class="pick">
+    <strong>SG 3: NSW +0.5 line + Over 42.5 + Under 52.5</strong>
     <div class="meta">
-      NSW +0.5 @ 1.92 &times; Over 42.5 @ 1.93 &times; Under 52.5 @ ~1.85 = <span class="live-odds">~6.87</span>
-      &bull; <span class="premium-good">~7% premium</span>
-      &bull; $50 stake &rarr; potential $342
+      1.92 &times; 1.93 &times; 1.85 &times; 1.07 = <span class="potential">7.35</span> combined
+      &nbsp;&bull;&nbsp; $50 stake &rarr; potential <span class="potential">$367</span>
     </div>
-    <div class="meta">Logic: Same as SGM 1 but uses the LINE instead of H2H. Line pays on NSW win OR draw - extra safety if it goes to extra time deadlocked.</div>
+    <div class="meta">Same as SG 1 but using the line - pays on NSW win OR draw. Pick this if you think a draw is more likely than an NSW win.</div>
   </div>
 
-  <div class="sgm-card">
-    <strong>SG 4: NSW +0.5 (line) + Under 42.5 (defensive grinder)</strong>
+  <div class="pick">
+    <strong>SG 4: NSW +0.5 line + Under 42.5 (defensive grinder)</strong>
     <div class="meta">
-      NSW +0.5 @ 1.92 &times; Under 42.5 @ 1.87 = <span class="live-odds">~3.59</span>
-      &bull; <span class="premium-good">~7% premium</span>
-      &bull; $50 stake &rarr; potential $180
+      1.92 &times; 1.87 &times; 1.07 = <span class="potential">3.84</span> combined
+      &nbsp;&bull;&nbsp; $50 stake &rarr; potential <span class="potential">$192</span>
     </div>
-    <div class="meta">Logic: SoO II as a tight, low-scoring defensive grind (15-18 either way, NSW win or draw). Higher hit rate but lower return.</div>
+    <div class="meta">Tight, low-scoring defensive game. Higher hit rate, lower return.</div>
   </div>
 
-  <h2>Why SGM 1 is the recommended play</h2>
-  <ul>
-    <li>NSW slight favorite at $1.92 (market's coin flip with edge)</li>
-    <li>SoO Game 2 historically scores 24-32 total points (mid-range)</li>
-    <li>The Over 42.5 / Under 52.5 combination is unlikely to fail - either outcome (over 42.5 hits OR under 52.5 hits) is the more probable path</li>
-    <li>Combined with the SGM Cover Tool: if only 1 leg fails (most likely the Over 42.5 not hitting if it's a low-scoring grinder), you get $50 bonus back (your full stake recovered as a bonus bet)</li>
-    <li>If all 3 legs hit: $343 return on $50 stake = +585%</li>
-  </ul>
-
-  <h2>Risk analysis</h2>
-  <ul>
-    <li><strong>NSW loses outright</strong> (e.g. QLD by 6+): leg 1 fails, legs 2 and 3 may also fail. SGM Cover refunds $50 IF 1 leg fails. If 2+ fail, you lose $20.</li>
-    <li><strong>Low scoring (under 42 total)</strong>: leg 2 fails. If leg 1 (NSW win) and leg 3 (Under 52.5) hit, you get 2/3 = $50 bonus back.</li>
-    <li><strong>High scoring (over 52 total)</strong>: leg 3 fails. If legs 1 and 2 hit, you get 2/3 = $50 back.</li>
-    <li><strong>Draw</strong> (within 0.5): SGM 1 fails (leg 1 NSW doesn't win), but SGM 3 still wins (NSW +0.5 line pays on draw). So choose SGM 3 if you think a draw is more likely than a NSW win.</li>
-  </ul>
-
-  <h2>What's missing (player props)</h2>
-  <p>Sportsbet has 21 market categories including "1+ Try", "1st Try", "Player of the Match", "Exact Minute of 1st Try" - these are the prop bets that would let you build a true 3-leg SGM with player-specific legs. To get them, the dropdown filter needs to be clicked and waited for content to load, which is brittle from a script.</p>
-  <p><strong>Recommendation:</strong> Go to <a href="https://www.sportsbet.com.au/betting/rugby-league/state-of-origin/new-south-wales-v-queensland-10532" style="color: var(--accent);">the Sportsbet SoO page</a> directly, click "1st Try" in the market filter, and pick the player you like (typically a try-scoring winger or fullback). Then add that to a SGM with NSW + Over/Under 42.5 for a 3-leg SGM.</p>
+  <h2>Why SG 1</h2>
+  <p>Three legs hit different angles - result, total points low, total points high. At 7.35 combined on a $50 stake, you're paying $50 to potentially win $367 if all 3 hit. The SGM Cover Tool turns the SGM into a "lose 1 leg, get your money back" structure - the only way to lose the $50 is if 2+ legs fail.</p>
 
   <footer>
     Source: Sportsbet (H2H + Line + Total), Neds (SGM Cover Tool offer).
-    Engine: <code>daz_betting_engine.cards.soo_card</code>. Card is read-only.
-    Danny and Brudda (David) make the final call.
-    Last updated 17 Jun 2026 15:35 AEST.
+    Card is read-only. Danny and Brudda (David) make the final call.
+    Last updated 17 Jun 2026 15:52 AEST.
   </footer>
-
-  <h2>Important: SGM Cover Tool terms (need to confirm with Neds)</h2>
-  <p>The "up to $50 in Bonuses" wording on the Neds offer is ambiguous. Two possible interpretations:</p>
-  <ol>
-    <li><strong>Stake-matched (most likely):</strong> If 1 leg fails, you get a bonus bet back equal to your stake, capped at $50. So a $50 stake gives you a $50 bonus back, a $20 stake gives you a $20 bonus back.</li>
-    <li><strong>Fixed $50 (less likely):</strong> If 1 leg fails, you get a $50 bonus bet regardless of stake, but you need to stake at least the qualifying amount.</li>
-  </ol>
-  <p><strong>Recommended:</strong> Confirm the terms in your Neds account before placing (look for the "SUPER SGM COVER TOOL" terms link on the betslip). The card above assumes interpretation #1 — stake $50 to get the full $50 back if 1 leg fails.</p>
 </body>
 </html>
