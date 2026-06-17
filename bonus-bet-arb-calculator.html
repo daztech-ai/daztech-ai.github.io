@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bonus Bet Arb Calculator</title>
+<style>
+  :root {
+    --bg: #0a0a0f; --card: #111118; --border: #1e1e2e;
+    --accent: #00d4aa; --accent2: #ffd60a; --red: #ff453a;
+    --green: #32d74b; --text: #e0e0e8; --muted: #7a7a8a;
+    --gold: #f5a623;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; padding: 20px; }
+  .header { text-align: center; margin-bottom: 24px; }
+  .header h1 { font-size: 22px; font-weight: 700; margin-bottom: 4px; }
+  .header .sub { color: var(--muted); font-size: 13px; }
+  .section { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px; margin-bottom: 16px; }
+  .section-title { font-size: 11px; font-weight: 600; letter-spacing: 1.2px; color: var(--accent); text-transform: uppercase; margin-bottom: 12px; }
+  .row { display: flex; align-items: center; margin-bottom: 10px; gap: 12px; }
+  .row label { font-size: 13px; color: var(--muted); min-width: 160px; }
+  .row input { background: #1a1a24; border: 1px solid var(--border); border-radius: 6px; color: var(--text); padding: 8px 12px; font-size: 14px; width: 80px; }
+  .row .hint { font-size: 11px; color: var(--muted); }
+  .result-box { background: linear-gradient(135deg, #0f1a2e 0%, #0a1a0f 100%); border: 2px solid var(--green); border-radius: 12px; padding: 16px; margin-top: 16px; }
+  .result-box.fail { border-color: var(--red); background: linear-gradient(135deg, #1a0a0a 0%, #0f1a2e 100%); }
+  .result-box h2 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+  .result-box h2.green { color: var(--green); }
+  .result-box h2.red { color: var(--red); }
+  .result-row { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 13px; }
+  .result-row:last-child { border-bottom: none; }
+  .result-row .val { font-weight: 700; }
+  .result-row .val.green { color: var(--green); }
+  .result-row .val.red { color: var(--red); }
+  .result-row .val.gold { color: var(--accent2); }
+  .legend { display: flex; gap: 16px; margin-bottom: 16px; font-size: 12px; color: var(--muted); }
+  .legend-item { display: flex; align-items: center; gap: 6px; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; }
+  .dot.back { background: var(--accent); }
+  .dot.lay { background: var(--accent2); }
+  .back-calc { border-left: 3px solid var(--accent); padding-left: 12px; margin-top: 8px; }
+  .lay-calc { border-left: 3px solid var(--accent2); padding-left: 12px; margin-top: 8px; }
+  .calc-step { font-size: 11px; color: var(--muted); margin-bottom: 4px; font-family: monospace; }
+  .info-box { background: rgba(255,214,10,0.08); border: 1px solid rgba(255,214,10,0.3); border-radius: 8px; padding: 12px; margin-top: 12px; font-size: 12px; color: var(--gold); line-height: 1.5; }
+  .how-to { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px; margin-bottom: 16px; }
+  .how-to h3 { font-size: 13px; color: var(--accent); margin-bottom: 10px; }
+  .how-to ol { padding-left: 20px; font-size: 12px; color: var(--muted); line-height: 1.8; }
+  .footer { text-align: center; color: var(--muted); font-size: 11px; margin-top: 24px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Bonus Bet Arb Calculator</h1>
+  <div class="sub">Sportsbet / Betr back — Betfair lay</div>
+</div>
+
+<div class="how-to">
+  <h3>How to use this</h3>
+  <ol>
+    <li>Enter your <strong>back odds</strong> from Sportsbet or Betr (the bonus bet odds)</li>
+    <li>Enter the <strong>Betfair lay odds</strong> for the same selection</li>
+    <li>Enter your <strong>Betfair commission rate</strong> (default 5%)</li>
+    <li>Enter your <strong>target profit</strong> from the bonus bet (e.g. $35)</li>
+    <li>Hit <strong>Calculate</strong></li>
+  </ol>
+</div>
+
+<div class="legend">
+  <div class="legend-item"><div class="dot back"></div> Back (bookmaker bonus bet)</div>
+  <div class="legend-item"><div class="dot lay"></div> Lay (Betfair opposite)</div>
+</div>
+
+<div class="section">
+  <div class="section-title">Inputs</div>
+  <div class="row">
+    <label>Back odds (bookmaker)</label>
+    <input type="number" id="backOdds" value="1.75" step="0.01" min="1.01">
+    <span class="hint">e.g. 1.75 for Czech Win</span>
+  </div>
+  <div class="row">
+    <label>Lay odds (Betfair)</label>
+    <input type="number" id="layOdds" value="1.80" step="0.01" min="1.01">
+    <span class="hint">Check Betfair exchange</span>
+  </div>
+  <div class="row">
+    <label>Betfair commission %</label>
+    <input type="number" id="commission" value="5" step="0.1" min="0" max="10">
+    <span class="hint">Usually 5%</span>
+  </div>
+  <div class="row">
+    <label>Target profit ($)</label>
+    <input type="number" id="targetProfit" value="35" step="1" min="1">
+    <span class="hint">How much you want to lock in</span>
+  </div>
+  <button onclick="calculate()" style="background: var(--accent); color: #000; border: none; border-radius: 8px; padding: 10px 24px; font-size: 14px; font-weight: 700; cursor: pointer; margin-top: 8px;">
+    Calculate Arb
+  </button>
+</div>
+
+<div id="result"></div>
+
+<div class="info-box">
+  <strong>For $35 profit on a $50 bonus bet:</strong><br>
+  Required back odds minimum ≈ 1.70 (at 50% conversion rate)<br>
+  At 1.75 back odds: lay £18 at 1.75 → $35.00 profit either way<br>
+  At 1.80 back odds: lay £17.50 at 1.80 → $35.00 profit either way<br>
+  At 2.00 back odds: lay £15.75 at 2.00 → $35.00 profit either way
+</div>
+
+<div class="footer">
+  Arb Calculator &middot; Bonus bet arbing = converting bonus funds at your target rate<br>
+  Remember: you can only use bonus bet winnings — stake is not returned
+</div>
+
+<script>
+function calculate() {
+  const backOdds = parseFloat(document.getElementById('backOdds').value);
+  const layOdds = parseFloat(document.getById('layOdds').value);
+  const commission = parseFloat(document.getElementById('commission').value) / 100;
+  const targetProfit = parseFloat(document.getElementById('targetProfit').value);
+  
+  const resultDiv = document.getElementById('result');
+  
+  // Check if arb exists
+  // Back odds must be > 1/(1 - commission/lay_odds) for arb
+  // Actually for bonus bet: we need backOdds > layOdds for a standard arb
+  // But for bonus bet conversion: we need to work backwards from target
+  
+  // Required back odds for target profit with lay at current odds
+  // targetProfit = (backStake * backOdds - backStake) * 0.5 - layLiability * (1 - commission)
+  // where layLiability = layStake * (layOdds - 1)
+  // and layStake is what we solve for
+  
+  // Actually let's use the lay-stake formula:
+  // layStake = targetProfit / ((1 - commission) * (layOdds - 1))
+  const layStake = targetProfit / ((1 - commission) * (layOdds - 1));
+  const layLiability = layStake * (layOdds - 1);
+  
+  // Back profit if back wins: bonus bet converts at 50%
+  // Profit = backStake * (backOdds - 1) * 0.5 - layLiability * (1 - commission)
+  // Set profit = targetProfit and solve for backStake
+  // Actually for bonus bet, we don't stake cash — we only need the lay to cover
+  
+  // Simplified bonus bet arb formula:
+  // To lock in $X from bonus bet at lay odds L and commission C:
+  // Lay stake = X / ((1-C) * (L-1))
+  const requiredBackOdds = 1 + (2 * layLiability * (1 - commission) / (layStake || 0.001));
+  
+  const hasArb = layOdds > backOdds;
+  const canArb = layOdds < backOdds;
+  
+  // Bonus conversion: what's the effective return if we just place the bonus bet?
+  const bonusConversion = backOdds * 0.5; // 50% of (odds - 1) converted to cash
+  const freeBetValue = targetProfit / bonusConversion; // how much of the bonus we'd "use"
+  
+  let html = '';
+  
+  if (hasArb) {
+    // Standard arb: lay odds > back odds — THIS IS THE arb!
+    const totalBackStake = (layStake * (layOdds - 1)) / (backOdds - 1);
+    const totalLayStake = layStake;
+    const backProfit = (totalBackStake * backOdds - totalBackStake) * 0.5;
+    const layProfit = layStake * (layOdds - 1) * (1 - commission);
+    
+    html = `<div class="result-box">
+      <h2 class="green">ARB FOUND — Lay odds (${layOdds}) > Back odds (${backOdds})</h2>
+      <div class="result-row"><span>Bonus bet on BACK side at odds</span><span class="val gold">${backOdds.toFixed(2)}</span></div>
+      <div class="result-row"><span>Lay on BETFAID at odds</span><span class="val gold">${layOdds.toFixed(2)}</span></div>
+      <div class="result-row"><span>Betfair commission</span><span class="val">${(commission*100).toFixed(1)}%</span></div>
+      <hr style="border-color:rgba(255,255,255,0.1);margin:10px 0">
+      <div class="result-row"><span>Back stake (bonus bet)</span><span class="val green">$${totalBackStake.toFixed(2)}</span></div>
+      <div class="result-row"><span>Lay stake (Betfair)</span><span class="val gold">$${totalLayStake.toFixed(2)}</span></div>
+      <div class="result-row"><span>Lay liability</span><span class="val red">-$${layLiability.toFixed(2)}</span></div>
+      <hr style="border-color:rgba(255,255,255,0.1);margin:10px 0">
+      <div class="result-row"><span>If BACK wins</span><span class="val green">+$${layProfit.toFixed(2)} (from lay)</span></div>
+      <div class="result-row"><span>If LAY wins</span><span class="val green">+$${backProfit.toFixed(2)} (from bonus)</span></div>
+      <div class="result-row"><span>Locked profit (either way)</span><span class="val green">~$${Math.min(layProfit, backProfit).toFixed(2)}</span></div>
+      <div class="lay-calc">
+        <div class="calc-step">Lay stake = target profit / ((1 - commission) x (lay odds - 1))</div>
+        <div class="calc-step">= $${targetProfit} / ((1 - ${commission.toFixed(2)}) x (${layOdds.toFixed(2)} - 1))</div>
+        <div class="calc-step">= $${layStake.toFixed(2)}</div>
+      </div>
+    </div>`;
+  } else {
+    // No arb — need to check if it still converts
+    // At lay > back: it's actually good for bonus conversion (lay liability is lower)
+    // But for pure arb we can't lock in profit without the arb
+    
+    // For bonus conversion: work out lay stake to get target profit
+    // Profit if back wins = bonusBackValue - layLiability
+    // Profit if lay wins = layWin - 0 (no bonus used on lay side)
+    
+    // Actually let's calculate: if we want to target a specific profit
+    // and lay odds are worse than back odds...
+    // The question is: can we still arb WITHIN the bonus bet structure?
+    
+    // Real-world approach: use the BETFAIR lay to cancel out the bookmaker bonus bet
+    // Lay stake = (bonus stake * back odds) / lay odds
+    const bonusStake = 50; // $50 bonus bet
+    const layStakeForArb = (bonusStake * backOdds) / layOdds;
+    const layLiabForArb = layStakeForArb * (layOdds - 1);
+    const backWinNet = (bonusStake * backOdds - bonusStake) * 0.5; // 50% conversion on bonus
+    const layWinNet = layStakeForArb * (layOdds - 1) * (1 - commission);
+    
+    const noArbMessage = `No arb here — lay odds (${layOdds.toFixed(2)}) are lower than back odds (${backOdds.toFixed(2)}), so you can't lock in profit on both sides simultaneously.
+
+To arb THIS bonus bet:
+• You need a SEPARATE event where back odds > lay odds
+• Or you need the back leg to win and lay to cover the loss`;
+
+    html = `<div class="result-box fail">
+      <h2 class="red">No Arb — Lay &lt; Back</h2>
+      <div class="result-row"><span>Back odds (bookmaker)</span><span class="val gold">${backOdds.toFixed(2)}</span></div>
+      <div class="result-row"><span>Lay odds (Betfair)</span><span class="val gold">${layOdds.toFixed(2)}</span></div>
+      <div class="result-row"><span>Arb window</span><span class="val red">NO — lay &lt; back</span></div>
+      <div class="result-row"><span>For $35 profit</span><span class="val">Need lay odds ≥ ${layOdds.toFixed(2)} at Betfair</span></div>
+      <div class="info-box" style="margin-top:10px;">
+        <strong>For bonus bet conversion ($50 bonus → $35 target):</strong><br>
+        Formula: Lay stake = Target profit / ((1 - commission) x (lay odds - 1))<br>
+        With current lay odds of ${layOdds.toFixed(2)}: Lay stake needed = $${layStake.toFixed(2)}<br><br>
+        <strong>To find an arb:</strong> You need a match where the bookmaker back odds &gt; the Betfair lay odds for the SAME selection. Try Czech Rep vs SA or England vs Croatia — check Betfair for their lay prices on the teams you'd back on Sportsbet/Betr.
+      </div>
+    </div>`;
+  }
+  
+  resultDiv.innerHTML = html;
+}
+
+// Auto-calculate on load
+calculate();
+</script>
+
+</body>
+</html>
