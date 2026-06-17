@@ -16,35 +16,35 @@
       "edge_pct": 5.0,
       "ev_dollars": 2.49,
       "verdict": "ENGINE BET",
-      "result": "2 legs failed - no bet placed",
+      "result": "DID NOT BET",
       "final_score": "Argentina 3-0 Algeria",
-      "legs_result": ["Argentina Win PASSED", "BTTS Yes FAILED (Algeria 0)", "Over 2.5 FAILED (3 goals = under 2.5)"],
-      "status": "DID NOT BET"
+      "legs_result": ["Argentina Win PASSED", "BTTS Yes FAILED", "Over 2.5 FAILED (3 goals = under 2.5)"]
     },
     {
       "match": "Austria vs Jordan",
-      "bookmaker": "Neds",
-      "promo": "SGM Cover",
+      "bookmaker": "Betr",
+      "promo": "Betr SGM promo (TBC terms)",
       "stake_type": "bonus_bet",
       "stake": 50.00,
       "legs": [
-        {"market": "H2H", "selection": "Austria Win", "odds": 1.36},
-        {"market": "BTTS", "selection": "Yes", "odds": 2.18},
-        {"market": "Over/Under 2.5", "selection": "Over 2.5", "odds": 1.78}
+        {"market": "H2H", "selection": "Austria Win", "odds": "TBC"},
+        {"market": "BTTS", "selection": "Yes", "odds": "TBC"},
+        {"market": "Over/Under 2.5", "selection": "Over 2.5", "odds": "TBC"}
       ],
-      "combined_odds": 4.44,
-      "combined_american": "+344",
+      "combined_odds": "TBC",
       "edge_pct": 14.4,
       "ev_dollars": 7.22,
       "verdict": "ENGINE BET",
-      "edge_threshold": 5.0,
       "bonus_conversion_rate": 0.50,
       "status": "LIVE",
       "kickoff": "2026-06-17T04:00:00Z",
       "kickoff_aest": "2026-06-17T14:00:00+10:00",
-      "result": "PENDING",
-      "live_score_20min": "0-0",
-      "note": "3-leg SGM on Neds SGM Cover promo. Danny placed $50 bonus bet. 1 leg fail = bonus back."
+      "current_score_74min": "1-1",
+      "score_update": "Austria 1-1 Jordan (after Jordan 1-0 lead, Austria equalized)",
+      "legs_status": ["Austria Win ALIVE (1-1, need Austria to win)", "BTTS Yes ALIVE (both scored)", "Over 2.5 ALIVE (2 goals so far, 1 more needed)"],
+      "betr_odds_needed": true,
+      "betr_promo_terms_needed": true,
+      "note": "Danny bet via Betr, not Neds. Odds per leg TBC. Also betting Kalajdzic 1+ Shots On Target @ 1.28 — subbed off, bet likely lost/void."
     }
   ]
 }
