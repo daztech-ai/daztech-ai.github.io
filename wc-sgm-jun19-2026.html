@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WC SGM Card | Jun 19 2026</title>
+<style>
+:root {
+  --bg: #0a0a0f; --card: #111118; --border: #1e1e2e;
+  --accent: #00d4aa; --accent2: #ffd60a; --red: #ff453a;
+  --green: #32d74b; --text: #e0e0e8; --muted: #7a7a8a;
+  --gold: #f5a623; --live: #ff6b35;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; padding: 16px; }
+.header { text-align: center; margin-bottom: 20px; }
+.header .tag { display: inline-block; background: var(--live); color: #fff; font-weight: 700; font-size: 10px; padding: 3px 8px; border-radius: 20px; letter-spacing: 1px; margin-bottom: 8px; }
+.header h1 { font-size: 20px; font-weight: 700; margin-bottom: 4px; }
+.header .sub { color: var(--muted); font-size: 12px; }
+.match-block { margin-bottom: 28px; }
+.match-banner { background: linear-gradient(135deg, #0f1a2e 0%, #1a0a14 100%); border: 1px solid var(--border); border-radius: 10px; padding: 14px; text-align: center; margin-bottom: 12px; }
+.match-banner .teams { display: flex; align-items: center; justify-content: center; gap: 12px; font-size: 18px; font-weight: 800; margin-bottom: 5px; }
+.match-banner .teams .home { color: var(--accent2); }
+.match-banner .teams .away { color: var(--muted); }
+.match-banner .meta { color: var(--muted); font-size: 11px; }
+.odds-row { display: flex; justify-content: center; gap: 16px; margin-top: 8px; }
+.odds-chip { background: var(--card); border: 1px solid var(--border); border-radius: 6px; padding: 4px 10px; font-size: 11px; color: var(--muted); }
+.odds-chip span { color: var(--accent); font-weight: 700; margin-left: 4px; }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 12px; margin-bottom: 10px; }
+.card-title { font-size: 10px; font-weight: 600; letter-spacing: 1.2px; color: var(--accent); text-transform: uppercase; margin-bottom: 8px; }
+.leg { display: flex; justify-content: space-between; align-items: center; padding: 7px 0; border-bottom: 1px solid var(--border); }
+.leg:last-child { border-bottom: none; }
+.leg .leg-info { flex: 1; }
+.leg .leg-name { font-weight: 600; font-size: 12px; }
+.leg .leg-desc { font-size: 10px; color: var(--muted); margin-top: 1px; }
+.leg .leg-odds { font-weight: 700; font-size: 15px; color: var(--accent); min-width: 40px; text-align: right; }
+.sgm-card { background: linear-gradient(135deg, #0f1a2e 0%, #1a1040 100%); border: 1px solid var(--accent2); border-radius: 10px; padding: 12px; margin-bottom: 10px; }
+.sgm-card .card-title { color: var(--accent2); }
+.sgm-total { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 5px; }
+.sgm-total .label { font-size: 11px; color: var(--muted); }
+.sgm-total .odds { font-size: 22px; font-weight: 800; color: var(--accent2); }
+.sgm-explain { background: rgba(0,212,170,0.08); border: 1px solid rgba(0,212,170,0.2); border-radius: 6px; padding: 7px 9px; margin-top: 8px; font-size: 10px; color: var(--accent); line-height: 1.5; }
+.verdict { background: var(--card); border: 2px solid var(--green); border-radius: 10px; padding: 12px; margin-bottom: 12px; }
+.verdict .verdict-label { font-size: 10px; font-weight: 600; color: var(--green); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 5px; }
+.verdict .verdict-text { font-size: 12px; line-height: 1.5; }
+.verdict .verdict-text em { color: var(--accent2); font-style: normal; font-weight: 600; }
+.verdict.yellow { border-color: var(--gold); }
+.verdict.yellow .verdict-label { color: var(--gold); }
+.verdict.red { border-color: var(--red); }
+.verdict.red .verdict-label { color: var(--red); }
+.consider-tag { display: inline-block; background: rgba(245,166,35,0.2); color: var(--gold); font-size: 9px; font-weight: 700; padding: 1px 6px; border-radius: 3px; letter-spacing: 0.5px; margin-right: 4px; }
+.watch-tag { display: inline-block; background: rgba(255,107,53,0.15); color: var(--live); font-size: 9px; font-weight: 700; padding: 1px 6px; border-radius: 3px; letter-spacing: 0.5px; margin-right: 4px; }
+.best-bets { background: linear-gradient(135deg, #0f1a2e 0%, #1a1040 100%); border: 1px solid var(--accent2); border-radius: 10px; padding: 14px; margin-bottom: 20px; }
+.best-bets .title { font-size: 10px; font-weight: 600; letter-spacing: 1.5px; color: var(--accent2); text-transform: uppercase; margin-bottom: 10px; }
+.best-bet-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+.best-bet-row:last-child { border-bottom: none; }
+.best-bet-row .desc { font-size: 12px; font-weight: 600; }
+.best-bet-row .odds-val { font-size: 16px; font-weight: 800; color: var(--accent2); }
+.best-bet-row .stake-val { font-size: 11px; color: var(--muted); }
+footer { margin-top: 30px; text-align: center; color: var(--muted); font-size: 11px; line-height: 1.8; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="tag">SGM CARD</div>
+  <h1>World Cup SGM Card</h1>
+  <div class="sub">Fri 19 Jun 2026 &bull; Live odds &bull; AU bookmakers</div>
+</div>
+
+<!-- BEST BETS SUMMARY -->
+<div class="best-bets">
+  <div class="title">&#9889; Today's Best Bets</div>
+  <div class="best-bet-row">
+    <div>
+      <div class="desc">Mexico Win + Under 2.5 Goals</div>
+      <div class="stake-val">Sportsbet / Neds &bull; 2-leg SGM</div>
+    </div>
+    <div>
+      <div class="odds-val">~3.36</div>
+      <div class="stake-val">Best available angle</div>
+    </div>
+  </div>
+  <div class="best-bet-row">
+    <div>
+      <div class="desc">Mexico Win + BTTS Yes</div>
+      <div class="stake-val">Sportsbet / Neds &bull; 2-leg SGM</div>
+    </div>
+    <div>
+      <div class="odds-val">~3.60</div>
+      <div class="stake-val">Both teams to score</div>
+    </div>
+  </div>
+  <div class="best-bet-row">
+    <div>
+      <div class="desc">Switzerland Win + Under 2.5</div>
+      <div class="stake-val">Sportsbet / Neds &bull; 2-leg SGM</div>
+    </div>
+    <div>
+      <div class="odds-val">~2.96</div>
+      <div class="stake-val">Short but solid</div>
+    </div>
+  </div>
+  <div class="best-bet-row">
+    <div>
+      <div class="desc">Switzerland Win + BTTS No</div>
+      <div class="stake-val">Sportsbet / Neds &bull; 2-leg SGM</div>
+    </div>
+    <div>
+      <div class="odds-val">~3.10</div>
+      <div class="stake-val">Swiss clean sheet angle</div>
+    </div>
+  </div>
+</div>
+
+<!-- MATCH 1: SWITZERLAND vs BOSNIA -->
+<div class="match-block">
+  <div class="match-banner">
+    <div class="teams">
+      <span class="home">Switzerland</span>
+      <span>vs</span>
+      <span class="away">Bosnia & Herzegovina</span>
+    </div>
+    <div class="meta">Group B &bull; Kickoff: 05:00am AEST &bull; SoFi Stadium, LA</div>
+    <div class="odds-row">
+      <div class="odds-chip">SUI <span>1.61</span></div>
+      <div class="odds-chip">DRAW <span>4.20</span></div>
+      <div class="odds-chip">BIH <span>6.60</span></div>
+      <div class="odds-chip">O2.5 <span>~1.70</span></div>
+      <div class="odds-chip">BTTS Y <span>~1.91</span></div>
+    </div>
+  </div>
+
+  <!-- SGM: Swiss Win + Under 2.5 -->
+  <div class="sgm-card">
+    <div class="card-title">2-Leg SGM &mdash; Switzerland Win + Under 2.5</div>
+    <div class="leg">
+      <div class="leg-info"><div class="leg-name">Switzerland Win</div><div class="leg-desc">H2H @ 1.61</div></div>
+      <div class="leg-odds">1.61</div>
+    </div>
+    <div class="leg">
+      <div class="leg-info"><div class="leg-name">Under 2.5 Goals</div><div class="leg-desc">Total goals line @ ~1.70</div></div>
+      <div class="leg-odds">~1.70</div>
+    </div>
+    <div class="sgm-total">
+      <div class="label">Combined Odds</div>
+      <div class="odds">~2.96</div>
+    </div>
+    <div class="sgm-explain">Why: Swiss ranked 15th, Bosnia's attack limp (1 clean sheet in last 10). All 4 Group B teams drew MD1 — Swiss need a win to control the group. Low block expected. <strong>Both legs are independently supported by market consensus.</strong></div>
+  </div>
+
+  <!-- SGM: Swiss Win + BTTS No -->
+  <div class="sgm-card">
+    <div class="card-title">2-Leg SGM &mdash; Switzerland Win + BTTS No</div>
+    <div class="leg">
+      <div class="leg-info"><div class="leg-name">Switzerland Win</div><div class="leg-desc">H2H @ 1.61</div></div>
+      <div class="leg-odds">1.61</div>
+    </div>
+    <div class="leg">
+      <div class="leg-info"><div class="leg-name">BTTS No</div><div class="leg-desc">Both teams NOT to score @ ~1.80</div></div>
+      <div class="leg-odds">~1.80</div>
+    </div>
+    <div class="sgm-total">
+      <div class="label">Combined Odds</div>
+      <div class="odds">~3.10</div>
+    </div>
+    <div class="sgm-explain">Why: Swiss are clean-sheet machines in qualifying (0 goals conceded in 6 of 8 matches). Bosnia scored in only 3 of last 10 away games. Swiss 2-0 or 3-0 the most likely outcome.</div>
+  </div>
+
+  <div class="verdict yellow">
+    <div class="verdict-label">ENGINE VERDICT &mdash; Switzerland vs Bosnia</div>
+    <div class="verdict-text">
+      Swiss Win @ 1.61 is the most reliable leg on the card. Use as the anchor for any SGM build. The Swiss win + Under 2.5 at ~2.96 is the pick of the bunch — short but backed by form.<br><br>
+      <span class="consider-tag">CONSIDER</span> Swiss Win + Under 2.5 @ ~2.96 — low margin, high hit rate.<br>
+      <span class="consider-tag">CONSIDER</span> Swiss Win + BTTS No @ ~3.10 — slightly better odds, same conviction.<br><br>
+      Avoid pure Swiss win as a standalone leg with bonus bets at 1.61 — need legs to build value.
+    </div>
+  </div>
+</div>
+
+<!-- MATCH 2: CANADA vs QATAR -->
+<div class="match-block">
+  <div class="match-banner">
+    <div class="teams">
+      <span class="home">Canada</span>
+      <span>vs</span>
+      <span class="away">Qatar</span>
+    </div>
+    <div class="meta">Group B &bull; Kickoff: 08:00am AEST &bull; BC Place, Vancouver</div>
+    <div class="odds-row">
+      <div class="odds-chip">CAN <span>1.29</span></div>
+      <div class="odds-chip">DRAW <span>6.00</span></div>
+      <div class="odds-chip">QAT <span>14.00</span></div>
+      <div class="odds-chip">U2.5 <span>~1.68</span></div>
+      <div class="odds-chip">BTTS Y <span>~1.91</span></div>
+    </div>
+  </div>
+
+  <!-- SGM: Canada Win + Under 2.5 -->
+  <div class="sgm-card">
+    <div class="card-title">2-Leg SGM &mdash; Canada Win + Under 2.5</div>
+    <div class="leg">
+      <div class="leg-info"><div class="leg-name">Canada Win</div><div class="leg-desc">H2H @ 1.29</div></div>
+      <div class="leg-odds">1.29</div>
+    </div>
+    <div class="leg">
+      <div class="leg-info"><div class="leg-name">Under 2.5 Goals</div><div class="leg-desc">Total goals line @ ~1.68</div></div>
+      <div class="leg-odds">~1.68</div>
+    </div>
+    <div class="sgm-total">
+      <div class="label">Combined Odds</div>
+      <div class="odds">~2.17</div>
+    </div>
+    <div class="sgm-explain">Why: Canada at 1.29 is too short for a standalone bonus bet leg. But combined with Under 2.5 gets to 2.17 — still thin. Canada is 72.9% win probability (Opta). Qatar ranked bottom of Group B. This works best as Leg 3 of a 3-leg SGM Cover combo.</div>
+  </div>
+
+  <div class="verdict red">
+    <div class="verdict-label">ENGINE VERDICT &mdash; Canada vs Qatar</div>
+    <div class="verdict-text">
+      <span class="watch-tag">SKIP</span> as a standalone bet. Canada 1.29 is too short for bonus bet conversion. Under 2.5 at 1.68 is available but the combined odds of ~2.17 aren't worth burning a bonus bet leg on.<br><br>
+      <span class="consider-tag">USE AS LEG 3</span> of a 3-leg SGM Cover combo (e.g. Switzerland + Mexico + Canada). At 1.29, it bulks the odds without adding meaningful risk.
+    </div>
+  </div>
+</div>
+
+<!-- MATCH 3: MEXICO vs SOUTH KOREA -->
+<div class="match-block">
+  <div class="match-banner">
+    <div class="teams">
+      <span class="home">Mexico</span>
+      <span>vs</span>
+      <span class="away">South Korea</span>
+    </div>
+    <div class="meta">Group A &bull; Kickoff: 11:00am AEST &bull; Estadio Akron, Guadalajara</div>
+    <div class="odds-row">
+      <div class="odds-chip">MEX <span>2.02</span></div>
+      <div class="odds-chip">DRAW <span>3.50</span></div>
+      <div class="odds-chip">SK <span>4.40</span></div>
+      <div class="odds-chip">U2.5 <span>~1.68</span></div>
+      <div class="odds-chip">BTTS Y <span>~1.91</span></div>
+    </div>
+  </div>
+
+  <!-- SGM: Mexico Win + Under 2.5 -->
+  <div class="sgm-card">
+    <div class="card-title">2-Leg SGM &mdash; Mexico Win + Under 2.5 Goals</div>
+    <div class="leg">
+      <div class="leg-info"><div class="leg-name">Mexico Win</div><div class="leg-desc">H2H @ 2.02</div></div>
+      <div class="leg-odds">2.02</div>
+    </div>
+    <div class="leg">
+      <div class="leg-info"><div class="leg-name">Under 2.5 Goals</div><div class="leg-desc">SportsLine expert pick @ ~1.68</div></div>
+      <div class="leg-odds">~1.68</div>
+    </div>
+    <div class="sgm-total">
+      <div class="label">Combined Odds</div>
+      <div class="odds">~3.36</div>
+    </div>
+    <div class="sgm-explain">Why: Mexico's last 3 tournament openers: 2-0 SA, 2-0 CZE, 1-0 (WC opener). They've scored exactly 2 in 2 of 3 MD1 games. SK beat Czech 2-1 but Mexico's defence is far superior. SportsLine backing Under 2.5 at -148. Mexico should win 2-0 or 1-0.</div>
+  </div>
+
+  <!-- SGM: Mexico Win + BTTS Yes -->
+  <div class="sgm-card">
+    <div class="card-title">2-Leg SGM &mdash; Mexico Win + BTTS Yes</div>
+    <div class="leg">
+      <div class="leg-info"><div class="leg-name">Mexico Win</div><div class="leg-desc">H2H @ 2.02</div></div>
+      <div class="leg-odds">2.02</div>
+    </div>
+    <div class="leg">
+      <div class="leg-info"><div class="leg-name">BTTS Yes</div><div class="leg-desc">Both teams to score @ ~1.91</div></div>
+      <div class="leg-odds">~1.91</div>
+    </div>
+    <div class="sgm-total">
+      <div class="label">Combined Odds</div>
+      <div class="odds">~3.60</div>
+    </div>
+    <div class="sgm-explain">Why: South Korea scored in 7 of their last 10 matches (including vs Czech 2-1). Mexico keep it tight but not shutout at home. The 2-1 scoreline is live. If Mexico win 2-1 this lands. DK Preview explicitly recommends Mexico + BTTS Yes angle.</div>
+  </div>
+
+  <!-- 3-Leg SGM Cover -->
+  <div class="sgm-card">
+    <div class="card-title">3-Leg SGM Cover &mdash; Mexico + Switzerland + Canada</div>
+    <div class="leg">
+      <div class="leg-info"><div class="leg-name">Mexico Win</div><div class="leg-desc">H2H @ 2.02</div></div>
+      <div class="leg-odds">2.02</div>
+    </div>
+    <div class="leg">
+      <div class="leg-info"><div class="leg-name">Switzerland Win</div><div class="leg-desc">H2H @ 1.61</div></div>
+      <div class="leg-odds">1.61</div>
+    </div>
+    <div class="leg">
+      <div class="leg-info"><div class="leg-name">Canada Win</div><div class="leg-desc">H2H @ 1.29</div></div>
+      <div class="leg-odds">1.29</div>
+    </div>
+    <div class="sgm-total">
+      <div class="label">Combined Odds</div>
+      <div class="odds">~4.21</div>
+    </div>
+    <div class="sgm-explain"><strong>Neds SGM Cover:</strong> If exactly 1 leg fails — $50 bonus bet refunded. If all 3 hit: $50 x 4.21 = $210 gross. If 2+ fail: bonus burns. This is the Neds SGM Cover promo at its best — 3 legs with high conviction, cheap insurance.</div>
+  </div>
+
+  <div class="verdict yellow">
+    <div class="verdict-label">ENGINE VERDICT &mdash; Mexico vs South Korea</div>
+    <div class="verdict-text">
+      Mexico Win @ 2.02 is the best single leg on the card for bonus bet conversion — it clears the threshold and gives real cash if it lands. Build the SGM around it.<br><br>
+      <span class="consider-tag">BEST PICK</span> Mexico Win + Under 2.5 @ ~3.36 — 2-leg SGM, best risk/reward.<br>
+      <span class="consider-tag">ALSO</span> Mexico Win + BTTS Yes @ ~3.60 — higher odds, more volatile.<br>
+      <span class="consider-tag">3-LEG COVER</span> Mexico + Swiss + Canada @ ~4.21 — Neds SGM Cover, covers 1 leg fail.
+    </div>
+  </div>
+</div>
+
+<!-- SUMMARY -->
+<div class="verdict">
+  <div class="verdict-label">DAY SUMMARY &mdash; HOW TO USE THIS CARD</div>
+  <div class="verdict-text">
+    <strong>Best single leg:</strong> Mexico Win @ 2.02 — viable bonus bet conversion, clear conviction.<br><br>
+    <strong>Best 2-leg SGM:</strong> Mexico Win + Under 2.5 @ ~3.36 — tight odds, strong form support.<br><br>
+    <strong>Best Neds SGM Cover:</strong> Mexico + Switzerland + Canada @ ~4.21 — 3-leg, $50 bonus bet protected, all 3 legs independently backed.<br><br>
+    <strong>Switzerland anchor:</strong> Swiss Win is the safest leg on the card. Use as base for any Swiss-containing SGM.<br><br>
+    <strong>Canada:</strong> Use only as Leg 3 of a 3-leg combo. Never as a standalone bonus bet leg at 1.29.<br><br>
+    <em>Odds sourced: Betfair AU (H2H), Covers / SportsLine / DK Network (alt markets). Verify all legs at the bookie before placing. Odds move — recompute if a leg drifts more than 5%.</em>
+  </div>
+</div>
+
+<footer>
+  Engine: Mavis WC SGM Builder &bull; Odds: Betfair AU + AU bookmakers &bull; Built: 2026-06-19 06:00am AEST<br>
+  SGM Cover promo: Neds &bull; Betting with Danny + Brudda approval only
+</footer>
+
+</body>
+</html>
