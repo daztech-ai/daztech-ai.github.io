@@ -3,112 +3,112 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>neds Bonus Bet — England vs Croatia</title>
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0f0f1a;color:#e8e8f0;max-width:480px;margin:0 auto;padding:16px}
-.card{background:#1a1a2e;border-radius:16px;padding:20px;margin-bottom:16px;border:1px solid #2a2a3e}
-.header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
-.badge{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:700}
-.badge-wc{background:#1e8449;color:#fff}
-.badge-bonus{background:#ffd700;color:#1a1a2e}
-h2{font-size:20px;margin-bottom:4px}
-.time{color:#999;font-size:13px;margin-bottom:12px}
-.leg{border-left:3px solid #1e8449;padding:10px 14px;margin-bottom:10px;background:#14142a;border-radius:0 8px 8px 0}
-.leg-label{font-size:15px;font-weight:600;margin-bottom:2px}
-.leg-reason{font-size:12px;color:#999;margin-top:2px}
-.leg-odds{font-size:14px;color:#ffd700;font-weight:700;margin-top:2px}
-.odds-box{text-align:center;padding:14px;background:#14142a;border-radius:12px;margin:12px 0}
-.odds-combined{font-size:32px;font-weight:800;color:#ffd700}
-.odds-label{font-size:12px;color:#999}
-.return-row{display:flex;justify-content:space-between;font-size:14px;color:#ccc;margin:4px 0}
-.return-row strong{color:#ffd700}
-.context{font-size:13px;color:#999;line-height:1.5;margin-bottom:12px;padding:12px;background:#14142a;border-radius:8px}
-.warning{background:#2a1a00;border:1px solid #ff9800;color:#ffb74d;padding:10px 14px;border-radius:8px;font-size:12px;margin:12px 0}
-.odds-estimate{background:#1a1a00;border:1px solid #ffd700;color:#ffd700;padding:8px 12px;border-radius:8px;font-size:11px;margin:12px 0;text-align:center}
-.cta{background:#ff6b35;color:#fff;text-align:center;padding:14px;border-radius:12px;font-weight:700;font-size:15px;text-decoration:none;display:block}
-.stake-box{background:#14142a;border-radius:12px;padding:14px;text-align:center;margin:12px 0}
-.stake-amount{font-size:24px;font-weight:800;color:#ffd700}
-.verdict{text-align:center;padding:12px;border-radius:8px;margin-bottom:12px;font-weight:700;font-size:15px}
-.verdict-ok{background:#003a1a;color:#00c853;border:1px solid #00c853}
-.research{font-size:12px;color:#999;line-height:1.5;margin-top:8px;padding:10px;background:#14142a;border-radius:8px}
-.research strong{color:#ccc}
+<title>England vs Croatia SGM Cover v2</title>
+<style>:root {
+  --bg: #0a0a0f; --card: #111118; --border: #1e1e2e;
+  --accent: #00d4aa; --accent2: #ffd60a; --red: #ff453a;
+  --green: #32d74b; --text: #e0e0e8; --muted: #7a7a8a;
+  --gold: #f5a623; --live: #ff6b35;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; padding: 16px; }
+.header { text-align: center; margin-bottom: 20px; }
+.header .tag { display: inline-block; background: var(--live); color: #fff; font-weight: 700; font-size: 10px; padding: 3px 8px; border-radius: 20px; letter-spacing: 1px; margin-bottom: 8px; }
+.header h1 { font-size: 20px; font-weight: 700; margin-bottom: 4px; }
+.header .sub { color: var(--muted); font-size: 12px; }
+.match-block { margin-bottom: 28px; }
+.match-banner { background: linear-gradient(135deg, #0f1a2e 0%, #1a0a14 100%); border: 1px solid var(--border); border-radius: 10px; padding: 14px; text-align: center; margin-bottom: 12px; }
+.match-banner .teams { display: flex; align-items: center; justify-content: center; gap: 12px; font-size: 18px; font-weight: 800; margin-bottom: 5px; }
+.match-banner .teams .home { color: var(--accent2); }
+.match-banner .teams .away { color: var(--muted); }
+.match-banner .meta { color: var(--muted); font-size: 11px; }
+.odds-row { display: flex; justify-content: center; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
+.odds-chip { background: var(--card); border: 1px solid var(--border); border-radius: 6px; padding: 4px 8px; font-size: 10px; color: var(--muted); }
+.odds-chip span { color: var(--accent); font-weight: 700; margin-left: 3px; }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 12px; margin-bottom: 10px; }
+.card-title { font-size: 10px; font-weight: 600; letter-spacing: 1.2px; color: var(--accent); text-transform: uppercase; margin-bottom: 8px; }
+.leg { display: flex; justify-content: space-between; align-items: center; padding: 7px 0; border-bottom: 1px solid var(--border); }
+.leg:last-child { border-bottom: none; }
+.leg .leg-info { flex: 1; }
+.leg .leg-name { font-weight: 600; font-size: 12px; }
+.leg .leg-desc { font-size: 10px; color: var(--muted); margin-top: 1px; }
+.leg .leg-odds { font-weight: 700; font-size: 15px; color: var(--accent); min-width: 40px; text-align: right; }
+.sgm-card { background: linear-gradient(135deg, #0f1a2e 0%, #1a1040 100%); border: 1px solid var(--accent2); border-radius: 10px; padding: 12px; margin-bottom: 10px; }
+.sgm-card .card-title { color: var(--accent2); }
+.sgm-total { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 5px; }
+.sgm-total .label { font-size: 11px; color: var(--muted); }
+.sgm-total .odds { font-size: 22px; font-weight: 800; color: var(--accent2); }
+.sgm-explain { background: rgba(0,212,170,0.08); border: 1px solid rgba(0,212,170,0.2); border-radius: 6px; padding: 7px 9px; margin-top: 8px; font-size: 10px; color: var(--accent); line-height: 1.5; }
+.verdict { background: var(--card); border: 2px solid var(--green); border-radius: 10px; padding: 12px; margin-bottom: 12px; }
+.verdict .verdict-label { font-size: 10px; font-weight: 600; color: var(--green); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 5px; }
+.verdict .verdict-text { font-size: 12px; line-height: 1.5; }
+.verdict .verdict-text em { color: var(--accent2); font-style: normal; font-weight: 600; }
+.verdict.yellow { border-color: var(--gold); }
+.verdict.yellow .verdict-label { color: var(--gold); }
+.verdict.red { border-color: var(--red); }
+.verdict.red .verdict-label { color: var(--red); }
+.consider-tag { display: inline-block; background: rgba(245,166,35,0.2); color: var(--gold); font-size: 9px; font-weight: 700; padding: 1px 6px; border-radius: 3px; letter-spacing: 0.5px; margin-right: 4px; }
+.watch-tag { display: inline-block; background: rgba(255,107,53,0.15); color: var(--live); font-size: 9px; font-weight: 700; padding: 1px 6px; border-radius: 3px; letter-spacing: 0.5px; margin-right: 4px; }
+.best-bets { background: linear-gradient(135deg, #0f1a2e 0%, #1a1040 100%); border: 1px solid var(--accent2); border-radius: 10px; padding: 14px; margin-bottom: 20px; }
+.best-bets .title { font-size: 10px; font-weight: 600; letter-spacing: 1.5px; color: var(--accent2); text-transform: uppercase; margin-bottom: 10px; }
+.best-bet-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+.best-bet-row:last-child { border-bottom: none; }
+.best-bet-row .desc { font-size: 12px; font-weight: 600; }
+.best-bet-row .odds-val { font-size: 16px; font-weight: 800; color: var(--accent2); }
+.best-bet-row .stake-val { font-size: 11px; color: var(--muted); }
+footer { margin-top: 30px; text-align: center; color: var(--muted); font-size: 11px; line-height: 1.8; }
 </style>
 </head>
 <body>
-
-<div class="card">
-  <div class="header">
-    <span class="badge badge-wc">WC</span>
-    <span class="badge badge-bonus">BONUS BET</span>
-  </div>
-  <h2>England vs Croatia</h2>
-  <div class="time">Thu 18 Jun, 6:00am AEST · AT&T Stadium, Dallas · Group L</div>
-
-  <div class="verdict verdict-ok">ENGINE BET — +47% theoretical edge, +$23.50 EV</div>
-
-  <div class="context">
-    <strong>Promo:</strong> Neds — SGM Cover (3+ leg, exactly 1 leg fail = $50 bonus back)<br>
-    <strong>Refund:</strong> Up to $50 as bonus bet if exactly 1 leg fails<br>
-    <strong>Bonus conversion:</strong> ~75% (tight-market assumption)
-  </div>
-
-  <div class="odds-estimate">
-    ⚠ <strong>Odds estimated</strong> — verify against live Neds SGM builder before placing.
-  </div>
-
-  <div style="font-weight:700;font-size:14px;margin-bottom:8px;">3-Leg Multi</div>
-  
-<div class="leg">
-  <div class="leg-label">1. England Win</div>
-  <div class="leg-reason">10 straight competitive wins, 0 conceded in qualifying. Consensus expert pick.</div>
-  <div class="leg-odds">@ 1.70</div>
+<div class="header">
+  <div class="tag">SGM COVER v2</div>
+  <h1>England vs Croatia</h1>
+  <div class="sub">Group B &bull; Thu 18 Jun &bull; Gelsenkirchen &bull; Neds SGM Cover promo</div>
 </div>
 
-<div class="leg">
-  <div class="leg-label">2. Under 3.5 Goals</div>
-  <div class="leg-reason">5 of last 6 England games under 2.5. Croatia sit compact vs strong sides.</div>
-  <div class="leg-odds">@ 1.28</div>
+<div class="match-banner">
+  <div class="teams"><span class="home">England</span><span>vs</span><span class="away">Croatia</span></div>
+  <div class="meta">Group B &bull; Kickoff: Fri 19 Jun 03:00 AEST &bull; Arena AufSchalke, Gelsenkirchen</div>
+  <div class="odds-row">
+    <div class="odds-chip">ENG <span>2.10</span></div>
+    <div class="odds-chip">DRAW <span>3.40</span></div>
+    <div class="odds-chip">CRO <span>4.00</span></div>
+    <div class="odds-chip">O2.5 <span>~1.72</span></div>
+    <div class="odds-chip">BTTS Y <span>~1.88</span></div>
+  </div>
 </div>
 
-<div class="leg">
-  <div class="leg-label">3. Harry Kane Over 1.5 Shots on Target</div>
-  <div class="leg-reason">8 goals in qualifying, 8 WC goals in 11 apps. England's focal point.</div>
-  <div class="leg-odds">@ 1.55</div>
+<div class="sgm-card">
+  <div class="card-title">2-Leg SGM &mdash; England Win + Under 2.5</div>
+  <div class="leg"><div class="leg-info"><div class="leg-name">England Win</div><div class="leg-desc">H2H @ 2.10 (Neds)</div></div><div class="leg-odds">2.10</div></div>
+  <div class="leg"><div class="leg-info"><div class="leg-name">Under 2.5 Goals</div><div class="leg-desc">Total goals line @ ~1.72</div></div><div class="leg-odds">~1.72</div></div>
+  <div class="sgm-total"><div class="label">Combined Odds</div><div class="odds">~3.61</div></div>
+  <div class="sgm-explain">Why: England @ 2.10 clears the bonus-bet threshold. Under 2.5 at ~1.72 is backed by Croatia's low-scoring away record (4 of 7 qualifiers went under 2.5). 2-0 or 1-0 England the most likely outcome.</div>
 </div>
 
-  <div class="odds-box">
-    <div class="odds-label">Combined Odds (estimated)</div>
-    <div class="odds-combined">3.37</div>
-  </div>
-
-  <div class="stake-box">
-    <div class="odds-label">Stake</div>
-    <div class="stake-amount">$50</div>
-    <div class="return-row"><span>P(win → $168.64)</span><strong>33.5%</strong></div>
-    <div class="return-row"><span>P(1 fail → $37.50 bonus EV)</span><strong>45.3%</strong></div>
-    <div class="return-row"><span>P(2+ fail → lose $50)</span><strong>21.2%</strong></div>
-    <div class="return-row"><span>EV at $50 stake</span><strong>+$23.50</strong></div>
-    <div class="return-row"><span>Kelly optimal stake</span><strong>$50 (capped)</strong></div>
-  </div>
-
-  <div class="research">
-    <strong>Research backing:</strong><br>
-    • Dimers sim model: England 56.9%, Croatia 18.8%, Draw 24.3%<br>
-    • 8 of 11 tipsters pick England win; most common score 1-0 or 2-0<br>
-    • England: 10 straight competitive wins, 0 goals conceded<br>
-    • Croatia: no clean sheet in 6 games, conceded first in 5 of last 6<br>
-    • Books: England 1.70, U3.5 1.28, Kane 1.5+ SOT ~1.55<br>
-    <strong style="color:#ffd700;">• Danny must verify live Neds SGM odds before placing.</strong>
-  </div>
-
-  <div class="warning">
-    <strong>⚠ Odds are estimated — screenshot-verify before bet.</strong><br>
-    +47% theoretical edge is large because the bonus structure is generous. Real edge depends on actual SGM combined odds. If combined drops below ~2.80 on Neds, recalculate.
-  </div>
-
-  <a href="https://www.neds.com.au/" class="cta">Open Neds → Build SGM</a>
+<div class="sgm-card">
+  <div class="card-title">3-Leg SGM Cover &mdash; England + Germany + Netherlands</div>
+  <div class="leg"><div class="leg-info"><div class="leg-name">England Win</div><div class="leg-desc">H2H @ 2.10 (Neds)</div></div><div class="leg-odds">2.10</div></div>
+  <div class="leg"><div class="leg-info"><div class="leg-name">Germany Win</div><div class="leg-desc">H2H @ 1.57</div></div><div class="leg-odds">1.57</div></div>
+  <div class="leg"><div class="leg-info"><div class="leg-name">Netherlands Win</div><div class="leg-desc">H2H @ 1.72</div></div><div class="leg-odds">1.72</div></div>
+  <div class="sgm-total"><div class="label">Combined Odds</div><div class="odds">~5.66</div></div>
+  <div class="sgm-explain"><strong>Neds SGM Cover:</strong> England + Germany + Netherlands 3-leg @ ~5.66. If exactly 1 leg fails: $50 bonus bet back. If all 3 land: $50 x 5.66 = $283 gross. This is the best use of the Neds promo this week.</div>
 </div>
+
+<div class="verdict yellow">
+  <div class="verdict-label">ENGINE VERDICT - England vs Croatia</div>
+  <div class="verdict-text">
+    England @ 2.10 is the pick of the England vs Croatia market. Build the SGM around it as the anchor.<br><br>
+    <span class="consider-tag">BEST PICK</span> England Win + Under 2.5 @ ~3.61 - 2-leg SGM, best risk/reward.<br>
+    <span class="consider-tag">3-LEG COVER</span> England + Germany + Netherlands @ ~5.66 - Neds SGM Cover, covers 1 leg fail.<br><br>
+    <em>Draw @ 3.40 is not recommended as a standalone leg for bonus bet conversion.</em>
+  </div>
+</div>
+
+<footer>
+  Engine: Mavis WC SGM Builder &bull; Odds: Neds (H2H) + AU bookmaker estimates (alt markets)<br>
+  Built: 19 Jun 2026 08:39 AM AEST &bull; Neds SGM Cover promo &bull; Danny + Brudda approval only
+</footer>
 
 </body>
 </html>

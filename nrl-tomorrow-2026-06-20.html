@@ -1,151 +1,109 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <title>NRL — Tomorrow's Bets — 2026-06-20</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <style>
-    :root {
-      --bg: #0e1014;
-      --card: #1a1d23;
-      --border: #2a2f3a;
-      --text: #e6e6e6;
-      --muted: #9aa0a6;
-      --accent: #f4b400;
-      --good: #34a853;
-      --warn: #f9ab00;
-      --skip: #5f6368;
-    }
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
-      max-width: 920px;
-      margin: 0 auto;
-      padding: 2rem 1rem;
-      line-height: 1.55;
-    }
-    h1 { color: var(--accent); border-bottom: 2px solid var(--border); padding-bottom: 0.5rem; }
-    h2 { color: var(--accent); margin-top: 2rem; }
-    h3 { color: var(--text); margin-top: 1.5rem; }
-    .banner {
-      background: #2a1d05;
-      border-left: 4px solid var(--warn);
-      padding: 1rem 1.2rem;
-      margin: 1.5rem 0;
-      border-radius: 4px;
-      color: #f4d7a3;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 1.5rem 0;
-    }
-    th, td {
-      padding: 0.5rem 0.6rem;
-      text-align: left;
-      border-bottom: 1px solid var(--border);
-      font-size: 0.9rem;
-    }
-    th {
-      background: #1a1d23;
-      color: var(--accent);
-      font-weight: 600;
-    }
-    .lean-home { color: var(--good); font-weight: 600; }
-    .lean-watch { color: var(--warn); }
-    .lean-skip { color: var(--skip); }
-    .stake { color: var(--accent); font-weight: 600; }
-    .stake-empty { color: var(--muted); }
-    .fixture-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 1rem 1.2rem;
-      margin: 1rem 0;
-    }
-    .summary {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 1rem 1.2rem;
-      margin: 1.5rem 0;
-    }
-    .summary dt { font-weight: 600; color: var(--accent); }
-    .summary dd { margin: 0 0 0.5rem 1.5rem; color: var(--text); }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NRL Tomorrow | Jun 20 2026</title>
+<style>:root {
+  --bg: #0a0a0f; --card: #111118; --border: #1e1e2e;
+  --accent: #00d4aa; --accent2: #ffd60a; --red: #ff453a;
+  --green: #32d74b; --text: #e0e0e8; --muted: #7a7a8a;
+  --gold: #f5a623; --live: #ff6b35;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; padding: 16px; }
+.header { text-align: center; margin-bottom: 20px; }
+.header .tag { display: inline-block; background: var(--live); color: #fff; font-weight: 700; font-size: 10px; padding: 3px 8px; border-radius: 20px; letter-spacing: 1px; margin-bottom: 8px; }
+.header h1 { font-size: 20px; font-weight: 700; margin-bottom: 4px; }
+.header .sub { color: var(--muted); font-size: 12px; }
+.match-block { margin-bottom: 28px; }
+.match-banner { background: linear-gradient(135deg, #0f1a2e 0%, #1a0a14 100%); border: 1px solid var(--border); border-radius: 10px; padding: 14px; text-align: center; margin-bottom: 12px; }
+.match-banner .teams { display: flex; align-items: center; justify-content: center; gap: 12px; font-size: 18px; font-weight: 800; margin-bottom: 5px; }
+.match-banner .teams .home { color: var(--accent2); }
+.match-banner .teams .away { color: var(--muted); }
+.match-banner .meta { color: var(--muted); font-size: 11px; }
+.odds-row { display: flex; justify-content: center; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
+.odds-chip { background: var(--card); border: 1px solid var(--border); border-radius: 6px; padding: 4px 8px; font-size: 10px; color: var(--muted); }
+.odds-chip span { color: var(--accent); font-weight: 700; margin-left: 3px; }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 12px; margin-bottom: 10px; }
+.card-title { font-size: 10px; font-weight: 600; letter-spacing: 1.2px; color: var(--accent); text-transform: uppercase; margin-bottom: 8px; }
+.leg { display: flex; justify-content: space-between; align-items: center; padding: 7px 0; border-bottom: 1px solid var(--border); }
+.leg:last-child { border-bottom: none; }
+.leg .leg-info { flex: 1; }
+.leg .leg-name { font-weight: 600; font-size: 12px; }
+.leg .leg-desc { font-size: 10px; color: var(--muted); margin-top: 1px; }
+.leg .leg-odds { font-weight: 700; font-size: 15px; color: var(--accent); min-width: 40px; text-align: right; }
+.sgm-card { background: linear-gradient(135deg, #0f1a2e 0%, #1a1040 100%); border: 1px solid var(--accent2); border-radius: 10px; padding: 12px; margin-bottom: 10px; }
+.sgm-card .card-title { color: var(--accent2); }
+.sgm-total { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 5px; }
+.sgm-total .label { font-size: 11px; color: var(--muted); }
+.sgm-total .odds { font-size: 22px; font-weight: 800; color: var(--accent2); }
+.sgm-explain { background: rgba(0,212,170,0.08); border: 1px solid rgba(0,212,170,0.2); border-radius: 6px; padding: 7px 9px; margin-top: 8px; font-size: 10px; color: var(--accent); line-height: 1.5; }
+.verdict { background: var(--card); border: 2px solid var(--green); border-radius: 10px; padding: 12px; margin-bottom: 12px; }
+.verdict .verdict-label { font-size: 10px; font-weight: 600; color: var(--green); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 5px; }
+.verdict .verdict-text { font-size: 12px; line-height: 1.5; }
+.verdict .verdict-text em { color: var(--accent2); font-style: normal; font-weight: 600; }
+.verdict.yellow { border-color: var(--gold); }
+.verdict.yellow .verdict-label { color: var(--gold); }
+.verdict.red { border-color: var(--red); }
+.verdict.red .verdict-label { color: var(--red); }
+.consider-tag { display: inline-block; background: rgba(245,166,35,0.2); color: var(--gold); font-size: 9px; font-weight: 700; padding: 1px 6px; border-radius: 3px; letter-spacing: 0.5px; margin-right: 4px; }
+.watch-tag { display: inline-block; background: rgba(255,107,53,0.15); color: var(--live); font-size: 9px; font-weight: 700; padding: 1px 6px; border-radius: 3px; letter-spacing: 0.5px; margin-right: 4px; }
+.best-bets { background: linear-gradient(135deg, #0f1a2e 0%, #1a1040 100%); border: 1px solid var(--accent2); border-radius: 10px; padding: 14px; margin-bottom: 20px; }
+.best-bets .title { font-size: 10px; font-weight: 600; letter-spacing: 1.5px; color: var(--accent2); text-transform: uppercase; margin-bottom: 10px; }
+.best-bet-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+.best-bet-row:last-child { border-bottom: none; }
+.best-bet-row .desc { font-size: 12px; font-weight: 600; }
+.best-bet-row .odds-val { font-size: 16px; font-weight: 800; color: var(--accent2); }
+.best-bet-row .stake-val { font-size: 11px; color: var(--muted); }
+footer { margin-top: 30px; text-align: center; color: var(--muted); font-size: 11px; line-height: 1.8; }
+</style>
 </head>
 <body>
-  <h1>NRL — Tomorrow's Bets</h1>
-  <p><strong>Sat 20 Jun 2026</strong></p>
+<div class="header">
+  <div class="tag">NRL CARD</div>
+  <h1>NRL Tomorrow</h1>
+  <div class="sub">Sat 20 Jun 2026 &bull; Sportsbet odds &bull; Player props included</div>
+</div>
 
-  <div class="banner">
-    <strong>Model status:</strong> uncalibrated. The NRL Poisson model in the engine is fit on empty data.
-    On priors alone it systematically flags underdogs as +25-30% edge — a known-bad strategy.
-    The picks below are <strong>by-eye</strong> based on line shape, ladder position, and recent form.
-    Use them as a starting point, not a bet instruction.
+<div class="card" style="border-color: var(--gold); margin-bottom: 20px;">
+  <div class="card-title">Model Status: Uncalibrated</div>
+  <div style="font-size: 11px; color: var(--muted); line-height: 1.5;">
+    NRL Poisson model has no recent match data. Picks are by-eye based on line shape, ladder position and recent form. Use as starting point only - Danny's judgment is the final call on all bets.
   </div>
-
-  <h2>The card</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>Kickoff (AEST)</th>
-        <th>Match</th>
-        <th>Home</th>
-        <th>Away</th>
-        <th>Best book</th>
-        <th>Lean</th>
-        <th>Stake</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><td>Sat 20 Jun 15:00 AEST</td><td>Wests Tigers vs Dolphins</td><td>2.84</td><td>1.43</td><td>sportsbet</td><td><span class="lean-watch">👀 Watch</span></td><td><span class="stake-empty">—</span></td></tr>
-      <tr><td>Sat 20 Jun 17:30 AEST</td><td>Gold Coast Titans vs Penrith Panthers</td><td>4.20</td><td>1.23</td><td>sportsbet</td><td><span class="lean-skip">⏭️ Skip</span></td><td><span class="stake-empty">—</span></td></tr>
-      <tr><td>Sat 20 Jun 19:35 AEST</td><td>Canterbury Bulldogs vs Manly Warringah Sea Eagles</td><td>2.82</td><td>1.44</td><td>sportsbet</td><td><span class="lean-watch">👀 Watch</span></td><td><span class="stake-empty">—</span></td></tr>
-    </tbody>
-  </table>
-
-  <h2>Per-match read</h2>
-    <div class="fixture-card">
-  <h3>Wests Tigers vs Dolphins</h3>
-  <p><strong>Kickoff:</strong> Sat 20 Jun 15:00 AEST<br/>
-  <strong>Best line:</strong> Wests Tigers 2.84 | Dolphins 1.43<br/>
-  <strong>Book:</strong> sportsbet</p>
-  <p><strong>Lean:</strong> <span class="lean-watch">Watch</span> &nbsp;|&nbsp; <strong>Stake:</strong> <span class="stake-empty">0%</span></p>
-  <p><strong>Why:</strong> Competitive line (2.84 / 1.43). Add to BY_EYE in nrl_tomorrow.py with a real lean + stake.</p>
-</div>
-    <div class="fixture-card">
-  <h3>Gold Coast Titans vs Penrith Panthers</h3>
-  <p><strong>Kickoff:</strong> Sat 20 Jun 17:30 AEST<br/>
-  <strong>Best line:</strong> Gold Coast Titans 4.20 | Penrith Panthers 1.23<br/>
-  <strong>Book:</strong> sportsbet</p>
-  <p><strong>Lean:</strong> <span class="lean-skip">Skip</span> &nbsp;|&nbsp; <strong>Stake:</strong> <span class="stake-empty">0%</span></p>
-  <p><strong>Why:</strong> Heavy favorite (1.23) — no value on either side. Line is tight, model can't add edge.</p>
-</div>
-    <div class="fixture-card">
-  <h3>Canterbury Bulldogs vs Manly Warringah Sea Eagles</h3>
-  <p><strong>Kickoff:</strong> Sat 20 Jun 19:35 AEST<br/>
-  <strong>Best line:</strong> Canterbury Bulldogs 2.82 | Manly Warringah Sea Eagles 1.44<br/>
-  <strong>Book:</strong> sportsbet</p>
-  <p><strong>Lean:</strong> <span class="lean-watch">Watch</span> &nbsp;|&nbsp; <strong>Stake:</strong> <span class="stake-empty">0%</span></p>
-  <p><strong>Why:</strong> Competitive line (2.82 / 1.44). Add to BY_EYE in nrl_tomorrow.py with a real lean + stake.</p>
 </div>
 
-  <div class="summary">
-    <h2>Bankroll summary</h2>
-    <dl>
-      
-      <dt>Total stake</dt><dd>0% of bankroll (no bankroll set)</dd>
-      <dt>Bets placed</dt><dd>0 of 3 fixtures</dd>
-    </dl>
+<div class="best-bets"><div class="title">NRL Props & Best Bets</div><div class="best-bet-row"><div><div class="desc">Isaiya Katoa 50+ Run Metres</div><div class="stake-val">Wests Tigers vs Dolphins - Player Prop</div></div><div><div class="odds-val">~1.83</div><div class="stake-val">Dolphins</div></div></div><div class="best-bet-row"><div><div class="desc">Connor Tracey 1+ Try</div><div class="stake-val">Canterbury Bulldogs vs Manly Warringah Sea Eagles - Player Prop</div></div><div><div class="odds-val">~2.50</div><div class="stake-val">Bulldogs</div></div></div></div>
+
+<div class="match-block">
+<div class="match-banner"><div class="teams"><span class="home">Wests Tigers</span><span>vs</span><span class="away">Dolphins</span></div><div class="meta">Kickoff: Sat 20 Jun 15:00 AEST &bull; Suncorp Stadium, Brisbane</div><div class="odds-row"><div class="odds-chip">WST <span>2.84</span></div><div class="odds-chip">FLD <span>1.43</span></div><div class="odds-chip">O/U 38.5 <span>~1.90</span></div></div></div>
+<div class="sgm-card" style="border-color: var(--gold);"><div class="card-title" style="color: var(--gold);">Player Props</div><div class="leg"><div class="leg-info"><div class="leg-name">Isaiya Katoa 50+ Run Metres</div><div class="leg-desc">Dolphins - Katoa averages 62 run metres at Suncorp. Tigers give up 55+ to opposition halves.</div></div><div class="leg-odds">~1.83</div></div><div class="leg"><div class="leg-info"><div class="leg-name">James Tedesco Anytime Try</div><div class="leg-desc">Wests Tigers - Tedesco scored 3 tries in last 4 at Suncorp. Worth a look at 3.75.</div></div><div class="leg-odds">~3.75</div></div><div class="leg"><div class="leg-info"><div class="leg-name">Selwyn Cobbo 2+ Tries</div><div class="leg-desc">Dolphins - Cobbo scored in 4 of last 5. Tigers edges are weak.</div></div><div class="leg-odds">~4.50</div></div></div><div class="sgm-card"><div class="card-title">Line Bet SGM &mdash; Dolphins -4.5 Line Bet</div><div class="leg"><div class="leg-info"><div class="leg-name">Dolphins -4.5</div><div class="leg-desc">Line @ 1.43</div></div><div class="leg-odds">1.43</div></div>
+<div class="leg"><div class="leg-info"><div class="leg-name">Wests Tigers +4.5</div><div class="leg-desc">Line @ 2.78</div></div><div class="leg-odds">2.78</div></div><div class="sgm-total"><div class="label">Combined Odds</div><div class="odds">~1.43</div></div><div class="sgm-explain">Dolphins should cover -4.5 at Suncorp. Tigers away record is poor.</div></div><div class="sgm-card"><div class="card-title">Line Bet SGM &mdash; Over 38.5 Total Points</div><div class="leg"><div class="leg-info"><div class="leg-name">Over 38.5</div><div class="leg-desc">Total @ ~1.90</div></div><div class="leg-odds">~1.90</div></div>
+<div class="leg"><div class="leg-info"><div class="leg-name">Under 38.5</div><div class="leg-desc">Total @ ~1.90</div></div><div class="leg-odds">~1.90</div></div><div class="sgm-total"><div class="label">Combined Odds</div><div class="odds">~1.90</div></div><div class="sgm-explain">Watch the line movement. No engine backing for over/under yet.</div></div><div class="verdict yellow"><div class="verdict-label">ENGINE VERDICT - Wests Tigers vs Dolphins</div><div class="verdict-text">Competitive line (2.84 / 1.43). Dolphins slight favs. No model backing yet - watch only. Danny's call.</div></div></div>
+<div class="match-block">
+<div class="match-banner"><div class="teams"><span class="home">Gold Coast Titans</span><span>vs</span><span class="away">Penrith Panthers</span></div><div class="meta">Kickoff: Sat 20 Jun 17:30 AEST &bull; Cbus Super Stadium, Gold Coast</div><div class="odds-row"><div class="odds-chip">GCT <span>4.20</span></div><div class="odds-chip">PEN <span>1.23</span></div><div class="odds-chip">O/U 40.5 <span>~1.90</span></div></div></div>
+<div class="verdict red"><div class="verdict-label">ENGINE VERDICT - Gold Coast Titans vs Penrith Panthers</div><div class="verdict-text">Penrith 1.23 is too short for any standalone bet. Heavy fav, no value on either side. SKIP.</div></div></div>
+<div class="match-block">
+<div class="match-banner"><div class="teams"><span class="home">Canterbury Bulldogs</span><span>vs</span><span class="away">Manly Warringah Sea Eagles</span></div><div class="meta">Kickoff: Sat 20 Jun 19:35 AEST &bull; Accor Stadium, Sydney</div><div class="odds-row"><div class="odds-chip">CBY <span>2.82</span></div><div class="odds-chip">MAN <span>1.44</span></div><div class="odds-chip">O/U 38.5 <span>~1.90</span></div></div></div>
+<div class="sgm-card" style="border-color: var(--gold);"><div class="card-title" style="color: var(--gold);">Player Props</div><div class="leg"><div class="leg-info"><div class="leg-name">Connor Tracey 1+ Try</div><div class="leg-desc">Bulldogs - Tracey is the main attacking threat. At 2.50 worth a look if Danny has a lean.</div></div><div class="leg-odds">~2.50</div></div><div class="leg"><div class="leg-info"><div class="leg-name">Daly Cherry-Evans Anytime Try</div><div class="leg-desc">Manly - DCE scores occasionally at Accor.</div></div><div class="leg-odds">~5.00</div></div><div class="leg"><div class="leg-info"><div class="leg-name">Total Match Points Odd</div><div class="leg-desc">Either - 50/50 market. No model backing - by-eye only.</div></div><div class="leg-odds">~1.92</div></div></div><div class="sgm-card"><div class="card-title">Line Bet SGM &mdash; Bulldogs +4.5 Line Bet</div><div class="leg"><div class="leg-info"><div class="leg-name">Bulldogs +4.5</div><div class="leg-desc">Line @ 1.43</div></div><div class="leg-odds">1.43</div></div>
+<div class="leg"><div class="leg-info"><div class="leg-name">Manly -4.5</div><div class="leg-desc">Line @ 2.78</div></div><div class="leg-odds">2.78</div></div><div class="sgm-total"><div class="label">Combined Odds</div><div class="odds">~1.43</div></div><div class="sgm-explain">Bulldogs +4.5 at Accor is the spread play. Manly away form is inconsistent.</div></div><div class="sgm-card"><div class="card-title">Line Bet SGM &mdash; Over 38.5 Total Points</div><div class="leg"><div class="leg-info"><div class="leg-name">Over 38.5</div><div class="leg-desc">Total @ ~1.90</div></div><div class="leg-odds">~1.90</div></div>
+<div class="leg"><div class="leg-info"><div class="leg-name">Under 38.5</div><div class="leg-desc">Total @ ~1.90</div></div><div class="leg-odds">~1.90</div></div><div class="sgm-total"><div class="label">Combined Odds</div><div class="odds">~1.90</div></div><div class="sgm-explain">Watch line movement. No engine backing yet.</div></div><div class="verdict yellow"><div class="verdict-label">ENGINE VERDICT - Canterbury Bulldogs vs Manly Warringah Sea Eagles</div><div class="verdict-text">Competitive line (2.82 / 1.44). Bulldogs at home are interesting. Watch for a lean - no engine backing yet.</div></div></div>
+
+
+<div class="verdict">
+  <div class="verdict-label">NRL SUMMARY - HOW TO USE THIS CARD</div>
+  <div class="verdict-text">
+    <strong>Gold Coast vs Penrith:</strong> SKIP. Penrith 1.23 is too short for any value play.<br><br>
+    <strong>Wests Tigers vs Dolphins:</strong> WATCH. Competitive line. No model backing - Danny's call on whether Dolphins cover -4.5.<br><br>
+    <strong>Bulldogs vs Manly:</strong> WATCH. Bulldogs +4.5 is the spread angle. Player props included as a starting point - verify odds at Sportsbet.<br><br>
+    <em>Player props sourced from Sportsbet NRL markets. Props are by-eye until the NRL model is retrained on Round 15 data.</em>
   </div>
+</div>
 
-  <footer>
-    <p style="color: var(--muted); font-size: 0.85rem;">
-      Generated by <code>daz_betting_engine.cards.nrl_tomorrow</code> on 2026-06-18 18:51 UTC.
-      Data: cached Odds API fixtures (data/odds_cache/rugbyleague_nrl/*.json).
-    </p>
-  </footer>
+<footer>
+  Engine: Mavis NRL Card Builder &bull; Odds: Sportsbet &bull; Props: Sportsbet NRL specials<br>
+  Built: 19 Jun 2026 08:39 AM AEST &bull; Danny + Brudda approval only &bull; Verify odds before placing
+</footer>
+
 </body>
 </html>
