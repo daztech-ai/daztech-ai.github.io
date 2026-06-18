@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Card Design Mockups — Daz Betting Engine</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg:#0a0c10; --surface:#14171d; --border:#262b36;
+      --text:#ecedef; --muted:#9aa0ac; --accent:#f4b400;
+      --edge-strong:#22c55e; --edge-mid:#84cc16; --edge-weak:#eab308; --edge-fade:#ef4444;
+      --font:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+      --mono:ui-monospace,SFMono-Regular,Menlo,monospace;
+    }
+    body{background:var(--bg);color:var(--text);font-family:var(--font);
+      margin:0;padding:1.5rem 1rem;line-height:1.5}
+    .container{max-width:720px;margin:0 auto}
+    h1{font-size:1.4rem;margin:0 0 .5rem;color:var(--accent)}
+    p{color:var(--muted);margin:.5rem 0}
+    .grid{display:grid;gap:1rem;margin:1.5rem 0}
+    a.card{display:block;background:var(--surface);border:1px solid var(--border);
+      border-radius:10px;padding:1rem;text-decoration:none;color:var(--text);
+      transition:border-color .15s}
+    a.card:hover,a.card:focus{border-color:var(--accent);outline:none}
+    a.card h2{margin:.2rem 0;font-size:1.1rem}
+    a.card .tier{display:inline-block;font-size:.7rem;font-weight:700;
+      padding:.2rem .5rem;border-radius:999px;margin-right:.4rem;
+      letter-spacing:.05em;text-transform:uppercase}
+    .tier-lock{background:rgba(34,197,94,.14);color:var(--edge-strong);border:1px solid var(--edge-strong)}
+    .tier-back{background:rgba(132,204,22,.14);color:var(--edge-mid);border:1px solid var(--edge-mid)}
+    .tier-watch{background:rgba(234,179,8,.14);color:var(--edge-weak);border:1px solid var(--edge-weak)}
+    a.card .meta{color:var(--muted);font-size:.85rem;font-family:var(--mono);margin-top:.4rem}
+    .wins{background:var(--surface);border:1px solid var(--border);
+      border-radius:10px;padding:1rem;margin:1.5rem 0}
+    .wins h2{margin:0 0 .5rem;font-size:1rem;color:var(--accent)}
+    .wins ol{margin:.5rem 0;padding-left:1.2rem}
+    .wins li{margin:.35rem 0}
+    footer{margin-top:2rem;padding-top:1rem;border-top:1px solid var(--border);
+      color:var(--muted);font-size:.8rem}
+  </style>
+</head>
+<body>
+<main class="container">
+  <h1>Card Design Mockups</h1>
+  <p>Three mobile-first design-system prototypes for the Daz Betting Engine cards. Same CSS tokens, three different shapes. Click any card to open the live mockup.</p>
+
+  <div class="wins">
+    <h2>Three measurable wins on every card</h2>
+    <ol>
+      <li><strong>Edge % visible without scrolling on mobile</strong> — 28px mono number, top-right, color-coded by tier (Unabated pattern).</li>
+      <li><strong>Lean readable in &lt;1s glance</strong> — colored pill (LOCK / BACK / WATCH / FADE), not prose.</li>
+      <li><strong>3-4 fixtures fit one mobile screen</strong> — stacked cards replace 7-column tables.</li>
+    </ol>
+  </div>
+
+  <div class="grid">
+    <a class="card" href="mockup-1-nrl.html">
+      <h2><span class="tier tier-lock">Lock</span>1. NRL fixture card</h2>
+      <p>Three fixtures in one screen: lock / watch / fade. Tier-colored left border, big edge numbers, best-odds green buttons, bankroll bar footer.</p>
+      <div class="meta">9.9KB · 1-col mobile, 2-col tablet, max-720 desktop</div>
+    </a>
+
+    <a class="card" href="mockup-2-sgm.html">
+      <h2><span class="tier tier-back">Back</span>2. SGM card</h2>
+      <p>3-leg same-game multi. Per-leg edge % and pill, combined-odds summary card with gold border, EV + suggested stake. Alt fade build on the same fixture for tier contrast.</p>
+      <div class="meta">10.0KB · single match card, legs + summary</div>
+    </a>
+
+    <a class="card" href="mockup-3-offers.html">
+      <h2><span class="tier tier-watch">Watch</span>3. My Offers card</h2>
+      <p>Bonus-bet offers sorted by EV. Top chips (active / bonus-bet / EV-positive / best EV). Per offer: pill, title, qualifying bet, EV number, ROI line, collapsible terms.</p>
+      <div class="meta">10.5KB · 5 offers, 4 tiers shown</div>
+    </a>
+  </div>
+
+  <footer>
+    <p>Design system spec + survey + diff: <code>~/Documents/CardDesignResearch/</code></p>
+    <p>Built 2026-06-19 · Atlas (DEEZTECH research) · static HTML, CSS only, no JS, no logos</p>
+  </footer>
+</main>
+</body>
+</html>

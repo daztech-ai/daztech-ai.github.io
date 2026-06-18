@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>NRL Mockup v1 — Lock / Watch / Fade</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg:#0a0c10; --surface:#14171d; --surface-2:#1c2029;
+      --border:#262b36; --border-strong:#3a4150;
+      --text:#ecedef; --text-muted:#9aa0ac; --text-dim:#6b7280;
+      --edge-strong:#22c55e; --edge-mid:#84cc16; --edge-weak:#eab308;
+      --edge-zero:#6b7280; --edge-fade:#ef4444;
+      --pill-lock-bg:rgba(34,197,94,.14); --pill-back-bg:rgba(132,204,22,.14);
+      --pill-watch-bg:rgba(234,179,8,.14); --pill-fade-bg:rgba(239,68,68,.14);
+      --accent:#f4b400; --accent-soft:rgba(244,180,0,.12);
+      --font:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+      --mono:ui-monospace,SFMono-Regular,"JetBrains Mono",Menlo,monospace;
+    }
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg:#fafbfc; --surface:#fff; --surface-2:#f1f3f6;
+        --border:#e2e6ec; --border-strong:#c9d0db;
+        --text:#0a0c10; --text-muted:#4b5563; --text-dim:#6b7280;
+        --pill-lock-bg:rgba(34,197,94,.10); --pill-back-bg:rgba(132,204,22,.10);
+        --pill-watch-bg:rgba(234,179,8,.12); --pill-fade-bg:rgba(239,68,68,.10);
+        --accent-soft:rgba(244,180,0,.18);
+      }
+    }
+    *{box-sizing:border-box}
+    body{background:var(--bg);color:var(--text);font-family:var(--font);
+      margin:0;padding:1rem;line-height:1.4;-webkit-font-smoothing:antialiased}
+    .container{max-width:720px;margin:0 auto}
+    .t-xs{font-size:.7rem;letter-spacing:.06em;text-transform:uppercase}
+    .t-sm{font-size:.8rem;line-height:1.35}
+    .t-base{font-size:.95rem;line-height:1.4}
+    .t-lg{font-size:1.05rem;line-height:1.3;font-weight:600}
+    .t-xl{font-size:1.4rem;line-height:1.2;font-weight:700}
+    .t-edge{font-size:1.75rem;line-height:1;font-weight:800;
+      font-family:var(--mono);letter-spacing:-.02em}
+    .muted{color:var(--text-muted)}
+    .dim{color:var(--text-dim)}
+    .accent{color:var(--accent)}
+    .mono{font-family:var(--mono)}
+    .strip{display:flex;align-items:flex-start;justify-content:space-between;
+      gap:.75rem;padding:0 .25rem;margin-bottom:.75rem}
+    .badge{font-size:.7rem;font-weight:600;letter-spacing:.04em;
+      padding:.25rem .55rem;border-radius:999px;white-space:nowrap}
+    .badge-warn{background:var(--pill-watch-bg);color:var(--edge-weak);
+      border:1px solid var(--edge-weak)}
+    .fixture{background:var(--surface);border:1px solid var(--border);
+      border-radius:10px;padding:1rem;margin-bottom:.75rem;overflow:hidden;
+      position:relative}
+    .fixture[data-tier="lock"]  {box-shadow:inset 4px 0 0 var(--edge-strong)}
+    .fixture[data-tier="back"]  {box-shadow:inset 4px 0 0 var(--edge-mid)}
+    .fixture[data-tier="watch"] {box-shadow:inset 4px 0 0 var(--edge-weak);opacity:.95}
+    .fixture[data-tier="fade"]  {box-shadow:inset 4px 0 0 var(--edge-fade);opacity:.92}
+    .fixture-head{display:flex;align-items:baseline;justify-content:space-between;
+      gap:1rem;margin-bottom:.6rem}
+    .edge{font-family:var(--mono);font-weight:800;letter-spacing:-.02em}
+    .edge-strong{color:var(--edge-strong)}
+    .edge-mid{color:var(--edge-mid)}
+    .edge-weak{color:var(--edge-weak)}
+    .edge-fade{color:var(--edge-fade)}
+    .fixture-body{display:grid;grid-template-columns:1fr 1fr;gap:.5rem 1rem;
+      align-items:baseline;padding:.4rem 0}
+    .team-name{font-weight:600}
+    .odds-pair{display:flex;align-items:center;gap:.5rem;margin-top:.6rem}
+    .odds-btn{font-family:var(--mono);font-size:.9rem;font-weight:600;
+      background:var(--surface-2);color:var(--text);border:1px solid var(--border);
+      border-radius:6px;padding:.5rem .75rem;min-width:60px;text-align:center;
+      cursor:pointer}
+    .odds-btn.is-best{background:var(--pill-lock-bg);color:var(--edge-strong);
+      border-color:var(--edge-strong)}
+    .odds-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+    .odds-sep{color:var(--text-dim)}
+    .fixture-foot{display:flex;align-items:center;flex-wrap:wrap;gap:.5rem;
+      margin-top:.7rem;padding-top:.7rem;border-top:1px solid var(--border)}
+    .pill{font-size:.7rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+      padding:.25rem .55rem;border-radius:999px;border:1px solid;display:inline-flex;
+      align-items:center;gap:.25rem}
+    .pill-lock{background:var(--pill-lock-bg);color:var(--edge-strong);border-color:var(--edge-strong)}
+    .pill-back{background:var(--pill-back-bg);color:var(--edge-mid);border-color:var(--edge-mid)}
+    .pill-watch{background:var(--pill-watch-bg);color:var(--edge-weak);border-color:var(--edge-weak)}
+    .pill-fade{background:var(--pill-fade-bg);color:var(--edge-fade);border-color:var(--edge-fade)}
+    .stake{font-weight:600}
+    .book{font-size:.8rem}
+    .bankroll{margin-top:1.25rem;background:var(--surface);
+      border:1px solid var(--border);border-radius:10px;padding:1rem}
+    .bankroll-row{display:flex;justify-content:space-between;align-items:center;margin:.25rem 0}
+    .bar{height:6px;background:var(--surface-2);border-radius:999px;
+      overflow:hidden;margin:.5rem 0}
+    .bar-fill{height:100%;background:linear-gradient(90deg,var(--edge-strong),var(--edge-mid))}
+    footer{margin-top:1.5rem;padding-top:1rem;border-top:1px solid var(--border);
+      color:var(--text-dim);font-size:.75rem}
+    @media (min-width:720px){
+      .t-edge{font-size:2rem}
+      .fixture-body{grid-template-columns:1fr 1fr auto;gap:1.5rem}
+    }
+  </style>
+</head>
+<body>
+<main class="container">
+  <header class="strip">
+    <div>
+      <div class="t-xs muted">NRL · Round 14 · Fri 19 Jun 2026</div>
+      <h1 class="t-xl">3 fixtures · 1 lock · 1 watch · 1 fade</h1>
+    </div>
+    <span class="badge badge-warn" title="NRL Poisson model is fit on empty data">model uncalibrated</span>
+  </header>
+
+  <!-- LOCK -->
+  <article class="fixture" data-tier="lock">
+    <div class="fixture-head">
+      <div class="t-xs muted">Fri 20:00 AEST · McDonald Jones</div>
+      <div class="t-edge edge-strong">+12.4%</div>
+    </div>
+    <div class="fixture-body">
+      <div>
+        <div class="team-name t-lg">Newcastle Knights</div>
+        <div class="t-sm dim">Home · 5th · 7-5 W/L</div>
+      </div>
+      <div>
+        <div class="team-name t-lg">St George Illawarra</div>
+        <div class="t-sm dim">Away · 16th · 3-9 W/L</div>
+      </div>
+    </div>
+    <div class="odds-pair">
+      <button class="odds-btn is-best" aria-label="Newcastle to win at 1.31, best odds">1.31</button>
+      <span class="odds-sep">·</span>
+      <button class="odds-btn" aria-label="Dragons to win at 3.50">3.50</button>
+      <span class="odds-sep">·</span>
+      <button class="odds-btn" aria-label="Line: Newcastle -10.5 at 1.91">-10.5 · 1.91</button>
+    </div>
+    <div class="fixture-foot">
+      <span class="pill pill-lock">▲ Lock</span>
+      <span class="book muted">sportsbet</span>
+      <span class="stake accent">$42 · 4.2% bank</span>
+    </div>
+  </article>
+
+  <!-- WATCH -->
+  <article class="fixture" data-tier="watch">
+    <div class="fixture-head">
+      <div class="t-xs muted">Sat 17:30 AEST · Suncorp</div>
+      <div class="t-edge edge-weak">+1.8%</div>
+    </div>
+    <div class="fixture-body">
+      <div>
+        <div class="team-name t-lg">Brisbane Broncos</div>
+        <div class="t-sm dim">Home · 2nd · 10-2 W/L</div>
+      </div>
+      <div>
+        <div class="team-name t-lg">Melbourne Storm</div>
+        <div class="t-sm dim">Away · 1st · 11-1 W/L</div>
+      </div>
+    </div>
+    <div class="odds-pair">
+      <button class="odds-btn" aria-label="Broncos at 2.10">2.10</button>
+      <span class="odds-sep">·</span>
+      <button class="odds-btn is-best" aria-label="Storm at 1.78, best odds">1.78</button>
+      <span class="odds-sep">·</span>
+      <button class="odds-btn" aria-label="Line: Storm +2.5 at 1.91">+2.5 · 1.91</button>
+    </div>
+    <div class="fixture-foot">
+      <span class="pill pill-watch">◐ Watch</span>
+      <span class="book muted">bet365</span>
+      <span class="stake dim">— no bet —</span>
+    </div>
+  </article>
+
+  <!-- FADE -->
+  <article class="fixture" data-tier="fade">
+    <div class="fixture-head">
+      <div class="t-xs muted">Sat 19:50 AEST · Allianz</div>
+      <div class="t-edge edge-fade">-4.6%</div>
+    </div>
+    <div class="fixture-body">
+      <div>
+        <div class="team-name t-lg">South Sydney Rabbitohs</div>
+        <div class="t-sm dim">Home · 14th · 4-8 W/L</div>
+      </div>
+      <div>
+        <div class="team-name t-lg">Sydney Roosters</div>
+        <div class="t-sm dim">Away · 3rd · 9-3 W/L</div>
+      </div>
+    </div>
+    <div class="odds-pair">
+      <button class="odds-btn" aria-label="Rabbitohs at 3.10">3.10</button>
+      <span class="odds-sep">·</span>
+      <button class="odds-btn is-best" aria-label="Roosters at 1.38, best odds">1.38</button>
+      <span class="odds-sep">·</span>
+      <button class="odds-btn" aria-label="Line: Roosters -8.5 at 1.91">-8.5 · 1.91</button>
+    </div>
+    <div class="fixture-foot">
+      <span class="pill pill-fade">▼ Fade</span>
+      <span class="book muted">neds</span>
+      <span class="stake dim">— sit out —</span>
+    </div>
+  </article>
+
+  <!-- Bankroll footer -->
+  <footer class="bankroll">
+    <div class="bankroll-row">
+      <span class="t-sm muted">Bank this slate</span>
+      <span class="t-sm mono">$42 of $1,000</span>
+    </div>
+    <div class="bar"><div class="bar-fill" style="width:4.2%"></div></div>
+    <div class="bankroll-row t-xs dim">
+      <span>4.2% at risk</span>
+      <span>1 bet · +0u P/L if wins</span>
+    </div>
+  </footer>
+
+  <footer>
+    <p>Mockup 1 of 3 — NRL fixture card. Fake data for design-system demo only. Not a bet instruction.</p>
+  </footer>
+</main>
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>SGM Mockup v1 — 3-leg Same Game Multi</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg:#0a0c10; --surface:#14171d; --surface-2:#1c2029;
+      --border:#262b36; --border-strong:#3a4150;
+      --text:#ecedef; --text-muted:#9aa0ac; --text-dim:#6b7280;
+      --edge-strong:#22c55e; --edge-mid:#84cc16; --edge-weak:#eab308;
+      --edge-zero:#6b7280; --edge-fade:#ef4444;
+      --pill-lock-bg:rgba(34,197,94,.14); --pill-back-bg:rgba(132,204,22,.14);
+      --pill-watch-bg:rgba(234,179,8,.14); --pill-fade-bg:rgba(239,68,68,.14);
+      --accent:#f4b400; --accent-soft:rgba(244,180,0,.12);
+      --boost:#a855f7; --boost-soft:rgba(168,85,247,.12);
+      --font:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+      --mono:ui-monospace,SFMono-Regular,"JetBrains Mono",Menlo,monospace;
+    }
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg:#fafbfc; --surface:#fff; --surface-2:#f1f3f6;
+        --border:#e2e6ec; --border-strong:#c9d0db;
+        --text:#0a0c10; --text-muted:#4b5563; --text-dim:#6b7280;
+        --pill-lock-bg:rgba(34,197,94,.10); --pill-back-bg:rgba(132,204,22,.10);
+        --pill-watch-bg:rgba(234,179,8,.12); --pill-fade-bg:rgba(239,68,68,.10);
+        --accent-soft:rgba(244,180,0,.18); --boost-soft:rgba(168,85,247,.10);
+      }
+    }
+    *{box-sizing:border-box}
+    body{background:var(--bg);color:var(--text);font-family:var(--font);
+      margin:0;padding:1rem;line-height:1.4;-webkit-font-smoothing:antialiased}
+    .container{max-width:720px;margin:0 auto}
+    .t-xs{font-size:.7rem;letter-spacing:.06em;text-transform:uppercase}
+    .t-sm{font-size:.8rem;line-height:1.35}
+    .t-base{font-size:.95rem;line-height:1.4}
+    .t-lg{font-size:1.05rem;line-height:1.3;font-weight:600}
+    .t-xl{font-size:1.4rem;line-height:1.2;font-weight:700}
+    .t-edge{font-size:1.75rem;line-height:1;font-weight:800;
+      font-family:var(--mono);letter-spacing:-.02em}
+    .muted{color:var(--text-muted)}
+    .dim{color:var(--text-dim)}
+    .accent{color:var(--accent)}
+    .mono{font-family:var(--mono)}
+    .strip{display:flex;align-items:flex-start;justify-content:space-between;
+      gap:.75rem;padding:0 .25rem;margin-bottom:.75rem}
+
+    /* Match header */
+    .match-card{background:var(--surface);border:1px solid var(--border);
+      border-radius:10px;padding:1rem;margin-bottom:1rem;
+      box-shadow:inset 4px 0 0 var(--accent-soft),inset 4px 0 0 var(--accent)}
+    .match-meta{display:flex;justify-content:space-between;align-items:baseline;
+      margin-bottom:.6rem}
+    .matchup{font-size:1.15rem;font-weight:700}
+    .match-sub{color:var(--text-muted);font-size:.8rem}
+
+    /* Leg row */
+    .legs{display:flex;flex-direction:column;gap:.6rem;margin-top:.75rem}
+    .leg{display:grid;grid-template-columns:auto 1fr auto;gap:.75rem;
+      align-items:center;background:var(--surface-2);
+      border:1px solid var(--border);border-radius:8px;padding:.7rem .85rem}
+    .leg-edge{font-family:var(--mono);font-weight:800;font-size:1.05rem;
+      letter-spacing:-.02em;min-width:54px;text-align:right}
+    .leg-edge.strong{color:var(--edge-strong)}
+    .leg-edge.mid{color:var(--edge-mid)}
+    .leg-edge.weak{color:var(--edge-weak)}
+    .leg-edge.fade{color:var(--edge-fade)}
+    .leg-main{min-width:0}
+    .leg-pick{font-weight:600}
+    .leg-market{color:var(--text-muted);font-size:.8rem;margin-top:.15rem}
+    .leg-odds{font-family:var(--mono);font-weight:600;font-size:.95rem}
+    .leg-pill{font-size:.65rem;font-weight:700;letter-spacing:.05em;
+      text-transform:uppercase;padding:.2rem .45rem;border-radius:999px;
+      border:1px solid;white-space:nowrap}
+    .lp-lock{background:var(--pill-lock-bg);color:var(--edge-strong);border-color:var(--edge-strong)}
+    .lp-back{background:var(--pill-back-bg);color:var(--edge-mid);border-color:var(--edge-mid)}
+    .lp-watch{background:var(--pill-watch-bg);color:var(--edge-weak);border-color:var(--edge-weak)}
+    .lp-fade{background:var(--pill-fade-bg);color:var(--edge-fade);border-color:var(--edge-fade)}
+
+    /* Combined summary card */
+    .summary{background:linear-gradient(180deg,var(--accent-soft),transparent);
+      border:1px solid var(--accent);border-radius:10px;
+      padding:1rem;margin-top:1rem}
+    .summary-row{display:flex;justify-content:space-between;align-items:baseline;
+      margin:.35rem 0;gap:1rem}
+    .summary-row .lbl{color:var(--text-muted);font-size:.8rem;
+      letter-spacing:.04em;text-transform:uppercase}
+    .summary-row .val{font-family:var(--mono);font-weight:700;font-size:1.05rem}
+    .combined{display:flex;align-items:baseline;justify-content:space-between;
+      padding-bottom:.5rem;margin-bottom:.5rem;border-bottom:1px dashed var(--accent)}
+    .combined .num{font-size:1.6rem;font-weight:800}
+    .combined .lbl{color:var(--accent);font-weight:700;font-size:.8rem;
+      letter-spacing:.06em;text-transform:uppercase}
+    .verdict{display:flex;align-items:center;justify-content:space-between;
+      margin-top:.75rem;padding-top:.75rem;border-top:1px solid var(--border-strong)}
+    .verdict-pill{font-size:.85rem;font-weight:700;letter-spacing:.05em;
+      text-transform:uppercase;padding:.4rem .75rem;border-radius:999px;
+      border:1px solid;display:inline-flex;align-items:center;gap:.4rem}
+    .vp-back{background:var(--pill-back-bg);color:var(--edge-mid);border-color:var(--edge-mid)}
+    .stake-call{font-family:var(--mono);font-weight:800;color:var(--accent);
+      font-size:1.25rem}
+    footer{margin-top:1.5rem;padding-top:1rem;border-top:1px solid var(--border);
+      color:var(--text-dim);font-size:.75rem}
+    @media (min-width:720px){
+      .t-edge{font-size:2rem}
+      .leg{grid-template-columns:60px 1fr 90px 80px}
+    }
+  </style>
+</head>
+<body>
+<main class="container">
+  <header class="strip">
+    <div>
+      <div class="t-xs muted">NRL · SGM · Fri 19 Jun 2026</div>
+      <h1 class="t-xl">3 legs · $3.60 combined</h1>
+    </div>
+    <span class="t-xs muted">combined stake</span>
+  </header>
+
+  <!-- Match header -->
+  <section class="match-card">
+    <div class="match-meta">
+      <div>
+        <div class="matchup">Penrith Panthers v South Sydney</div>
+        <div class="match-sub">Fri 20:00 AEST · BlueBet Stadium · Penrith home</div>
+      </div>
+    </div>
+
+    <!-- Legs -->
+    <div class="legs">
+      <div class="leg">
+        <div class="leg-edge strong">+8.2%</div>
+        <div class="leg-main">
+          <div class="leg-pick">Panthers −6.5</div>
+          <div class="leg-market">Handicap line · sportsbet</div>
+        </div>
+        <div class="leg-odds">1.91</div>
+        <div class="leg-pill lp-lock">▲ Lock</div>
+      </div>
+
+      <div class="leg">
+        <div class="leg-edge mid">+5.1%</div>
+        <div class="leg-main">
+          <div class="leg-pick">Total points Over 42.5</div>
+          <div class="leg-market">Match total · bet365</div>
+        </div>
+        <div class="leg-odds">1.87</div>
+        <div class="leg-pill lp-back">▲ Back</div>
+      </div>
+
+      <div class="leg">
+        <div class="leg-edge weak">+2.0%</div>
+        <div class="leg-main">
+          <div class="leg-pick">Nathan Cleary anytime try</div>
+          <div class="leg-market">Anytime try · neds</div>
+        </div>
+        <div class="leg-odds">2.10</div>
+        <div class="leg-pill lp-watch">◐ Watch</div>
+      </div>
+    </div>
+
+    <!-- Combined summary -->
+    <div class="summary">
+      <div class="combined">
+        <span class="lbl">Combined odds</span>
+        <span class="num accent">$3.60</span>
+      </div>
+      <div class="summary-row">
+        <span class="lbl">Implied probability</span>
+        <span class="val">27.8%</span>
+      </div>
+      <div class="summary-row">
+        <span class="lbl">True probability (model)</span>
+        <span class="val">33.4%</span>
+      </div>
+      <div class="summary-row">
+        <span class="lbl">EV (single $20 stake)</span>
+        <span class="val edge-mid">+12.8%</span>
+      </div>
+      <div class="verdict">
+        <span class="verdict-pill vp-back">▲ BACK</span>
+        <div style="text-align:right">
+          <div class="t-xs muted">suggested stake</div>
+          <div class="stake-call">$18</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Two side-by-side scenarios for the design to do work -->
+  <section class="match-card" style="box-shadow:none;border-color:var(--border)">
+    <div class="match-meta">
+      <div>
+        <div class="match-sub">Alternate: same fixture, fade build</div>
+        <div class="matchup" style="font-size:1rem;font-weight:600">Rabbitohs +14.5 / Under 36.5 / Edwards anytime</div>
+      </div>
+      <div class="t-edge edge-fade" style="font-size:1.4rem">-3.4%</div>
+    </div>
+    <div class="legs">
+      <div class="leg" style="opacity:.85">
+        <div class="leg-edge fade">-2.1%</div>
+        <div class="leg-main"><div class="leg-pick">Rabbitohs +14.5</div><div class="leg-market">Handicap</div></div>
+        <div class="leg-odds">1.91</div>
+        <div class="leg-pill lp-fade">▼ Fade</div>
+      </div>
+      <div class="leg" style="opacity:.85">
+        <div class="leg-edge fade">-1.4%</div>
+        <div class="leg-main"><div class="leg-pick">Total Under 36.5</div><div class="leg-market">Match total</div></div>
+        <div class="leg-odds">1.95</div>
+        <div class="leg-pill lp-fade">▼ Fade</div>
+      </div>
+      <div class="leg" style="opacity:.85">
+        <div class="leg-edge fade">-3.8%</div>
+        <div class="leg-main"><div class="leg-pick">Edwards anytime try</div><div class="leg-market">Anytime try</div></div>
+        <div class="leg-odds">2.40</div>
+        <div class="leg-pill lp-fade">▼ Fade</div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>Mockup 2 of 3 — SGM card. Legs, combined odds, EV, suggested stake. Fake data for design-system demo only.</p>
+  </footer>
+</main>
+</body>
+</html>

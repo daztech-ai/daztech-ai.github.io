@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>My Offers Mockup v1 — Neds bonus-bet scan</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg:#0a0c10; --surface:#14171d; --surface-2:#1c2029;
+      --border:#262b36; --border-strong:#3a4150;
+      --text:#ecedef; --text-muted:#9aa0ac; --text-dim:#6b7280;
+      --edge-strong:#22c55e; --edge-mid:#84cc16; --edge-weak:#eab308;
+      --edge-zero:#6b7280; --edge-fade:#ef4444;
+      --pill-lock-bg:rgba(34,197,94,.14); --pill-back-bg:rgba(132,204,22,.14);
+      --pill-watch-bg:rgba(234,179,8,.14); --pill-fade-bg:rgba(239,68,68,.14);
+      --accent:#f4b400; --accent-soft:rgba(244,180,0,.12);
+      --boost:#a855f7; --boost-soft:rgba(168,85,247,.12);
+      --font:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+      --mono:ui-monospace,SFMono-Regular,"JetBrains Mono",Menlo,monospace;
+    }
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg:#fafbfc; --surface:#fff; --surface-2:#f1f3f6;
+        --border:#e2e6ec; --border-strong:#c9d0db;
+        --text:#0a0c10; --text-muted:#4b5563; --text-dim:#6b7280;
+        --pill-lock-bg:rgba(34,197,94,.10); --pill-back-bg:rgba(132,204,22,.10);
+        --pill-watch-bg:rgba(234,179,8,.12); --pill-fade-bg:rgba(239,68,68,.10);
+        --accent-soft:rgba(244,180,0,.18); --boost-soft:rgba(168,85,247,.10);
+      }
+    }
+    *{box-sizing:border-box}
+    body{background:var(--bg);color:var(--text);font-family:var(--font);
+      margin:0;padding:1rem;line-height:1.4;-webkit-font-smoothing:antialiased}
+    .container{max-width:720px;margin:0 auto}
+    .t-xs{font-size:.7rem;letter-spacing:.06em;text-transform:uppercase}
+    .t-sm{font-size:.8rem;line-height:1.35}
+    .t-base{font-size:.95rem;line-height:1.4}
+    .t-lg{font-size:1.05rem;line-height:1.3;font-weight:600}
+    .t-xl{font-size:1.4rem;line-height:1.2;font-weight:700}
+    .muted{color:var(--text-muted)}
+    .dim{color:var(--text-dim)}
+    .accent{color:var(--accent)}
+    .mono{font-family:var(--mono)}
+    .strip{display:flex;align-items:flex-start;justify-content:space-between;
+      gap:.75rem;padding:0 .25rem;margin-bottom:.75rem}
+
+    /* Summary chips row */
+    .chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem}
+    .chip{font-size:.75rem;padding:.4rem .65rem;border-radius:8px;
+      background:var(--surface-2);border:1px solid var(--border);
+      color:var(--text-muted);font-weight:500}
+    .chip strong{color:var(--text);font-weight:700}
+
+    /* Offer card */
+    .offer{background:var(--surface);border:1px solid var(--border);
+      border-radius:10px;padding:1rem;margin-bottom:.75rem;overflow:hidden;
+      position:relative}
+    .offer[data-ev="lock"]  {box-shadow:inset 4px 0 0 var(--edge-strong)}
+    .offer[data-ev="back"]  {box-shadow:inset 4px 0 0 var(--edge-mid)}
+    .offer[data-ev="watch"] {box-shadow:inset 4px 0 0 var(--edge-weak);opacity:.95}
+    .offer[data-ev="fade"]  {box-shadow:inset 4px 0 0 var(--edge-fade);opacity:.9}
+    .offer[data-ev="skip"]  {opacity:.7}
+
+    .offer-head{display:flex;align-items:center;justify-content:space-between;
+      gap:.5rem;flex-wrap:wrap;margin-bottom:.5rem}
+    .pill{font-size:.7rem;font-weight:700;letter-spacing:.05em;
+      text-transform:uppercase;padding:.25rem .55rem;border-radius:999px;
+      border:1px solid;display:inline-flex;align-items:center;gap:.25rem}
+    .pill-boost{background:var(--boost-soft);color:var(--boost);border-color:var(--boost)}
+    .pill-lock{background:var(--pill-lock-bg);color:var(--edge-strong);border-color:var(--edge-strong)}
+    .pill-back{background:var(--pill-back-bg);color:var(--edge-mid);border-color:var(--edge-mid)}
+    .pill-watch{background:var(--pill-watch-bg);color:var(--edge-weak);border-color:var(--edge-weak)}
+    .pill-fade{background:var(--pill-fade-bg);color:var(--edge-fade);border-color:var(--edge-fade)}
+
+    .offer-title{font-size:1rem;font-weight:600;line-height:1.3;margin:.25rem 0 .5rem}
+    .offer-meta{color:var(--text-muted);font-size:.8rem;line-height:1.4}
+    .offer-foot{display:flex;align-items:center;justify-content:space-between;
+      flex-wrap:wrap;gap:.5rem;margin-top:.7rem;padding-top:.7rem;
+      border-top:1px solid var(--border)}
+    .ev-pill{font-family:var(--mono);font-weight:800;font-size:1.05rem;
+      letter-spacing:-.02em}
+    .ev-pill.lock{color:var(--edge-strong)}
+    .ev-pill.back{color:var(--edge-mid)}
+    .ev-pill.watch{color:var(--edge-weak)}
+    .ev-pill.fade{color:var(--edge-fade)}
+    .ev-meta{color:var(--text-muted);font-size:.75rem;text-align:right}
+    .ev-meta strong{color:var(--text);font-weight:600}
+    .terms-toggle{color:var(--text-dim);font-size:.7rem;cursor:pointer;
+      background:none;border:none;padding:0;font:inherit;text-transform:uppercase;
+      letter-spacing:.05em}
+    .terms-toggle:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:3px}
+    .terms{display:none;margin-top:.6rem;padding:.6rem .75rem;
+      background:var(--surface-2);border-radius:6px;font-size:.78rem;
+      color:var(--text-muted);line-height:1.45}
+    .terms[open]{display:block}
+    footer{margin-top:1.5rem;padding-top:1rem;border-top:1px solid var(--border);
+      color:var(--text-dim);font-size:.75rem}
+    @media (min-width:720px){
+      .offer-foot{justify-content:flex-start;gap:1.5rem}
+      .ev-meta{margin-left:auto}
+    }
+  </style>
+</head>
+<body>
+<main class="container">
+  <header class="strip">
+    <div>
+      <div class="t-xs muted">Neds · 12 active offers · scraped 19 Jun 09:11 AEST</div>
+      <h1 class="t-xl">3 worth a look · 1 lock</h1>
+    </div>
+    <span class="t-xs muted">sorted by EV</span>
+  </header>
+
+  <div class="chips">
+    <span class="chip">Active offers <strong>12</strong></span>
+    <span class="chip">Bonus-bet <strong>5</strong></span>
+    <span class="chip">EV-positive <strong>3</strong></span>
+    <span class="chip">Best EV <strong class="accent">+6.2%</strong></span>
+  </div>
+
+  <!-- LOCK OFFER -->
+  <article class="offer" data-ev="lock">
+    <div class="offer-head">
+      <span class="pill pill-boost">$50 Bonus Back</span>
+      <span class="t-xs muted">NRL · 3+ leg SGM</span>
+    </div>
+    <h3 class="offer-title">SGM Cover Tool — 1 leg fails, get $50 back as bonus bet</h3>
+    <div class="offer-meta">
+      Qualifying bet: 3+ leg SGM on NRL, min $20 stake, min leg odds $1.50.
+      One leg fails → $50 bonus back, 7-day expiry, 1x turnover.
+    </div>
+    <div class="offer-foot">
+      <span class="ev-pill lock">+6.2%</span>
+      <div class="ev-meta">vs no-cover baseline <strong>+2.1%</strong><br/>
+        ROI on $20 qualifying ≈ <strong class="accent">+$1.24</strong></div>
+    </div>
+    <button class="terms-toggle" aria-expanded="false" onclick="
+      const t=this.nextElementSibling;const o=t.hasAttribute('open');
+      if(o){t.removeAttribute('open');this.textContent='Show full terms ▾'}
+      else{t.setAttribute('open','');this.textContent='Hide terms ▴'}
+      this.setAttribute('aria-expanded',o?'false':'true')">Show full terms ▾</button>
+    <div class="terms">
+      Available on NRL 3+ leg SGM placed pre-match. Min total stake $20, min leg odds
+      $1.50. If exactly one leg fails, $50 returned as bonus bet within 24h of settlement.
+      Bonus bet stake not returned, 7-day expiry, 1x turnover on sports. Excludes cashed-out
+      and void legs. One claim per match. Full T&amp;Cs on Neds app.
+    </div>
+  </article>
+
+  <!-- BACK OFFER -->
+  <article class="offer" data-ev="back">
+    <div class="offer-head">
+      <span class="pill pill-boost">$30 Bonus Back</span>
+      <span class="t-xs muted">AFL · 4+ leg Multi</span>
+    </div>
+    <h3 class="offer-title">Multi Rescue — 1 leg fails on 4+ leg AFL multi, get $30 back</h3>
+    <div class="offer-meta">
+      Qualifying bet: 4+ leg AFL multi, min $25 stake, min leg odds $1.40.
+      One leg fails → $30 bonus back.
+    </div>
+    <div class="offer-foot">
+      <span class="ev-pill back">+3.4%</span>
+      <div class="ev-meta">vs no-cover baseline <strong>+0.8%</strong><br/>
+        ROI on $25 qualifying ≈ <strong class="accent">+$0.85</strong></div>
+    </div>
+  </article>
+
+  <!-- WATCH OFFER -->
+  <article class="offer" data-ev="watch">
+    <div class="offer-head">
+      <span class="pill pill-boost">Odds Boost</span>
+      <span class="t-xs muted">Any sport</span>
+    </div>
+    <h3 class="offer-title">Boost your odds on any Fixed Win, Multi or Same Game Multi</h3>
+    <div class="offer-meta">
+      One-click odds boost token. Boosted odds visible in bet slip on eligible markets.
+      Max stake $50, max bonus winnings $250.
+    </div>
+    <div class="offer-foot">
+      <span class="ev-pill watch">+1.1%</span>
+      <div class="ev-meta">depends on selection<br/>
+        marginal — only use on already-EV bets</div>
+    </div>
+  </article>
+
+  <!-- FADE OFFER -->
+  <article class="offer" data-ev="fade">
+    <div class="offer-head">
+      <span class="pill pill-boost">$20 Bonus Bet</span>
+      <span class="t-xs muted">Racing · greyhound</span>
+    </div>
+    <h3 class="offer-title">Place a Fixed Win bet on Ned's #7 greyhound in any race at Wentworth Park</h3>
+    <div class="offer-meta">
+      Stake $20 on the #7 greyhound. If it wins, get $20 bonus back. If it loses, you lose
+      the $20. Negative EV — the bonus doesn't make up for the narrow selection.
+    </div>
+    <div class="offer-foot">
+      <span class="ev-pill fade">-4.8%</span>
+      <div class="ev-meta">vs market <strong>-2.3%</strong><br/>
+        skip this one</div>
+    </div>
+  </article>
+
+  <!-- SKIP OFFER (no EV signal) -->
+  <article class="offer" data-ev="skip">
+    <div class="offer-head">
+      <span class="pill pill-watch">Conditional</span>
+      <span class="t-xs muted">Any sport</span>
+    </div>
+    <h3 class="offer-title">AFL or NRL player injured in the first half — money back if it happens</h3>
+    <div class="offer-meta">
+      Insurance-style offer. Pays out only on a specific in-game event.
+    </div>
+    <div class="offer-foot">
+      <span class="ev-pill" style="color:var(--edge-zero)">—</span>
+      <div class="ev-meta">depends entirely on game state<br/>
+        hold, don't pre-commit</div>
+    </div>
+  </article>
+
+  <footer>
+    <p>Mockup 3 of 3 — My Offers card. Bonus-bet offers sorted by EV vs qualifying bet.
+      Fake data for design-system demo only.</p>
+  </footer>
+</main>
+</body>
+</html>
