@@ -1,196 +1,130 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WC SGM Card | Jun 20-21 2026</title>
-<style>
-:root {
-  --bg: #0a0a0f; --card: #111118; --border: #1e1e2e;
-  --accent: #00d4aa; --accent2: #ffd60a; --red: #ff453a;
-  --green: #32d74b; --text: #e0e0e8; --muted: #7a7a8a;
-  --gold: #f5a623; --live: #ff6b35;
-}
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; padding: 16px; }
-.header { text-align: center; margin-bottom: 20px; }
-.header .tag { display: inline-block; background: var(--live); color: #fff; font-weight: 700; font-size: 10px; padding: 3px 8px; border-radius: 20px; letter-spacing: 1px; margin-bottom: 8px; }
-.header h1 { font-size: 20px; font-weight: 700; margin-bottom: 4px; }
-.header .sub { color: var(--muted); font-size: 12px; }
-.match-block { margin-bottom: 28px; }
-.match-banner { background: linear-gradient(135deg, #0f1a2e 0%, #1a0a14 100%); border: 1px solid var(--border); border-radius: 10px; padding: 14px; text-align: center; margin-bottom: 12px; }
-.match-banner .teams { display: flex; align-items: center; justify-content: center; gap: 12px; font-size: 18px; font-weight: 800; margin-bottom: 5px; }
-.match-banner .teams .home { color: var(--accent2); }
-.match-banner .teams .away { color: var(--muted); }
-.match-banner .meta { color: var(--muted); font-size: 11px; }
-.odds-row { display: flex; justify-content: center; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
-.odds-chip { background: var(--card); border: 1px solid var(--border); border-radius: 6px; padding: 4px 8px; font-size: 10px; color: var(--muted); }
-.odds-chip span { color: var(--accent); font-weight: 700; margin-left: 3px; }
-.card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 12px; margin-bottom: 10px; }
-.card-title { font-size: 10px; font-weight: 600; letter-spacing: 1.2px; color: var(--accent); text-transform: uppercase; margin-bottom: 8px; }
-.leg { display: flex; justify-content: space-between; align-items: center; padding: 7px 0; border-bottom: 1px solid var(--border); }
-.leg:last-child { border-bottom: none; }
-.leg .leg-info { flex: 1; }
-.leg .leg-name { font-weight: 600; font-size: 12px; }
-.leg .leg-desc { font-size: 10px; color: var(--muted); margin-top: 1px; }
-.leg .leg-odds { font-weight: 700; font-size: 15px; color: var(--accent); min-width: 40px; text-align: right; }
-.sgm-card { background: linear-gradient(135deg, #0f1a2e 0%, #1a1040 100%); border: 1px solid var(--accent2); border-radius: 10px; padding: 12px; margin-bottom: 10px; }
-.sgm-card .card-title { color: var(--accent2); }
-.sgm-total { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 5px; }
-.sgm-total .label { font-size: 11px; color: var(--muted); }
-.sgm-total .odds { font-size: 22px; font-weight: 800; color: var(--accent2); }
-.sgm-explain { background: rgba(0,212,170,0.08); border: 1px solid rgba(0,212,170,0.2); border-radius: 6px; padding: 7px 9px; margin-top: 8px; font-size: 10px; color: var(--accent); line-height: 1.5; }
-.verdict { background: var(--card); border: 2px solid var(--green); border-radius: 10px; padding: 12px; margin-bottom: 12px; }
-.verdict .verdict-label { font-size: 10px; font-weight: 600; color: var(--green); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 5px; }
-.verdict .verdict-text { font-size: 12px; line-height: 1.5; }
-.verdict .verdict-text em { color: var(--accent2); font-style: normal; font-weight: 600; }
-.verdict.yellow { border-color: var(--gold); }
-.verdict.yellow .verdict-label { color: var(--gold); }
-.verdict.red { border-color: var(--red); }
-.verdict.red .verdict-label { color: var(--red); }
-.consider-tag { display: inline-block; background: rgba(245,166,35,0.2); color: var(--gold); font-size: 9px; font-weight: 700; padding: 1px 6px; border-radius: 3px; letter-spacing: 0.5px; margin-right: 4px; }
-.watch-tag { display: inline-block; background: rgba(255,107,53,0.15); color: var(--live); font-size: 9px; font-weight: 700; padding: 1px 6px; border-radius: 3px; letter-spacing: 0.5px; margin-right: 4px; }
-.best-bets { background: linear-gradient(135deg, #0f1a2e 0%, #1a1040 100%); border: 1px solid var(--accent2); border-radius: 10px; padding: 14px; margin-bottom: 20px; }
-.best-bets .title { font-size: 10px; font-weight: 600; letter-spacing: 1.5px; color: var(--accent2); text-transform: uppercase; margin-bottom: 10px; }
-.best-bet-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
-.best-bet-row:last-child { border-bottom: none; }
-.best-bet-row .desc { font-size: 12px; font-weight: 600; }
-.best-bet-row .odds-val { font-size: 16px; font-weight: 800; color: var(--accent2); }
-.best-bet-row .stake-val { font-size: 11px; color: var(--muted); }
-footer { margin-top: 30px; text-align: center; color: var(--muted); font-size: 11px; line-height: 1.8; }
-
-</style>
+  <meta charset="utf-8" />
+  <title>WC 2026 — SGM Card — 19 Jun 2026</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #0e1014;
+      --card: #1a1d23;
+      --border: #2a2f3a;
+      --text: #e6e6e6;
+      --muted: #9aa0a6;
+      --accent: #f4b400;
+      --good: #34a853;
+      --warn: #f9ab00;
+      --skip: #5f6368;
+    }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+      line-height: 1.55;
+    }
+    h1 { color: var(--accent); border-bottom: 2px solid var(--border); padding-bottom: 0.5rem; }
+    h2 { color: var(--accent); margin-top: 2rem; }
+    h3 { color: var(--text); margin-top: 1.5rem; }
+    .banner {
+      background: #2a1d05;
+      border-left: 4px solid var(--warn);
+      padding: 1rem 1.2rem;
+      margin: 1.5rem 0;
+      border-radius: 4px;
+      color: #f4d7a3;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      font-size: 0.95rem;
+    }
+    th, td {
+      padding: 0.6rem 0.7rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    th {
+      color: var(--muted);
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+    }
+    .fixture-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1rem 1.2rem;
+      margin: 1rem 0;
+    }
+    .fixture-card.reference {
+      border-left: 4px solid var(--skip);
+      opacity: 0.85;
+    }
+    .ref-badge {
+      display: inline-block;
+      background: var(--skip);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 0.15rem 0.5rem;
+      border-radius: 3px;
+      margin-left: 0.5rem;
+      vertical-align: middle;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .sgm-table { font-size: 0.85rem; }
+    .sgm-table th { font-size: 0.7rem; }
+    .premium-good { color: var(--good); font-weight: 600; }
+    .premium-warn { color: var(--warn); font-weight: 600; }
+    .premium-bad { color: #ea4335; font-weight: 600; }
+    footer {
+      margin-top: 3rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+  </style>
 </head>
 <body>
-<div class="header">
-  <div class="tag">SGM CARD</div>
-  <h1>World Cup SGM Card</h1>
-  <div class="sub">Sat 20 Jun and Sun 21 Jun 2026 - Alt-market odds estimated - AU bookmakers</div>
-</div>
+  <h1>World Cup 2026 — SGM Card</h1>
+  <p><strong>19 Jun 2026</strong>  •  Bankroll assumed: <strong>$0 AUD</strong></p>
 
-<div class="card" style="border-color: var(--gold); margin-bottom: 20px;">
-  <div class="card-title">Odds Disclaimer</div>
-  <div style="font-size: 11px; color: var(--muted); line-height: 1.5;">
-    H2H odds from Betfair AU. Alt-market lines are estimated from AU bookmaker typical pricing - not live. Verify each leg at the bookie before placing. If a leg has moved more than 5pct, recompute combined odds manually.
+  <div class="banner">
+    <strong>Alt-market lines are estimated</strong>, not live. The Odds API cache only
+    carries h2h markets. The SGM structures below use typical AU bookmaker pricing
+    for tournament openers. <strong>Verify each leg at the bookie before placing</strong> —
+    if a leg has moved more than 5-10%, recompute the combined odds manually.
   </div>
-</div>
 
-<div class="best-bets"><div class="title">Best Bets Today</div><div class="best-bet-row"><div><div class="desc">USA</div><div class="stake-val">USA vs Australia - 2-leg SGM</div></div><div><div class="odds-val">~2.96+</div><div class="stake-val">Best available</div></div></div><div class="best-bet-row"><div><div class="desc">Scotland</div><div class="stake-val">Scotland vs Morocco - 2-leg SGM</div></div><div><div class="odds-val">~2.96+</div><div class="stake-val">Best available</div></div></div><div class="best-bet-row"><div><div class="desc">Turkey</div><div class="stake-val">Turkey vs Paraguay - 2-leg SGM</div></div><div><div class="odds-val">~2.96+</div><div class="stake-val">Best available</div></div></div><div class="best-bet-row"><div><div class="desc">Netherlands</div><div class="stake-val">Netherlands vs Sweden - 2-leg SGM</div></div><div><div class="odds-val">~2.96+</div><div class="stake-val">Best available</div></div></div><div class="best-bet-row"><div><div class="desc">Germany</div><div class="stake-val">Germany vs Ivory Coast - 2-leg SGM</div></div><div><div class="odds-val">~2.96+</div><div class="stake-val">Best available</div></div></div><div class="best-bet-row"><div><div class="desc">Tunisia</div><div class="stake-val">Tunisia vs Japan - 2-leg SGM</div></div><div><div class="odds-val">~2.96+</div><div class="stake-val">Best available</div></div></div></div>
+  <div class="fixture-card reference"><h2>USA vs Australia — <span style="color:var(--accent)">HOME</span> anchor @ 1.63 <span class="ref-badge">reference only</span></h2><p><strong>Kickoff:</strong> Sat 20 Jun 05:00 AEST<br/><strong>By-eye stake:</strong> 0% — no recommended bet, structure for reference<br/><strong>Why:</strong> No by-eye lean recorded. SGM structures shown for reference; use the main WC card for the h2h read.</p><h3>SGM structures</h3><table class="sgm-table"><thead><tr><th>SGM</th><th>Leg 1</th><th>Leg 2</th><th>Leg 3</th><th>Combined</th><th>Implied</th><th>Anchor</th><th>SGM premium</th></tr></thead><tbody><tr><td>USA + Under 2.5</td><td><strong>USA Win</strong> @ 1.63</td><td><strong>Under 2.5</strong> @ 1.70</td><td>—</td><td><strong>2.96</strong></td><td>33.8%</td><td>1.63</td><td class="premium-good">+6.8%</td></tr><tr><td>USA + BTTS No (clean sheet)</td><td><strong>USA Win</strong> @ 1.63</td><td><strong>BTTS No</strong> @ 1.80</td><td>—</td><td><strong>3.14</strong></td><td>31.9%</td><td>1.63</td><td class="premium-good">+7.0%</td></tr><tr><td>USA + Under 2.5 + BTTS No</td><td><strong>USA Win</strong> @ 1.63</td><td><strong>Under 2.5</strong> @ 1.70</td><td><strong>BTTS No</strong> @ 1.80</td><td><strong>5.74</strong></td><td>17.4%</td><td>1.63</td><td class="premium-good">+15.1%</td></tr><tr><td>USA + HT USA / FT USA (wire-to-wire)</td><td><strong>USA Win</strong> @ 1.63</td><td><strong>HT Home / FT Home</strong> @ 2.30</td><td>—</td><td><strong>4.01</strong></td><td>24.9%</td><td>1.63</td><td class="premium-good">+7.0%</td></tr></tbody></table></div>
+<div class="fixture-card reference"><h2>USA vs Australia — <span style="color:var(--accent)">HOME</span> anchor @ 1.65 <span class="ref-badge">reference only</span></h2><p><strong>Kickoff:</strong> Sat 20 Jun 05:00 AEST<br/><strong>By-eye stake:</strong> 0% — no recommended bet, structure for reference<br/><strong>Why:</strong> No by-eye lean recorded. SGM structures shown for reference; use the main WC card for the h2h read.</p><h3>SGM structures</h3><table class="sgm-table"><thead><tr><th>SGM</th><th>Leg 1</th><th>Leg 2</th><th>Leg 3</th><th>Combined</th><th>Implied</th><th>Anchor</th><th>SGM premium</th></tr></thead><tbody><tr><td>USA + Under 2.5</td><td><strong>USA Win</strong> @ 1.65</td><td><strong>Under 2.5</strong> @ 1.70</td><td>—</td><td><strong>3.00</strong></td><td>33.3%</td><td>1.65</td><td class="premium-good">+7.0%</td></tr><tr><td>USA + BTTS No (clean sheet)</td><td><strong>USA Win</strong> @ 1.65</td><td><strong>BTTS No</strong> @ 1.80</td><td>—</td><td><strong>3.18</strong></td><td>31.4%</td><td>1.65</td><td class="premium-good">+7.1%</td></tr><tr><td>USA + Under 2.5 + BTTS No</td><td><strong>USA Win</strong> @ 1.65</td><td><strong>Under 2.5</strong> @ 1.70</td><td><strong>BTTS No</strong> @ 1.80</td><td><strong>5.81</strong></td><td>17.2%</td><td>1.65</td><td class="premium-good">+15.1%</td></tr><tr><td>USA + HT USA / FT USA (wire-to-wire)</td><td><strong>USA Win</strong> @ 1.65</td><td><strong>HT Home / FT Home</strong> @ 2.30</td><td>—</td><td><strong>4.06</strong></td><td>24.6%</td><td>1.65</td><td class="premium-good">+7.0%</td></tr></tbody></table></div>
+<div class="fixture-card reference"><h2>Scotland vs Morocco — <span style="color:var(--accent)">AWAY</span> anchor @ 1.79 <span class="ref-badge">reference only</span></h2><p><strong>Kickoff:</strong> Sat 20 Jun 08:00 AEST<br/><strong>By-eye stake:</strong> 0% — no recommended bet, structure for reference<br/><strong>Why:</strong> No by-eye lean recorded. SGM structures shown for reference; use the main WC card for the h2h read.</p><h3>SGM structures</h3><table class="sgm-table"><thead><tr><th>SGM</th><th>Leg 1</th><th>Leg 2</th><th>Leg 3</th><th>Combined</th><th>Implied</th><th>Anchor</th><th>SGM premium</th></tr></thead><tbody><tr><td>Morocco + Under 2.5</td><td><strong>Morocco Win</strong> @ 1.79</td><td><strong>Under 2.5</strong> @ 1.70</td><td>—</td><td><strong>3.26</strong></td><td>30.7%</td><td>1.79</td><td class="premium-good">+7.1%</td></tr></tbody></table></div>
+<div class="fixture-card reference"><h2>Scotland vs Morocco — <span style="color:var(--accent)">AWAY</span> anchor @ 1.77 <span class="ref-badge">reference only</span></h2><p><strong>Kickoff:</strong> Sat 20 Jun 08:00 AEST<br/><strong>By-eye stake:</strong> 0% — no recommended bet, structure for reference<br/><strong>Why:</strong> No by-eye lean recorded. SGM structures shown for reference; use the main WC card for the h2h read.</p><h3>SGM structures</h3><table class="sgm-table"><thead><tr><th>SGM</th><th>Leg 1</th><th>Leg 2</th><th>Leg 3</th><th>Combined</th><th>Implied</th><th>Anchor</th><th>SGM premium</th></tr></thead><tbody><tr><td>Morocco + Under 2.5</td><td><strong>Morocco Win</strong> @ 1.77</td><td><strong>Under 2.5</strong> @ 1.70</td><td>—</td><td><strong>3.22</strong></td><td>31.1%</td><td>1.77</td><td class="premium-good">+7.0%</td></tr></tbody></table></div>
+<div class="fixture-card reference"><h2>Brazil vs Haiti — <span style="color:var(--accent)">HOME</span> anchor @ 1.13 <span class="ref-badge">reference only</span></h2><p><strong>Kickoff:</strong> Sat 20 Jun 11:00 AEST<br/><strong>By-eye stake:</strong> 0% — no recommended bet, structure for reference<br/><strong>Why:</strong> No by-eye lean recorded. SGM structures shown for reference; use the main WC card for the h2h read.</p><h3>SGM structures</h3><table class="sgm-table"><thead><tr><th>SGM</th><th>Leg 1</th><th>Leg 2</th><th>Leg 3</th><th>Combined</th><th>Implied</th><th>Anchor</th><th>SGM premium</th></tr></thead><tbody><tr><td>Brazil + Under 2.5</td><td><strong>Brazil Win</strong> @ 1.13</td><td><strong>Under 2.5</strong> @ 1.55</td><td>—</td><td><strong>1.87</strong></td><td>53.5%</td><td>1.13</td><td class="premium-good">+6.8%</td></tr><tr><td>Brazil + BTTS No (clean sheet)</td><td><strong>Brazil Win</strong> @ 1.13</td><td><strong>BTTS No</strong> @ 1.60</td><td>—</td><td><strong>1.93</strong></td><td>51.8%</td><td>1.13</td><td class="premium-good">+6.8%</td></tr><tr><td>Brazil + Under 2.5 + BTTS No</td><td><strong>Brazil Win</strong> @ 1.13</td><td><strong>Under 2.5</strong> @ 1.55</td><td><strong>BTTS No</strong> @ 1.60</td><td><strong>3.22</strong></td><td>31.1%</td><td>1.13</td><td class="premium-good">+14.9%</td></tr><tr><td>Brazil + HT Brazil / FT Brazil (wire-to-wire)</td><td><strong>Brazil Win</strong> @ 1.13</td><td><strong>HT Home / FT Home</strong> @ 1.80</td><td>—</td><td><strong>2.18</strong></td><td>45.9%</td><td>1.13</td><td class="premium-good">+7.2%</td></tr></tbody></table></div>
+<div class="fixture-card reference"><h2>Brazil vs Haiti — <span style="color:var(--accent)">HOME</span> anchor @ 1.13 <span class="ref-badge">reference only</span></h2><p><strong>Kickoff:</strong> Sat 20 Jun 11:00 AEST<br/><strong>By-eye stake:</strong> 0% — no recommended bet, structure for reference<br/><strong>Why:</strong> No by-eye lean recorded. SGM structures shown for reference; use the main WC card for the h2h read.</p><h3>SGM structures</h3><table class="sgm-table"><thead><tr><th>SGM</th><th>Leg 1</th><th>Leg 2</th><th>Leg 3</th><th>Combined</th><th>Implied</th><th>Anchor</th><th>SGM premium</th></tr></thead><tbody><tr><td>Brazil + Under 2.5</td><td><strong>Brazil Win</strong> @ 1.13</td><td><strong>Under 2.5</strong> @ 1.55</td><td>—</td><td><strong>1.87</strong></td><td>53.5%</td><td>1.13</td><td class="premium-good">+6.8%</td></tr><tr><td>Brazil + BTTS No (clean sheet)</td><td><strong>Brazil Win</strong> @ 1.13</td><td><strong>BTTS No</strong> @ 1.60</td><td>—</td><td><strong>1.93</strong></td><td>51.8%</td><td>1.13</td><td class="premium-good">+6.8%</td></tr><tr><td>Brazil + Under 2.5 + BTTS No</td><td><strong>Brazil Win</strong> @ 1.13</td><td><strong>Under 2.5</strong> @ 1.55</td><td><strong>BTTS No</strong> @ 1.60</td><td><strong>3.22</strong></td><td>31.1%</td><td>1.13</td><td class="premium-good">+14.9%</td></tr><tr><td>Brazil + HT Brazil / FT Brazil (wire-to-wire)</td><td><strong>Brazil Win</strong> @ 1.13</td><td><strong>HT Home / FT Home</strong> @ 1.80</td><td>—</td><td><strong>2.18</strong></td><td>45.9%</td><td>1.13</td><td class="premium-good">+7.2%</td></tr></tbody></table></div>
+<div class="fixture-card reference"><h2>Turkey vs Paraguay — <span style="color:var(--accent)">HOME</span> anchor @ 2.10 <span class="ref-badge">reference only</span></h2><p><strong>Kickoff:</strong> Sat 20 Jun 13:00 AEST<br/><strong>By-eye stake:</strong> 0% — no recommended bet, structure for reference<br/><strong>Why:</strong> No by-eye lean recorded. SGM structures shown for reference; use the main WC card for the h2h read.</p><h3>SGM structures</h3><table class="sgm-table"><thead><tr><th>SGM</th><th>Leg 1</th><th>Leg 2</th><th>Leg 3</th><th>Combined</th><th>Implied</th><th>Anchor</th><th>SGM premium</th></tr></thead><tbody><tr><td>Turkey + Under 2.5</td><td><strong>Turkey Win</strong> @ 2.10</td><td><strong>Under 2.5</strong> @ 1.85</td><td>—</td><td><strong>4.16</strong></td><td>24.0%</td><td>2.10</td><td class="premium-good">+7.1%</td></tr><tr><td>Turkey + BTTS No (clean sheet)</td><td><strong>Turkey Win</strong> @ 2.10</td><td><strong>BTTS No</strong> @ 1.80</td><td>—</td><td><strong>4.04</strong></td><td>24.8%</td><td>2.10</td><td class="premium-good">+6.9%</td></tr><tr><td>Turkey + Under 2.5 + BTTS No</td><td><strong>Turkey Win</strong> @ 2.10</td><td><strong>Under 2.5</strong> @ 1.85</td><td><strong>BTTS No</strong> @ 1.80</td><td><strong>8.04</strong></td><td>12.4%</td><td>2.10</td><td class="premium-good">+15.0%</td></tr><tr><td>Turkey + HT Turkey / FT Turkey (wire-to-wire)</td><td><strong>Turkey Win</strong> @ 2.10</td><td><strong>HT Home / FT Home</strong> @ 3.00</td><td>—</td><td><strong>6.74</strong></td><td>14.8%</td><td>2.10</td><td class="premium-good">+7.0%</td></tr></tbody></table></div>
+<div class="fixture-card reference"><h2>Turkey vs Paraguay — <span style="color:var(--accent)">HOME</span> anchor @ 2.10 <span class="ref-badge">reference only</span></h2><p><strong>Kickoff:</strong> Sat 20 Jun 13:00 AEST<br/><strong>By-eye stake:</strong> 0% — no recommended bet, structure for reference<br/><strong>Why:</strong> No by-eye lean recorded. SGM structures shown for reference; use the main WC card for the h2h read.</p><h3>SGM structures</h3><table class="sgm-table"><thead><tr><th>SGM</th><th>Leg 1</th><th>Leg 2</th><th>Leg 3</th><th>Combined</th><th>Implied</th><th>Anchor</th><th>SGM premium</th></tr></thead><tbody><tr><td>Turkey + Under 2.5</td><td><strong>Turkey Win</strong> @ 2.10</td><td><strong>Under 2.5</strong> @ 1.85</td><td>—</td><td><strong>4.16</strong></td><td>24.0%</td><td>2.10</td><td class="premium-good">+7.1%</td></tr><tr><td>Turkey + BTTS No (clean sheet)</td><td><strong>Turkey Win</strong> @ 2.10</td><td><strong>BTTS No</strong> @ 1.80</td><td>—</td><td><strong>4.04</strong></td><td>24.8%</td><td>2.10</td><td class="premium-good">+6.9%</td></tr><tr><td>Turkey + Under 2.5 + BTTS No</td><td><strong>Turkey Win</strong> @ 2.10</td><td><strong>Under 2.5</strong> @ 1.85</td><td><strong>BTTS No</strong> @ 1.80</td><td><strong>8.04</strong></td><td>12.4%</td><td>2.10</td><td class="premium-good">+15.0%</td></tr><tr><td>Turkey + HT Turkey / FT Turkey (wire-to-wire)</td><td><strong>Turkey Win</strong> @ 2.10</td><td><strong>HT Home / FT Home</strong> @ 3.00</td><td>—</td><td><strong>6.74</strong></td><td>14.8%</td><td>2.10</td><td class="premium-good">+7.0%</td></tr></tbody></table></div>
+<div class="fixture-card reference"><h2>Netherlands vs Sweden — <span style="color:var(--accent)">HOME</span> anchor @ 1.68 <span class="ref-badge">reference only</span></h2><p><strong>Kickoff:</strong> Sun 21 Jun 03:00 AEST<br/><strong>By-eye stake:</strong> 0% — no recommended bet, structure for reference<br/><strong>Why:</strong> No by-eye lean recorded. SGM structures shown for reference; use the main WC card for the h2h read.</p><h3>SGM structures</h3><table class="sgm-table"><thead><tr><th>SGM</th><th>Leg 1</th><th>Leg 2</th><th>Leg 3</th><th>Combined</th><th>Implied</th><th>Anchor</th><th>SGM premium</th></tr></thead><tbody><tr><td>Netherlands + Under 2.5</td><td><strong>Netherlands Win</strong> @ 1.68</td><td><strong>Under 2.5</strong> @ 1.70</td><td>—</td><td><strong>3.06</strong></td><td>32.7%</td><td>1.68</td><td class="premium-good">+7.1%</td></tr><tr><td>Netherlands + BTTS No (clean sheet)</td><td><strong>Netherlands Win</strong> @ 1.68</td><td><strong>BTTS No</strong> @ 1.80</td><td>—</td><td><strong>3.24</strong></td><td>30.9%</td><td>1.68</td><td class="premium-good">+7.1%</td></tr><tr><td>Netherlands + Under 2.5 + BTTS No</td><td><strong>Netherlands Win</strong> @ 1.68</td><td><strong>Under 2.5</strong> @ 1.70</td><td><strong>BTTS No</strong> @ 1.80</td><td><strong>5.91</strong></td><td>16.9%</td><td>1.68</td><td class="premium-good">+15.0%</td></tr><tr><td>Netherlands + HT Netherlands / FT Netherlands (wire-to-wire)</td><td><strong>Netherlands Win</strong> @ 1.68</td><td><strong>HT Home / FT Home</strong> @ 2.30</td><td>—</td><td><strong>4.13</strong></td><td>24.2%</td><td>1.68</td><td class="premium-good">+6.9%</td></tr></tbody></table></div>
+<div class="fixture-card reference"><h2>Netherlands vs Sweden — <span style="color:var(--accent)">HOME</span> anchor @ 1.77 <span class="ref-badge">reference only</span></h2><p><strong>Kickoff:</strong> Sun 21 Jun 03:00 AEST<br/><strong>By-eye stake:</strong> 0% — no recommended bet, structure for reference<br/><strong>Why:</strong> No by-eye lean recorded. SGM structures shown for reference; use the main WC card for the h2h read.</p><h3>SGM structures</h3><table class="sgm-table"><thead><tr><th>SGM</th><th>Leg 1</th><th>Leg 2</th><th>Leg 3</th><th>Combined</th><th>Implied</th><th>Anchor</th><th>SGM premium</th></tr></thead><tbody><tr><td>Netherlands + Under 2.5</td><td><strong>Netherlands Win</strong> @ 1.77</td><td><strong>Under 2.5</strong> @ 1.70</td><td>—</td><td><strong>3.22</strong></td><td>31.1%</td><td>1.77</td><td class="premium-good">+7.0%</td></tr><tr><td>Netherlands + BTTS No (clean sheet)</td><td><strong>Netherlands Win</strong> @ 1.77</td><td><strong>BTTS No</strong> @ 1.80</td><td>—</td><td><strong>3.41</strong></td><td>29.3%</td><td>1.77</td><td class="premium-good">+7.0%</td></tr><tr><td>Netherlands + Under 2.5 + BTTS No</td><td><strong>Netherlands Win</strong> @ 1.77</td><td><strong>Under 2.5</strong> @ 1.70</td><td><strong>BTTS No</strong> @ 1.80</td><td><strong>6.23</strong></td><td>16.1%</td><td>1.77</td><td class="premium-good">+15.0%</td></tr><tr><td>Netherlands + HT Netherlands / FT Netherlands (wire-to-wire)</td><td><strong>Netherlands Win</strong> @ 1.77</td><td><strong>HT Home / FT Home</strong> @ 2.30</td><td>—</td><td><strong>4.36</strong></td><td>22.9%</td><td>1.77</td><td class="premium-good">+7.1%</td></tr></tbody></table></div>
+<div class="fixture-card reference"><h2>Germany vs Ivory Coast — <span style="color:var(--accent)">HOME</span> anchor @ 1.60 <span class="ref-badge">reference only</span></h2><p><strong>Kickoff:</strong> Sun 21 Jun 06:00 AEST<br/><strong>By-eye stake:</strong> 0% — no recommended bet, structure for reference<br/><strong>Why:</strong> No by-eye lean recorded. SGM structures shown for reference; use the main WC card for the h2h read.</p><h3>SGM structures</h3><table class="sgm-table"><thead><tr><th>SGM</th><th>Leg 1</th><th>Leg 2</th><th>Leg 3</th><th>Combined</th><th>Implied</th><th>Anchor</th><th>SGM premium</th></tr></thead><tbody><tr><td>Germany + Under 2.5</td><td><strong>Germany Win</strong> @ 1.60</td><td><strong>Under 2.5</strong> @ 1.70</td><td>—</td><td><strong>2.91</strong></td><td>34.4%</td><td>1.60</td><td class="premium-good">+7.0%</td></tr><tr><td>Germany + BTTS No (clean sheet)</td><td><strong>Germany Win</strong> @ 1.60</td><td><strong>BTTS No</strong> @ 1.80</td><td>—</td><td><strong>3.08</strong></td><td>32.5%</td><td>1.60</td><td class="premium-good">+6.9%</td></tr><tr><td>Germany + Under 2.5 + BTTS No</td><td><strong>Germany Win</strong> @ 1.60</td><td><strong>Under 2.5</strong> @ 1.70</td><td><strong>BTTS No</strong> @ 1.80</td><td><strong>5.63</strong></td><td>17.8%</td><td>1.60</td><td class="premium-good">+15.0%</td></tr><tr><td>Germany + HT Germany / FT Germany (wire-to-wire)</td><td><strong>Germany Win</strong> @ 1.60</td><td><strong>HT Home / FT Home</strong> @ 2.30</td><td>—</td><td><strong>3.94</strong></td><td>25.4%</td><td>1.60</td><td class="premium-good">+7.1%</td></tr></tbody></table></div>
+<div class="fixture-card reference"><h2>Germany vs Ivory Coast — <span style="color:var(--accent)">HOME</span> anchor @ 1.57 <span class="ref-badge">reference only</span></h2><p><strong>Kickoff:</strong> Sun 21 Jun 06:00 AEST<br/><strong>By-eye stake:</strong> 0% — no recommended bet, structure for reference<br/><strong>Why:</strong> No by-eye lean recorded. SGM structures shown for reference; use the main WC card for the h2h read.</p><h3>SGM structures</h3><table class="sgm-table"><thead><tr><th>SGM</th><th>Leg 1</th><th>Leg 2</th><th>Leg 3</th><th>Combined</th><th>Implied</th><th>Anchor</th><th>SGM premium</th></tr></thead><tbody><tr><td>Germany + Under 2.5</td><td><strong>Germany Win</strong> @ 1.57</td><td><strong>Under 2.5</strong> @ 1.70</td><td>—</td><td><strong>2.86</strong></td><td>35.0%</td><td>1.57</td><td class="premium-good">+7.2%</td></tr><tr><td>Germany + BTTS No (clean sheet)</td><td><strong>Germany Win</strong> @ 1.57</td><td><strong>BTTS No</strong> @ 1.80</td><td>—</td><td><strong>3.02</strong></td><td>33.1%</td><td>1.57</td><td class="premium-good">+6.9%</td></tr><tr><td>Germany + Under 2.5 + BTTS No</td><td><strong>Germany Win</strong> @ 1.57</td><td><strong>Under 2.5</strong> @ 1.70</td><td><strong>BTTS No</strong> @ 1.80</td><td><strong>5.52</strong></td><td>18.1%</td><td>1.57</td><td class="premium-good">+14.9%</td></tr><tr><td>Germany + HT Germany / FT Germany (wire-to-wire)</td><td><strong>Germany Win</strong> @ 1.57</td><td><strong>HT Home / FT Home</strong> @ 2.30</td><td>—</td><td><strong>3.86</strong></td><td>25.9%</td><td>1.57</td><td class="premium-good">+6.9%</td></tr></tbody></table></div>
+<div class="fixture-card reference"><h2>Ecuador vs Curaçao — <span style="color:var(--accent)">HOME</span> anchor @ 1.21 <span class="ref-badge">reference only</span></h2><p><strong>Kickoff:</strong> Sun 21 Jun 10:00 AEST<br/><strong>By-eye stake:</strong> 0% — no recommended bet, structure for reference<br/><strong>Why:</strong> No by-eye lean recorded. SGM structures shown for reference; use the main WC card for the h2h read.</p><h3>SGM structures</h3><table class="sgm-table"><thead><tr><th>SGM</th><th>Leg 1</th><th>Leg 2</th><th>Leg 3</th><th>Combined</th><th>Implied</th><th>Anchor</th><th>SGM premium</th></tr></thead><tbody><tr><td>Ecuador + Under 2.5</td><td><strong>Ecuador Win</strong> @ 1.21</td><td><strong>Under 2.5</strong> @ 1.55</td><td>—</td><td><strong>2.01</strong></td><td>49.8%</td><td>1.21</td><td class="premium-good">+7.2%</td></tr><tr><td>Ecuador + BTTS No (clean sheet)</td><td><strong>Ecuador Win</strong> @ 1.21</td><td><strong>BTTS No</strong> @ 1.60</td><td>—</td><td><strong>2.07</strong></td><td>48.3%</td><td>1.21</td><td class="premium-good">+6.9%</td></tr><tr><td>Ecuador + Under 2.5 + BTTS No</td><td><strong>Ecuador Win</strong> @ 1.21</td><td><strong>Under 2.5</strong> @ 1.55</td><td><strong>BTTS No</strong> @ 1.60</td><td><strong>3.45</strong></td><td>29.0%</td><td>1.21</td><td class="premium-good">+15.0%</td></tr><tr><td>Ecuador + HT Ecuador / FT Ecuador (wire-to-wire)</td><td><strong>Ecuador Win</strong> @ 1.21</td><td><strong>HT Home / FT Home</strong> @ 1.80</td><td>—</td><td><strong>2.33</strong></td><td>42.9%</td><td>1.21</td><td class="premium-good">+7.0%</td></tr></tbody></table></div>
+<div class="fixture-card reference"><h2>Ecuador vs Curaçao — <span style="color:var(--accent)">HOME</span> anchor @ 1.13 <span class="ref-badge">reference only</span></h2><p><strong>Kickoff:</strong> Sun 21 Jun 10:00 AEST<br/><strong>By-eye stake:</strong> 0% — no recommended bet, structure for reference<br/><strong>Why:</strong> No by-eye lean recorded. SGM structures shown for reference; use the main WC card for the h2h read.</p><h3>SGM structures</h3><table class="sgm-table"><thead><tr><th>SGM</th><th>Leg 1</th><th>Leg 2</th><th>Leg 3</th><th>Combined</th><th>Implied</th><th>Anchor</th><th>SGM premium</th></tr></thead><tbody><tr><td>Ecuador + Under 2.5</td><td><strong>Ecuador Win</strong> @ 1.13</td><td><strong>Under 2.5</strong> @ 1.55</td><td>—</td><td><strong>1.87</strong></td><td>53.5%</td><td>1.13</td><td class="premium-good">+6.8%</td></tr><tr><td>Ecuador + BTTS No (clean sheet)</td><td><strong>Ecuador Win</strong> @ 1.13</td><td><strong>BTTS No</strong> @ 1.60</td><td>—</td><td><strong>1.93</strong></td><td>51.8%</td><td>1.13</td><td class="premium-good">+6.8%</td></tr><tr><td>Ecuador + Under 2.5 + BTTS No</td><td><strong>Ecuador Win</strong> @ 1.13</td><td><strong>Under 2.5</strong> @ 1.55</td><td><strong>BTTS No</strong> @ 1.60</td><td><strong>3.22</strong></td><td>31.1%</td><td>1.13</td><td class="premium-good">+14.9%</td></tr><tr><td>Ecuador + HT Ecuador / FT Ecuador (wire-to-wire)</td><td><strong>Ecuador Win</strong> @ 1.13</td><td><strong>HT Home / FT Home</strong> @ 1.80</td><td>—</td><td><strong>2.18</strong></td><td>45.9%</td><td>1.13</td><td class="premium-good">+7.2%</td></tr></tbody></table></div>
+<div class="fixture-card reference"><h2>Tunisia vs Japan — <span style="color:var(--accent)">AWAY</span> anchor @ 1.72 <span class="ref-badge">reference only</span></h2><p><strong>Kickoff:</strong> Sun 21 Jun 14:00 AEST<br/><strong>By-eye stake:</strong> 0% — no recommended bet, structure for reference<br/><strong>Why:</strong> No by-eye lean recorded. SGM structures shown for reference; use the main WC card for the h2h read.</p><h3>SGM structures</h3><table class="sgm-table"><thead><tr><th>SGM</th><th>Leg 1</th><th>Leg 2</th><th>Leg 3</th><th>Combined</th><th>Implied</th><th>Anchor</th><th>SGM premium</th></tr></thead><tbody><tr><td>Japan + Under 2.5</td><td><strong>Japan Win</strong> @ 1.72</td><td><strong>Under 2.5</strong> @ 1.70</td><td>—</td><td><strong>3.13</strong></td><td>31.9%</td><td>1.72</td><td class="premium-good">+7.0%</td></tr></tbody></table></div>
+<div class="fixture-card reference"><h2>Tunisia vs Japan — <span style="color:var(--accent)">AWAY</span> anchor @ 1.57 <span class="ref-badge">reference only</span></h2><p><strong>Kickoff:</strong> Sun 21 Jun 14:00 AEST<br/><strong>By-eye stake:</strong> 0% — no recommended bet, structure for reference<br/><strong>Why:</strong> No by-eye lean recorded. SGM structures shown for reference; use the main WC card for the h2h read.</p><h3>SGM structures</h3><table class="sgm-table"><thead><tr><th>SGM</th><th>Leg 1</th><th>Leg 2</th><th>Leg 3</th><th>Combined</th><th>Implied</th><th>Anchor</th><th>SGM premium</th></tr></thead><tbody><tr><td>Japan + Under 2.5</td><td><strong>Japan Win</strong> @ 1.57</td><td><strong>Under 2.5</strong> @ 1.70</td><td>—</td><td><strong>2.86</strong></td><td>35.0%</td><td>1.57</td><td class="premium-good">+7.2%</td></tr></tbody></table></div>
 
-<div class="match-block">
-<div class="match-banner">
-    <div class="teams">
-      <span class="home">USA</span>
-      <span>vs</span>
-      <span class="away">Australia</span>
-    </div>
-    <div class="meta">Group A &bull; Kickoff: Sat 20 Jun 05:00 AEST &bull; SoFi Stadium, LA</div>
-    <div class="odds-row"><div class="odds-chip">USA <span>1.63</span></div><div class="odds-chip">DRAW <span>4.20</span></div><div class="odds-chip">AUS <span>6.00</span></div><div class="odds-chip">O2.5 <span>~1.70</span></div><div class="odds-chip">BTTS Y <span>~1.91</span></div></div>
-  </div><div class="sgm-card"><div class="card-title">2-Leg SGM &mdash; USA Win + Under 2.5</div><div class="leg"><div class="leg-info"><div class="leg-name">USA Win</div><div class="leg-desc">H2H @ 1.63</div></div><div class="leg-odds">1.63</div></div>
-<div class="leg"><div class="leg-info"><div class="leg-name">Under 2.5 Goals</div><div class="leg-desc">Total line @ ~1.70</div></div><div class="leg-odds">~1.70</div></div><div class="sgm-total"><div class="label">Combined Odds</div><div class="odds">~2.96</div></div><div class="sgm-explain">USA 1.63 is the anchor. Under 2.5 at ~1.70 backed by SoFi's closed stadium. Combined ~2.96 is the sweet spot for 2-leg SGM.</div></div><div class="sgm-card"><div class="card-title">2-Leg SGM &mdash; USA Win + BTTS No</div><div class="leg"><div class="leg-info"><div class="leg-name">USA Win</div><div class="leg-desc">H2H @ 1.63</div></div><div class="leg-odds">1.63</div></div>
-<div class="leg"><div class="leg-info"><div class="leg-name">BTTS No</div><div class="leg-desc">Both teams NOT to score @ ~1.80</div></div><div class="leg-odds">~1.80</div></div><div class="sgm-total"><div class="label">Combined Odds</div><div class="odds">~3.14</div></div><div class="sgm-explain">USA clean sheet at home is realistic. BTTS No @ ~1.80 is a solid second leg.</div></div><div class="verdict yellow"><div class="verdict-label">ENGINE VERDICT</div><div class="verdict-text">No by-eye lean recorded. USA anchor @ 1.63 is a solid SGM leg. Build around it.</div></div></div>
-<div class="match-block">
-<div class="match-banner">
-    <div class="teams">
-      <span class="home">Scotland</span>
-      <span>vs</span>
-      <span class="away">Morocco</span>
-    </div>
-    <div class="meta">Group D &bull; Kickoff: Sat 20 Jun 08:00 AEST &bull; Estadio Akron, Guadalajara</div>
-    <div class="odds-row"><div class="odds-chip">SCO <span>3.80</span></div><div class="odds-chip">DRAW <span>3.50</span></div><div class="odds-chip">MOR <span>2.05</span></div><div class="odds-chip">O2.5 <span>~1.72</span></div><div class="odds-chip">BTTS Y <span>~1.88</span></div></div>
-  </div><div class="sgm-card"><div class="card-title">2-Leg SGM &mdash; Morocco Win + Under 2.5</div><div class="leg"><div class="leg-info"><div class="leg-name">Morocco Win</div><div class="leg-desc">H2H @ 2.05</div></div><div class="leg-odds">2.05</div></div>
-<div class="leg"><div class="leg-info"><div class="leg-name">Under 2.5 Goals</div><div class="leg-desc">Total line @ ~1.72</div></div><div class="leg-odds">~1.72</div></div><div class="sgm-total"><div class="label">Combined Odds</div><div class="odds">~3.53</div></div><div class="sgm-explain">Morocco at 2.05 gives real bonus-bet value. Combined ~3.53 is the pick of this match.</div></div><div class="verdict yellow"><div class="verdict-label">ENGINE VERDICT</div><div class="verdict-text">Morocco slight favourite @ 2.05. No engine lean - watch only.</div></div></div>
-<div class="match-block">
-<div class="match-banner">
-    <div class="teams">
-      <span class="home">Brazil</span>
-      <span>vs</span>
-      <span class="away">Haiti</span>
-    </div>
-    <div class="meta">Group C &bull; Kickoff: Sat 20 Jun 11:00 AEST &bull; BC Place, Vancouver</div>
-    <div class="odds-row"><div class="odds-chip">BRA <span>1.11</span></div><div class="odds-chip">DRAW <span>11.00</span></div><div class="odds-chip">HAI <span>34.00</span></div><div class="odds-chip">O2.5 <span>~1.55</span></div><div class="odds-chip">BTTS Y <span>~1.58</span></div></div>
-  </div><div class="sgm-card"><div class="card-title">2-Leg SGM &mdash; Brazil Win + Under 2.5</div><div class="leg"><div class="leg-info"><div class="leg-name">Brazil Win</div><div class="leg-desc">H2H @ 1.11</div></div><div class="leg-odds">1.11</div></div>
-<div class="leg"><div class="leg-info"><div class="leg-name">Under 2.5 Goals</div><div class="leg-desc">Total line @ ~1.55</div></div><div class="leg-odds">~1.55</div></div><div class="sgm-total"><div class="label">Combined Odds</div><div class="odds">~1.87</div></div><div class="sgm-explain">Combined ~1.87 is not worth burning a bonus bet leg. Use as Leg 3 only.</div></div><div class="verdict red"><div class="verdict-label">ENGINE VERDICT</div><div class="verdict-text">Brazil 1.11 is far too short for any standalone bet. Use only as Leg 3 of a 3+ leg combo.</div></div></div>
-<div class="match-block">
-<div class="match-banner">
-    <div class="teams">
-      <span class="home">Turkey</span>
-      <span>vs</span>
-      <span class="away">Paraguay</span>
-    </div>
-    <div class="meta">Group F &bull; Kickoff: Sat 20 Jun 13:00 AEST &bull; Allegiant Stadium, Vegas</div>
-    <div class="odds-row"><div class="odds-chip">TUR <span>2.05</span></div><div class="odds-chip">DRAW <span>3.50</span></div><div class="odds-chip">PAR <span>4.00</span></div><div class="odds-chip">O2.5 <span>~1.82</span></div><div class="odds-chip">BTTS Y <span>~1.85</span></div></div>
-  </div><div class="sgm-card"><div class="card-title">2-Leg SGM &mdash; Turkey Win + Under 2.5</div><div class="leg"><div class="leg-info"><div class="leg-name">Turkey Win</div><div class="leg-desc">H2H @ 2.05</div></div><div class="leg-odds">2.05</div></div>
-<div class="leg"><div class="leg-info"><div class="leg-name">Under 2.5 Goals</div><div class="leg-desc">Total line @ ~1.82</div></div><div class="leg-odds">~1.82</div></div><div class="sgm-total"><div class="label">Combined Odds</div><div class="odds">~3.73</div></div><div class="sgm-explain">Turkey 2.05 is viable for bonus bet conversion. Combined ~3.73 is the primary angle.</div></div><div class="sgm-card"><div class="card-title">2-Leg SGM &mdash; Turkey Win + BTTS Yes</div><div class="leg"><div class="leg-info"><div class="leg-name">Turkey Win</div><div class="leg-desc">H2H @ 2.05</div></div><div class="leg-odds">2.05</div></div>
-<div class="leg"><div class="leg-info"><div class="leg-name">BTTS Yes</div><div class="leg-desc">Both teams to score @ ~1.85</div></div><div class="leg-odds">~1.85</div></div><div class="sgm-total"><div class="label">Combined Odds</div><div class="odds">~3.79</div></div><div class="sgm-explain">Turkey are form side. Paraguay showed goal threat in qualifiers.</div></div><div class="verdict yellow"><div class="verdict-label">ENGINE VERDICT</div><div class="verdict-text">Turkey slight favourite @ 2.05. Competitive line - watch for a lean.</div></div></div>
-<div class="match-block">
-<div class="match-banner">
-    <div class="teams">
-      <span class="home">Netherlands</span>
-      <span>vs</span>
-      <span class="away">Sweden</span>
-    </div>
-    <div class="meta">Group G &bull; Kickoff: Sun 21 Jun 03:00 AEST &bull; MetLife Stadium, New Jersey</div>
-    <div class="odds-row"><div class="odds-chip">NED <span>1.72</span></div><div class="odds-chip">DRAW <span>3.80</span></div><div class="odds-chip">SWE <span>5.50</span></div><div class="odds-chip">O2.5 <span>~1.68</span></div><div class="odds-chip">BTTS Y <span>~1.92</span></div></div>
-  </div><div class="sgm-card"><div class="card-title">2-Leg SGM &mdash; Netherlands Win + Under 2.5</div><div class="leg"><div class="leg-info"><div class="leg-name">Netherlands Win</div><div class="leg-desc">H2H @ 1.72</div></div><div class="leg-odds">1.72</div></div>
-<div class="leg"><div class="leg-info"><div class="leg-name">Under 2.5 Goals</div><div class="leg-desc">Total line @ ~1.68</div></div><div class="leg-odds">~1.68</div></div><div class="sgm-total"><div class="label">Combined Odds</div><div class="odds">~2.89</div></div><div class="sgm-explain">Netherlands @ 1.72 is the best anchor after USA. Under 2.5 at ~1.68 is well supported. Combined ~2.89 is solid.</div></div><div class="sgm-card"><div class="card-title">2-Leg SGM &mdash; Netherlands Win + BTTS No</div><div class="leg"><div class="leg-info"><div class="leg-name">Netherlands Win</div><div class="leg-desc">H2H @ 1.72</div></div><div class="leg-odds">1.72</div></div>
-<div class="leg"><div class="leg-info"><div class="leg-name">BTTS No</div><div class="leg-desc">Both teams NOT to score @ ~1.80</div></div><div class="leg-odds">~1.80</div></div><div class="sgm-total"><div class="label">Combined Odds</div><div class="odds">~3.10</div></div><div class="sgm-explain">Netherlands defence is tournament-class. Sweden scored in only 4 of 10 away games.</div></div><div class="sgm-card"><div class="card-title">3-Leg SGM &mdash; Netherlands 3-Leg Cover</div><div class="leg"><div class="leg-info"><div class="leg-name">Netherlands Win</div><div class="leg-desc">H2H @ 1.72</div></div><div class="leg-odds">1.72</div></div>
-<div class="leg"><div class="leg-info"><div class="leg-name">Under 2.5 Goals</div><div class="leg-desc">Total line @ ~1.68</div></div><div class="leg-odds">~1.68</div></div>
-<div class="leg"><div class="leg-info"><div class="leg-name">BTTS No</div><div class="leg-desc">Both teams NOT to score @ ~1.80</div></div><div class="leg-odds">~1.80</div></div><div class="sgm-total"><div class="label">Combined Odds</div><div class="odds">~5.23</div></div><div class="sgm-explain">3-leg combo. Netherlands Win as anchor. At ~5.23 worth a Neds SGM Cover bet - $50 bonus back if 1 leg fails.</div></div><div class="verdict green"><div class="verdict-label">ENGINE VERDICT</div><div class="verdict-text">Netherlands clear favourites @ 1.72. Strong form backing. Use as primary SGM anchor.</div></div></div>
-<div class="match-block">
-<div class="match-banner">
-    <div class="teams">
-      <span class="home">Germany</span>
-      <span>vs</span>
-      <span class="away">Ivory Coast</span>
-    </div>
-    <div class="meta">Group H &bull; Kickoff: Sun 21 Jun 06:00 AEST &bull; Soldier Field, Chicago</div>
-    <div class="odds-row"><div class="odds-chip">GER <span>1.57</span></div><div class="odds-chip">DRAW <span>4.50</span></div><div class="odds-chip">CIV <span>6.50</span></div><div class="odds-chip">O2.5 <span>~1.68</span></div><div class="odds-chip">BTTS Y <span>~1.90</span></div></div>
-  </div><div class="sgm-card"><div class="card-title">2-Leg SGM &mdash; Germany Win + Under 2.5</div><div class="leg"><div class="leg-info"><div class="leg-name">Germany Win</div><div class="leg-desc">H2H @ 1.57</div></div><div class="leg-odds">1.57</div></div>
-<div class="leg"><div class="leg-info"><div class="leg-name">Under 2.5 Goals</div><div class="leg-desc">Total line @ ~1.68</div></div><div class="leg-odds">~1.68</div></div><div class="sgm-total"><div class="label">Combined Odds</div><div class="odds">~2.64</div></div><div class="sgm-explain">Germany 1.57 is the strongest leg on the card. Under 2.5 at ~1.68 is backed by Germany's defensive record. Primary anchor.</div></div><div class="sgm-card"><div class="card-title">2-Leg SGM &mdash; Germany Win + BTTS No</div><div class="leg"><div class="leg-info"><div class="leg-name">Germany Win</div><div class="leg-desc">H2H @ 1.57</div></div><div class="leg-odds">1.57</div></div>
-<div class="leg"><div class="leg-info"><div class="leg-name">BTTS No</div><div class="leg-desc">Both teams NOT to score @ ~1.80</div></div><div class="leg-odds">~1.80</div></div><div class="sgm-total"><div class="label">Combined Odds</div><div class="odds">~2.83</div></div><div class="sgm-explain">Germany keep clean sheets at home. Ivory Coast's attack is limited. BTTS No is the clean sheet angle.</div></div><div class="sgm-card"><div class="card-title">3-Leg SGM &mdash; Germany + Netherlands 3-Leg Cover</div><div class="leg"><div class="leg-info"><div class="leg-name">Germany Win</div><div class="leg-desc">H2H @ 1.57</div></div><div class="leg-odds">1.57</div></div>
-<div class="leg"><div class="leg-info"><div class="leg-name">Netherlands Win</div><div class="leg-desc">H2H @ 1.72</div></div><div class="leg-odds">1.72</div></div>
-<div class="leg"><div class="leg-info"><div class="leg-name">Brazil Win</div><div class="leg-desc">H2H @ 1.11</div></div><div class="leg-odds">1.11</div></div><div class="sgm-total"><div class="label">Combined Odds</div><div class="odds">~3.14</div></div><div class="sgm-explain">Neds SGM Cover: Germany + Netherlands + Brazil as Leg 3 @ ~3.14. Two strong anchors + Brazil bulk. $50 bonus back if 1 leg fails.</div></div><div class="verdict green"><div class="verdict-label">ENGINE VERDICT</div><div class="verdict-text">Germany @ 1.57 is the best single-leg bet on the card. Strong form backing. Primary SGM anchor.</div></div></div>
-<div class="match-block">
-<div class="match-banner">
-    <div class="teams">
-      <span class="home">Ecuador</span>
-      <span>vs</span>
-      <span class="away">Curacao</span>
-    </div>
-    <div class="meta">Group B &bull; Kickoff: Sun 21 Jun 10:00 AEST &bull; NRG Stadium, Houston</div>
-    <div class="odds-row"><div class="odds-chip">ECU <span>1.20</span></div><div class="odds-chip">DRAW <span>7.50</span></div><div class="odds-chip">CUR <span>21.00</span></div><div class="odds-chip">O2.5 <span>~1.55</span></div><div class="odds-chip">BTTS Y <span>~1.62</span></div></div>
-  </div><div class="sgm-card"><div class="card-title">2-Leg SGM &mdash; Ecuador Win + Under 2.5</div><div class="leg"><div class="leg-info"><div class="leg-name">Ecuador Win</div><div class="leg-desc">H2H @ 1.20</div></div><div class="leg-odds">1.20</div></div>
-<div class="leg"><div class="leg-info"><div class="leg-name">Under 2.5 Goals</div><div class="leg-desc">Total line @ ~1.55</div></div><div class="leg-odds">~1.55</div></div><div class="sgm-total"><div class="label">Combined Odds</div><div class="odds">~2.01</div></div><div class="sgm-explain">Too short for standalone. Use as Leg 3 of a 3-leg SGM Cover combo only.</div></div><div class="verdict red"><div class="verdict-label">ENGINE VERDICT</div><div class="verdict-text">Ecuador 1.20 is too short. Use as Leg 3+ only. Never as a standalone bonus bet leg.</div></div></div>
-<div class="match-block">
-<div class="match-banner">
-    <div class="teams">
-      <span class="home">Tunisia</span>
-      <span>vs</span>
-      <span class="away">Japan</span>
-    </div>
-    <div class="meta">Group C &bull; Kickoff: Sun 21 Jun 14:00 AEST &bull; Globe Life Field, Arlington</div>
-    <div class="odds-row"><div class="odds-chip">TUN <span>3.20</span></div><div class="odds-chip">DRAW <span>3.40</span></div><div class="odds-chip">JPN <span>2.30</span></div><div class="odds-chip">O2.5 <span>~1.68</span></div><div class="odds-chip">BTTS Y <span>~1.90</span></div></div>
-  </div><div class="sgm-card"><div class="card-title">2-Leg SGM &mdash; Japan Win + Under 2.5</div><div class="leg"><div class="leg-info"><div class="leg-name">Japan Win</div><div class="leg-desc">H2H @ 2.30</div></div><div class="leg-odds">2.30</div></div>
-<div class="leg"><div class="leg-info"><div class="leg-name">Under 2.5 Goals</div><div class="leg-desc">Total line @ ~1.68</div></div><div class="leg-odds">~1.68</div></div><div class="sgm-total"><div class="label">Combined Odds</div><div class="odds">~3.86</div></div><div class="sgm-explain">Japan 2.30 gives bonus-bet value. Under 2.5 at ~1.68 is backed by Japan's tactical discipline. Combined ~3.86 is the primary angle.</div></div><div class="verdict yellow"><div class="verdict-label">ENGINE VERDICT</div><div class="verdict-text">Japan slight favourite @ 2.30. No strong engine lean - watch only.</div></div></div>
-
-
-<div class="verdict">
-  <div class="verdict-label">DAY SUMMARY - HOW TO USE THIS CARD</div>
-  <div class="verdict-text">
-    <strong>Best single legs:</strong> Germany at 1.57, Netherlands at 1.72, USA at 1.63<br><br>
-    <strong>Best 2-leg SGM:</strong> Germany + Under 2.5 at ~2.64 - solid form, strong anchor.<br>
-    <strong>Best Neds SGM Cover:</strong> Germany + Netherlands + Brazil at ~3.14 - 3-leg, 50 dollar bonus back if 1 leg fails.<br>
-    <strong>Best 3-leg:</strong> Netherlands + Under 2.5 + BTTS No at ~5.23 - Netherlands anchor with clean sheet double.<br><br>
-    <strong>Brazil / Ecuador:</strong> Use only as Leg 3 of 3+ leg combos. Never as standalone bonus bet legs.<br><br>
-    <em>Player props coming next build - engine is pulling WC 2026 squad data.</em>
-  </div>
-</div>
-
-<footer>
-  Engine: Mavis WC SGM Builder - Odds: Betfair AU and AU bookmaker estimates<br>
-  Built: 19 Jun 2026 08:39 AM AEST - Danny and Brudda approval only - Verify all legs before placing
-</footer>
-
+  <footer>
+    Card is read-only. No bets are placed automatically. Verify all legs at the bookie
+    before placing. SGM premium is the markup the book charges for combining legs —
+    under 30% is reasonable, over 60% means the anchor alone is a better play.<br/>
+    Engine: <code>daz_betting_engine.cards.sgm_tomorrow</code>.
+  </footer>
 </body>
 </html>
