@@ -1,0 +1,20 @@
+{
+  "date": "2026-06-19",
+  "bets": [
+    {
+      "match": "Newcastle Knights vs St George Dragons",
+      "bookmaker": "Sportsbet",
+      "type": "straight_multi",
+      "stake": "TBC",
+      "legs": [
+        {"market": "H2H", "selection": "Newcastle Knights Win", "odds": 1.25},
+        {"market": "Anytime Tryscorer", "selection": "Greg Marzhew Anytime Try", "odds": 2.00}
+      ],
+      "combined_odds": 2.50,
+      "edge_pct": null,
+      "verdict": "Late mail angle - Marzhew scores independently of Ponga, 2-leg is clean without the 13+ margin leg",
+      "result": "PENDING",
+      "note": "Ponga OUT confirmed pre-game. Original 3-leg (Knights Win + 13+ + Dom Young) revised down to 2-leg on late mail. Danny chose 2-leg after Ponga ruled out. Card updated and pushed at 6:10pm AEST."
+    }
+  ]
+}
