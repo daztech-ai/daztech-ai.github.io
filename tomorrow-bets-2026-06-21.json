@@ -1,0 +1,185 @@
+{
+  "target_iso": "2026-06-21",
+  "date_label": "Sun 21 Jun 2026",
+  "pure_edges": [
+    {
+      "sport": "WC",
+      "bet_type": "pure edge",
+      "match": "Tunisia vs Japan",
+      "kickoff": "Sun 21 Jun 14:00 AEST",
+      "selection": "Tunisia to Win",
+      "odds": 7.0,
+      "model_prob": 0.2828,
+      "market_prob": 0.1429,
+      "edge_pct": 13.99,
+      "stake_pct": 0.01,
+      "bookmaker": "best cache",
+      "source": "data/forward_test/forward-test-2026-06-21.jsonl",
+      "confidence": "medium",
+      "notes": [
+        "Known-team WC v3 pick, edge +14.0%",
+        "Model 28.3% vs market 14.3%"
+      ]
+    },
+    {
+      "sport": "WC",
+      "bet_type": "pure edge",
+      "match": "Germany vs Ivory Coast",
+      "kickoff": "Sun 21 Jun 06:00 AEST",
+      "selection": "Ivory Coast to Win",
+      "odds": 6.4,
+      "model_prob": 0.2111,
+      "market_prob": 0.1562,
+      "edge_pct": 5.48,
+      "stake_pct": 0.01,
+      "bookmaker": "best cache",
+      "source": "data/forward_test/forward-test-2026-06-21.jsonl",
+      "confidence": "low",
+      "notes": [
+        "Known-team WC v3 pick, edge +5.5%",
+        "Model 21.1% vs market 15.6%"
+      ]
+    }
+  ],
+  "sgm_bets": [],
+  "sgm_watch": [
+    {
+      "match": "Netherlands vs Sweden",
+      "name": "Netherlands + Under 2.5 + BTTS No",
+      "legs": [
+        {
+          "label": "Netherlands Win",
+          "market": "h2h",
+          "selection": "home",
+          "odds": 1.68
+        },
+        {
+          "label": "Under 2.5",
+          "market": "totals",
+          "selection": "under_2_5",
+          "odds": 1.7
+        },
+        {
+          "label": "BTTS No",
+          "market": "btts",
+          "selection": "btts_no",
+          "odds": 1.8
+        }
+      ],
+      "combined_odds": 5.91,
+      "edge_pct": -17.72,
+      "stake_pct": 0.0,
+      "bookmaker": "sportsbet",
+      "source": "data/engine_picks/sgm-2026-06-21.jsonl"
+    },
+    {
+      "match": "Germany vs Ivory Coast",
+      "name": "Germany + Under 2.5 + BTTS No",
+      "legs": [
+        {
+          "label": "Germany Win",
+          "market": "h2h",
+          "selection": "home",
+          "odds": 1.6
+        },
+        {
+          "label": "Under 2.5",
+          "market": "totals",
+          "selection": "under_2_5",
+          "odds": 1.7
+        },
+        {
+          "label": "BTTS No",
+          "market": "btts",
+          "selection": "btts_no",
+          "odds": 1.8
+        }
+      ],
+      "combined_odds": 5.63,
+      "edge_pct": -20.99,
+      "stake_pct": 0.0,
+      "bookmaker": "sportsbet",
+      "source": "data/engine_picks/sgm-2026-06-21.jsonl"
+    },
+    {
+      "match": "Belgium vs Iran",
+      "name": "Belgium + Under 2.5 + BTTS No",
+      "legs": [
+        {
+          "label": "Belgium Win",
+          "market": "h2h",
+          "selection": "home",
+          "odds": 1.42
+        },
+        {
+          "label": "Under 2.5",
+          "market": "totals",
+          "selection": "under_2_5",
+          "odds": 1.7
+        },
+        {
+          "label": "BTTS No",
+          "market": "btts",
+          "selection": "btts_no",
+          "odds": 1.8
+        }
+      ],
+      "combined_odds": 5.0,
+      "edge_pct": -29.82,
+      "stake_pct": 0.0,
+      "bookmaker": "sportsbet",
+      "source": "data/engine_picks/sgm-2026-06-21.jsonl"
+    },
+    {
+      "match": "Uruguay vs Cape Verde",
+      "name": "Uruguay + Under 2.5 + BTTS No",
+      "legs": [
+        {
+          "label": "Uruguay Win",
+          "market": "h2h",
+          "selection": "home",
+          "odds": 1.45
+        },
+        {
+          "label": "Under 2.5",
+          "market": "totals",
+          "selection": "under_2_5",
+          "odds": 1.7
+        },
+        {
+          "label": "BTTS No",
+          "market": "btts",
+          "selection": "btts_no",
+          "odds": 1.6
+        }
+      ],
+      "combined_odds": 4.54,
+      "edge_pct": -33.4,
+      "stake_pct": 0.0,
+      "bookmaker": "sportsbet",
+      "source": "data/engine_picks/sgm-2026-06-21.jsonl"
+    }
+  ],
+  "multis": [],
+  "nrl_context": [
+    "New Zealand Warriors vs North Queensland Cowboys: watch (49/100) -> North Queensland Cowboys",
+    "Melbourne Storm vs Canberra Raiders: skip (38/100) -> Canberra Raiders",
+    "Sydney Roosters vs Cronulla Sutherland Sharks: watch (51/100) -> Cronulla Sutherland Sharks"
+  ],
+  "blocked": [
+    "No 3-leg SGM cleared the +5% model-edge bar.",
+    "Only 2 qualifying pure edge legs, so no 3-leg multi.",
+    "NRL produced no back/lean verdict with positive stake."
+  ],
+  "bankroll_aud": 1000.0,
+  "paths": {
+    "html": "data/cards/tomorrow-bets-2026-06-21.html",
+    "md": "data/cards/tomorrow-bets-2026-06-21.md",
+    "json": "data/cards/tomorrow-bets-2026-06-21.json",
+    "latest_json": "data/cards/hermes-operator-latest.json"
+  },
+  "public_urls": {
+    "worker": "https://daztech.dazworkbench.workers.dev/tomorrow-bets-2026-06-21.html",
+    "github_pages": "https://daztech-ai.github.io/tomorrow-bets-2026-06-21.html"
+  }
+}

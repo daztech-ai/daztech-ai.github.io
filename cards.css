@@ -232,347 +232,231 @@ footer p{margin:.25rem 0}
 .footer{text-align:center;padding:1.5rem 0;color:var(--text-muted);font-size:.7rem}
 
 
-/* ----- Bet Slip (clickable, persistent, copy-to-clipboard) ----- */
+/* ----- Bookie-style market rails (Bet365-inspired browsing layout) ----- */
 
-.bet-slip {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  width: 340px;
-  max-height: calc(100vh - 2rem);
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-  z-index: 1000;
-  display: flex;
-  flex-direction: column;
-  font-size: 0.85rem;
+.container {
+  max-width: 1180px;
 }
 
-.bet-slip header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.75rem 1rem;
-  border-bottom: 1px solid var(--border);
-  background: var(--surface-2, var(--surface));
-  border-radius: 12px 12px 0 0;
-}
-
-.bet-slip header h2 {
-  font-size: 0.95rem;
-  margin: 0;
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-}
-
-.bet-slip .slip-count {
-  background: var(--accent, #4f8cff);
-  color: white;
-  font-size: 0.7rem;
-  font-weight: 700;
-  padding: 0.1rem 0.4rem;
-  border-radius: 999px;
-  min-width: 1.4rem;
-  text-align: center;
-}
-
-.bet-slip .slip-empty {
-  padding: 1.5rem 1rem;
-  text-align: center;
-  color: var(--text-muted);
-  font-size: 0.8rem;
-}
-
-.bet-slip .slip-legs {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  overflow-y: auto;
-  flex: 1;
-}
-
-.bet-slip .slip-leg {
-  padding: 0.6rem 0.9rem;
-  border-bottom: 1px solid var(--border);
-  font-size: 0.8rem;
-  position: relative;
-}
-
-.bet-slip .slip-leg-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 0.4rem;
-}
-
-.bet-slip .slip-leg-event {
-  font-weight: 600;
-  flex: 1;
-  line-height: 1.2;
-}
-
-.bet-slip .slip-remove {
-  background: transparent;
-  border: 0;
-  color: var(--text-muted);
-  font-size: 1.1rem;
-  cursor: pointer;
-  padding: 0 0.3rem;
-  line-height: 1;
-}
-
-.bet-slip .slip-remove:hover {
-  color: #d33;
-}
-
-.bet-slip .slip-leg-pick {
-  font-size: 0.75rem;
-  color: var(--text-muted);
-  margin-top: 0.2rem;
-}
-
-.bet-slip .slip-leg-odds {
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-weight: 700;
-  color: var(--accent, #4f8cff);
-  margin-top: 0.2rem;
-}
-
-.bet-slip .slip-summary {
-  padding: 0.7rem 0.9rem;
-  border-top: 1px solid var(--border);
-  background: var(--surface-2, var(--surface));
-}
-
-.bet-slip .slip-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0.2rem 0;
-  font-size: 0.8rem;
-}
-
-.bet-slip .slip-row input {
-  width: 70px;
-  padding: 0.2rem 0.4rem;
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  font: inherit;
-  text-align: right;
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-}
-
-.bet-slip .slip-row.return {
-  font-weight: 700;
-  font-size: 0.95rem;
-  color: var(--accent, #4f8cff);
-  margin-top: 0.4rem;
-  padding-top: 0.4rem;
-  border-top: 1px solid var(--border);
-}
-
-.bet-slip .slip-actions {
-  display: flex;
-  gap: 0.4rem;
-  padding: 0.6rem 0.9rem;
-  border-top: 1px solid var(--border);
-}
-
-.bet-slip .slip-actions button {
-  flex: 1;
-  padding: 0.5rem 0.6rem;
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  background: var(--surface);
-  color: inherit;
-  font: inherit;
-  cursor: pointer;
-  font-weight: 600;
-}
-
-.bet-slip .slip-actions button:hover {
-  background: var(--surface-2, var(--surface));
-}
-
-.bet-slip #slip-copy {
-  background: var(--accent, #4f8cff);
-  color: white;
-  border-color: var(--accent, #4f8cff);
-}
-
-.bet-slip #slip-copy:hover:not(:disabled) {
-  filter: brightness(1.1);
-}
-
-.bet-slip #slip-copy:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-/* Make room for the fixed slip on the right side */
 @media (min-width: 1100px) {
   main.container {
-    padding-right: 360px;
+    padding-right: 0;
   }
 }
 
-@media (max-width: 1099px) {
-  .bet-slip {
-    top: auto;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    width: 100%;
-    max-height: 50vh;
-    border-radius: 12px 12px 0 0;
-  }
-  main.container {
-    padding-bottom: 60vh;
-  }
-}
-
-/* ----- Top picks panel (actionable picks front-and-center) ----- */
-
+.market-section,
 .top-picks {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 0.9rem 1.1rem;
-  margin-bottom: 1rem;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  margin: 1rem 0 1.25rem;
 }
 
 .top-picks-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  margin-bottom: 0.6rem;
+  align-items: center;
+  margin: 0 0 .55rem;
+  padding: 0 .15rem;
 }
 
-.top-picks-head h2 {
-  font-size: 0.9rem;
+.top-picks-head h2,
+.market-section h2 {
+  color: var(--text);
+  font-size: 1rem;
+  letter-spacing: 0;
+  text-transform: none;
   margin: 0;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: var(--text-muted);
 }
 
-.top-picks-list {
+.market-rail {
+  display: flex;
+  gap: .35rem;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x proximity;
+  padding: .15rem 0 .35rem;
+  scrollbar-width: thin;
+}
+
+.pick-list.market-rail {
+  margin: .5rem 0 1rem;
+}
+
+.market-tile.pick-card,
+.market-tile {
+  flex: 0 0 284px;
+  min-height: 228px;
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
-}
-
-.top-pick-row {
-  display: grid;
-  grid-template-columns: 1fr auto auto auto;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 0.5rem 0.7rem;
-  background: var(--surface-2, var(--surface));
-  border: 1px solid var(--border);
+  scroll-snap-align: start;
+  background: #303030;
+  border: 1px solid #393939;
   border-radius: 6px;
-  font-size: 0.85rem;
+  box-shadow: none;
+  opacity: 1;
+  padding: .7rem .75rem .45rem;
+  margin: 0;
+  overflow: hidden;
 }
 
-.top-pick-row .tp-event {
-  font-weight: 600;
+.market-tile[data-tier="lock"],
+.market-tile[data-tier="back"],
+.market-tile[data-tier="watch"],
+.market-tile[data-tier="fade"] {
+  box-shadow: none;
+}
+
+.market-tile-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: .6rem;
+  min-height: 1.4rem;
+}
+
+.market-tile h3 {
+  margin: 0;
+  color: #fff;
+  font-size: .9rem;
+  line-height: 1.1;
+  font-weight: 800;
+  letter-spacing: .015em;
+  text-transform: uppercase;
+}
+
+.market-icons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: .25rem;
+  color: #d8d8d8;
+  font-family: var(--mono);
+  font-size: .62rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.market-icons span {
+  color: #d8d8d8;
+}
+
+.market-event {
+  color: #fff;
+  font-size: .79rem;
+  font-weight: 800;
   line-height: 1.2;
+  margin-top: .42rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.top-pick-row .tp-pick {
-  color: var(--text-muted);
-  font-size: 0.8rem;
-}
-
-.top-pick-row .tp-edge {
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+.market-sub {
+  color: #e6e6e6;
+  font-size: .72rem;
   font-weight: 700;
+  margin-top: .2rem;
 }
 
-.top-pick-row .top-pick-add {
-  background: var(--accent, #4f8cff);
-  color: white;
-  border: 0;
-  border-radius: 6px;
-  padding: 0.4rem 0.7rem;
-  font: inherit;
-  font-weight: 600;
-  cursor: pointer;
-  font-size: 0.8rem;
+.market-legs {
+  display: flex;
+  flex-direction: column;
+  gap: .22rem;
+  margin-top: .55rem;
+  min-height: 4.3rem;
 }
 
-.top-pick-row .top-pick-add:hover {
-  filter: brightness(1.1);
+.market-leg {
+  display: grid;
+  grid-template-columns: .7rem 1fr;
+  align-items: start;
+  gap: .32rem;
+  color: #f1f1f1;
+  font-size: .72rem;
+  line-height: 1.18;
 }
 
-.top-pick-row .top-pick-add.leg-added {
-  background: #1e9c4a;
+.leg-dot {
+  width: .38rem;
+  height: .38rem;
+  border-radius: 50%;
+  background: #dcdcdc;
+  margin-top: .23rem;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .2);
 }
 
-/* ----- Clickable legs (legacy card structures) ----- */
-
-.leg-add,
-.sgm-add {
-  background: var(--surface-2, var(--surface));
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  padding: 0.15rem 0.4rem;
-  cursor: pointer;
-  font: inherit;
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  color: var(--accent, #4f8cff);
-  font-weight: 600;
-  font-size: 0.8rem;
-  transition: all 0.15s ease;
+.market-boost-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: .5rem;
+  margin-top: auto;
+  padding-top: .65rem;
 }
 
-.leg-add:hover,
-.sgm-add:hover {
-  background: var(--accent, #4f8cff);
-  color: white;
-  border-color: var(--accent, #4f8cff);
+.market-boost {
+  color: #18e3b1;
+  font-size: .73rem;
+  font-weight: 900;
+  text-transform: uppercase;
 }
 
-.leg-add.leg-added,
-.sgm-add.leg-added {
-  background: #1e9c4a;
-  color: white;
-  border-color: #1e9c4a;
+.market-heat {
+  color: #ffc057;
+  font-family: var(--mono);
+  font-size: .72rem;
+  font-weight: 900;
 }
 
-/* SGM structure with click-to-add-all button */
-.sgm-structure {
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  padding: 0.6rem 0.8rem;
-  margin: 0.4rem 0;
-  background: var(--surface-2, var(--surface));
-  position: relative;
+.market-odds-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  margin-top: .4rem;
+  border-radius: 5px;
+  background: #252525;
+  border: 1px solid #363636;
+  color: #fff;
 }
 
-.sgm-structure .sgm-name {
-  font-weight: 600;
-  font-size: 0.9rem;
+.market-odds-panel.is-watch {
+  opacity: .72;
 }
 
-.sgm-structure .sgm-legs {
-  margin-top: 0.3rem;
-  font-size: 0.8rem;
-  color: var(--text-muted);
+.market-odds-main {
+  font-family: var(--mono);
+  font-size: 1.15rem;
+  line-height: 1.05;
+  font-weight: 900;
 }
 
-.sgm-structure .sgm-odds {
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-weight: 700;
-  color: var(--accent, #4f8cff);
-  margin-top: 0.2rem;
+.market-return {
+  color: #e9e9e9;
+  font-size: .62rem;
+  line-height: 1.15;
 }
 
-.sgm-structure .sgm-add {
-  position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
+.market-link {
+  display: block;
+  margin-top: .45rem;
+  color: #18e3b1;
+  font-size: .7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+@media (max-width: 720px) {
+  .container {
+    max-width: none;
+  }
+
+  main.container {
+    padding-bottom: 0;
+  }
+
+  .market-tile.pick-card,
+  .market-tile {
+    flex-basis: 82vw;
+  }
 }
