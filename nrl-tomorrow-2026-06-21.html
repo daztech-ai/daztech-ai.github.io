@@ -6,8 +6,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="NRL by-eye leans for Sun 21 Jun 2026 — 0 actionable of 3" />
   <link rel="stylesheet" href="cards.css" />
+  <script src="cards.js" defer></script>
 </head>
 <body>
+<aside class="bet-slip" id="bet-slip" aria-label="Bet slip">
+  <header>
+    <h2>Bet Slip <span class="slip-count" id="slip-count">0</span></h2>
+  </header>
+  <div class="slip-empty">Click any odds to add a pick.<br />Slip survives navigation.</div>
+  <ul class="slip-legs"></ul>
+  <div class="slip-summary">
+    <div class="slip-row">Combined odds: <span id="slip-combined">&mdash;</span></div>
+    <div class="slip-row">Stake: $<input type="number" id="slip-stake" value="10" min="0" step="1" /></div>
+    <div class="slip-row return">Return: <span id="slip-return">&mdash;</span></div>
+  </div>
+  <div class="slip-actions">
+    <button id="slip-clear" type="button">Clear</button>
+    <button id="slip-copy" type="button" disabled>Copy Slip</button>
+  </div>
+</aside>
 <main class="container">
   <header class="strip">
     <div>
@@ -36,6 +53,7 @@
     
     <span class="stake accent" style="margin-left:auto">— no bet —</span>
     
+    
   </div>
 </article>
 <article class="pick-card" data-tier="watch">
@@ -54,6 +72,7 @@
     
     <span class="stake accent" style="margin-left:auto">— no bet —</span>
     
+    
   </div>
 </article>
 <article class="pick-card" data-tier="watch">
@@ -71,6 +90,7 @@
     
     
     <span class="stake accent" style="margin-left:auto">— no bet —</span>
+    
     
   </div>
 </article>

@@ -6,8 +6,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="WC 2026 by-eye leans for Sun 21 Jun – Mon 22 Jun 2026 — 0 actionable of 32 matches" />
   <link rel="stylesheet" href="cards.css" />
+  <script src="cards.js" defer></script>
 </head>
 <body>
+<aside class="bet-slip" id="bet-slip" aria-label="Bet slip">
+  <header>
+    <h2>Bet Slip <span class="slip-count" id="slip-count">0</span></h2>
+  </header>
+  <div class="slip-empty">Click any odds to add a pick.<br />Slip survives navigation.</div>
+  <ul class="slip-legs"></ul>
+  <div class="slip-summary">
+    <div class="slip-row">Combined odds: <span id="slip-combined">&mdash;</span></div>
+    <div class="slip-row">Stake: $<input type="number" id="slip-stake" value="10" min="0" step="1" /></div>
+    <div class="slip-row return">Return: <span id="slip-return">&mdash;</span></div>
+  </div>
+  <div class="slip-actions">
+    <button id="slip-clear" type="button">Clear</button>
+    <button id="slip-copy" type="button" disabled>Copy Slip</button>
+  </div>
+</aside>
 <main class="container">
   <header class="strip">
     <div>
@@ -36,6 +53,7 @@
     <span class="t-sm muted">Odds <strong class="mono">4.30</strong></span>
     <span class="stake accent" style="margin-left:auto">— no bet —</span>
     
+    <button class="leg-add" data-event="Netherlands vs Sweden" data-market="h2h" data-pick="Watch" data-odds="4.30" aria-label="Add to slip">+</button>
   </div>
 </article>
 <article class="pick-card" data-tier="watch">
@@ -54,6 +72,7 @@
     <span class="t-sm muted">Odds <strong class="mono">4.10</strong></span>
     <span class="stake accent" style="margin-left:auto">— no bet —</span>
     
+    <button class="leg-add" data-event="Netherlands vs Sweden" data-market="h2h" data-pick="Watch" data-odds="4.10" aria-label="Add to slip">+</button>
   </div>
 </article>
 <article class="pick-card" data-tier="watch">
@@ -72,6 +91,7 @@
     <span class="t-sm muted">Odds <strong class="mono">4.20</strong></span>
     <span class="stake accent" style="margin-left:auto">— no bet —</span>
     
+    <button class="leg-add" data-event="Netherlands vs Sweden" data-market="h2h" data-pick="Watch" data-odds="4.20" aria-label="Add to slip">+</button>
   </div>
 </article>
 <article class="pick-card" data-tier="watch">
@@ -90,6 +110,7 @@
     <span class="t-sm muted">Odds <strong class="mono">4.20</strong></span>
     <span class="stake accent" style="margin-left:auto">— no bet —</span>
     
+    <button class="leg-add" data-event="Netherlands vs Sweden" data-market="h2h" data-pick="Watch" data-odds="4.20" aria-label="Add to slip">+</button>
   </div>
 </article>
 <article class="pick-card" data-tier="watch">
@@ -108,6 +129,7 @@
     <span class="t-sm muted">Odds <strong class="mono">4.70</strong></span>
     <span class="stake accent" style="margin-left:auto">— no bet —</span>
     
+    <button class="leg-add" data-event="Germany vs Ivory Coast" data-market="h2h" data-pick="Watch" data-odds="4.70" aria-label="Add to slip">+</button>
   </div>
 </article>
 <article class="pick-card" data-tier="watch">
@@ -126,6 +148,7 @@
     <span class="t-sm muted">Odds <strong class="mono">4.80</strong></span>
     <span class="stake accent" style="margin-left:auto">— no bet —</span>
     
+    <button class="leg-add" data-event="Germany vs Ivory Coast" data-market="h2h" data-pick="Watch" data-odds="4.80" aria-label="Add to slip">+</button>
   </div>
 </article>
 <article class="pick-card" data-tier="watch">
@@ -144,6 +167,7 @@
     <span class="t-sm muted">Odds <strong class="mono">4.80</strong></span>
     <span class="stake accent" style="margin-left:auto">— no bet —</span>
     
+    <button class="leg-add" data-event="Germany vs Ivory Coast" data-market="h2h" data-pick="Watch" data-odds="4.80" aria-label="Add to slip">+</button>
   </div>
 </article>
 <article class="pick-card" data-tier="watch">
@@ -162,6 +186,7 @@
     <span class="t-sm muted">Odds <strong class="mono">4.80</strong></span>
     <span class="stake accent" style="margin-left:auto">— no bet —</span>
     
+    <button class="leg-add" data-event="Germany vs Ivory Coast" data-market="h2h" data-pick="Watch" data-odds="4.80" aria-label="Add to slip">+</button>
   </div>
 </article>
 <article class="pick-card" data-tier="watch">
@@ -180,6 +205,7 @@
     <span class="t-sm muted">Odds <strong class="mono">8.60</strong></span>
     <span class="stake accent" style="margin-left:auto">— no bet —</span>
     
+    <button class="leg-add" data-event="Ecuador vs Curaçao" data-market="h2h" data-pick="Watch" data-odds="8.60" aria-label="Add to slip">+</button>
   </div>
 </article>
 <article class="pick-card" data-tier="watch">
@@ -198,6 +224,7 @@
     <span class="t-sm muted">Odds <strong class="mono">12.00</strong></span>
     <span class="stake accent" style="margin-left:auto">— no bet —</span>
     
+    <button class="leg-add" data-event="Ecuador vs Curaçao" data-market="h2h" data-pick="Watch" data-odds="12.00" aria-label="Add to slip">+</button>
   </div>
 </article>
 <article class="pick-card" data-tier="watch">
@@ -216,6 +243,7 @@
     <span class="t-sm muted">Odds <strong class="mono">11.50</strong></span>
     <span class="stake accent" style="margin-left:auto">— no bet —</span>
     
+    <button class="leg-add" data-event="Ecuador vs Curaçao" data-market="h2h" data-pick="Watch" data-odds="11.50" aria-label="Add to slip">+</button>
   </div>
 </article>
 <article class="pick-card" data-tier="watch">
@@ -234,6 +262,7 @@
     <span class="t-sm muted">Odds <strong class="mono">10.50</strong></span>
     <span class="stake accent" style="margin-left:auto">— no bet —</span>
     
+    <button class="leg-add" data-event="Ecuador vs Curaçao" data-market="h2h" data-pick="Watch" data-odds="10.50" aria-label="Add to slip">+</button>
   </div>
 </article>
 <article class="pick-card" data-tier="watch">
@@ -252,6 +281,7 @@
     <span class="t-sm muted">Odds <strong class="mono">3.75</strong></span>
     <span class="stake accent" style="margin-left:auto">— no bet —</span>
     
+    <button class="leg-add" data-event="Tunisia vs Japan" data-market="h2h" data-pick="Watch" data-odds="3.75" aria-label="Add to slip">+</button>
   </div>
 </article>
 <article class="pick-card" data-tier="watch">
@@ -270,6 +300,7 @@
     <span class="t-sm muted">Odds <strong class="mono">4.20</strong></span>
     <span class="stake accent" style="margin-left:auto">— no bet —</span>
     
+    <button class="leg-add" data-event="Tunisia vs Japan" data-market="h2h" data-pick="Watch" data-odds="4.20" aria-label="Add to slip">+</button>
   </div>
 </article>
 <article class="pick-card" data-tier="watch">
@@ -288,6 +319,7 @@
     <span class="t-sm muted">Odds <strong class="mono">4.20</strong></span>
     <span class="stake accent" style="margin-left:auto">— no bet —</span>
     
+    <button class="leg-add" data-event="Tunisia vs Japan" data-market="h2h" data-pick="Watch" data-odds="4.20" aria-label="Add to slip">+</button>
   </div>
 </article>
 <article class="pick-card" data-tier="watch">
@@ -306,6 +338,7 @@
     <span class="t-sm muted">Odds <strong class="mono">4.10</strong></span>
     <span class="stake accent" style="margin-left:auto">— no bet —</span>
     
+    <button class="leg-add" data-event="Tunisia vs Japan" data-market="h2h" data-pick="Watch" data-odds="4.10" aria-label="Add to slip">+</button>
   </div>
 </article>
 <article class="pick-card" data-tier="watch">
@@ -324,6 +357,7 @@
     <span class="t-sm muted">Odds <strong class="mono">11.50</strong></span>
     <span class="stake accent" style="margin-left:auto">— no bet —</span>
     
+    <button class="leg-add" data-event="Spain vs Saudi Arabia" data-market="h2h" data-pick="Watch" data-odds="11.50" aria-label="Add to slip">+</button>
   </div>
 </article>
 <article class="pick-card" data-tier="watch">
@@ -342,6 +376,7 @@
     <span class="t-sm muted">Odds <strong class="mono">11.50</strong></span>
     <span class="stake accent" style="margin-left:auto">— no bet —</span>
     
+    <button class="leg-add" data-event="Spain vs Saudi Arabia" data-market="h2h" data-pick="Watch" data-odds="11.50" aria-label="Add to slip">+</button>
   </div>
 </article>
 <article class="pick-card" data-tier="watch">
@@ -360,6 +395,7 @@
     <span class="t-sm muted">Odds <strong class="mono">11.50</strong></span>
     <span class="stake accent" style="margin-left:auto">— no bet —</span>
     
+    <button class="leg-add" data-event="Spain vs Saudi Arabia" data-market="h2h" data-pick="Watch" data-odds="11.50" aria-label="Add to slip">+</button>
   </div>
 </article>
 <article class="pick-card" data-tier="watch">
@@ -378,6 +414,7 @@
     <span class="t-sm muted">Odds <strong class="mono">11.50</strong></span>
     <span class="stake accent" style="margin-left:auto">— no bet —</span>
     
+    <button class="leg-add" data-event="Spain vs Saudi Arabia" data-market="h2h" data-pick="Watch" data-odds="11.50" aria-label="Add to slip">+</button>
   </div>
 </article>
 <article class="pick-card" data-tier="watch">
@@ -396,6 +433,7 @@
     <span class="t-sm muted">Odds <strong class="mono">4.80</strong></span>
     <span class="stake accent" style="margin-left:auto">— no bet —</span>
     
+    <button class="leg-add" data-event="Belgium vs Iran" data-market="h2h" data-pick="Watch" data-odds="4.80" aria-label="Add to slip">+</button>
   </div>
 </article>
 <article class="pick-card" data-tier="watch">
@@ -414,6 +452,7 @@
     <span class="t-sm muted">Odds <strong class="mono">4.80</strong></span>
     <span class="stake accent" style="margin-left:auto">— no bet —</span>
     
+    <button class="leg-add" data-event="Belgium vs Iran" data-market="h2h" data-pick="Watch" data-odds="4.80" aria-label="Add to slip">+</button>
   </div>
 </article>
 <article class="pick-card" data-tier="watch">
@@ -432,6 +471,7 @@
     <span class="t-sm muted">Odds <strong class="mono">4.80</strong></span>
     <span class="stake accent" style="margin-left:auto">— no bet —</span>
     
+    <button class="leg-add" data-event="Belgium vs Iran" data-market="h2h" data-pick="Watch" data-odds="4.80" aria-label="Add to slip">+</button>
   </div>
 </article>
 <article class="pick-card" data-tier="watch">
@@ -450,6 +490,7 @@
     <span class="t-sm muted">Odds <strong class="mono">4.80</strong></span>
     <span class="stake accent" style="margin-left:auto">— no bet —</span>
     
+    <button class="leg-add" data-event="Belgium vs Iran" data-market="h2h" data-pick="Watch" data-odds="4.80" aria-label="Add to slip">+</button>
   </div>
 </article>
 <article class="pick-card" data-tier="watch">
@@ -468,6 +509,7 @@
     <span class="t-sm muted">Odds <strong class="mono">4.60</strong></span>
     <span class="stake accent" style="margin-left:auto">— no bet —</span>
     
+    <button class="leg-add" data-event="Uruguay vs Cape Verde" data-market="h2h" data-pick="Watch" data-odds="4.60" aria-label="Add to slip">+</button>
   </div>
 </article>
 <article class="pick-card" data-tier="watch">
@@ -486,6 +528,7 @@
     <span class="t-sm muted">Odds <strong class="mono">4.30</strong></span>
     <span class="stake accent" style="margin-left:auto">— no bet —</span>
     
+    <button class="leg-add" data-event="Uruguay vs Cape Verde" data-market="h2h" data-pick="Watch" data-odds="4.30" aria-label="Add to slip">+</button>
   </div>
 </article>
 <article class="pick-card" data-tier="watch">
@@ -504,6 +547,7 @@
     <span class="t-sm muted">Odds <strong class="mono">4.40</strong></span>
     <span class="stake accent" style="margin-left:auto">— no bet —</span>
     
+    <button class="leg-add" data-event="Uruguay vs Cape Verde" data-market="h2h" data-pick="Watch" data-odds="4.40" aria-label="Add to slip">+</button>
   </div>
 </article>
 <article class="pick-card" data-tier="watch">
@@ -522,6 +566,7 @@
     <span class="t-sm muted">Odds <strong class="mono">4.50</strong></span>
     <span class="stake accent" style="margin-left:auto">— no bet —</span>
     
+    <button class="leg-add" data-event="Uruguay vs Cape Verde" data-market="h2h" data-pick="Watch" data-odds="4.50" aria-label="Add to slip">+</button>
   </div>
 </article>
 <article class="pick-card" data-tier="watch">
@@ -540,6 +585,7 @@
     <span class="t-sm muted">Odds <strong class="mono">3.70</strong></span>
     <span class="stake accent" style="margin-left:auto">— no bet —</span>
     
+    <button class="leg-add" data-event="New Zealand vs Egypt" data-market="h2h" data-pick="Watch" data-odds="3.70" aria-label="Add to slip">+</button>
   </div>
 </article>
 <article class="pick-card" data-tier="watch">
@@ -558,6 +604,7 @@
     <span class="t-sm muted">Odds <strong class="mono">4.20</strong></span>
     <span class="stake accent" style="margin-left:auto">— no bet —</span>
     
+    <button class="leg-add" data-event="New Zealand vs Egypt" data-market="h2h" data-pick="Watch" data-odds="4.20" aria-label="Add to slip">+</button>
   </div>
 </article>
 <article class="pick-card" data-tier="watch">
@@ -576,6 +623,7 @@
     <span class="t-sm muted">Odds <strong class="mono">4.20</strong></span>
     <span class="stake accent" style="margin-left:auto">— no bet —</span>
     
+    <button class="leg-add" data-event="New Zealand vs Egypt" data-market="h2h" data-pick="Watch" data-odds="4.20" aria-label="Add to slip">+</button>
   </div>
 </article>
 <article class="pick-card" data-tier="watch">
@@ -594,6 +642,7 @@
     <span class="t-sm muted">Odds <strong class="mono">4.30</strong></span>
     <span class="stake accent" style="margin-left:auto">— no bet —</span>
     
+    <button class="leg-add" data-event="New Zealand vs Egypt" data-market="h2h" data-pick="Watch" data-odds="4.30" aria-label="Add to slip">+</button>
   </div>
 </article>
 </div>

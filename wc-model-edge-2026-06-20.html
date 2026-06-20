@@ -6,8 +6,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="13 WC v3 model edge picks for Sat 20 Jun 2026 (expected ROI +13.8%)" />
   <link rel="stylesheet" href="cards.css" />
+  <script src="cards.js" defer></script>
 </head>
 <body>
+<aside class="bet-slip" id="bet-slip" aria-label="Bet slip">
+  <header>
+    <h2>Bet Slip <span class="slip-count" id="slip-count">0</span></h2>
+  </header>
+  <div class="slip-empty">Click any odds to add a pick.<br />Slip survives navigation.</div>
+  <ul class="slip-legs"></ul>
+  <div class="slip-summary">
+    <div class="slip-row">Combined odds: <span id="slip-combined">&mdash;</span></div>
+    <div class="slip-row">Stake: $<input type="number" id="slip-stake" value="10" min="0" step="1" /></div>
+    <div class="slip-row return">Return: <span id="slip-return">&mdash;</span></div>
+  </div>
+  <div class="slip-actions">
+    <button id="slip-clear" type="button">Clear</button>
+    <button id="slip-copy" type="button" disabled>Copy Slip</button>
+  </div>
+</aside>
 <main class="container">
   <header class="strip">
     <div>
@@ -19,7 +36,7 @@
   <div class="hero-stats"><div class="hero-stat"><span class="lbl">Picks</span><span class="val good">13 confident</span></div><div class="hero-stat"><span class="lbl">Stake</span><span class="val accent">13% bank</span></div><div class="hero-stat"><span class="lbl">Stake ($)</span><span class="val accent">$130</span></div><div class="hero-stat"><span class="lbl">Expected ROI</span><span class="val good">+13.8%</span></div></div>
   <div class="track-record"><div class="metric"><span class="value good">+13.8%</span><span class="label">30d ROI</span></div><div class="metric"><span class="value">0.182</span><span class="label">Brier</span></div><div class="metric"><span class="value">206</span><span class="label">Sample</span></div><div class="metric"><span class="value">v3 calibrated</span><span class="label">Model</span></div></div>
   <div class="banner"><strong>Model:</strong> WC v3 international Poisson + isotonic calibrator (LOTO-CV on 2014/2018/2022). Edge ≥ 5% to fire a pick. Stake is <strong>1% of bankroll per pick</strong> (forward-test conservative size).</div>
-  <div class="pick-list">
+  <section class="top-picks"><div class="top-picks-head"><h2>Today’s Top Picks — click + to add</h2><span class="t-xs muted">Click + to add to slip</span></div><div class="top-picks-list"><div class="top-pick-row"><div><div class="tp-event">Tunisia vs Japan</div><div class="tp-pick">Home</div></div><div class="tp-edge edge-strong">+14.8%</div><div class="tp-edge mono">@ 7.40</div><button class="top-pick-add" data-event="Tunisia vs Japan" data-market="h2h" data-pick="Home" data-odds="7.40" aria-label="Add to slip">+</button></div><div class="top-pick-row"><div><div class="tp-event">Spain vs Saudi Arabia</div><div class="tp-pick">Away</div></div><div class="tp-edge edge-strong">+17.7%</div><div class="tp-edge mono">@ 29.00</div><button class="top-pick-add" data-event="Spain vs Saudi Arabia" data-market="h2h" data-pick="Away" data-odds="29.00" aria-label="Add to slip">+</button></div><div class="top-pick-row"><div><div class="tp-event">Belgium vs Iran</div><div class="tp-pick">Away</div></div><div class="tp-edge edge-mid">+8.9%</div><div class="tp-edge mono">@ 8.20</div><button class="top-pick-add" data-event="Belgium vs Iran" data-market="h2h" data-pick="Away" data-odds="8.20" aria-label="Add to slip">+</button></div><div class="top-pick-row"><div><div class="tp-event">England vs Ghana</div><div class="tp-pick">Away</div></div><div class="tp-edge edge-strong">+14.9%</div><div class="tp-edge mono">@ 16.00</div><button class="top-pick-add" data-event="England vs Ghana" data-market="h2h" data-pick="Away" data-odds="16.00" aria-label="Add to slip">+</button></div><div class="top-pick-row"><div><div class="tp-event">Panama vs Croatia</div><div class="tp-pick">Draw</div></div><div class="tp-edge edge-mid">+5.6%</div><div class="tp-edge mono">@ 4.20</div><button class="top-pick-add" data-event="Panama vs Croatia" data-market="h2h" data-pick="Draw" data-odds="4.20" aria-label="Add to slip">+</button></div><div class="top-pick-row"><div><div class="tp-event">Bosnia &amp; Herzegovina vs Qatar</div><div class="tp-pick">Away</div></div><div class="tp-edge edge-mid">+7.7%</div><div class="tp-edge mono">@ 7.40</div><button class="top-pick-add" data-event="Bosnia &amp; Herzegovina vs Qatar" data-market="h2h" data-pick="Away" data-odds="7.40" aria-label="Add to slip">+</button></div><div class="top-pick-row"><div><div class="tp-event">Switzerland vs Canada</div><div class="tp-pick">Away</div></div><div class="tp-edge edge-strong">+18.8%</div><div class="tp-edge mono">@ 3.35</div><button class="top-pick-add" data-event="Switzerland vs Canada" data-market="h2h" data-pick="Away" data-odds="3.35" aria-label="Add to slip">+</button></div><div class="top-pick-row"><div><div class="tp-event">Japan vs Sweden</div><div class="tp-pick">Away</div></div><div class="tp-edge edge-strong">+24.0%</div><div class="tp-edge mono">@ 3.40</div><button class="top-pick-add" data-event="Japan vs Sweden" data-market="h2h" data-pick="Away" data-odds="3.40" aria-label="Add to slip">+</button></div></div></section><div class="pick-list">
 <article class="pick-card" data-tier="lock">
   <div class="pick-head">
     <div>
@@ -36,6 +53,7 @@
     <span class="t-sm muted">Odds <strong class="mono">7.40</strong></span>
     <span class="stake accent" style="margin-left:auto">1% ($10)</span>
     
+    <button class="leg-add" data-event="Tunisia vs Japan" data-market="h2h" data-pick="Home" data-odds="7.40" aria-label="Add to slip">+</button>
   </div>
 </article>
 <article class="pick-card" data-tier="lock">
@@ -54,6 +72,7 @@
     <span class="t-sm muted">Odds <strong class="mono">29.00</strong></span>
     <span class="stake accent" style="margin-left:auto">1% ($10)</span>
     
+    <button class="leg-add" data-event="Spain vs Saudi Arabia" data-market="h2h" data-pick="Away" data-odds="29.00" aria-label="Add to slip">+</button>
   </div>
 </article>
 <article class="pick-card" data-tier="back">
@@ -72,6 +91,7 @@
     <span class="t-sm muted">Odds <strong class="mono">8.20</strong></span>
     <span class="stake accent" style="margin-left:auto">1% ($10)</span>
     
+    <button class="leg-add" data-event="Belgium vs Iran" data-market="h2h" data-pick="Away" data-odds="8.20" aria-label="Add to slip">+</button>
   </div>
 </article>
 <article class="pick-card" data-tier="lock">
@@ -90,6 +110,7 @@
     <span class="t-sm muted">Odds <strong class="mono">16.00</strong></span>
     <span class="stake accent" style="margin-left:auto">1% ($10)</span>
     
+    <button class="leg-add" data-event="England vs Ghana" data-market="h2h" data-pick="Away" data-odds="16.00" aria-label="Add to slip">+</button>
   </div>
 </article>
 <article class="pick-card" data-tier="back">
@@ -108,6 +129,7 @@
     <span class="t-sm muted">Odds <strong class="mono">4.20</strong></span>
     <span class="stake accent" style="margin-left:auto">1% ($10)</span>
     
+    <button class="leg-add" data-event="Panama vs Croatia" data-market="h2h" data-pick="Draw" data-odds="4.20" aria-label="Add to slip">+</button>
   </div>
 </article>
 <article class="pick-card" data-tier="back">
@@ -126,6 +148,7 @@
     <span class="t-sm muted">Odds <strong class="mono">7.40</strong></span>
     <span class="stake accent" style="margin-left:auto">1% ($10)</span>
     
+    <button class="leg-add" data-event="Bosnia &amp; Herzegovina vs Qatar" data-market="h2h" data-pick="Away" data-odds="7.40" aria-label="Add to slip">+</button>
   </div>
 </article>
 <article class="pick-card" data-tier="lock">
@@ -144,6 +167,7 @@
     <span class="t-sm muted">Odds <strong class="mono">3.35</strong></span>
     <span class="stake accent" style="margin-left:auto">1% ($10)</span>
     
+    <button class="leg-add" data-event="Switzerland vs Canada" data-market="h2h" data-pick="Away" data-odds="3.35" aria-label="Add to slip">+</button>
   </div>
 </article>
 <article class="pick-card" data-tier="lock">
@@ -162,6 +186,7 @@
     <span class="t-sm muted">Odds <strong class="mono">3.40</strong></span>
     <span class="stake accent" style="margin-left:auto">1% ($10)</span>
     
+    <button class="leg-add" data-event="Japan vs Sweden" data-market="h2h" data-pick="Away" data-odds="3.40" aria-label="Add to slip">+</button>
   </div>
 </article>
 <article class="pick-card" data-tier="lock">
@@ -180,6 +205,7 @@
     <span class="t-sm muted">Odds <strong class="mono">5.90</strong></span>
     <span class="stake accent" style="margin-left:auto">1% ($10)</span>
     
+    <button class="leg-add" data-event="Tunisia vs Netherlands" data-market="h2h" data-pick="Draw" data-odds="5.90" aria-label="Add to slip">+</button>
   </div>
 </article>
 <article class="pick-card" data-tier="lock">
@@ -198,6 +224,7 @@
     <span class="t-sm muted">Odds <strong class="mono">6.25</strong></span>
     <span class="stake accent" style="margin-left:auto">1% ($10)</span>
     
+    <button class="leg-add" data-event="Uruguay vs Spain" data-market="h2h" data-pick="Home" data-odds="6.25" aria-label="Add to slip">+</button>
   </div>
 </article>
 <article class="pick-card" data-tier="lock">
@@ -216,6 +243,7 @@
     <span class="t-sm muted">Odds <strong class="mono">3.92</strong></span>
     <span class="stake accent" style="margin-left:auto">1% ($10)</span>
     
+    <button class="leg-add" data-event="Egypt vs Iran" data-market="h2h" data-pick="Away" data-odds="3.92" aria-label="Add to slip">+</button>
   </div>
 </article>
 <article class="pick-card" data-tier="lock">
@@ -234,6 +262,7 @@
     <span class="t-sm muted">Odds <strong class="mono">7.20</strong></span>
     <span class="stake accent" style="margin-left:auto">1% ($10)</span>
     
+    <button class="leg-add" data-event="Panama vs England" data-market="h2h" data-pick="Draw" data-odds="7.20" aria-label="Add to slip">+</button>
   </div>
 </article>
 <article class="pick-card" data-tier="lock">
@@ -252,6 +281,7 @@
     <span class="t-sm muted">Odds <strong class="mono">3.70</strong></span>
     <span class="stake accent" style="margin-left:auto">1% ($10)</span>
     
+    <button class="leg-add" data-event="Colombia vs Portugal" data-market="h2h" data-pick="Home" data-odds="3.70" aria-label="Add to slip">+</button>
   </div>
 </article>
 </div>

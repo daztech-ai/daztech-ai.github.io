@@ -229,3 +229,349 @@ footer p{margin:.25rem 0}
 .card a:hover{text-decoration:underline}
 .card .time{font-size:.7rem;color:var(--text-muted);margin:.25rem 0}
 .footer{text-align:center;padding:1.5rem 0;color:var(--text-muted);font-size:.7rem}
+
+
+/* ----- Bet Slip (clickable, persistent, copy-to-clipboard) ----- */
+
+.bet-slip {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  width: 340px;
+  max-height: calc(100vh - 2rem);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  font-size: 0.85rem;
+}
+
+.bet-slip header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface-2, var(--surface));
+  border-radius: 12px 12px 0 0;
+}
+
+.bet-slip header h2 {
+  font-size: 0.95rem;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.bet-slip .slip-count {
+  background: var(--accent, #4f8cff);
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.1rem 0.4rem;
+  border-radius: 999px;
+  min-width: 1.4rem;
+  text-align: center;
+}
+
+.bet-slip .slip-empty {
+  padding: 1.5rem 1rem;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+.bet-slip .slip-legs {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.bet-slip .slip-leg {
+  padding: 0.6rem 0.9rem;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.8rem;
+  position: relative;
+}
+
+.bet-slip .slip-leg-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.4rem;
+}
+
+.bet-slip .slip-leg-event {
+  font-weight: 600;
+  flex: 1;
+  line-height: 1.2;
+}
+
+.bet-slip .slip-remove {
+  background: transparent;
+  border: 0;
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 0 0.3rem;
+  line-height: 1;
+}
+
+.bet-slip .slip-remove:hover {
+  color: #d33;
+}
+
+.bet-slip .slip-leg-pick {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 0.2rem;
+}
+
+.bet-slip .slip-leg-odds {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-weight: 700;
+  color: var(--accent, #4f8cff);
+  margin-top: 0.2rem;
+}
+
+.bet-slip .slip-summary {
+  padding: 0.7rem 0.9rem;
+  border-top: 1px solid var(--border);
+  background: var(--surface-2, var(--surface));
+}
+
+.bet-slip .slip-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0.2rem 0;
+  font-size: 0.8rem;
+}
+
+.bet-slip .slip-row input {
+  width: 70px;
+  padding: 0.2rem 0.4rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font: inherit;
+  text-align: right;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.bet-slip .slip-row.return {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--accent, #4f8cff);
+  margin-top: 0.4rem;
+  padding-top: 0.4rem;
+  border-top: 1px solid var(--border);
+}
+
+.bet-slip .slip-actions {
+  display: flex;
+  gap: 0.4rem;
+  padding: 0.6rem 0.9rem;
+  border-top: 1px solid var(--border);
+}
+
+.bet-slip .slip-actions button {
+  flex: 1;
+  padding: 0.5rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface);
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.bet-slip .slip-actions button:hover {
+  background: var(--surface-2, var(--surface));
+}
+
+.bet-slip #slip-copy {
+  background: var(--accent, #4f8cff);
+  color: white;
+  border-color: var(--accent, #4f8cff);
+}
+
+.bet-slip #slip-copy:hover:not(:disabled) {
+  filter: brightness(1.1);
+}
+
+.bet-slip #slip-copy:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Make room for the fixed slip on the right side */
+@media (min-width: 1100px) {
+  main.container {
+    padding-right: 360px;
+  }
+}
+
+@media (max-width: 1099px) {
+  .bet-slip {
+    top: auto;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    max-height: 50vh;
+    border-radius: 12px 12px 0 0;
+  }
+  main.container {
+    padding-bottom: 60vh;
+  }
+}
+
+/* ----- Top picks panel (actionable picks front-and-center) ----- */
+
+.top-picks {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.9rem 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.top-picks-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.6rem;
+}
+
+.top-picks-head h2 {
+  font-size: 0.9rem;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+}
+
+.top-picks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.top-pick-row {
+  display: grid;
+  grid-template-columns: 1fr auto auto auto;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem 0.7rem;
+  background: var(--surface-2, var(--surface));
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 0.85rem;
+}
+
+.top-pick-row .tp-event {
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.top-pick-row .tp-pick {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+.top-pick-row .tp-edge {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-weight: 700;
+}
+
+.top-pick-row .top-pick-add {
+  background: var(--accent, #4f8cff);
+  color: white;
+  border: 0;
+  border-radius: 6px;
+  padding: 0.4rem 0.7rem;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+.top-pick-row .top-pick-add:hover {
+  filter: brightness(1.1);
+}
+
+.top-pick-row .top-pick-add.leg-added {
+  background: #1e9c4a;
+}
+
+/* ----- Clickable legs (legacy card structures) ----- */
+
+.leg-add,
+.sgm-add {
+  background: var(--surface-2, var(--surface));
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.15rem 0.4rem;
+  cursor: pointer;
+  font: inherit;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  color: var(--accent, #4f8cff);
+  font-weight: 600;
+  font-size: 0.8rem;
+  transition: all 0.15s ease;
+}
+
+.leg-add:hover,
+.sgm-add:hover {
+  background: var(--accent, #4f8cff);
+  color: white;
+  border-color: var(--accent, #4f8cff);
+}
+
+.leg-add.leg-added,
+.sgm-add.leg-added {
+  background: #1e9c4a;
+  color: white;
+  border-color: #1e9c4a;
+}
+
+/* SGM structure with click-to-add-all button */
+.sgm-structure {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.6rem 0.8rem;
+  margin: 0.4rem 0;
+  background: var(--surface-2, var(--surface));
+  position: relative;
+}
+
+.sgm-structure .sgm-name {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.sgm-structure .sgm-legs {
+  margin-top: 0.3rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.sgm-structure .sgm-odds {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-weight: 700;
+  color: var(--accent, #4f8cff);
+  margin-top: 0.2rem;
+}
+
+.sgm-structure .sgm-add {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+}
