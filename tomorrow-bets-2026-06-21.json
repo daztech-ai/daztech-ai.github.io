@@ -69,140 +69,20 @@
           "odds": 1.8
         }
       ],
-      "combined_odds": 5.91,
+      "combined_odds": 9.84710743801653,
       "edge_pct": -17.72,
       "stake_pct": 0.0,
       "stake_aud": 0.0,
       "bookmaker": "sportsbet",
       "source": "data/engine_picks/sgm-2026-06-21.jsonl",
-      "model_probability": 0.13922165820642976,
-      "fair_odds": 7.182790471560526,
-      "min_acceptable_odds": 7.5419299951385534,
+      "model_probability": 0.08355753252203103,
+      "fair_odds": 11.967801942168851,
+      "min_acceptable_odds": 12.566192039277293,
       "estimated_leg_product_odds": null,
-      "exact_slip_odds": null,
+      "exact_slip_odds": 9.84710743801653,
       "decision": "skip",
       "warnings": [],
-      "copy_block": "Daz Engine SGM: Netherlands vs Sweden\n  Structure: Netherlands + Under 2.5 + BTTS No\n  Combined odds (estimated): 5.91\n  Model edge: -17.7%\n  Min acceptable slip odds: 7.54\n  Action: BUILD - check exact slip odds at bookie, then PLACE if >= 7.54"
-    },
-    {
-      "candidate_id": "sgm-Netherlands_vs_Sweden-Netherlands_+_Under_2.5_+_BTTS_No",
-      "sport": "WC",
-      "match": "Netherlands vs Sweden",
-      "name": "Netherlands + Under 2.5 + BTTS No",
-      "legs": [
-        {
-          "label": "Netherlands Win",
-          "market": "h2h",
-          "selection": "home",
-          "odds": 1.68
-        },
-        {
-          "label": "Under 2.5",
-          "market": "totals",
-          "selection": "under_2_5",
-          "odds": 1.7
-        },
-        {
-          "label": "BTTS No",
-          "market": "btts",
-          "selection": "btts_no",
-          "odds": 1.8
-        }
-      ],
-      "combined_odds": 8.0,
-      "edge_pct": -17.72,
-      "stake_pct": 0.0,
-      "stake_aud": 0.0,
-      "bookmaker": "sportsbet",
-      "source": "data/engine_picks/sgm-2026-06-21.jsonl",
-      "model_probability": 0.10285,
-      "fair_odds": 9.722897423432183,
-      "min_acceptable_odds": 10.209042294603792,
-      "estimated_leg_product_odds": null,
-      "exact_slip_odds": null,
-      "decision": "skip",
-      "warnings": [],
-      "copy_block": "Daz Engine SGM: Netherlands vs Sweden\n  Structure: Netherlands + Under 2.5 + BTTS No\n  Combined odds (estimated): 8.00\n  Model edge: -17.7%\n  Min acceptable slip odds: 10.21\n  Action: BUILD - check exact slip odds at bookie, then PLACE if >= 10.21"
-    },
-    {
-      "candidate_id": "sgm-Netherlands_vs_Sweden-Netherlands_+_Under_2.5_+_BTTS_No",
-      "sport": "WC",
-      "match": "Netherlands vs Sweden",
-      "name": "Netherlands + Under 2.5 + BTTS No",
-      "legs": [
-        {
-          "label": "Netherlands Win",
-          "market": "h2h",
-          "selection": "home",
-          "odds": 1.68
-        },
-        {
-          "label": "Under 2.5",
-          "market": "totals",
-          "selection": "under_2_5",
-          "odds": 1.7
-        },
-        {
-          "label": "BTTS No",
-          "market": "btts",
-          "selection": "btts_no",
-          "odds": 1.8
-        }
-      ],
-      "combined_odds": 8.0,
-      "edge_pct": -17.72,
-      "stake_pct": 0.0,
-      "stake_aud": 0.0,
-      "bookmaker": "sportsbet",
-      "source": "data/engine_picks/sgm-2026-06-21.jsonl",
-      "model_probability": 0.10285,
-      "fair_odds": 9.722897423432183,
-      "min_acceptable_odds": 10.209042294603792,
-      "estimated_leg_product_odds": null,
-      "exact_slip_odds": null,
-      "decision": "skip",
-      "warnings": [],
-      "copy_block": "Daz Engine SGM: Netherlands vs Sweden\n  Structure: Netherlands + Under 2.5 + BTTS No\n  Combined odds (estimated): 8.00\n  Model edge: -17.7%\n  Min acceptable slip odds: 10.21\n  Action: BUILD - check exact slip odds at bookie, then PLACE if >= 10.21"
-    },
-    {
-      "candidate_id": "sgm-Germany_vs_Ivory_Coast-Germany_+_Under_2.5_+_BTTS_No",
-      "sport": "WC",
-      "match": "Germany vs Ivory Coast",
-      "name": "Germany + Under 2.5 + BTTS No",
-      "legs": [
-        {
-          "label": "Germany Win",
-          "market": "h2h",
-          "selection": "home",
-          "odds": 1.6
-        },
-        {
-          "label": "Under 2.5",
-          "market": "totals",
-          "selection": "under_2_5",
-          "odds": 1.7
-        },
-        {
-          "label": "BTTS No",
-          "market": "btts",
-          "selection": "btts_no",
-          "odds": 1.8
-        }
-      ],
-      "combined_odds": 5.63,
-      "edge_pct": -20.99,
-      "stake_pct": 0.0,
-      "stake_aud": 0.0,
-      "bookmaker": "sportsbet",
-      "source": "data/engine_picks/sgm-2026-06-21.jsonl",
-      "model_probability": 0.14033747779751332,
-      "fair_odds": 7.125680293633717,
-      "min_acceptable_odds": 7.481964308315404,
-      "estimated_leg_product_odds": null,
-      "exact_slip_odds": null,
-      "decision": "skip",
-      "warnings": [],
-      "copy_block": "Daz Engine SGM: Germany vs Ivory Coast\n  Structure: Germany + Under 2.5 + BTTS No\n  Combined odds (estimated): 5.63\n  Model edge: -21.0%\n  Min acceptable slip odds: 7.48\n  Action: BUILD - check exact slip odds at bookie, then PLACE if >= 7.48"
+      "copy_block": "Daz Engine SGM: Netherlands vs Sweden\n  Structure: Netherlands + Under 2.5 + BTTS No\n  Combined odds (estimated): 9.85\n  Model edge: -17.7%\n  Min acceptable slip odds: 12.57\n  Action: BUILD - check exact slip odds at bookie, then PLACE if >= 12.57"
     }
   ],
   "multis": [],
@@ -220,75 +100,75 @@
   ],
   "health": {
     "target_iso": "2026-06-21",
-    "generated_at": "2026-06-20T19:28:12.453653+00:00",
+    "generated_at": "2026-06-20T19:41:22.004216+00:00",
     "overall_status": "warn",
     "blocking_reasons": [],
     "warnings": [
-      "wc_odds: stale (age 773m > 240m)",
-      "nrl_odds: stale (age 773m > 240m)"
+      "wc_odds: stale (age 786m > 240m)",
+      "nrl_odds: stale (age 786m > 240m)"
     ],
     "sources": [
       {
         "source_id": "wc_odds",
         "path": "/home/daz/projects/daz-betting-engine/data/odds_cache/soccer_fifa_world_cup/2026-06-20.json",
         "exists": true,
-        "age_minutes": 773.0,
+        "age_minutes": 786.2,
         "status": "stale",
-        "message": "stale (age 773m > 240m)"
+        "message": "stale (age 786m > 240m)"
       },
       {
         "source_id": "nrl_odds",
         "path": "/home/daz/projects/daz-betting-engine/data/odds_cache/rugbyleague_nrl/2026-06-20.json",
         "exists": true,
-        "age_minutes": 773.0,
+        "age_minutes": 786.2,
         "status": "stale",
-        "message": "stale (age 773m > 240m)"
+        "message": "stale (age 786m > 240m)"
       },
       {
         "source_id": "wc_model_state",
         "path": "/home/daz/projects/daz-betting-engine/data/wc_training/international_state_v3_calibrated.json",
         "exists": true,
-        "age_minutes": 1401.3,
+        "age_minutes": 1414.5,
         "status": "fresh",
-        "message": "fresh (age 1401m <= 1440m)"
+        "message": "fresh (age 1414m <= 1440m)"
       },
       {
         "source_id": "wc_calibrator",
         "path": "/home/daz/projects/daz-betting-engine/data/wc_training/wc_calibrator_v3.pkl",
         "exists": true,
-        "age_minutes": 1401.3,
+        "age_minutes": 1414.5,
         "status": "fresh",
-        "message": "fresh (age 1401m <= 1440m)"
+        "message": "fresh (age 1414m <= 1440m)"
       },
       {
         "source_id": "nrl_team_context",
         "path": "/home/daz/projects/daz-betting-engine/data/nrl/team_context.json",
         "exists": true,
-        "age_minutes": 32.5,
+        "age_minutes": 45.6,
         "status": "fresh",
-        "message": "fresh (age 32m <= 720m)"
+        "message": "fresh (age 46m <= 720m)"
       },
       {
         "source_id": "nrl_team_news",
         "path": "/home/daz/projects/daz-betting-engine/data/nrl/team_news.json",
         "exists": true,
-        "age_minutes": 32.5,
+        "age_minutes": 45.6,
         "status": "fresh",
-        "message": "fresh (age 32m <= 720m)"
+        "message": "fresh (age 46m <= 720m)"
       },
       {
         "source_id": "player_ratings",
         "path": "/home/daz/projects/daz-betting-engine/data/players/player_ratings.json",
         "exists": true,
-        "age_minutes": 813.4,
+        "age_minutes": 826.5,
         "status": "fresh",
-        "message": "fresh (age 813m <= 1440m)"
+        "message": "fresh (age 827m <= 1440m)"
       },
       {
         "source_id": "player_stats",
         "path": "/home/daz/projects/daz-betting-engine/data/players/wc_2026_player_stats.json",
         "exists": true,
-        "age_minutes": 1.2,
+        "age_minutes": 1.0,
         "status": "fresh",
         "message": "fresh (age 1m <= 1440m)"
       },
@@ -296,17 +176,17 @@
         "source_id": "engine_picks_ledger",
         "path": "/home/daz/projects/daz-betting-engine/data/engine_picks/sgm-2026-06-21.jsonl",
         "exists": true,
-        "age_minutes": 12.3,
+        "age_minutes": 0.3,
         "status": "fresh",
-        "message": "fresh (age 12m <= 60m)"
+        "message": "fresh (age 0m <= 60m)"
       },
       {
         "source_id": "forward_test_ledger",
         "path": "/home/daz/projects/daz-betting-engine/data/forward_test/forward-test-2026-06-21.jsonl",
         "exists": true,
-        "age_minutes": 7.0,
+        "age_minutes": 20.1,
         "status": "fresh",
-        "message": "fresh (age 7m <= 60m)"
+        "message": "fresh (age 20m <= 60m)"
       }
     ]
   },
@@ -365,9 +245,9 @@
   ],
   "performance": {
     "target_iso": "2026-06-21",
-    "generated_at": "2026-06-20T19:28:12.457143+00:00",
-    "n_picks": 78,
-    "n_pending": 78,
+    "generated_at": "2026-06-20T19:41:22.007686+00:00",
+    "n_picks": 80,
+    "n_pending": 80,
     "n_settled": 0,
     "n_won": 0,
     "n_lost": 0,
