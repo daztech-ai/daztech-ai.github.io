@@ -20,7 +20,7 @@
   
   <div class="banner"><strong>WC v3 calibrated SGM card.</strong> Engine builds multi-leg SGM combos (anchor + 1-2 props) per WC match from live Betfair AU odds + Poisson-derived alt-market estimates. Each SGM shows its premium — the bookmaker margin for combining legs. <strong>Lower premium = better value.</strong> Verify legs at the bookie before placing; if a leg has moved >5-10%, recompute combined odds manually.</div>
   <h2 style="margin-top:1.5rem">Best SGM Structures Today</h2><p class="t-sm muted">Ranked by SGM premium (lower = less book margin). These are the closest to break-even across the entire slate. Re-check closer to kickoff — opening lines typically sharpen 5-10% as the market adjusts.</p><div class="top-picks-grid"><div class="pick-row" data-tier="fade"><div class="pick-info"><div class="pick-match">Belgium vs Iran</div><div class="pick-outcome">Belgium + BTTS No (clean sheet)</div></div><div class="pick-meta"><span class="edge fade">-6.8%</span><span class="odds">2.73</span></div></div><div class="pick-row" data-tier="fade"><div class="pick-info"><div class="pick-match">Belgium vs Iran</div><div class="pick-outcome">Belgium + HT Belgium / FT Belgium (wire-to-wire)</div></div><div class="pick-meta"><span class="edge fade">-6.9%</span><span class="odds">3.49</span></div></div><div class="pick-row" data-tier="fade"><div class="pick-info"><div class="pick-match">Netherlands vs Sweden</div><div class="pick-outcome">Netherlands + HT Netherlands / FT Netherlands (wire-to-wire)</div></div><div class="pick-meta"><span class="edge fade">-6.9%</span><span class="odds">4.13</span></div></div><div class="pick-row" data-tier="fade"><div class="pick-info"><div class="pick-match">Belgium vs Iran</div><div class="pick-outcome">Belgium + Under 2.5</div></div><div class="pick-meta"><span class="edge fade">-6.9%</span><span class="odds">2.58</span></div></div></div><div class="explainer-box"><h3>Why No Bets Today?</h3><p class="t-sm"><strong>WC v3 calibrated model — honest slate.</strong> All 40 SGM combinations across 8 fixtures show negative expected edge. The bookmaker SGM premium wipes out the H2H anchor edge. This is the engine working — it only recommends bets when the maths is favourable. <strong>No confidence = no bet.</strong></p><p class="t-sm muted"><strong>What to do:</strong> Wait for line movement closer to kickoff. Opening lines at Betfair AU typically overprice the favourite by 5-10% because the book does not know the starting XI yet. Once teams are confirmed — usually 60-90 min before kickoff — the lines tighten and edges can flip positive. Re-run <code>sgm-tomorrow</code> then.</p></div><details class="fixture-section" id="netherlands-vs-sweden"><summary><h2 style="display:inline;margin:0;font-size:1.1rem">Netherlands vs Sweden — <span class="accent">HOME anchor @ 1.68 <span class="badge badge-warn">reference only</span></span></h2></summary><p class="t-sm muted" style="margin:.25rem 0 .5rem"><strong>Kickoff:</strong> Sun 21 Jun 03:00 AEST · <strong>Stake:</strong> 0% — no recommended bet, structure for reference · <strong>Rationale:</strong> WC v3 model says no edge on this SGM slate (best: -15.7%, threshold 5%). The model is calibrated against closing sharp lines; current Sportsbet openers typically overprice the favourite by 5-10% of margin. The line usually tightens into kickoff — re-check with `python -m daz_betting_engine.cli sgm-edges` (or `sgm-fire --min-edge=-5`) closer to kickoff.</p><div class="pick-list market-rail">
-<article class="market-tile pick-card" data-tier="back">
+<article class="market-tile pick-card" data-tier="fade">
   <div class="market-tile-head">
     <h3>Netherlands + Under 2.5</h3>
     <div class="market-icons"><span>BETFAIR_EX_AU</span></div>
@@ -29,13 +29,13 @@
   <div class="market-sub">Same Game Multi</div>
   <div class="market-legs"><div class="market-leg"><span class="leg-dot"></span><span>Netherlands Win @ 1.68</span></div><div class="market-leg"><span class="leg-dot"></span><span>Under 2.5 @ 1.70</span></div></div>
   <div class="market-boost-row">
-    <span class="market-boost edge-mid">BOOK MARGIN</span>
-    <span class="market-heat">+7.1%</span>
+    <span class="market-boost edge-fade">BOOK MARGIN</span>
+    <span class="market-heat">-7.1%</span>
   </div>
   <div class="market-odds-panel"><div class="market-odds-main">3.06</div><div class="market-return">$20 returns $61</div></div>
   
 </article>
-<article class="market-tile pick-card" data-tier="back">
+<article class="market-tile pick-card" data-tier="fade">
   <div class="market-tile-head">
     <h3>Netherlands + BTTS No (clean sheet)</h3>
     <div class="market-icons"><span>BETFAIR_EX_AU</span></div>
@@ -44,13 +44,13 @@
   <div class="market-sub">Same Game Multi</div>
   <div class="market-legs"><div class="market-leg"><span class="leg-dot"></span><span>Netherlands Win @ 1.68</span></div><div class="market-leg"><span class="leg-dot"></span><span>BTTS No @ 1.80</span></div></div>
   <div class="market-boost-row">
-    <span class="market-boost edge-mid">BOOK MARGIN</span>
-    <span class="market-heat">+7.1%</span>
+    <span class="market-boost edge-fade">BOOK MARGIN</span>
+    <span class="market-heat">-7.1%</span>
   </div>
   <div class="market-odds-panel"><div class="market-odds-main">3.24</div><div class="market-return">$20 returns $65</div></div>
   
 </article>
-<article class="market-tile pick-card" data-tier="lock">
+<article class="market-tile pick-card" data-tier="fade">
   <div class="market-tile-head">
     <h3>Netherlands + Under 2.5 + BTTS No</h3>
     <div class="market-icons"><span>BETFAIR_EX_AU</span></div>
@@ -59,13 +59,13 @@
   <div class="market-sub">Same Game Multi</div>
   <div class="market-legs"><div class="market-leg"><span class="leg-dot"></span><span>Netherlands Win @ 1.68</span></div><div class="market-leg"><span class="leg-dot"></span><span>Under 2.5 @ 1.70</span></div><div class="market-leg"><span class="leg-dot"></span><span>BTTS No @ 1.80</span></div></div>
   <div class="market-boost-row">
-    <span class="market-boost edge-strong">BOOK MARGIN</span>
-    <span class="market-heat">+15.0%</span>
+    <span class="market-boost edge-fade">BOOK MARGIN</span>
+    <span class="market-heat">-15.0%</span>
   </div>
   <div class="market-odds-panel"><div class="market-odds-main">5.91</div><div class="market-return">$20 returns $118</div></div>
   
 </article>
-<article class="market-tile pick-card" data-tier="back">
+<article class="market-tile pick-card" data-tier="fade">
   <div class="market-tile-head">
     <h3>Netherlands + HT Netherlands / FT Netherlands (wire-to-wire)</h3>
     <div class="market-icons"><span>BETFAIR_EX_AU</span></div>
@@ -74,13 +74,13 @@
   <div class="market-sub">Same Game Multi</div>
   <div class="market-legs"><div class="market-leg"><span class="leg-dot"></span><span>Netherlands Win @ 1.68</span></div><div class="market-leg"><span class="leg-dot"></span><span>HT Home / FT Home @ 2.30</span></div></div>
   <div class="market-boost-row">
-    <span class="market-boost edge-mid">BOOK MARGIN</span>
-    <span class="market-heat">+6.9%</span>
+    <span class="market-boost edge-fade">BOOK MARGIN</span>
+    <span class="market-heat">-6.9%</span>
   </div>
   <div class="market-odds-panel"><div class="market-odds-main">4.13</div><div class="market-return">$20 returns $83</div></div>
   
 </article>
-<article class="market-tile pick-card" data-tier="back">
+<article class="market-tile pick-card" data-tier="fade">
   <div class="market-tile-head">
     <h3>Netherlands + Over 9.5 Corners</h3>
     <div class="market-icons"><span>BETFAIR_EX_AU</span></div>
@@ -89,13 +89,13 @@
   <div class="market-sub">Same Game Multi</div>
   <div class="market-legs"><div class="market-leg"><span class="leg-dot"></span><span>Netherlands Win @ 1.68</span></div><div class="market-leg"><span class="leg-dot"></span><span>Over 9.5 Corners @ 2.27</span></div></div>
   <div class="market-boost-row">
-    <span class="market-boost edge-mid">BOOK MARGIN</span>
-    <span class="market-heat">+9.9%</span>
+    <span class="market-boost edge-fade">BOOK MARGIN</span>
+    <span class="market-heat">-9.9%</span>
   </div>
   <div class="market-odds-panel"><div class="market-odds-main">4.19</div><div class="market-return">$20 returns $84</div></div>
   
 </article>
-<article class="market-tile pick-card" data-tier="lock">
+<article class="market-tile pick-card" data-tier="fade">
   <div class="market-tile-head">
     <h3>Netherlands + Under 3.5 Cards</h3>
     <div class="market-icons"><span>BETFAIR_EX_AU</span></div>
@@ -104,14 +104,14 @@
   <div class="market-sub">Same Game Multi</div>
   <div class="market-legs"><div class="market-leg"><span class="leg-dot"></span><span>Netherlands Win @ 1.68</span></div><div class="market-leg"><span class="leg-dot"></span><span>Under 3.5 Cards @ 2.33</span></div></div>
   <div class="market-boost-row">
-    <span class="market-boost edge-strong">BOOK MARGIN</span>
-    <span class="market-heat">+10.1%</span>
+    <span class="market-boost edge-fade">BOOK MARGIN</span>
+    <span class="market-heat">-10.1%</span>
   </div>
   <div class="market-odds-panel"><div class="market-odds-main">4.31</div><div class="market-return">$20 returns $86</div></div>
   
 </article>
 </div></details><details class="fixture-section" id="germany-vs-ivory-coast"><summary><h2 style="display:inline;margin:0;font-size:1.1rem">Germany vs Ivory Coast — <span class="accent">HOME anchor @ 1.60 <span class="badge badge-warn">reference only</span></span></h2></summary><p class="t-sm muted" style="margin:.25rem 0 .5rem"><strong>Kickoff:</strong> Sun 21 Jun 06:00 AEST · <strong>Stake:</strong> 0% — no recommended bet, structure for reference · <strong>Rationale:</strong> WC v3 model says no edge on this SGM slate (best: -19.2%, threshold 5%). The model is calibrated against closing sharp lines; current Sportsbet openers typically overprice the favourite by 5-10% of margin. The line usually tightens into kickoff — re-check with `python -m daz_betting_engine.cli sgm-edges` (or `sgm-fire --min-edge=-5`) closer to kickoff.</p><div class="pick-list market-rail">
-<article class="market-tile pick-card" data-tier="back">
+<article class="market-tile pick-card" data-tier="fade">
   <div class="market-tile-head">
     <h3>Germany + Under 2.5</h3>
     <div class="market-icons"><span>BETFAIR_EX_AU</span></div>
@@ -120,13 +120,13 @@
   <div class="market-sub">Same Game Multi</div>
   <div class="market-legs"><div class="market-leg"><span class="leg-dot"></span><span>Germany Win @ 1.60</span></div><div class="market-leg"><span class="leg-dot"></span><span>Under 2.5 @ 1.70</span></div></div>
   <div class="market-boost-row">
-    <span class="market-boost edge-mid">BOOK MARGIN</span>
-    <span class="market-heat">+7.0%</span>
+    <span class="market-boost edge-fade">BOOK MARGIN</span>
+    <span class="market-heat">-7.0%</span>
   </div>
   <div class="market-odds-panel"><div class="market-odds-main">2.91</div><div class="market-return">$20 returns $58</div></div>
   
 </article>
-<article class="market-tile pick-card" data-tier="back">
+<article class="market-tile pick-card" data-tier="fade">
   <div class="market-tile-head">
     <h3>Germany + BTTS No (clean sheet)</h3>
     <div class="market-icons"><span>BETFAIR_EX_AU</span></div>
@@ -135,13 +135,13 @@
   <div class="market-sub">Same Game Multi</div>
   <div class="market-legs"><div class="market-leg"><span class="leg-dot"></span><span>Germany Win @ 1.60</span></div><div class="market-leg"><span class="leg-dot"></span><span>BTTS No @ 1.80</span></div></div>
   <div class="market-boost-row">
-    <span class="market-boost edge-mid">BOOK MARGIN</span>
-    <span class="market-heat">+6.9%</span>
+    <span class="market-boost edge-fade">BOOK MARGIN</span>
+    <span class="market-heat">-6.9%</span>
   </div>
   <div class="market-odds-panel"><div class="market-odds-main">3.08</div><div class="market-return">$20 returns $62</div></div>
   
 </article>
-<article class="market-tile pick-card" data-tier="lock">
+<article class="market-tile pick-card" data-tier="fade">
   <div class="market-tile-head">
     <h3>Germany + Under 2.5 + BTTS No</h3>
     <div class="market-icons"><span>BETFAIR_EX_AU</span></div>
@@ -150,13 +150,13 @@
   <div class="market-sub">Same Game Multi</div>
   <div class="market-legs"><div class="market-leg"><span class="leg-dot"></span><span>Germany Win @ 1.60</span></div><div class="market-leg"><span class="leg-dot"></span><span>Under 2.5 @ 1.70</span></div><div class="market-leg"><span class="leg-dot"></span><span>BTTS No @ 1.80</span></div></div>
   <div class="market-boost-row">
-    <span class="market-boost edge-strong">BOOK MARGIN</span>
-    <span class="market-heat">+15.0%</span>
+    <span class="market-boost edge-fade">BOOK MARGIN</span>
+    <span class="market-heat">-15.0%</span>
   </div>
   <div class="market-odds-panel"><div class="market-odds-main">5.63</div><div class="market-return">$20 returns $113</div></div>
   
 </article>
-<article class="market-tile pick-card" data-tier="back">
+<article class="market-tile pick-card" data-tier="fade">
   <div class="market-tile-head">
     <h3>Germany + HT Germany / FT Germany (wire-to-wire)</h3>
     <div class="market-icons"><span>BETFAIR_EX_AU</span></div>
@@ -165,13 +165,13 @@
   <div class="market-sub">Same Game Multi</div>
   <div class="market-legs"><div class="market-leg"><span class="leg-dot"></span><span>Germany Win @ 1.60</span></div><div class="market-leg"><span class="leg-dot"></span><span>HT Home / FT Home @ 2.30</span></div></div>
   <div class="market-boost-row">
-    <span class="market-boost edge-mid">BOOK MARGIN</span>
-    <span class="market-heat">+7.1%</span>
+    <span class="market-boost edge-fade">BOOK MARGIN</span>
+    <span class="market-heat">-7.1%</span>
   </div>
   <div class="market-odds-panel"><div class="market-odds-main">3.94</div><div class="market-return">$20 returns $79</div></div>
   
 </article>
-<article class="market-tile pick-card" data-tier="lock">
+<article class="market-tile pick-card" data-tier="fade">
   <div class="market-tile-head">
     <h3>Germany + Over 9.5 Corners</h3>
     <div class="market-icons"><span>BETFAIR_EX_AU</span></div>
@@ -180,13 +180,13 @@
   <div class="market-sub">Same Game Multi</div>
   <div class="market-legs"><div class="market-leg"><span class="leg-dot"></span><span>Germany Win @ 1.60</span></div><div class="market-leg"><span class="leg-dot"></span><span>Over 9.5 Corners @ 2.27</span></div></div>
   <div class="market-boost-row">
-    <span class="market-boost edge-strong">BOOK MARGIN</span>
-    <span class="market-heat">+10.1%</span>
+    <span class="market-boost edge-fade">BOOK MARGIN</span>
+    <span class="market-heat">-10.1%</span>
   </div>
   <div class="market-odds-panel"><div class="market-odds-main">4.00</div><div class="market-return">$20 returns $80</div></div>
   
 </article>
-<article class="market-tile pick-card" data-tier="back">
+<article class="market-tile pick-card" data-tier="fade">
   <div class="market-tile-head">
     <h3>Germany + Under 3.5 Cards</h3>
     <div class="market-icons"><span>BETFAIR_EX_AU</span></div>
@@ -195,14 +195,14 @@
   <div class="market-sub">Same Game Multi</div>
   <div class="market-legs"><div class="market-leg"><span class="leg-dot"></span><span>Germany Win @ 1.60</span></div><div class="market-leg"><span class="leg-dot"></span><span>Under 3.5 Cards @ 2.33</span></div></div>
   <div class="market-boost-row">
-    <span class="market-boost edge-mid">BOOK MARGIN</span>
-    <span class="market-heat">+10.0%</span>
+    <span class="market-boost edge-fade">BOOK MARGIN</span>
+    <span class="market-heat">-10.0%</span>
   </div>
   <div class="market-odds-panel"><div class="market-odds-main">4.10</div><div class="market-return">$20 returns $82</div></div>
   
 </article>
 </div></details><details class="fixture-section" id="ecuador-vs-curaçao"><summary><h2 style="display:inline;margin:0;font-size:1.1rem">Ecuador vs Curaçao — <span class="accent">HOME anchor @ 1.21 <span class="badge badge-warn">reference only</span></span></h2></summary><p class="t-sm muted" style="margin:.25rem 0 .5rem"><strong>Kickoff:</strong> Sun 21 Jun 10:00 AEST · <strong>Stake:</strong> 0% — no recommended bet, structure for reference · <strong>Rationale:</strong> WC v3 model says no edge on this SGM slate (best: -42.9%, threshold 5%). The model is calibrated against closing sharp lines; current Sportsbet openers typically overprice the favourite by 5-10% of margin. The line usually tightens into kickoff — re-check with `python -m daz_betting_engine.cli sgm-edges` (or `sgm-fire --min-edge=-5`) closer to kickoff.</p><div class="pick-list market-rail">
-<article class="market-tile pick-card" data-tier="back">
+<article class="market-tile pick-card" data-tier="fade">
   <div class="market-tile-head">
     <h3>Ecuador + Under 2.5</h3>
     <div class="market-icons"><span>BETFAIR_EX_AU</span></div>
@@ -211,13 +211,13 @@
   <div class="market-sub">Same Game Multi</div>
   <div class="market-legs"><div class="market-leg"><span class="leg-dot"></span><span>Ecuador Win @ 1.21</span></div><div class="market-leg"><span class="leg-dot"></span><span>Under 2.5 @ 1.55</span></div></div>
   <div class="market-boost-row">
-    <span class="market-boost edge-mid">BOOK MARGIN</span>
-    <span class="market-heat">+7.2%</span>
+    <span class="market-boost edge-fade">BOOK MARGIN</span>
+    <span class="market-heat">-7.2%</span>
   </div>
   <div class="market-odds-panel"><div class="market-odds-main">2.01</div><div class="market-return">$20 returns $40</div></div>
   
 </article>
-<article class="market-tile pick-card" data-tier="back">
+<article class="market-tile pick-card" data-tier="fade">
   <div class="market-tile-head">
     <h3>Ecuador + BTTS No (clean sheet)</h3>
     <div class="market-icons"><span>BETFAIR_EX_AU</span></div>
@@ -226,13 +226,13 @@
   <div class="market-sub">Same Game Multi</div>
   <div class="market-legs"><div class="market-leg"><span class="leg-dot"></span><span>Ecuador Win @ 1.21</span></div><div class="market-leg"><span class="leg-dot"></span><span>BTTS No @ 1.60</span></div></div>
   <div class="market-boost-row">
-    <span class="market-boost edge-mid">BOOK MARGIN</span>
-    <span class="market-heat">+6.9%</span>
+    <span class="market-boost edge-fade">BOOK MARGIN</span>
+    <span class="market-heat">-6.9%</span>
   </div>
   <div class="market-odds-panel"><div class="market-odds-main">2.07</div><div class="market-return">$20 returns $41</div></div>
   
 </article>
-<article class="market-tile pick-card" data-tier="lock">
+<article class="market-tile pick-card" data-tier="fade">
   <div class="market-tile-head">
     <h3>Ecuador + Under 2.5 + BTTS No</h3>
     <div class="market-icons"><span>BETFAIR_EX_AU</span></div>
@@ -241,13 +241,13 @@
   <div class="market-sub">Same Game Multi</div>
   <div class="market-legs"><div class="market-leg"><span class="leg-dot"></span><span>Ecuador Win @ 1.21</span></div><div class="market-leg"><span class="leg-dot"></span><span>Under 2.5 @ 1.55</span></div><div class="market-leg"><span class="leg-dot"></span><span>BTTS No @ 1.60</span></div></div>
   <div class="market-boost-row">
-    <span class="market-boost edge-strong">BOOK MARGIN</span>
-    <span class="market-heat">+15.0%</span>
+    <span class="market-boost edge-fade">BOOK MARGIN</span>
+    <span class="market-heat">-15.0%</span>
   </div>
   <div class="market-odds-panel"><div class="market-odds-main">3.45</div><div class="market-return">$20 returns $69</div></div>
   
 </article>
-<article class="market-tile pick-card" data-tier="back">
+<article class="market-tile pick-card" data-tier="fade">
   <div class="market-tile-head">
     <h3>Ecuador + HT Ecuador / FT Ecuador (wire-to-wire)</h3>
     <div class="market-icons"><span>BETFAIR_EX_AU</span></div>
@@ -256,13 +256,13 @@
   <div class="market-sub">Same Game Multi</div>
   <div class="market-legs"><div class="market-leg"><span class="leg-dot"></span><span>Ecuador Win @ 1.21</span></div><div class="market-leg"><span class="leg-dot"></span><span>HT Home / FT Home @ 1.80</span></div></div>
   <div class="market-boost-row">
-    <span class="market-boost edge-mid">BOOK MARGIN</span>
-    <span class="market-heat">+7.0%</span>
+    <span class="market-boost edge-fade">BOOK MARGIN</span>
+    <span class="market-heat">-7.0%</span>
   </div>
   <div class="market-odds-panel"><div class="market-odds-main">2.33</div><div class="market-return">$20 returns $47</div></div>
   
 </article>
-<article class="market-tile pick-card" data-tier="back">
+<article class="market-tile pick-card" data-tier="fade">
   <div class="market-tile-head">
     <h3>Ecuador + Over 9.5 Corners</h3>
     <div class="market-icons"><span>BETFAIR_EX_AU</span></div>
@@ -271,13 +271,13 @@
   <div class="market-sub">Same Game Multi</div>
   <div class="market-legs"><div class="market-leg"><span class="leg-dot"></span><span>Ecuador Win @ 1.21</span></div><div class="market-leg"><span class="leg-dot"></span><span>Over 9.5 Corners @ 2.91</span></div></div>
   <div class="market-boost-row">
-    <span class="market-boost edge-mid">BOOK MARGIN</span>
-    <span class="market-heat">+9.9%</span>
+    <span class="market-boost edge-fade">BOOK MARGIN</span>
+    <span class="market-heat">-9.9%</span>
   </div>
   <div class="market-odds-panel"><div class="market-odds-main">3.87</div><div class="market-return">$20 returns $77</div></div>
   
 </article>
-<article class="market-tile pick-card" data-tier="back">
+<article class="market-tile pick-card" data-tier="fade">
   <div class="market-tile-head">
     <h3>Ecuador + Under 3.5 Cards</h3>
     <div class="market-icons"><span>BETFAIR_EX_AU</span></div>
@@ -286,14 +286,14 @@
   <div class="market-sub">Same Game Multi</div>
   <div class="market-legs"><div class="market-leg"><span class="leg-dot"></span><span>Ecuador Win @ 1.21</span></div><div class="market-leg"><span class="leg-dot"></span><span>Under 3.5 Cards @ 2.76</span></div></div>
   <div class="market-boost-row">
-    <span class="market-boost edge-mid">BOOK MARGIN</span>
-    <span class="market-heat">+9.9%</span>
+    <span class="market-boost edge-fade">BOOK MARGIN</span>
+    <span class="market-heat">-9.9%</span>
   </div>
   <div class="market-odds-panel"><div class="market-odds-main">3.67</div><div class="market-return">$20 returns $73</div></div>
   
 </article>
 </div></details><details class="fixture-section" id="tunisia-vs-japan"><summary><h2 style="display:inline;margin:0;font-size:1.1rem">Tunisia vs Japan — <span class="accent">AWAY anchor @ 1.72 <span class="badge badge-warn">reference only</span></span></h2></summary><p class="t-sm muted" style="margin:.25rem 0 .5rem"><strong>Kickoff:</strong> Sun 21 Jun 14:00 AEST · <strong>Stake:</strong> 0% — no recommended bet, structure for reference · <strong>Rationale:</strong> WC v3 model says no edge on this SGM slate (best: -56.8%, threshold 5%). The model is calibrated against closing sharp lines; current Sportsbet openers typically overprice the favourite by 5-10% of margin. The line usually tightens into kickoff — re-check with `python -m daz_betting_engine.cli sgm-edges` (or `sgm-fire --min-edge=-5`) closer to kickoff.</p><div class="pick-list market-rail">
-<article class="market-tile pick-card" data-tier="back">
+<article class="market-tile pick-card" data-tier="fade">
   <div class="market-tile-head">
     <h3>Japan + Under 2.5</h3>
     <div class="market-icons"><span>BETFAIR_EX_AU</span></div>
@@ -302,13 +302,13 @@
   <div class="market-sub">Same Game Multi</div>
   <div class="market-legs"><div class="market-leg"><span class="leg-dot"></span><span>Japan Win @ 1.72</span></div><div class="market-leg"><span class="leg-dot"></span><span>Under 2.5 @ 1.70</span></div></div>
   <div class="market-boost-row">
-    <span class="market-boost edge-mid">BOOK MARGIN</span>
-    <span class="market-heat">+7.0%</span>
+    <span class="market-boost edge-fade">BOOK MARGIN</span>
+    <span class="market-heat">-7.0%</span>
   </div>
   <div class="market-odds-panel"><div class="market-odds-main">3.13</div><div class="market-return">$20 returns $63</div></div>
   
 </article>
-<article class="market-tile pick-card" data-tier="back">
+<article class="market-tile pick-card" data-tier="fade">
   <div class="market-tile-head">
     <h3>Japan + Over 9.5 Corners</h3>
     <div class="market-icons"><span>BETFAIR_EX_AU</span></div>
@@ -317,14 +317,14 @@
   <div class="market-sub">Same Game Multi</div>
   <div class="market-legs"><div class="market-leg"><span class="leg-dot"></span><span>Japan Win @ 1.72</span></div><div class="market-leg"><span class="leg-dot"></span><span>Over 9.5 Corners @ 2.27</span></div></div>
   <div class="market-boost-row">
-    <span class="market-boost edge-mid">BOOK MARGIN</span>
-    <span class="market-heat">+9.9%</span>
+    <span class="market-boost edge-fade">BOOK MARGIN</span>
+    <span class="market-heat">-9.9%</span>
   </div>
   <div class="market-odds-panel"><div class="market-odds-main">4.29</div><div class="market-return">$20 returns $86</div></div>
   
 </article>
 </div></details><details class="fixture-section" id="spain-vs-saudi-arabia"><summary><h2 style="display:inline;margin:0;font-size:1.1rem">Spain vs Saudi Arabia — <span class="accent">HOME anchor @ 1.12 <span class="badge badge-warn">reference only</span></span></h2></summary><p class="t-sm muted" style="margin:.25rem 0 .5rem"><strong>Kickoff:</strong> Mon 22 Jun 02:00 AEST · <strong>Stake:</strong> 0% — no recommended bet, structure for reference · <strong>Rationale:</strong> WC v3 model says no edge on this SGM slate (best: -43.6%, threshold 5%). The model is calibrated against closing sharp lines; current Sportsbet openers typically overprice the favourite by 5-10% of margin. The line usually tightens into kickoff — re-check with `python -m daz_betting_engine.cli sgm-edges` (or `sgm-fire --min-edge=-5`) closer to kickoff.</p><div class="pick-list market-rail">
-<article class="market-tile pick-card" data-tier="back">
+<article class="market-tile pick-card" data-tier="fade">
   <div class="market-tile-head">
     <h3>Spain + Under 2.5</h3>
     <div class="market-icons"><span>BETFAIR_EX_AU</span></div>
@@ -333,13 +333,13 @@
   <div class="market-sub">Same Game Multi</div>
   <div class="market-legs"><div class="market-leg"><span class="leg-dot"></span><span>Spain Win @ 1.12</span></div><div class="market-leg"><span class="leg-dot"></span><span>Under 2.5 @ 1.55</span></div></div>
   <div class="market-boost-row">
-    <span class="market-boost edge-mid">BOOK MARGIN</span>
-    <span class="market-heat">+7.1%</span>
+    <span class="market-boost edge-fade">BOOK MARGIN</span>
+    <span class="market-heat">-7.1%</span>
   </div>
   <div class="market-odds-panel"><div class="market-odds-main">1.86</div><div class="market-return">$20 returns $37</div></div>
   
 </article>
-<article class="market-tile pick-card" data-tier="back">
+<article class="market-tile pick-card" data-tier="fade">
   <div class="market-tile-head">
     <h3>Spain + BTTS No (clean sheet)</h3>
     <div class="market-icons"><span>BETFAIR_EX_AU</span></div>
@@ -348,13 +348,13 @@
   <div class="market-sub">Same Game Multi</div>
   <div class="market-legs"><div class="market-leg"><span class="leg-dot"></span><span>Spain Win @ 1.12</span></div><div class="market-leg"><span class="leg-dot"></span><span>BTTS No @ 1.60</span></div></div>
   <div class="market-boost-row">
-    <span class="market-boost edge-mid">BOOK MARGIN</span>
-    <span class="market-heat">+7.1%</span>
+    <span class="market-boost edge-fade">BOOK MARGIN</span>
+    <span class="market-heat">-7.1%</span>
   </div>
   <div class="market-odds-panel"><div class="market-odds-main">1.92</div><div class="market-return">$20 returns $38</div></div>
   
 </article>
-<article class="market-tile pick-card" data-tier="lock">
+<article class="market-tile pick-card" data-tier="fade">
   <div class="market-tile-head">
     <h3>Spain + Under 2.5 + BTTS No</h3>
     <div class="market-icons"><span>BETFAIR_EX_AU</span></div>
@@ -363,13 +363,13 @@
   <div class="market-sub">Same Game Multi</div>
   <div class="market-legs"><div class="market-leg"><span class="leg-dot"></span><span>Spain Win @ 1.12</span></div><div class="market-leg"><span class="leg-dot"></span><span>Under 2.5 @ 1.55</span></div><div class="market-leg"><span class="leg-dot"></span><span>BTTS No @ 1.60</span></div></div>
   <div class="market-boost-row">
-    <span class="market-boost edge-strong">BOOK MARGIN</span>
-    <span class="market-heat">+14.8%</span>
+    <span class="market-boost edge-fade">BOOK MARGIN</span>
+    <span class="market-heat">-14.8%</span>
   </div>
   <div class="market-odds-panel"><div class="market-odds-main">3.19</div><div class="market-return">$20 returns $64</div></div>
   
 </article>
-<article class="market-tile pick-card" data-tier="back">
+<article class="market-tile pick-card" data-tier="fade">
   <div class="market-tile-head">
     <h3>Spain + HT Spain / FT Spain (wire-to-wire)</h3>
     <div class="market-icons"><span>BETFAIR_EX_AU</span></div>
@@ -378,13 +378,13 @@
   <div class="market-sub">Same Game Multi</div>
   <div class="market-legs"><div class="market-leg"><span class="leg-dot"></span><span>Spain Win @ 1.12</span></div><div class="market-leg"><span class="leg-dot"></span><span>HT Home / FT Home @ 1.80</span></div></div>
   <div class="market-boost-row">
-    <span class="market-boost edge-mid">BOOK MARGIN</span>
-    <span class="market-heat">+7.1%</span>
+    <span class="market-boost edge-fade">BOOK MARGIN</span>
+    <span class="market-heat">-7.1%</span>
   </div>
   <div class="market-odds-panel"><div class="market-odds-main">2.16</div><div class="market-return">$20 returns $43</div></div>
   
 </article>
-<article class="market-tile pick-card" data-tier="lock">
+<article class="market-tile pick-card" data-tier="fade">
   <div class="market-tile-head">
     <h3>Spain + Over 9.5 Corners</h3>
     <div class="market-icons"><span>BETFAIR_EX_AU</span></div>
@@ -393,13 +393,13 @@
   <div class="market-sub">Same Game Multi</div>
   <div class="market-legs"><div class="market-leg"><span class="leg-dot"></span><span>Spain Win @ 1.12</span></div><div class="market-leg"><span class="leg-dot"></span><span>Over 9.5 Corners @ 2.91</span></div></div>
   <div class="market-boost-row">
-    <span class="market-boost edge-strong">BOOK MARGIN</span>
-    <span class="market-heat">+10.2%</span>
+    <span class="market-boost edge-fade">BOOK MARGIN</span>
+    <span class="market-heat">-10.2%</span>
   </div>
   <div class="market-odds-panel"><div class="market-odds-main">3.59</div><div class="market-return">$20 returns $72</div></div>
   
 </article>
-<article class="market-tile pick-card" data-tier="back">
+<article class="market-tile pick-card" data-tier="fade">
   <div class="market-tile-head">
     <h3>Spain + Under 3.5 Cards</h3>
     <div class="market-icons"><span>BETFAIR_EX_AU</span></div>
@@ -408,14 +408,14 @@
   <div class="market-sub">Same Game Multi</div>
   <div class="market-legs"><div class="market-leg"><span class="leg-dot"></span><span>Spain Win @ 1.12</span></div><div class="market-leg"><span class="leg-dot"></span><span>Under 3.5 Cards @ 2.76</span></div></div>
   <div class="market-boost-row">
-    <span class="market-boost edge-mid">BOOK MARGIN</span>
-    <span class="market-heat">+10.0%</span>
+    <span class="market-boost edge-fade">BOOK MARGIN</span>
+    <span class="market-heat">-10.0%</span>
   </div>
   <div class="market-odds-panel"><div class="market-odds-main">3.40</div><div class="market-return">$20 returns $68</div></div>
   
 </article>
 </div></details><details class="fixture-section" id="belgium-vs-iran"><summary><h2 style="display:inline;margin:0;font-size:1.1rem">Belgium vs Iran — <span class="accent">HOME anchor @ 1.42 <span class="badge badge-warn">reference only</span></span></h2></summary><p class="t-sm muted" style="margin:.25rem 0 .5rem"><strong>Kickoff:</strong> Mon 22 Jun 05:00 AEST · <strong>Stake:</strong> 0% — no recommended bet, structure for reference · <strong>Rationale:</strong> WC v3 model says no edge on this SGM slate (best: -28.4%, threshold 5%). The model is calibrated against closing sharp lines; current Sportsbet openers typically overprice the favourite by 5-10% of margin. The line usually tightens into kickoff — re-check with `python -m daz_betting_engine.cli sgm-edges` (or `sgm-fire --min-edge=-5`) closer to kickoff.</p><div class="pick-list market-rail">
-<article class="market-tile pick-card" data-tier="back">
+<article class="market-tile pick-card" data-tier="fade">
   <div class="market-tile-head">
     <h3>Belgium + Under 2.5</h3>
     <div class="market-icons"><span>BETFAIR_EX_AU</span></div>
@@ -424,13 +424,13 @@
   <div class="market-sub">Same Game Multi</div>
   <div class="market-legs"><div class="market-leg"><span class="leg-dot"></span><span>Belgium Win @ 1.42</span></div><div class="market-leg"><span class="leg-dot"></span><span>Under 2.5 @ 1.70</span></div></div>
   <div class="market-boost-row">
-    <span class="market-boost edge-mid">BOOK MARGIN</span>
-    <span class="market-heat">+6.9%</span>
+    <span class="market-boost edge-fade">BOOK MARGIN</span>
+    <span class="market-heat">-6.9%</span>
   </div>
   <div class="market-odds-panel"><div class="market-odds-main">2.58</div><div class="market-return">$20 returns $52</div></div>
   
 </article>
-<article class="market-tile pick-card" data-tier="back">
+<article class="market-tile pick-card" data-tier="fade">
   <div class="market-tile-head">
     <h3>Belgium + BTTS No (clean sheet)</h3>
     <div class="market-icons"><span>BETFAIR_EX_AU</span></div>
@@ -439,13 +439,13 @@
   <div class="market-sub">Same Game Multi</div>
   <div class="market-legs"><div class="market-leg"><span class="leg-dot"></span><span>Belgium Win @ 1.42</span></div><div class="market-leg"><span class="leg-dot"></span><span>BTTS No @ 1.80</span></div></div>
   <div class="market-boost-row">
-    <span class="market-boost edge-mid">BOOK MARGIN</span>
-    <span class="market-heat">+6.8%</span>
+    <span class="market-boost edge-fade">BOOK MARGIN</span>
+    <span class="market-heat">-6.8%</span>
   </div>
   <div class="market-odds-panel"><div class="market-odds-main">2.73</div><div class="market-return">$20 returns $55</div></div>
   
 </article>
-<article class="market-tile pick-card" data-tier="lock">
+<article class="market-tile pick-card" data-tier="fade">
   <div class="market-tile-head">
     <h3>Belgium + Under 2.5 + BTTS No</h3>
     <div class="market-icons"><span>BETFAIR_EX_AU</span></div>
@@ -454,13 +454,13 @@
   <div class="market-sub">Same Game Multi</div>
   <div class="market-legs"><div class="market-leg"><span class="leg-dot"></span><span>Belgium Win @ 1.42</span></div><div class="market-leg"><span class="leg-dot"></span><span>Under 2.5 @ 1.70</span></div><div class="market-leg"><span class="leg-dot"></span><span>BTTS No @ 1.80</span></div></div>
   <div class="market-boost-row">
-    <span class="market-boost edge-strong">BOOK MARGIN</span>
-    <span class="market-heat">+15.1%</span>
+    <span class="market-boost edge-fade">BOOK MARGIN</span>
+    <span class="market-heat">-15.1%</span>
   </div>
   <div class="market-odds-panel"><div class="market-odds-main">5.00</div><div class="market-return">$20 returns $100</div></div>
   
 </article>
-<article class="market-tile pick-card" data-tier="back">
+<article class="market-tile pick-card" data-tier="fade">
   <div class="market-tile-head">
     <h3>Belgium + HT Belgium / FT Belgium (wire-to-wire)</h3>
     <div class="market-icons"><span>BETFAIR_EX_AU</span></div>
@@ -469,13 +469,13 @@
   <div class="market-sub">Same Game Multi</div>
   <div class="market-legs"><div class="market-leg"><span class="leg-dot"></span><span>Belgium Win @ 1.42</span></div><div class="market-leg"><span class="leg-dot"></span><span>HT Home / FT Home @ 2.30</span></div></div>
   <div class="market-boost-row">
-    <span class="market-boost edge-mid">BOOK MARGIN</span>
-    <span class="market-heat">+6.9%</span>
+    <span class="market-boost edge-fade">BOOK MARGIN</span>
+    <span class="market-heat">-6.9%</span>
   </div>
   <div class="market-odds-panel"><div class="market-odds-main">3.49</div><div class="market-return">$20 returns $70</div></div>
   
 </article>
-<article class="market-tile pick-card" data-tier="lock">
+<article class="market-tile pick-card" data-tier="fade">
   <div class="market-tile-head">
     <h3>Belgium + Over 9.5 Corners</h3>
     <div class="market-icons"><span>BETFAIR_EX_AU</span></div>
@@ -484,13 +484,13 @@
   <div class="market-sub">Same Game Multi</div>
   <div class="market-legs"><div class="market-leg"><span class="leg-dot"></span><span>Belgium Win @ 1.42</span></div><div class="market-leg"><span class="leg-dot"></span><span>Over 9.5 Corners @ 2.27</span></div></div>
   <div class="market-boost-row">
-    <span class="market-boost edge-strong">BOOK MARGIN</span>
-    <span class="market-heat">+10.1%</span>
+    <span class="market-boost edge-fade">BOOK MARGIN</span>
+    <span class="market-heat">-10.1%</span>
   </div>
   <div class="market-odds-panel"><div class="market-odds-main">3.55</div><div class="market-return">$20 returns $71</div></div>
   
 </article>
-<article class="market-tile pick-card" data-tier="lock">
+<article class="market-tile pick-card" data-tier="fade">
   <div class="market-tile-head">
     <h3>Belgium + Under 3.5 Cards</h3>
     <div class="market-icons"><span>BETFAIR_EX_AU</span></div>
@@ -499,14 +499,14 @@
   <div class="market-sub">Same Game Multi</div>
   <div class="market-legs"><div class="market-leg"><span class="leg-dot"></span><span>Belgium Win @ 1.42</span></div><div class="market-leg"><span class="leg-dot"></span><span>Under 3.5 Cards @ 2.33</span></div></div>
   <div class="market-boost-row">
-    <span class="market-boost edge-strong">BOOK MARGIN</span>
-    <span class="market-heat">+10.0%</span>
+    <span class="market-boost edge-fade">BOOK MARGIN</span>
+    <span class="market-heat">-10.0%</span>
   </div>
   <div class="market-odds-panel"><div class="market-odds-main">3.64</div><div class="market-return">$20 returns $73</div></div>
   
 </article>
 </div></details><details class="fixture-section" id="uruguay-vs-cape-verde"><summary><h2 style="display:inline;margin:0;font-size:1.1rem">Uruguay vs Cape Verde — <span class="accent">HOME anchor @ 1.45 <span class="badge badge-warn">reference only</span></span></h2></summary><p class="t-sm muted" style="margin:.25rem 0 .5rem"><strong>Kickoff:</strong> Mon 22 Jun 08:00 AEST · <strong>Stake:</strong> 0% — no recommended bet, structure for reference · <strong>Rationale:</strong> WC v3 model says no edge on this SGM slate (best: -32.4%, threshold 5%). The model is calibrated against closing sharp lines; current Sportsbet openers typically overprice the favourite by 5-10% of margin. The line usually tightens into kickoff — re-check with `python -m daz_betting_engine.cli sgm-edges` (or `sgm-fire --min-edge=-5`) closer to kickoff.</p><div class="pick-list market-rail">
-<article class="market-tile pick-card" data-tier="back">
+<article class="market-tile pick-card" data-tier="fade">
   <div class="market-tile-head">
     <h3>Uruguay + Under 2.5</h3>
     <div class="market-icons"><span>BETFAIR_EX_AU</span></div>
@@ -515,13 +515,13 @@
   <div class="market-sub">Same Game Multi</div>
   <div class="market-legs"><div class="market-leg"><span class="leg-dot"></span><span>Uruguay Win @ 1.45</span></div><div class="market-leg"><span class="leg-dot"></span><span>Under 2.5 @ 1.70</span></div></div>
   <div class="market-boost-row">
-    <span class="market-boost edge-mid">BOOK MARGIN</span>
-    <span class="market-heat">+7.1%</span>
+    <span class="market-boost edge-fade">BOOK MARGIN</span>
+    <span class="market-heat">-7.1%</span>
   </div>
   <div class="market-odds-panel"><div class="market-odds-main">2.64</div><div class="market-return">$20 returns $53</div></div>
   
 </article>
-<article class="market-tile pick-card" data-tier="back">
+<article class="market-tile pick-card" data-tier="fade">
   <div class="market-tile-head">
     <h3>Uruguay + BTTS No (clean sheet)</h3>
     <div class="market-icons"><span>BETFAIR_EX_AU</span></div>
@@ -530,13 +530,13 @@
   <div class="market-sub">Same Game Multi</div>
   <div class="market-legs"><div class="market-leg"><span class="leg-dot"></span><span>Uruguay Win @ 1.45</span></div><div class="market-leg"><span class="leg-dot"></span><span>BTTS No @ 1.60</span></div></div>
   <div class="market-boost-row">
-    <span class="market-boost edge-mid">BOOK MARGIN</span>
-    <span class="market-heat">+6.9%</span>
+    <span class="market-boost edge-fade">BOOK MARGIN</span>
+    <span class="market-heat">-6.9%</span>
   </div>
   <div class="market-odds-panel"><div class="market-odds-main">2.48</div><div class="market-return">$20 returns $50</div></div>
   
 </article>
-<article class="market-tile pick-card" data-tier="lock">
+<article class="market-tile pick-card" data-tier="fade">
   <div class="market-tile-head">
     <h3>Uruguay + Under 2.5 + BTTS No</h3>
     <div class="market-icons"><span>BETFAIR_EX_AU</span></div>
@@ -545,13 +545,13 @@
   <div class="market-sub">Same Game Multi</div>
   <div class="market-legs"><div class="market-leg"><span class="leg-dot"></span><span>Uruguay Win @ 1.45</span></div><div class="market-leg"><span class="leg-dot"></span><span>Under 2.5 @ 1.70</span></div><div class="market-leg"><span class="leg-dot"></span><span>BTTS No @ 1.60</span></div></div>
   <div class="market-boost-row">
-    <span class="market-boost edge-strong">BOOK MARGIN</span>
-    <span class="market-heat">+15.1%</span>
+    <span class="market-boost edge-fade">BOOK MARGIN</span>
+    <span class="market-heat">-15.1%</span>
   </div>
   <div class="market-odds-panel"><div class="market-odds-main">4.54</div><div class="market-return">$20 returns $91</div></div>
   
 </article>
-<article class="market-tile pick-card" data-tier="back">
+<article class="market-tile pick-card" data-tier="fade">
   <div class="market-tile-head">
     <h3>Uruguay + HT Uruguay / FT Uruguay (wire-to-wire)</h3>
     <div class="market-icons"><span>BETFAIR_EX_AU</span></div>
@@ -560,13 +560,13 @@
   <div class="market-sub">Same Game Multi</div>
   <div class="market-legs"><div class="market-leg"><span class="leg-dot"></span><span>Uruguay Win @ 1.45</span></div><div class="market-leg"><span class="leg-dot"></span><span>HT Home / FT Home @ 2.30</span></div></div>
   <div class="market-boost-row">
-    <span class="market-boost edge-mid">BOOK MARGIN</span>
-    <span class="market-heat">+7.0%</span>
+    <span class="market-boost edge-fade">BOOK MARGIN</span>
+    <span class="market-heat">-7.0%</span>
   </div>
   <div class="market-odds-panel"><div class="market-odds-main">3.57</div><div class="market-return">$20 returns $71</div></div>
   
 </article>
-<article class="market-tile pick-card" data-tier="back">
+<article class="market-tile pick-card" data-tier="fade">
   <div class="market-tile-head">
     <h3>Uruguay + Over 9.5 Corners</h3>
     <div class="market-icons"><span>BETFAIR_EX_AU</span></div>
@@ -575,13 +575,13 @@
   <div class="market-sub">Same Game Multi</div>
   <div class="market-legs"><div class="market-leg"><span class="leg-dot"></span><span>Uruguay Win @ 1.45</span></div><div class="market-leg"><span class="leg-dot"></span><span>Over 9.5 Corners @ 2.27</span></div></div>
   <div class="market-boost-row">
-    <span class="market-boost edge-mid">BOOK MARGIN</span>
-    <span class="market-heat">+10.0%</span>
+    <span class="market-boost edge-fade">BOOK MARGIN</span>
+    <span class="market-heat">-10.0%</span>
   </div>
   <div class="market-odds-panel"><div class="market-odds-main">3.62</div><div class="market-return">$20 returns $72</div></div>
   
 </article>
-<article class="market-tile pick-card" data-tier="lock">
+<article class="market-tile pick-card" data-tier="fade">
   <div class="market-tile-head">
     <h3>Uruguay + Under 3.5 Cards</h3>
     <div class="market-icons"><span>BETFAIR_EX_AU</span></div>
@@ -590,14 +590,14 @@
   <div class="market-sub">Same Game Multi</div>
   <div class="market-legs"><div class="market-leg"><span class="leg-dot"></span><span>Uruguay Win @ 1.45</span></div><div class="market-leg"><span class="leg-dot"></span><span>Under 3.5 Cards @ 2.33</span></div></div>
   <div class="market-boost-row">
-    <span class="market-boost edge-strong">BOOK MARGIN</span>
-    <span class="market-heat">+10.1%</span>
+    <span class="market-boost edge-fade">BOOK MARGIN</span>
+    <span class="market-heat">-10.1%</span>
   </div>
   <div class="market-odds-panel"><div class="market-odds-main">3.72</div><div class="market-return">$20 returns $74</div></div>
   
 </article>
 </div></details><details class="fixture-section" id="new-zealand-vs-egypt"><summary><h2 style="display:inline;margin:0;font-size:1.1rem">New Zealand vs Egypt — <span class="accent">AWAY anchor @ 1.80 <span class="badge badge-warn">reference only</span></span></h2></summary><p class="t-sm muted" style="margin:.25rem 0 .5rem"><strong>Kickoff:</strong> Mon 22 Jun 11:00 AEST · <strong>Stake:</strong> 0% — no recommended bet, structure for reference · <strong>Rationale:</strong> WC v3 model says no edge on this SGM slate (best: -54.7%, threshold 5%). The model is calibrated against closing sharp lines; current Sportsbet openers typically overprice the favourite by 5-10% of margin. The line usually tightens into kickoff — re-check with `python -m daz_betting_engine.cli sgm-edges` (or `sgm-fire --min-edge=-5`) closer to kickoff.</p><div class="pick-list market-rail">
-<article class="market-tile pick-card" data-tier="back">
+<article class="market-tile pick-card" data-tier="fade">
   <div class="market-tile-head">
     <h3>Egypt + Under 2.5</h3>
     <div class="market-icons"><span>BETFAIR_EX_AU</span></div>
@@ -606,13 +606,13 @@
   <div class="market-sub">Same Game Multi</div>
   <div class="market-legs"><div class="market-leg"><span class="leg-dot"></span><span>Egypt Win @ 1.80</span></div><div class="market-leg"><span class="leg-dot"></span><span>Under 2.5 @ 1.85</span></div></div>
   <div class="market-boost-row">
-    <span class="market-boost edge-mid">BOOK MARGIN</span>
-    <span class="market-heat">+6.9%</span>
+    <span class="market-boost edge-fade">BOOK MARGIN</span>
+    <span class="market-heat">-6.9%</span>
   </div>
   <div class="market-odds-panel"><div class="market-odds-main">3.56</div><div class="market-return">$20 returns $71</div></div>
   
 </article>
-<article class="market-tile pick-card" data-tier="back">
+<article class="market-tile pick-card" data-tier="fade">
   <div class="market-tile-head">
     <h3>Egypt + Over 9.5 Corners</h3>
     <div class="market-icons"><span>BETFAIR_EX_AU</span></div>
@@ -621,8 +621,8 @@
   <div class="market-sub">Same Game Multi</div>
   <div class="market-legs"><div class="market-leg"><span class="leg-dot"></span><span>Egypt Win @ 1.80</span></div><div class="market-leg"><span class="leg-dot"></span><span>Over 9.5 Corners @ 1.80</span></div></div>
   <div class="market-boost-row">
-    <span class="market-boost edge-mid">BOOK MARGIN</span>
-    <span class="market-heat">+9.9%</span>
+    <span class="market-boost edge-fade">BOOK MARGIN</span>
+    <span class="market-heat">-9.9%</span>
   </div>
   <div class="market-odds-panel"><div class="market-odds-main">3.56</div><div class="market-return">$20 returns $71</div></div>
   
