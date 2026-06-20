@@ -4,143 +4,240 @@
   <meta charset="utf-8" />
   <title>WC 2026 — Tomorrow's Bets — 2026-06-20</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <style>
-    :root {
-      --bg: #0e1014;
-      --card: #1a1d23;
-      --border: #2a2f3a;
-      --text: #e6e6e6;
-      --muted: #9aa0a6;
-      --accent: #f4b400;
-      --good: #34a853;
-      --warn: #f9ab00;
-      --skip: #5f6368;
-    }
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
-      max-width: 920px;
-      margin: 0 auto;
-      padding: 2rem 1rem;
-      line-height: 1.55;
-    }
-    h1 { color: var(--accent); border-bottom: 2px solid var(--border); padding-bottom: 0.5rem; }
-    h2 { color: var(--accent); margin-top: 2rem; }
-    h3 { color: var(--text); margin-top: 1.5rem; }
-    .banner {
-      background: #2a1d05;
-      border-left: 4px solid var(--warn);
-      padding: 1rem 1.2rem;
-      margin: 1.5rem 0;
-      border-radius: 4px;
-      color: #f4d7a3;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 1.5rem 0;
-      font-size: 0.95rem;
-    }
-    th, td {
-      padding: 0.6rem 0.7rem;
-      text-align: left;
-      border-bottom: 1px solid var(--border);
-    }
-    th {
-      color: var(--muted);
-      font-weight: 600;
-      text-transform: uppercase;
-      font-size: 0.75rem;
-      letter-spacing: 0.05em;
-    }
-    .fixture-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 1rem 1.2rem;
-      margin: 1rem 0;
-    }
-    .lean-home, .lean-away, .lean-draw {
-      color: var(--good);
-      font-weight: 600;
-    }
-    .lean-watch { color: var(--warn); }
-    .lean-skip { color: var(--skip); }
-    .stake {
-      display: inline-block;
-      background: #1f3a25;
-      color: #6ee787;
-      padding: 2px 8px;
-      border-radius: 3px;
-      font-weight: 600;
-      font-size: 0.85rem;
-    }
-    .stake-empty {
-      color: var(--muted);
-    }
-    footer {
-      margin-top: 3rem;
-      padding-top: 1rem;
-      border-top: 1px solid var(--border);
-      color: var(--muted);
-      font-size: 0.85rem;
-    }
-  </style>
+  <meta name="description" content="WC 2026 by-eye leans for Saturday 20 June 2026 — 0 actionable of 12 matches" />
+  <link rel="stylesheet" href="cards.css" />
 </head>
 <body>
-  <h1>World Cup 2026 — Tomorrow's Bets</h1>
-  <p><strong>Sat 20 Jun 2026</strong></p>
-
-  <div class="banner">
-    <strong>Model status:</strong> uncalibrated. The international Poisson model is
-    fit on empty data and systematically flags underdogs as +25–30% edge — a
-    known-bad strategy. The picks below are <strong>by-eye</strong> based on line
-    shape, team quality, and tournament form. Use them as a starting point, not
-    a bet instruction.
+<main class="container">
+  <header class="strip">
+    <div>
+      <div class="t-xs muted" style="margin-bottom:.25rem">Saturday 20 June 2026</div>
+      <h1 class="t-xl">WC 2026 — Tomorrow's Bets — 2026-06-20</h1>
+    </div>
+    <span class="badge badge-warn">by-eye</span><span class="badge badge">0 actionable</span>
+  </header>
+  <div class="hero-stats"><div class="hero-stat"><span class="lbl">Fixtures</span><span class="val">12</span></div><div class="hero-stat"><span class="lbl">Actionable</span><span class="val">0</span></div><div class="hero-stat"><span class="lbl">Skipped</span><span class="val">0</span></div></div>
+  
+  <div class="banner"><strong>By-eye only.</strong> The international Poisson model is uncalibrated and systematically flags underdogs as +25–30% edge (a known-bad strategy). The leans below are <strong>by-eye</strong> based on line shape, team quality, and tournament form. Use as a starting point, not a bet instruction.</div>
+  <div class="pick-list">
+<article class="pick-card" data-tier="watch">
+  <div class="pick-head">
+    <div>
+      <div class="t-xs muted">Sat 20 Jun 05:00 AEST</div>
+      <div class="t-lg" style="margin-top:.15rem">USA vs Australia</div>
+      <div class="t-sm muted" style="margin-top:.15rem">Watch</div>
+    </div>
+    <div class="tier-edge edge-weak">+0.0%</div>
   </div>
-
-  <h2>The card</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>Kickoff (AEST)</th>
-        <th>Match</th>
-        <th>Home</th>
-        <th>Draw</th>
-        <th>Away</th>
-        <th>Book</th>
-        <th>Lean</th>
-        <th>Stake</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><td>Sat 20 Jun 05:00 AEST</td><td>USA vs Australia</td><td>1.63</td><td>4.40</td><td>5.90</td><td>betfair_ex_au</td><td><span class="lean-watch">Watch</span></td><td><span class="stake-empty">—</span></td></tr>
-      <tr><td>Sat 20 Jun 05:00 AEST</td><td>USA vs Australia</td><td>1.65</td><td>4.70</td><td>5.40</td><td>betfair_ex_au</td><td><span class="lean-watch">Watch</span></td><td><span class="stake-empty">—</span></td></tr>
-      <tr><td>Sat 20 Jun 08:00 AEST</td><td>Scotland vs Morocco</td><td>5.50</td><td>3.80</td><td>1.79</td><td>betfair_ex_au</td><td><span class="lean-watch">Watch</span></td><td><span class="stake-empty">—</span></td></tr>
-      <tr><td>Sat 20 Jun 08:00 AEST</td><td>Scotland vs Morocco</td><td>5.80</td><td>3.75</td><td>1.77</td><td>betfair_ex_au</td><td><span class="lean-watch">Watch</span></td><td><span class="stake-empty">—</span></td></tr>
-      <tr><td>Sat 20 Jun 10:30 AEST</td><td>Brazil vs Haiti</td><td>1.13</td><td>12.00</td><td>25.00</td><td>betfair_ex_au</td><td><span class="lean-watch">Watch</span></td><td><span class="stake-empty">—</span></td></tr>
-      <tr><td>Sat 20 Jun 10:30 AEST</td><td>Brazil vs Haiti</td><td>1.13</td><td>12.00</td><td>26.00</td><td>betfair_ex_au</td><td><span class="lean-watch">Watch</span></td><td><span class="stake-empty">—</span></td></tr>
-      <tr><td>Sat 20 Jun 13:00 AEST</td><td>Turkey vs Paraguay</td><td>2.10</td><td>3.45</td><td>4.10</td><td>betfair_ex_au</td><td><span class="lean-watch">Watch</span></td><td><span class="stake-empty">—</span></td></tr>
-      <tr><td>Sat 20 Jun 13:00 AEST</td><td>Turkey vs Paraguay</td><td>2.10</td><td>3.50</td><td>4.10</td><td>betfair_ex_au</td><td><span class="lean-watch">Watch</span></td><td><span class="stake-empty">—</span></td></tr>
-    </tbody>
-  </table>
-
-  <h2>Per-match read</h2>
-  <div class="fixture-card"><h3>USA vs Australia</h3><p><strong>Kickoff:</strong> Sat 20 Jun 05:00 AEST<br/><strong>Best line:</strong> USA 1.63 | Draw 4.40 | Australia 5.90<br/><strong>Book:</strong> betfair_ex_au</p><em>Not in by-eye notes — default to watching the line move.</em></div>
-  <div class="fixture-card"><h3>USA vs Australia</h3><p><strong>Kickoff:</strong> Sat 20 Jun 05:00 AEST<br/><strong>Best line:</strong> USA 1.65 | Draw 4.70 | Australia 5.40<br/><strong>Book:</strong> betfair_ex_au</p><em>Not in by-eye notes — default to watching the line move.</em></div>
-  <div class="fixture-card"><h3>Scotland vs Morocco</h3><p><strong>Kickoff:</strong> Sat 20 Jun 08:00 AEST<br/><strong>Best line:</strong> Scotland 5.50 | Draw 3.80 | Morocco 1.79<br/><strong>Book:</strong> betfair_ex_au</p><em>Not in by-eye notes — default to watching the line move.</em></div>
-  <div class="fixture-card"><h3>Scotland vs Morocco</h3><p><strong>Kickoff:</strong> Sat 20 Jun 08:00 AEST<br/><strong>Best line:</strong> Scotland 5.80 | Draw 3.75 | Morocco 1.77<br/><strong>Book:</strong> betfair_ex_au</p><em>Not in by-eye notes — default to watching the line move.</em></div>
-  <div class="fixture-card"><h3>Brazil vs Haiti</h3><p><strong>Kickoff:</strong> Sat 20 Jun 10:30 AEST<br/><strong>Best line:</strong> Brazil 1.13 | Draw 12.00 | Haiti 25.00<br/><strong>Book:</strong> betfair_ex_au</p><em>Not in by-eye notes — default to watching the line move.</em></div>
-  <div class="fixture-card"><h3>Brazil vs Haiti</h3><p><strong>Kickoff:</strong> Sat 20 Jun 10:30 AEST<br/><strong>Best line:</strong> Brazil 1.13 | Draw 12.00 | Haiti 26.00<br/><strong>Book:</strong> betfair_ex_au</p><em>Not in by-eye notes — default to watching the line move.</em></div>
-  <div class="fixture-card"><h3>Turkey vs Paraguay</h3><p><strong>Kickoff:</strong> Sat 20 Jun 13:00 AEST<br/><strong>Best line:</strong> Turkey 2.10 | Draw 3.45 | Paraguay 4.10<br/><strong>Book:</strong> betfair_ex_au</p><em>Not in by-eye notes — default to watching the line move.</em></div>
-  <div class="fixture-card"><h3>Turkey vs Paraguay</h3><p><strong>Kickoff:</strong> Sat 20 Jun 13:00 AEST<br/><strong>Best line:</strong> Turkey 2.10 | Draw 3.50 | Paraguay 4.10<br/><strong>Book:</strong> betfair_ex_au</p><em>Not in by-eye notes — default to watching the line move.</em></div>
-
-  <footer>
-    Card is read-only. No bets are placed automatically. The "Stake %" column is a
-    suggestion only — you and Danny / Brudda decide.<br/>
-    Source: <code>data/odds_cache/soccer_fifa_world_cup/</code> (Betfair AU h2h market).
-    Engine: <code>daz_betting_engine.cards.wc_tomorrow</code>.
-  </footer>
+  <div class="pick-foot">
+    <span class="pill pill-watch">Watch · +0.0%</span>
+    <span class="book">betfair_ex_au</span>
+    
+    <span class="t-sm muted">Odds <strong class="mono">4.40</strong></span>
+    <span class="stake accent" style="margin-left:auto">— no bet —</span>
+    
+  </div>
+</article>
+<article class="pick-card" data-tier="watch">
+  <div class="pick-head">
+    <div>
+      <div class="t-xs muted">Sat 20 Jun 05:00 AEST</div>
+      <div class="t-lg" style="margin-top:.15rem">USA vs Australia</div>
+      <div class="t-sm muted" style="margin-top:.15rem">Watch</div>
+    </div>
+    <div class="tier-edge edge-weak">+0.0%</div>
+  </div>
+  <div class="pick-foot">
+    <span class="pill pill-watch">Watch · +0.0%</span>
+    <span class="book">betfair_ex_au</span>
+    
+    <span class="t-sm muted">Odds <strong class="mono">4.70</strong></span>
+    <span class="stake accent" style="margin-left:auto">— no bet —</span>
+    
+  </div>
+</article>
+<article class="pick-card" data-tier="watch">
+  <div class="pick-head">
+    <div>
+      <div class="t-xs muted">Sat 20 Jun 05:00 AEST</div>
+      <div class="t-lg" style="margin-top:.15rem">USA vs Australia</div>
+      <div class="t-sm muted" style="margin-top:.15rem">Watch</div>
+    </div>
+    <div class="tier-edge edge-weak">+0.0%</div>
+  </div>
+  <div class="pick-foot">
+    <span class="pill pill-watch">Watch · +0.0%</span>
+    <span class="book">betfair_ex_au</span>
+    
+    <span class="t-sm muted">Odds <strong class="mono">44.00</strong></span>
+    <span class="stake accent" style="margin-left:auto">— no bet —</span>
+    
+  </div>
+</article>
+<article class="pick-card" data-tier="watch">
+  <div class="pick-head">
+    <div>
+      <div class="t-xs muted">Sat 20 Jun 08:00 AEST</div>
+      <div class="t-lg" style="margin-top:.15rem">Scotland vs Morocco</div>
+      <div class="t-sm muted" style="margin-top:.15rem">Watch</div>
+    </div>
+    <div class="tier-edge edge-weak">+0.0%</div>
+  </div>
+  <div class="pick-foot">
+    <span class="pill pill-watch">Watch · +0.0%</span>
+    <span class="book">betfair_ex_au</span>
+    
+    <span class="t-sm muted">Odds <strong class="mono">3.80</strong></span>
+    <span class="stake accent" style="margin-left:auto">— no bet —</span>
+    
+  </div>
+</article>
+<article class="pick-card" data-tier="watch">
+  <div class="pick-head">
+    <div>
+      <div class="t-xs muted">Sat 20 Jun 08:00 AEST</div>
+      <div class="t-lg" style="margin-top:.15rem">Scotland vs Morocco</div>
+      <div class="t-sm muted" style="margin-top:.15rem">Watch</div>
+    </div>
+    <div class="tier-edge edge-weak">+0.0%</div>
+  </div>
+  <div class="pick-foot">
+    <span class="pill pill-watch">Watch · +0.0%</span>
+    <span class="book">betfair_ex_au</span>
+    
+    <span class="t-sm muted">Odds <strong class="mono">3.75</strong></span>
+    <span class="stake accent" style="margin-left:auto">— no bet —</span>
+    
+  </div>
+</article>
+<article class="pick-card" data-tier="watch">
+  <div class="pick-head">
+    <div>
+      <div class="t-xs muted">Sat 20 Jun 08:00 AEST</div>
+      <div class="t-lg" style="margin-top:.15rem">Scotland vs Morocco</div>
+      <div class="t-sm muted" style="margin-top:.15rem">Watch</div>
+    </div>
+    <div class="tier-edge edge-weak">+0.0%</div>
+  </div>
+  <div class="pick-foot">
+    <span class="pill pill-watch">Watch · +0.0%</span>
+    <span class="book">betfair_ex_au</span>
+    
+    <span class="t-sm muted">Odds <strong class="mono">3.75</strong></span>
+    <span class="stake accent" style="margin-left:auto">— no bet —</span>
+    
+  </div>
+</article>
+<article class="pick-card" data-tier="watch">
+  <div class="pick-head">
+    <div>
+      <div class="t-xs muted">Sat 20 Jun 10:30 AEST</div>
+      <div class="t-lg" style="margin-top:.15rem">Brazil vs Haiti</div>
+      <div class="t-sm muted" style="margin-top:.15rem">Watch</div>
+    </div>
+    <div class="tier-edge edge-weak">+0.0%</div>
+  </div>
+  <div class="pick-foot">
+    <span class="pill pill-watch">Watch · +0.0%</span>
+    <span class="book">betfair_ex_au</span>
+    
+    <span class="t-sm muted">Odds <strong class="mono">12.00</strong></span>
+    <span class="stake accent" style="margin-left:auto">— no bet —</span>
+    
+  </div>
+</article>
+<article class="pick-card" data-tier="watch">
+  <div class="pick-head">
+    <div>
+      <div class="t-xs muted">Sat 20 Jun 10:30 AEST</div>
+      <div class="t-lg" style="margin-top:.15rem">Brazil vs Haiti</div>
+      <div class="t-sm muted" style="margin-top:.15rem">Watch</div>
+    </div>
+    <div class="tier-edge edge-weak">+0.0%</div>
+  </div>
+  <div class="pick-foot">
+    <span class="pill pill-watch">Watch · +0.0%</span>
+    <span class="book">betfair_ex_au</span>
+    
+    <span class="t-sm muted">Odds <strong class="mono">12.00</strong></span>
+    <span class="stake accent" style="margin-left:auto">— no bet —</span>
+    
+  </div>
+</article>
+<article class="pick-card" data-tier="watch">
+  <div class="pick-head">
+    <div>
+      <div class="t-xs muted">Sat 20 Jun 10:30 AEST</div>
+      <div class="t-lg" style="margin-top:.15rem">Brazil vs Haiti</div>
+      <div class="t-sm muted" style="margin-top:.15rem">Watch</div>
+    </div>
+    <div class="tier-edge edge-weak">+0.0%</div>
+  </div>
+  <div class="pick-foot">
+    <span class="pill pill-watch">Watch · +0.0%</span>
+    <span class="book">betfair_ex_au</span>
+    
+    <span class="t-sm muted">Odds <strong class="mono">12.00</strong></span>
+    <span class="stake accent" style="margin-left:auto">— no bet —</span>
+    
+  </div>
+</article>
+<article class="pick-card" data-tier="watch">
+  <div class="pick-head">
+    <div>
+      <div class="t-xs muted">Sat 20 Jun 13:00 AEST</div>
+      <div class="t-lg" style="margin-top:.15rem">Turkey vs Paraguay</div>
+      <div class="t-sm muted" style="margin-top:.15rem">Watch</div>
+    </div>
+    <div class="tier-edge edge-weak">+0.0%</div>
+  </div>
+  <div class="pick-foot">
+    <span class="pill pill-watch">Watch · +0.0%</span>
+    <span class="book">betfair_ex_au</span>
+    
+    <span class="t-sm muted">Odds <strong class="mono">3.45</strong></span>
+    <span class="stake accent" style="margin-left:auto">— no bet —</span>
+    
+  </div>
+</article>
+<article class="pick-card" data-tier="watch">
+  <div class="pick-head">
+    <div>
+      <div class="t-xs muted">Sat 20 Jun 13:00 AEST</div>
+      <div class="t-lg" style="margin-top:.15rem">Turkey vs Paraguay</div>
+      <div class="t-sm muted" style="margin-top:.15rem">Watch</div>
+    </div>
+    <div class="tier-edge edge-weak">+0.0%</div>
+  </div>
+  <div class="pick-foot">
+    <span class="pill pill-watch">Watch · +0.0%</span>
+    <span class="book">betfair_ex_au</span>
+    
+    <span class="t-sm muted">Odds <strong class="mono">3.50</strong></span>
+    <span class="stake accent" style="margin-left:auto">— no bet —</span>
+    
+  </div>
+</article>
+<article class="pick-card" data-tier="watch">
+  <div class="pick-head">
+    <div>
+      <div class="t-xs muted">Sat 20 Jun 13:00 AEST</div>
+      <div class="t-lg" style="margin-top:.15rem">Turkey vs Paraguay</div>
+      <div class="t-sm muted" style="margin-top:.15rem">Watch</div>
+    </div>
+    <div class="tier-edge edge-weak">+0.0%</div>
+  </div>
+  <div class="pick-foot">
+    <span class="pill pill-watch">Watch · +0.0%</span>
+    <span class="book">betfair_ex_au</span>
+    
+    <span class="t-sm muted">Odds <strong class="mono">3.50</strong></span>
+    <span class="stake accent" style="margin-left:auto">— no bet —</span>
+    
+  </div>
+</article>
+</div>
+  <footer><p>Card is read-only. No bets are placed automatically. The "Stake %" column is a suggestion only — you and Danny / Brudda decide.</p><p>Source: <code>data/odds_cache/soccer_fifa_world_cup/</code> (Betfair AU h2h market). Engine: <code>daz_betting_engine.cards.wc_tomorrow</code>.</p></footer>
+</main>
 </body>
 </html>
