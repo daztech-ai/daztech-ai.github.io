@@ -4,148 +4,78 @@
   <meta charset="utf-8" />
   <title>NRL — Tomorrow's Bets — 2026-06-21</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <style>
-    :root {
-      --bg: #0e1014;
-      --card: #1a1d23;
-      --border: #2a2f3a;
-      --text: #e6e6e6;
-      --muted: #9aa0a6;
-      --accent: #f4b400;
-      --good: #34a853;
-      --warn: #f9ab00;
-      --skip: #5f6368;
-    }
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
-      max-width: 920px;
-      margin: 0 auto;
-      padding: 2rem 1rem;
-      line-height: 1.55;
-    }
-    h1 { color: var(--accent); border-bottom: 2px solid var(--border); padding-bottom: 0.5rem; }
-    h2 { color: var(--accent); margin-top: 2rem; }
-    h3 { color: var(--text); margin-top: 1.5rem; }
-    .banner {
-      background: #2a1d05;
-      border-left: 4px solid var(--warn);
-      padding: 1rem 1.2rem;
-      margin: 1.5rem 0;
-      border-radius: 4px;
-      color: #f4d7a3;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 1.5rem 0;
-    }
-    th, td {
-      padding: 0.5rem 0.6rem;
-      text-align: left;
-      border-bottom: 1px solid var(--border);
-      font-size: 0.9rem;
-    }
-    th {
-      background: #1a1d23;
-      color: var(--accent);
-      font-weight: 600;
-    }
-    .lean-home { color: var(--good); font-weight: 600; }
-    .lean-watch { color: var(--warn); }
-    .lean-skip { color: var(--skip); }
-    .stake { color: var(--accent); font-weight: 600; }
-    .stake-empty { color: var(--muted); }
-    .fixture-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 1rem 1.2rem;
-      margin: 1rem 0;
-    }
-    .summary {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 1rem 1.2rem;
-      margin: 1.5rem 0;
-    }
-    .summary dt { font-weight: 600; color: var(--accent); }
-    .summary dd { margin: 0 0 0.5rem 1.5rem; color: var(--text); }
-  </style>
+  <meta name="description" content="NRL by-eye leans for Sun 21 Jun 2026 — 0 actionable of 3" />
+  <link rel="stylesheet" href="cards.css" />
 </head>
 <body>
-  <h1>NRL — Tomorrow's Bets</h1>
-  <p><strong>Sun 21 Jun 2026</strong></p>
-
-  <div class="banner">
-    <strong>Model status:</strong> uncalibrated. The NRL Poisson model in the engine is fit on empty data.
-    On priors alone it systematically flags underdogs as +25-30% edge — a known-bad strategy.
-    The picks below are <strong>by-eye</strong> based on line shape, ladder position, and recent form.
-    Use them as a starting point, not a bet instruction.
+<main class="container">
+  <header class="strip">
+    <div>
+      <div class="t-xs muted" style="margin-bottom:.25rem">Sun 21 Jun 2026 · 0 bettable of 3 fixtures</div>
+      <h1 class="t-xl">NRL — Tomorrow's Bets — 2026-06-21</h1>
+    </div>
+    <span class="badge badge-accent">NRL</span><span class="badge badge">0 actionable</span>
+  </header>
+  <div class="hero-stats"><div class="hero-stat"><span class="lbl">Fixtures</span><span class="val">3</span></div><div class="hero-stat"><span class="lbl">Bettable</span><span class="val">0</span></div><div class="hero-stat"><span class="lbl">Bankroll</span><span class="val">n/a</span></div></div>
+  
+  <div class="banner"><strong>By-eye NRL card.</strong> NRL Poisson model is fit on empty data; leans are <strong>by-eye</strong> from line shape, ladder position, and form. Use as a starting point, not a bet instruction.</div>
+  <div class="pick-list">
+<article class="pick-card" data-tier="watch">
+  <div class="pick-head">
+    <div>
+      <div class="t-xs muted">Sun 21 Jun 14:00 AEST</div>
+      <div class="t-lg" style="margin-top:.15rem">New Zealand Warriors vs North Queensland Cowboys</div>
+      <div class="t-sm muted" style="margin-top:.15rem">Watch</div>
+    </div>
+    <div class="tier-edge edge-weak">+0.0%</div>
   </div>
-
-  <h2>The card</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>Kickoff (AEST)</th>
-        <th>Match</th>
-        <th>Home</th>
-        <th>Away</th>
-        <th>Best book</th>
-        <th>Lean</th>
-        <th>Stake</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><td>Sun 21 Jun 14:00 AEST</td><td>New Zealand Warriors vs North Queensland Cowboys</td><td>1.35</td><td>3.25</td><td>sportsbet</td><td><span class="lean-watch">👀 Watch</span></td><td><span class="stake-empty">—</span></td></tr>
-      <tr><td>Sun 21 Jun 16:05 AEST</td><td>Melbourne Storm vs Canberra Raiders</td><td>1.37</td><td>3.12</td><td>sportsbet</td><td><span class="lean-watch">👀 Watch</span></td><td><span class="stake-empty">—</span></td></tr>
-      <tr><td>Sun 21 Jun 18:15 AEST</td><td>Sydney Roosters vs Cronulla Sutherland Sharks</td><td>1.50</td><td>2.60</td><td>sportsbet</td><td><span class="lean-watch">👀 Watch</span></td><td><span class="stake-empty">—</span></td></tr>
-    </tbody>
-  </table>
-
-  <h2>Per-match read</h2>
-    <div class="fixture-card">
-  <h3>New Zealand Warriors vs North Queensland Cowboys</h3>
-  <p><strong>Kickoff:</strong> Sun 21 Jun 14:00 AEST<br/>
-  <strong>Best line:</strong> New Zealand Warriors 1.35 | North Queensland Cowboys 3.25<br/>
-  <strong>Book:</strong> sportsbet</p>
-  <p><strong>Lean:</strong> <span class="lean-watch">Watch</span> &nbsp;|&nbsp; <strong>Stake:</strong> <span class="stake-empty">0%</span></p>
-  <p><strong>Why:</strong> Competitive line (1.35 / 3.25). Add to BY_EYE in nrl_tomorrow.py with a real lean + stake.</p>
-</div>
-    <div class="fixture-card">
-  <h3>Melbourne Storm vs Canberra Raiders</h3>
-  <p><strong>Kickoff:</strong> Sun 21 Jun 16:05 AEST<br/>
-  <strong>Best line:</strong> Melbourne Storm 1.37 | Canberra Raiders 3.12<br/>
-  <strong>Book:</strong> sportsbet</p>
-  <p><strong>Lean:</strong> <span class="lean-watch">Watch</span> &nbsp;|&nbsp; <strong>Stake:</strong> <span class="stake-empty">0%</span></p>
-  <p><strong>Why:</strong> Competitive line (1.37 / 3.12). Add to BY_EYE in nrl_tomorrow.py with a real lean + stake.</p>
-</div>
-    <div class="fixture-card">
-  <h3>Sydney Roosters vs Cronulla Sutherland Sharks</h3>
-  <p><strong>Kickoff:</strong> Sun 21 Jun 18:15 AEST<br/>
-  <strong>Best line:</strong> Sydney Roosters 1.50 | Cronulla Sutherland Sharks 2.60<br/>
-  <strong>Book:</strong> sportsbet</p>
-  <p><strong>Lean:</strong> <span class="lean-watch">Watch</span> &nbsp;|&nbsp; <strong>Stake:</strong> <span class="stake-empty">0%</span></p>
-  <p><strong>Why:</strong> Competitive line (1.50 / 2.60). Add to BY_EYE in nrl_tomorrow.py with a real lean + stake.</p>
-</div>
-
-  <div class="summary">
-    <h2>Bankroll summary</h2>
-    <dl>
-      
-      <dt>Total stake</dt><dd>0% of bankroll (no bankroll set)</dd>
-      <dt>Bets placed</dt><dd>0 of 3 fixtures</dd>
-    </dl>
+  <div class="pick-foot">
+    <span class="pill pill-watch">Watch · +0.0%</span>
+    <span class="book">sportsbet</span>
+    
+    
+    <span class="stake accent" style="margin-left:auto">— no bet —</span>
+    
   </div>
-
-  <footer>
-    <p style="color: var(--muted); font-size: 0.85rem;">
-      Generated by <code>daz_betting_engine.cards.nrl_tomorrow</code> on 2026-06-19 23:02 UTC.
-      Data: cached Odds API fixtures (data/odds_cache/rugbyleague_nrl/*.json).
-    </p>
-  </footer>
+</article>
+<article class="pick-card" data-tier="watch">
+  <div class="pick-head">
+    <div>
+      <div class="t-xs muted">Sun 21 Jun 16:05 AEST</div>
+      <div class="t-lg" style="margin-top:.15rem">Melbourne Storm vs Canberra Raiders</div>
+      <div class="t-sm muted" style="margin-top:.15rem">Watch</div>
+    </div>
+    <div class="tier-edge edge-weak">+0.0%</div>
+  </div>
+  <div class="pick-foot">
+    <span class="pill pill-watch">Watch · +0.0%</span>
+    <span class="book">sportsbet</span>
+    
+    
+    <span class="stake accent" style="margin-left:auto">— no bet —</span>
+    
+  </div>
+</article>
+<article class="pick-card" data-tier="watch">
+  <div class="pick-head">
+    <div>
+      <div class="t-xs muted">Sun 21 Jun 18:15 AEST</div>
+      <div class="t-lg" style="margin-top:.15rem">Sydney Roosters vs Cronulla Sutherland Sharks</div>
+      <div class="t-sm muted" style="margin-top:.15rem">Watch</div>
+    </div>
+    <div class="tier-edge edge-weak">+0.0%</div>
+  </div>
+  <div class="pick-foot">
+    <span class="pill pill-watch">Watch · +0.0%</span>
+    <span class="book">sportsbet</span>
+    
+    
+    <span class="stake accent" style="margin-left:auto">— no bet —</span>
+    
+  </div>
+</article>
+</div><h2 style="margin-top:1.5rem">Per-match read</h2><details style="margin:.5rem 0;border:1px solid var(--border);border-radius:6px;padding:.5rem .75rem;background:var(--surface-2)"><summary class="t-sm" style="cursor:pointer;font-weight:600;color:var(--accent)">New Zealand Warriors vs North Queensland Cowboys — Watch</summary><p class="t-sm muted" style="margin:.5rem 0 0">Competitive line (1.35 / 3.25). Add to BY_EYE in nrl_tomorrow.py with a real lean + stake.</p></details><details style="margin:.5rem 0;border:1px solid var(--border);border-radius:6px;padding:.5rem .75rem;background:var(--surface-2)"><summary class="t-sm" style="cursor:pointer;font-weight:600;color:var(--accent)">Melbourne Storm vs Canberra Raiders — Watch</summary><p class="t-sm muted" style="margin:.5rem 0 0">Competitive line (1.37 / 3.12). Add to BY_EYE in nrl_tomorrow.py with a real lean + stake.</p></details><details style="margin:.5rem 0;border:1px solid var(--border);border-radius:6px;padding:.5rem .75rem;background:var(--surface-2)"><summary class="t-sm" style="cursor:pointer;font-weight:600;color:var(--accent)">Sydney Roosters vs Cronulla Sutherland Sharks — Watch</summary><p class="t-sm muted" style="margin:.5rem 0 0">Competitive line (1.50 / 2.60). Add to BY_EYE in nrl_tomorrow.py with a real lean + stake.</p></details>
+  <footer><p>Card is read-only. No bets are placed automatically.</p><p>Source: <code>data/odds_cache/rugbyleague_nrl/</code>. Engine: <code>daz_betting_engine.cards.nrl_tomorrow</code>.</p></footer>
+</main>
 </body>
 </html>
