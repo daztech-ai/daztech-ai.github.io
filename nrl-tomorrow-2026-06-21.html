@@ -6,25 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="NRL by-eye leans for Sun 21 Jun 2026 — 0 actionable of 3" />
   <link rel="stylesheet" href="cards.css" />
-  <script src="cards.js" defer></script>
 </head>
 <body>
-<aside class="bet-slip" id="bet-slip" aria-label="Bet slip">
-  <header>
-    <h2>Bet Slip <span class="slip-count" id="slip-count">0</span></h2>
-  </header>
-  <div class="slip-empty">Click any odds to add a pick.<br />Slip survives navigation.</div>
-  <ul class="slip-legs"></ul>
-  <div class="slip-summary">
-    <div class="slip-row">Combined odds: <span id="slip-combined">&mdash;</span></div>
-    <div class="slip-row">Stake: $<input type="number" id="slip-stake" value="10" min="0" step="1" /></div>
-    <div class="slip-row return">Return: <span id="slip-return">&mdash;</span></div>
-  </div>
-  <div class="slip-actions">
-    <button id="slip-clear" type="button">Clear</button>
-    <button id="slip-copy" type="button" disabled>Copy Slip</button>
-  </div>
-</aside>
 <main class="container">
   <header class="strip">
     <div>
@@ -35,66 +18,54 @@
   </header>
   <div class="hero-stats"><div class="hero-stat"><span class="lbl">Fixtures</span><span class="val">3</span></div><div class="hero-stat"><span class="lbl">Bettable</span><span class="val">0</span></div><div class="hero-stat"><span class="lbl">Bankroll</span><span class="val">n/a</span></div></div>
   
-  <div class="banner"><strong>By-eye NRL card.</strong> NRL Poisson model is fit on empty data; leans are <strong>by-eye</strong> from line shape, ladder position, and form. Use as a starting point, not a bet instruction.</div>
-  <div class="pick-list">
-<article class="pick-card" data-tier="watch">
-  <div class="pick-head">
-    <div>
-      <div class="t-xs muted">Sun 21 Jun 14:00 AEST</div>
-      <div class="t-lg" style="margin-top:.15rem">New Zealand Warriors vs North Queensland Cowboys</div>
-      <div class="t-sm muted" style="margin-top:.15rem">Watch</div>
-    </div>
-    <div class="tier-edge edge-weak">+0.0%</div>
+  <div class="banner"><strong>Conviction-scored NRL card.</strong> Each fixture evaluated across market evidence, team context, and late mail. Verdicts: back | lean | watch | skip.</div>
+  <div class="pick-list market-rail">
+<article class="market-tile pick-card" data-tier="back">
+  <div class="market-tile-head">
+    <h3>Engine Edge</h3>
+    <div class="market-icons"><span>SPORTSBET</span></div>
   </div>
-  <div class="pick-foot">
-    <span class="pill pill-watch">Watch · +0.0%</span>
-    <span class="book">sportsbet</span>
-    
-    
-    <span class="stake accent" style="margin-left:auto">— no bet —</span>
-    
-    
+  <div class="market-event">New Zealand Warriors vs North Queensland Cowboys</div>
+  <div class="market-sub">Full Time Result</div>
+  <div class="market-legs"><div class="market-leg"><span class="leg-dot"></span><span>North Queensland Cowboys to Win @ 3.25</span></div></div>
+  <div class="market-boost-row">
+    <span class="market-boost edge-mid">ENGINE EDGE</span>
+    <span class="market-heat">+7.6%</span>
   </div>
+  <div class="market-odds-panel"><div class="market-odds-main">3.25</div><div class="market-return">$20 returns $65</div></div>
+  
 </article>
-<article class="pick-card" data-tier="watch">
-  <div class="pick-head">
-    <div>
-      <div class="t-xs muted">Sun 21 Jun 16:05 AEST</div>
-      <div class="t-lg" style="margin-top:.15rem">Melbourne Storm vs Canberra Raiders</div>
-      <div class="t-sm muted" style="margin-top:.15rem">Watch</div>
-    </div>
-    <div class="tier-edge edge-weak">+0.0%</div>
+<article class="market-tile pick-card" data-tier="back">
+  <div class="market-tile-head">
+    <h3>Engine Edge</h3>
+    <div class="market-icons"><span>SPORTSBET</span></div>
   </div>
-  <div class="pick-foot">
-    <span class="pill pill-watch">Watch · +0.0%</span>
-    <span class="book">sportsbet</span>
-    
-    
-    <span class="stake accent" style="margin-left:auto">— no bet —</span>
-    
-    
+  <div class="market-event">Melbourne Storm vs Canberra Raiders</div>
+  <div class="market-sub">Full Time Result</div>
+  <div class="market-legs"><div class="market-leg"><span class="leg-dot"></span><span>Canberra Raiders to Win @ 3.12</span></div></div>
+  <div class="market-boost-row">
+    <span class="market-boost edge-mid">ENGINE EDGE</span>
+    <span class="market-heat">+6.1%</span>
   </div>
+  <div class="market-odds-panel"><div class="market-odds-main">3.12</div><div class="market-return">$20 returns $62</div></div>
+  
 </article>
-<article class="pick-card" data-tier="watch">
-  <div class="pick-head">
-    <div>
-      <div class="t-xs muted">Sun 21 Jun 18:15 AEST</div>
-      <div class="t-lg" style="margin-top:.15rem">Sydney Roosters vs Cronulla Sutherland Sharks</div>
-      <div class="t-sm muted" style="margin-top:.15rem">Watch</div>
-    </div>
-    <div class="tier-edge edge-weak">+0.0%</div>
+<article class="market-tile pick-card" data-tier="back">
+  <div class="market-tile-head">
+    <h3>Engine Edge</h3>
+    <div class="market-icons"><span>SPORTSBET</span></div>
   </div>
-  <div class="pick-foot">
-    <span class="pill pill-watch">Watch · +0.0%</span>
-    <span class="book">sportsbet</span>
-    
-    
-    <span class="stake accent" style="margin-left:auto">— no bet —</span>
-    
-    
+  <div class="market-event">Sydney Roosters vs Cronulla Sutherland Sharks</div>
+  <div class="market-sub">Full Time Result</div>
+  <div class="market-legs"><div class="market-leg"><span class="leg-dot"></span><span>Cronulla Sutherland Sharks to Win @ 2.60</span></div></div>
+  <div class="market-boost-row">
+    <span class="market-boost edge-mid">ENGINE EDGE</span>
+    <span class="market-heat">+5.2%</span>
   </div>
+  <div class="market-odds-panel"><div class="market-odds-main">2.60</div><div class="market-return">$20 returns $52</div></div>
+  
 </article>
-</div><h2 style="margin-top:1.5rem">Per-match read</h2><details style="margin:.5rem 0;border:1px solid var(--border);border-radius:6px;padding:.5rem .75rem;background:var(--surface-2)"><summary class="t-sm" style="cursor:pointer;font-weight:600;color:var(--accent)">New Zealand Warriors vs North Queensland Cowboys — Watch</summary><p class="t-sm muted" style="margin:.5rem 0 0">Competitive line (1.35 / 3.25). Add to BY_EYE in nrl_tomorrow.py with a real lean + stake.</p></details><details style="margin:.5rem 0;border:1px solid var(--border);border-radius:6px;padding:.5rem .75rem;background:var(--surface-2)"><summary class="t-sm" style="cursor:pointer;font-weight:600;color:var(--accent)">Melbourne Storm vs Canberra Raiders — Watch</summary><p class="t-sm muted" style="margin:.5rem 0 0">Competitive line (1.37 / 3.12). Add to BY_EYE in nrl_tomorrow.py with a real lean + stake.</p></details><details style="margin:.5rem 0;border:1px solid var(--border);border-radius:6px;padding:.5rem .75rem;background:var(--surface-2)"><summary class="t-sm" style="cursor:pointer;font-weight:600;color:var(--accent)">Sydney Roosters vs Cronulla Sutherland Sharks — Watch</summary><p class="t-sm muted" style="margin:.5rem 0 0">Competitive line (1.50 / 2.60). Add to BY_EYE in nrl_tomorrow.py with a real lean + stake.</p></details>
+</div><h2 style="margin-top:1.5rem">Per-match read</h2><details style="margin:.5rem 0;border:1px solid var(--border);border-radius:6px;padding:.5rem .75rem;background:var(--surface-2)"><summary class="t-sm" style="cursor:pointer;font-weight:600;color:var(--accent)">New Zealand Warriors vs North Queensland Cowboys — Watch (46/100) → North Queensland Cowboys</summary><p class="t-sm muted" style="margin:.5rem 0 0">Market: overround -1.2%, implied 70/30<br>Form: home 15/20, away 5/20<br>Trigger: back North Queensland Cowboys at &gt;3.58 (fair 3.11, edge +7.6%)<br>Trigger: $3.58+</p></details><details style="margin:.5rem 0;border:1px solid var(--border);border-radius:6px;padding:.5rem .75rem;background:var(--surface-2)"><summary class="t-sm" style="cursor:pointer;font-weight:600;color:var(--accent)">Melbourne Storm vs Canberra Raiders — Skip (37/100) → Canberra Raiders</summary><p class="t-sm muted" style="margin:.5rem 0 0">Market: overround 3.3%, implied 69/31<br>Form: no context available<br>Trigger: back Canberra Raiders at &gt;3.40 (fair 2.96, edge +6.1%)<br>Trigger: $3.40+</p></details><details style="margin:.5rem 0;border:1px solid var(--border);border-radius:6px;padding:.5rem .75rem;background:var(--surface-2)"><summary class="t-sm" style="cursor:pointer;font-weight:600;color:var(--accent)">Sydney Roosters vs Cronulla Sutherland Sharks — Watch (46/100) → Cronulla Sutherland Sharks</summary><p class="t-sm muted" style="margin:.5rem 0 0">Market: overround 1.8%, implied 62/38<br>Form: home 15/20, away 5/20<br>Trigger: back Cronulla Sutherland Sharks at &gt;2.84 (fair 2.47, edge +5.2%)<br>Trigger: $2.84+</p></details>
   <footer><p>Card is read-only. No bets are placed automatically.</p><p>Source: <code>data/odds_cache/rugbyleague_nrl/</code>. Engine: <code>daz_betting_engine.cards.nrl_tomorrow</code>.</p></footer>
 </main>
 </body>
