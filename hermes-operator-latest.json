@@ -13,7 +13,7 @@
       "model_prob": 0.2828,
       "market_prob": 0.1429,
       "edge_pct": 13.99,
-      "stake_pct": 0.0,
+      "stake_pct": 0.01,
       "bookmaker": "best cache",
       "source": "data/forward_test/forward-test-2026-06-21.jsonl",
       "confidence": "medium",
@@ -32,7 +32,7 @@
       "model_prob": 0.2111,
       "market_prob": 0.1562,
       "edge_pct": 5.48,
-      "stake_pct": 0.0,
+      "stake_pct": 0.01,
       "bookmaker": "best cache",
       "source": "data/forward_test/forward-test-2026-06-21.jsonl",
       "confidence": "low",
@@ -44,6 +44,1014 @@
   ],
   "sgm_bets": [],
   "sgm_watch": [
+    {
+      "candidate_id": "sgm-live-858cb4ec1570",
+      "sport": "WC",
+      "match": "Jordan vs Algeria",
+      "name": "h2h + totals + btts",
+      "legs": [
+        {
+          "leg_id": "leg-fc226b1d08d6",
+          "sport": "WC",
+          "sport_key": "soccer_fifa_world_cup",
+          "event_id": "fd8533b650e655030f6a7946f8795db2",
+          "match": "Jordan vs Algeria",
+          "commence_time": "2026-06-23T03:00:00Z",
+          "bookmaker": "Pinnacle",
+          "market_key": "h2h",
+          "market_family": "h2h",
+          "label": "Pinnacle h2h Algeria",
+          "selection": "Algeria",
+          "point": null,
+          "player": null,
+          "decimal_odds": "1.57",
+          "implied_probability": "0.6369",
+          "source": "live_event_market",
+          "stale": false,
+          "data_quality_flags": [
+            "source_live"
+          ]
+        },
+        {
+          "leg_id": "leg-49613b8bdf38",
+          "sport": "WC",
+          "sport_key": "soccer_fifa_world_cup",
+          "event_id": "fd8533b650e655030f6a7946f8795db2",
+          "match": "Jordan vs Algeria",
+          "commence_time": "2026-06-23T03:00:00Z",
+          "bookmaker": "Pinnacle",
+          "market_key": "totals",
+          "market_family": "totals",
+          "label": "Pinnacle totals Over 2.5",
+          "selection": "Over",
+          "point": "2.5",
+          "player": null,
+          "decimal_odds": "1.93",
+          "implied_probability": "0.5181",
+          "source": "live_event_market",
+          "stale": false,
+          "data_quality_flags": [
+            "source_live"
+          ]
+        },
+        {
+          "leg_id": "leg-8392fb02a348",
+          "sport": "WC",
+          "sport_key": "soccer_fifa_world_cup",
+          "event_id": "fd8533b650e655030f6a7946f8795db2",
+          "match": "Jordan vs Algeria",
+          "commence_time": "2026-06-23T03:00:00Z",
+          "bookmaker": "Pinnacle",
+          "market_key": "btts",
+          "market_family": "btts",
+          "label": "Pinnacle btts No",
+          "selection": "No",
+          "point": null,
+          "player": null,
+          "decimal_odds": "1.87",
+          "implied_probability": "0.5348",
+          "source": "live_event_market",
+          "stale": false,
+          "data_quality_flags": [
+            "source_live"
+          ]
+        }
+      ],
+      "combined_odds": 5.6663,
+      "edge_pct": -10.8,
+      "stake_pct": 0.0,
+      "stake_aud": 0.0,
+      "bookmaker": "Pinnacle",
+      "source": "live_event_market",
+      "model_probability": 0.1575,
+      "fair_odds": 6.3492,
+      "min_acceptable_odds": 6.67,
+      "estimated_leg_product_odds": null,
+      "exact_slip_odds": null,
+      "decision": "skip",
+      "warnings": [
+        "edge -10.8% below threshold 5% for medium correlation",
+        "leg product 5.6663 below min acceptable 6.67",
+        "correlation=medium"
+      ],
+      "copy_block": "Daz Engine SGM (live): Jordan vs Algeria\n  Bookmaker: Pinnacle\n  Structure: h2h + totals + btts\n  Legs:\n    - Algeria @ 1.57\n    - Over 2.5 @ 1.93\n    - No @ 1.87\n  Estimated leg product: 5.67\n  Min acceptable slip odds: 6.67\n  Estimated edge: -10.8%\n  Correlation: medium | Confidence: medium\n  Action: BUILD - confirm exact slip odds at Pinnacle, PLACE if >= 6.67\n  Warnings:\n    - edge -10.8% below threshold 5% for medium correlation\n    - leg product 5.6663 below min acceptable 6.67"
+    },
+    {
+      "candidate_id": "sgm-live-2846315531bf",
+      "sport": "WC",
+      "match": "England vs Ghana",
+      "name": "h2h + totals + btts",
+      "legs": [
+        {
+          "leg_id": "leg-e455c5315a49",
+          "sport": "WC",
+          "sport_key": "soccer_fifa_world_cup",
+          "event_id": "2f49dd8deae3079dc4eb2d634d18a99c",
+          "match": "England vs Ghana",
+          "commence_time": "2026-06-23T20:00:00Z",
+          "bookmaker": "Pinnacle",
+          "market_key": "h2h",
+          "market_family": "h2h",
+          "label": "Pinnacle h2h England",
+          "selection": "England",
+          "point": null,
+          "player": null,
+          "decimal_odds": "1.23",
+          "implied_probability": "0.8130",
+          "source": "live_event_market",
+          "stale": false,
+          "data_quality_flags": [
+            "source_live"
+          ]
+        },
+        {
+          "leg_id": "leg-946c61482580",
+          "sport": "WC",
+          "sport_key": "soccer_fifa_world_cup",
+          "event_id": "2f49dd8deae3079dc4eb2d634d18a99c",
+          "match": "England vs Ghana",
+          "commence_time": "2026-06-23T20:00:00Z",
+          "bookmaker": "Pinnacle",
+          "market_key": "totals",
+          "market_family": "totals",
+          "label": "Pinnacle totals Over 2.75",
+          "selection": "Over",
+          "point": "2.75",
+          "player": null,
+          "decimal_odds": "1.83",
+          "implied_probability": "0.5464",
+          "source": "live_event_market",
+          "stale": false,
+          "data_quality_flags": [
+            "source_live"
+          ]
+        },
+        {
+          "leg_id": "leg-d0f10e609b6e",
+          "sport": "WC",
+          "sport_key": "soccer_fifa_world_cup",
+          "event_id": "2f49dd8deae3079dc4eb2d634d18a99c",
+          "match": "England vs Ghana",
+          "commence_time": "2026-06-23T20:00:00Z",
+          "bookmaker": "Pinnacle",
+          "market_key": "btts",
+          "market_family": "btts",
+          "label": "Pinnacle btts No",
+          "selection": "No",
+          "point": null,
+          "player": null,
+          "decimal_odds": "1.58",
+          "implied_probability": "0.6329",
+          "source": "live_event_market",
+          "stale": false,
+          "data_quality_flags": [
+            "source_live"
+          ]
+        }
+      ],
+      "combined_odds": 3.5564,
+      "edge_pct": -10.8,
+      "stake_pct": 0.0,
+      "stake_aud": 0.0,
+      "bookmaker": "Pinnacle",
+      "source": "live_event_market",
+      "model_probability": 0.2507,
+      "fair_odds": 3.9888,
+      "min_acceptable_odds": 4.19,
+      "estimated_leg_product_odds": null,
+      "exact_slip_odds": null,
+      "decision": "skip",
+      "warnings": [
+        "edge -10.8% below threshold 5% for medium correlation",
+        "leg product 3.5564 below min acceptable 4.19",
+        "correlation=medium"
+      ],
+      "copy_block": "Daz Engine SGM (live): England vs Ghana\n  Bookmaker: Pinnacle\n  Structure: h2h + totals + btts\n  Legs:\n    - England @ 1.23\n    - Over 2.75 @ 1.83\n    - No @ 1.58\n  Estimated leg product: 3.56\n  Min acceptable slip odds: 4.19\n  Estimated edge: -10.8%\n  Correlation: medium | Confidence: medium\n  Action: BUILD - confirm exact slip odds at Pinnacle, PLACE if >= 4.19\n  Warnings:\n    - edge -10.8% below threshold 5% for medium correlation\n    - leg product 3.5564 below min acceptable 4.19"
+    },
+    {
+      "candidate_id": "sgm-live-a25805c6569f",
+      "sport": "WC",
+      "match": "Norway vs Senegal",
+      "name": "h2h + totals + btts",
+      "legs": [
+        {
+          "leg_id": "leg-c00956c457b5",
+          "sport": "WC",
+          "sport_key": "soccer_fifa_world_cup",
+          "event_id": "3f48473742ca0fd2a85930554720c75e",
+          "match": "Norway vs Senegal",
+          "commence_time": "2026-06-23T00:00:00Z",
+          "bookmaker": "Pinnacle",
+          "market_key": "h2h",
+          "market_family": "h2h",
+          "label": "Pinnacle h2h Norway",
+          "selection": "Norway",
+          "point": null,
+          "player": null,
+          "decimal_odds": "2.19",
+          "implied_probability": "0.4566",
+          "source": "live_event_market",
+          "stale": false,
+          "data_quality_flags": [
+            "source_live"
+          ]
+        },
+        {
+          "leg_id": "leg-be952c3eb602",
+          "sport": "WC",
+          "sport_key": "soccer_fifa_world_cup",
+          "event_id": "3f48473742ca0fd2a85930554720c75e",
+          "match": "Norway vs Senegal",
+          "commence_time": "2026-06-23T00:00:00Z",
+          "bookmaker": "Pinnacle",
+          "market_key": "totals",
+          "market_family": "totals",
+          "label": "Pinnacle totals Over 2.5",
+          "selection": "Over",
+          "point": "2.5",
+          "player": null,
+          "decimal_odds": "1.91",
+          "implied_probability": "0.5236",
+          "source": "live_event_market",
+          "stale": false,
+          "data_quality_flags": [
+            "source_live"
+          ]
+        },
+        {
+          "leg_id": "leg-c6b3a47c0248",
+          "sport": "WC",
+          "sport_key": "soccer_fifa_world_cup",
+          "event_id": "3f48473742ca0fd2a85930554720c75e",
+          "match": "Norway vs Senegal",
+          "commence_time": "2026-06-23T00:00:00Z",
+          "bookmaker": "Pinnacle",
+          "market_key": "btts",
+          "market_family": "btts",
+          "label": "Pinnacle btts Yes",
+          "selection": "Yes",
+          "point": null,
+          "player": null,
+          "decimal_odds": "1.71",
+          "implied_probability": "0.5848",
+          "source": "live_event_market",
+          "stale": false,
+          "data_quality_flags": [
+            "source_live"
+          ]
+        }
+      ],
+      "combined_odds": 7.1528,
+      "edge_pct": -11.2,
+      "stake_pct": 0.0,
+      "stake_aud": 0.0,
+      "bookmaker": "Pinnacle",
+      "source": "live_event_market",
+      "model_probability": 0.1242,
+      "fair_odds": 8.0515,
+      "min_acceptable_odds": 8.45,
+      "estimated_leg_product_odds": null,
+      "exact_slip_odds": null,
+      "decision": "skip",
+      "warnings": [
+        "edge -11.2% below threshold 5% for medium correlation",
+        "leg product 7.1528 below min acceptable 8.45",
+        "correlation=medium"
+      ],
+      "copy_block": "Daz Engine SGM (live): Norway vs Senegal\n  Bookmaker: Pinnacle\n  Structure: h2h + totals + btts\n  Legs:\n    - Norway @ 2.19\n    - Over 2.5 @ 1.91\n    - Yes @ 1.71\n  Estimated leg product: 7.15\n  Min acceptable slip odds: 8.45\n  Estimated edge: -11.2%\n  Correlation: medium | Confidence: medium\n  Action: BUILD - confirm exact slip odds at Pinnacle, PLACE if >= 8.45\n  Warnings:\n    - edge -11.2% below threshold 5% for medium correlation\n    - leg product 7.1528 below min acceptable 8.45"
+    },
+    {
+      "candidate_id": "sgm-live-eadbd0107fe5",
+      "sport": "WC",
+      "match": "Argentina vs Austria",
+      "name": "h2h + totals + btts",
+      "legs": [
+        {
+          "leg_id": "leg-51fe9a36505f",
+          "sport": "WC",
+          "sport_key": "soccer_fifa_world_cup",
+          "event_id": "be6c63f416c67bca1300a98f5b89c3af",
+          "match": "Argentina vs Austria",
+          "commence_time": "2026-06-22T17:00:00Z",
+          "bookmaker": "Pinnacle",
+          "market_key": "h2h",
+          "market_family": "h2h",
+          "label": "Pinnacle h2h Argentina",
+          "selection": "Argentina",
+          "point": null,
+          "player": null,
+          "decimal_odds": "1.48",
+          "implied_probability": "0.6757",
+          "source": "live_event_market",
+          "stale": false,
+          "data_quality_flags": [
+            "source_live"
+          ]
+        },
+        {
+          "leg_id": "leg-2c67a435cc3d",
+          "sport": "WC",
+          "sport_key": "soccer_fifa_world_cup",
+          "event_id": "be6c63f416c67bca1300a98f5b89c3af",
+          "match": "Argentina vs Austria",
+          "commence_time": "2026-06-22T17:00:00Z",
+          "bookmaker": "Pinnacle",
+          "market_key": "totals",
+          "market_family": "totals",
+          "label": "Pinnacle totals Under 2.5",
+          "selection": "Under",
+          "point": "2.5",
+          "player": null,
+          "decimal_odds": "1.93",
+          "implied_probability": "0.5181",
+          "source": "live_event_market",
+          "stale": false,
+          "data_quality_flags": [
+            "source_live"
+          ]
+        },
+        {
+          "leg_id": "leg-6acbb180aabd",
+          "sport": "WC",
+          "sport_key": "soccer_fifa_world_cup",
+          "event_id": "be6c63f416c67bca1300a98f5b89c3af",
+          "match": "Argentina vs Austria",
+          "commence_time": "2026-06-22T17:00:00Z",
+          "bookmaker": "Pinnacle",
+          "market_key": "btts",
+          "market_family": "btts",
+          "label": "Pinnacle btts No",
+          "selection": "No",
+          "point": null,
+          "player": null,
+          "decimal_odds": "1.8",
+          "implied_probability": "0.5556",
+          "source": "live_event_market",
+          "stale": false,
+          "data_quality_flags": [
+            "source_live"
+          ]
+        }
+      ],
+      "combined_odds": 5.1415,
+      "edge_pct": -12.9,
+      "stake_pct": 0.0,
+      "stake_aud": 0.0,
+      "bookmaker": "Pinnacle",
+      "source": "live_event_market",
+      "model_probability": 0.1695,
+      "fair_odds": 5.8997,
+      "min_acceptable_odds": 6.19,
+      "estimated_leg_product_odds": null,
+      "exact_slip_odds": null,
+      "decision": "skip",
+      "warnings": [
+        "edge -12.9% below threshold 5% for medium correlation",
+        "leg product 5.1415 below min acceptable 6.19",
+        "correlation=medium"
+      ],
+      "copy_block": "Daz Engine SGM (live): Argentina vs Austria\n  Bookmaker: Pinnacle\n  Structure: h2h + totals + btts\n  Legs:\n    - Argentina @ 1.48\n    - Under 2.5 @ 1.93\n    - No @ 1.8\n  Estimated leg product: 5.14\n  Min acceptable slip odds: 6.19\n  Estimated edge: -12.9%\n  Correlation: medium | Confidence: medium\n  Action: BUILD - confirm exact slip odds at Pinnacle, PLACE if >= 6.19\n  Warnings:\n    - edge -12.9% below threshold 5% for medium correlation\n    - leg product 5.1415 below min acceptable 6.19"
+    },
+    {
+      "candidate_id": "sgm-live-a9edca29608f",
+      "sport": "WC",
+      "match": "Portugal vs Uzbekistan",
+      "name": "h2h + totals + btts",
+      "legs": [
+        {
+          "leg_id": "leg-a2270a3e9b66",
+          "sport": "WC",
+          "sport_key": "soccer_fifa_world_cup",
+          "event_id": "8ba93d190f1f934e33862a97a6353a6e",
+          "match": "Portugal vs Uzbekistan",
+          "commence_time": "2026-06-23T17:00:00Z",
+          "bookmaker": "Pinnacle",
+          "market_key": "h2h",
+          "market_family": "h2h",
+          "label": "Pinnacle h2h Portugal",
+          "selection": "Portugal",
+          "point": null,
+          "player": null,
+          "decimal_odds": "1.2",
+          "implied_probability": "0.8333",
+          "source": "live_event_market",
+          "stale": false,
+          "data_quality_flags": [
+            "source_live"
+          ]
+        },
+        {
+          "leg_id": "leg-a23d0ac2bba8",
+          "sport": "WC",
+          "sport_key": "soccer_fifa_world_cup",
+          "event_id": "8ba93d190f1f934e33862a97a6353a6e",
+          "match": "Portugal vs Uzbekistan",
+          "commence_time": "2026-06-23T17:00:00Z",
+          "bookmaker": "Pinnacle",
+          "market_key": "totals",
+          "market_family": "totals",
+          "label": "Pinnacle totals Under 3.0",
+          "selection": "Under",
+          "point": "3.0",
+          "player": null,
+          "decimal_odds": "1.87",
+          "implied_probability": "0.5348",
+          "source": "live_event_market",
+          "stale": false,
+          "data_quality_flags": [
+            "source_live"
+          ]
+        },
+        {
+          "leg_id": "leg-0f7b900dade5",
+          "sport": "WC",
+          "sport_key": "soccer_fifa_world_cup",
+          "event_id": "8ba93d190f1f934e33862a97a6353a6e",
+          "match": "Portugal vs Uzbekistan",
+          "commence_time": "2026-06-23T17:00:00Z",
+          "bookmaker": "Pinnacle",
+          "market_key": "btts",
+          "market_family": "btts",
+          "label": "Pinnacle btts No",
+          "selection": "No",
+          "point": null,
+          "player": null,
+          "decimal_odds": "1.53",
+          "implied_probability": "0.6536",
+          "source": "live_event_market",
+          "stale": false,
+          "data_quality_flags": [
+            "source_live"
+          ]
+        }
+      ],
+      "combined_odds": 3.4333,
+      "edge_pct": -14.4,
+      "stake_pct": 0.0,
+      "stake_aud": 0.0,
+      "bookmaker": "Pinnacle",
+      "source": "live_event_market",
+      "model_probability": 0.2493,
+      "fair_odds": 4.0112,
+      "min_acceptable_odds": 4.21,
+      "estimated_leg_product_odds": null,
+      "exact_slip_odds": null,
+      "decision": "skip",
+      "warnings": [
+        "edge -14.4% below threshold 5% for medium correlation",
+        "leg product 3.4333 below min acceptable 4.21",
+        "correlation=medium"
+      ],
+      "copy_block": "Daz Engine SGM (live): Portugal vs Uzbekistan\n  Bookmaker: Pinnacle\n  Structure: h2h + totals + btts\n  Legs:\n    - Portugal @ 1.2\n    - Under 3.0 @ 1.87\n    - No @ 1.53\n  Estimated leg product: 3.43\n  Min acceptable slip odds: 4.21\n  Estimated edge: -14.4%\n  Correlation: medium | Confidence: medium\n  Action: BUILD - confirm exact slip odds at Pinnacle, PLACE if >= 4.21\n  Warnings:\n    - edge -14.4% below threshold 5% for medium correlation\n    - leg product 3.4333 below min acceptable 4.21"
+    },
+    {
+      "candidate_id": "sgm-live-038f4130ca78",
+      "sport": "NRL",
+      "match": "Gold Coast Titans vs Canterbury Bulldogs",
+      "name": "h2h + spreads + totals",
+      "legs": [
+        {
+          "leg_id": "leg-e075ed532365",
+          "sport": "NRL",
+          "sport_key": "rugbyleague_nrl",
+          "event_id": "03f990770c55f220108589d8fcee6f86",
+          "match": "Gold Coast Titans vs Canterbury Bulldogs",
+          "commence_time": "2026-06-26T08:00:00Z",
+          "bookmaker": "SportsBet",
+          "market_key": "h2h",
+          "market_family": "h2h",
+          "label": "SportsBet h2h Canterbury Bulldogs",
+          "selection": "Canterbury Bulldogs",
+          "point": null,
+          "player": null,
+          "decimal_odds": "1.9",
+          "implied_probability": "0.5263",
+          "source": "live_event_market",
+          "stale": false,
+          "data_quality_flags": [
+            "source_live"
+          ]
+        },
+        {
+          "leg_id": "leg-d5b75b3cceff",
+          "sport": "NRL",
+          "sport_key": "rugbyleague_nrl",
+          "event_id": "03f990770c55f220108589d8fcee6f86",
+          "match": "Gold Coast Titans vs Canterbury Bulldogs",
+          "commence_time": "2026-06-26T08:00:00Z",
+          "bookmaker": "SportsBet",
+          "market_key": "spreads",
+          "market_family": "spread",
+          "label": "SportsBet spreads Canterbury Bulldogs -0.5",
+          "selection": "Canterbury Bulldogs",
+          "point": "-0.5",
+          "player": null,
+          "decimal_odds": "1.88",
+          "implied_probability": "0.5319",
+          "source": "live_event_market",
+          "stale": false,
+          "data_quality_flags": [
+            "source_live"
+          ]
+        },
+        {
+          "leg_id": "leg-cb9abce6607c",
+          "sport": "NRL",
+          "sport_key": "rugbyleague_nrl",
+          "event_id": "03f990770c55f220108589d8fcee6f86",
+          "match": "Gold Coast Titans vs Canterbury Bulldogs",
+          "commence_time": "2026-06-26T08:00:00Z",
+          "bookmaker": "SportsBet",
+          "market_key": "totals",
+          "market_family": "totals",
+          "label": "SportsBet totals Over 46.5",
+          "selection": "Over",
+          "point": "46.5",
+          "player": null,
+          "decimal_odds": "1.9",
+          "implied_probability": "0.5263",
+          "source": "live_event_market",
+          "stale": false,
+          "data_quality_flags": [
+            "source_live"
+          ]
+        }
+      ],
+      "combined_odds": 6.7868,
+      "edge_pct": -6.0,
+      "stake_pct": 0.0,
+      "stake_aud": 0.0,
+      "bookmaker": "SportsBet",
+      "source": "live_event_market",
+      "model_probability": 0.1385,
+      "fair_odds": 7.2202,
+      "min_acceptable_odds": 7.58,
+      "estimated_leg_product_odds": null,
+      "exact_slip_odds": null,
+      "decision": "skip",
+      "warnings": [
+        "edge -6.0% below threshold 8% for high correlation",
+        "leg product 6.7868 below min acceptable 7.58",
+        "correlation=high"
+      ],
+      "copy_block": "Daz Engine SGM (live): Gold Coast Titans vs Canterbury Bulldogs\n  Bookmaker: SportsBet\n  Structure: h2h + spreads + totals\n  Legs:\n    - Canterbury Bulldogs @ 1.9\n    - Canterbury Bulldogs -0.5 @ 1.88\n    - Over 46.5 @ 1.9\n  Estimated leg product: 6.79\n  Min acceptable slip odds: 7.58\n  Estimated edge: -6.0%\n  Correlation: high | Confidence: low\n  Action: BUILD - confirm exact slip odds at SportsBet, PLACE if >= 7.58\n  Warnings:\n    - edge -6.0% below threshold 8% for high correlation\n    - leg product 6.7868 below min acceptable 7.58"
+    },
+    {
+      "candidate_id": "sgm-live-26f6a7f177fa",
+      "sport": "NRL",
+      "match": "Brisbane Broncos vs Sydney Roosters",
+      "name": "h2h + spreads + totals",
+      "legs": [
+        {
+          "leg_id": "leg-167e44ef0c8c",
+          "sport": "NRL",
+          "sport_key": "rugbyleague_nrl",
+          "event_id": "b474e3a82e380e9d6df4cc2e0a0a8475",
+          "match": "Brisbane Broncos vs Sydney Roosters",
+          "commence_time": "2026-06-26T10:00:00Z",
+          "bookmaker": "SportsBet",
+          "market_key": "h2h",
+          "market_family": "h2h",
+          "label": "SportsBet h2h Sydney Roosters",
+          "selection": "Sydney Roosters",
+          "point": null,
+          "player": null,
+          "decimal_odds": "1.7",
+          "implied_probability": "0.5882",
+          "source": "live_event_market",
+          "stale": false,
+          "data_quality_flags": [
+            "source_live"
+          ]
+        },
+        {
+          "leg_id": "leg-24d0997f9fde",
+          "sport": "NRL",
+          "sport_key": "rugbyleague_nrl",
+          "event_id": "b474e3a82e380e9d6df4cc2e0a0a8475",
+          "match": "Brisbane Broncos vs Sydney Roosters",
+          "commence_time": "2026-06-26T10:00:00Z",
+          "bookmaker": "SportsBet",
+          "market_key": "spreads",
+          "market_family": "spread",
+          "label": "SportsBet spreads Brisbane Broncos 2.5",
+          "selection": "Brisbane Broncos",
+          "point": "2.5",
+          "player": null,
+          "decimal_odds": "1.9",
+          "implied_probability": "0.5263",
+          "source": "live_event_market",
+          "stale": false,
+          "data_quality_flags": [
+            "source_live"
+          ]
+        },
+        {
+          "leg_id": "leg-0c69f31c1759",
+          "sport": "NRL",
+          "sport_key": "rugbyleague_nrl",
+          "event_id": "b474e3a82e380e9d6df4cc2e0a0a8475",
+          "match": "Brisbane Broncos vs Sydney Roosters",
+          "commence_time": "2026-06-26T10:00:00Z",
+          "bookmaker": "SportsBet",
+          "market_key": "totals",
+          "market_family": "totals",
+          "label": "SportsBet totals Under 50.5",
+          "selection": "Under",
+          "point": "50.5",
+          "player": null,
+          "decimal_odds": "1.86",
+          "implied_probability": "0.5376",
+          "source": "live_event_market",
+          "stale": false,
+          "data_quality_flags": [
+            "source_live"
+          ]
+        }
+      ],
+      "combined_odds": 6.0078,
+      "edge_pct": -6.7,
+      "stake_pct": 0.0,
+      "stake_aud": 0.0,
+      "bookmaker": "SportsBet",
+      "source": "live_event_market",
+      "model_probability": 0.1553,
+      "fair_odds": 6.4392,
+      "min_acceptable_odds": 6.76,
+      "estimated_leg_product_odds": null,
+      "exact_slip_odds": null,
+      "decision": "skip",
+      "warnings": [
+        "edge -6.7% below threshold 8% for high correlation",
+        "leg product 6.0078 below min acceptable 6.76",
+        "correlation=high"
+      ],
+      "copy_block": "Daz Engine SGM (live): Brisbane Broncos vs Sydney Roosters\n  Bookmaker: SportsBet\n  Structure: h2h + spreads + totals\n  Legs:\n    - Sydney Roosters @ 1.7\n    - Brisbane Broncos 2.5 @ 1.9\n    - Under 50.5 @ 1.86\n  Estimated leg product: 6.01\n  Min acceptable slip odds: 6.76\n  Estimated edge: -6.7%\n  Correlation: high | Confidence: low\n  Action: BUILD - confirm exact slip odds at SportsBet, PLACE if >= 6.76\n  Warnings:\n    - edge -6.7% below threshold 8% for high correlation\n    - leg product 6.0078 below min acceptable 6.76"
+    },
+    {
+      "candidate_id": "sgm-live-2b4f4c3d0ac5",
+      "sport": "NRL",
+      "match": "Dolphins vs New Zealand Warriors",
+      "name": "h2h + spreads + totals",
+      "legs": [
+        {
+          "leg_id": "leg-da67c25c193c",
+          "sport": "NRL",
+          "sport_key": "rugbyleague_nrl",
+          "event_id": "4db58b0bfb366580202945bda84ba1bb",
+          "match": "Dolphins vs New Zealand Warriors",
+          "commence_time": "2026-06-27T05:00:00Z",
+          "bookmaker": "SportsBet",
+          "market_key": "h2h",
+          "market_family": "h2h",
+          "label": "SportsBet h2h Dolphins",
+          "selection": "Dolphins",
+          "point": null,
+          "player": null,
+          "decimal_odds": "1.67",
+          "implied_probability": "0.5988",
+          "source": "live_event_market",
+          "stale": false,
+          "data_quality_flags": [
+            "source_live"
+          ]
+        },
+        {
+          "leg_id": "leg-b07c92d202ac",
+          "sport": "NRL",
+          "sport_key": "rugbyleague_nrl",
+          "event_id": "4db58b0bfb366580202945bda84ba1bb",
+          "match": "Dolphins vs New Zealand Warriors",
+          "commence_time": "2026-06-27T05:00:00Z",
+          "bookmaker": "SportsBet",
+          "market_key": "spreads",
+          "market_family": "spread",
+          "label": "SportsBet spreads Dolphins -3.5",
+          "selection": "Dolphins",
+          "point": "-3.5",
+          "player": null,
+          "decimal_odds": "1.86",
+          "implied_probability": "0.5376",
+          "source": "live_event_market",
+          "stale": false,
+          "data_quality_flags": [
+            "source_live"
+          ]
+        },
+        {
+          "leg_id": "leg-3222b7cdfd9a",
+          "sport": "NRL",
+          "sport_key": "rugbyleague_nrl",
+          "event_id": "4db58b0bfb366580202945bda84ba1bb",
+          "match": "Dolphins vs New Zealand Warriors",
+          "commence_time": "2026-06-27T05:00:00Z",
+          "bookmaker": "SportsBet",
+          "market_key": "totals",
+          "market_family": "totals",
+          "label": "SportsBet totals Over 51.5",
+          "selection": "Over",
+          "point": "51.5",
+          "player": null,
+          "decimal_odds": "1.9",
+          "implied_probability": "0.5263",
+          "source": "live_event_market",
+          "stale": false,
+          "data_quality_flags": [
+            "source_live"
+          ]
+        }
+      ],
+      "combined_odds": 5.9018,
+      "edge_pct": -8.5,
+      "stake_pct": 0.0,
+      "stake_aud": 0.0,
+      "bookmaker": "SportsBet",
+      "source": "live_event_market",
+      "model_probability": 0.155,
+      "fair_odds": 6.4516,
+      "min_acceptable_odds": 6.77,
+      "estimated_leg_product_odds": null,
+      "exact_slip_odds": null,
+      "decision": "skip",
+      "warnings": [
+        "edge -8.5% below threshold 8% for high correlation",
+        "leg product 5.9018 below min acceptable 6.77",
+        "correlation=high"
+      ],
+      "copy_block": "Daz Engine SGM (live): Dolphins vs New Zealand Warriors\n  Bookmaker: SportsBet\n  Structure: h2h + spreads + totals\n  Legs:\n    - Dolphins @ 1.67\n    - Dolphins -3.5 @ 1.86\n    - Over 51.5 @ 1.9\n  Estimated leg product: 5.90\n  Min acceptable slip odds: 6.77\n  Estimated edge: -8.5%\n  Correlation: high | Confidence: low\n  Action: BUILD - confirm exact slip odds at SportsBet, PLACE if >= 6.77\n  Warnings:\n    - edge -8.5% below threshold 8% for high correlation\n    - leg product 5.9018 below min acceptable 6.77"
+    },
+    {
+      "candidate_id": "sgm-live-2eb82f3c5929",
+      "sport": "NRL",
+      "match": "Parramatta Eels vs South Sydney Rabbitohs",
+      "name": "h2h + spreads + totals",
+      "legs": [
+        {
+          "leg_id": "leg-740c87bda6d4",
+          "sport": "NRL",
+          "sport_key": "rugbyleague_nrl",
+          "event_id": "6d00750de0e449525bebc58e7453e6d7",
+          "match": "Parramatta Eels vs South Sydney Rabbitohs",
+          "commence_time": "2026-06-25T09:50:00Z",
+          "bookmaker": "SportsBet",
+          "market_key": "h2h",
+          "market_family": "h2h",
+          "label": "SportsBet h2h South Sydney Rabbitohs",
+          "selection": "South Sydney Rabbitohs",
+          "point": null,
+          "player": null,
+          "decimal_odds": "1.53",
+          "implied_probability": "0.6536",
+          "source": "live_event_market",
+          "stale": false,
+          "data_quality_flags": [
+            "source_live"
+          ]
+        },
+        {
+          "leg_id": "leg-c90a296b8ad7",
+          "sport": "NRL",
+          "sport_key": "rugbyleague_nrl",
+          "event_id": "6d00750de0e449525bebc58e7453e6d7",
+          "match": "Parramatta Eels vs South Sydney Rabbitohs",
+          "commence_time": "2026-06-25T09:50:00Z",
+          "bookmaker": "SportsBet",
+          "market_key": "spreads",
+          "market_family": "spread",
+          "label": "SportsBet spreads South Sydney Rabbitohs -5.5",
+          "selection": "South Sydney Rabbitohs",
+          "point": "-5.5",
+          "player": null,
+          "decimal_odds": "1.83",
+          "implied_probability": "0.5464",
+          "source": "live_event_market",
+          "stale": false,
+          "data_quality_flags": [
+            "source_live"
+          ]
+        },
+        {
+          "leg_id": "leg-7938fba9b7b4",
+          "sport": "NRL",
+          "sport_key": "rugbyleague_nrl",
+          "event_id": "6d00750de0e449525bebc58e7453e6d7",
+          "match": "Parramatta Eels vs South Sydney Rabbitohs",
+          "commence_time": "2026-06-25T09:50:00Z",
+          "bookmaker": "SportsBet",
+          "market_key": "totals",
+          "market_family": "totals",
+          "label": "SportsBet totals Over 49.5",
+          "selection": "Over",
+          "point": "49.5",
+          "player": null,
+          "decimal_odds": "1.9",
+          "implied_probability": "0.5263",
+          "source": "live_event_market",
+          "stale": false,
+          "data_quality_flags": [
+            "source_live"
+          ]
+        }
+      ],
+      "combined_odds": 5.3198,
+      "edge_pct": -9.5,
+      "stake_pct": 0.0,
+      "stake_aud": 0.0,
+      "bookmaker": "SportsBet",
+      "source": "live_event_market",
+      "model_probability": 0.1702,
+      "fair_odds": 5.8754,
+      "min_acceptable_odds": 6.17,
+      "estimated_leg_product_odds": null,
+      "exact_slip_odds": null,
+      "decision": "skip",
+      "warnings": [
+        "edge -9.5% below threshold 8% for high correlation",
+        "leg product 5.3198 below min acceptable 6.17",
+        "correlation=high"
+      ],
+      "copy_block": "Daz Engine SGM (live): Parramatta Eels vs South Sydney Rabbitohs\n  Bookmaker: SportsBet\n  Structure: h2h + spreads + totals\n  Legs:\n    - South Sydney Rabbitohs @ 1.53\n    - South Sydney Rabbitohs -5.5 @ 1.83\n    - Over 49.5 @ 1.9\n  Estimated leg product: 5.32\n  Min acceptable slip odds: 6.17\n  Estimated edge: -9.5%\n  Correlation: high | Confidence: low\n  Action: BUILD - confirm exact slip odds at SportsBet, PLACE if >= 6.17\n  Warnings:\n    - edge -9.5% below threshold 8% for high correlation\n    - leg product 5.3198 below min acceptable 6.17"
+    }
+  ],
+  "multis": [],
+  "nrl_context": [
+    "New Zealand Warriors vs North Queensland Cowboys: watch (49/100) -> North Queensland Cowboys",
+    "Melbourne Storm vs Canberra Raiders: watch (42/100) -> Canberra Raiders",
+    "Sydney Roosters vs Cronulla Sutherland Sharks: watch (51/100) -> Cronulla Sutherland Sharks"
+  ],
+  "blocked": [
+    "No 3-leg SGM cleared the +5% model-edge bar.",
+    "Only 2 qualifying pure edge legs, so no 3-leg multi.",
+    "NRL produced no back/lean verdict with positive stake."
+  ],
+  "health": {
+    "target_iso": "2026-06-21",
+    "generated_at": "2026-06-22T07:18:16.639260+00:00",
+    "overall_status": "warn",
+    "blocking_reasons": [],
+    "warnings": [
+      "nrl_odds: stale (age 813m > 240m)",
+      "nrl_team_context: stale (age 811m > 720m)",
+      "nrl_team_news: stale (age 811m > 720m)",
+      "engine_picks_ledger: stale (age 187m > 60m)",
+      "NRL context: 17 of 17 teams stale"
+    ],
+    "sources": [
+      {
+        "source_id": "wc_odds",
+        "path": "/home/daz/projects/daz-betting-engine/data/odds_cache/soccer_fifa_world_cup/2026-06-22.json",
+        "exists": true,
+        "age_minutes": 1.5,
+        "status": "fresh",
+        "message": "fresh (age 1m <= 240m)"
+      },
+      {
+        "source_id": "nrl_odds",
+        "path": "/home/daz/projects/daz-betting-engine/data/odds_cache/rugbyleague_nrl/2026-06-21.json",
+        "exists": true,
+        "age_minutes": 813.0,
+        "status": "stale",
+        "message": "stale (age 813m > 240m)"
+      },
+      {
+        "source_id": "wc_model_state",
+        "path": "/home/daz/projects/daz-betting-engine/data/wc_training/international_state_v3_calibrated.json",
+        "exists": true,
+        "age_minutes": 811.3,
+        "status": "fresh",
+        "message": "fresh (age 811m <= 1440m)"
+      },
+      {
+        "source_id": "wc_calibrator",
+        "path": "/home/daz/projects/daz-betting-engine/data/wc_training/wc_calibrator_v3.pkl",
+        "exists": true,
+        "age_minutes": 811.3,
+        "status": "fresh",
+        "message": "fresh (age 811m <= 1440m)"
+      },
+      {
+        "source_id": "nrl_team_context",
+        "path": "/home/daz/projects/daz-betting-engine/data/nrl/team_context.json",
+        "exists": true,
+        "age_minutes": 811.1,
+        "status": "stale",
+        "message": "stale (age 811m > 720m)"
+      },
+      {
+        "source_id": "nrl_team_news",
+        "path": "/home/daz/projects/daz-betting-engine/data/nrl/team_news.json",
+        "exists": true,
+        "age_minutes": 811.1,
+        "status": "stale",
+        "message": "stale (age 811m > 720m)"
+      },
+      {
+        "source_id": "player_ratings",
+        "path": "/home/daz/projects/daz-betting-engine/data/players/player_ratings.json",
+        "exists": true,
+        "age_minutes": 1335.5,
+        "status": "fresh",
+        "message": "fresh (age 1335m <= 1440m)"
+      },
+      {
+        "source_id": "player_stats",
+        "path": "/home/daz/projects/daz-betting-engine/data/players/wc_2026_player_stats.json",
+        "exists": true,
+        "age_minutes": 186.3,
+        "status": "fresh",
+        "message": "fresh (age 186m <= 1440m)"
+      },
+      {
+        "source_id": "engine_picks_ledger",
+        "path": "/home/daz/projects/daz-betting-engine/data/engine_picks/sgm-2026-06-21.jsonl",
+        "exists": true,
+        "age_minutes": 186.6,
+        "status": "stale",
+        "message": "stale (age 187m > 60m)"
+      },
+      {
+        "source_id": "forward_test_ledger",
+        "path": "/home/daz/projects/daz-betting-engine/data/forward_test/forward-test-2026-06-23.jsonl",
+        "exists": true,
+        "age_minutes": 41.2,
+        "status": "fresh",
+        "message": "fresh (age 41m <= 60m)"
+      }
+    ]
+  },
+  "promos": [
+    {
+      "promo_id": "sportsbet-return-2026-06-21-1",
+      "bookmaker": "sportsbet",
+      "stake_aud": 0.0,
+      "structure": "no_play",
+      "legs": [],
+      "cash_ev_aud": 0.0,
+      "refund_ev_aud": 0.0,
+      "total_ev_aud": 0.0,
+      "bonus_conversion_assumption_pct": 0.75,
+      "decision": "skip",
+      "warnings": [
+        "expired"
+      ]
+    }
+  ],
+  "conversions": [
+    {
+      "candidate_id": "conv-Tunisia_vs_Japan-Tunisia_to_Win",
+      "event": "Tunisia vs Japan",
+      "selection": "Tunisia to Win",
+      "bonus_stake_aud": 50.0,
+      "back_odds": 7.0,
+      "lay_odds": 7.3500000000000005,
+      "lay_stake_aud": 41.1,
+      "liability_aud": 260.96,
+      "cash_recovered_if_back_wins": 39.04,
+      "cash_recovered_if_lay_wins": 39.04,
+      "recovery_pct": 78.08,
+      "decision": "convert",
+      "warnings": [
+        "liquidity-unknown-check-betfair"
+      ]
+    },
+    {
+      "candidate_id": "conv-Germany_vs_Ivory_Coast-Ivory_Coast_to_Win",
+      "event": "Germany vs Ivory Coast",
+      "selection": "Ivory Coast to Win",
+      "bonus_stake_aud": 50.0,
+      "back_odds": 6.4,
+      "lay_odds": 6.720000000000001,
+      "lay_stake_aud": 40.48,
+      "liability_aud": 231.54,
+      "cash_recovered_if_back_wins": 38.46,
+      "cash_recovered_if_lay_wins": 38.46,
+      "recovery_pct": 76.91,
+      "decision": "convert",
+      "warnings": [
+        "liquidity-unknown-check-betfair"
+      ]
+    }
+  ],
+  "performance": {
+    "target_iso": "2026-06-21",
+    "generated_at": "2026-06-22T07:18:16.642987+00:00",
+    "n_picks": 106,
+    "n_pending": 106,
+    "n_settled": 0,
+    "n_won": 0,
+    "n_lost": 0,
+    "n_void": 0,
+    "hit_rate_pct": 0.0,
+    "roi_pct": 0,
+    "brier_score": null,
+    "clv_pct": null,
+    "clv_by_sport": {},
+    "confidence_gate": "insufficient_data",
+    "warnings": [
+      "only 0 settled picks; need 30+ for normal gate"
+    ]
+  },
+  "sgm_reference": [
     {
       "candidate_id": "sgm-Netherlands_vs_Sweden-Netherlands_+_Under_2.5_+_BTTS_No",
       "sport": "WC",
@@ -69,198 +1077,543 @@
           "odds": 1.8
         }
       ],
-      "combined_odds": 9.84710743801653,
+      "combined_odds": 303.852281283058,
       "edge_pct": -17.72,
       "stake_pct": 0.0,
       "stake_aud": 0.0,
       "bookmaker": "sportsbet",
       "source": "data/engine_picks/sgm-2026-06-21.jsonl",
-      "model_probability": 0.08355753252203103,
-      "fair_odds": 11.967801942168851,
-      "min_acceptable_odds": 12.566192039277293,
+      "model_probability": 0.002707894759011234,
+      "fair_odds": 369.29057034887944,
+      "min_acceptable_odds": 387.7550988663234,
       "estimated_leg_product_odds": null,
-      "exact_slip_odds": 9.84710743801653,
+      "exact_slip_odds": 303.852281283058,
       "decision": "skip",
       "warnings": [],
-      "copy_block": "Daz Engine SGM: Netherlands vs Sweden\n  Structure: Netherlands + Under 2.5 + BTTS No\n  Combined odds (estimated): 9.85\n  Model edge: -17.7%\n  Min acceptable slip odds: 12.57\n  Action: BUILD - check exact slip odds at bookie, then PLACE if >= 12.57"
-    }
-  ],
-  "multis": [],
-  "nrl_context": [
-    "New Zealand Warriors vs North Queensland Cowboys: watch (49/100) -> North Queensland Cowboys",
-    "Melbourne Storm vs Canberra Raiders: skip (38/100) -> Canberra Raiders",
-    "Sydney Roosters vs Cronulla Sutherland Sharks: watch (51/100) -> Cronulla Sutherland Sharks"
-  ],
-  "blocked": [
-    "No 3-leg SGM cleared the +5% model-edge bar.",
-    "Only 2 qualifying pure edge legs, so no 3-leg multi.",
-    "NRL produced no back/lean verdict with positive stake.",
-    "wc_odds stale — pure edges downgraded to WATCH (verify at bookie)",
-    "wc_odds stale — conversion downgraded to watch (verify slip odds manually)"
-  ],
-  "health": {
-    "target_iso": "2026-06-21",
-    "generated_at": "2026-06-20T19:41:22.004216+00:00",
-    "overall_status": "warn",
-    "blocking_reasons": [],
-    "warnings": [
-      "wc_odds: stale (age 786m > 240m)",
-      "nrl_odds: stale (age 786m > 240m)"
-    ],
-    "sources": [
-      {
-        "source_id": "wc_odds",
-        "path": "/home/daz/projects/daz-betting-engine/data/odds_cache/soccer_fifa_world_cup/2026-06-20.json",
-        "exists": true,
-        "age_minutes": 786.2,
-        "status": "stale",
-        "message": "stale (age 786m > 240m)"
-      },
-      {
-        "source_id": "nrl_odds",
-        "path": "/home/daz/projects/daz-betting-engine/data/odds_cache/rugbyleague_nrl/2026-06-20.json",
-        "exists": true,
-        "age_minutes": 786.2,
-        "status": "stale",
-        "message": "stale (age 786m > 240m)"
-      },
-      {
-        "source_id": "wc_model_state",
-        "path": "/home/daz/projects/daz-betting-engine/data/wc_training/international_state_v3_calibrated.json",
-        "exists": true,
-        "age_minutes": 1414.5,
-        "status": "fresh",
-        "message": "fresh (age 1414m <= 1440m)"
-      },
-      {
-        "source_id": "wc_calibrator",
-        "path": "/home/daz/projects/daz-betting-engine/data/wc_training/wc_calibrator_v3.pkl",
-        "exists": true,
-        "age_minutes": 1414.5,
-        "status": "fresh",
-        "message": "fresh (age 1414m <= 1440m)"
-      },
-      {
-        "source_id": "nrl_team_context",
-        "path": "/home/daz/projects/daz-betting-engine/data/nrl/team_context.json",
-        "exists": true,
-        "age_minutes": 45.6,
-        "status": "fresh",
-        "message": "fresh (age 46m <= 720m)"
-      },
-      {
-        "source_id": "nrl_team_news",
-        "path": "/home/daz/projects/daz-betting-engine/data/nrl/team_news.json",
-        "exists": true,
-        "age_minutes": 45.6,
-        "status": "fresh",
-        "message": "fresh (age 46m <= 720m)"
-      },
-      {
-        "source_id": "player_ratings",
-        "path": "/home/daz/projects/daz-betting-engine/data/players/player_ratings.json",
-        "exists": true,
-        "age_minutes": 826.5,
-        "status": "fresh",
-        "message": "fresh (age 827m <= 1440m)"
-      },
-      {
-        "source_id": "player_stats",
-        "path": "/home/daz/projects/daz-betting-engine/data/players/wc_2026_player_stats.json",
-        "exists": true,
-        "age_minutes": 1.0,
-        "status": "fresh",
-        "message": "fresh (age 1m <= 1440m)"
-      },
-      {
-        "source_id": "engine_picks_ledger",
-        "path": "/home/daz/projects/daz-betting-engine/data/engine_picks/sgm-2026-06-21.jsonl",
-        "exists": true,
-        "age_minutes": 0.3,
-        "status": "fresh",
-        "message": "fresh (age 0m <= 60m)"
-      },
-      {
-        "source_id": "forward_test_ledger",
-        "path": "/home/daz/projects/daz-betting-engine/data/forward_test/forward-test-2026-06-21.jsonl",
-        "exists": true,
-        "age_minutes": 20.1,
-        "status": "fresh",
-        "message": "fresh (age 20m <= 60m)"
-      }
-    ]
-  },
-  "promos": [
-    {
-      "promo_id": "sportsbet-return-2026-06-21-1",
-      "bookmaker": "sportsbet",
-      "stake_aud": 0.0,
-      "structure": "no_play",
-      "legs": [],
-      "cash_ev_aud": 0.0,
-      "refund_ev_aud": 0.0,
-      "total_ev_aud": 0.0,
-      "bonus_conversion_assumption_pct": 0.75,
-      "decision": "skip",
-      "warnings": [
-        "insufficient-qualifying-legs (2<3)"
-      ]
-    }
-  ],
-  "conversions": [
-    {
-      "candidate_id": "conv-Tunisia_vs_Japan-Tunisia_to_Win",
-      "event": "Tunisia vs Japan",
-      "selection": "Tunisia to Win",
-      "bonus_stake_aud": 50.0,
-      "back_odds": 7.0,
-      "lay_odds": 7.3500000000000005,
-      "lay_stake_aud": 41.1,
-      "liability_aud": 260.96,
-      "cash_recovered_if_back_wins": 39.04,
-      "cash_recovered_if_lay_wins": 39.04,
-      "recovery_pct": 78.08,
-      "decision": "watch",
-      "warnings": [
-        "liquidity-unknown-check-betfair"
-      ]
+      "copy_block": "Daz Engine SGM: Netherlands vs Sweden\n  Structure: Netherlands + Under 2.5 + BTTS No\n  Combined odds (estimated): 303.85\n  Model edge: -17.7%\n  Min acceptable slip odds: 387.76\n  Action: BUILD - check exact slip odds at bookie, then PLACE if >= 387.76"
     },
     {
-      "candidate_id": "conv-Germany_vs_Ivory_Coast-Ivory_Coast_to_Win",
-      "event": "Germany vs Ivory Coast",
-      "selection": "Ivory Coast to Win",
-      "bonus_stake_aud": 50.0,
-      "back_odds": 6.4,
-      "lay_odds": 6.720000000000001,
-      "lay_stake_aud": 40.48,
-      "liability_aud": 231.54,
-      "cash_recovered_if_back_wins": 38.46,
-      "cash_recovered_if_lay_wins": 38.46,
-      "recovery_pct": 76.91,
-      "decision": "watch",
-      "warnings": [
-        "liquidity-unknown-check-betfair"
-      ]
+      "candidate_id": "sgm-Germany_vs_Ivory_Coast-Germany_+_Under_2.5_+_BTTS_No",
+      "sport": "WC",
+      "match": "Germany vs Ivory Coast",
+      "name": "Germany + Under 2.5 + BTTS No",
+      "legs": [
+        {
+          "label": "Germany Win",
+          "market": "h2h",
+          "selection": "home",
+          "odds": 1.6
+        },
+        {
+          "label": "Under 2.5",
+          "market": "totals",
+          "selection": "under_2_5",
+          "odds": 1.7
+        },
+        {
+          "label": "BTTS No",
+          "market": "btts",
+          "selection": "btts_no",
+          "odds": 1.8
+        }
+      ],
+      "combined_odds": 4.2,
+      "edge_pct": -20.99,
+      "stake_pct": 0.0,
+      "stake_aud": 0.0,
+      "bookmaker": "sportsbet",
+      "source": "data/engine_picks/sgm-2026-06-21.jsonl",
+      "model_probability": 0.18811904761904763,
+      "fair_odds": 5.31578281230224,
+      "min_acceptable_odds": 5.581571952917352,
+      "estimated_leg_product_odds": null,
+      "exact_slip_odds": 4.2,
+      "decision": "skip",
+      "warnings": [],
+      "copy_block": "Daz Engine SGM: Germany vs Ivory Coast\n  Structure: Germany + Under 2.5 + BTTS No\n  Combined odds (estimated): 4.20\n  Model edge: -21.0%\n  Min acceptable slip odds: 5.58\n  Action: BUILD - check exact slip odds at bookie, then PLACE if >= 5.58"
+    },
+    {
+      "candidate_id": "sgm-Belgium_vs_Iran-Belgium_+_Under_2.5_+_BTTS_No",
+      "sport": "WC",
+      "match": "Belgium vs Iran",
+      "name": "Belgium + Under 2.5 + BTTS No",
+      "legs": [
+        {
+          "label": "Belgium Win",
+          "market": "h2h",
+          "selection": "home",
+          "odds": 1.42
+        },
+        {
+          "label": "Under 2.5",
+          "market": "totals",
+          "selection": "under_2_5",
+          "odds": 1.7
+        },
+        {
+          "label": "BTTS No",
+          "market": "btts",
+          "selection": "btts_no",
+          "odds": 1.8
+        }
+      ],
+      "combined_odds": 8.5,
+      "edge_pct": -29.82,
+      "stake_pct": 0.0,
+      "stake_aud": 0.0,
+      "bookmaker": "sportsbet",
+      "source": "data/engine_picks/sgm-2026-06-21.jsonl",
+      "model_probability": 0.08256470588235294,
+      "fair_odds": 12.111712738671987,
+      "min_acceptable_odds": 12.717298375605587,
+      "estimated_leg_product_odds": null,
+      "exact_slip_odds": 8.5,
+      "decision": "skip",
+      "warnings": [],
+      "copy_block": "Daz Engine SGM: Belgium vs Iran\n  Structure: Belgium + Under 2.5 + BTTS No\n  Combined odds (estimated): 8.50\n  Model edge: -29.8%\n  Min acceptable slip odds: 12.72\n  Action: BUILD - check exact slip odds at bookie, then PLACE if >= 12.72"
+    },
+    {
+      "candidate_id": "sgm-Uruguay_vs_Cape_Verde-Uruguay_+_Under_2.5_+_BTTS_No",
+      "sport": "WC",
+      "match": "Uruguay vs Cape Verde",
+      "name": "Uruguay + Under 2.5 + BTTS No",
+      "legs": [
+        {
+          "label": "Uruguay Win",
+          "market": "h2h",
+          "selection": "home",
+          "odds": 1.45
+        },
+        {
+          "label": "Under 2.5",
+          "market": "totals",
+          "selection": "under_2_5",
+          "odds": 1.7
+        },
+        {
+          "label": "BTTS No",
+          "market": "btts",
+          "selection": "btts_no",
+          "odds": 1.6
+        }
+      ],
+      "combined_odds": 4.54,
+      "edge_pct": -33.4,
+      "stake_pct": 0.0,
+      "stake_aud": 0.0,
+      "bookmaker": "sportsbet",
+      "source": "data/engine_picks/sgm-2026-06-21.jsonl",
+      "model_probability": 0.14669603524229075,
+      "fair_odds": 6.816816816816817,
+      "min_acceptable_odds": 7.1576576576576585,
+      "estimated_leg_product_odds": null,
+      "exact_slip_odds": null,
+      "decision": "skip",
+      "warnings": [],
+      "copy_block": "Daz Engine SGM: Uruguay vs Cape Verde\n  Structure: Uruguay + Under 2.5 + BTTS No\n  Combined odds (estimated): 4.54\n  Model edge: -33.4%\n  Min acceptable slip odds: 7.16\n  Action: BUILD - check exact slip odds at bookie, then PLACE if >= 7.16"
     }
   ],
-  "performance": {
-    "target_iso": "2026-06-21",
-    "generated_at": "2026-06-20T19:41:22.007686+00:00",
-    "n_picks": 80,
-    "n_pending": 80,
-    "n_settled": 0,
-    "n_won": 0,
-    "n_lost": 0,
-    "n_void": 0,
-    "hit_rate_pct": 0.0,
-    "roi_pct": 0,
-    "brier_score": null,
-    "clv_pct": null,
-    "clv_by_sport": {},
-    "confidence_gate": "insufficient_data",
-    "warnings": [
-      "only 0 settled picks; need 30+ for normal gate"
-    ]
+  "sgm_blocked": [],
+  "prop_market_audit": {
+    "WC": {
+      "is_live": true,
+      "events_seen": 32,
+      "events_with": {
+        "h2h": 32,
+        "totals": 32,
+        "spreads": 32,
+        "btts": 6,
+        "team_totals": 6,
+        "alternate_totals_corners": 6,
+        "alternate_totals_cards": 6
+      },
+      "blocked_markets": [],
+      "blocked_reason": null
+    },
+    "NRL": {
+      "is_live": true,
+      "events_seen": 8,
+      "events_with": {
+        "h2h": 8,
+        "spreads": 4,
+        "totals": 4,
+        "team_totals": 0,
+        "player_try_scorer_anytime": 0,
+        "player_try_scorer_first": 0,
+        "player_try_scorer_last": 0,
+        "player_try_scorer_over": 0
+      },
+      "blocked_markets": [
+        "team_totals",
+        "player_try_scorer_anytime",
+        "player_try_scorer_first",
+        "player_try_scorer_last",
+        "player_try_scorer_over"
+      ],
+      "blocked_reason": "cache_sport=rugbyleague_nrl markets=['h2h', 'spreads', 'totals'] missing=['team_totals', 'player_try_scorer_anytime', 'player_try_scorer_first', 'player_try_scorer_last', 'player_try_scorer_over'] cause=missing_live_markets"
+    }
+  },
+  "liquidity_operator": {
+    "version": "h4",
+    "date": "2026-06-21",
+    "status": "warn",
+    "summary": "2 core place, 2 conversion, 3 action-small, 4 paper, 1 pass reasons",
+    "lanes": {
+      "core": [
+        {
+          "lane": "core",
+          "decision": "PLACE",
+          "sport": "WC",
+          "event": "Tunisia vs Japan",
+          "selection": "Tunisia to Win",
+          "market": "pure edge",
+          "bookmaker": "best cache",
+          "odds": 7.0,
+          "fair_odds": 3.536067892503536,
+          "edge_pct": 13.99,
+          "stake_aud": 10.0,
+          "stake_cap_aud": null,
+          "expected_value_note": "model edge +14.0% on back odds 7.00",
+          "why": [
+            "positive model edge",
+            "fresh odds",
+            "stake_pct > 0"
+          ],
+          "risks": [
+            "bookmaker margin",
+            "model risk"
+          ],
+          "requires": [
+            "wc_odds fresh"
+          ],
+          "source_ref": "BetCandidate:Tunisia vs Japan:Tunisia to Win"
+        },
+        {
+          "lane": "core",
+          "decision": "PLACE",
+          "sport": "WC",
+          "event": "Germany vs Ivory Coast",
+          "selection": "Ivory Coast to Win",
+          "market": "pure edge",
+          "bookmaker": "best cache",
+          "odds": 6.4,
+          "fair_odds": 4.737091425864519,
+          "edge_pct": 5.48,
+          "stake_aud": 10.0,
+          "stake_cap_aud": null,
+          "expected_value_note": "model edge +5.5% on back odds 6.40",
+          "why": [
+            "positive model edge",
+            "fresh odds",
+            "stake_pct > 0"
+          ],
+          "risks": [
+            "bookmaker margin",
+            "model risk"
+          ],
+          "requires": [
+            "wc_odds fresh"
+          ],
+          "source_ref": "BetCandidate:Germany vs Ivory Coast:Ivory Coast to Win"
+        }
+      ],
+      "promo_value": [],
+      "conversion": [
+        {
+          "lane": "conversion",
+          "decision": "PLACE",
+          "sport": "",
+          "event": "Tunisia vs Japan",
+          "selection": "Tunisia to Win",
+          "market": "bonus_conversion",
+          "bookmaker": "Betfair",
+          "odds": 7.0,
+          "fair_odds": null,
+          "edge_pct": null,
+          "stake_aud": 50.0,
+          "stake_cap_aud": 50.0,
+          "expected_value_note": "estimated recovery 78.1% via Betfair lay",
+          "why": "recovery 78.1% via Betfair lay",
+          "risks": [
+            "Betfair liquidity risk",
+            "model assumptions"
+          ],
+          "requires": [
+            "Betfair lay odds",
+            "commission rate"
+          ],
+          "source_ref": "BonusConversionCandidate:conv-Tunisia_vs_Japan-Tunisia_to_Win"
+        },
+        {
+          "lane": "conversion",
+          "decision": "PLACE",
+          "sport": "",
+          "event": "Germany vs Ivory Coast",
+          "selection": "Ivory Coast to Win",
+          "market": "bonus_conversion",
+          "bookmaker": "Betfair",
+          "odds": 6.4,
+          "fair_odds": null,
+          "edge_pct": null,
+          "stake_aud": 50.0,
+          "stake_cap_aud": 50.0,
+          "expected_value_note": "estimated recovery 76.9% via Betfair lay",
+          "why": "recovery 76.9% via Betfair lay",
+          "risks": [
+            "Betfair liquidity risk",
+            "model assumptions"
+          ],
+          "requires": [
+            "Betfair lay odds",
+            "commission rate"
+          ],
+          "source_ref": "BonusConversionCandidate:conv-Germany_vs_Ivory_Coast-Ivory_Coast_to_Win"
+        }
+      ],
+      "build_check": [],
+      "action_small": [
+        {
+          "lane": "action_small",
+          "decision": "WATCH",
+          "sport": "WC",
+          "event": "New Zealand vs Belgium",
+          "selection": "thesis: h2h, spread, totals",
+          "market": "action_small_thesis",
+          "bookmaker": "any",
+          "odds": 0.0,
+          "fair_odds": null,
+          "edge_pct": null,
+          "stake_aud": 0.0,
+          "stake_cap_aud": 2.5,
+          "expected_value_note": "thesis only — capped at $2.50; not +EV by model",
+          "why": [
+            "high-liquidity WC market",
+            "3 live market families",
+            "low-overround book coverage"
+          ],
+          "risks": [
+            "model risk",
+            "no edge guarantee",
+            "stale odds"
+          ],
+          "requires": [
+            "user opt-in (action mode)",
+            "fresh odds"
+          ],
+          "source_ref": "ActionSmall:581691da05dcd75b5c6d3be91ee9d2ab"
+        },
+        {
+          "lane": "action_small",
+          "decision": "WATCH",
+          "sport": "WC",
+          "event": "Egypt vs Iran",
+          "selection": "thesis: h2h, spread, totals",
+          "market": "action_small_thesis",
+          "bookmaker": "any",
+          "odds": 0.0,
+          "fair_odds": null,
+          "edge_pct": null,
+          "stake_aud": 0.0,
+          "stake_cap_aud": 2.5,
+          "expected_value_note": "thesis only — capped at $2.50; not +EV by model",
+          "why": [
+            "high-liquidity WC market",
+            "3 live market families",
+            "low-overround book coverage"
+          ],
+          "risks": [
+            "model risk",
+            "no edge guarantee",
+            "stale odds"
+          ],
+          "requires": [
+            "user opt-in (action mode)",
+            "fresh odds"
+          ],
+          "source_ref": "ActionSmall:3e3b5fa2b3c963e74cf044c60db0b573"
+        },
+        {
+          "lane": "action_small",
+          "decision": "WATCH",
+          "sport": "WC",
+          "event": "Cape Verde vs Saudi Arabia",
+          "selection": "thesis: h2h, spread, totals",
+          "market": "action_small_thesis",
+          "bookmaker": "any",
+          "odds": 0.0,
+          "fair_odds": null,
+          "edge_pct": null,
+          "stake_aud": 0.0,
+          "stake_cap_aud": 2.5,
+          "expected_value_note": "thesis only — capped at $2.50; not +EV by model",
+          "why": [
+            "high-liquidity WC market",
+            "3 live market families",
+            "low-overround book coverage"
+          ],
+          "risks": [
+            "model risk",
+            "no edge guarantee",
+            "stale odds"
+          ],
+          "requires": [
+            "user opt-in (action mode)",
+            "fresh odds"
+          ],
+          "source_ref": "ActionSmall:e07b1926be5a4d515c7eb108dbcee9c5"
+        }
+      ],
+      "paper": [
+        {
+          "lane": "paper",
+          "decision": "WATCH",
+          "sport": "WC",
+          "event": "Netherlands vs Sweden",
+          "selection": "Netherlands + Under 2.5 + BTTS No",
+          "market": "sgm_3_leg",
+          "bookmaker": "sportsbet",
+          "odds": 303.852281283058,
+          "fair_odds": 369.29057034887944,
+          "edge_pct": -17.72,
+          "stake_aud": 0.0,
+          "stake_cap_aud": 0.0,
+          "expected_value_note": "heuristic structure, never stakeable",
+          "why": [
+            "track-only thesis",
+            "no live data backing"
+          ],
+          "risks": [
+            "no live data",
+            "stale model edge"
+          ],
+          "requires": [
+            "live SGM data via prop_builder"
+          ],
+          "source_ref": "SgmCandidate:sgm-Netherlands_vs_Sweden-Netherlands_+_Under_2.5_+_BTTS_No"
+        },
+        {
+          "lane": "paper",
+          "decision": "WATCH",
+          "sport": "WC",
+          "event": "Germany vs Ivory Coast",
+          "selection": "Germany + Under 2.5 + BTTS No",
+          "market": "sgm_3_leg",
+          "bookmaker": "sportsbet",
+          "odds": 4.2,
+          "fair_odds": 5.31578281230224,
+          "edge_pct": -20.99,
+          "stake_aud": 0.0,
+          "stake_cap_aud": 0.0,
+          "expected_value_note": "heuristic structure, never stakeable",
+          "why": [
+            "track-only thesis",
+            "no live data backing"
+          ],
+          "risks": [
+            "no live data",
+            "stale model edge"
+          ],
+          "requires": [
+            "live SGM data via prop_builder"
+          ],
+          "source_ref": "SgmCandidate:sgm-Germany_vs_Ivory_Coast-Germany_+_Under_2.5_+_BTTS_No"
+        },
+        {
+          "lane": "paper",
+          "decision": "WATCH",
+          "sport": "WC",
+          "event": "Belgium vs Iran",
+          "selection": "Belgium + Under 2.5 + BTTS No",
+          "market": "sgm_3_leg",
+          "bookmaker": "sportsbet",
+          "odds": 8.5,
+          "fair_odds": 12.111712738671987,
+          "edge_pct": -29.82,
+          "stake_aud": 0.0,
+          "stake_cap_aud": 0.0,
+          "expected_value_note": "heuristic structure, never stakeable",
+          "why": [
+            "track-only thesis",
+            "no live data backing"
+          ],
+          "risks": [
+            "no live data",
+            "stale model edge"
+          ],
+          "requires": [
+            "live SGM data via prop_builder"
+          ],
+          "source_ref": "SgmCandidate:sgm-Belgium_vs_Iran-Belgium_+_Under_2.5_+_BTTS_No"
+        },
+        {
+          "lane": "paper",
+          "decision": "WATCH",
+          "sport": "WC",
+          "event": "Uruguay vs Cape Verde",
+          "selection": "Uruguay + Under 2.5 + BTTS No",
+          "market": "sgm_3_leg",
+          "bookmaker": "sportsbet",
+          "odds": 4.54,
+          "fair_odds": 6.816816816816817,
+          "edge_pct": -33.4,
+          "stake_aud": 0.0,
+          "stake_cap_aud": 0.0,
+          "expected_value_note": "heuristic structure, never stakeable",
+          "why": [
+            "track-only thesis",
+            "no live data backing"
+          ],
+          "risks": [
+            "no live data",
+            "stale model edge"
+          ],
+          "requires": [
+            "live SGM data via prop_builder"
+          ],
+          "source_ref": "SgmCandidate:sgm-Uruguay_vs_Cape_Verde-Uruguay_+_Under_2.5_+_BTTS_No"
+        }
+      ],
+      "pass": [
+        {
+          "lane": "pass",
+          "decision": "SKIP",
+          "sport": "WC",
+          "event": "",
+          "selection": "no qualifying 3-leg cross-game multi",
+          "market": "multi_3_leg",
+          "bookmaker": "",
+          "odds": 0.0,
+          "fair_odds": null,
+          "edge_pct": null,
+          "stake_aud": 0.0,
+          "stake_cap_aud": null,
+          "expected_value_note": "need 3+ qualifying legs for cross-game multi",
+          "why": [
+            "insufficient qualifying edges"
+          ],
+          "risks": [],
+          "requires": [
+            "3+ pure edges with positive model edge"
+          ],
+          "source_ref": ""
+        }
+      ]
+    },
+    "stake_policy": {
+      "core_max_pct": 0.01,
+      "promo_max_aud": 50.0,
+      "action_small_max_aud": 10.0,
+      "paper_stake_aud": 0.0
+    },
+    "lane_counts": {
+      "core": 2,
+      "promo_value": 0,
+      "conversion": 2,
+      "build_check": 0,
+      "action_small": 3,
+      "paper": 4,
+      "pass": 1
+    }
   },
   "paths": {
     "html": "data/cards/tomorrow-bets-2026-06-21.html",
