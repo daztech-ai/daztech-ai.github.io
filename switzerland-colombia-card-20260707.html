@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Switzerland v Colombia — Card Brief · Daz Betting Engine</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🇨🇭</text></svg>">
+<script>
+  (function(){
+    var s = localStorage.getItem('daztech-theme');
+    var d = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    document.documentElement.dataset.theme = s || (d ? 'dark' : 'light');
+  })();
+</script>
+<style>
+  :root {
+    --bg: #faf7f2; --surface: #ffffff; --text: #2d2922; --muted: #8c8880;
+    --gold: #c8960c; --gold-soft: rgba(200,150,12,0.10); --gold-line: rgba(200,150,12,0.25);
+    --border: #e8e4dc; --positive: #16a34a; --negative: #dc2626; --warning: #d97706; --info: #2563eb;
+    --code-bg: #f5f2ec; --shadow: 0 1px 3px rgba(0,0,0,0.04); --radius: 10px;
+    --card-green: rgba(22,163,74,0.10); --card-amber: rgba(217,119,6,0.10); --card-blue: rgba(37,99,235,0.08);
+  }
+  html[data-theme="dark"] {
+    --bg: #0a0a0f; --surface: #12121a; --text: #e0e0e0; --muted: #777;
+    --gold: #ffd700; --gold-soft: rgba(255,215,0,0.08); --gold-line: rgba(255,215,0,0.22);
+    --border: rgba(255,255,255,0.08); --code-bg: #1a1a23; --shadow: none;
+    --card-green: rgba(22,163,74,0.08); --card-amber: rgba(217,119,6,0.08); --card-blue: rgba(37,99,235,0.06);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin:0; padding:0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.55; -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--gold); text-decoration: none; } a:hover { text-decoration: underline; }
+  .wrap { max-width: 920px; margin: 0 auto; padding: 32px 20px 80px; }
+
+  .topbar {
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 14px 20px; border-bottom: 1px solid var(--border);
+    background: var(--surface); position:sticky; top:0; z-index:10;
+  }
+  .topbar .brand { font-weight:800; font-size:15px; }
+  .topbar .brand span { color: var(--gold); }
+  .topbar .navlinks { display:flex; gap:18px; font-size:13px; }
+  .topbar .navlinks a { color: var(--muted); }
+  .topbar .navlinks a:hover, .topbar .navlinks a.active { color: var(--gold); text-decoration:none; }
+  .theme-toggle {
+    background:transparent; border:1px solid var(--border); color:var(--text);
+    padding: 5px 10px; border-radius:6px; cursor:pointer; font-size:13px;
+  }
+
+  section { margin-top: 36px; }
+  section h2 {
+    font-size: 13px; text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--gold); margin: 0 0 14px; font-weight: 700;
+  }
+  section h2 .num {
+    display:inline-block; width:22px; height:22px; line-height:22px;
+    background: var(--gold-soft); border: 1px solid var(--gold-line);
+    border-radius: 50%; text-align:center; margin-right:8px; font-size: 11px;
+  }
+  .panel {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 20px 22px; box-shadow: var(--shadow);
+  }
+  .panel + .panel { margin-top: 12px; }
+
+  .pill { display:inline-block; font-size: 11px; padding: 2px 8px; border-radius: 999px; font-weight: 600; }
+  .pill.green { background: rgba(22,163,74,0.12); color: var(--positive); }
+  .pill.amber { background: rgba(217,119,6,0.12); color: var(--warning); }
+  .pill.red   { background: rgba(220,38,38,0.12); color: var(--negative); }
+  .pill.blue  { background: rgba(37,99,235,0.12); color: var(--info); }
+  .pill.gray  { background: var(--code-bg); color: var(--muted); }
+
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; }
+  tr:last-child td { border-bottom: 0; }
+  code { background: var(--code-bg); padding: 1px 6px; border-radius: 4px; font-size: 12.5px; font-family: 'SF Mono', Menlo, Consolas, monospace; }
+
+  .card-box {
+    border-left: 4px solid var(--border); border-radius: 6px;
+    padding: 16px 18px; margin: 14px 0; background: var(--surface);
+  }
+  .card-box.safe { border-color: var(--positive); background: var(--card-green); }
+  .card-box.value { border-color: var(--warning); background: var(--card-amber); }
+  .card-box.shot { border-color: var(--info); background: var(--card-blue); }
+  .card-box h4 { margin: 0 0 8px; font-size: 16px; }
+  .card-box .meta { color: var(--muted); font-size: 12px; margin-bottom: 10px; }
+
+  details { margin: 12px 0; }
+  details summary { cursor: pointer; color: var(--gold); font-weight: 600; font-size: 14px; }
+  details .inner { padding: 12px 0 0 0; font-size: 13px; line-height: 1.6; }
+
+  .changelog { font-size: 13px; color: var(--muted); margin-top: 16px; }
+  .changelog strong { color: var(--text); }
+
+  footer {
+    margin-top: 50px; padding-top: 20px; border-top: 1px solid var(--border);
+    color: var(--muted); font-size: 12.5px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;
+  }
+
+  @media (max-width: 600px) {
+    .wrap { padding: 18px 14px 60px; }
+    table { font-size: 12.5px; }
+    th, td { padding: 7px 6px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand">Daz<span>tech</span> · <span style="color:var(--muted);font-weight:500;">Cards</span></div>
+  <div class="navlinks">
+    <a href="index.html">Hub</a>
+    <a href="architecture.html">How it works</a>
+    <a href="roadmap.html">Roadmap</a>
+    <a href="results.html">Results</a>
+    <a href="https://github.com/daztech-ai/daztech-betting-engine" target="_blank" rel="noopener">Source ↗</a>
+    <button class="theme-toggle" onclick="toggleTheme()">◐</button>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <section>
+    <h2><span class="num">⚽</span>Knockout Card Brief</h2>
+    <div class="panel">
+      <h3 style="margin:0 0 6px;">🇨🇭 Switzerland v Colombia 🇨🇴</h3>
+      <p style="margin:0;color:var(--muted);">
+        World Cup 2026 · Round of 16 · Tue 7 July · Vancouver BC Place (retractable roof)
+        <br><span class="pill green">Bet Return Eligible</span>
+        <span class="pill amber">Tight knockout — both top-15 defences</span>
+        <span style="font-size:12px;color:var(--muted);"> · Scraped 7 Jul 13:22 AEST · 231 markets · 2,016 outcomes</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- TIKA'S CARDS -->
+  <section>
+    <h2><span class="num">1</span>Tika's Final Cards</h2>
+
+    <div class="card-box safe">
+      <h4>🟢 Cross-Team Floor — SAFE (2u)</h4>
+      <div class="meta">4-leg SGM · Est. ~3.30 · Bet Return ✅ · Confidence: HIGH</div>
+      <table>
+        <tr><th>Leg</th><th>Selection</th><th>Odds</th><th>Why</th></tr>
+        <tr><td>1</td><td><strong>Luis Diaz 1+ SOT</strong></td><td>1.36</td><td>Colombia's volume engine. 3 SOT in 3 group games (1.0/game). FotMob 1.3 SOT/90. Near-certain in a Colombian attack script.</td></tr>
+        <tr><td>2</td><td><strong>Breel Embolo 1+ SOT</strong></td><td>1.53</td><td>Swiss record 4 WC goals this tournament. 2.36 SOT/game. Switzerland's solo focal point — everything runs through him.</td></tr>
+        <tr><td>3</td><td><strong>Over 1.5 Goals</strong></td><td>1.38</td><td>Structural glue. 88% R16 historical hit rate. Both teams have scored 2+ in 3 of 4 WC matches.</td></tr>
+        <tr><td>4</td><td><strong>Colombia 4+ Team SOT</strong></td><td>1.33</td><td>Colombia average 5+ SOT/game in group stage. Diaz + James + Suarez volume guarantees floor.</td></tr>
+      </table>
+      <p style="font-size:13px;color:var(--muted);margin:10px 0 0;">
+        <strong>Convergence:</strong> Both Fable (MiniMax M3) and GLM independently built Diaz 1+ SOT + Embolo 1+ SOT as the core pair. Cross-team = survives most game scripts. SGM builder will compress Diaz + Colombia team SOT (10-15% from naive 3.82 → ~3.30). Still the safest 4-leg play.
+      </p>
+    </div>
+
+    <div class="card-box value">
+      <h4>🟡 Colombia Triple — VALUE (1u)</h4>
+      <div class="meta">4-leg SGM · Est. ~3.95 · Bet Return ✅ · Confidence: MEDIUM</div>
+      <table>
+        <tr><th>Leg</th><th>Selection</th><th>Odds</th><th>Why</th></tr>
+        <tr><td>1</td><td><strong>Luis Diaz 1+ SOT</strong></td><td>1.36</td><td>Anchor. Same thesis as Card 1.</td></tr>
+        <tr><td>2</td><td><strong>James Rodriguez 1+ SOT</strong></td><td>1.72</td><td>Set-piece specialist. 5 chances created in one match (Colombia record). Different SOT path — FKs, corners — less correlated to Diaz run-of-play.</td></tr>
+        <tr><td>3</td><td><strong>Luis Suarez 1+ SOT</strong></td><td>1.50</td><td>Starting striker. Poacher — thrives on Diaz/James service. 0.50 raw speaks to consistency.</td></tr>
+        <tr><td>4</td><td><strong>Over 1.5 Goals</strong></td><td>1.38</td><td>Same structural base. Colombia need to score for the thesis to work.</td></tr>
+      </table>
+      <p style="font-size:13px;color:var(--warning);margin:10px 0 0;">
+        <strong>⚠️ HIGH correlation:</strong> All three Colombia attackers. Colombia-dominant script required. If Switzerland park a perfect bus → all three legs dead. James' set-piece path provides some diversification vs Diaz/Suarez run-of-play. <strong>Don't run with Card 1</strong> — Diaz overlap.
+      </p>
+    </div>
+
+    <div class="card-box shot">
+      <h4>🟠 Suarez ATG — SHOT (0.5u)</h4>
+      <div class="meta">4-leg SGM · Est. ~7.75 · Bet Return ⚠️ · Confidence: SPECULATIVE</div>
+      <table>
+        <tr><th>Leg</th><th>Selection</th><th>Odds</th><th>Why</th></tr>
+        <tr><td>1</td><td><strong>Luis Diaz 1+ SOT</strong></td><td>1.36</td><td>Diaz creates the chaos. Volume engine.</td></tr>
+        <tr><td>2</td><td><strong>Luis Suarez ATG</strong></td><td>3.30</td><td>Colombia's #2 finisher. If Diaz draws the defence, Suarez gets the clean look. Swing leg at 3.30.</td></tr>
+        <tr><td>3</td><td><strong>Switzerland GK 3+ Saves</strong></td><td>1.57</td><td>Smart hedge on Colombia shot volume. SUI GK sees work if Colombia fire.</td></tr>
+        <tr><td>4</td><td><strong>Over 1.5 Goals</strong></td><td>1.38</td><td>Goals cover for the ATG thesis.</td></tr>
+      </table>
+      <p style="font-size:13px;color:var(--muted);margin:10px 0 0;">
+        <strong>Correlation:</strong> Diaz SOT + Suarez ATG strongly correlated (creator → finisher). SUI GK saves + Colombia volume positively correlated. Four legs all want Colombia attacking. Kill case: Switzerland defend perfectly → 0-0 or 0-1.
+      </p>
+    </div>
+  </section>
+
+  <!-- RISKS -->
+  <section>
+    <h2><span class="num">2</span>Key Risks</h2>
+    <div class="panel">
+      <table>
+        <tr><th style="width:140px">Risk</th><th>Detail</th></tr>
+        <tr><td><strong>Defensive deadlock</strong></td><td>Both teams top-15 defensively (SUI 0.83 GA, COL 1.00 GA). Projected win probs: 38% SUI / 30% Draw / 32% COL. 0-0 or 1-0 either way is live. O1.5G at 1.38 is generous but not certain in this script.</td></tr>
+        <tr><td><strong>Diaz dependency</strong></td><td>Diaz 1+ SOT is in ALL THREE cards. If he's blanked (rare — 3/3 group games) or subbed early, all cards die. He's the load-bearing leg.</td></tr>
+        <tr><td><strong>SGM compression</strong></td><td>Cards 1 and 2 stack multiple Colombia legs — SGM builder will compress correlated same-team props. Card 1: estimated 10-15% trim from naive 3.82 → ~3.30. Card 2: heavier compression — naive 4.84 → ~3.95.</td></tr>
+        <tr><td><strong>Card 2 single-team thesis</strong></td><td>All three attacker SOTs from Colombia. If Switzerland's defence holds (0.83 GA), James or Suarez could easily blank. James' set-piece path is the diversification — but still Colombia-dependent.</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- RESEARCH PACK -->
+  <section>
+    <h2><span class="num">3</span>Match Research Pack</h2>
+    <div class="panel">
+      <p style="font-size:13px;color:var(--muted);margin:0 0 14px;">
+        Compiled via MiniMax M3 web searches · 7 July 2026
+      </p>
+
+      <details>
+        <summary>Team Form</summary>
+        <div class="inner">
+          <p><strong>Switzerland (5 pts):</strong> D 1-1 · D 1-1 · W 4-1 · W 2-1 · W 2-0<br>
+          2.33 scored (9th) · 0.83 conceded (3rd). Beat Algeria (4-1), drew Qatar + another group opponent. Embolo: 4 goal contributions — Swiss WC record.</p>
+          <p><strong>Colombia (7 pts):</strong> Group K winners. 2.33 scored (9th) · 1.00 conceded (15th). Beat DR Congo 1-0. Diaz + Puerta: 5 shots each in one match. James: 5 chances created in one match (Colombia WC record).</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Key Player Stats (WC26)</summary>
+        <div class="inner">
+          <table>
+            <tr><th>Player</th><th>Apps</th><th>Mins</th><th>Goals</th><th>SOT/game</th><th>Notes</th></tr>
+            <tr><td><strong>Luis Diaz</strong> 🇨🇴</td><td>3</td><td>269</td><td>1</td><td>1.0-1.3</td><td>6 shots, 3 SOT. 31.3% SOT rate. Colombia's engine.</td></tr>
+            <tr><td><strong>Luis Suarez</strong> 🇨🇴</td><td>3</td><td>—</td><td>—</td><td>—</td><td>Starting striker. 1+ SOT 1.50. ATG 3.30.</td></tr>
+            <tr><td><strong>James Rodriguez</strong> 🇨🇴</td><td>2</td><td>206</td><td>—</td><td>1.1</td><td>50% SOT rate. Set pieces, corners, FKs. 5 chances created in one match.</td></tr>
+            <tr><td><strong>Breel Embolo</strong> 🇨🇭</td><td>3</td><td>347</td><td>4</td><td>2.36</td><td>Swiss WC goal record. 46.3% SOT accuracy. Penalty taker.</td></tr>
+            <tr><td><strong>Dan Ndoye</strong> 🇨🇭</td><td>3</td><td>235</td><td>—</td><td>1.11</td><td>Secondary Swiss threat. 1+ SOT 1.72.</td></tr>
+            <tr><td><strong>Ruben Vargas</strong> 🇨🇭</td><td>3</td><td>250</td><td>—</td><td>1.14</td><td>1+ SOT 2.00. Value option.</td></tr>
+          </table>
+        </div>
+      </details>
+
+      <details>
+        <summary>Injuries & Tactical</summary>
+        <div class="inner">
+          <p><strong>Switzerland:</strong> Michel Aebischer (CM) doubtful — training individually. Otherwise full squad.</p>
+          <p><strong>Colombia:</strong> No significant injuries reported. Full strength.</p>
+          <p><strong>Tactical:</strong> Cagey knockout expected. Both teams defensively structured. Colombia slight favourites (+120, 44.1% implied). Switzerland grind specialists — beat France (Euro 2024), knocked out Italy (WC 2022 quals). Win probs: SUI 38% / Draw 30% / COL 32%. Low-scoring affair projected.</p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- MODEL OUTPUTS -->
+  <section>
+    <h2><span class="num">4</span>Model Outputs</h2>
+
+    <div class="panel">
+      <h4 style="margin:0 0 4px;">📊 GLM (Quant — MiniMax M3 Subagent)</h4>
+      <p style="margin:0 0 12px;color:var(--muted);font-size:12px;">~197s · 13 API calls · 3 cards built · Every leg price-verified (line-level)</p>
+      <details>
+        <summary>Card 1 — Cross-Team SOT Floor · 3.20-3.50 SGM</summary>
+        <div class="inner">
+          Diaz 1+ SOT (1.36) · Embolo 1+ SOT (1.53) · O1.5G (1.38) · Colombia 4+ SOT (1.33)<br>
+          Naive 3.82 → SGM ~3.20-3.50. Cross-team, cross-market. Best balance of safety + value.
+        </div>
+      </details>
+      <details>
+        <summary>Card 2 — Colombia Triple SOT · 3.80-4.30 SGM</summary>
+        <div class="inner">
+          Diaz 1+ (1.36) · James 1+ (1.72) · Suarez 1+ (1.50) · O1.5G (1.38)<br>
+          Naive 4.84 → SGM ~3.80-4.30. Colombia-dominant thesis. HIGH correlation flagged.
+        </div>
+      </details>
+      <details>
+        <summary>Card 3 — Suarez ATG + GK Saves · 7.50-8.50 SGM</summary>
+        <div class="inner">
+          Diaz 1+ (1.36) · Suarez ATG (3.30) · SUI GK 3+ Saves (1.57) · O1.5G (1.38)<br>
+          Naive 9.72 → SGM ~7.50-8.50. Suarez ATG swing leg. Smart GK hedge.
+        </div>
+      </details>
+    </div>
+
+    <div class="panel" style="margin-top:12px;">
+      <h4 style="margin:0 0 4px;">🤖 Fable (MiniMax M3 — Unshackled, Prompt-Cached)</h4>
+      <p style="margin:0 0 12px;color:var(--muted);font-size:12px;">~54s · 30,468 fresh + 128 cached tokens · 3 cards + revisions</p>
+      <details>
+        <summary>Card 1 (SAFE) — Diaz 2+ SOT + Colombia 4+ SOT · ~3.70</summary>
+        <div class="inner">
+          Diaz 2+ SOT (2.80) · Colombia 4+ SOT (1.33)<br>
+          ⚠️ Tika KILLED — Diaz hasn't hit 2+ SOT in any WC26 match yet (avg 1.0/game). Too aggressive.
+        </div>
+      </details>
+      <details>
+        <summary>Card 2 (VALUE revised) — Cross-Team Volume · ~7.00</summary>
+        <div class="inner">
+          Embolo 2+ SOT (3.40) · Diaz 1+ SOT (1.36) · 3+ SOT Each Team (1.53)<br>
+          Cross-team, cross-market. Embolo 2+ hits ~55% of games at 2.36/game. Three-leg, holds value well.
+        </div>
+      </details>
+      <details>
+        <summary>Card 3 (SHOT) — Both ATG + Goals · ~14-18</summary>
+        <div class="inner">
+          Diaz ATG (3.25) · Embolo ATG (3.30) · BTTS (1.83) · O1.5G (1.38)<br>
+          ⚠️ Tika KILLED — 4 legs, both-ATG long shots, BTTS+O1.5G correlated. Too many fail paths in a cagey knockout.
+        </div>
+      </details>
+      <p style="font-size:12px;color:var(--warning);margin:10px 0 0;"><strong>Fable's bold pick:</strong> Card 2 (VALUE revised) — Embolo 2+ SOT / Diaz 1+ SOT / 3+ SOT Each Team. (Tika: solid but 3-leg, no Bet Return. Kept as alternate.)</p>
+    </div>
+  </section>
+
+  <!-- LIVE ODDS -->
+  <section>
+    <h2><span class="num">5</span>Live Odds Snapshot</h2>
+    <div class="panel">
+      <p style="font-size:12px;color:var(--muted);margin:0 0 12px;">
+        Sportsbet scrape · 7 Jul 2026 13:22 AEST · Event 10666518 · 231 markets · <strong>All prices: raw +1 = decimal.</strong>
+      </p>
+      <details>
+        <summary>Win-Draw-Win · Over/Under</summary>
+        <div class="inner">
+          <strong>WDW:</strong> Switzerland 3.60 · Draw 3.00 · Colombia 2.25<br>
+          <strong>O/U 1.5:</strong> Over 1.38 · Under 3.00<br>
+          <strong>O/U 2.5:</strong> Over 2.25 · Under 1.60<br>
+          <strong>BTTS:</strong> Yes 1.83 · No 1.88
+        </div>
+      </details>
+      <details>
+        <summary>Anytime Goalscorer</summary>
+        <div class="inner">
+          <table>
+            <tr><td><strong>Luis Diaz</strong></td><td>3.25</td><td><strong>Luis Suarez</strong></td><td>3.30</td><td><strong>Breel Embolo</strong></td><td>3.30</td></tr>
+            <tr><td>James Rodriguez</td><td>4.33</td><td>Jhon Arias</td><td>5.00</td><td>Johan Manzambi</td><td>5.00</td></tr>
+            <tr><td>Dan Ndoye</td><td>5.50</td><td>Ruben Vargas</td><td>5.50</td><td>Granit Xhaka</td><td>8.00</td></tr>
+          </table>
+        </div>
+      </details>
+      <details>
+        <summary>Player Shots on Target</summary>
+        <div class="inner">
+          <table>
+            <tr><th>Player</th><th>1+ SOT</th><th>2+ SOT</th><th>3+ SOT</th></tr>
+            <tr><td><strong>Luis Diaz</strong></td><td><strong>1.36</strong></td><td>2.80</td><td>7.00</td></tr>
+            <tr><td>Luis Suarez</td><td><strong>1.50</strong></td><td>3.30</td><td>9.00</td></tr>
+            <tr><td>James Rodriguez</td><td><strong>1.72</strong></td><td>4.50</td><td>15.00</td></tr>
+            <tr><td>Jhon Arias</td><td>1.91</td><td>5.00</td><td>20.00</td></tr>
+            <tr><td><strong>Breel Embolo</strong></td><td><strong>1.53</strong></td><td>3.40</td><td>9.50</td></tr>
+            <tr><td>Dan Ndoye</td><td>1.72</td><td>4.20</td><td>12.00</td></tr>
+            <tr><td>Johan Manzambi</td><td>1.72</td><td>4.33</td><td>13.00</td></tr>
+            <tr><td>Ruben Vargas</td><td>2.00</td><td>6.00</td><td>23.00</td></tr>
+          </table>
+        </div>
+      </details>
+      <details>
+        <summary>Goalkeeper Saves</summary>
+        <div class="inner">
+          <table>
+            <tr><th>Keeper</th><th>3+ Saves</th><th>4+ Saves</th><th>5+ Saves</th></tr>
+            <tr><td><strong>Switzerland GK</strong></td><td><strong>1.57</strong></td><td>2.40</td><td>4.00</td></tr>
+            <tr><td>Colombia GK</td><td>1.80</td><td>2.88</td><td>5.00</td></tr>
+          </table>
+        </div>
+      </details>
+      <details>
+        <summary>Team SOT · Each Team SOT</summary>
+        <div class="inner">
+          <strong>Colombia 4+ SOT:</strong> 1.33 · <strong>5+ SOT:</strong> 1.80<br>
+          <strong>Switzerland 4+ SOT:</strong> 1.62 · <strong>5+ SOT:</strong> 2.50<br>
+          <strong>3+ SOT Each Team:</strong> 1.53 · <strong>4+ Each Team:</strong> 2.40
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">·</span>Changelog</h2>
+    <div class="panel changelog">
+      <p><strong>2026-07-07 13:27 AEST</strong> — Initial publish. Full pipeline: Sportsbet scrape (231 markets) → Research pack → Fable unshackled (prompt-cached, ~54s) + GLM quant (subagent, ~197s) → Tika review. Both models converged on Diaz 1+ SOT + Embolo 1+ SOT as the core pair. Three cards: SAFE (2u), VALUE (1u), SHOT (0.5u). Tight knockout — both teams top-15 defensive. Fable's Diaz 2+ SOT card killed (hasn't hit 2+ in any WC match). Fable's Both-ATG card killed (too many fail paths).</p>
+    </div>
+  </section>
+
+  <footer>
+    <span>Daztech Betting Engine · Card Brief · Switzerland v Colombia R16</span>
+    <span>Generated 2026-07-07 13:27 AEST</span>
+  </footer>
+
+</div>
+
+<script>
+  function toggleTheme() {
+    var cur = document.documentElement.dataset.theme;
+    var next = cur === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = next;
+    localStorage.setItem('daztech-theme', next);
+  }
+</script>
+
+</body>
+</html>
