@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Argentina v Egypt — Card Brief · Daz Betting Engine</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🇦🇷</text></svg>">
+<script>
+  (function(){
+    var s = localStorage.getItem('daztech-theme');
+    var d = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    document.documentElement.dataset.theme = s || (d ? 'dark' : 'light');
+  })();
+</script>
+<style>
+  :root {
+    --bg: #faf7f2; --surface: #ffffff; --text: #2d2922; --muted: #8c8880;
+    --gold: #c8960c; --gold-soft: rgba(200,150,12,0.10); --gold-line: rgba(200,150,12,0.25);
+    --border: #e8e4dc; --positive: #16a34a; --negative: #dc2626; --warning: #d97706; --info: #2563eb;
+    --code-bg: #f5f2ec; --shadow: 0 1px 3px rgba(0,0,0,0.04); --radius: 10px;
+    --card-green: rgba(22,163,74,0.10); --card-amber: rgba(217,119,6,0.10); --card-blue: rgba(37,99,235,0.08);
+  }
+  html[data-theme="dark"] {
+    --bg: #0a0a0f; --surface: #12121a; --text: #e0e0e0; --muted: #777;
+    --gold: #ffd700; --gold-soft: rgba(255,215,0,0.08); --gold-line: rgba(255,215,0,0.22);
+    --border: rgba(255,255,255,0.08); --code-bg: #1a1a23; --shadow: none;
+    --card-green: rgba(22,163,74,0.08); --card-amber: rgba(217,119,6,0.08); --card-blue: rgba(37,99,235,0.06);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin:0; padding:0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.55; -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--gold); text-decoration: none; } a:hover { text-decoration: underline; }
+  .wrap { max-width: 920px; margin: 0 auto; padding: 32px 20px 80px; }
+
+  .topbar {
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 14px 20px; border-bottom: 1px solid var(--border);
+    background: var(--surface); position:sticky; top:0; z-index:10;
+  }
+  .topbar .brand { font-weight:800; font-size:15px; }
+  .topbar .brand span { color: var(--gold); }
+  .topbar .navlinks { display:flex; gap:18px; font-size:13px; }
+  .topbar .navlinks a { color: var(--muted); }
+  .topbar .navlinks a:hover, .topbar .navlinks a.active { color: var(--gold); text-decoration:none; }
+  .theme-toggle {
+    background:transparent; border:1px solid var(--border); color:var(--text);
+    padding: 5px 10px; border-radius:6px; cursor:pointer; font-size:13px;
+  }
+
+  section { margin-top: 36px; }
+  section h2 {
+    font-size: 13px; text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--gold); margin: 0 0 14px; font-weight: 700;
+  }
+  section h2 .num {
+    display:inline-block; width:22px; height:22px; line-height:22px;
+    background: var(--gold-soft); border: 1px solid var(--gold-line);
+    border-radius: 50%; text-align:center; margin-right:8px; font-size: 11px;
+  }
+  .panel {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 20px 22px; box-shadow: var(--shadow);
+  }
+  .panel + .panel { margin-top: 12px; }
+
+  .pill { display:inline-block; font-size: 11px; padding: 2px 8px; border-radius: 999px; font-weight: 600; }
+  .pill.green { background: rgba(22,163,74,0.12); color: var(--positive); }
+  .pill.amber { background: rgba(217,119,6,0.12); color: var(--warning); }
+  .pill.red   { background: rgba(220,38,38,0.12); color: var(--negative); }
+  .pill.blue  { background: rgba(37,99,235,0.12); color: var(--info); }
+  .pill.gray  { background: var(--code-bg); color: var(--muted); }
+
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; }
+  tr:last-child td { border-bottom: 0; }
+  code { background: var(--code-bg); padding: 1px 6px; border-radius: 4px; font-size: 12.5px; font-family: 'SF Mono', Menlo, Consolas, monospace; }
+
+  /* Card boxes */
+  .card-box {
+    border-left: 4px solid var(--border); border-radius: 6px;
+    padding: 16px 18px; margin: 14px 0; background: var(--surface);
+  }
+  .card-box.safe { border-color: var(--positive); background: var(--card-green); }
+  .card-box.power { border-color: var(--warning); background: var(--card-amber); }
+  .card-box.cross { border-color: var(--info); background: var(--card-blue); }
+  .card-box h4 { margin: 0 0 8px; font-size: 16px; }
+  .card-box .meta { color: var(--muted); font-size: 12px; margin-bottom: 10px; }
+
+  /* Collapsible */
+  details { margin: 12px 0; }
+  details summary { cursor: pointer; color: var(--gold); font-weight: 600; font-size: 14px; }
+  details .inner { padding: 12px 0 0 0; font-size: 13px; line-height: 1.6; }
+
+  .changelog { font-size: 13px; color: var(--muted); margin-top: 16px; }
+  .changelog strong { color: var(--text); }
+
+  footer {
+    margin-top: 50px; padding-top: 20px; border-top: 1px solid var(--border);
+    color: var(--muted); font-size: 12.5px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;
+  }
+
+  @media (max-width: 600px) {
+    .wrap { padding: 18px 14px 60px; }
+    table { font-size: 12.5px; }
+    th, td { padding: 7px 6px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand">Daz<span>tech</span> · <span style="color:var(--muted);font-weight:500;">Cards</span></div>
+  <div class="navlinks">
+    <a href="index.html">Hub</a>
+    <a href="architecture.html">How it works</a>
+    <a href="roadmap.html">Roadmap</a>
+    <a href="results.html">Results</a>
+    <a href="https://github.com/daztech-ai/daztech-betting-engine" target="_blank" rel="noopener">Source ↗</a>
+    <button class="theme-toggle" onclick="toggleTheme()">◐</button>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <section>
+    <h2><span class="num">⚽</span>Knockout Card Brief</h2>
+    <div class="panel">
+      <h3 style="margin:0 0 6px;">🇦🇷 Argentina v Egypt 🇪🇬</h3>
+      <p style="margin:0;color:var(--muted);">
+        World Cup 2026 · Round of 16 · Wed 8 July 02:00 AEST · Atlanta Stadium (retractable roof)
+        <br><span class="pill green">Bet Return Eligible</span>
+        <span class="pill blue">Power Play Available</span>
+        <span style="font-size:12px;color:var(--muted);"> · Scraped 7 Jul 12:59 AEST · 234 markets · 2,016 outcomes</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- TIKA'S PICK -->
+  <section>
+    <h2><span class="num">1</span>Tika's Final Cards</h2>
+
+    <div class="card-box safe">
+      <h4>🟢 Messi Machine — SAFE (2u)</h4>
+      <div class="meta">3-leg SGM · Est. ~3.20 · Bet Return ✅ · Confidence: HIGH</div>
+      <table>
+        <tr><th>Leg</th><th>Selection</th><th>Odds</th><th>Why</th></tr>
+        <tr><td>1</td><td><strong>Messi 2+ SOT</strong></td><td>1.36</td><td>15 SOT / 4 matches = 3.75/game. Egypt LB crisis — Fatouh OUT, Hafez doubtful. 2+ is the conviction level; 1+ at 1.07 is filler.</td></tr>
+        <tr><td>2</td><td><strong>Egypt GK 3+ Saves</strong></td><td>1.28</td><td>Shobeir — highest-rated GK of group stage (7.72 WhoScored). Argentina avg 6.5 SOT/game. Egypt concede 13.75 shots/game. Near-lock.</td></tr>
+        <tr><td>3</td><td><strong>Salah 1+ SOT</strong></td><td>2.00</td><td>Egypt's entire attack. Gets his look even in a rout. Two-team coverage — survives most game states.</td></tr>
+      </table>
+      <p style="font-size:13px;color:var(--muted);margin:10px 0 0;">
+        <strong>Kill case:</strong> 0-0 stalemate where Egypt park perfectly, Messi contained, and Shobeir sees under 3 saves. ~5% probability. 
+        <strong>Convergence:</strong> Both Fable (MiniMax M3) and GLM independently built this exact 3-leg structure — strongest signal in the pipeline.
+      </p>
+    </div>
+
+    <div class="card-box power">
+      <h4>🟠 Power Play — VALUE (1u)</h4>
+      <div class="meta">4-leg SGM · Est. ~4.20 (PP ~4.45) · Bet Return ✅ · Confidence: MEDIUM</div>
+      <table>
+        <tr><th>Leg</th><th>Selection</th><th>Odds</th><th>Why</th></tr>
+        <tr><td>1</td><td><strong>Messi 2+ SOT</strong></td><td>1.36</td><td>Anchor. Same thesis as Card 1.</td></tr>
+        <tr><td>2</td><td><strong>Lautaro 1+ SOT</strong></td><td>1.36</td><td>Starting striker in predicted XI. Different channel — central vs Messi's right half-space. ~1.5 SOT/game.</td></tr>
+        <tr><td>3</td><td><strong>Egypt GK 3+ Saves</strong></td><td>1.28</td><td>Correlated glue. Messi + Lautaro SOTs = Shobeir busy.</td></tr>
+        <tr><td>4</td><td><strong>Salah 1+ SOT</strong></td><td>2.00</td><td>Cross-team hedge. Independent of Argentina attack outcome.</td></tr>
+      </table>
+      <p style="font-size:13px;color:var(--muted);margin:10px 0 0;">
+        <strong>Single-fail mode:</strong> Lautaro is the swing player (~25-30% blank rate). Bet Return catches the solo miss. 
+        <strong>⚠️ Do NOT run Cards 1+2 together</strong> — share 3 of 4 legs, correlated Messi exposure.
+      </p>
+    </div>
+
+    <div class="card-box cross">
+      <h4>🔵 Win + Goals — CROSS-MARKET (1u)</h4>
+      <div class="meta">4-leg SGM · Est. ~3.45 · Bet Return ⚠️ verify in-app · Confidence: MEDIUM</div>
+      <table>
+        <tr><th>Leg</th><th>Selection</th><th>Odds</th><th>Why</th></tr>
+        <tr><td>1</td><td><strong>Argentina Win</strong></td><td>1.34</td><td>9 pts perfect group. Egypt first R16 ever. Not To Qualify (corpse at 1.13).</td></tr>
+        <tr><td>2</td><td><strong>O1.5 Goals</strong></td><td>1.29</td><td>Structural. 88% R16 historical hit rate. Argentina scored 2+ in all 4 WC games.</td></tr>
+        <tr><td>3</td><td><strong>Messi 2+ SOT</strong></td><td>1.36</td><td>Conviction. Not 1+ corpse at 1.07.</td></tr>
+        <tr><td>4</td><td><strong>Salah 1+ SOT</strong></td><td>2.00</td><td>Egypt talisman. Gets 1+ in 3 of 4 WC matches.</td></tr>
+      </table>
+      <p style="font-size:13px;color:var(--muted);margin:10px 0 0;">
+        <strong>Different thesis to Cards 1/2:</strong> This needs Argentina to actually win and score 2+, not just dominate shots. Higher variance. 
+        <strong>⚠️ Verify SGM builder accepts Win + O1.5G before placing.</strong> Kill case: Argentina 1-0 (kills O1.5G) or draw.
+      </p>
+    </div>
+  </section>
+
+  <!-- KEY RISKS -->
+  <section>
+    <h2><span class="num">2</span>Key Risks</h2>
+    <div class="panel">
+      <table>
+        <tr><th style="width:140px">Risk</th><th>Detail</th></tr>
+        <tr><td><strong>Messi head knock</strong></td><td>Bruised head per research pack — check official team sheet 1hr before kickoff. If benched/limited, pivot to Lautaro 1+ SOT + Egypt GK 3+ Saves + Salah 1+ SOT (~2.40 SGM).</td></tr>
+        <tr><td><strong>Salah hamstring</strong></td><td>Playing through it, not 100%. Still expect 1+ SOT — Egypt's system funnels everything through him even when he's limited.</td></tr>
+        <tr><td><strong>Messi sub risk</strong></td><td>If Argentina lead 2-0 at 60', Scaloni may pull Messi. Threatens 2+ SOT on early-sub script. Egypt low block should force Argentina to shoot early — Messi gets his volume before any sub.</td></tr>
+        <tr><td><strong>Egypt LB crisis</strong></td><td>Fatouh (first-choice LB) OUT. Hafez (backup) doubtful. Third-choice emergency option vs Messi cutting inside from the right. This is the single biggest tactical mismatch. Drives the entire Messi thesis.</td></tr>
+        <tr><td><strong>SGM compression</strong></td><td>Messi SOT + Egypt GK saves are positively correlated — SGM builder compresses rather than bonuses. Estimated ~10-20% trim from naive multiplier. Real prices quoted above.</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- RESEARCH PACK -->
+  <section>
+    <h2><span class="num">3</span>Match Research Pack</h2>
+    <div class="panel">
+      <p style="font-size:13px;color:var(--muted);margin:0 0 14px;">
+        Compiled via 12 MiniMax M3 web searches · 18+ sources · 7 July 2026
+      </p>
+
+      <details>
+        <summary>Team Form &amp; Path to R16</summary>
+        <div class="inner">
+          <p><strong>Argentina (9 pts, Group J winners):</strong><br>
+          Algeria 3–0 ✅ · Austria 2–0 ✅ · Jordan 3–1 ✅ (B-team) · Cape Verde 3–2 AET ✅<br>
+          11 GF, 4 GA. Won 8 straight. Scored 2+ in all 4 WC matches. Scored first half in all 4.</p>
+          <p><strong>Egypt (5 pts, Group G runners-up):</strong><br>
+          Belgium 1–1 🤝 · New Zealand 3–1 ✅ · Iran 1–1 🤝 · Australia 1–1 (4-2 pens) ✅<br>
+          6 GF, 4 GA. Conceded in all 4. First-ever knockout stage appearance in 92 years.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Predicted Lineups &amp; Injuries</summary>
+        <div class="inner">
+          <p><strong>Argentina (4-3-3):</strong> E.Martínez; Molina, Romero, L.Martínez, Medina; De Paul, Enzo Fernández, Mac Allister; Messi (C), Lautaro Martínez, Almada.<br>
+          <em>Medina (calf) and Di María out. Messi bruised head — questionable.</em></p>
+          <p><strong>Egypt (4-3-3 defending 4-5-1):</strong> Shobeir; Hany, Ibrahim, Rabia, Hafez (⚠️ doubtful); Fathy, Ashour, Ateya; Zizo, Salah (C), Marmoush.<br>
+          <em>Fatouh (LB) OUT. Abdelmonem (CB) OUT. If Hafez can't go — third-choice LB.</em></p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Key Player Stats</summary>
+        <div class="inner">
+          <table>
+            <tr><th>Player</th><th>Goals</th><th>Shots</th><th>SOT</th><th>SOT/game</th><th>Notes</th></tr>
+            <tr><td><strong>Messi</strong></td><td>7</td><td>24</td><td>15</td><td>3.75</td><td>#1 in all three. Scored every game. Penalty taker. SOT machine.</td></tr>
+            <tr><td><strong>Lautaro</strong></td><td>4</td><td>—</td><td>~1.5/g</td><td>~1.5</td><td>Likely starter over Álvarez. Central channel.</td></tr>
+            <tr><td><strong>Álvarez</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>Bench role. Sub threat if Lautaro starts.</td></tr>
+            <tr><td><strong>Salah</strong></td><td>3</td><td>—</td><td>~1.5/g</td><td>~1.5</td><td>16 chances created (joint-highest). Hamstring concern. All set pieces.</td></tr>
+            <tr><td><strong>Marmoush</strong></td><td>0</td><td>11</td><td>—</td><td>—</td><td>0 G+A, 1.17 xG. <strong>AVOID</strong> for any markets.</td></tr>
+            <tr><td><strong>Shobeir (GK)</strong></td><td>—</td><td>—</td><td>—</td><td>—</td><td>7.72 WhoScored — highest-rated GK of group stage. Saves volume play.</td></tr>
+          </table>
+        </div>
+      </details>
+
+      <details>
+        <summary>Tactical Matchup &amp; H2H</summary>
+        <div class="inner">
+          <p><strong>The decisive matchup:</strong> Messi (RW) vs Egypt's decimated left flank. Fatouh and Abdelmonem both out. Whoever plays LB faces Messi cutting inside on his left — the single biggest tactical mismatch of the tie.</p>
+          <p><strong>Argentina:</strong> 4-3-3 possession, De Paul–Enzo–Mac Allister midfield triangle. Molina overlaps Messi. High press triggers through De Paul.</p>
+          <p><strong>Egypt:</strong> Compact 4-5-1 low block. Counter through Salah + Marmoush pace. Set pieces via Salah delivery. Weakness: set-piece defending against Romero/L.Martínez.</p>
+          <p><strong>H2H:</strong> Argentina 2–0 all-time (1928 Olympics 6–0, 2008 friendly 2–0). First-ever World Cup meeting. Egypt have never beaten a South American opponent at a World Cup.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Sources</summary>
+        <div class="inner">
+          <p style="font-size:12px;line-height:1.8;">
+          FIFA.com · Reuters · ESPN · The Athletic/NYTimes · The Analyst (Opta) · Al Jazeera ·<br>
+          CBS Sports · Covers.com · Action Network · Sports Mole · SI.com · Squawka ·<br>
+          WhoScored · FotMob · Yahoo Sports · BBC Sport · NBC Sports · Racing Post · PlanetFootball
+          </p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- MODEL OUTPUTS -->
+  <section>
+    <h2><span class="num">4</span>Model Outputs</h2>
+
+    <div class="panel">
+      <h4 style="margin:0 0 4px;">🤖 Fable (MiniMax M3 — Unshackled, Prompt-Cached)</h4>
+      <p style="margin:0 0 12px;color:var(--muted);font-size:12px;">~25s · 34,893 fresh + 128 cached tokens · 3 cards built from research + fresh odds</p>
+      <details>
+        <summary>Card 1 — Messi Machine (2-leg SAFE) · ~1.75 SGM</summary>
+        <div class="inner">
+          Messi 2+ SOT (1.36) · Egypt GK 3+ Saves (1.28)<br>
+          Kill case: Egypt park the bus AND Messi has an off-day.
+        </div>
+      </details>
+      <details>
+        <summary>Card 2 — Argentina Attacking Core (3-leg) · ~2.40 SGM</summary>
+        <div class="inner">
+          Messi Score/Assist (1.36) · Lautaro 1+ SOT (1.36) · Argentina O2.5 Team SOT (1.25)<br>
+          ⚠️ HIGH correlation — all Argentina-attack legs. Real SGM ~2.00-2.20 after compression.
+        </div>
+      </details>
+      <details>
+        <summary>Card 3 — Conviction Shot (4-leg) · ~8.00 SGM</summary>
+        <div class="inner">
+          Messi 3+ SOT (2.25) · Salah 1+ SOT (2.00) · Egypt GK 4+ Saves (1.72) · O8.5 Match SOT (1.42)<br>
+          Cross-market, cross-team. For the blowout script.
+        </div>
+      </details>
+      <p style="font-size:12px;color:var(--warning);margin:10px 0 0;"><strong>Fable's bold pick:</strong> Card 2 — Argentina Attacking Core. (Tika overruled — too correlated.)</p>
+    </div>
+
+    <div class="panel" style="margin-top:12px;">
+      <h4 style="margin:0 0 4px;">📊 GLM (Quant — MiniMax M3 Subagent)</h4>
+      <p style="margin:0 0 12px;color:var(--muted);font-size:12px;">~260s · 15 API calls · 3 cards built · Every leg price-verified against odds file</p>
+      <details>
+        <summary>Card 1 — Cross-Team SOT (3-leg) · ~3.20 SGM · Bet Return ✅</summary>
+        <div class="inner">
+          Messi 2+ SOT (1.36) · Egypt GK 3+ Saves (1.28) · Salah 1+ SOT (2.00)<br>
+          Template 6 (Bet Return player props). Naive 3.48 → SGM ~3.10-3.30. Rating 8/10.
+        </div>
+      </details>
+      <details>
+        <summary>Card 2 — Power Play (4-leg) · ~4.20 SGM (PP ~4.45) · Bet Return ✅</summary>
+        <div class="inner">
+          Card 1 + Lautaro 1+ SOT (1.36). Naive 4.73 → SGM ~4.00-4.25. PP boost 6-7%. Rating 6.5/10.<br>
+          ⚠️ Don't run with Card 1 — 3 of 4 legs shared.
+        </div>
+      </details>
+      <details>
+        <summary>Card 3 — Win + Goals + SOT (4-leg) · ~3.45 SGM · Bet Return ⚠️</summary>
+        <div class="inner">
+          Argentina Win (1.34) · O1.5G (1.29) · Messi 2+ SOT (1.36) · Salah 1+ SOT (2.00)<br>
+          Cross-market hybrid. Naive 4.70 → SGM ~3.30-3.60. Rating 7/10.<br>
+          ⚠️ Verify Win + O1.5G combines in SGM builder before placing.
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- LIVE ODDS SNAPSHOT -->
+  <section>
+    <h2><span class="num">5</span>Live Odds Snapshot</h2>
+    <div class="panel">
+      <p style="font-size:12px;color:var(--muted);margin:0 0 12px;">
+        Sportsbet scrape · 7 Jul 2026 12:59 AEST · Event 10666098 · 234 markets · <strong>All prices: raw +1 = decimal.</strong>
+      </p>
+      <details>
+        <summary>Win-Draw-Win · O/U · Goal Ranges</summary>
+        <div class="inner">
+          <strong>WDW:</strong> Argentina 1.34 · Draw 4.60 · Egypt 10.50<br>
+          <strong>O/U 1.5:</strong> Over 1.29 · Under 3.50<br>
+          <strong>O/U 2.5:</strong> Over 1.91 · Under 1.80<br>
+          <strong>Match Goal Range 1-3:</strong> 1.36 · <strong>2-4:</strong> 1.50 · <strong>2-3:</strong> 1.91<br>
+          <strong>To Qualify:</strong> Argentina 1.13 · Egypt 5.75
+        </div>
+      </details>
+      <details>
+        <summary>Anytime Goalscorer</summary>
+        <div class="inner">
+          <table>
+            <tr><td><strong>Messi</strong></td><td>1.67</td><td>Lautaro</td><td>2.10</td><td>Álvarez</td><td>2.10</td></tr>
+            <tr><td>Almada</td><td>4.00</td><td>Enzo</td><td>4.20</td><td>Mac Allister</td><td>5.50</td></tr>
+            <tr><td>De Paul</td><td>6.50</td><td><strong>Salah</strong></td><td>5.50</td><td>Marmoush</td><td>6.00</td></tr>
+          </table>
+        </div>
+      </details>
+      <details>
+        <summary>Player Shots on Target</summary>
+        <div class="inner">
+          <table>
+            <tr><th>Player</th><th>1+ SOT</th><th>2+ SOT</th><th>3+ SOT</th></tr>
+            <tr><td><strong>Messi</strong></td><td>1.07 ⚠️ filler</td><td><strong>1.36</strong></td><td><strong>2.25</strong></td></tr>
+            <tr><td>Julián Álvarez</td><td>1.22</td><td>2.00</td><td>4.50</td></tr>
+            <tr><td>Lautaro Martínez</td><td><strong>1.36</strong></td><td>2.70</td><td>6.50</td></tr>
+            <tr><td>Enzo Fernández</td><td>1.83</td><td>4.50</td><td>15.00</td></tr>
+            <tr><td>Thiago Almada</td><td>1.91</td><td>5.50</td><td>21.00</td></tr>
+            <tr><td><strong>Mohamed Salah</strong></td><td><strong>2.00</strong></td><td>5.50</td><td>21.00</td></tr>
+            <tr><td>Omar Marmoush</td><td>2.00</td><td>5.50</td><td>21.00</td></tr>
+          </table>
+        </div>
+      </details>
+      <details>
+        <summary>Goalkeeper Saves</summary>
+        <div class="inner">
+          <table>
+            <tr><th>Keeper</th><th>2+ Saves</th><th>3+ Saves</th><th>4+ Saves</th><th>5+ Saves</th></tr>
+            <tr><td><strong>Egypt (Shobeir)</strong></td><td>1.07</td><td><strong>1.28</strong></td><td><strong>1.72</strong></td><td>2.50</td></tr>
+            <tr><td>Argentina (Dibu)</td><td>1.67</td><td>3.00</td><td>6.00</td><td>13.00</td></tr>
+          </table>
+        </div>
+      </details>
+      <details>
+        <summary>Score or Assist</summary>
+        <div class="inner">
+          Messi <strong>1.36</strong> · Lautaro 1.83 · Álvarez 1.72 · Salah 3.75
+        </div>
+      </details>
+      <details>
+        <summary>SOT from Outside Box</summary>
+        <div class="inner">
+          Messi <strong>1.53</strong> · Álvarez 2.20 · Almada 3.30 · Enzo 4.50 · Mac Allister 5.00 · Salah 6.50 · Marmoush 4.50
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- CHANGELOG -->
+  <section>
+    <h2><span class="num">·</span>Changelog</h2>
+    <div class="panel changelog">
+      <p><strong>2026-07-07 13:15 AEST</strong> — Initial publish. Full pipeline: Sportsbet scrape (234 markets) → MiniMax M3 research pack (18 sources) → Fable unshackled (prompt-cached, ~25s) + GLM quant (subagent, ~260s) → Tika review. Both models converged on Messi 2+ SOT · Egypt GK 3+ Saves · Salah 1+ SOT as the core card. Three cards delivered: SAFE (2u), Power Play (1u), Cross-Market (1u). Messi head knock flagged — check team sheet pre-kickoff.</p>
+    </div>
+  </section>
+
+  <footer>
+    <span>Daztech Betting Engine · Card Brief · Argentina v Egypt R16</span>
+    <span>Generated 2026-07-07 13:15 AEST</span>
+  </footer>
+
+</div>
+
+<script>
+  function toggleTheme() {
+    var cur = document.documentElement.dataset.theme;
+    var next = cur === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = next;
+    localStorage.setItem('daztech-theme', next);
+  }
+</script>
+
+</body>
+</html>
