@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Fable Adjudication — R16 Double · Daz Betting Engine</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚖️</text></svg>">
+<script>
+  (function(){
+    var s = localStorage.getItem('daztech-theme');
+    var d = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    document.documentElement.dataset.theme = s || (d ? 'dark' : 'light');
+  })();
+</script>
+<style>
+  :root {
+    --bg: #faf7f2; --surface: #ffffff; --text: #2d2922; --muted: #8c8880;
+    --gold: #c8960c; --gold-soft: rgba(200,150,12,0.10); --gold-line: rgba(200,150,12,0.25);
+    --border: #e8e4dc; --positive: #16a34a; --negative: #dc2626; --warning: #d97706; --info: #2563eb;
+    --code-bg: #f5f2ec; --shadow: 0 1px 3px rgba(0,0,0,0.04); --radius: 12px;
+    --card-green: rgba(22,163,74,0.10); --card-amber: rgba(217,119,6,0.10); --card-blue: rgba(37,99,235,0.08);
+    --card-purple: rgba(147,51,234,0.10); --card-red: rgba(220,38,38,0.08);
+  }
+  html[data-theme="dark"] {
+    --bg: #0a0a0f; --surface: #12121a; --text: #e0e0e0; --muted: #777;
+    --gold: #ffd700; --gold-soft: rgba(255,215,0,0.08); --gold-line: rgba(255,215,0,0.22);
+    --border: rgba(255,255,255,0.08); --code-bg: #1a1a23; --shadow: none;
+    --card-green: rgba(22,163,74,0.08); --card-amber: rgba(217,119,6,0.08); --card-blue: rgba(37,99,235,0.06);
+    --card-purple: rgba(147,51,234,0.08); --card-red: rgba(220,38,38,0.06);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin:0; padding:0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.55; -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--gold); text-decoration: none; } a:hover { text-decoration: underline; }
+  .wrap { max-width: 920px; margin: 0 auto; padding: 32px 20px 80px; }
+
+  .topbar {
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 14px 20px; border-bottom: 1px solid var(--border);
+    background: var(--surface); position:sticky; top:0; z-index:10;
+  }
+  .topbar .brand { font-weight:800; font-size:15px; }
+  .topbar .brand span { color: var(--gold); }
+  .topbar .navlinks { display:flex; gap:18px; font-size:13px; }
+  .topbar .navlinks a { color: var(--muted); }
+  .topbar .navlinks a:hover, .topbar .navlinks a.active { color: var(--gold); text-decoration:none; }
+  .theme-toggle {
+    background:transparent; border:1px solid var(--border); color:var(--text);
+    padding: 5px 10px; border-radius:6px; cursor:pointer; font-size:13px;
+  }
+
+  section { margin-top: 36px; }
+  section h2 {
+    font-size: 13px; text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--gold); margin: 0 0 14px; font-weight: 700;
+  }
+  section h2 .num {
+    display:inline-block; width:22px; height:22px; line-height:22px;
+    background: var(--gold-soft); border: 1px solid var(--gold-line);
+    border-radius: 50%; text-align:center; margin-right:8px; font-size: 11px;
+  }
+  .panel {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 20px 22px; box-shadow: var(--shadow);
+  }
+  .panel + .panel { margin-top: 12px; }
+
+  .pill { display:inline-block; font-size: 11px; padding: 2px 8px; border-radius: 999px; font-weight: 600; }
+  .pill.green { background: rgba(22,163,74,0.12); color: var(--positive); }
+  .pill.amber { background: rgba(217,119,6,0.12); color: var(--warning); }
+  .pill.red   { background: rgba(220,38,38,0.12); color: var(--negative); }
+  .pill.blue  { background: rgba(37,99,235,0.12); color: var(--info); }
+  .pill.purple { background: rgba(147,51,234,0.12); color: #9333ea; }
+  .pill.gray  { background: var(--code-bg); color: var(--muted); }
+
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; }
+  tr:last-child td { border-bottom: 0; }
+  code { background: var(--code-bg); padding: 1px 6px; border-radius: 4px; font-size: 12.5px; font-family: 'SF Mono', Menlo, Consolas, monospace; }
+
+  .bet-box {
+    border-left: 4px solid var(--border); border-radius: 6px;
+    padding: 18px 20px; margin: 14px 0; background: var(--surface);
+  }
+  .bet-box.argegy { border-color: #16a34a; background: var(--card-green); }
+  .bet-box.suicol { border-color: #d97706; background: var(--card-amber); }
+  .bet-box.cross { border-color: #9333ea; background: var(--card-purple); }
+  .bet-box.cross-alt { border-color: #2563eb; background: var(--card-blue); }
+  .bet-box h4 { margin: 0 0 4px; font-size: 17px; }
+  .bet-box .meta { color: var(--muted); font-size: 12px; margin-bottom: 12px; }
+  .bet-box .odds-badge {
+    display: inline-block; background: var(--gold-soft); color: var(--gold);
+    padding: 3px 10px; border-radius: 6px; font-weight: 700; font-size: 15px; margin-top: 8px;
+    border: 1px solid var(--gold-line);
+  }
+
+  details { margin: 12px 0; }
+  details summary { cursor: pointer; color: var(--gold); font-weight: 600; font-size: 14px; }
+  details .inner { padding: 12px 0 0 0; font-size: 13px; line-height: 1.6; }
+
+  .verdict-box {
+    background: linear-gradient(135deg, var(--card-green), var(--card-blue));
+    border: 1px solid var(--gold-line);
+    border-radius: var(--radius); padding: 20px 24px; margin-top: 16px;
+  }
+
+  .verdict-box .big-odds {
+    font-size: 36px; font-weight: 900; color: var(--gold);
+    line-height: 1; margin: 8px 0 4px;
+  }
+
+  .divider {
+    border: 0; height: 1px; background: var(--gold-line);
+    margin: 20px 0;
+  }
+
+  footer {
+    margin-top: 50px; padding-top: 20px; border-top: 1px solid var(--border);
+    color: var(--muted); font-size: 12.5px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;
+  }
+
+  .model-grades { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0; }
+  @media (max-width: 600px) { .model-grades { grid-template-columns: 1fr; } }
+
+  @media (max-width: 600px) {
+    .wrap { padding: 18px 14px 60px; }
+    table { font-size: 12.5px; }
+    th, td { padding: 7px 6px; }
+    .verdict-box .big-odds { font-size: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand">Daz<span>tech</span> · <span style="color:var(--muted);font-weight:500;">Fable Adjudication</span></div>
+  <div class="navlinks">
+    <a href="index.html">Hub</a>
+    <a href="argentina-egypt-card-20260707.html">🇦🇷</a>
+    <a href="switzerland-colombia-card-20260707.html">🇨🇭</a>
+    <a href="https://github.com/daztech-ai/daztech-betting-engine" target="_blank" rel="noopener">Source ↗</a>
+    <button class="theme-toggle" onclick="toggleTheme()">◐</button>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <section>
+    <h2><span class="num">⚖️</span>Fable Adjudication — R16 Double</h2>
+    <div class="panel">
+      <h3 style="margin:0 0 6px;">Two Games · Four Bets · One Verdict</h3>
+      <p style="margin:0;color:var(--muted);">
+        Fable reviews GLM + Fable Unshackled outputs across both R16 matches. Dual-model convergence on both cores. Best SGM for each game + two cross-match multis.
+        <br><span class="pill green">Bet Return on SGMs</span>
+        <span class="pill purple">Cross-Match Multi</span>
+        <span style="font-size:12px;color:var(--muted);"> · 7 July 2026</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- ARGENTINA v EGYPT -->
+  <section>
+    <h2><span class="num">1</span>🇦🇷 Argentina v Egypt — Adjudicated</h2>
+
+    <div class="panel">
+      <p style="font-size:13px;color:var(--muted);margin:0 0 12px;">
+        <strong>Models reviewed:</strong> GLM (MiniMax M3 subagent, ~260s) vs Fable Unshackled (MiniMax M3 cached, ~25s)
+      </p>
+
+      <div class="model-grades">
+        <div style="background:var(--card-green);padding:12px 14px;border-radius:8px;">
+          <strong style="font-size:13px;">🤖 Fable Unshackled</strong><br>
+          <span style="font-size:12px;color:var(--muted);">Card: Messi 2+ SOT · Egypt GK 3+ Saves (2-leg)</span><br>
+          <span style="font-size:12px;color:var(--warning);">Verdict: Too tight — 1.75 SGM. Needs 3rd leg for knockout return.</span>
+        </div>
+        <div style="background:var(--card-amber);padding:12px 14px;border-radius:8px;">
+          <strong style="font-size:13px;">📊 GLM Quant</strong><br>
+          <span style="font-size:12px;color:var(--muted);">Card: Above + Salah 1+ SOT (3-leg)</span><br>
+          <span style="font-size:12px;color:var(--positive);">Wins this round. Cross-team 3rd leg, Bet Return eligible. Grade: A-</span>
+        </div>
+      </div>
+
+      <p style="font-size:13px;margin:10px 0 0;">
+        <strong>⚡ Convergence signal:</strong> Both models independently built Messi 2+ SOT · Egypt GK 3+ Saves as the core. Fable added nothing; GLM added Salah 1+ SOT — the correct diversification.
+      </p>
+    </div>
+
+    <div class="bet-box argegy">
+      <h4>🟢 Argentina v Egypt — Best SGM</h4>
+      <div class="meta">3-leg SGM · Bet Return ✅ · Grade: A- · Stake: 2u</div>
+      <table>
+        <tr><th style="width:25px">#</th><th>Leg</th><th>Selection</th><th>Odds</th><th>Why</th></tr>
+        <tr><td>1</td><td>Player SOT</td><td><strong>Messi 2+ SOT</strong></td><td>1.36</td><td>15 SOT / 4 games = 3.75/game. Egypt LB crisis. 2+ is the conviction level.</td></tr>
+        <tr><td>2</td><td>GK Saves</td><td><strong>Egypt GK 3+ Saves</strong></td><td>1.28</td><td>Shobeir 7.72 WhoScored (highest-rated GK of groups). Argentina avg 6.5 SOT/game.</td></tr>
+        <tr><td>3</td><td>Player SOT</td><td><strong>Salah 1+ SOT</strong></td><td>2.00</td><td>Egypt's entire attack. Two-team coverage. Survives most game states.</td></tr>
+      </table>
+      <div class="odds-badge">Est. SGM 3.10 – 3.30</div>
+      <details style="margin-top:12px;">
+        <summary>Kill case &amp; Fable's notes</summary>
+        <div class="inner">
+          <p><strong>Kill case:</strong> 0-0 stalemate with Egypt parking perfectly, Messi contained, Shobeir under 3 saves. ~5% probability.</p>
+          <p><strong>Fable's verdict:</strong> "GLM won this round. Fable's 2-leg at 1.75 was too conservative — not enough return for a knockout game. Adding Salah 1+ SOT as a cross-team third leg creates a Bet Return SGM with diversified kill cases. The single correlation (Egypt GK saves + Argentina SOT volume) is manageable with Bet Return insurance."</p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- SWITZERLAND v COLOMBIA -->
+  <section>
+    <h2><span class="num">2</span>🇨🇭 Switzerland v Colombia — Adjudicated</h2>
+
+    <div class="panel">
+      <p style="font-size:13px;color:var(--muted);margin:0 0 12px;">
+        <strong>Models reviewed:</strong> GLM (MiniMax M3 subagent, ~197s) vs Fable Unshackled (MiniMax M3 cached, ~54s)
+      </p>
+
+      <div class="model-grades">
+        <div style="background:var(--card-amber);padding:12px 14px;border-radius:8px;">
+          <strong style="font-size:13px;">📊 GLM Quant</strong><br>
+          <span style="font-size:12px;color:var(--muted);">Card: Diaz 1+ · Embolo 1+ · O1.5G · COL 4+ SOT (4-leg)</span><br>
+          <span style="font-size:12px;color:var(--warning);">Solid but 4 legs = more SGM compression.</span>
+        </div>
+        <div style="background:var(--card-green);padding:12px 14px;border-radius:8px;">
+          <strong style="font-size:13px;">🤖 Fable Unshackled</strong><br>
+          <span style="font-size:12px;color:var(--muted);">Card (revised): Embolo 2+ SOT · Diaz 1+ · 3+ SOT Each Team (3-leg)</span><br>
+          <span style="font-size:12px;color:var(--positive);">Cleaner. 3-leg Bet Return eligible. Cross-team + cross-market.</span>
+        </div>
+      </div>
+
+      <p style="font-size:13px;margin:10px 0 0;">
+        <strong>⚡ Convergence signal:</strong> Both converged on Diaz 1+ SOT · Embolo 1+ SOT as the core pair. Fable's Diaz 2+ SOT card killed (hasn't hit 2+ in any WC match). GLM's 4-leg is one too many for a cagey knockout. Fable's 3-leg wins.
+      </p>
+    </div>
+
+    <div class="bet-box suicol">
+      <h4>🟡 Switzerland v Colombia — Best SGM</h4>
+      <div class="meta">3-leg SGM · Bet Return ✅ · Grade: B+ · Stake: 2u</div>
+      <table>
+        <tr><th style="width:25px">#</th><th>Leg</th><th>Selection</th><th>Odds</th><th>Why</th></tr>
+        <tr><td>1</td><td>Player SOT</td><td><strong>Luis Diaz 1+ SOT</strong></td><td>1.36</td><td>Colombia's engine. 3 SOT in 3 games. 1.3 SOT/90. Near-certain.</td></tr>
+        <tr><td>2</td><td>Player SOT</td><td><strong>Breel Embolo 1+ SOT</strong></td><td>1.53</td><td>Swiss record 4 WC goals. 2.36 SOT/game. Solo focal point.</td></tr>
+        <tr><td>3</td><td>Team SOT</td><td><strong>3+ SOT Each Team</strong></td><td>1.53</td><td>Both defences tested. Cross-team structural. No single-player swing.</td></tr>
+      </table>
+      <div class="odds-badge">Est. SGM 2.80 – 3.20</div>
+      <details style="margin-top:12px;">
+        <summary>Kill case &amp; Fable's notes</summary>
+        <div class="inner">
+          <p><strong>Kill case:</strong> One team parks a perfect defensive block and the other can't generate 3+ SOT. 0-0 or 1-0 with one team below 3 SOT. In a cagey knockout (both top-15 GA), this is ~15-20% probability.</p>
+          <p><strong>Fable's verdict:</strong> "Fable wins this round. GLM's 4-leg was one too many for a tight knockout — adding O1.5G + COL 4+ SOT alongside player SOT legs creates correlation compression the SGM builder will punish. Fable's 3-leg keeps it simple: two cross-team volume shooters + a structural team SOT floor. Bet Return eligible. Fewer legs = less compression = better realised price."</p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- CROSS-MATCH MULTIS -->
+  <section>
+    <h2><span class="num">3</span>🌐 Cross-Match Multis</h2>
+    <p style="color:var(--muted);font-size:13px;margin:0 0 12px;">
+      Fable picks the best leg from each game and builds two cross-match multis — conservative + value.
+    </p>
+
+    <div class="bet-box cross">
+      <h4>🟣 Players Multi — Conservative</h4>
+      <div class="meta">3-leg Cross-Match Multi · Three elite volume shooters · Stake: 1u</div>
+      <table>
+        <tr><th style="width:25px">#</th><th>Match</th><th>Selection</th><th>Odds</th></tr>
+        <tr><td>1</td><td>🇦🇷 Argentina v Egypt</td><td><strong>Messi 2+ SOT</strong></td><td>1.36</td></tr>
+        <tr><td>2</td><td>🇨🇭 Switzerland v Colombia</td><td><strong>Luis Diaz 1+ SOT</strong></td><td>1.36</td></tr>
+        <tr><td>3</td><td>🇨🇭 Switzerland v Colombia</td><td><strong>Breel Embolo 1+ SOT</strong></td><td>1.53</td></tr>
+      </table>
+      <div class="odds-badge">Est. Multi 2.83</div>
+      <p style="font-size:12px;color:var(--muted);margin-top:8px;">
+        Three different teams. Three different match scripts. No single game state kills it. Messi 3.75 SOT/game · Diaz 1.3 SOT/90 · Embolo 2.36 SOT/game.
+      </p>
+    </div>
+
+    <div class="bet-box cross-alt">
+      <h4>🔵 Structure Multi — Value</h4>
+      <div class="meta">3-leg Cross-Match Multi · No single-player dependency · Stake: 1u</div>
+      <table>
+        <tr><th style="width:25px">#</th><th>Match</th><th>Selection</th><th>Odds</th></tr>
+        <tr><td>1</td><td>🇦🇷 Argentina v Egypt</td><td><strong>Egypt GK 3+ Saves</strong></td><td>1.28</td></tr>
+        <tr><td>2</td><td>🇨🇭 Switzerland v Colombia</td><td><strong>3+ SOT Each Team</strong></td><td>1.53</td></tr>
+        <tr><td>3</td><td>🇦🇷 Argentina v Egypt</td><td><strong>Salah 1+ SOT</strong></td><td>2.00</td></tr>
+      </table>
+      <div class="odds-badge">Est. Multi 3.92</div>
+      <p style="font-size:12px;color:var(--muted);margin-top:8px;">
+        No single-player dependency. Egypt GK saves = structural (Argentina volume). 3+ SOT each team = both SUI/COL defences tested. Salah SOT = independent cross-match leg. <strong>This is Fable's value pick.</strong>
+      </p>
+    </div>
+  </section>
+
+  <!-- VERDICT -->
+  <section>
+    <h2><span class="num">✓</span>Final Verdict</h2>
+    <div class="verdict-box">
+      <table style="margin-bottom:12px;">
+        <tr><th style="width:25px">#</th><th>Bet</th><th>Type</th><th style="text-align:right">Est. Odds</th><th style="text-align:center">Stake</th><th style="text-align:center">Insured?</th></tr>
+        <tr><td>1</td><td>🇦🇷 Argentina v Egypt</td><td>SGM</td><td style="text-align:right;font-weight:700;">3.10 – 3.30</td><td style="text-align:center;">2u</td><td style="text-align:center;">✅ Bet Return</td></tr>
+        <tr><td>2</td><td>🇨🇭 Switzerland v Colombia</td><td>SGM</td><td style="text-align:right;font-weight:700;">2.80 – 3.20</td><td style="text-align:center;">2u</td><td style="text-align:center;">✅ Bet Return</td></tr>
+        <tr><td>3</td><td>🌐 Players Multi</td><td>Cross-Match</td><td style="text-align:right;font-weight:700;">2.83</td><td style="text-align:center;">1u</td><td style="text-align:center;">—</td></tr>
+        <tr><td>4</td><td>🌐 Structure Multi</td><td>Cross-Match</td><td style="text-align:right;font-weight:700;">3.92</td><td style="text-align:center;">1u</td><td style="text-align:center;">—</td></tr>
+      </table>
+      <p style="font-size:14px;color:var(--text);margin:0;">
+        <strong>Fable's call:</strong> Two SGMs + two cross-match multis. Dual-model convergence on both match cores. GLM won Argentina-Egypt (better 3rd leg). Fable won Switzerland-Colombia (cleaner 3-leg). The Structure Multi at 3.92 is the value play — no single-player dependency, structural legs, two different games.
+      </p>
+      <p style="font-size:13px;color:var(--warning);margin:8px 0 0;">
+        ⚠️ Messi head knock flagged — check team sheet 1hr before kickoff. Diaz in all bets except Structure Multi.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">·</span>Changelog</h2>
+    <div class="panel" style="font-size:13px;color:var(--muted);">
+      <p><strong>2026-07-07 13:45 AEST</strong> — Fable adjudication published. Reviewed both model outputs across Argentina-Egypt and Switzerland-Colombia. GLM + Fable convergence on both core structures. Four bets delivered: 2 SGMs with Bet Return + 2 cross-match multis. Structure Multi at 3.92 is the value pick.</p>
+    </div>
+  </section>
+
+  <footer>
+    <span>Daztech Betting Engine · Fable Adjudication · R16 Double</span>
+    <span>Generated 2026-07-07 13:45 AEST</span>
+  </footer>
+
+</div>
+
+<script>
+  function toggleTheme() {
+    var cur = document.documentElement.dataset.theme;
+    var next = cur === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = next;
+    localStorage.setItem('daztech-theme', next);
+  }
+</script>
+
+</body>
+</html>
