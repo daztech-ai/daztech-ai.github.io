@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="description" content="Daz Betting System — post-World-Cup technical roadmap, architecture and delivery plan.">
+<title>Betting System Roadmap · Daztech</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🗺️</text></svg>">
+<script>
+(function(){var s=localStorage.getItem('daztech-theme');var d=window.matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.dataset.theme=s||(d?'dark':'light');})();
+</script>
+<style>
+:root{--bg:#faf7f2;--surface:#fff;--text:#2d2922;--muted:#8c8880;--gold:#c8960c;--gold-soft:rgba(200,150,12,.10);--gold-line:rgba(200,150,12,.25);--border:#e8e4dc;--positive:#16a34a;--negative:#dc2626;--warning:#d97706;--info:#2563eb;--purple:#7c3aed;--code-bg:#f5f2ec;--shadow:0 1px 3px rgba(0,0,0,.04);--radius:12px;--green-bg:rgba(22,163,74,.10);--amber-bg:rgba(217,119,6,.10);--blue-bg:rgba(37,99,235,.08);--purple-bg:rgba(124,58,237,.09);--red-bg:rgba(220,38,38,.08)}
+html[data-theme="dark"]{--bg:#0a0a0f;--surface:#12121a;--text:#e0e0e0;--muted:#888;--gold:#ffd700;--gold-soft:rgba(255,215,0,.08);--gold-line:rgba(255,215,0,.22);--border:rgba(255,255,255,.09);--code-bg:#1a1a23;--shadow:none;--green-bg:rgba(22,163,74,.09);--amber-bg:rgba(217,119,6,.09);--blue-bg:rgba(37,99,235,.08);--purple-bg:rgba(124,58,237,.10);--red-bg:rgba(220,38,38,.09)}
+*{box-sizing:border-box}html,body{margin:0;padding:0}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.55;-webkit-font-smoothing:antialiased}a{color:var(--gold);text-decoration:none}a:hover{text-decoration:underline}.wrap{max-width:1060px;margin:0 auto;padding:34px 20px 84px}.topbar{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;border-bottom:1px solid var(--border);background:var(--surface);position:sticky;top:0;z-index:10}.brand{font-weight:800;font-size:15px}.brand b{color:var(--gold)}.navlinks{display:flex;align-items:center;gap:16px;font-size:13px}.navlinks a{color:var(--muted)}.navlinks a:hover,.navlinks a.active{color:var(--gold);text-decoration:none}.theme-toggle{background:transparent;border:1px solid var(--border);color:var(--text);padding:5px 10px;border-radius:6px;cursor:pointer;font-size:13px}
+.hero{padding:28px 0 6px}.eyebrow{font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}h1{font-size:clamp(30px,5vw,52px);line-height:1.04;letter-spacing:-.04em;max-width:780px;margin:9px 0 14px}.lede{font-size:18px;color:var(--muted);max-width:760px;margin:0}.meta{margin-top:16px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:12px;color:var(--muted)}section{margin-top:42px}section h2{font-size:13px;text-transform:uppercase;letter-spacing:.12em;color:var(--gold);margin:0 0 14px;font-weight:800}.num{display:inline-block;width:22px;height:22px;line-height:21px;background:var(--gold-soft);border:1px solid var(--gold-line);border-radius:50%;text-align:center;margin-right:8px;font-size:11px}.panel{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}.panel+.panel{margin-top:12px}.pill{display:inline-block;font-size:11px;padding:2px 8px;border-radius:999px;font-weight:750;white-space:nowrap}.green{background:rgba(22,163,74,.13);color:var(--positive)}.amber{background:rgba(217,119,6,.13);color:var(--warning)}.red{background:rgba(220,38,38,.13);color:var(--negative)}.blue{background:rgba(37,99,235,.13);color:var(--info)}.purple{background:rgba(124,58,237,.13);color:var(--purple)}.gray{background:var(--code-bg);color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.state{border-radius:10px;padding:17px 18px;border:1px solid var(--border)}.state.done{background:var(--green-bg);border-color:rgba(22,163,74,.2)}.state.gap{background:var(--amber-bg);border-color:rgba(217,119,6,.22)}.state h3{font-size:15px;margin:0 0 7px}.state p{font-size:14px;margin:0;color:var(--muted)}.state ul{font-size:14px;margin:9px 0 0;padding-left:18px}.state li{margin:4px 0}
+.flow{display:grid;grid-template-columns:repeat(7,1fr);gap:7px;align-items:stretch}.flow-box{border:1px solid var(--border);border-radius:9px;padding:12px 10px;min-height:105px;font-size:12px;background:var(--code-bg);position:relative}.flow-box strong{display:block;font-size:12px;margin-bottom:5px}.flow-box small{display:block;color:var(--muted);line-height:1.35}.flow-box.pipeline{border-color:var(--gold-line);background:var(--gold-soft)}.flow-box.model{border-color:rgba(37,99,235,.25);background:var(--blue-bg)}.flow-box.review{border-color:rgba(124,58,237,.25);background:var(--purple-bg)}.flow-box.delivery{border-color:rgba(22,163,74,.25);background:var(--green-bg)}.arrow{align-self:center;text-align:center;color:var(--gold);font-size:21px;font-weight:700}
+.phase{background:var(--surface);border:1px solid var(--border);border-left:5px solid var(--border);border-radius:var(--radius);padding:20px 22px;margin-top:14px;box-shadow:var(--shadow)}.phase.now{border-left-color:var(--warning)}.phase.next{border-left-color:var(--info)}.phase.future{border-left-color:var(--purple)}.phase.done{border-left-color:var(--positive)}.phase-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}.phase h3{font-size:19px;margin:0}.phase .goal{margin:8px 0 14px;color:var(--muted);font-size:14px}table{width:100%;border-collapse:collapse;font-size:14px}th,td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--border);vertical-align:top}th{color:var(--muted);font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:.07em}tr:last-child td{border-bottom:0}.why{color:var(--muted)}.callout{border-left:4px solid var(--gold);background:var(--gold-soft);border-radius:6px;padding:17px 18px}.callout h3{margin:0 0 5px;font-size:16px}.callout p{margin:0;color:var(--muted);font-size:14px}.guardrails{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.guardrail{padding:15px;border:1px solid var(--border);border-radius:9px;background:var(--surface)}.guardrail h3{font-size:13px;margin:0 0 5px}.guardrail p{font-size:13px;color:var(--muted);margin:0}.outcomes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.outcome{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px}.outcome .icon{font-size:22px}.outcome h3{font-size:15px;margin:6px 0}.outcome p{font-size:13px;color:var(--muted);margin:0}.checklist{columns:2;gap:28px;margin:0;padding-left:19px}.checklist li{margin:7px 0;font-size:14px}footer{margin-top:52px;padding-top:20px;border-top:1px solid var(--border);color:var(--muted);font-size:12.5px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+@media(max-width:820px){.flow{grid-template-columns:1fr}.arrow{transform:rotate(90deg);height:18px}.grid,.guardrails,.outcomes{grid-template-columns:1fr}.navlinks{gap:10px}.navlinks a:not(.active){display:none}.checklist{columns:1}table{font-size:12.5px}th,td{padding:8px 5px}.wrap{padding:22px 14px 60px}}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="brand">Daz<b>tech</b> · <span style="color:var(--muted);font-weight:500">Betting System</span></div>
+  <div class="navlinks">
+    <a href="index.html">Hub</a>
+    <a href="rebirth-summary.html">Engine</a>
+    <a class="active" href="betting-system-roadmap.html">Roadmap</a>
+    <a href="https://github.com/daztech-ai/daztech-ai.github.io" target="_blank" rel="noopener">Source ↗</a>
+    <button class="theme-toggle" onclick="toggleTheme()">◐</button>
+  </div>
+</div>
+<main class="wrap">
+  <header class="hero">
+    <div class="eyebrow">Post-World-Cup consolidation plan</div>
+    <h1>One audited betting system.<br>Not two competing ones.</h1>
+    <p class="lede">The World Cup pipeline proved the operating discipline. The betting engine contains useful probability, risk and ledger work. This roadmap keeps the best of both without rebuilding the stack or weakening the gates.</p>
+    <div class="meta"><span class="pill green">World Cup pipeline operating</span><span class="pill amber">Consolidation planned</span><span class="pill blue">Architecture reviewed by GLM + Sol</span><span>Last updated · 14 July 2026</span></div>
+  </header>
+
+  <section>
+    <h2><span class="num">1</span>The decision</h2>
+    <div class="callout">
+      <h3>Keep the pipeline as the control plane. Use the engine as a library.</h3>
+      <p>The pipeline owns schedule locks, research, price-bound cards, independent review, gating and delivery. The engine contributes narrow, testable services: match-market probability, risk sizing, bankroll controls, settlement and performance reporting. No codebase merger. No blind model replacement.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">2</span>Honest starting point</h2>
+    <div class="grid">
+      <div class="state done"><h3>What is working now <span class="pill green">done</span></h3><ul><li>World Cup workflow produces frozen research, odds snapshots, card JSON and review artifacts.</li><li>Cards are bound to real market and selection identifiers before delivery.</li><li>Independent review and structural gates can kill bad or fabricated legs.</li><li>The engine has football/NRL probability modules, risk concepts and a substantial test base.</li><li>GLM review + Sol Codex review agree: use a contract boundary, not a merger.</li></ul></div>
+      <div class="state gap"><h3>What is not ready yet <span class="pill amber">gap</span></h3><ul><li>Engine and pipeline have no reliable shared card/ledger contract.</li><li>Two ledger model families are in conflict; current failures must be repaired first.</li><li>Match-result models do not validate player-prop legs.</li><li>Pipeline cards do not yet feed an idempotent settlement/performance loop.</li><li>MLB and NBA are future sport stubs, not live prediction systems.</li></ul></div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">3</span>How the finished system works</h2>
+    <div class="panel">
+      <div class="flow" aria-label="Betting system architecture flow">
+        <div class="flow-box pipeline"><strong>P-1 → P2</strong><small>Schedule lock<br>Odds snapshot<br>Research pack</small></div><div class="arrow">→</div>
+        <div class="flow-box pipeline"><strong>P3</strong><small>Terra builds candidates from evidence and real prices</small></div><div class="arrow">→</div>
+        <div class="flow-box model"><strong>P3.5</strong><small>Engine advisory checks supported match markets and risk context</small></div><div class="arrow">→</div>
+        <div class="flow-box review"><strong>P4 → P5</strong><small>Sol review<br>Odds binding<br>Rule gates</small></div><div class="arrow">→</div>
+        <div class="flow-box delivery"><strong>P6 → P7</strong><small>Delivery<br>Canonical ledger<br>Settlement + calibration</small></div>
+      </div>
+      <p style="font-size:13px;color:var(--muted);margin:17px 0 0">P3.5 is advisory first. It may flag disagreement on supported markets, but it does not pretend a match-result model can prove a player prop. P4/P5 remain the hard safety and integrity gates.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">4</span>Roadmap</h2>
+    <article class="phase done"><div class="phase-head"><span class="pill green">done</span><h3>Phase 0 — Evidence and architecture review</h3></div><p class="goal">Establish what can be salvaged before changing anything in the live World Cup workflow.</p><table><thead><tr><th>State</th><th>Deliverable</th><th>Why it matters</th></tr></thead><tbody><tr><td><span class="pill green">done</span></td><td>Cross-project source, test and artifact audit</td><td class="why">Separates reusable engine components from stale or incompatible paths.</td></tr><tr><td><span class="pill green">done</span></td><td>GLM review, independently challenged by Sol via Codex CLI</td><td class="why">The first design decision now has a recorded technical basis.</td></tr><tr><td><span class="pill green">done</span></td><td>Decision: contract boundary, not codebase merger</td><td class="why">Protects the working pipeline and avoids a big-bang rebuild.</td></tr></tbody></table></article>
+
+    <article class="phase now"><div class="phase-head"><span class="pill amber">next</span><h3>Phase 1 — Ledger foundation</h3></div><p class="goal">Make one reliable record of a card, a bet, its legs and its final outcome. No pipeline changes during the World Cup.</p><table><thead><tr><th>State</th><th>Build</th><th>Done means</th></tr></thead><tbody><tr><td><span class="pill amber">next</span></td><td>Canonical Ledger Record v1 specification</td><td class="why">Versioned fields for card ID, leg IDs, sport, book, price, stake, evidence and settlement.</td></tr><tr><td><span class="pill gray">queued</span></td><td>Lossless legacy-read migration harness</td><td class="why">Existing records round-trip without silently dropping fields.</td></tr><tr><td><span class="pill gray">queued</span></td><td>Repair Pydantic / legacy ledger split</td><td class="why">The store and intake paths use one tested model family.</td></tr><tr><td><span class="pill gray">queued</span></td><td>Stable ID contract</td><td class="why">Every card and leg can be joined safely and idempotently later.</td></tr></tbody></table></article>
+
+    <article class="phase next"><div class="phase-head"><span class="pill blue">post-WC</span><h3>Phase 2 — Wire the system safely</h3></div><p class="goal">Add shared capabilities behind explicit adapters. The pipeline remains the only orchestration layer.</p><table><thead><tr><th>State</th><th>Build</th><th>Boundary</th></tr></thead><tbody><tr><td><span class="pill blue">post-WC</span></td><td>Versioned pipeline-card → ledger adapter</td><td class="why">Reject invalid/unknown records; never mutate a card artifact or overwrite another run.</td></tr><tr><td><span class="pill blue">post-WC</span></td><td>P3.5 match-market advisory service</td><td class="why">Use International Poisson / NRL logic only where the model supports the market.</td></tr><tr><td><span class="pill blue">post-WC</span></td><td>Risk and bankroll advisory output</td><td class="why">Show sizing and drawdown context without overriding Danny or disrupting P5.</td></tr><tr><td><span class="pill blue">post-WC</span></td><td>P7 settlement and performance loop</td><td class="why">Record outcomes, ROI, calibration and closing-line evidence against the original card.</td></tr></tbody></table></article>
+
+    <article class="phase future"><div class="phase-head"><span class="pill purple">future</span><h3>Phase 3 — Multi-sport platform</h3></div><p class="goal">Expand one proven operating system sport by sport, not through generic promises.</p><table><thead><tr><th>State</th><th>Build</th><th>Rule</th></tr></thead><tbody><tr><td><span class="pill purple">future</span></td><td>NRL first</td><td class="why">Existing engine work and pipeline mapping make it the nearest post-WC extension.</td></tr><tr><td><span class="pill gray">later</span></td><td>MLB data, market and model stack</td><td class="why">No production model yet — establish data provenance and backtest before cards.</td></tr><tr><td><span class="pill gray">later</span></td><td>NBA data, market and model stack</td><td class="why">Same standard: sport-specific model and outcome evidence before operational use.</td></tr><tr><td><span class="pill gray">later</span></td><td>Cross-sport performance surface</td><td class="why">Compare results by sport, market, confidence tier, book and card structure.</td></tr></tbody></table></article>
+  </section>
+
+  <section>
+    <h2><span class="num">5</span>Non-negotiable guardrails</h2>
+    <div class="guardrails">
+      <div class="guardrail"><h3>Evidence before bet</h3><p>No research pack, price snapshot or market binding means no card. A model output is evidence, not permission.</p></div>
+      <div class="guardrail"><h3>Advisory before enforcement</h3><p>New engine checks first report disagreement. They only become gates after calibration supports a threshold.</p></div>
+      <div class="guardrail"><h3>Lossless before migration</h3><p>No ledger unification if fields vanish, IDs are unstable, or settlement cannot be replayed idempotently.</p></div>
+      <div class="guardrail"><h3>No drift during the tournament</h3><p>World Cup delivery stays frozen while engine repairs and contracts are prepared separately.</p></div>
+      <div class="guardrail"><h3>One source of truth</h3><p>Run artifacts preserve how a card was made; the canonical ledger preserves what was actually bet and what happened.</p></div>
+      <div class="guardrail"><h3>Sport-specific proof</h3><p>MLB and NBA only progress when their data, model, market mapping and outcome feedback exist — not because a dispatcher has a stub.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">6</span>What this ultimately unlocks</h2>
+    <div class="outcomes">
+      <div class="outcome"><div class="icon">🧾</div><h3>Auditable decisions</h3><p>Every delivered card can link its research, quoted price, review verdict, gate result, actual stake and final settlement.</p></div>
+      <div class="outcome"><div class="icon">📈</div><h3>Learning loop</h3><p>Outcome data can reveal which sports, markets, confidence tiers and card structures genuinely add value.</p></div>
+      <div class="outcome"><div class="icon">🧩</div><h3>Multi-sport without chaos</h3><p>One control plane and one ledger, with separate adapters and evidence standards for football, NRL, MLB and NBA.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">7</span>What done looks like</h2>
+    <div class="panel"><ul class="checklist"><li>A single versioned ledger record survives legacy import/export without loss.</li><li>Each delivered card has stable card and leg identifiers.</li><li>Pipeline intake is idempotent and cannot overwrite a different run.</li><li>P7 records settled outcomes and supports performance reporting.</li><li>P3.5 reports supported-market model disagreement without pretending to price unsupported props.</li><li>NRL is the first fully extended post-WC lane; MLB/NBA remain evidence-gated future work.</li></ul></div>
+  </section>
+
+  <section>
+    <h2><span class="num">↻</span>Changelog</h2>
+    <div class="panel"><p style="margin:0;font-size:14px"><strong>2026-07-14</strong> — Initial consolidation roadmap published from the engine/pipeline review. Confirms contract-boundary architecture, ledger-first sequencing and advisory-only model integration.</p></div>
+  </section>
+
+  <footer><span>Daztech Betting System · technical roadmap, not betting advice</span><span>Living document · update pills and changelog as work moves</span></footer>
+</main>
+<script>function toggleTheme(){var c=document.documentElement.dataset.theme;var n=c==='dark'?'light':'dark';document.documentElement.dataset.theme=n;localStorage.setItem('daztech-theme',n);}</script>
+</body>
+</html>
