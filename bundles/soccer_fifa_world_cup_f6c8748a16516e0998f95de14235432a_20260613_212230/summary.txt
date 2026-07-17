@@ -1,1 +1,0 @@
-[game-assistant] status=ok event=Brazil vs Morocco primary=place pev_recs=2 sgm_candidates=0 sgm_blocked=0 html=yes ledger=yes bundle=bundles/soccer_fifa_world_cup_f6c8748a16516e0998f95de14235432a_20260613_212230

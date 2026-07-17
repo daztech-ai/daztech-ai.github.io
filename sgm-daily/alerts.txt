@@ -1,3 +1,0 @@
-⚠️ **Daily SGM Slate** — **Daily SGM Slate** — 340 candidates | 🟢 0 bets — $0.00 total staked | 🟡 0 watching — 🔴 340 passed
-🚨 **Stale Odds Detected** — 120 recommendation(s) have stale market odds. Odds should be refreshed within 24h.
-⚠️ **Exact SGM Price Required** — 340 candidate(s) require exact Sportsbet SGM price confirmation. The engine is using estimated leg-product prices. Check Sportsbet Same Game Multi builder for exact quotes.
