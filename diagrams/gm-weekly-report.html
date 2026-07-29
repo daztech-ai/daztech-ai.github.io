@@ -596,7 +596,10 @@
                               3617.0
                         ]
                   ],
-                  "note": "Steady week."
+                  "note": "Steady week.",
+                  "closeOut": "99.0%",
+                  "closeOutWow": "▼ 0.97 WoW",
+                  "closeOutDirection": "down"
             },
             {
                   "name": "Brisbane Warehouse",
@@ -650,7 +653,10 @@
                               2831.0
                         ]
                   ],
-                  "note": "Steady week."
+                  "note": "Steady week.",
+                  "closeOut": "100.0%",
+                  "closeOutWow": "▲ 0.21 WoW",
+                  "closeOutDirection": "up"
             },
             {
                   "name": "Melbourne Warehouse",
@@ -704,7 +710,10 @@
                               3310.0
                         ]
                   ],
-                  "note": "Steady week."
+                  "note": "Steady week.",
+                  "closeOut": "99.2%",
+                  "closeOutWow": "▼ 0.57 WoW",
+                  "closeOutDirection": "down"
             }
       ],
       "pharmacy": {
@@ -1043,6 +1052,10 @@
         ["UNITS / ORDER",site.unitsPerOrder,"",""],
         ["DAILY AVG",site.dailyAverage,"orders/day",""]
       ];
+        if (site.closeOut) {
+          siteKpis.push(["CLOSE-OUT RATE", site.closeOut, site.closeOutWow || "",
+            site.closeOutDirection === "up" ? "good" : site.closeOutDirection === "down" ? "bad" : ""]);
+        }
       return `<section class="page">
         ${header(site.name, `W/E ${d.weekEnding} - ${site.subtitle}`, d.warehouse.source)}
         <div class="content">
