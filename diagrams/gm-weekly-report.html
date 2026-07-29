@@ -1,0 +1,1118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GM Operations Weekly - HTML Template</title>
+  <style>
+    :root {
+      --navy: #0d2442;
+      --navy-2: #243b59;
+      --teal: #27918d;
+      --green: #12a85a;
+      --amber: #e78a00;
+      --red: #ef3038;
+      --ink: #172338;
+      --muted: #718096;
+      --line: #dce3ea;
+      --soft: #f5f7f9;
+      --mint: #ebfaf1;
+      --white: #fff;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      background: #d9dee5;
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body { padding: 56px 0 24px; }
+
+    .toolbar {
+      position: fixed;
+      z-index: 50;
+      inset: 0 0 auto 0;
+      height: 44px;
+      padding: 8px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #081a31;
+      color: #fff;
+      font-size: 13px;
+      box-shadow: 0 2px 8px #0003;
+    }
+
+    .toolbar button {
+      border: 0;
+      border-radius: 4px;
+      padding: 7px 13px;
+      background: var(--teal);
+      color: #fff;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    #report { display: grid; gap: 18px; justify-content: center; }
+
+    .page {
+      position: relative;
+      width: 1280px;
+      height: 720px;
+      overflow: hidden;
+      background: var(--white);
+      box-shadow: 0 4px 20px #0003;
+      page-break-after: always;
+    }
+
+    .page:last-child { page-break-after: auto; }
+
+    .cover {
+      background: var(--navy);
+      color: var(--white);
+      padding: 210px 96px 58px;
+    }
+
+    .cover .confidential-band {
+      width: 500px;
+      height: 30px;
+      padding: 9px 16px;
+      border-radius: 5px;
+      background: var(--red);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+    }
+
+    .cover h1 {
+      margin: 56px 0 78px;
+      font-size: 44px;
+      line-height: 1;
+      letter-spacing: -.8px;
+    }
+
+    .cover .date { font-size: 14px; }
+    .cover .sub { margin-top: 34px; color: #8da0b8; font-size: 10px; }
+
+    .cover-footer,
+    .page-footer {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 13px;
+      text-align: center;
+      color: #71839a;
+      font-size: 7px;
+      font-weight: 700;
+      letter-spacing: 1.1px;
+      text-transform: uppercase;
+    }
+
+    .page-header {
+      height: 138px;
+      padding: 38px 60px 0;
+      background: var(--navy);
+      color: #fff;
+    }
+
+    .page-header h2 {
+      margin: 0;
+      font-size: 26px;
+      line-height: 1.1;
+      letter-spacing: -.35px;
+    }
+
+    .page-header .subtitle {
+      margin-top: 13px;
+      color: #d2d9e2;
+      font-size: 9px;
+    }
+
+    .source {
+      position: absolute;
+      top: 40px;
+      right: 61px;
+      color: #8292a6;
+      font-size: 7px;
+      line-height: 1.55;
+      letter-spacing: .8px;
+      text-transform: uppercase;
+    }
+
+    .content { padding: 28px 60px 42px; }
+
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 14px;
+    }
+
+    .kpi {
+      min-height: 76px;
+      padding: 14px 16px 10px;
+      border: 1px solid var(--line);
+      border-top: 4px solid var(--teal);
+      border-radius: 7px;
+      background: #fff;
+    }
+
+    .kpi.good { border-top-color: var(--green); }
+    .kpi.bad { border-top-color: var(--red); }
+    .kpi.warn { border-top-color: var(--amber); }
+
+    .kpi-label {
+      color: var(--muted);
+      font-size: 8px;
+      font-weight: 800;
+      letter-spacing: .35px;
+      text-transform: uppercase;
+    }
+
+    .kpi-value {
+      margin-top: 6px;
+      color: var(--navy);
+      font-size: 23px;
+      line-height: 1;
+      font-weight: 800;
+    }
+
+    .kpi-note {
+      margin-top: 7px;
+      color: var(--green);
+      font-size: 8px;
+    }
+
+    .kpi-note.down { color: var(--red); }
+    .kpi-note.neutral { color: var(--muted); }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 42px;
+      margin-top: 32px;
+    }
+
+    .section-title {
+      margin: 0 0 4px;
+      font-size: 13px;
+      color: var(--navy);
+    }
+
+    .section-subtitle { color: var(--muted); font-size: 8px; }
+
+    .chart {
+      height: 245px;
+      display: flex;
+      align-items: end;
+      gap: 28px;
+      padding: 30px 25px 26px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .bar-item {
+      flex: 1;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      min-width: 0;
+    }
+
+    .bar-value {
+      margin-bottom: 6px;
+      color: var(--navy);
+      font-size: 9px;
+      font-weight: 800;
+    }
+
+    .bar {
+      width: 100%;
+      max-width: 58px;
+      min-height: 2px;
+      background: var(--teal);
+    }
+
+    .bar.navy { background: var(--navy-2); }
+
+    .bar-label {
+      position: absolute;
+      transform: translateY(18px);
+      color: var(--muted);
+      font-size: 8px;
+    }
+
+    .readout {
+      padding: 20px 22px;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: var(--soft);
+      font-size: 10px;
+      line-height: 1.6;
+    }
+
+    .readout strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--navy);
+      font-size: 11px;
+    }
+
+    .highlight {
+      margin-top: 28px;
+      padding: 12px 17px;
+      border-left: 4px solid var(--green);
+      background: var(--mint);
+      color: #31985c;
+      font-size: 9px;
+    }
+
+    .exec-header { height: 160px; }
+    .exec-content { padding-top: 18px; }
+
+    .week-line {
+      padding: 12px 18px;
+      border-radius: 4px;
+      background: var(--mint);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .week-line span {
+      margin-right: 13px;
+      color: var(--teal);
+      font-size: 8px;
+      letter-spacing: .8px;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin-top: 18px;
+    }
+
+    .summary-card {
+      position: relative;
+      min-height: 158px;
+      padding: 18px 18px 13px;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+    }
+
+    .summary-card h3 { margin: 0 0 10px; font-size: 14px; }
+    .summary-card p { margin: 6px 0; font-size: 9px; line-height: 1.45; }
+    .summary-card b { color: var(--teal); font-size: 8px; letter-spacing: .35px; }
+
+    .status {
+      position: absolute;
+      top: 15px;
+      right: 16px;
+      padding: 5px 10px;
+      border-radius: 4px;
+      background: var(--green);
+      color: #fff;
+      font-size: 8px;
+      font-weight: 800;
+    }
+
+    .status.amber { background: var(--amber); }
+    .status.red { background: var(--red); }
+
+    .warehouse-kpis .kpi { min-height: 74px; }
+    .warehouse-charts { margin-top: 28px; }
+
+    .performance-kpis {
+      grid-template-columns: repeat(3, 1fr);
+      width: 68%;
+    }
+
+    .secondary-kpis { margin-top: 20px; }
+
+    .mini-kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+    }
+
+    .mini-kpi {
+      min-height: 58px;
+      padding: 10px 13px;
+      border: 1px solid var(--line);
+      border-top: 3px solid var(--teal);
+      border-radius: 6px;
+    }
+
+    .mini-kpi .kpi-value { font-size: 17px; }
+
+    .compact-chart {
+      height: 205px;
+      padding-top: 22px;
+      gap: 22px;
+    }
+
+    .table-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      margin-top: 34px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 9px;
+    }
+
+    th {
+      padding: 8px 0;
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 8px;
+      text-align: left;
+      text-transform: uppercase;
+      letter-spacing: .4px;
+    }
+
+    td {
+      padding: 10px 0;
+      border-bottom: 1px solid #edf0f4;
+    }
+
+    .progress {
+      height: 13px;
+      border-radius: 3px;
+      background: #eef1f4;
+      overflow: hidden;
+    }
+
+    .progress span {
+      display: block;
+      height: 100%;
+      background: var(--teal);
+    }
+
+    .progress.green span { background: var(--green); }
+    .progress.amber span { background: var(--amber); }
+
+    .performance-readout { margin-top: 28px; }
+
+    .pharmacy-page .content { padding-top: 18px; }
+    .pharmacy-page .performance-kpis .kpi { min-height: 64px; padding-top: 10px; }
+    .pharmacy-page .two-col { margin-top: 14px !important; }
+    .pharmacy-page .compact-chart { height: 150px; padding-top: 14px; }
+    .pharmacy-page .secondary-kpis { margin-top: 14px; }
+    .pharmacy-page .secondary-kpis .kpi { min-height: 58px; padding: 9px 12px; }
+    .pharmacy-page .secondary-kpis .kpi-value { font-size: 17px; }
+    .pharmacy-page .performance-readout { margin-top: 14px; }
+    .pharmacy-page .readout { padding: 12px 16px; line-height: 1.45; }
+    .pharmacy-page .readout strong { margin-bottom: 5px; }
+
+    @media (max-width: 1300px) {
+      #report { transform-origin: top center; }
+      .page { width: min(1280px, calc(100vw - 24px)); aspect-ratio: 16 / 9; height: auto; }
+    }
+
+    @media print {
+      @page { size: 13.333in 7.5in; margin: 0; }
+      html, body { background: #fff; }
+      body { padding: 0; }
+      .toolbar { display: none !important; }
+      #report { display: block; }
+      .page {
+        width: 13.333in;
+        height: 7.5in;
+        margin: 0;
+        box-shadow: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="toolbar">
+    <span>GM Operations Weekly - edit the REPORT_DATA block to reuse this template</span>
+    <button type="button" onclick="window.print()">Print / Save PDF</button>
+  </div>
+  <main id="report"></main>
+
+  <script>
+    /*
+      REUSABLE DATA BLOCK
+      Update this object for each reporting week. Keep daily arrays in label/value order.
+      Set unavailable values to an em dash ("-") or the wording "data unavailable".
+    */
+    const REPORT_DATA = {
+      "reportTitle": "Fulfilment Weekly",
+      "weekEnding": "2026-07-24",
+      "fulfilmentWeekEnding": "2026-07-25",
+      "classification": "CONFIDENTIAL - NOT FOR DISTRIBUTION",
+      "department": "FULFILMENT OPERATIONS",
+      "weekInOneLine": "Order volume at 5,980 with warehouse close-out 99.4% Zone delivery: Metro —, Regional —, Rural —; pharmacy dispatch 84.98%.",
+      "executive": [
+            {
+                  "title": "Fulfilment",
+                  "status": "GREEN",
+                  "tone": "green",
+                  "headline": "3.1% UTD rate.",
+                  "watch": "Cost per order unavailable from live sheet.",
+                  "action": "Confirm cost/order source; hold UTD below target."
+            },
+            {
+                  "title": "Pharmacy",
+                  "status": "AMBER",
+                  "tone": "amber",
+                  "headline": "30,085 units · same-day dispatch 84.98%.",
+                  "watch": "Same-day dispatch 84.98% — dispense-to-dispatch bottleneck.",
+                  "action": "Review dispatch SLA and pharmacy queue timing."
+            },
+            {
+                  "title": "Warehouse",
+                  "status": "GREEN",
+                  "tone": "green",
+                  "headline": "5,980 orders dispatched · 99.4% close-out rate.",
+                  "watch": "Interstate shipped 37.94% — monitor lane capacity.",
+                  "action": "Maintain throughput."
+            },
+            {
+                  "title": "Carrier",
+                  "status": "AMBER",
+                  "tone": "amber",
+                  "headline": "Metro — · Regional — · Rural —.",
+                  "watch": "Rural 1-day — — below target.",
+                  "action": "Sustain rural pressure; hold metro gains."
+            }
+      ],
+      "warehouse": {
+            "source": "LOOKER 2079",
+            "kpis": [
+                  [
+                        "ORDERS DISPATCHED",
+                        "5,980",
+                        "▼ 270.00 WoW",
+                        "bad"
+                  ],
+                  [
+                        "UNITS DISPATCHED",
+                        "58,975",
+                        "▼ 6,210.00 WoW",
+                        "bad"
+                  ],
+                  [
+                        "CLOSE-OUT RATE",
+                        "99.4%",
+                        "▼ 0.50 WoW",
+                        "bad"
+                  ],
+                  [
+                        "DELIVERY BEFORE EXPECTED",
+                        "98.19%",
+                        "▲ 0.18 WoW",
+                        "good"
+                  ],
+                  [
+                        "INTERSTATE SHIPPED",
+                        "37.94%",
+                        "▼ 0.56 WoW",
+                        "bad"
+                  ]
+            ],
+            "dailyOrders": [
+                  [
+                        "Mon",
+                        1581.0
+                  ],
+                  [
+                        "Tue",
+                        1160.0
+                  ],
+                  [
+                        "Wed",
+                        1117.0
+                  ],
+                  [
+                        "Thu",
+                        1115.0
+                  ],
+                  [
+                        "Fri",
+                        1007.0
+                  ]
+            ],
+            "readout": "Close-out rate at 99.4% on 5,980 orders dispatched."
+      },
+      "sites": [
+            {
+                  "name": "Sydney Warehouse",
+                  "subtitle": "Montu Sydney",
+                  "orders": "2,555",
+                  "units": "19,805",
+                  "share": "42.7%",
+                  "unitsPerOrder": "7.75",
+                  "dailyAverage": "511",
+                  "orderSeries": [
+                        [
+                              "Mon",
+                              677.0
+                        ],
+                        [
+                              "Tue",
+                              475.0
+                        ],
+                        [
+                              "Wed",
+                              497.0
+                        ],
+                        [
+                              "Thu",
+                              482.0
+                        ],
+                        [
+                              "Fri",
+                              424.0
+                        ]
+                  ],
+                  "unitSeries": [
+                        [
+                              "Mon",
+                              4614.0
+                        ],
+                        [
+                              "Tue",
+                              4872.0
+                        ],
+                        [
+                              "Wed",
+                              3629.0
+                        ],
+                        [
+                              "Thu",
+                              3073.0
+                        ],
+                        [
+                              "Fri",
+                              3617.0
+                        ]
+                  ],
+                  "note": "Steady week."
+            },
+            {
+                  "name": "Brisbane Warehouse",
+                  "subtitle": "Montu Brisbane",
+                  "orders": "1,908",
+                  "units": "20,844",
+                  "share": "31.9%",
+                  "unitsPerOrder": "10.92",
+                  "dailyAverage": "382",
+                  "orderSeries": [
+                        [
+                              "Mon",
+                              499.0
+                        ],
+                        [
+                              "Tue",
+                              416.0
+                        ],
+                        [
+                              "Wed",
+                              376.0
+                        ],
+                        [
+                              "Thu",
+                              343.0
+                        ],
+                        [
+                              "Fri",
+                              274.0
+                        ]
+                  ],
+                  "unitSeries": [
+                        [
+                              "Mon",
+                              5180.0
+                        ],
+                        [
+                              "Tue",
+                              5721.0
+                        ],
+                        [
+                              "Wed",
+                              3659.0
+                        ],
+                        [
+                              "Thu",
+                              3453.0
+                        ],
+                        [
+                              "Fri",
+                              2831.0
+                        ]
+                  ],
+                  "note": "Steady week."
+            },
+            {
+                  "name": "Melbourne Warehouse",
+                  "subtitle": "Montu Warehouse",
+                  "orders": "1,517",
+                  "units": "18,326",
+                  "share": "25.4%",
+                  "unitsPerOrder": "12.08",
+                  "dailyAverage": "303",
+                  "orderSeries": [
+                        [
+                              "Mon",
+                              405.0
+                        ],
+                        [
+                              "Tue",
+                              269.0
+                        ],
+                        [
+                              "Wed",
+                              244.0
+                        ],
+                        [
+                              "Thu",
+                              290.0
+                        ],
+                        [
+                              "Fri",
+                              309.0
+                        ]
+                  ],
+                  "unitSeries": [
+                        [
+                              "Mon",
+                              4929.0
+                        ],
+                        [
+                              "Tue",
+                              4321.0
+                        ],
+                        [
+                              "Wed",
+                              2620.0
+                        ],
+                        [
+                              "Thu",
+                              3146.0
+                        ],
+                        [
+                              "Fri",
+                              3310.0
+                        ]
+                  ],
+                  "note": "Steady week."
+            }
+      ],
+      "pharmacy": {
+            "source": "LOOKER 2085",
+            "kpis": [
+                  [
+                        "UNITS DISPENSED",
+                        "30,085",
+                        "▼ 1,130.00 WoW",
+                        "bad"
+                  ],
+                  [
+                        "SAME-DAY DISPATCH",
+                        "84.98%",
+                        "▲ 2.52 WoW",
+                        "good"
+                  ],
+                  [
+                        "DISPENSING ERRORS",
+                        "10",
+                        "▲ 1.00 WoW",
+                        "good"
+                  ]
+            ],
+            "orderSeries": [
+                  [
+                        "Mon",
+                        4640.0
+                  ],
+                  [
+                        "Tue",
+                        3272.0
+                  ],
+                  [
+                        "Wed",
+                        3588.0
+                  ],
+                  [
+                        "Thu",
+                        3364.0
+                  ],
+                  [
+                        "Fri",
+                        3036.0
+                  ],
+                  [
+                        "Sat",
+                        483.0
+                  ],
+                  [
+                        "Sun",
+                        318.0
+                  ]
+            ],
+            "unitSeries": [
+                  [
+                        "Mon",
+                        7531.0
+                  ],
+                  [
+                        "Tue",
+                        5216.0
+                  ],
+                  [
+                        "Wed",
+                        5800.0
+                  ],
+                  [
+                        "Thu",
+                        5260.0
+                  ],
+                  [
+                        "Fri",
+                        4820.0
+                  ],
+                  [
+                        "Sat",
+                        867.0
+                  ],
+                  [
+                        "Sun",
+                        591.0
+                  ]
+            ],
+            "secondary": [
+                  [
+                        "ORDERS DISPENSED",
+                        "18,701",
+                        "▼ 379.00 WoW"
+                  ],
+                  [
+                        "SAME-DAY DISPENSE",
+                        "93.21%",
+                        "▲ 1.13 WoW"
+                  ],
+                  [
+                        "C&C READY",
+                        "4,210",
+                        ""
+                  ],
+                  [
+                        "C&C COLLECTED",
+                        "4,296",
+                        ""
+                  ],
+                  [
+                        "AVG DISTANCE (KM)",
+                        "11.13",
+                        ""
+                  ]
+            ],
+            "readout": "30,085 units dispensed on 18,701 orders. Same-day dispatch at 84.98%."
+      },
+      "carrier": {
+            "source": "LOOKER 1065",
+            "kpis": [
+                  [
+                        "RURAL 1-DAY",
+                        "—",
+                        "",
+                        ""
+                  ],
+                  [
+                        "METRO 1-DAY",
+                        "—",
+                        "",
+                        ""
+                  ],
+                  [
+                        "PICKUP ADHERENCE",
+                        "—",
+                        "",
+                        ""
+                  ]
+            ],
+            "deliveryWindow": [
+                  [
+                        "1-day",
+                        "not available",
+                        0,
+                        ""
+                  ],
+                  [
+                        "3-day",
+                        "not available",
+                        0,
+                        ""
+                  ],
+                  [
+                        "7-day",
+                        "not available",
+                        0,
+                        ""
+                  ]
+            ],
+            "zones": [
+                  [
+                        "Metro",
+                        "—",
+                        0,
+                        ""
+                  ],
+                  [
+                        "Regional",
+                        "—",
+                        0,
+                        ""
+                  ],
+                  [
+                        "Rural",
+                        "—",
+                        0,
+                        ""
+                  ]
+            ],
+            "readout": "Zone delivery: Metro —, Regional —, Rural —."
+      },
+      "fulfilment": {
+            "source": "SHEETS + LOOKER 974",
+            "kpis": [
+                  [
+                        "TOTAL ORDERS",
+                        "18,837",
+                        "▼ 1.10 WoW",
+                        "bad"
+                  ],
+                  [
+                        "UTD RATE",
+                        "3.1%",
+                        "▲ 0.50 WoW",
+                        "good"
+                  ],
+                  [
+                        "SUPPORT FRT",
+                        "209 min",
+                        "",
+                        ""
+                  ],
+                  [
+                        "COST PER ORDER",
+                        "—",
+                        "",
+                        ""
+                  ]
+            ],
+            "utdDrivers": [
+                  [
+                        "Dispense Limit",
+                        "2.1%",
+                        "(+0.4%)"
+                  ],
+                  [
+                        "Interval Time",
+                        "0.3%",
+                        "(-0.0%)"
+                  ],
+                  [
+                        "Conflicting Medications",
+                        "0.4%",
+                        "(+0.1%)"
+                  ],
+                  [
+                        "Other",
+                        "0.3%",
+                        "(-0.0%)"
+                  ]
+            ],
+            "support": [
+                  [
+                        "OOS & UTA",
+                        "1.2% (+0.1%)"
+                  ],
+                  [
+                        "Support Tickets",
+                        "2867 (+6.26%)"
+                  ],
+                  [
+                        "Refunds & Replacements",
+                        "136"
+                  ],
+                  [
+                        "Network SOH",
+                        "34,310"
+                  ],
+                  [
+                        "SLA First Reply Time",
+                        "209 min"
+                  ]
+            ],
+            "readout": "18,837 orders end-to-end. UTD held at 3.1%."
+      }
+};
+
+    const d = REPORT_DATA;
+
+    function footer() {
+      return `<div class="page-footer">${d.classification} - ${d.department}</div>`;
+    }
+
+    function header(title, subtitle, source = "") {
+      return `<header class="page-header">
+        <h2>${title}</h2>
+        <div class="subtitle">${subtitle}</div>
+        ${source ? `<div class="source">SOURCE: ${source}<br>CONFIDENTIAL</div>` : `<div class="source">CONFIDENTIAL<br>NOT FOR DISTRIBUTION</div>`}
+      </header>`;
+    }
+
+    function kpis(items, extraClass = "") {
+      return `<div class="kpi-grid ${extraClass}">${items.map(([label,value,note,tone]) => `
+        <div class="kpi ${tone || ""}">
+          <div class="kpi-label">${label}</div>
+          <div class="kpi-value">${value}</div>
+          <div class="kpi-note ${tone === "bad" ? "down" : (!tone ? "neutral" : "")}">${note || ""}</div>
+        </div>`).join("")}</div>`;
+    }
+
+    function chart(series, tone = "teal", compact = false) {
+      const max = Math.max(...series.map(x => x[1]), 1);
+      return `<div class="chart ${compact ? "compact-chart" : ""}">${series.map(([label,value]) => `
+        <div class="bar-item">
+          <div class="bar-value">${Number(value).toLocaleString()}</div>
+          <div class="bar ${tone === "navy" ? "navy" : ""}" style="height:${Math.max(8, value/max*82)}%"></div>
+          <div class="bar-label">${label}</div>
+        </div>`).join("")}</div>`;
+    }
+
+    function readout(text) {
+      return `<div class="readout"><strong>GM readout</strong>${text}</div>`;
+    }
+
+    function coverPage() {
+      return `<section class="page cover">
+        <div class="confidential-band">${d.classification}</div>
+        <h1>${d.reportTitle}</h1>
+        <div class="date">Week Ending ${d.weekEnding}</div>
+        <div class="sub">${d.department} - Internal Distribution Only</div>
+        <div class="cover-footer">${d.classification} - ${d.department}</div>
+      </section>`;
+    }
+
+    function executivePage() {
+      return `<section class="page">
+        ${header("Executive operations summary", `GM weekly readout - Fulfilment W/E ${d.fulfilmentWeekEnding} - Pharmacy, Warehouse & Carrier W/E ${d.weekEnding}`)}
+        <div class="content exec-content">
+          <div class="week-line"><span>WEEK IN ONE LINE</span>${d.weekInOneLine}</div>
+          <div class="summary-grid">${d.executive.map(item => `
+            <article class="summary-card">
+              <h3>${item.title}</h3>
+              <div class="status ${item.tone === "amber" ? "amber" : item.tone === "red" ? "red" : ""}">${item.status}</div>
+              <p>${item.headline}</p>
+              <p><b>WATCH</b> ${item.watch}</p>
+              <p><b>NEXT ACTION</b> ${item.action}</p>
+            </article>`).join("")}</div>
+        </div>${footer()}
+      </section>`;
+    }
+
+    function warehousePage() {
+      return `<section class="page">
+        ${header("Warehouse performance", `W/E ${d.weekEnding} - All warehouses`, d.warehouse.source)}
+        <div class="content">
+          ${kpis(d.warehouse.kpis, "warehouse-kpis")}
+          <div class="two-col warehouse-charts">
+            <div><h3 class="section-title">Dispatched orders by warehouse</h3><div class="section-subtitle">Mon-Fri daily breakdown</div>${chart(d.warehouse.dailyOrders)}</div>
+            <div style="padding-top:21px">${readout(d.warehouse.readout)}</div>
+          </div>
+        </div>${footer()}
+      </section>`;
+    }
+
+    function sitePage(site) {
+      const siteKpis = [
+        ["ORDERS DISPATCHED",site.orders,"",""],
+        ["UNITS DISPATCHED",site.units,"",""],
+        ["ORDER SHARE",site.share,"of total",""],
+        ["UNITS / ORDER",site.unitsPerOrder,"",""],
+        ["DAILY AVG",site.dailyAverage,"orders/day",""]
+      ];
+      return `<section class="page">
+        ${header(site.name, `W/E ${d.weekEnding} - ${site.subtitle}`, d.warehouse.source)}
+        <div class="content">
+          ${kpis(siteKpis)}
+          <div class="two-col">
+            <div><h3 class="section-title">Daily dispatched orders</h3><div class="section-subtitle">Mon-Fri</div>${chart(site.orderSeries, "teal", true)}</div>
+            <div><h3 class="section-title">Daily dispatched units</h3><div class="section-subtitle">Mon-Fri</div>${chart(site.unitSeries, "navy", true)}</div>
+          </div>
+          <div class="highlight">${site.note}</div>
+        </div>${footer()}
+      </section>`;
+    }
+
+    function pharmacyPage() {
+      return `<section class="page pharmacy-page">
+        ${header("Pharmacy performance", `W/E ${d.weekEnding} - All pharmacies`, d.pharmacy.source)}
+        <div class="content">
+          ${kpis(d.pharmacy.kpis, "performance-kpis")}
+          <div class="two-col" style="margin-top:20px">
+            <div><h3 class="section-title">Daily dispensed orders</h3><div class="section-subtitle">Mon-Sun</div>${chart(d.pharmacy.orderSeries, "teal", true)}</div>
+            <div><h3 class="section-title">Daily dispensed units</h3><div class="section-subtitle">Mon-Sun</div>${chart(d.pharmacy.unitSeries, "navy", true)}</div>
+          </div>
+          <div class="secondary-kpis">${kpis(d.pharmacy.secondary.map(x => [x[0],x[1],x[2],""]), "mini-kpi-grid")}</div>
+          <div class="performance-readout">${readout(d.pharmacy.readout)}</div>
+        </div>${footer()}
+      </section>`;
+    }
+
+    function metricTable(title, rows) {
+      return `<div><div class="kpi-label">${title}</div><table><thead><tr><th>Metric</th><th>Percentage</th></tr></thead><tbody>${rows.map(([label,value,pct,tone]) => `
+        <tr><td>${label}</td><td><div style="display:grid;grid-template-columns:1fr 52px;gap:10px;align-items:center"><div class="progress ${tone || ""}"><span style="width:${pct}%"></span></div><b>${value}</b></div></td></tr>`).join("")}</tbody></table></div>`;
+    }
+
+    function carrierPage() {
+      return `<section class="page">
+        ${header("Carrier performance", `W/E ${d.weekEnding} - All carriers`, d.carrier.source)}
+        <div class="content">
+          ${kpis(d.carrier.kpis, "performance-kpis")}
+          <div class="table-grid">
+            ${metricTable("DELIVERY WINDOW", d.carrier.deliveryWindow)}
+            ${metricTable("1-BUSINESS-DAY SERVICE BY ZONE", d.carrier.zones)}
+          </div>
+          <div class="performance-readout">${readout(d.carrier.readout)}</div>
+        </div>${footer()}
+      </section>`;
+    }
+
+    function fulfilmentPage() {
+      return `<section class="page">
+        ${header("Fulfilment performance", `W/E ${d.fulfilmentWeekEnding} - End-to-end`, d.fulfilment.source)}
+        <div class="content">
+          ${kpis(d.fulfilment.kpis)}
+          <div class="table-grid">
+            <div><div class="kpi-label">UTD DRIVERS - decomposition of UTD rate</div><table><thead><tr><th>Driver</th><th>Rate (WoW)</th></tr></thead><tbody>${d.fulfilment.utdDrivers.map(x => `<tr><td>${x[0]}</td><td><b>${x[1]}</b> ${x[2]}</td></tr>`).join("")}</tbody></table></div>
+            <div><div class="kpi-label">SUPPORT & SYSTEMS</div><table><thead><tr><th>Metric</th><th>Value</th></tr></thead><tbody>${d.fulfilment.support.map(x => `<tr><td>${x[0]}</td><td><b>${x[1]}</b></td></tr>`).join("")}</tbody></table></div>
+          </div>
+          <div class="performance-readout">${readout(d.fulfilment.readout)}</div>
+        </div>${footer()}
+      </section>`;
+    }
+
+    document.getElementById("report").innerHTML = [
+      coverPage(),
+      executivePage(),
+      warehousePage(),
+      ...d.sites.map(sitePage),
+      pharmacyPage(),
+      carrierPage(),
+      fulfilmentPage()
+    ].join("");
+  </script>
+</body>
+</html>
