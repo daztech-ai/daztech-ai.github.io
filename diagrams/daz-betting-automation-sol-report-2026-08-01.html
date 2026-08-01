@@ -1,0 +1,893 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Daz Betting Automation — Sol Status Report</title>
+<style>
+:root { --bg:#0b1020; --panel:#121a2d; --panel2:#18233a; --text:#e7edf7; --muted:#9ba9bf; --gold:#f4c95d; --cyan:#72d6e8; --green:#77dda7; --red:#ff8d8d; --line:#2b3a56; }
+* { box-sizing:border-box; } body { margin:0; background:linear-gradient(135deg,#080c18,#101b31 55%,#0b1020); color:var(--text); font:16px/1.65 Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif; }
+main { max-width:1120px; margin:0 auto; padding:48px 28px 80px; }
+header { background:linear-gradient(135deg,#172844,#1b263e); border:1px solid var(--line); border-radius:20px; padding:34px 38px; box-shadow:0 18px 60px #0005; margin-bottom:28px; }
+h1 { font-size:clamp(2rem,4vw,3.2rem); line-height:1.1; margin:0 0 14px; color:#fff; } h2 { margin-top:48px; padding-top:16px; border-top:1px solid var(--line); color:var(--gold); } h3 { color:var(--cyan); margin-top:32px; }
+p,li { color:var(--text); } strong { color:#fff; } a { color:var(--cyan); }
+blockquote { margin:24px 0; padding:18px 22px; border-left:4px solid var(--gold); background:#111b30; border-radius:0 12px 12px 0; font-size:1.08rem; }
+code { background:#0a1020; color:#b8ecf5; padding:2px 6px; border-radius:5px; } pre { overflow:auto; background:#080d19; border:1px solid var(--line); border-radius:12px; padding:18px; color:#d7e2f0; }
+table { width:100%; border-collapse:collapse; margin:20px 0 28px; background:#10192b; border:1px solid var(--line); border-radius:10px; overflow:hidden; display:table; } th { text-align:left; background:#1b2a45; color:var(--gold); } th,td { padding:11px 13px; border-bottom:1px solid var(--line); vertical-align:top; } tr:last-child td { border-bottom:0; }
+ul,ol { padding-left:28px; }
+.toc { background:var(--panel); padding:18px 24px; border:1px solid var(--line); border-radius:14px; margin:20px 0 30px; }
+.meta { color:var(--muted); font-size:.95rem; }
+.badge { display:inline-block; padding:4px 10px; border-radius:999px; background:#4a3820; color:var(--gold); font-weight:700; font-size:.8rem; letter-spacing:.04em; text-transform:uppercase; }
+footer { margin-top:60px; color:var(--muted); border-top:1px solid var(--line); padding-top:18px; font-size:.9rem; }
+@media print { body { background:#fff; color:#111; } main { max-width:none; } header { box-shadow:none; } h2 { color:#765700; } p,li,td { color:#111; } }
+</style></head><body><main>
+<header><span class="badge">GPT-5.6 Sol Report</span><h1>Daz Betting Automation</h1><p class="meta">Status report and delivery plan · Prepared 1 August 2026</p></header>
+<nav class="toc"><strong>Contents</strong><div id="toc"></div></nav>
+<article><h1 id="daz-betting-automation-sol-status-report-and-delivery-plan">Daz Betting Automation — Sol Status Report and Delivery Plan</h1>
+<p><strong>Prepared:</strong> 2026-08-01 11:04 AEST<br />
+<strong>Scope:</strong> Daz Betting Engine, 2Browser, Universal Memory, Jarvis, daily tip delivery, and paper/real ledgers<br />
+<strong>Decision:</strong> Build a single NRL paper-tip vertical slice. Do not add another engine, ledger family, or autonomous bookmaker-placement path.</p>
+<h2 id="executive-verdict">Executive verdict</h2>
+<p>The stack is capable but not production-ready as an automated daily betting-tips service.</p>
+<p>The main limitation is not missing modelling code. It is that data acquisition, candidate generation, Jarvis rules, the canonical ledger, Telegram delivery, scheduling and settlement do not yet operate as one evidenced, replayable contract.</p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Current status</th>
+<th>Verdict</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Daz Betting Engine</td>
+<td>Large implemented surface; 2,559 tests collect; focused model/ledger/SGM tests pass; NRL lifecycle exists</td>
+<td><strong>Build on it; do not rewrite it</strong></td>
+</tr>
+<tr>
+<td>Daily generation</td>
+<td><code>daz-daily-loop.timer</code> exists but is disabled; matchday tick runs but currently finds no schedule</td>
+<td><strong>Not operational</strong></td>
+</tr>
+<tr>
+<td>Odds health</td>
+<td>Daily heartbeat repeatedly receives HTTP 401 <code>INVALID_KEY</code></td>
+<td><strong>Blocking</strong></td>
+</tr>
+<tr>
+<td>Canonical ledger</td>
+<td>Strong schema and tooling, but live file has six mostly fixture/test rows and accounting warnings</td>
+<td><strong>Contract exists; operational data does not</strong></td>
+</tr>
+<tr>
+<td>Settlement</td>
+<td>Nightly timer enabled; latest observed run exited 0</td>
+<td><strong>Operational but not proof of end-to-end reconciliation</strong></td>
+</tr>
+<tr>
+<td>2Browser</td>
+<td>Health and 23-check smoke pass; 8 routes declared; Sportsbet/Bet365/Odds API/FBref routes live; FotMob disabled</td>
+<td><strong>Paper-pipeline capable in shadow mode</strong></td>
+</tr>
+<tr>
+<td>2Browser release state</td>
+<td><code>stage=shadow</code>, <code>activation_allowed=false</code>; current 614-test suite has three contract-drift failures</td>
+<td><strong>Not release-clean or cut over</strong></td>
+</tr>
+<tr>
+<td>Jarvis</td>
+<td>MCP works; four wiki tools available; search is lexical; key betting pages contain stale/conflicting facts</td>
+<td><strong>Useful rules layer after reconciliation</strong></td>
+</tr>
+<tr>
+<td>Universal Memory</td>
+<td>MCP works against production SQLite, but contains one approved test record and no betting records</td>
+<td><strong>Connected, not yet a betting dependency</strong></td>
+</tr>
+<tr>
+<td>Real betting</td>
+<td>Ledger supports real placement evidence and approval states; no safe unattended placement proof</td>
+<td><strong>Manual approval/recording only</strong></td>
+</tr>
+</tbody>
+</table>
+<p>The first product milestone should be:</p>
+<blockquote>
+<p>On every configured NRL decision day, produce one idempotent, evidence-backed paper slate containing singles, optional SGM/multi candidates, explicit passes/rejections, exact quote timestamps, model versions and ledger IDs; deliver it once through Telegram; settle it later from recorded evidence.</p>
+</blockquote>
+<h2 id="evidence-baseline">Evidence baseline</h2>
+<h3 id="repositories-observed">Repositories observed</h3>
+<table>
+<thead>
+<tr>
+<th>Repository</th>
+<th style="text-align: right;">Observed HEAD</th>
+<th>Worktree state</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/home/daz/projects/daz-betting-engine</code></td>
+<td style="text-align: right;"><code>d2beef1</code></td>
+<td>Dirty: tracked NRL/health/SGM changes and a large untracked implementation/document set</td>
+</tr>
+<tr>
+<td><code>/home/daz/projects/scrape-facade</code> (2Browser)</td>
+<td style="text-align: right;"><code>0564ec9</code></td>
+<td>Tracked tree clean at final check; many untracked build/evidence files</td>
+</tr>
+<tr>
+<td><code>/home/daz/projects/universal-memory</code></td>
+<td style="text-align: right;"><code>e2473db</code></td>
+<td>Used as the Jarvis wiki and Universal Memory MCP source</td>
+</tr>
+</tbody>
+</table>
+<p>2Browser changed during this review: T-026 was committed as <code>382902d</code>, followed by live-verification commit <code>0564ec9</code>. Claims below use the final observed HEAD.</p>
+<h3 id="checks-independently-run">Checks independently run</h3>
+<table>
+<thead>
+<tr>
+<th>Check</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Universal Memory <code>memory.ping</code></td>
+<td>PASS; <code>um-mcp-server</code> v0.1.0, DB <code>/home/daz/projects/universal-memory/data/um.db</code>, one record</td>
+</tr>
+<tr>
+<td>Universal Memory searches for <code>betting</code>, <code>2Browser</code>, <code>Jarvis</code></td>
+<td>Zero hits</td>
+</tr>
+<tr>
+<td>Universal Memory <code>memory.list</code></td>
+<td>One approved record: <code>Tika Orca Test</code>; no betting knowledge</td>
+</tr>
+<tr>
+<td>Jarvis <code>wiki.search</code></td>
+<td>PASS; betting brief, 2Browser tickets and Tika Veto retrieved</td>
+</tr>
+<tr>
+<td>Jarvis <code>wiki.lint</code> on automated-tips brief</td>
+<td>PASS</td>
+</tr>
+<tr>
+<td>Jarvis lint on betting engine, lessons and reconciliation pages</td>
+<td>FAIL; invalid betting tag/domain metadata on all three</td>
+</tr>
+<tr>
+<td>Betting engine collection</td>
+<td>2,559 tests collected; one unknown <code>slow</code> marker warning</td>
+</tr>
+<tr>
+<td>Reported focused engine slice</td>
+<td>73 passed</td>
+</tr>
+<tr>
+<td>NRL cron suites with <code>PYTHONPATH=.</code></td>
+<td>54 passed</td>
+</tr>
+<tr>
+<td>Same NRL suites under plain repository <code>pytest</code></td>
+<td>54 import failures because <code>scripts</code> is not importable</td>
+</tr>
+<tr>
+<td>2Browser <code>scrape health</code></td>
+<td>PASS; <code>status=ok</code>, <code>liveness=up</code>, 8 known routes</td>
+</tr>
+<tr>
+<td>2Browser <code>scrape smoke</code></td>
+<td>PASS; 23 checks</td>
+</tr>
+<tr>
+<td>2Browser full suite</td>
+<td>614 tests collected; three failures remain</td>
+</tr>
+<tr>
+<td>T-026 focused CLI contract tests</td>
+<td>5 passed</td>
+</tr>
+<tr>
+<td>Nightly settlement service</td>
+<td>Latest observed run 2026-07-31 23:01 AEST exited 0</td>
+</tr>
+<tr>
+<td>Heartbeat service</td>
+<td>FAIL; repeated HTTP 401 invalid Odds API key, including 2026-08-01 10:01 AEST</td>
+</tr>
+<tr>
+<td>Daily loop timer</td>
+<td>Disabled/inactive</td>
+</tr>
+<tr>
+<td>Matchday tick</td>
+<td>Enabled, executes every 30 minutes; current runs return no schedule and zero state entries</td>
+</tr>
+</tbody>
+</table>
+<p>No full betting-engine sweep and no fresh live bookmaker market fetch were claimed as passing in this review.</p>
+<h2 id="corrections-to-the-earlier-agent-reports">Corrections to the earlier agent reports</h2>
+<p>The supplied reports are directionally sound, but these points need updating before they become planning assumptions.</p>
+<ol>
+<li><strong>Universal Memory is reachable, but it is not populated with betting knowledge.</strong> The betting material is in the Jarvis GM wiki. Universal Memory currently holds one approved test record.</li>
+<li><strong>This Codex session did not expose Universal Memory as a native MCP tool.</strong> A direct stdio MCP connection succeeded using the production server and DB. Permanent Codex registration is a separate configuration task.</li>
+<li><strong>Jarvis search is lexical substring search, not semantic search.</strong> The server implementation scans Markdown text. Semantic retrieval must not be assumed.</li>
+<li><strong>The wiki is not uniformly clean or current.</strong> <code>context/betting-engine.md</code> still describes a 2026-06-19 state and claims seven active crons. Live state shows the general daily timer disabled and the heartbeat failing.</li>
+<li><strong>T-026 code is now committed.</strong> The browser CLI includes <code>request_version</code> and route fields, and its five focused tests pass. The wiki ticket still says <code>todo</code>, so ticket state is stale.</li>
+<li><strong>FBref is now configured live, not disabled.</strong> Two readiness tests and one MCP test still encode the old disabled/unsupported contract. This accounts for the three current 2Browser failures.</li>
+<li><strong>The canonical ledger is not a usable running ledger today.</strong> <code>data/operator_ledger/bets.jsonl</code> has six rows, including fixture-style names such as <code>Test Real</code>, four open records and accounting-blocked warnings. It cannot support performance claims.</li>
+<li><strong>The engine's separate config-state ledger is not the betting ledger.</strong> It contains 2,671 generic run entries and reports bankroll <code>$0.00</code>.</li>
+<li><strong>The claimed NRL tests are not reproducible with the plain test command.</strong> Logic passes once the project root is added to <code>PYTHONPATH</code>; packaging/test configuration needs repair.</li>
+</ol>
+<h2 id="daz-betting-engine-status">Daz Betting Engine status</h2>
+<h3 id="what-is-worth-preserving">What is worth preserving</h3>
+<ul>
+<li>NRL daily decision, freshness, paper-entry, settlement, duplicate detection and alert code.</li>
+<li>The canonical <code>Bet</code>/<code>BetLeg</code> models and placement-evidence controls.</li>
+<li>The pipeline-to-ledger adapter with stable identities and frozen quote joins.</li>
+<li>SGM generation, evaluation, exact-price and wiki-context machinery.</li>
+<li>Existing Telegram sender and renderers.</li>
+<li>Existing bankroll/risk/first-bet gates.</li>
+<li>Fail-closed handling for missing timestamps, empty markets and ambiguous settlements.</li>
+</ul>
+<h3 id="current-operational-defects">Current operational defects</h3>
+<ol>
+<li>Odds API authentication is invalid in the scheduled environment.</li>
+<li>The primary daily card timer is disabled.</li>
+<li>The active matchday timer has no schedule source for today/tomorrow and therefore performs no tip work.</li>
+<li>The canonical ledger contains fixtures/test data rather than a clean forward record.</li>
+<li>Multiple ledger and orchestration families remain in the repository.</li>
+<li>The README still says the project is a scaffold while documenting jobs that are not currently active.</li>
+<li>The worktree is not a clean release baseline.</li>
+<li>Test invocation depends on an implicit root import path.</li>
+<li>There is no verified contract linking a daily run to one data snapshot, one Jarvis decision, one ledger append and one Telegram message.</li>
+</ol>
+<h3 id="ledger-decision">Ledger decision</h3>
+<p>Keep <code>data/operator_ledger/</code> and the <code>operator_ledger</code> package as the v1 canonical interface. Do not introduce a new database during the paper vertical slice.</p>
+<p>For v1:</p>
+<ul>
+<li>one scheduled process is the sole writer;</li>
+<li>JSONL remains the storage format;</li>
+<li>every write uses stable IDs and the existing adapter/store boundary;</li>
+<li>fixture and production ledgers are physically separated;</li>
+<li>paper records cannot be mutated into real records without an explicit linked approval/placement event;</li>
+<li>settlement and corrections retain evidence and prior state;</li>
+<li>a future SQLite migration is justified only by concurrent-writer or query-volume requirements.</li>
+</ul>
+<p>The current six-row file must be quarantined as fixture/demo data or explicitly migrated before it is called production.</p>
+<h2 id="2browser-status">2Browser status</h2>
+<h3 id="current-routes">Current routes</h3>
+<table>
+<thead>
+<tr>
+<th>Route</th>
+<th>State</th>
+<th>First-release use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sportsbet/event-markets</code></td>
+<td>Live</td>
+<td>Primary AU quote/evidence source</td>
+</tr>
+<tr>
+<td><code>bet365/event-markets</code></td>
+<td>Live</td>
+<td>Secondary bookmaker comparison</td>
+</tr>
+<tr>
+<td><code>oddsapi/event-markets</code></td>
+<td>Live</td>
+<td>Event discovery/cross-book quotes, once key is repaired</td>
+</tr>
+<tr>
+<td><code>fbref/squad-per90</code></td>
+<td>Live</td>
+<td>Football context; current tests need reconciliation</td>
+</tr>
+<tr>
+<td><code>fotmob/lineup</code></td>
+<td>Disabled</td>
+<td>Exclude from v1</td>
+</tr>
+<tr>
+<td>Gmail/Calendar/Slack routes</td>
+<td>Live</td>
+<td>Unrelated to betting calculation</td>
+</tr>
+</tbody>
+</table>
+<h3 id="decision">Decision</h3>
+<p>Use the 2Browser request/envelope contract for the NRL paper slice, but do not claim production cutover. A paper job may consume a shadow/canary route because it has no bookmaker side effect; every response must retain its raw artifact reference, completeness state and quote timestamp.</p>
+<p>Before T-028 cutover:</p>
+<ol>
+<li>reconcile the three FBref-related test expectations with the new live route;</li>
+<li>update T-026's wiki state to match the committed implementation;</li>
+<li>run fresh Sportsbet, Bet365 and required Odds API canaries;</li>
+<li>prove rollback and service supervision;</li>
+<li>inventory remaining direct-port and legacy facade callers;</li>
+<li>obtain Danny's explicit activation approval.</li>
+</ol>
+<p>Cloak and FotMob are not first-release dependencies.</p>
+<h2 id="target-architecture">Target architecture</h2>
+<pre><code class="language-text">systemd timer / manual replay
+  -&gt; NRL run manifest
+  -&gt; 2Browser event + quote capture
+  -&gt; freshness, completeness and identity gates
+  -&gt; deterministic model probabilities and fair prices
+  -&gt; atomic single-leg candidate set
+  -&gt; Jarvis rule/context review
+  -&gt; deterministic risk + SGM/multi pricing gates
+  -&gt; structured DecisionRecord
+  -&gt; canonical paper ledger append
+  -&gt; Telegram + durable Markdown/JSON card
+  -&gt; result capture and settlement
+  -&gt; performance report and proposed wiki lessons
+
+separate path after approval:
+  paper candidate -&gt; real candidate -&gt; Danny approval -&gt; manual placement evidence
+  -&gt; linked real ledger record -&gt; settlement/reconciliation
+</code></pre>
+<h3 id="authority-boundaries">Authority boundaries</h3>
+<table>
+<thead>
+<tr>
+<th>Concern</th>
+<th>Authority</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Live prices and market availability</td>
+<td>2Browser evidence envelope</td>
+</tr>
+<tr>
+<td>Probability and fair odds</td>
+<td>Versioned deterministic sport model</td>
+</tr>
+<tr>
+<td>Stake/exposure/kill switches</td>
+<td>Deterministic risk code</td>
+</tr>
+<tr>
+<td>Durable rules and lessons</td>
+<td>Approved/current Jarvis wiki pages</td>
+</tr>
+<tr>
+<td>Candidate critique and explanation</td>
+<td>Jarvis using a schema-constrained AI model</td>
+</tr>
+<tr>
+<td>Bet state, funding, placement and P&amp;L</td>
+<td>Canonical operator ledger</td>
+</tr>
+<tr>
+<td>Real placement</td>
+<td>Danny-approved operator action</td>
+</tr>
+<tr>
+<td>Results and settlement</td>
+<td>Deterministic result adapter plus evidence</td>
+</tr>
+</tbody>
+</table>
+<p>An LLM may veto or downgrade a candidate. It must not invent a price/probability, bypass a failed gate, declare a placement, or settle a bet.</p>
+<h2 id="canonical-contracts">Canonical contracts</h2>
+<h3 id="runmanifest"><code>RunManifest</code></h3>
+<pre><code class="language-text">run_id
+schema_version
+sport
+competition
+decision_date
+window_start / window_end
+started_at / completed_at
+mode: replay | paper | real_candidate
+code_version
+config_version
+model_versions[]
+wiki_rule_set_id
+input_snapshot_ids[]
+stage_results[]
+candidate_ids[]
+ledger_bet_ids[]
+delivery_id
+overall_status: ok | degraded | failed | no_bet
+</code></pre>
+<h3 id="quotesnapshot"><code>QuoteSnapshot</code></h3>
+<pre><code class="language-text">snapshot_id
+source / resource
+event_id / event_time
+book / account_scope
+market_id / selection_id / line
+decimal_odds
+observed_at
+status / completeness / failure_code
+artifact_ref / fingerprint
+</code></pre>
+<h3 id="decisionrecord"><code>DecisionRecord</code></h3>
+<pre><code class="language-text">decision_id
+run_id
+candidate_id
+sport / event_id
+bet_type: single | sgm | cross_multi
+legs[]
+model_probability / fair_odds / edge
+available_odds / quote_snapshot_ids[]
+correlation_method / joint_probability
+data_quality
+rule_ids_applied[]
+vetoes[]
+uncertainties[]
+decision: bet | watch | pass
+suggested_stake
+model_id / prompt_version
+explanation
+</code></pre>
+<h3 id="canonical-bet-additions">Canonical bet additions</h3>
+<p>The existing operator-ledger model already covers most lifecycle, funding, book/account and settlement fields. The recommendation-to-ledger path must also persist:</p>
+<pre><code class="language-text">run_id
+decision_id
+model_version
+model_probability
+fair_odds
+edge
+quote_snapshot_ids[]
+wiki_rule_set_id
+correlation_method
+joint_probability
+tip_odds
+placement_odds
+execution_mode
+operator_confirmation
+</code></pre>
+<p>Do not bury these only in prose notes.</p>
+<h2 id="jarvis-as-the-betting-brain">Jarvis as the betting brain</h2>
+<h3 id="recommended-role">Recommended role</h3>
+<p>Jarvis should be a versioned rules-and-critique service around deterministic candidates.</p>
+<p>For each run it should:</p>
+<ol>
+<li>Load only active rules for the sport, market family and bet type.</li>
+<li>Load recent, approved lessons and relevant post-mortems.</li>
+<li>Receive atomic candidates with stored probabilities and quote evidence.</li>
+<li>Identify conflicts, missing evidence, stale assumptions and filler legs.</li>
+<li>Return schema-valid <code>BET</code>, <code>WATCH</code> or <code>PASS</code> decisions with rule IDs and vetoes.</li>
+<li>Explain accepted and rejected candidates for the operator.</li>
+<li>Propose a post-settlement lesson; never ingest it automatically in v1.</li>
+</ol>
+<h3 id="required-wiki-repair">Required wiki repair</h3>
+<p>Before Jarvis influences a live paper card:</p>
+<ul>
+<li>reconcile <code>context/betting-engine.md</code> with the live scheduler and service state;</li>
+<li>fix the invalid metadata reported by <code>wiki.lint</code> on the three key betting pages;</li>
+<li>add <code>effective_from</code>, <code>reviewed_at</code>, <code>supersedes</code> and <code>status</code> semantics for operational rules;</li>
+<li>define precedence: current explicit Danny directive &gt; active executable policy &gt; current sport rule &gt; lesson &gt; historical report;</li>
+<li>freeze a rule-set digest into every <code>DecisionRecord</code>;</li>
+<li>keep odds, line-ups, injuries and results out of the wiki unless they are timestamped evidence documents.</li>
+</ul>
+<h3 id="rule-conflict-to-resolve">Rule conflict to resolve</h3>
+<p>One Jarvis knowledge record says cards require at least three legs. The higher-value operational lesson says Danny prefers an honest two-leg SGM to a three-leg card containing filler. The no-filler rule should win:</p>
+<blockquote>
+<p>Two justified legs are valid. A third leg is allowed only if it independently passes the single-leg quality gate.</p>
+</blockquote>
+<h3 id="ai-model-routing">AI model routing</h3>
+<p>Start with one constrained decision model, GPT-5.6 Sol, rather than a committee of models.</p>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>v1 implementation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Extraction/normalisation</td>
+<td>Deterministic adapters</td>
+</tr>
+<tr>
+<td>Probabilities/fair prices</td>
+<td>Sport model</td>
+</tr>
+<tr>
+<td>Rule retrieval</td>
+<td>Jarvis exact paths/tags plus lexical search</td>
+</tr>
+<tr>
+<td>Context synthesis</td>
+<td>Sol with cited evidence IDs</td>
+</tr>
+<tr>
+<td>Adversarial check</td>
+<td>Same Sol call with explicit veto checklist or a second replayable pass</td>
+</tr>
+<tr>
+<td>Final decision</td>
+<td>Deterministic gates consume structured Sol output</td>
+</tr>
+<tr>
+<td>Telegram prose</td>
+<td>Render from the accepted <code>DecisionRecord</code></td>
+</tr>
+</tbody>
+</table>
+<p>Add cheaper candidate-summarisation models or independent reviewers only after replay tests show a measurable benefit. They are not needed to ship the first paper loop.</p>
+<h3 id="universal-memorys-role">Universal Memory's role</h3>
+<p>Do not make Universal Memory a runtime dependency yet. It contains no betting records, and the Jarvis wiki is already the relevant source.</p>
+<p>Later, Universal Memory can hold approved cross-harness policy summaries or decision learnings, provided its governance/approval path is accepted. It should not store raw odds, raw bookmaker evidence, live bankroll state or the betting ledger.</p>
+<h2 id="sgm-and-multi-construction">SGM and multi construction</h2>
+<h3 id="singles-first">Singles first</h3>
+<p>Every leg must pass as an atomic candidate:</p>
+<pre><code class="language-text">fresh evidence
+  + stable market/selection identity
+  + calibrated model probability
+  + positive edge at current price
+  + risk eligibility
+  + explicit evidence-backed rationale
+</code></pre>
+<p>If it would not be accepted as a single, it cannot be used to decorate an SGM or multi.</p>
+<h3 id="sgm-gates">SGM gates</h3>
+<ol>
+<li>Use two or three legs by default; never force a third.</li>
+<li>Obtain the bookmaker's exact SGM price when possible.</li>
+<li>Estimate joint probability using a declared sport/market correlation method; never multiply marginal probabilities blindly.</li>
+<li>Store the correlation method, assumptions and uncertainty.</li>
+<li>Compare SGM EV with the equivalent singles.</li>
+<li>Apply Tika Veto: odds at or below 1.15 without a data-backed reason are rejected unless Danny explicitly accepts filler risk.</li>
+<li>Reject duplicate, mutually exclusive or identity-ambiguous legs.</li>
+<li>Cap per-event, per-market and total daily exposure.</li>
+<li>Output <code>PASS</code> when joint probability or exact price is unsupported.</li>
+</ol>
+<h3 id="cross-event-multis">Cross-event multis</h3>
+<ul>
+<li>Build only from independently accepted singles.</li>
+<li>Keep a separate product/performance segment.</li>
+<li>Limit leg count and correlated exposure.</li>
+<li>Retain every underlying single's evidence and model values.</li>
+<li>Never use a multiplier target as a selection criterion.</li>
+</ul>
+<h2 id="daily-operating-loop">Daily operating loop</h2>
+<h3 id="recommended-cadence">Recommended cadence</h3>
+<p>For NRL, use event-relative execution rather than one stale morning price:</p>
+<ol>
+<li><strong>Morning discovery:</strong> identify the decision window and generate a preview/no-bet report.</li>
+<li><strong>Pre-decision refresh:</strong> refresh quotes/context inside a configured freshness window before the card is final.</li>
+<li><strong>Delivery:</strong> publish one idempotent final paper card.</li>
+<li><strong>Pre-kickoff validation:</strong> report material price/line-up changes; do not silently replace the logged tip.</li>
+<li><strong>Nightly settlement:</strong> settle completed events and surface unresolved records.</li>
+</ol>
+<p>The existing 30-minute matchday timer can remain a trigger, but it must consume a real schedule manifest and stable run IDs. The disabled general daily timer must not be enabled until dry-run acceptance passes.</p>
+<h3 id="telegram-card">Telegram card</h3>
+<p>Each message should contain:</p>
+<ul>
+<li>run ID and generation time;</li>
+<li>sport, events and coverage window;</li>
+<li>source freshness/completeness;</li>
+<li>accepted singles;</li>
+<li>optional SGM and cross-event multi section;</li>
+<li>fair odds, current odds, edge and stake tier;</li>
+<li>concise evidence-backed rationale;</li>
+<li>explicit vetoes/rejections and no-bet result when applicable;</li>
+<li>paper ledger IDs;</li>
+<li>previous settlement summary;</li>
+<li>warnings and degraded dependencies.</li>
+</ul>
+<p>Telegram is a delivery surface, not the ledger or placement proof.</p>
+<h2 id="delivery-plan">Delivery plan</h2>
+<h3 id="phase-0-repair-and-freeze-the-baseline">Phase 0 — Repair and freeze the baseline</h3>
+<p><strong>Timebox:</strong> 1–2 engineering days<br />
+<strong>Goal:</strong> make the current system truthful and reproducible.</p>
+<p>Tasks:</p>
+<ol>
+<li>Repair the scheduled Odds API credential path; prove heartbeat HTTP 200 without exposing the key.</li>
+<li>Reconcile 2Browser's FBref live route with the three failing tests.</li>
+<li>Update T-026 ticket state from the committed evidence.</li>
+<li>Fix the betting test configuration so NRL suites pass under the documented command without manual <code>PYTHONPATH</code>.</li>
+<li>Separate fixture/demo ledger data from production data and produce a migration/quarantine receipt.</li>
+<li>Inventory and label every active/disabled betting timer and legacy cron.</li>
+<li>Freeze clean review commits or manifests for engine, 2Browser and wiki.</li>
+<li>Correct README and wiki claims that disagree with live state.</li>
+</ol>
+<p>Acceptance:</p>
+<ul>
+<li>heartbeat green;</li>
+<li>2Browser focused/full relevant tests green;</li>
+<li>plain NRL test command green;</li>
+<li>no ambiguity over the production ledger path;</li>
+<li>schedule inventory matches systemd state;</li>
+<li>no live or production activation is performed.</li>
+</ul>
+<h3 id="phase-1-canonical-nrl-paper-contract">Phase 1 — Canonical NRL paper contract</h3>
+<p><strong>Timebox:</strong> 2–4 engineering days<br />
+<strong>Goal:</strong> one fixture can travel from evidence to an idempotent paper record.</p>
+<p>Primary files:</p>
+<ul>
+<li><code>scripts/nrl_cron.py</code></li>
+<li><code>scripts/nrl_daily.py</code></li>
+<li><code>scripts/nrl_paper_entry.py</code></li>
+<li><code>src/daz_betting_engine/odds_api/scrape_facade_client.py</code></li>
+<li><code>src/daz_betting_engine/operator_ledger/models.py</code></li>
+<li><code>src/daz_betting_engine/operator_ledger/pipeline_adapter.py</code></li>
+<li><code>src/daz_betting_engine/operator_ledger/store.py</code></li>
+</ul>
+<p>Tasks:</p>
+<ol>
+<li>Freeze <code>RunManifest</code>, <code>QuoteSnapshot</code> and <code>DecisionRecord</code> schemas.</li>
+<li>Carry model/evidence fields through the canonical adapter and ledger.</li>
+<li>Use one stable identity for event, market, selection, run and bet.</li>
+<li>Record accepted and rejected candidates.</li>
+<li>Add replay mode against stored 2Browser fixtures.</li>
+<li>Prove duplicate-safe reruns and conflict detection.</li>
+</ol>
+<p>Acceptance:</p>
+<ul>
+<li>one NRL fixture round-trips from stored 2Browser evidence to ledger;</li>
+<li>the same run is idempotent;</li>
+<li>changed input under the same identity fails closed;</li>
+<li>every bet can be reconstructed from its manifest and snapshots;</li>
+<li>paper funding has zero real cash exposure.</li>
+</ul>
+<h3 id="phase-2-jarvis-decision-and-sgm-layer">Phase 2 — Jarvis decision and SGM layer</h3>
+<p><strong>Timebox:</strong> 2–4 engineering days<br />
+<strong>Goal:</strong> turn executable rules and model candidates into auditable decisions.</p>
+<p>Primary files:</p>
+<ul>
+<li><code>src/daz_betting_engine/sgm/sources.py</code></li>
+<li><code>src/daz_betting_engine/sgm/recommender.py</code></li>
+<li><code>src/daz_betting_engine/sgm/runner.py</code></li>
+<li>one small new read-only Jarvis adapter under <code>src/daz_betting_engine/decision/</code></li>
+<li>GM wiki betting policy pages</li>
+</ul>
+<p>Tasks:</p>
+<ol>
+<li>Create a versioned Jarvis rule-set loader.</li>
+<li>Define strict structured input/output for Sol.</li>
+<li>Encode no-filler, Tika Veto, evidence, correlation and exposure rules as deterministic validators.</li>
+<li>Add accepted/rejected replay fixtures.</li>
+<li>Preserve model, prompt and wiki rule-set versions.</li>
+</ol>
+<p>Acceptance:</p>
+<ul>
+<li>stale or malformed Jarvis output cannot create a bet;</li>
+<li>replay produces the same structured decision;</li>
+<li>a filler-leg fixture is vetoed;</li>
+<li>an unsupported joint-probability SGM becomes singles or <code>PASS</code>;</li>
+<li>explanation references only stored evidence IDs.</li>
+</ul>
+<h3 id="phase-3-scheduled-delivery-and-settlement">Phase 3 — Scheduled delivery and settlement</h3>
+<p><strong>Timebox:</strong> 2–4 engineering days, then observation<br />
+<strong>Goal:</strong> dependable daily paper operation.</p>
+<p>Primary files:</p>
+<ul>
+<li><code>src/daz_betting_engine/notify/telegram.py</code></li>
+<li>systemd daily/matchday units and wrappers</li>
+<li>NRL result/settlement scripts</li>
+<li>performance report modules</li>
+</ul>
+<p>Tasks:</p>
+<ol>
+<li>Render one Telegram and one durable JSON/Markdown product per run.</li>
+<li>Add idempotent delivery IDs and visible failure alerts.</li>
+<li>Enable the daily timer only after dry-run evidence.</li>
+<li>Settle with sourced results; reject ambiguous matches.</li>
+<li>Report ROI, yield, drawdown, calibration and CLV separately by product/market.</li>
+<li>Generate human-approved wiki lesson proposals.</li>
+</ol>
+<p>Acceptance:</p>
+<ul>
+<li>14 consecutive scheduled decision days, including valid no-event/no-bet days;</li>
+<li>no duplicate ledger or Telegram records;</li>
+<li>all tips retain quote time, evidence, model and decision IDs;</li>
+<li>every open/overdue/void item is visible;</li>
+<li>settlement reconciles exactly for the observation window.</li>
+</ul>
+<h3 id="phase-4-human-approved-real-lane">Phase 4 — Human-approved real lane</h3>
+<p><strong>Start only after Danny approves explicit evidence thresholds.</strong></p>
+<p>Tasks:</p>
+<ol>
+<li>Create linked <code>real_candidate</code> records from eligible paper decisions.</li>
+<li>Require per-bet or bounded-slate approval.</li>
+<li>Record book, account, accepted odds, stake, timestamp and receipt/reference.</li>
+<li>Start with one book/account and capped stakes.</li>
+<li>Keep placement manual; automate only recording, settlement and reconciliation.</li>
+</ol>
+<p>Acceptance:</p>
+<ul>
+<li>meaningful settled sample per sport/market, with calibration and CLV available;</li>
+<li>no unresolved ledger or reconciliation defects;</li>
+<li>stake/exposure/kill-switch tests pass;</li>
+<li>paper and real performance remain separate;</li>
+<li>duplicate/uncertain placement recovery is rehearsed;</li>
+<li>explicit owner approval is recorded.</li>
+</ul>
+<p>Direct bookmaker placement is a separate future design and approval decision.</p>
+<h3 id="phase-5-add-sports">Phase 5 — Add sports</h3>
+<p>Add a sport only when it has:</p>
+<ul>
+<li>reliable event/quote and result adapters;</li>
+<li>a versioned, evaluated probability model;</li>
+<li>market identity mapping;</li>
+<li>sport-specific Jarvis rules;</li>
+<li>settlement evidence;</li>
+<li>a paper observation window.</li>
+</ul>
+<p>Recommended order:</p>
+<ol>
+<li>NRL core markets.</li>
+<li>One football competition using proven 2Browser routes; enable FotMob only if line-up quality requires it.</li>
+<li>Racing only after its own market/result contracts and calibration gates are demonstrated.</li>
+</ol>
+<h2 id="prioritised-backlog">Prioritised backlog</h2>
+<h3 id="p0-blockers">P0 blockers</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Task</th>
+<th>Proof</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OPS-001</td>
+<td>Repair Odds API scheduled credential</td>
+<td>Heartbeat 200 and state <code>healthy=true</code></td>
+</tr>
+<tr>
+<td>OPS-002</td>
+<td>Decide and document active daily schedule</td>
+<td>Systemd inventory + one dry-run receipt</td>
+</tr>
+<tr>
+<td>LEDGER-001</td>
+<td>Quarantine fixture ledger and declare production path</td>
+<td>Migration receipt + zero fixture records in production</td>
+</tr>
+<tr>
+<td>TEST-001</td>
+<td>Make NRL tests run without manual <code>PYTHONPATH</code></td>
+<td>Documented command passes</td>
+</tr>
+<tr>
+<td>BROWSER-001</td>
+<td>Reconcile FBref live-route tests</td>
+<td>Current 614-test suite green or bounded accepted exceptions</td>
+</tr>
+<tr>
+<td>WIKI-001</td>
+<td>Reconcile/lint betting pages and rule precedence</td>
+<td>Jarvis lint passes; rule-set digest generated</td>
+</tr>
+<tr>
+<td>BASELINE-001</td>
+<td>Freeze clean commits/manifests</td>
+<td>Reproducible HEADs and worktree receipt</td>
+</tr>
+</tbody>
+</table>
+<h3 id="p1-paper-product">P1 paper product</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Task</th>
+<th>Proof</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CONTRACT-001</td>
+<td>Freeze run/snapshot/decision schemas</td>
+<td>JSON-schema tests</td>
+</tr>
+<tr>
+<td>LEDGER-002</td>
+<td>Persist model/evidence/Jarvis fields</td>
+<td>Round-trip tests</td>
+</tr>
+<tr>
+<td>NRL-001</td>
+<td>One replayable paper E2E fixture</td>
+<td>Capture → decision → ledger</td>
+</tr>
+<tr>
+<td>JARVIS-001</td>
+<td>Read-only rule adapter and strict decision schema</td>
+<td>Veto/replay tests</td>
+</tr>
+<tr>
+<td>SGM-001</td>
+<td>Executable filler/correlation gates</td>
+<td>Accepted and rejected fixtures</td>
+</tr>
+<tr>
+<td>DELIVERY-001</td>
+<td>Idempotent Telegram/artefact delivery</td>
+<td>Retry test with one delivery ID</td>
+</tr>
+<tr>
+<td>SETTLE-001</td>
+<td>Evidence-backed NRL settlement</td>
+<td>Win/loss/void/ambiguous tests</td>
+</tr>
+</tbody>
+</table>
+<h3 id="p2-controlled-real-lane">P2 controlled real lane</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Task</th>
+<th>Proof</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>REAL-001</td>
+<td>Human approval queue</td>
+<td>approve/reject audit tests</td>
+</tr>
+<tr>
+<td>REAL-002</td>
+<td>Placement evidence and linked real record</td>
+<td>receipt/odds/stake round trip</td>
+</tr>
+<tr>
+<td>RISK-001</td>
+<td>Enforced account/event/day exposure</td>
+<td>boundary and kill-switch tests</td>
+</tr>
+<tr>
+<td>RECON-001</td>
+<td>Account/book reconciliation</td>
+<td>exact daily snapshot reconciliation</td>
+</tr>
+</tbody>
+</table>
+<h2 id="decisions-required-from-danny">Decisions required from Danny</h2>
+<p>The plan assumes NRL-first, paper-first and Telegram delivery. Before Phase 3, decide:</p>
+<ol>
+<li>Which NRL markets are in v1.</li>
+<li>Final delivery time and price-freshness window.</li>
+<li>Paper stake convention: fixed units or bankroll percentage.</li>
+<li>Minimum settled sample and performance evidence before real candidates.</li>
+<li>Real approval mode: every bet or a bounded daily slate.</li>
+<li>First real bookmaker/account and exposure caps.</li>
+<li>Whether Jarvis lessons remain proposal-only; recommendation: yes for v1.</li>
+</ol>
+<h2 id="release-gates">Release gates</h2>
+<p>The first paper release is ready only when:</p>
+<ul>
+<li>current required services and credentials are green;</li>
+<li>one canonical production ledger contains no fixture contamination;</li>
+<li>every tip and rejection has a stable ID and evidence chain;</li>
+<li>2Browser partial/stale/error responses fail closed;</li>
+<li>Jarvis rule version and model/prompt version are stored;</li>
+<li>SGM legs reconstruct to atomic candidates;</li>
+<li>delivery is idempotent and observable;</li>
+<li>settlement handles win/loss/void/unknown without guessing;</li>
+<li>a correct no-bet day is a successful product outcome.</li>
+</ul>
+<p>The real lane is ready only after the paper release, reconciliation and owner-approved evidence threshold pass. It does not authorise unattended bookmaker placement.</p>
+<h2 id="source-documents-read">Source documents read</h2>
+<ul>
+<li><code>/home/daz/projects/universal-memory/wiki/gm/concepts/automated-betting-tips-gpt56-sol-brief.md</code></li>
+<li><code>/home/daz/orca/workspaces/2b/Codex/BETTING-AUTOMATION-STATUS-AND-PLAN.md</code></li>
+<li><code>/home/daz/.claude/projects/-home-daz-projects-2b/memory/betting-system-status-report.md</code></li>
+<li><code>/home/daz/orca/workspaces/2b/2B/reports/betting-system-status-and-plan.md</code></li>
+<li><code>/home/daz/projects/universal-memory/wiki/gm/context/betting-engine.md</code></li>
+<li><code>/home/daz/projects/universal-memory/wiki/gm/context/betting-lessons.md</code></li>
+<li><code>/home/daz/projects/universal-memory/wiki/gm/context/bankroll-reconciliation.md</code></li>
+<li>2Browser tickets T-020 and T-026 through T-029</li>
+<li>live repository, test, systemd, log, ledger and MCP evidence described above</li>
+</ul>
+<h2 id="bottom-line">Bottom line</h2>
+<p>The shortest credible route is not a new betting brain. It is to make the existing NRL path truthful from quote to settlement.</p>
+<p>Repair the Odds API credential, clean the ledger and baseline, reconcile 2Browser's route/test state, then ship one schema-driven NRL paper loop. Place Jarvis between deterministic candidates and the ledger as a rules/veto/explanation layer. Keep real placement manual and separately approved until the paper evidence and reconciliation gates pass.</p></article>
+<footer>Generated from DAZ-BETTING-AUTOMATION-SOL-REPORT-2026-08-01.md · 2B / Jarvis planning artifact</footer>
+</main><script>
+const article=document.querySelector('article'), toc=document.querySelector('#toc');
+const hs=[...article.querySelectorAll('h2,h3')]; const ul=document.createElement('ul');
+for(const h of hs){if(!h.id)h.id=h.textContent.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'');const li=document.createElement('li');li.style.marginLeft=h.tagName==='H3'?'18px':'0';const a=document.createElement('a');a.href='#'+h.id;a.textContent=h.textContent;li.appendChild(a);ul.appendChild(li)} toc.appendChild(ul);
+</script></body></html>
