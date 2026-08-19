@@ -13,7 +13,7 @@ The four existing assets were carried forward unchanged from the approved v4.1 d
 
 ## New generated assets
 
-- `04-team-org-chart.png` — generated/restyled locally with OpenAI `gpt-image-2-medium` on 20 August 2026 from the supplied pharmacy operations org-chart image. The equal-team constellation treatment preserves the supplied names, portraits and relationships without expanding truncated role labels. SHA-256: `795d57eab91a3abb51b9293564cbb95c22fa0f25e9b58bcbb4aa2da7c84abf4e`.
+- `04-team-org-chart.png` — generated/restyled locally with OpenAI `gpt-image-2-medium` on 20 August 2026 from the supplied pharmacy operations org-chart image. The equal-team constellation treatment preserves the supplied names, portraits and relationships without expanding truncated role labels. SHA-256: `fe0c7599a40129a5fb16e7cb4aa66a12c279a2a88615be63979e70550b7d8184`.
 - `11-lollipop-moment.png` — generated locally with OpenAI `gpt-image-2-medium` on 20 August 2026. Source cache: `/home/daz/.hermes/cache/images/openai_codex_gpt-image-2-medium_20260820_075112_9c08707c.png`. SHA-256: `3fd2f9a95160987ebdb275fed7054996e042bac732e383b4d2311492d3b531a87`.
 - `12-make-impact-visible.png` — generated locally with OpenAI `gpt-image-2-medium` on 20 August 2026. Source cache: `/home/daz/.hermes/cache/images/openai_codex_gpt-image-2-medium_20260820_075059_673bf64a.png`. SHA-256: `17918284800aaaa081133f7b09d483f4c7bcb666833f221d3111492d3b531a87`.
 
