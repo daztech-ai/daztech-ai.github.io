@@ -60,7 +60,7 @@ h1,h2,h3,p{margin:0;position:relative;z-index:3}h1{font-size:100px;line-height:.
   html,body{height:auto;min-height:100%;overflow-x:hidden;overflow-y:auto}
   body{display:block}
   #stage{width:100%;height:auto;min-height:100dvh;aspect-ratio:auto;overflow:visible;box-shadow:none}
-  .slide,.slide.active{position:relative;inset:auto;width:100%;min-height:100dvh;height:auto;padding:clamp(28px,6vw,58px) clamp(24px,7vw,72px) clamp(76px,12vw,108px);overflow-x:hidden;overflow-y:auto;scrollbar-width:none}
+  .slide,.slide.active{position:relative;inset:auto;width:100%;min-height:100dvh;height:auto;padding:clamp(28px,6vw,58px) clamp(24px,7vw,72px) 76px;overflow-x:hidden;overflow-y:auto;scrollbar-width:none}
   .slide::-webkit-scrollbar{display:none}
   .slide.active{display:flex}
   h1{font-size:clamp(48px,9vw,82px);line-height:.98;max-width:none}
@@ -93,6 +93,9 @@ h1,h2,h3,p{margin:0;position:relative;z-index:3}h1{font-size:100px;line-height:.
   .formula-box{min-height:0;padding:24px 22px;font-size:clamp(23px,4.7vw,34px)}
   .formula-arrow{font-size:38px;line-height:1;transform:rotate(90deg)}
   .small-note{font-size:clamp(18px,3.5vw,27px);margin-top:22px}
+  .slide[data-title="Reverse the formula"] .formula-row{margin-top:22px;gap:8px}
+  .slide[data-title="Reverse the formula"] .formula-box{padding:18px;font-size:clamp(20px,4vw,30px)}
+  .slide[data-title="Reverse the formula"] .small-note{margin-top:14px;font-size:clamp(17px,3.2vw,24px)}
   .control-grid{grid-template-columns:repeat(2,1fr);gap:12px;margin-top:32px}
   .control-step{min-height:110px;padding:18px 16px}
   .control-step b{font-size:clamp(32px,7vw,44px);margin-bottom:10px}
@@ -126,6 +129,11 @@ h1,h2,h3,p{margin:0;position:relative;z-index:3}h1{font-size:100px;line-height:.
   .control-grid,.wins{grid-template-columns:1fr}
   .win{min-height:0}
   .footer span:first-child{max-width:70%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+}
+@media(min-width:600px) and (max-width:1100px){
+  .slide[data-title="Reverse the formula"] h2{font-size:48px}
+  .slide[data-title="Reverse the formula"] .formula-box{padding:14px 16px;font-size:24px}
+  .slide[data-title="Reverse the formula"] .small-note{font-size:18px;margin-top:10px}
 }
 @media print{html,body{overflow:visible;background:#fff}#stage{transform:none!important;width:1920px;height:auto;box-shadow:none}.slide{display:flex!important;position:relative;width:1920px;height:1080px;page-break-after:always}.controls,.help,.progress{display:none!important}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
